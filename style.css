@@ -24,14 +24,13 @@ div.time-period {
 	padding: 0;
 }
 
-div.role {
+div.role-description {
 	font-style: italic;
 }
 
 ul {
 	padding: 5pt 5pt 10pt 8pt;
 	margin: 0 8pt 0 8pt;
-	font-style: normal;
 }
 
 div.section-title {

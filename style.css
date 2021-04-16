@@ -1,0 +1,39 @@
+body {
+	font-family: 'Verdana';
+	font-size: 10pt;
+	padding: 20pt;
+}
+
+div.contact-info {
+	padding-bottom: 10pt;
+}
+
+div.contact-info > em {
+	font-weight: bold;
+	font-style: normal;
+}
+
+div.company, div.school-name {
+	font-weight: bold;
+	display: inline-block;
+	padding: 0 5pt 0 0;
+}
+
+div.time-period {
+	display: inline-block;
+	padding: 0;
+}
+
+div.role {
+	font-style: italic;
+}
+
+ul {
+	padding: 5pt 5pt 10pt 8pt;
+	margin: 0 8pt 0 8pt;
+}
+
+div.section-title {
+	color: #2f6d84;
+	font-weight: bold;
+}

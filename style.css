@@ -2,6 +2,8 @@ body {
 	font-family: 'Verdana';
 	font-size: 10pt;
 	padding: 20pt;
+	background-color: #d9e2db;
+	min-width: 700px;
 }
 
 div.contact-info {
@@ -13,14 +15,12 @@ div.contact-info > em {
 	font-style: normal;
 }
 
-div.company, div.school-name {
+span.company, span.school-name {
 	font-weight: bold;
-	display: inline-block;
 	padding: 0 5pt 0 0;
 }
 
-div.time-period {
-	display: inline-block;
+span.time-period {
 	padding: 0;
 }
 
@@ -34,6 +34,6 @@ ul {
 }
 
 div.section-title {
-	color: #2f6d84;
 	font-weight: bold;
+	padding-bottom: 5pt;
 }

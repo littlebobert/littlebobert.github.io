@@ -17,11 +17,6 @@ div.contact-info > em {
 
 span.company, span.school-name {
 	font-weight: bold;
-	padding: 0 5pt 0 0;
-}
-
-span.time-period {
-	padding: 0;
 }
 
 div.role-description {

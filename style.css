@@ -1,10 +1,9 @@
 body {
 	font-family: 'Verdana';
 	font-size: 11pt;
-	padding: 20pt;
-	background-color: color(srgb 0.189 0.2 0.272);
-	color: white;
-	min-width: 700px;
+	padding: 10pt;
+	background-color: black;
+	color: #dbdbdb;
 }
 
 a {
@@ -33,7 +32,7 @@ div.role-description {
 }
 
 ul {
-	padding: 5pt 5pt 5pt 8pt;
+	padding: 5pt 5pt 20pt 8pt;
 	margin: 0 8pt 0 8pt;
 }
 

@@ -1,9 +1,14 @@
 body {
 	font-family: 'Verdana';
-	font-size: 10pt;
+	font-size: 11pt;
 	padding: 20pt;
-	background-color: #d9e2db;
+	background-color: color(srgb 0.189 0.2 0.272);
+	color: white;
 	min-width: 700px;
+}
+
+a {
+	color: white;
 }
 
 div.contact-info {
@@ -34,5 +39,9 @@ ul {
 
 div.section-title {
 	font-weight: bold;
+	padding-bottom: 5pt;
+}
+
+div.jobs {
 	padding-bottom: 5pt;
 }

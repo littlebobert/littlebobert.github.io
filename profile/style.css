@@ -1,0 +1,47 @@
+body {
+  background-color: black;
+  font-family: Verdana, sans-serif;
+  color: white;
+  font-size: 20px;
+  line-height: 20px;
+  text-align: center;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+  padding: 8px;
+  background-color: grey;
+}
+
+a:hover {
+  background-color: grey;
+}
+
+.container {
+  margin: 0 auto;
+  width: 600px;
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.img-round {
+  border-radius: 50%;
+}
+
+.list-inline {
+  list-style: none;
+  padding: 8px 0px;
+}
+
+.list-inline li {
+  display: inline-block;
+  padding: 0px 20px;
+}
+
+@media (max-width: 720px) {
+  /* For a screen < 720px, this CSS will be read */
+  .container {
+    width: 300px;
+  }
+}

@@ -1,46 +1,46 @@
 body {
-	font-family: 'Verdana';
-	font-size: 10pt;
-	padding: 8pt;
-	color: black;
+  font-family: 'Verdana';
+  font-size: 10pt;
+  padding: 8pt;
+  color: black;
 }
 
 div.contact-info {
-	padding-bottom: 10pt;
+  padding-bottom: 10pt;
 }
 
 div.contact-info > em {
-	font-weight: bold;
-	font-style: normal;
+  font-weight: bold;
+  font-style: normal;
 }
 
 div.tagline {
-	padding-bottom: 10pt;
+  padding-bottom: 10pt;
 }
 
 span.company, span.school-name {
-	font-weight: bold;
+  font-weight: bold;
 }
 
 div.job-metadata {
-	padding-bottom: 3pt;
+  padding-bottom: 3pt;
 }
 
 div.role-description {
-	font-style: italic;
+  font-style: italic;
 }
 
 ul {
-	padding: 5pt 0pt 12pt 8pt;
-	margin: 0 8pt 0 8pt;
+  padding: 5pt 0pt 12pt 8pt;
+  margin: 0 8pt 0 8pt;
 }
 
 div.section-title {
-	font-weight: bold;
-	padding-bottom: 5pt;
-	color: #2b49aa;
+  font-weight: bold;
+  padding-bottom: 5pt;
+  color: #2b49aa;
 }
 
 div.jobs {
-	padding-bottom: 5pt;
+  padding-bottom: 5pt;
 }

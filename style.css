@@ -14,6 +14,10 @@ div.contact-info > em {
 	font-style: normal;
 }
 
+div.tagline {
+	padding-bottom: 10pt;
+}
+
 span.company, span.school-name {
 	font-weight: bold;
 }

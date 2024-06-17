@@ -30,6 +30,10 @@ div.role-description {
   font-style: italic;
 }
 
+div.overview {
+  padding-top: 3pt;
+}
+
 ul {
   padding: 5pt 0pt 12pt 8pt;
   margin: 0 8pt 0 8pt;

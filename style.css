@@ -1,12 +1,12 @@
 body {
   font-family: 'Verdana';
-  font-size: 10pt;
+  font-size: 9pt;
   padding: 8pt;
   color: black;
 }
 
 div.contact-info {
-  padding-bottom: 10pt;
+  padding-bottom: 8pt;
 }
 
 div.contact-info > em {
@@ -15,15 +15,23 @@ div.contact-info > em {
 }
 
 div.tagline {
-  padding-bottom: 10pt;
+  padding-bottom: 8pt;
 }
 
 span.company, span.school-name {
   font-weight: bold;
 }
 
+div.job {
+  padding-bottom: 8pt;
+}
+
 div.job-metadata {
   padding-bottom: 3pt;
+}
+
+ul.accomplishments {
+  padding-bottom: 4pt;
 }
 
 div.role-description {
@@ -46,5 +54,5 @@ div.section-title {
 }
 
 div.jobs {
-  padding-bottom: 5pt;
+  padding-bottom: 2pt;
 }

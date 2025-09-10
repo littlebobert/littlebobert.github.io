@@ -33,7 +33,7 @@ div.job-metadata {
 
 ul.accomplishments {
   padding-top: 2pt;
-  padding-bottom: 4pt;
+  padding-bottom: 0pt;
 }
 
 div.role-description {
@@ -56,6 +56,10 @@ div.section-title {
 }
 
 div.jobs {
+  padding-bottom: 2pt;
+}
+
+div.school {
   padding-bottom: 2pt;
 }
 

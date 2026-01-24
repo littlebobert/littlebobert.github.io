@@ -1,9 +1,180 @@
+/* Mac OS 9 Dialog Styles */
+* {
+  box-sizing: border-box;
+}
+
 body {
-  font-family: 'Verdana';
-  font-size: 10pt;
+  font-family: 'Verdana', sans-serif;
+  font-size: 11px;
+  padding: 20px;
+  margin: 0;
+  background: #fff;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding-top: 40px;
+}
+
+html, body {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.mac-dialog {
+  background: #dddddd;
+  border: 2px solid #000;
+  border-radius: 3px;
+  box-shadow: 
+    1px 1px 0 #fff inset,
+    -1px -1px 0 #888 inset,
+    2px 2px 8px rgba(0,0,0,0.3);
+  max-width: 420px;
+  width: 100%;
+}
+
+.title-bar {
+  background: linear-gradient(to bottom, #fff 0%, #ddd 50%, #bbb 100%);
+  border-bottom: 1px solid #888;
+  border-radius: 1px 1px 0 0;
+  padding: 4px 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 22px;
+}
+
+.title-bar-stripes {
+  flex: 1;
+  height: 12px;
+  background: repeating-linear-gradient(
+    to bottom,
+    #fff 0px,
+    #fff 1px,
+    #aaa 1px,
+    #aaa 2px,
+    #fff 2px,
+    #fff 3px,
+    #aaa 3px,
+    #aaa 4px
+  );
+}
+
+.title-text {
+  font-family: 'Verdana', sans-serif;
+  font-weight: bold;
+  font-size: 11px;
+  white-space: nowrap;
+  padding: 0 8px;
+}
+
+.dialog-content {
+  padding: 16px;
+}
+
+.logo-section {
+  text-align: center;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 12px;
+}
+
+.logo-img {
+  max-width: 200px;
+  height: auto;
+  image-rendering: auto;
+}
+
+.info-section {
+  padding-bottom: 8px;
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 8px;
+}
+
+.links-section {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 12px;
+}
+
+.info-row {
+  display: flex;
+  padding: 2px 0;
+  line-height: 1.4;
+}
+
+.info-label {
+  font-weight: bold;
+  min-width: 110px;
+  flex-shrink: 0;
+}
+
+.info-value {
+  flex: 1;
+}
+
+.info-value a {
+  color: #0000cc;
+  text-decoration: underline;
+}
+
+.info-value a:hover {
+  color: #0000ff;
+}
+
+.memory-bar-section {
+  padding-top: 4px;
+}
+
+.memory-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 4px;
+  font-size: 11px;
+}
+
+
+.memory-amount {
+  margin-left: auto;
+}
+
+.memory-bar {
+  height: 12px;
+  background: #fff;
+  border: 1px solid #000;
+  border-top-color: #888;
+  border-left-color: #888;
+  overflow: hidden;
+}
+
+.memory-bar-fill {
+  height: 100%;
+  width: 85%;
+  background: repeating-linear-gradient(
+    -45deg,
+    #3366cc,
+    #3366cc 4px,
+    #6699ff 4px,
+    #6699ff 8px
+  );
+  border-right: 1px solid #224488;
+}
+
+/* Resume page styles */
+body.resume-page {
+  background: #fff;
   padding: 8pt;
-  color: black;
+  display: block;
+}
+
+.resume {
+  max-width: 600px;
+  margin: 0 auto;
+  font-family: 'Verdana', sans-serif;
+  font-size: 10pt;
   line-height: 1.4em;
+  color: black;
 }
 
 div.contact-info {
@@ -19,11 +190,6 @@ div.hero img {
   max-width: 100%;
   height: auto;
   display: block;
-}
-
-html, body {
-  max-width: 100%;
-  overflow-x: hidden;
 }
 
 img {
@@ -94,4 +260,20 @@ div.education {
 
 div.patents {
   padding-bottom: 10pt;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  body {
+    padding: 10px;
+    padding-top: 20px;
+  }
+  
+  .info-label {
+    min-width: 90px;
+  }
+  
+  .logo-img {
+    max-width: 160px;
+  }
 }

@@ -96,34 +96,30 @@ body:not(.resume-page) {
   image-rendering: auto;
 }
 
-.info-section {
-  padding-bottom: 8px;
-  border-bottom: 1px solid #aaa;
-  margin-bottom: 8px;
-}
-
-.links-section {
+.info-grid {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 4px 12px;
   padding-bottom: 12px;
   border-bottom: 1px solid #aaa;
   margin-bottom: 12px;
 }
 
 .info-row {
-  display: -webkit-flex;
-  display: flex;
-  padding: 2px 0;
-  line-height: 1.4;
-  gap: 12px;
+  display: contents;
 }
 
 .info-label {
   font-weight: bold;
-  min-width: 100px;
-  flex-shrink: 0;
 }
 
 .info-value {
-  flex: 1;
+}
+
+.info-divider {
+  grid-column: 1 / -1;
+  border-bottom: 1px solid #aaa;
+  margin: 4px 0;
 }
 
 .info-value a {

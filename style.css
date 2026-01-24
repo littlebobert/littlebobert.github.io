@@ -161,7 +161,7 @@ body:not(.resume-page) {
 
 .memory-bar-fill {
   height: 100%;
-  width: 85%;
+  width: 80%;
   background: repeating-linear-gradient(
     -45deg,
     #3366cc,

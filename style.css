@@ -39,6 +39,7 @@ body:not(.resume-page) {
     2px 2px 8px rgba(0,0,0,0.3);
   max-width: 420px;
   width: 100%;
+  margin: 16px;
 }
 
 .title-bar {

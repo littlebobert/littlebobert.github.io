@@ -1,4 +1,14 @@
-/* Mac OS 9 Dialog Styles */
+/* Classic Macintosh (System 1-6) Black & White Styles */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+@font-face {
+  font-family: 'ChicagoFLF';
+  src: url('https://cdn.jsdelivr.net/gh/fontello/ChicagoFLF/ChicagoFLF.woff2') format('woff2'),
+       url('https://cdn.jsdelivr.net/gh/fontello/ChicagoFLF/ChicagoFLF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 * {
   box-sizing: border-box;
 }
@@ -9,14 +19,23 @@ html {
 }
 
 body {
-  font-family: 'Verdana', sans-serif;
-  font-size: 14px;
+  font-family: 'ChicagoFLF', 'VT323', 'Chicago', 'Monaco', monospace;
+  font-size: 16px;
   margin: 0;
   padding: 20px;
   padding-top: 40px;
   background: #fff;
   max-width: 100%;
   overflow-x: hidden;
+  /* Classic Mac checkerboard pattern background */
+  background-image: 
+    linear-gradient(45deg, #ccc 25%, transparent 25%), 
+    linear-gradient(-45deg, #ccc 25%, transparent 25%), 
+    linear-gradient(45deg, transparent 75%, #ccc 75%), 
+    linear-gradient(-45deg, transparent 75%, #ccc 75%);
+  background-size: 4px 4px;
+  background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
+  image-rendering: pixelated;
 }
 
 body:not(.resume-page) {
@@ -30,53 +49,75 @@ body:not(.resume-page) {
 }
 
 .mac-dialog {
-  background: #dddddd;
+  background: #fff;
   border: 2px solid #000;
-  border-radius: 3px;
-  box-shadow: 
-    1px 1px 0 #fff inset,
-    -1px -1px 0 #888 inset,
-    2px 2px 8px rgba(0,0,0,0.3);
   max-width: 420px;
   width: 100%;
+  /* Classic Mac window shadow - offset black rectangle */
+  box-shadow: 2px 2px 0 #000;
 }
 
 .title-bar {
-  background: -webkit-linear-gradient(top, #fff 0%, #ddd 50%, #bbb 100%);
-  background: linear-gradient(to bottom, #fff 0%, #ddd 50%, #bbb 100%);
-  border-bottom: 1px solid #888;
-  border-radius: 1px 1px 0 0;
-  padding: 4px 8px;
-  display: -webkit-flex;
+  background: #fff;
+  border-bottom: 2px solid #000;
+  height: 20px;
+  position: relative;
+}
+
+.close-box {
+  width: 12px;
+  height: 12px;
+  border: 2px solid #000;
+  background: #fff;
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+}
+
+.title-bar-content {
   display: flex;
-  -webkit-align-items: center;
   align-items: center;
-  gap: 8px;
-  height: 22px;
+  height: 100%;
+  padding: 0 4px;
 }
 
 .title-bar-stripes {
   flex: 1;
   height: 12px;
+  /* Classic Mac horizontal lines */
   background: repeating-linear-gradient(
     to bottom,
-    #fff 0px,
+    #000 0px,
+    #000 1px,
     #fff 1px,
-    #aaa 1px,
-    #aaa 2px,
-    #fff 2px,
-    #fff 3px,
-    #aaa 3px,
-    #aaa 4px
+    #fff 3px
   );
 }
 
+.title-bar-stripes:first-child {
+  margin-left: 14px;
+}
+
+.title-spacer {
+  width: 120px;
+  flex-shrink: 0;
+}
+
 .title-text {
-  font-family: 'Verdana', sans-serif;
-  font-weight: bold;
-  font-size: 11px;
+  font-family: 'ChicagoFLF', 'VT323', 'Chicago', 'Monaco', monospace;
+  font-weight: normal;
+  font-size: 14px;
   white-space: nowrap;
-  padding: 0 8px;
+  padding: 0 6px;
+  background: #fff;
+  color: #000;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
 }
 
 .dialog-content {
@@ -86,14 +127,20 @@ body:not(.resume-page) {
 .logo-section {
   text-align: center;
   padding-bottom: 12px;
-  border-bottom: 1px solid #aaa;
+  border-bottom: 2px solid #000;
+  margin-bottom: 12px;
+}
+
+.logo-section {
+  text-align: center;
+  padding-bottom: 12px;
+  border-bottom: 2px solid #000;
   margin-bottom: 12px;
 }
 
 .logo-img {
-  max-width: 200px;
+  max-width: 150px;
   height: auto;
-  image-rendering: auto;
 }
 
 .info-grid {
@@ -101,7 +148,7 @@ body:not(.resume-page) {
   grid-template-columns: auto 1fr;
   gap: 4px 12px;
   padding-bottom: 12px;
-  border-bottom: 1px solid #aaa;
+  border-bottom: 2px solid #000;
   margin-bottom: 12px;
 }
 
@@ -111,24 +158,28 @@ body:not(.resume-page) {
 
 .info-label {
   font-weight: bold;
+  color: #000;
 }
 
 .info-value {
+  color: #000;
+  font-size: 18px;
 }
 
 .info-divider {
   grid-column: 1 / -1;
-  border-bottom: 1px solid #aaa;
+  border-bottom: 1px solid #000;
   margin: 4px 0;
 }
 
 .info-value a {
-  color: #0000cc;
+  color: #000;
   text-decoration: underline;
 }
 
 .info-value a:hover {
-  color: #0000ff;
+  background: #000;
+  color: #fff;
 }
 
 .memory-bar-section {
@@ -142,6 +193,7 @@ body:not(.resume-page) {
   align-items: center;
   gap: 8px;
   padding-bottom: 4px;
+  color: #000;
 }
 
 
@@ -150,25 +202,24 @@ body:not(.resume-page) {
 }
 
 .memory-bar {
-  height: 12px;
+  height: 14px;
   background: #fff;
-  border: 1px solid #000;
-  border-top-color: #888;
-  border-left-color: #888;
+  border: 2px solid #000;
   overflow: hidden;
 }
 
 .memory-bar-fill {
   height: 100%;
   width: 50%;
+  /* Classic Mac diagonal stripes in black */
   background: repeating-linear-gradient(
     -45deg,
-    #3366cc,
-    #3366cc 4px,
-    #6699ff 4px,
-    #6699ff 8px
+    #000,
+    #000 2px,
+    #fff 2px,
+    #fff 4px
   );
-  border-right: 1px solid #224488;
+  border-right: 2px solid #000;
 }
 
 /* Resume page styles */
@@ -181,8 +232,8 @@ body.resume-page {
 .resume {
   max-width: 600px;
   margin: 0 auto;
-  font-family: 'Verdana', sans-serif;
-  font-size: 10pt;
+  font-family: 'ChicagoFLF', 'VT323', 'Chicago', 'Monaco', monospace;
+  font-size: 14pt;
   line-height: 1.4em;
   color: black;
 }
@@ -253,7 +304,7 @@ ul {
 div.section-title {
   font-weight: bold;
   padding-bottom: 5pt;
-  color: #2b49aa;
+  color: #000;
 }
 
 div.jobs {

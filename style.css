@@ -225,6 +225,7 @@ body:not(.resume-page) {
 /* Resume page styles */
 body.resume-page {
   background: #fff;
+  background-image: none;
   padding: 8pt;
   display: block;
 }
@@ -232,9 +233,9 @@ body.resume-page {
 .resume {
   max-width: 600px;
   margin: 0 auto;
-  font-family: 'ChicagoFLF', 'VT323', 'Chicago', 'Monaco', monospace;
-  font-size: 14pt;
-  line-height: 1.4em;
+  font-family: 'Verdana', 'Geneva', sans-serif;
+  font-size: 10pt;
+  line-height: 1.5em;
   color: black;
 }
 

@@ -1,5 +1,5 @@
 /* Classic Macintosh (System 1-6) Black & White Styles */
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=block');
 
 @font-face {
   font-family: 'ChicagoFLF';
@@ -7,6 +7,7 @@
        url('https://cdn.jsdelivr.net/gh/fontello/ChicagoFLF/ChicagoFLF.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: block;
 }
 
 * {
@@ -76,15 +77,12 @@ body:not(.resume-page) {
   z-index: 2;
 }
 
-.title-bar-content {
-  display: flex;
-  align-items: center;
-  height: 100%;
-  padding: 0 4px;
-}
-
-.title-bar-stripes {
-  flex: 1;
+.title-bar-stripes-full {
+  position: absolute;
+  left: 20px;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
   height: 12px;
   /* Classic Mac horizontal lines */
   background: repeating-linear-gradient(
@@ -96,21 +94,12 @@ body:not(.resume-page) {
   );
 }
 
-.title-bar-stripes:first-child {
-  margin-left: 14px;
-}
-
-.title-spacer {
-  width: 120px;
-  flex-shrink: 0;
-}
-
 .title-text {
   font-family: 'ChicagoFLF', 'VT323', 'Chicago', 'Monaco', monospace;
   font-weight: normal;
-  font-size: 14px;
+  font-size: 16px;
   white-space: nowrap;
-  padding: 0 6px;
+  padding: 0 8px;
   background: #fff;
   color: #000;
   position: absolute;

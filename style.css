@@ -36,7 +36,6 @@ body {
     linear-gradient(-45deg, transparent 75%, #ccc 75%);
   background-size: 4px 4px;
   background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
-  image-rendering: pixelated;
 }
 
 body:not(.resume-page) {

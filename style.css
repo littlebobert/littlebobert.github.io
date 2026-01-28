@@ -52,7 +52,7 @@ body:not(.resume-page) {
 .mac-dialog {
   background: #fff;
   border: 2px solid #000;
-  max-width: 420px;
+  max-width: 480px;
   width: 100%;
   /* Classic Mac window shadow - offset black rectangle */
   box-shadow: 2px 2px 0 #000;
@@ -125,6 +125,12 @@ body:not(.resume-page) {
   padding-bottom: 12px;
   border-bottom: 2px solid #000;
   margin-bottom: 12px;
+}
+
+.logo-section .tagline {
+  margin-top: 8px;
+  margin-bottom: -16px;
+  font-size: 18px;
 }
 
 .logo-img {
@@ -223,7 +229,7 @@ body.resume-page {
   max-width: 600px;
   margin: 0 auto;
   font-family: 'Verdana', 'Geneva', sans-serif;
-  font-size: 10pt;
+  font-size: 11pt;
   line-height: 1.5em;
   color: black;
 }

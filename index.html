@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>About Justin Garcia</title>
-  <link href='style.css?v=16' rel='stylesheet'>
+  <link href='style.css?v=20' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="About Justin Garcia" />
   <meta property="og:image" content="assets/img-dithered.jpg" />
@@ -43,6 +43,10 @@
           <span class="info-value"><a href="https://maps.app.goo.gl/YS9F4GUpGPuS6cv57">Chop Coffee Cat Street</a></span>
         </div>
         <div class="info-row">
+          <span class="info-label">お気に入りのプロジェクト:</span>
+          <span class="info-value"><a href="https://www.youtube.com/watch?v=b8j7B7kDX2c">Foosbot</a></span>
+        </div>
+        <div class="info-row">
           <span class="info-label">今の会社のアプリ:</span>
           <span class="info-value"><a href="https://apps.apple.com/us/app/kotoba-live-translation/id6740851285">Kotoba Voice Translation</a></span>
         </div>
@@ -67,6 +71,48 @@
       </div>
     </div>
   </div>
+
+  <div class="clock-row">
+    <div class="clock-widget">
+      <div class="clock-title-bar">
+        <div class="close-box"></div>
+        <span class="clock-title">Tokyo</span>
+      </div>
+      <div class="clock-content">
+        <span id="tokyo-hours">--</span>:<span id="tokyo-minutes">--</span><span class="time-separator">:</span><span id="tokyo-seconds">--</span>
+      </div>
+    </div>
+    <div class="clock-widget">
+      <div class="clock-title-bar">
+        <div class="close-box"></div>
+        <span class="clock-title">Cupertino</span>
+      </div>
+      <div class="clock-content">
+        <span id="cupertino-hours">--</span>:<span id="cupertino-minutes">--</span><span class="time-separator">:</span><span id="cupertino-seconds">--</span>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    // Update clocks with blinking separator
+    function updateClocks() {
+      const now = new Date();
+      
+      // Tokyo time
+      const tokyoTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
+      document.getElementById('tokyo-hours').textContent = String(tokyoTime.getHours()).padStart(2, '0');
+      document.getElementById('tokyo-minutes').textContent = String(tokyoTime.getMinutes()).padStart(2, '0');
+      document.getElementById('tokyo-seconds').textContent = String(tokyoTime.getSeconds()).padStart(2, '0');
+      
+      // Cupertino time (Pacific)
+      const cupertinoTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
+      document.getElementById('cupertino-hours').textContent = String(cupertinoTime.getHours()).padStart(2, '0');
+      document.getElementById('cupertino-minutes').textContent = String(cupertinoTime.getMinutes()).padStart(2, '0');
+      document.getElementById('cupertino-seconds').textContent = String(cupertinoTime.getSeconds()).padStart(2, '0');
+    }
+    updateClocks();
+    setInterval(updateClocks, 1000);
+  </script>
 </body>
 
 </html>

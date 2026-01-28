@@ -24,7 +24,7 @@ body {
   font-size: 16px;
   margin: 0;
   padding: 20px;
-  padding-top: 40px;
+  padding-top: 20px;
   background: #fff;
   max-width: 100%;
   overflow-x: hidden;
@@ -99,7 +99,7 @@ body:not(.resume-page) {
 .title-text {
   font-family: 'ChicagoFLF', 'VT323', 'Chicago', 'Monaco', monospace;
   font-weight: normal;
-  font-size: 16px;
+  font-size: 18px;
   white-space: nowrap;
   padding: 0 8px;
   background: #fff;
@@ -192,11 +192,13 @@ body:not(.resume-page) {
   gap: 8px;
   padding-bottom: 4px;
   color: #000;
+  font-size: 14px;
 }
 
 
 .memory-amount {
   margin-left: auto;
+  font-size: 18px;
 }
 
 .memory-bar {

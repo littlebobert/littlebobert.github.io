@@ -156,6 +156,7 @@ body:not(.resume-page) {
 .info-label {
   font-weight: bold;
   color: #000;
+  font-size: 14px;
 }
 
 .info-value {

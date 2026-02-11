@@ -19,7 +19,7 @@
     <div class="dialog-content">
       <div class="logo-section">
         <img src="assets/img-dithered.jpg" alt="Task failed successfully" class="logo-img">
-        <div class="tagline">Justin Garcia, Mobile Engineer</div>
+        <div class="tagline">Justin Garcia<br>Mobile Software Engineer</div>
       </div>
       <div class="info-grid">
         <div class="info-row">
@@ -32,7 +32,7 @@
         </div>
         <div class="info-row">
           <span class="info-label">最近のプロジェクト:</span>
-          <span class="info-value"><a href="https://handa.app">Dropbox for music producers</a></span>
+          <span class="info-value"><a href="https://handa.app">Handa</a></span>
         </div>
         <div class="info-row">
           <span class="info-label">お気に入りのカフェ:</span>
@@ -83,6 +83,15 @@
         <span id="cupertino-hours">--</span>:<span id="cupertino-minutes">--</span><span class="time-separator">:</span><span id="cupertino-seconds">--</span>
       </div>
     </div>
+    <div class="clock-widget">
+      <div class="clock-title-bar">
+        <div class="close-box"></div>
+        <span class="clock-title">Tampa</span>
+      </div>
+      <div class="clock-content">
+        <span id="tampa-hours">--</span>:<span id="tampa-minutes">--</span><span class="time-separator">:</span><span id="tampa-seconds">--</span>
+      </div>
+    </div>
   </div>
   
   <script>
@@ -101,6 +110,12 @@
       document.getElementById('cupertino-hours').textContent = String(cupertinoTime.getHours()).padStart(2, '0');
       document.getElementById('cupertino-minutes').textContent = String(cupertinoTime.getMinutes()).padStart(2, '0');
       document.getElementById('cupertino-seconds').textContent = String(cupertinoTime.getSeconds()).padStart(2, '0');
+
+      // Tampa time (Eastern)
+      const tampaTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
+      document.getElementById('tampa-hours').textContent = String(tampaTime.getHours()).padStart(2, '0');
+      document.getElementById('tampa-minutes').textContent = String(tampaTime.getMinutes()).padStart(2, '0');
+      document.getElementById('tampa-seconds').textContent = String(tampaTime.getSeconds()).padStart(2, '0');
     }
     updateClocks();
     setInterval(updateClocks, 1000);

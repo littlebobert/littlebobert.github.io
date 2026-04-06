@@ -82,27 +82,34 @@
   </div>
   
   <script>
-    // Update clocks with blinking separator
+    function timeInZone(date, timeZone) {
+      const formatter = new Intl.DateTimeFormat('en-GB', {
+        timeZone,
+        hour: 'numeric',
+        minute: 'numeric',
+        second: 'numeric',
+        hour12: false,
+      });
+      const parts = formatter.formatToParts(date);
+      const n = (type) => {
+        const p = parts.find((x) => x.type === type);
+        return p ? String(Number(p.value)).padStart(2, '0') : '00';
+      };
+      return { h: n('hour'), m: n('minute'), s: n('second') };
+    }
+
     function updateClocks() {
       const now = new Date();
-      
-      // Tokyo time
-      const tokyoTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Tokyo' }));
-      document.getElementById('tokyo-hours').textContent = String(tokyoTime.getHours()).padStart(2, '0');
-      document.getElementById('tokyo-minutes').textContent = String(tokyoTime.getMinutes()).padStart(2, '0');
-      document.getElementById('tokyo-seconds').textContent = String(tokyoTime.getSeconds()).padStart(2, '0');
-      
-      // Cupertino time (Pacific)
-      const cupertinoTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/Los_Angeles' }));
-      document.getElementById('cupertino-hours').textContent = String(cupertinoTime.getHours()).padStart(2, '0');
-      document.getElementById('cupertino-minutes').textContent = String(cupertinoTime.getMinutes()).padStart(2, '0');
-      document.getElementById('cupertino-seconds').textContent = String(cupertinoTime.getSeconds()).padStart(2, '0');
 
-      // Tampa time (Eastern)
-      const tampaTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/New_York' }));
-      document.getElementById('tampa-hours').textContent = String(tampaTime.getHours()).padStart(2, '0');
-      document.getElementById('tampa-minutes').textContent = String(tampaTime.getMinutes()).padStart(2, '0');
-      document.getElementById('tampa-seconds').textContent = String(tampaTime.getSeconds()).padStart(2, '0');
+      const tokyo = timeInZone(now, 'Asia/Tokyo');
+      document.getElementById('tokyo-hours').textContent = tokyo.h;
+      document.getElementById('tokyo-minutes').textContent = tokyo.m;
+      document.getElementById('tokyo-seconds').textContent = tokyo.s;
+
+      const tampa = timeInZone(now, 'America/New_York');
+      document.getElementById('tampa-hours').textContent = tampa.h;
+      document.getElementById('tampa-minutes').textContent = tampa.m;
+      document.getElementById('tampa-seconds').textContent = tampa.s;
     }
     updateClocks();
     setInterval(updateClocks, 1000);

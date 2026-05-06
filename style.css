@@ -134,9 +134,45 @@ body:not(.resume-page) {
   font-size: 18px;
 }
 
+html[lang="ja"] .role-label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+html[lang="ja"] .role-ios {
+  font-size: 16px;
+}
+
 .logo-img {
   max-width: 120px;
   height: auto;
+}
+
+.language-switcher {
+  display: flex;
+  justify-content: flex-end;
+  margin: -4px 0 8px;
+}
+
+.language-switcher button {
+  background: #fff;
+  border: 2px solid #000;
+  box-shadow: 1px 1px 0 #000;
+  color: #000;
+  cursor: pointer;
+  font-family: 'ChicagoFLF', 'VT323', 'Chicago', 'Monaco', monospace;
+  font-size: 14px;
+  padding: 2px 8px;
+}
+
+.language-switcher button:active {
+  box-shadow: none;
+  transform: translate(1px, 1px);
+}
+
+html[lang="en"] .language-switcher button {
+  font-size: 12px;
+  font-weight: bold;
 }
 
 .info-grid {
@@ -156,6 +192,11 @@ body:not(.resume-page) {
   font-weight: bold;
   color: #000;
   font-size: 14px;
+}
+
+html[lang="en"] .info-label {
+  font-size: 18px;
+  font-weight: normal;
 }
 
 .info-value {
@@ -192,6 +233,11 @@ body:not(.resume-page) {
   padding-bottom: 4px;
   color: #000;
   font-size: 14px;
+}
+
+html[lang="en"] .memory-label strong {
+  font-size: 18px;
+  font-weight: normal;
 }
 
 
@@ -279,7 +325,7 @@ body:not(.resume-page) {
 
 .clock-title {
   font-family: 'ChicagoFLF', 'VT323', 'Chicago', 'Monaco', monospace;
-  font-size: 12px;
+  font-size: 14px;
   margin-left: 6px;
 }
 

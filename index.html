@@ -1,9 +1,9 @@
-<html>
+<html lang="ja">
 
 <head>
   <meta charset="utf-8">
   <title>About Justin Garcia</title>
-  <link href='style.css?v=23' rel='stylesheet'>
+  <link href='style.css?v=31' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="About Justin Garcia" />
   <meta property="og:image" content="assets/img-dithered.jpg" />
@@ -14,43 +14,46 @@
     <div class="title-bar">
       <div class="close-box"></div>
       <div class="title-bar-stripes-full"></div>
-      <span class="title-text">About This Man</span>
+      <span class="title-text">About this Man</span>
     </div>
     <div class="dialog-content">
       <div class="logo-section">
         <img src="assets/img-dithered.jpg" alt="Task failed successfully" class="logo-img">
-        <div class="tagline">Justin Garcia<br>iOS Software Engineer</div>
+        <div class="tagline">Justin Garcia<br><span class="role-label"><span class="role-ios">iOS</span><span data-label-ja="ソフトウェアエンジニア" data-label-en=" Software Engineer">ソフトウェアエンジニア</span></span></div>
+      </div>
+      <div class="language-switcher">
+        <button type="button" id="language-toggle" aria-pressed="false" data-label-ja="English" data-label-en="日本語">English</button>
       </div>
       <div class="info-grid">
         <div class="info-row">
-          <span class="info-label">今の場所:</span>
+          <span class="info-label" data-label-ja="今の場所:" data-label-en="Location:">今の場所:</span>
           <span class="info-value">Tokyo</span>
         </div>
         <div class="info-row">
-          <span class="info-label">最近の趣味:</span>
+          <span class="info-label" data-label-ja="最近の趣味:" data-label-en="Recent hobby:">最近の趣味:</span>
           <span class="info-value"><a href="https://www.strava.com/athletes/148307110">Running and Strava</a></span>
         </div>
         <div class="info-row">
-          <span class="info-label">最近のプロジェクト:</span>
+          <span class="info-label" data-label-ja="最近のプロジェクト:" data-label-en="Recent project:">最近のプロジェクト:</span>
           <span class="info-value"><a href="https://handa.app">Handa</a></span>
         </div>
         <div class="info-row">
-          <span class="info-label">今の会社のアプリ:</span>
+          <span class="info-label" data-label-ja="今の会社のアプリ:" data-label-en="Current company app:">今の会社のアプリ:</span>
           <span class="info-value"><a href="https://apps.apple.com/us/app/kotoba-live-translation/id6740851285">Kotoba Voice Translation</a></span>
         </div>
         <div class="info-divider"></div>
         <div class="info-row">
-          <span class="info-label">ツイッター:</span>
+          <span class="info-label" data-label-ja="ツイッター:" data-label-en="Twitter:">ツイッター:</span>
           <span class="info-value"><a href="https://x.com/_bobertdowney">@_bobertdowney</a></span>
         </div>
         <div class="info-row">
-          <span class="info-label">詳細:</span>
+          <span class="info-label" data-label-ja="詳細:" data-label-en="More:">詳細:</span>
           <span class="info-value"><a href="resume.html">Resume</a></span>
         </div>
       </div>
       <div class="memory-bar-section">
         <div class="memory-label">
-          <span><strong>最長ラン:</strong></span>
+          <span><strong data-label-ja="最長ラン:" data-label-en="Longest run:">最長ラン:</strong></span>
           <span class="memory-amount">21.1km / 21.1km</span>
         </div>
         <div class="memory-bar">
@@ -111,6 +114,24 @@
       document.getElementById('tampa-minutes').textContent = tampa.m;
       document.getElementById('tampa-seconds').textContent = tampa.s;
     }
+
+    const languageToggle = document.getElementById('language-toggle');
+    const labelElements = document.querySelectorAll('[data-label-ja][data-label-en]');
+
+    function setLanguage(language) {
+      labelElements.forEach((element) => {
+        element.textContent = element.dataset[`label${language === 'ja' ? 'Ja' : 'En'}`];
+      });
+      languageToggle.setAttribute('aria-pressed', language === 'en');
+      document.documentElement.lang = language;
+    }
+
+    languageToggle.addEventListener('click', () => {
+      const nextLanguage = document.documentElement.lang === 'ja' ? 'en' : 'ja';
+      setLanguage(nextLanguage);
+    });
+
+    setLanguage('ja');
     updateClocks();
     setInterval(updateClocks, 1000);
   </script>

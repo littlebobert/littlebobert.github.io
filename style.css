@@ -306,7 +306,7 @@ html[lang="en"] .memory-label strong {
 .clock-title-bar {
   background: #fff;
   border-bottom: 2px solid #000;
-  height: 16px;
+  height: 18px;
   position: relative;
   padding: 0 4px;
   display: flex;
@@ -325,7 +325,7 @@ html[lang="en"] .memory-label strong {
 
 .clock-title {
   font-family: 'ChicagoFLF', 'VT323', 'Chicago', 'Monaco', monospace;
-  font-size: 14px;
+  font-size: 15px;
   margin-left: 6px;
 }
 

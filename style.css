@@ -118,7 +118,7 @@ body:not(.resume-page) {
 
 .mac-dialog.window-shaded .title-bar,
 .clock-widget.window-shaded .clock-title-bar {
-  border-bottom: 0;
+  border-bottom-color: transparent;
 }
 
 .mac-dialog.window-shaded .dialog-content,

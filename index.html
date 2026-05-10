@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <title>About Justin Garcia</title>
-  <link href='style.css?v=31' rel='stylesheet'>
+  <link href='style.css?v=32' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="About Justin Garcia" />
   <meta property="og:image" content="assets/img-dithered.jpg" />
@@ -129,6 +129,16 @@
     languageToggle.addEventListener('click', () => {
       const nextLanguage = document.documentElement.lang === 'ja' ? 'en' : 'ja';
       setLanguage(nextLanguage);
+    });
+
+    document.querySelectorAll('.title-bar, .clock-title-bar').forEach((titleBar) => {
+      const windowElement = titleBar.closest('.mac-dialog, .clock-widget');
+      if (!windowElement) return;
+
+      titleBar.title = 'Double-click for WindowShade';
+      titleBar.addEventListener('dblclick', () => {
+        windowElement.classList.toggle('window-shaded');
+      });
     });
 
     setLanguage('ja');

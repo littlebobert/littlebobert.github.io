@@ -62,8 +62,10 @@ body:not(.resume-page) {
 .title-bar {
   background: #fff;
   border-bottom: 2px solid #000;
+  cursor: default;
   height: 20px;
   position: relative;
+  user-select: none;
 }
 
 .close-box {
@@ -112,6 +114,16 @@ body:not(.resume-page) {
 
 .dialog-content {
   padding: 16px 20px;
+}
+
+.mac-dialog.window-shaded .title-bar,
+.clock-widget.window-shaded .clock-title-bar {
+  border-bottom: 0;
+}
+
+.mac-dialog.window-shaded .dialog-content,
+.clock-widget.window-shaded .clock-content {
+  display: none;
 }
 
 .logo-section {
@@ -306,11 +318,13 @@ html[lang="en"] .memory-label strong {
 .clock-title-bar {
   background: #fff;
   border-bottom: 2px solid #000;
+  cursor: default;
   height: 18px;
   position: relative;
   padding: 0 4px;
   display: flex;
   align-items: center;
+  user-select: none;
 }
 
 .clock-title-bar .close-box {

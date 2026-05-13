@@ -1,15 +1,6 @@
 /* Classic Macintosh (System 1-6) Black & White Styles */
 @import url('https://fonts.googleapis.com/css2?family=VT323&display=block');
 
-@font-face {
-  font-family: 'ChicagoFLF';
-  src: url('https://cdn.jsdelivr.net/gh/fontello/ChicagoFLF/ChicagoFLF.woff2') format('woff2'),
-       url('https://cdn.jsdelivr.net/gh/fontello/ChicagoFLF/ChicagoFLF.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: block;
-}
-
 * {
   box-sizing: border-box;
 }
@@ -20,7 +11,7 @@ html {
 }
 
 body {
-  font-family: 'ChicagoFLF', 'VT323', 'Chicago', 'Monaco', monospace;
+  font-family: 'VT323', 'Monaco', monospace;
   font-size: 16px;
   margin: 0;
   padding: 20px;
@@ -98,7 +89,7 @@ body:not(.resume-page) {
 }
 
 .title-text {
-  font-family: 'ChicagoFLF', 'VT323', 'Chicago', 'Monaco', monospace;
+  font-family: 'VT323', 'Monaco', monospace;
   font-weight: normal;
   font-size: 18px;
   white-space: nowrap;
@@ -172,7 +163,7 @@ html[lang="ja"] .role-ios {
   box-shadow: 1px 1px 0 #000;
   color: #000;
   cursor: pointer;
-  font-family: 'ChicagoFLF', 'VT323', 'Chicago', 'Monaco', monospace;
+  font-family: 'VT323', 'Monaco', monospace;
   font-size: 14px;
   padding: 2px 8px;
 }
@@ -288,7 +279,7 @@ html[lang="en"] .memory-label strong {
 
 /* Tokyo time with blinking colon */
 .tokyo-time {
-  font-family: 'ChicagoFLF', 'VT323', 'Chicago', 'Monaco', monospace;
+  font-family: 'VT323', 'Monaco', monospace;
 }
 
 .time-separator {
@@ -338,14 +329,14 @@ html[lang="en"] .memory-label strong {
 }
 
 .clock-title {
-  font-family: 'ChicagoFLF', 'VT323', 'Chicago', 'Monaco', monospace;
+  font-family: 'VT323', 'Monaco', monospace;
   font-size: 15px;
   margin-left: 6px;
 }
 
 .clock-content {
   padding: 6px 10px;
-  font-family: 'ChicagoFLF', 'VT323', 'Chicago', 'Monaco', monospace;
+  font-family: 'VT323', 'Monaco', monospace;
   font-size: 14px;
   text-align: center;
 }

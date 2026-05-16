@@ -147,7 +147,7 @@ html[lang="ja"] .role-ios {
 }
 
 .logo-img {
-  max-width: 100px;
+  max-width: 110px;
   height: auto;
 }
 
@@ -453,8 +453,4 @@ div.patents {
   .info-label {
     min-width: 90px;
   }
-}
-
-.logo-img {
-  max-width: 100px;
 }

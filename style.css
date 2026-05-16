@@ -453,8 +453,8 @@ div.patents {
   .info-label {
     min-width: 90px;
   }
-  
-  .logo-img {
-    max-width: 130px;
-  }
+}
+
+.logo-img {
+  max-width: 100px;
 }

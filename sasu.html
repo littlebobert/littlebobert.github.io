@@ -1,0 +1,117 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Sasu</title>
+  <link href='style.css?v=34' rel='stylesheet'>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="A macOS app for asking about the page, form, or app on your screen."
+  />
+  <meta property="og:title" content="Sasu" />
+  <meta
+    property="og:description"
+    content="A macOS app for asking about the page, form, or app on your screen."
+  />
+  <style>
+    .sasu-page {
+      max-width: 600px;
+      margin: 0 auto;
+      font-family: 'Verdana', 'Geneva', sans-serif;
+      font-size: 10pt;
+      line-height: 1.5em;
+      color: black;
+    }
+
+    .sasu-page h1 {
+      margin: 0;
+      font-size: 18pt;
+      line-height: 1.2em;
+    }
+
+    .sasu-page h2 {
+      margin: 0;
+      padding-bottom: 5pt;
+      font-size: 10pt;
+    }
+
+    .sasu-page ul {
+      padding-bottom: 2pt;
+    }
+
+    .sasu-hero,
+    .sasu-section {
+      padding-bottom: 8pt;
+    }
+
+    .sasu-hero-header {
+      display: flex;
+      align-items: center;
+      gap: 10pt;
+    }
+
+    .sasu-icon {
+      width: 56px;
+      height: 56px;
+    }
+
+    .sasu-tagline {
+      padding-top: 6pt;
+      padding-bottom: 8pt;
+      font-size: 11pt;
+    }
+
+    .small-note {
+      padding-top: 5pt;
+      font-size: 9pt;
+    }
+  </style>
+</head>
+
+<body class="resume-page">
+  <div class="sasu-page">
+    <div class="sasu-hero">
+      <div class="sasu-hero-header">
+        <img class="sasu-icon" src="assets/sasu-icon.png" alt="Sasu app icon">
+        <div>
+          <h1>Sasu</h1>
+          <div class="sasu-tagline">
+            A macOS app for asking about the page, form, or app on your screen.
+          </div>
+        </div>
+      </div>
+      <a class="download-link" href="downloads/Sasu-0.1.0-mac.zip">Download for macOS</a>
+      <div class="small-note">
+        Requires macOS 13 or newer, an OpenAI API key, and Screen Recording permission.
+      </div>
+    </div>
+
+    <div class="sasu-section">
+      <h2>What it does:</h2>
+      <ul>
+        <li>Press a global hotkey to prepare a screenshot.</li>
+        <li>Ask a question like “Explain this” or “Where do I click?”</li>
+        <li>Get a concise answer, plus optional on-screen guidance.</li>
+      </ul>
+    </div>
+
+    <div class="sasu-section">
+      <h2>Why I built it:</h2>
+      <div>
+        I live in Japan and sometimes need help understanding forms, settings pages, and unfamiliar UI.
+        Sasu makes the screenshot-and-ask workflow fast enough to use in the moment.
+      </div>
+    </div>
+
+    <div class="sasu-section">
+      <h2>Privacy:</h2>
+      <div>
+        Sasu has no backend. Your OpenAI API key is stored locally in macOS Keychain, and screenshots are
+        sent directly from your Mac to OpenAI only when you ask a question.
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

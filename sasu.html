@@ -63,6 +63,25 @@
       padding-bottom: 2pt;
     }
 
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      padding-bottom: 8pt;
+      font-size: 9pt;
+    }
+
+    .language-switcher button {
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      background: white;
+      padding: 2pt 6pt;
+      font: inherit;
+      cursor: pointer;
+      box-shadow: none;
+    }
+
     .sasu-hero,
     .sasu-section {
       padding-bottom: 8pt;
@@ -95,6 +114,10 @@
 
 <body class="resume-page">
   <div class="sasu-page">
+    <div class="language-switcher">
+      <button type="button" id="language-toggle" aria-label="Switch language">日本語</button>
+    </div>
+
     <div class="sasu-hero">
       <div class="sasu-hero-header">
         <img class="sasu-icon" src="assets/sasu-icon.png" alt="Sasu app icon">
@@ -111,7 +134,7 @@
       </div>
       <a
         class="download-link"
-        href="https://github.com/littlebobert/sasu/releases/download/0.1.0/Sasu-0.1.0-mac.zip"
+        href="https://github.com/littlebobert/sasu/releases/download/0.1.1/Sasu-0.1.1-mac.zip"
         data-label-en="Download for macOS"
         data-label-ja="macOS版をダウンロード"
       >Download for macOS</a>
@@ -165,23 +188,68 @@
       </div>
     </div>
 
+    <div class="sasu-section">
+      <h2 data-label-en="Release notes:" data-label-ja="リリースノート:">Release notes:</h2>
+
+      <h3>0.1.1</h3>
+      <ul>
+        <li
+          data-label-en="Added double-click to expand screenshot previews."
+          data-label-ja="スクリーンショットのプレビューをダブルクリックで拡大表示できるようにしました。"
+        >Added double-click to expand screenshot previews.</li>
+        <li
+          data-label-en="Improved transcript rendering so questions, answers, links, and markdown are selectable and easier to read."
+          data-label-ja="質問、回答、リンク、Markdownを選択しやすく、読みやすくするため、会話履歴の表示を改善しました。"
+        >Improved transcript rendering so questions, answers, links, and markdown are selectable and easier to read.</li>
+        <li
+          data-label-en="Links in answers now open in the browser, and support Copy Link."
+          data-label-ja="回答内のリンクをブラウザで開けるようにし、「リンクをコピー」にも対応しました。"
+        >Links in answers now open in the browser, and support Copy Link.</li>
+        <li
+          data-label-en="Suggested highlights now appear in chronological transcript order under the answer that produced them."
+          data-label-ja="ハイライト候補が、それを生成した回答の下に会話の時系列順で表示されるようになりました。"
+        >Suggested highlights now appear in chronological transcript order under the answer that produced them.</li>
+        <li
+          data-label-en="Fixed Settings and About window ordering."
+          data-label-ja="設定ウィンドウとAboutウィンドウの重なり順を修正しました。"
+        >Fixed Settings and About window ordering.</li>
+      </ul>
+
+      <h3>0.1.0</h3>
+      <ul>
+        <li data-label-en="Initial release." data-label-ja="初回リリース。">Initial release.</li>
+      </ul>
+    </div>
+
     <div class="home-link">
       <a href="index.html" data-label-en="About me" data-label-ja="私について">About me</a>
     </div>
   </div>
   <script>
     const labelElements = document.querySelectorAll('[data-label-en][data-label-ja]');
+    const languageToggle = document.getElementById('language-toggle');
+    let currentLanguage = 'en';
 
     function setLanguage(language) {
+      currentLanguage = language === 'ja' ? 'ja' : 'en';
       labelElements.forEach((element) => {
-        element.textContent = element.dataset[`label${language === 'ja' ? 'Ja' : 'En'}`];
+        element.textContent = element.dataset[`label${currentLanguage === 'ja' ? 'Ja' : 'En'}`];
       });
 
-      document.documentElement.lang = language;
+      document.documentElement.lang = currentLanguage;
+      languageToggle.textContent = currentLanguage === 'ja' ? 'English' : '日本語';
+
+      localStorage.setItem('sasu-language', currentLanguage);
     }
 
+    languageToggle.addEventListener('click', () => {
+      setLanguage(currentLanguage === 'ja' ? 'en' : 'ja');
+    });
+
+    const savedLanguage = localStorage.getItem('sasu-language');
     const preferredLanguage = navigator.languages?.[0] || navigator.language || 'en';
-    setLanguage(preferredLanguage.toLowerCase().startsWith('ja') ? 'ja' : 'en');
+    const initialLanguage = savedLanguage || (preferredLanguage.toLowerCase().startsWith('ja') ? 'ja' : 'en');
+    setLanguage(initialLanguage);
   </script>
 </body>
 

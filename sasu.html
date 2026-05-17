@@ -99,44 +99,88 @@
         <img class="sasu-icon" src="assets/sasu-icon.png" alt="Sasu app icon">
         <div>
           <h1>Sasu</h1>
-          <div class="sasu-tagline">
+          <div
+            class="sasu-tagline"
+            data-label-en="A macOS app for asking about the page, form, or app on your screen."
+            data-label-ja="画面上のページ、フォーム、アプリについて質問できるmacOSアプリです。"
+          >
             A macOS app for asking about the page, form, or app on your screen.
           </div>
         </div>
       </div>
-      <a class="download-link" href="downloads/Sasu-0.1.0-mac.zip">Download for macOS</a>
-      <div class="small-note">
+      <a
+        class="download-link"
+        href="downloads/Sasu-0.1.0-mac.zip"
+        data-label-en="Download for macOS"
+        data-label-ja="macOS版をダウンロード"
+      >Download for macOS</a>
+      <div
+        class="small-note"
+        data-label-en="Requires macOS 13 or newer, an OpenAI API key, and Screen Recording permission."
+        data-label-ja="macOS 13以降、OpenAI APIキー、画面収録の許可が必要です。"
+      >
         Requires macOS 13 or newer, an OpenAI API key, and Screen Recording permission.
       </div>
     </div>
 
     <div class="sasu-section">
-      <h2>What it does:</h2>
+      <h2 data-label-en="What it does:" data-label-ja="できること:">What it does:</h2>
       <ul>
-        <li>Press a global hotkey to prepare a screenshot.</li>
-        <li>Ask a question like “Explain this” or “Where do I click?”</li>
-        <li>Get a concise answer, plus optional on-screen guidance.</li>
+        <li
+          data-label-en="Press a global hotkey to prepare a screenshot."
+          data-label-ja="グローバルホットキーでスクリーンショットを準備します。"
+        >Press a global hotkey to prepare a screenshot.</li>
+        <li
+          data-label-en="Ask a question like “Explain this” or “Where do I click?”"
+          data-label-ja="「これを説明して」や「どこをクリックすればいい？」のように質問できます。"
+        >Ask a question like “Explain this” or “Where do I click?”</li>
+        <li
+          data-label-en="Get a concise answer, plus optional on-screen guidance."
+          data-label-ja="短い回答に加えて、必要に応じて画面上で案内を表示します。"
+        >Get a concise answer, plus optional on-screen guidance.</li>
       </ul>
     </div>
 
     <div class="sasu-section">
-      <h2>Why I built it:</h2>
-      <div>
+      <h2 data-label-en="Why I built it:" data-label-ja="作った理由:">Why I built it:</h2>
+      <div
+        data-label-en="I live in Japan and sometimes need help understanding forms, settings pages, and unfamiliar UI. Sasu makes the screenshot-and-ask workflow fast enough to use in the moment."
+        data-label-ja="日本に住んでいて、フォーム、設定画面、慣れていないUIを理解するために助けが必要になることがあります。Sasuはスクリーンショットを撮って質問する流れを、その場で使えるくらい速くするために作りました。"
+      >
         I live in Japan and sometimes need help understanding forms, settings pages, and unfamiliar UI.
         Sasu makes the screenshot-and-ask workflow fast enough to use in the moment.
       </div>
     </div>
 
     <div class="sasu-section">
-      <h2>Privacy:</h2>
-      <div>
+      <h2 data-label-en="Privacy:" data-label-ja="プライバシー:">Privacy:</h2>
+      <div
+        data-label-en="Sasu has no backend. Your OpenAI API key is stored locally in macOS Keychain, and screenshots are sent directly from your Mac to OpenAI only when you ask a question."
+        data-label-ja="Sasuにはバックエンドがありません。OpenAI APIキーはmacOSのキーチェーンにローカル保存され、スクリーンショットは質問したときだけMacからOpenAIへ直接送信されます。"
+      >
         Sasu has no backend. Your OpenAI API key is stored locally in macOS Keychain, and screenshots are
         sent directly from your Mac to OpenAI only when you ask a question.
       </div>
     </div>
 
-    <div class="home-link"><a href="index.html">About me</a></div>
+    <div class="home-link">
+      <a href="index.html" data-label-en="About me" data-label-ja="私について">About me</a>
+    </div>
   </div>
+  <script>
+    const labelElements = document.querySelectorAll('[data-label-en][data-label-ja]');
+
+    function setLanguage(language) {
+      labelElements.forEach((element) => {
+        element.textContent = element.dataset[`label${language === 'ja' ? 'Ja' : 'En'}`];
+      });
+
+      document.documentElement.lang = language;
+    }
+
+    const preferredLanguage = navigator.languages?.[0] || navigator.language || 'en';
+    setLanguage(preferredLanguage.toLowerCase().startsWith('ja') ? 'ja' : 'en');
+  </script>
 </body>
 
 </html>

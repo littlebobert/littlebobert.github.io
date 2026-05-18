@@ -35,6 +35,11 @@
   <meta name="twitter:image" content="https://littlebobert.github.io/assets/sasu-social.png?v=2" />
   <meta name="twitter:image:alt" content="Sasu app icon" />
   <style>
+    html {
+      overflow-y: scroll;
+      scrollbar-gutter: stable;
+    }
+
     .sasu-page {
       max-width: 600px;
       margin: 0 auto;
@@ -61,10 +66,6 @@
       padding-top: 2pt;
       padding-bottom: 2pt;
       font-size: 10pt;
-    }
-
-    .release-notes h2 {
-      padding-bottom: 2pt;
     }
 
     .home-link {
@@ -115,7 +116,7 @@
 
     .sasu-tagline {
       padding-top: 6pt;
-      padding-bottom: 8pt;
+      padding-bottom: 6pt;
       font-size: 11pt;
     }
 
@@ -124,9 +125,29 @@
       font-weight: bold;
     }
 
+    .download-link {
+      display: inline-block;
+      border: 1px solid #000;
+      border-radius: 4px;
+      padding: 3pt 7pt;
+      color: #000;
+      text-decoration: none;
+    }
+
+    .download-link:hover {
+      background: #000;
+      color: #fff;
+    }
+
     .small-note {
       padding-top: 5pt;
       font-size: 9pt;
+    }
+
+    .release-notes summary {
+      cursor: pointer;
+      font-weight: bold;
+      padding-bottom: 5pt;
     }
 
   </style>
@@ -152,9 +173,16 @@
           </div>
         </div>
       </div>
+      <div
+        class="sasu-tagline"
+        data-label-en="Understand Japanese websites, forms, and apps without browser translation breaking the page."
+        data-label-ja="ブラウザ翻訳でページを崩さずに、日本語のWebサイト、フォーム、アプリを理解できます。"
+      >
+        Understand Japanese websites, forms, and apps without browser translation breaking the page.
+      </div>
       <a
         class="download-link"
-        href="https://github.com/littlebobert/sasu/releases/download/0.1.2/Sasu-0.1.2-mac.zip"
+        href="https://github.com/littlebobert/sasu/releases/download/0.1.3/Sasu-0.1.3-mac.zip"
         data-label-en="Download for macOS"
         data-label-ja="macOS版をダウンロード"
       >Download for macOS</a>
@@ -167,7 +195,7 @@
       </div>
     </div>
 
-    <div class="sasu-section release-notes">
+    <div class="sasu-section">
       <h2 data-label-en="What it does:" data-label-ja="できること:">What it does:</h2>
       <ul>
         <li
@@ -199,15 +227,15 @@
     <div class="sasu-section">
       <h2 data-label-en="Why I made this:" data-label-ja="作った理由:">Why I made this:</h2>
       <div
-        data-label-en="I work in Japan and sometimes need help understanding forms, and other web pages. I got tired of taking screenshots, switching to the Finder, and dragging them into chat. The app name is 指す — 'to point.'"
-        data-label-ja="日本で働いていて、フォームやその他のWebページを理解するために助けが必要になることがあります。スクリーンショットを撮って、Finderに切り替えて、チャットにドラッグするのが面倒になりました。アプリ名は「指す」です。意味は「指し示す」です。"
+        data-label-en="I work in Japan and sometimes need help understanding forms and other web pages. Browser translation can rearrange or break the page layout, and pasting screenshots into an AI chat gives no on-screen guidance. The app name is 指す — “to point.”"
+        data-label-ja="日本で働いていて、フォームやその他のWebページを理解するために助けが必要になることがあります。ブラウザ翻訳はページのレイアウトを変えたり崩したりすることがあり、スクリーンショットをAIチャットに貼り付けても画面上で案内してくれません。アプリ名は「指す」です。意味は「指し示す」です。"
       >
-        I work in Japan and sometimes need help understanding forms, and other web pages. I got tired of taking screenshots, switching to the Finder, and dragging them into chat. The app name is 指す — 'to point.'
+        I work in Japan and sometimes need help understanding forms and other web pages. Browser translation can rearrange or break the page layout, and pasting screenshots into an AI chat gives no on-screen guidance. The app name is 指す — “to point.”
       </div>
     </div>
 
-    <div class="sasu-section">
-      <h2 data-label-en="Release notes:" data-label-ja="リリースノート:">Release notes:</h2>
+    <details class="sasu-section release-notes">
+      <summary data-label-en="Release notes" data-label-ja="リリースノート">Release notes</summary>
 
       <h3>0.1.2</h3>
       <ul>
@@ -249,7 +277,7 @@
       <ul>
         <li data-label-en="Initial release." data-label-ja="初回リリース。">Initial release.</li>
       </ul>
-    </div>
+    </details>
 
     <div class="home-link">
       <a href="index.html" data-label-en="About me" data-label-ja="私について">About me</a>

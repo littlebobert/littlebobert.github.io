@@ -10,7 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta
     name="description"
-    content="Understand Japanese websites, forms, and apps without browser translation breaking the page."
+    content="Understand Japanese websites and forms without browser translation breaking the page. Works in any app."
   />
   <meta property="og:title" content="Japanese websites, explained on screen" />
   <meta property="og:type" content="website" />
@@ -18,7 +18,7 @@
   <meta property="og:site_name" content="Sasu (指す)" />
   <meta
     property="og:description"
-    content="Understand Japanese websites, forms, and apps without browser translation breaking the page."
+    content="Understand Japanese websites and forms without browser translation breaking the page. Works in any app."
   />
   <meta property="og:image" content="https://littlebobert.github.io/assets/sasu-social.png?v=2" />
   <meta property="og:image:secure_url" content="https://littlebobert.github.io/assets/sasu-social.png?v=2" />
@@ -30,7 +30,7 @@
   <meta name="twitter:title" content="Japanese websites, explained on screen" />
   <meta
     name="twitter:description"
-    content="Understand Japanese websites, forms, and apps without browser translation breaking the page."
+    content="Understand Japanese websites and forms without browser translation breaking the page. Works in any app."
   />
   <meta name="twitter:image" content="https://littlebobert.github.io/assets/sasu-social.png?v=2" />
   <meta name="twitter:image:alt" content="Sasu app icon" />
@@ -120,6 +120,80 @@
       font-size: 11pt;
     }
 
+    .sasu-demo {
+      padding-bottom: 8pt;
+      text-align: center;
+      max-width: 340px;
+      margin: 0 auto;
+    }
+
+    .sasu-demo-stage {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      width: 100%;
+    }
+
+    .sasu-demo-target {
+      position: relative;
+      width: 100%;
+    }
+
+    .sasu-demo-target img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    .sasu-guidance-ring {
+      position: absolute;
+      inset: 0;
+      border: 6px solid #006adb;
+      border-radius: 16px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+    }
+
+    .sasu-guidance-label {
+      display: inline-block;
+      background: #006adb;
+      color: #fff;
+      font-weight: bold;
+      font-size: 10pt;
+      line-height: 1.2;
+      padding: 4pt 10pt;
+      border-radius: 5px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+      opacity: 0;
+      transform: translateY(4px);
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
+
+    .sasu-demo-stage.is-revealed .sasu-guidance-label,
+    .sasu-demo-stage.is-revealed .sasu-guidance-ring {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .sasu-demo-stage.is-revealed:has(.sasu-demo-target:hover) .sasu-guidance-label,
+    .sasu-demo-stage.is-revealed:has(.sasu-demo-target:hover) .sasu-guidance-ring {
+      opacity: 0;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .sasu-demo-stage.is-revealed .sasu-guidance-label {
+        transform: none;
+      }
+    }
+
+    .sasu-demo figcaption {
+      padding: 5pt 6pt;
+      margin: 0;
+      font-size: 9pt;
+    }
+
     .sasu-subtitle {
       padding-top: 2pt;
       font-weight: bold;
@@ -186,10 +260,10 @@
       </div>
       <div
         class="sasu-tagline"
-        data-label-en="Understand Japanese websites, forms, and apps without browser translation breaking the page."
-        data-label-ja="ブラウザ翻訳でページを崩さずに、日本語のWebサイト、フォーム、アプリを理解できます。"
+        data-label-en="Understand Japanese websites and forms without browser translation breaking the page. Works in any app."
+        data-label-ja="ブラウザ翻訳でページを崩さずに、日本語のWebサイトとフォームを理解できます。どのアプリでも使えます。"
       >
-        Understand Japanese websites, forms, and apps without browser translation breaking the page.
+        Understand Japanese websites and forms without browser translation breaking the page. Works in any app.
       </div>
       <a
         class="download-link"
@@ -212,21 +286,30 @@
     </div>
 
     <div class="sasu-section">
-      <h2 data-label-en="What it does:" data-label-ja="できること:">What it does:</h2>
-      <ul>
-        <li
-          data-label-en="Press a keyboard shortcut to capture your screen."
-          data-label-ja="グローバルホットキーで画面をキャプチャします。"
-        >Press a keyboard shortcut to capture your screen.</li>
-        <li
-          data-label-en="Ask a question like “Explain this” or “Where do I click?”"
-          data-label-ja="「これを説明して」や「どこをクリックすればいい？」のように質問できます。"
-        >Ask a question like “Explain this” or “Where do I click?”</li>
-        <li
-          data-label-en="Get a concise answer, plus optional on-screen guidance."
-          data-label-ja="短い回答に加えて、必要に応じて画面上で案内を表示します。"
-        >Get a concise answer, plus optional on-screen guidance.</li>
-      </ul>
+      <figure class="sasu-demo">
+        <div class="sasu-demo-stage" id="sasu-demo-stage">
+          <div
+            class="sasu-guidance-label"
+            aria-hidden="true"
+            data-label-en="Start tax return"
+            data-label-ja="確定申告を開始する"
+          >Start tax return</div>
+          <div class="sasu-demo-target">
+            <img
+              src="assets/sasu-button.png"
+              alt="Japanese tax website button labeled 確定申告書等の作成はこちら"
+              width="617"
+              height="153"
+              loading="lazy"
+            >
+            <span class="sasu-guidance-ring" aria-hidden="true"></span>
+          </div>
+        </div>
+        <figcaption
+          data-label-en="Capture your screen, ask a question, and get on-screen guidance."
+          data-label-ja="画面をキャプチャして質問すると、画面上で案内を表示します。"
+        >Capture your screen, ask a question, and get on-screen guidance.</figcaption>
+      </figure>
     </div>
 
     <div class="sasu-section">
@@ -375,6 +458,32 @@
     const preferredLanguage = navigator.languages?.[0] || navigator.language || 'en';
     const initialLanguage = savedLanguage || (preferredLanguage.toLowerCase().startsWith('ja') ? 'ja' : 'en');
     setLanguage(initialLanguage);
+
+    const demoStage = document.getElementById('sasu-demo-stage');
+    if (demoStage) {
+      const revealDemo = () => {
+        demoStage.classList.add('is-visible');
+        window.setTimeout(() => demoStage.classList.add('is-revealed'), 1500);
+      };
+      const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (reducedMotion) {
+        demoStage.classList.add('is-visible', 'is-revealed');
+      } else {
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (entry.isIntersecting) {
+                revealDemo();
+                observer.disconnect();
+              }
+            });
+          },
+          { threshold: 0.6 }
+        );
+        observer.observe(demoStage);
+      }
+    }
   </script>
 </body>
 

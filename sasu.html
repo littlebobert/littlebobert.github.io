@@ -177,9 +177,16 @@
       transform: translateY(0);
     }
 
-    .sasu-demo-stage.is-revealed:has(.sasu-demo-target:hover) .sasu-guidance-label,
-    .sasu-demo-stage.is-revealed:has(.sasu-demo-target:hover) .sasu-guidance-ring {
+    .sasu-demo-stage.is-revealed.is-tapped .sasu-guidance-label,
+    .sasu-demo-stage.is-revealed.is-tapped .sasu-guidance-ring {
       opacity: 0;
+    }
+
+    @media (hover: hover) {
+      .sasu-demo-stage.is-revealed:has(.sasu-demo-target:hover) .sasu-guidance-label,
+      .sasu-demo-stage.is-revealed:has(.sasu-demo-target:hover) .sasu-guidance-ring {
+        opacity: 0;
+      }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -306,9 +313,9 @@
           </div>
         </div>
         <figcaption
-          data-label-en="Capture your screen, ask a question, and get on-screen guidance."
-          data-label-ja="画面をキャプチャして質問すると、画面上で案内を表示します。"
-        >Capture your screen, ask a question, and get on-screen guidance.</figcaption>
+          data-label-en="Ask a question and get on-screen guidance."
+          data-label-ja="質問すると、画面上で案内を表示します。"
+        >Ask a question and get on-screen guidance.</figcaption>
       </figure>
     </div>
 
@@ -461,6 +468,9 @@
 
     const demoStage = document.getElementById('sasu-demo-stage');
     if (demoStage) {
+      const demoTarget = demoStage.querySelector('.sasu-demo-target');
+      let tapHideTimeout = null;
+
       const revealDemo = () => {
         demoStage.classList.add('is-visible');
         window.setTimeout(() => demoStage.classList.add('is-revealed'), 1500);
@@ -482,6 +492,20 @@
           { threshold: 0.6 }
         );
         observer.observe(demoStage);
+      }
+
+      if (demoTarget && window.matchMedia('(hover: none)').matches) {
+        demoTarget.addEventListener('click', () => {
+          if (!demoStage.classList.contains('is-revealed')) {
+            return;
+          }
+
+          demoStage.classList.add('is-tapped');
+          window.clearTimeout(tapHideTimeout);
+          tapHideTimeout = window.setTimeout(() => {
+            demoStage.classList.remove('is-tapped');
+          }, 800);
+        });
       }
     }
   </script>

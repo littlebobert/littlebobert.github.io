@@ -3,9 +3,33 @@
     <channel>
         <title>Sasu</title>
         <item>
+            <title>0.1.8</title>
+            <pubDate>Fri, 22 May 2026 08:29:19 +0900</pubDate>
+            <link>http://sasu.jp</link>
+            <sparkle:version>5</sparkle:version>
+            <sparkle:shortVersionString>0.1.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[Fix Sasu info link.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.8/Sasu-0.1.8-mac.zip" length="5284960" type="application/octet-stream" sparkle:edSignature="hS8HaLfS7PZyAmtbPYcbI2vORxs4Rc72R3r4/gdv8Pg0NAaZNezi9g/QvfqyLbc7qIrNKpC6Ag3W+GvDRjjiAA=="/>
+        </item>
+        <item>
+            <title>0.1.8</title>
+            <pubDate>Fri, 22 May 2026 08:25:48 +0900</pubDate>
+            <link>http://sasu.jp</link>
+            <sparkle:version>4</sparkle:version>
+            <sparkle:shortVersionString>0.1.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[Add a faster AI option.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.7/Sasu-0.1.8-mac.zip" length="5284963" type="application/octet-stream" sparkle:edSignature="hcVtp+rxpJwsQ6yAhJHnORiAJBVk0l8KUvZ8caLh8jQ+88OwfpXq3S8OsSK7NhHNM1wQYb8y7lEI7Vu20uTvCg=="/>
+        </item>
+        <item>
             <title>0.1.7</title>
             <pubDate>Thu, 21 May 2026 10:10:58 +0900</pubDate>
-            <link>https://sasu.jp/</link>
+            <link>http://sasu.jp</link>
             <sparkle:version>3</sparkle:version>
             <sparkle:shortVersionString>0.1.7</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
@@ -13,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[Fixed a bug where guidance would be in the wrong place if the target button contained no text.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.6/Sasu-0.1.7-mac.zip" length="5282152" type="application/octet-stream" sparkle:edSignature="K6eofkhJqVtWC2h0JBL7XYj07Zd/6cujb9mm7UWmq0T5UqkIvmlB5cvl+7vsXRiiZqzLr/EjTYUQEdNMd1duCA=="/>
-        </item>
-        <item>
-            <title>0.1.6</title>
-            <pubDate>Thu, 21 May 2026 09:41:21 +0900</pubDate>
-            <link>https://sasu.jp/</link>
-            <sparkle:version>2</sparkle:version>
-            <sparkle:shortVersionString>0.1.6</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[Fixed a bug where guidance would be in the wrong place if the target button contained no text
-]]></description>
-            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.6/Sasu-0.1.6-mac.zip" length="5282167" type="application/octet-stream" sparkle:edSignature="ejTHTqIuqtq0IYLk9qFTNsKt2NtiR+bkPwmzIzKOVMGX78XZjjG7iCYPSxTg8W3aK4HN1nTwZUZlJ4oKKS3NBA=="/>
         </item>
     </channel>
 </rss>

@@ -10,10 +10,9 @@
             <sparkle:shortVersionString>0.1.6</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[Added built-in update checking, including a Check for Updates item in the app menu.
-Sasu can now check for new versions automatically without installing updates without your confirmation.
+            <description sparkle:format="markdown"><![CDATA[Added auto-updates.
 ]]></description>
-            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.5/Sasu-0.1.6-mac.zip" length="5281907" type="application/octet-stream" sparkle:edSignature="RlVnWbkX22grTAdsDy7P9giF1Psz/EXy/PHwx8hgk4VBJmfDKkEd7U9RWzuAZQD4QIkvd3ekIfpxXKLkmhabBQ=="/>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.6/Sasu-0.1.6-mac.zip" length="5281907" type="application/octet-stream" sparkle:edSignature="RlVnWbkX22grTAdsDy7P9giF1Psz/EXy/PHwx8hgk4VBJmfDKkEd7U9RWzuAZQD4QIkvd3ekIfpxXKLkmhabBQ=="/>
         </item>
     </channel>
 </rss>

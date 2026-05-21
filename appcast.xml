@@ -3,6 +3,18 @@
     <channel>
         <title>Sasu</title>
         <item>
+            <title>0.1.7</title>
+            <pubDate>Thu, 21 May 2026 10:10:58 +0900</pubDate>
+            <link>https://sasu.jp/</link>
+            <sparkle:version>3</sparkle:version>
+            <sparkle:shortVersionString>0.1.7</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[Fixed a bug where guidance would be in the wrong place if the target button contained no text.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.6/Sasu-0.1.7-mac.zip" length="5282152" type="application/octet-stream" sparkle:edSignature="K6eofkhJqVtWC2h0JBL7XYj07Zd/6cujb9mm7UWmq0T5UqkIvmlB5cvl+7vsXRiiZqzLr/EjTYUQEdNMd1duCA=="/>
+        </item>
+        <item>
             <title>0.1.6</title>
             <pubDate>Thu, 21 May 2026 09:41:21 +0900</pubDate>
             <link>https://sasu.jp/</link>
@@ -10,9 +22,9 @@
             <sparkle:shortVersionString>0.1.6</sparkle:shortVersionString>
             <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[Added automatic updates.
+            <description sparkle:format="markdown"><![CDATA[Fixed a bug where guidance would be in the wrong place if the target button contained no text
 ]]></description>
-            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.6/Sasu-0.1.6-mac.zip" length="5281873" type="application/octet-stream" sparkle:edSignature="SiSPP2jzQ6jmNxKjkC25cImXm1S6SGAW0tIn6O7L/WZrKw1qilJrllI8QqoZSSQltMNOeh+tJTQIO4c0oO/IBg=="/>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.6/Sasu-0.1.6-mac.zip" length="5282167" type="application/octet-stream" sparkle:edSignature="ejTHTqIuqtq0IYLk9qFTNsKt2NtiR+bkPwmzIzKOVMGX78XZjjG7iCYPSxTg8W3aK4HN1nTwZUZlJ4oKKS3NBA=="/>
         </item>
     </channel>
 </rss>

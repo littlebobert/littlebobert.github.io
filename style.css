@@ -103,6 +103,15 @@ body:not(.resume-page) {
   z-index: 1;
 }
 
+html[lang="ja"] .title-text {
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 12px;
+  height: 12px;
+  display: inline-flex;
+  align-items: center;
+}
+
 .dialog-content {
   padding: 16px 20px;
 }
@@ -138,7 +147,6 @@ body:not(.resume-page) {
 }
 
 html[lang="ja"] .role-label,
-html[lang="ja"] .title-text,
 html[lang="ja"] .info-value .ja-text {
   font-size: 14px;
   font-weight: bold;

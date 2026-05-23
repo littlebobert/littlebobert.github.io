@@ -1,9 +1,9 @@
-<html lang="ja">
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <title>About Justin Garcia</title>
-  <link href='style.css?v=33' rel='stylesheet'>
+  <link href='style.css?v=38' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="About Justin Garcia" />
   <meta property="og:image" content="assets/img-dithered.jpg" />
@@ -14,50 +14,66 @@
     <div class="title-bar">
       <div class="close-box"></div>
       <div class="title-bar-stripes-full"></div>
-      <span class="title-text">About</span>
+      <span
+        class="title-text"
+        data-label-en="About"
+        data-label-ja="について"
+      >About</span>
     </div>
     <div class="dialog-content">
       <div class="logo-section">
         <img src="assets/img-dithered.jpg" alt="Justin Garcia" class="logo-img">
-        <div class="tagline">Justin Garcia<br><span class="role-label" data-label-ja="シニアソフトウェアエンジニア" data-label-en="Senior Software Engineer">シニアソフトウェアエンジニア</span></div>
+        <div class="tagline">Justin Garcia<br><span class="role-label" data-label-en="Senior Software Engineer" data-label-ja="シニアソフトウェアエンジニア">Senior Software Engineer</span></div>
       </div>
       <div class="language-switcher">
-        <button type="button" id="language-toggle" aria-pressed="false" data-label-ja="English" data-label-en="日本語">English</button>
+        <button type="button" id="language-toggle" aria-label="Switch language">日本語</button>
       </div>
       <div class="info-grid">
         <div class="info-row">
-          <span class="info-label" data-label-ja="今の場所:" data-label-en="Location:">今の場所:</span>
-          <span class="info-value">Tokyo</span>
+          <span class="info-label" data-label-en="Location:" data-label-ja="今の場所:">Location:</span>
+          <span class="info-value latin-value">Tokyo</span>
         </div>
         <div class="info-row">
-          <span class="info-label" data-label-ja="仕事:" data-label-en="What I do:">仕事:</span>
-          <span class="info-value">Software Engineer at <a href="https://site.kotoba.tech">Kotoba</a></span>
+          <span class="info-label" data-label-en="What I do:" data-label-ja="仕事:">What I do:</span>
+          <span
+            class="info-value"
+            data-label-en="Software Engineer at <a href='https://site.kotoba.tech'>Kotoba</a>"
+            data-label-ja="<a href='https://site.kotoba.tech'><span class='latin'>Kotoba</span></a><span class='ja-text'>でソフトウェアエンジニア</span>"
+          >Software Engineer at <a href="https://site.kotoba.tech">Kotoba</a></span>
         </div>
         <div class="info-row">
-          <span class="info-label" data-label-ja="最近の趣味:" data-label-en="Recent hobby:">最近の趣味:</span>
-          <span class="info-value"><a href="https://www.strava.com/athletes/148307110">Running and Strava</a></span>
+          <span class="info-label" data-label-en="Recent hobby:" data-label-ja="最近の趣味:">Recent hobby:</span>
+          <span
+            class="info-value"
+            data-label-en="<a href='https://www.strava.com/athletes/148307110'>Running and Strava</a>"
+            data-label-ja="<a href='https://www.strava.com/athletes/148307110'><span class='ja-text'>ランニングと</span><span class='latin'>Strava</span></a>"
+          ><a href="https://www.strava.com/athletes/148307110">Running and Strava</a></span>
         </div>
         <div class="info-row">
-          <span class="info-label" data-label-ja="自作アプリ:" data-label-en="My app:">自作アプリ:</span>
-          <span class="info-value"><a href="sasu.html">Sasu</a></span>
+          <span class="info-label" data-label-en="My app:" data-label-ja="自作アプリ:">My app:</span>
+          <span class="info-value latin-value"><a href="sasu.html">Sasu</a></span>
         </div>
         <div class="info-divider"></div>
         <div class="info-row">
-          <span class="info-label" data-label-ja="ツイッター:" data-label-en="Twitter:">ツイッター:</span>
-          <span class="info-value"><a href="https://x.com/_bobertdowney">@_bobertdowney</a></span>
+          <span class="info-label" data-label-en="Twitter:" data-label-ja="ツイッター:">Twitter:</span>
+          <span class="info-value latin-value"><a href="https://x.com/_bobertdowney">@_bobertdowney</a></span>
         </div>
         <div class="info-row">
-          <span class="info-label" data-label-ja="リンクトイン:" data-label-en="LinkedIn:">リンクトイン:</span>
-          <span class="info-value"><a href="https://www.linkedin.com/in/garciajustin/">garciajustin</a></span>
+          <span class="info-label" data-label-en="LinkedIn:" data-label-ja="リンクトイン:">LinkedIn:</span>
+          <span class="info-value latin-value"><a href="https://www.linkedin.com/in/garciajustin/">garciajustin</a></span>
         </div>
         <div class="info-row">
-          <span class="info-label" data-label-ja="詳細:" data-label-en="More:">詳細:</span>
-          <span class="info-value"><a href="resume.html">Resume</a></span>
+          <span class="info-label" data-label-en="More:" data-label-ja="詳細:">More:</span>
+          <span
+            class="info-value"
+            data-label-en="<a href='resume.html'>Resume</a>"
+            data-label-ja="<a href='resume.html'><span class='ja-text'>履歴書</span></a>"
+          ><a href="resume.html">Resume</a></span>
         </div>
       </div>
       <div class="memory-bar-section">
         <div class="memory-label">
-          <span><strong data-label-ja="最長ラン:" data-label-en="Longest run:">最長ラン:</strong></span>
+          <span><strong data-label-en="Running goal:" data-label-ja="ランニング目標:">Running goal:</strong></span>
           <span class="memory-amount">21.1km / 25km</span>
         </div>
         <div class="memory-bar">
@@ -120,19 +136,24 @@
     }
 
     const languageToggle = document.getElementById('language-toggle');
-    const labelElements = document.querySelectorAll('[data-label-ja][data-label-en]');
+    const labelElements = document.querySelectorAll('[data-label-en][data-label-ja]');
+    let currentLanguage = 'en';
 
     function setLanguage(language) {
+      currentLanguage = language === 'ja' ? 'ja' : 'en';
       labelElements.forEach((element) => {
-        element.textContent = element.dataset[`label${language === 'ja' ? 'Ja' : 'En'}`];
+        element.innerHTML = element.dataset[`label${currentLanguage === 'ja' ? 'Ja' : 'En'}`];
       });
-      languageToggle.setAttribute('aria-pressed', language === 'en');
-      document.documentElement.lang = language;
+
+      document.documentElement.lang = currentLanguage;
+      languageToggle.textContent = currentLanguage === 'ja' ? 'English' : '日本語';
+      languageToggle.setAttribute('aria-pressed', currentLanguage === 'en');
+      document.title = currentLanguage === 'ja' ? 'Justin Garcia について' : 'About Justin Garcia';
+      localStorage.setItem('site-language', currentLanguage);
     }
 
     languageToggle.addEventListener('click', () => {
-      const nextLanguage = document.documentElement.lang === 'ja' ? 'en' : 'ja';
-      setLanguage(nextLanguage);
+      setLanguage(currentLanguage === 'ja' ? 'en' : 'ja');
     });
 
     document.querySelectorAll('.title-bar, .clock-title-bar').forEach((titleBar) => {
@@ -145,7 +166,10 @@
       });
     });
 
-    setLanguage('ja');
+    const savedLanguage = localStorage.getItem('site-language');
+    const preferredLanguage = navigator.languages?.[0] || navigator.language || 'en';
+    const initialLanguage = savedLanguage || (preferredLanguage.toLowerCase().startsWith('ja') ? 'ja' : 'en');
+    setLanguage(initialLanguage);
     updateClocks();
     setInterval(updateClocks, 1000);
   </script>

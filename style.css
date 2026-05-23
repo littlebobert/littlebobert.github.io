@@ -137,9 +137,18 @@ body:not(.resume-page) {
   font-size: 18px;
 }
 
-html[lang="ja"] .role-label {
+html[lang="ja"] .role-label,
+html[lang="ja"] .title-text,
+html[lang="ja"] .info-value .ja-text {
   font-size: 14px;
   font-weight: bold;
+}
+
+html[lang="ja"] .info-value.latin-value,
+html[lang="ja"] .info-value.latin-value a,
+html[lang="ja"] .info-value .latin {
+  font-size: 18px;
+  font-weight: normal;
 }
 
 html[lang="ja"] .role-ios {
@@ -168,7 +177,16 @@ html[lang="ja"] .role-ios {
   padding: 2px 8px;
 }
 
+.language-switcher button:hover {
+  background: #000;
+  color: #fff;
+  box-shadow: none;
+  transform: translate(1px, 1px);
+}
+
 .language-switcher button:active {
+  background: #000;
+  color: #fff;
   box-shadow: none;
   transform: translate(1px, 1px);
 }
@@ -356,6 +374,35 @@ body.resume-page {
   font-size: 10pt;
   line-height: 1.5em;
   color: black;
+}
+
+body.resume-page .language-switcher {
+  margin: 0 0 8pt;
+}
+
+body.resume-page .language-switcher button {
+  appearance: none;
+  -webkit-appearance: none;
+  background: #fff;
+  border: 2px solid #000;
+  box-shadow: none;
+  color: #000;
+  cursor: pointer;
+  font-family: 'VT323', 'Monaco', monospace;
+  font-size: 12px;
+  font-weight: bold;
+  padding: 2px 8px;
+}
+
+body.resume-page .language-switcher button:hover {
+  background: #000;
+  color: #fff;
+}
+
+body.resume-page .language-switcher button:active {
+  background: #000;
+  color: #fff;
+  transform: none;
 }
 
 div.contact-info {

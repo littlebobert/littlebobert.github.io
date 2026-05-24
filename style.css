@@ -785,9 +785,10 @@ div.patents {
 
   .bottom-row {
     display: grid;
-    grid-template-columns: auto auto minmax(118px, 1fr);
+    grid-template-columns: auto auto auto;
     gap: 6px;
     align-items: start;
+    justify-content: start;
   }
 
   .clock-row {
@@ -823,8 +824,8 @@ div.patents {
   }
 
   .appearance-panel {
-    min-width: 0;
-    width: auto;
+    width: max-content;
+    max-width: 100%;
   }
 
   .appearance-panel .clock-content {
@@ -837,7 +838,7 @@ div.patents {
   .appearance-radios {
     flex-direction: row;
     flex-wrap: nowrap;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 8px;
   }
 
@@ -899,8 +900,8 @@ div.patents {
   html[data-theme="modern"] .appearance-segmented {
     flex-direction: row;
     flex-wrap: nowrap;
-    width: 100%;
-    justify-content: flex-end;
+    width: auto;
+    justify-content: flex-start;
   }
 
   html[data-theme="modern"] .appearance-segment {
@@ -915,7 +916,7 @@ div.patents {
   }
 
   html[data-theme="modern"] .appearance-panel .clock-content {
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: flex-start;
   }
 }

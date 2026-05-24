@@ -146,10 +146,19 @@ html[lang="ja"] .title-text {
   font-size: 18px;
 }
 
+html[lang="en"] .logo-section .tagline {
+  line-height: 1.15;
+}
+
+html[lang="ja"] .logo-section .tagline {
+  line-height: 1.25;
+}
+
 html[lang="ja"] .role-label,
 html[lang="ja"] .info-value .ja-text {
   font-size: 14px;
   font-weight: bold;
+  line-height: 1.25;
 }
 
 html[lang="ja"] .info-value.latin-value,
@@ -157,6 +166,7 @@ html[lang="ja"] .info-value.latin-value a,
 html[lang="ja"] .info-value .latin {
   font-size: 18px;
   font-weight: normal;
+  line-height: 1.2;
 }
 
 html[lang="ja"] .role-ios {
@@ -225,14 +235,24 @@ html[lang="ja"] .language-switcher button {
   font-size: 14px;
 }
 
+html[lang="ja"] .info-label {
+  line-height: 1.25;
+}
+
 html[lang="en"] .info-label {
   font-size: 18px;
   font-weight: normal;
+  line-height: 1.2;
 }
 
 .info-value {
   color: #000;
   font-size: 18px;
+}
+
+html[lang="ja"] .info-value,
+html[lang="en"] .info-value {
+  line-height: 1.2;
 }
 
 .info-divider {
@@ -264,6 +284,11 @@ html[lang="en"] .info-label {
   padding-bottom: 4px;
   color: #000;
   font-size: 14px;
+}
+
+html[lang="ja"] .memory-label,
+html[lang="en"] .memory-label {
+  line-height: 1.2;
 }
 
 html[lang="en"] .memory-label strong {

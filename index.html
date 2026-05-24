@@ -2,8 +2,9 @@
 
 <head>
   <meta charset="utf-8">
+  <script src="theme.js"></script>
   <title>About Justin Garcia</title>
-  <link href='style.css?v=61' rel='stylesheet'>
+  <link href='style.css?v=72' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="About Justin Garcia" />
   <meta property="og:image" content="assets/img-dithered.jpg" />
@@ -19,7 +20,8 @@
       aria-label="Open About"
     >
       <span class="desktop-icon-image">
-        <img src="assets/img-dithered.jpg" alt="">
+        <img src="assets/img-dithered.jpg" alt="" class="headshot-classic">
+        <img src="assets/img-color.jpg" alt="" class="headshot-modern">
       </span>
       <span
         class="desktop-icon-label"
@@ -40,7 +42,8 @@
     </div>
     <div class="dialog-content">
       <div class="logo-section">
-        <img src="assets/img-dithered.jpg" alt="Justin Garcia" class="logo-img">
+        <img src="assets/img-dithered.jpg" alt="Justin Garcia" class="logo-img headshot-classic">
+        <img src="assets/img-color.jpg" alt="Justin Garcia" class="logo-img headshot-modern">
         <div class="tagline">
           Justin Garcia<br>
           <span
@@ -56,7 +59,11 @@
       <div class="info-grid">
         <div class="info-row">
           <span class="info-label" data-label-en="Location:" data-label-ja="今の場所:">Location:</span>
-          <span class="info-value latin-value">Tokyo</span>
+          <span
+            class="info-value"
+            data-label-en="Tokyo"
+            data-label-ja="<span class='ja-text'>東京</span>"
+          >Tokyo</span>
         </div>
         <div class="info-row">
           <span class="info-label" data-label-en="What I do:" data-label-ja="仕事:">What I do:</span>
@@ -109,6 +116,7 @@
     </div>
     </div>
 
+    <div class="bottom-row">
     <div class="clock-row">
     <div class="clock-widget">
       <div class="clock-title-bar">
@@ -128,7 +136,51 @@
         <span id="tampa-hours">--</span>:<span id="tampa-minutes">--</span><span class="time-separator">:</span><span id="tampa-seconds">--</span>
       </div>
     </div>
-  </div>
+    </div>
+
+    <div class="clock-widget appearance-panel" id="appearance-panel">
+      <div class="clock-title-bar">
+        <div class="close-box"></div>
+        <span
+          class="clock-title"
+          data-label-en="Appearance"
+          data-label-ja="外観"
+        >Appearance</span>
+      </div>
+      <div class="clock-content appearance-content" aria-label="Theme">
+        <div class="appearance-radios" role="radiogroup" aria-label="Theme">
+          <label class="appearance-option">
+            <input type="radio" name="site-theme" value="classic" checked>
+            <span
+              data-label-en="Classic"
+              data-label-ja="クラシック"
+            >Classic</span>
+          </label>
+          <label class="appearance-option">
+            <input type="radio" name="site-theme" value="modern">
+            <span
+              data-label-en="Modern"
+              data-label-ja="モダン"
+            >Modern</span>
+          </label>
+        </div>
+        <div class="appearance-segmented" role="radiogroup" aria-label="Theme">
+          <button type="button" class="appearance-segment" data-theme-value="classic" aria-pressed="false">
+            <span
+              data-label-en="Classic"
+              data-label-ja="クラシック"
+            >Classic</span>
+          </button>
+          <button type="button" class="appearance-segment" data-theme-value="modern" aria-pressed="false">
+            <span
+              data-label-en="Modern"
+              data-label-ja="モダン"
+            >Modern</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    </div>
   </div>
 
   <div class="window-zoom-rect" id="window-zoom-rect" hidden aria-hidden="true"></div>
@@ -548,6 +600,10 @@
     const preferredLanguage = navigator.languages?.[0] || navigator.language || 'en';
     const initialLanguage = savedLanguage || (preferredLanguage.toLowerCase().startsWith('ja') ? 'ja' : 'en');
     setLanguage(initialLanguage);
+    initSiteTheme();
+    document.addEventListener('site-theme-change', () => {
+      storeExpandedAboutHeight();
+    });
     bootAboutWindow();
     updateClocks();
     setInterval(updateClocks, 1000);

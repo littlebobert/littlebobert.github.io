@@ -183,20 +183,17 @@ html[lang="ja"] .role-ios {
   font-family: 'VT323', 'Monaco', monospace;
   font-size: 14px;
   padding: 2px 8px;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.language-switcher button:hover {
-  background: #000;
-  color: #fff;
-  box-shadow: none;
-  transform: translate(1px, 1px);
-}
-
-.language-switcher button:active {
-  background: #000;
-  color: #fff;
-  box-shadow: none;
-  transform: translate(1px, 1px);
+@media (hover: hover) and (pointer: fine) {
+  .language-switcher button:hover,
+  .language-switcher button:active {
+    background: #000;
+    color: #fff;
+    box-shadow: none;
+    transform: translate(1px, 1px);
+  }
 }
 
 html[lang="en"] .language-switcher button {
@@ -409,16 +406,12 @@ body.resume-page .language-switcher button {
   -webkit-tap-highlight-color: transparent;
 }
 
-@media (hover: hover) {
-  body.resume-page .language-switcher button:hover {
+@media (hover: hover) and (pointer: fine) {
+  body.resume-page .language-switcher button:hover,
+  body.resume-page .language-switcher button:active {
     background: #000;
     color: #fff;
   }
-}
-
-body.resume-page .language-switcher button.tapped {
-  background: #000;
-  color: #fff;
 }
 
 html[lang="ja"] body.resume-page .language-switcher button {

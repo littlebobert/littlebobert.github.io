@@ -784,31 +784,75 @@ div.patents {
   }
 
   .bottom-row {
+    align-items: flex-start;
+  }
+
+  .clock-row {
+    min-width: 0;
+  }
+
+  .clock-widget {
+    flex: 1;
+    min-width: 0;
+  }
+
+  .clock-content {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+
+  .clock-title {
+    font-size: 13px;
+    margin-left: 4px;
+  }
+
+  .appearance-panel {
+    align-self: flex-start;
+    max-width: 34%;
+  }
+
+  .appearance-panel .clock-content {
+    flex-direction: column;
+    justify-content: flex-start;
+    padding: 4px 6px 5px;
+    gap: 3px;
+  }
+
+  .appearance-radios {
+    flex-direction: column;
+    gap: 3px;
+  }
+
+  html[data-theme="modern"] .clock-widget:not(.appearance-panel) .clock-content {
+    font-size: 11px;
+    padding: 6px 4px;
+  }
+
+  html[data-theme="modern"] .clock-title-bar {
+    padding: 0 4px 0 44px;
+  }
+
+  html[data-theme="modern"] .clock-title {
+    font-size: 10px;
+  }
+
+  html[data-theme="modern"] .appearance-segmented {
     flex-direction: column;
     align-items: stretch;
   }
 
-  .appearance-panel {
-    align-self: stretch;
+  html[data-theme="modern"] .appearance-segment {
+    font-size: 10px;
+    padding: 3px 6px;
+    text-align: center;
   }
 
-  .appearance-panel .clock-content {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 8px 14px;
-    padding: 6px 10px;
-  }
-
-  .appearance-radios {
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 8px 14px;
-    justify-content: center;
+  html[lang="ja"][data-theme="modern"] .appearance-segment {
+    font-size: 9px;
   }
 
   html[data-theme="modern"] .appearance-panel .clock-content {
-    justify-content: flex-end;
+    justify-content: flex-start;
   }
 }
 

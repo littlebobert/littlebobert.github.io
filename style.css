@@ -784,20 +784,20 @@ div.patents {
   }
 
   .bottom-row {
-    align-items: flex-start;
-    gap: 8px;
-    flex-wrap: nowrap;
+    display: grid;
+    grid-template-columns: auto auto minmax(118px, 1fr);
+    gap: 6px;
+    align-items: start;
   }
 
   .clock-row {
-    flex: 1 1 0;
-    min-width: 0;
-    gap: 6px;
+    display: contents;
   }
 
-  .clock-widget {
-    flex: 1 1 0;
-    min-width: 0;
+  .clock-widget:not(.appearance-panel) {
+    width: max-content;
+    max-width: 100%;
+    justify-self: start;
   }
 
   .clock-title-bar {
@@ -812,8 +812,9 @@ div.patents {
 
   .clock-content {
     font-size: 10px;
-    padding: 3px 2px;
+    padding: 3px 4px;
     white-space: nowrap;
+    text-align: center;
   }
 
   .clock-title {
@@ -822,27 +823,27 @@ div.patents {
   }
 
   .appearance-panel {
-    flex: 0 0 auto;
-    align-self: flex-start;
     min-width: 0;
+    width: auto;
   }
 
   .appearance-panel .clock-content {
     flex-direction: column;
     justify-content: flex-start;
-    padding: 3px 4px 4px;
-    gap: 3px;
+    padding: 3px 6px 4px;
+    gap: 4px;
   }
 
   .appearance-radios {
     flex-direction: row;
     flex-wrap: nowrap;
-    gap: 6px;
+    justify-content: flex-end;
+    gap: 8px;
   }
 
   .appearance-option {
     font-size: 11px;
-    gap: 3px;
+    gap: 4px;
   }
 
   html[lang="en"] .appearance-option {
@@ -898,11 +899,13 @@ div.patents {
   html[data-theme="modern"] .appearance-segmented {
     flex-direction: row;
     flex-wrap: nowrap;
+    width: 100%;
+    justify-content: flex-end;
   }
 
   html[data-theme="modern"] .appearance-segment {
     font-size: 9px;
-    padding: 2px 5px;
+    padding: 2px 6px;
     white-space: nowrap;
   }
 

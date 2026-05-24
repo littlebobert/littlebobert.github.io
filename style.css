@@ -785,10 +785,9 @@ div.patents {
 
   .bottom-row {
     display: grid;
-    grid-template-columns: auto auto auto;
+    grid-template-columns: auto auto minmax(0, 1fr);
     gap: 6px;
     align-items: start;
-    justify-content: start;
   }
 
   .clock-row {
@@ -802,28 +801,30 @@ div.patents {
   }
 
   .clock-title-bar {
-    height: 16px;
-    padding: 0 2px;
+    height: 18px;
+    padding: 0 4px;
   }
 
   .clock-title-bar .close-box {
-    width: 8px;
-    height: 8px;
+    width: 10px;
+    height: 10px;
   }
 
   .clock-content {
-    font-size: 10px;
-    padding: 3px 4px;
+    font-size: 13px;
+    padding: 4px 6px;
     white-space: nowrap;
     text-align: center;
   }
 
   .clock-title {
-    font-size: 11px;
-    margin-left: 2px;
+    font-size: 14px;
+    margin-left: 4px;
   }
 
   .appearance-panel {
+    grid-column: 3;
+    justify-self: end;
     width: max-content;
     max-width: 100%;
   }
@@ -831,7 +832,7 @@ div.patents {
   .appearance-panel .clock-content {
     flex-direction: column;
     justify-content: flex-start;
-    padding: 3px 6px 4px;
+    padding: 4px 8px 5px;
     gap: 4px;
   }
 
@@ -843,31 +844,31 @@ div.patents {
   }
 
   .appearance-option {
-    font-size: 11px;
-    gap: 4px;
+    font-size: 13px;
+    gap: 5px;
   }
 
   html[lang="en"] .appearance-option {
-    font-size: 11px;
+    font-size: 14px;
   }
 
   html[lang="ja"] .appearance-option {
-    font-size: 10px;
+    font-size: 12px;
   }
 
   .appearance-option input[type="radio"] {
-    width: 9px;
-    height: 9px;
+    width: 11px;
+    height: 11px;
   }
 
   .appearance-option input[type="radio"]::before {
-    width: 4px;
-    height: 4px;
+    width: 5px;
+    height: 5px;
   }
 
   html[data-theme="modern"] .clock-widget:not(.appearance-panel) .clock-content {
-    font-size: 10px;
-    padding: 4px 2px;
+    font-size: 12px;
+    padding: 6px 4px;
   }
 
   html[data-theme="modern"] .clock-title-bar {
@@ -894,7 +895,7 @@ div.patents {
   }
 
   html[data-theme="modern"] .clock-title {
-    font-size: 9px;
+    font-size: 10px;
   }
 
   html[data-theme="modern"] .appearance-segmented {
@@ -905,14 +906,14 @@ div.patents {
   }
 
   html[data-theme="modern"] .appearance-segment {
-    font-size: 9px;
-    padding: 2px 6px;
+    font-size: 10px;
+    padding: 3px 7px;
     white-space: nowrap;
   }
 
   html[lang="ja"][data-theme="modern"] .appearance-segment {
-    font-size: 8px;
-    padding: 2px 4px;
+    font-size: 9px;
+    padding: 3px 5px;
   }
 
   html[data-theme="modern"] .appearance-panel .clock-content {

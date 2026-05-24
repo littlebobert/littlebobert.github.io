@@ -154,7 +154,8 @@ html[lang="ja"] .logo-section .tagline {
   line-height: 1.25;
 }
 
-html[lang="ja"] .role-label,
+html[lang="ja"] .role-label .ja-text,
+html[lang="ja"] .role-previously .ja-text,
 html[lang="ja"] .info-value .ja-text {
   font-size: 14px;
   font-weight: bold;
@@ -163,14 +164,12 @@ html[lang="ja"] .info-value .ja-text {
 
 html[lang="ja"] .info-value.latin-value,
 html[lang="ja"] .info-value.latin-value a,
-html[lang="ja"] .info-value .latin {
+html[lang="ja"] .info-value .latin,
+html[lang="ja"] .role-label .latin,
+html[lang="ja"] .role-previously .latin {
   font-size: 18px;
   font-weight: normal;
   line-height: 1.2;
-}
-
-html[lang="ja"] .role-ios {
-  font-size: 16px;
 }
 
 .logo-img {
@@ -524,6 +523,10 @@ div.school {
 }
 
 div.education {
+  padding-bottom: 10pt;
+}
+
+div.projects {
   padding-bottom: 10pt;
 }
 

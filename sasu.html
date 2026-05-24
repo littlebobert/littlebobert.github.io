@@ -123,8 +123,87 @@
     .sasu-demo {
       padding-bottom: 8pt;
       text-align: center;
-      max-width: 340px;
+      max-width: 380px;
       margin: 0 auto;
+    }
+
+    .sasu-demo-label {
+      margin: 0 0 6px;
+      font-size: 9pt;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .sasu-demo-window {
+      overflow: hidden;
+      border-radius: 10px;
+      background: #fff;
+      box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.12),
+        0 0 0 1px rgba(0, 0, 0, 0.07);
+      text-align: left;
+    }
+
+    .sasu-demo-titlebar {
+      display: flex;
+      align-items: center;
+      padding: 10px 12px 8px;
+      background: linear-gradient(180deg, #ececec 0%, #dedede 100%);
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    .sasu-demo-traffic {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+    }
+
+    .sasu-demo-dot {
+      width: 11px;
+      height: 11px;
+      border-radius: 50%;
+      border: 0.5px solid rgba(0, 0, 0, 0.14);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    }
+
+    .sasu-demo-dot--close {
+      background: #ff5f57;
+    }
+
+    .sasu-demo-dot--minimize {
+      background: #febc2e;
+    }
+
+    .sasu-demo-dot--zoom {
+      background: #28c840;
+    }
+
+    .sasu-demo-toolbar {
+      padding: 8px 10px 10px;
+      background: #f5f5f7;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .sasu-demo-url-bar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      min-height: 24px;
+      padding: 4px 12px;
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.95);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.85);
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', system-ui, sans-serif;
+      font-size: 11px;
+      line-height: 1.2;
+      color: #333;
+    }
+
+    .sasu-demo-content {
+      background: #fafafa;
+      padding: 14px 10px 18px;
     }
 
     .sasu-demo-stage {
@@ -232,6 +311,10 @@
       font-size: 9pt;
     }
 
+    .sasu-demo-caption {
+      color: #444;
+    }
+
     .sasu-subtitle {
       padding-top: 2pt;
       font-weight: bold;
@@ -325,26 +408,48 @@
 
     <div class="sasu-section">
       <figure class="sasu-demo">
-        <div class="sasu-demo-stage" id="sasu-demo-stage">
-          <div
-            class="sasu-guidance-label"
-            aria-hidden="true"
-            data-label-en="Start tax return"
-            data-label-ja="確定申告を開始する"
-          >Start tax return</div>
-          <div class="sasu-demo-target">
-            <div class="sasu-demo-button">
-              <span class="sasu-demo-button-icon" aria-hidden="true">›</span>
-              <span
-                class="sasu-demo-button-text"
-                data-label-en="確定申告書等の作成はこちら"
-                data-label-ja="Start tax return"
-              >確定申告書等の作成はこちら</span>
+        <figcaption
+          class="sasu-demo-label"
+          data-label-en="Example:"
+          data-label-ja="例:"
+        >Example:</figcaption>
+        <div class="sasu-demo-window" id="sasu-demo-window">
+          <div class="sasu-demo-titlebar" aria-hidden="true">
+            <div class="sasu-demo-traffic">
+              <span class="sasu-demo-dot sasu-demo-dot--close"></span>
+              <span class="sasu-demo-dot sasu-demo-dot--minimize"></span>
+              <span class="sasu-demo-dot sasu-demo-dot--zoom"></span>
             </div>
-            <span class="sasu-guidance-ring" aria-hidden="true"></span>
+          </div>
+          <div class="sasu-demo-toolbar" aria-hidden="true">
+            <div class="sasu-demo-url-bar">
+              <span>e-tax.nta.go.jp</span>
+            </div>
+          </div>
+          <div class="sasu-demo-content">
+            <div class="sasu-demo-stage" id="sasu-demo-stage">
+              <div
+                class="sasu-guidance-label"
+                aria-hidden="true"
+                data-label-en="Start tax return"
+                data-label-ja="確定申告を開始する"
+              >Start tax return</div>
+              <div class="sasu-demo-target">
+                <div class="sasu-demo-button">
+                  <span class="sasu-demo-button-icon" aria-hidden="true">›</span>
+                  <span
+                    class="sasu-demo-button-text"
+                    data-label-en="確定申告書等の作成はこちら"
+                    data-label-ja="Start tax return"
+                  >確定申告書等の作成はこちら</span>
+                </div>
+                <span class="sasu-guidance-ring" aria-hidden="true"></span>
+              </div>
+            </div>
           </div>
         </div>
         <figcaption
+          class="sasu-demo-caption"
           data-label-en="Ask a question and get on-screen guidance."
           data-label-ja="質問すると、画面上で案内を表示します。"
         >Ask a question and get on-screen guidance.</figcaption>
@@ -509,32 +614,66 @@
     const initialLanguage = savedLanguage || (preferredLanguage.toLowerCase().startsWith('ja') ? 'ja' : 'en');
     setLanguage(initialLanguage);
 
+    const demoWindow = document.getElementById('sasu-demo-window');
     const demoStage = document.getElementById('sasu-demo-stage');
-    if (demoStage) {
+    if (demoWindow && demoStage) {
       const demoTarget = demoStage.querySelector('.sasu-demo-target');
       let tapHideTimeout = null;
+      let loopInterval = null;
+      let hasStarted = false;
 
-      const revealDemo = () => {
-        demoStage.classList.add('is-visible');
-        window.setTimeout(() => demoStage.classList.add('is-revealed'), 1500);
+      const showAnnotation = () => {
+        demoStage.classList.add('is-revealed');
       };
+
+      const hideAnnotation = () => {
+        demoStage.classList.remove('is-revealed');
+      };
+
+      const cycleAnnotation = () => {
+        if (demoStage.classList.contains('is-tapped')) {
+          return;
+        }
+
+        hideAnnotation();
+        window.setTimeout(() => {
+          if (!demoStage.classList.contains('is-tapped')) {
+            showAnnotation();
+          }
+        }, 500);
+      };
+
+      const startDemo = () => {
+        if (hasStarted) {
+          return;
+        }
+
+        hasStarted = true;
+        demoStage.classList.add('is-visible');
+        showAnnotation();
+
+        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+          loopInterval = window.setInterval(cycleAnnotation, 4000);
+        }
+      };
+
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
       if (reducedMotion) {
-        demoStage.classList.add('is-visible', 'is-revealed');
+        startDemo();
       } else {
         const observer = new IntersectionObserver(
           (entries) => {
             entries.forEach((entry) => {
               if (entry.isIntersecting) {
-                revealDemo();
+                startDemo();
                 observer.disconnect();
               }
             });
           },
-          { threshold: 0.6 }
+          { threshold: 0.35 }
         );
-        observer.observe(demoStage);
+        observer.observe(demoWindow);
       }
 
       if (demoTarget && window.matchMedia('(hover: none)').matches) {

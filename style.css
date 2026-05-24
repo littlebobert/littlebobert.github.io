@@ -204,6 +204,11 @@ html[lang="en"] .language-switcher button {
   font-weight: bold;
 }
 
+html[lang="ja"] .language-switcher button {
+  font-size: 16px;
+  font-weight: normal;
+}
+
 .info-grid {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -386,6 +391,7 @@ body.resume-page {
 
 body.resume-page .language-switcher {
   margin: 0 0 8pt;
+  font: inherit;
 }
 
 body.resume-page .language-switcher button {
@@ -400,23 +406,26 @@ body.resume-page .language-switcher button {
   font-size: 12px;
   font-weight: bold;
   padding: 2px 8px;
+  -webkit-tap-highlight-color: transparent;
 }
 
-body.resume-page .language-switcher button:hover {
-  background: #000;
-  color: #fff;
+@media (hover: hover) {
+  body.resume-page .language-switcher button:hover {
+    background: #000;
+    color: #fff;
+  }
 }
 
-body.resume-page .language-switcher button:active {
+body.resume-page .language-switcher button.tapped {
   background: #000;
   color: #fff;
-  transform: none;
 }
 
 html[lang="ja"] body.resume-page .language-switcher button {
-  font-family: 'Verdana', 'Geneva', sans-serif;
-  font-size: 10pt;
+  font-family: inherit;
+  font-size: inherit;
   font-weight: normal;
+  line-height: inherit;
 }
 
 div.contact-info {
@@ -513,5 +522,10 @@ div.patents {
   
   .info-label {
     min-width: 90px;
+  }
+
+  html[lang="ja"] body.resume-page .language-switcher button {
+    font-size: 1em;
+    -webkit-text-size-adjust: 100%;
   }
 }

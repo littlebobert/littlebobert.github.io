@@ -413,6 +413,12 @@ body.resume-page .language-switcher button:active {
   transform: none;
 }
 
+html[lang="ja"] body.resume-page .language-switcher button {
+  font-family: 'Verdana', 'Geneva', sans-serif;
+  font-size: 10pt;
+  font-weight: normal;
+}
+
 div.contact-info {
   padding-bottom: 8pt;
 }

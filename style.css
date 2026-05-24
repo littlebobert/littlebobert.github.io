@@ -50,6 +50,138 @@ body:not(.resume-page) {
   box-shadow: 2px 2px 0 #000;
 }
 
+.mac-dialog.is-closed {
+  display: none;
+}
+
+.mac-dialog.is-zoom-hidden {
+  visibility: hidden;
+}
+
+.window-zoom-rect {
+  position: fixed;
+  border: 2px solid #000;
+  background: transparent;
+  pointer-events: none;
+  z-index: 10000;
+  box-sizing: border-box;
+}
+
+.window-zoom-rect[hidden] {
+  display: none;
+}
+
+.desktop {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  max-width: 480px;
+}
+
+.about-slot {
+  position: relative;
+  width: 100%;
+}
+
+.about-slot.is-closed,
+.about-slot.is-shaded {
+  position: relative;
+}
+
+.about-slot.is-closed .mac-dialog {
+  display: none;
+}
+
+.about-slot.is-closed #about-desktop-icon,
+.about-slot.is-shaded #about-desktop-icon,
+.about-slot.is-measuring-icon #about-desktop-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+}
+
+.about-slot.is-shaded .mac-dialog {
+  position: relative;
+  z-index: 2;
+}
+
+.desktop-icon[hidden] {
+  display: none;
+}
+
+.desktop-icon {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-width: 88px;
+  min-height: 88px;
+  padding: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.desktop-icon-image {
+  display: block;
+  width: 64px;
+  height: 64px;
+  border: 2px solid #000;
+  background: #fff;
+  box-shadow: 2px 2px 0 #000;
+  overflow: hidden;
+}
+
+.desktop-icon-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.desktop-icon-label {
+  display: inline-block;
+  font-size: 18px;
+  line-height: 1.1;
+  max-width: 88px;
+  text-align: center;
+  background-color: #fff;
+  color: #000;
+  padding: 1px 6px;
+}
+
+html[lang="ja"] .desktop-icon-label {
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.desktop-icon:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  button.close-box--close:hover {
+    background: #999;
+  }
+}
+
+button.close-box {
+  appearance: none;
+  -webkit-appearance: none;
+  padding: 0;
+  margin: 0;
+  font: inherit;
+  cursor: pointer;
+}
+
 .title-bar {
   background: #fff;
   border-bottom: 2px solid #000;
@@ -155,7 +287,6 @@ html[lang="ja"] .logo-section .tagline {
 }
 
 html[lang="ja"] .role-label .ja-text,
-html[lang="ja"] .role-previously .ja-text,
 html[lang="ja"] .info-value .ja-text {
   font-size: 14px;
   font-weight: bold;
@@ -165,8 +296,7 @@ html[lang="ja"] .info-value .ja-text {
 html[lang="ja"] .info-value.latin-value,
 html[lang="ja"] .info-value.latin-value a,
 html[lang="ja"] .info-value .latin,
-html[lang="ja"] .role-label .latin,
-html[lang="ja"] .role-previously .latin {
+html[lang="ja"] .role-label .latin {
   font-size: 18px;
   font-weight: normal;
   line-height: 1.2;

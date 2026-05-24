@@ -3,16 +3,34 @@
 <head>
   <meta charset="utf-8">
   <title>About Justin Garcia</title>
-  <link href='style.css?v=48' rel='stylesheet'>
+  <link href='style.css?v=61' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta property="og:title" content="About Justin Garcia" />
   <meta property="og:image" content="assets/img-dithered.jpg" />
 </head>
 
 <body>
-  <div class="mac-dialog">
+  <div class="desktop">
+    <div class="about-slot is-closed" id="about-slot">
+    <button
+      type="button"
+      class="desktop-icon"
+      id="about-desktop-icon"
+      aria-label="Open About"
+    >
+      <span class="desktop-icon-image">
+        <img src="assets/img-dithered.jpg" alt="">
+      </span>
+      <span
+        class="desktop-icon-label"
+        data-label-en="About"
+        data-label-ja="について"
+      >About</span>
+    </button>
+
+    <div class="mac-dialog is-closed" id="about-dialog">
     <div class="title-bar">
-      <div class="close-box"></div>
+      <button type="button" class="close-box close-box--close" aria-label="Close"></button>
       <div class="title-bar-stripes-full"></div>
       <span
         class="title-text"
@@ -23,7 +41,14 @@
     <div class="dialog-content">
       <div class="logo-section">
         <img src="assets/img-dithered.jpg" alt="Justin Garcia" class="logo-img">
-        <div class="tagline">Justin Garcia<br><span class="role-label" data-label-en="iOS engineer" data-label-ja="<span class='latin'>iOS</span><span class='ja-text'>エンジニア</span>">iOS engineer</span><br><span class="role-previously" data-label-en="previously iOS and Safari/WebKit at Apple, 2005–2014" data-label-ja="<span class='ja-text'>以前</span> <span class='latin'>Apple（2005–2014）</span><span class='ja-text'>で</span><span class='latin'>iOS</span><span class='ja-text'>、</span><span class='latin'>Safari/WebKit</span>">previously iOS and Safari/WebKit at Apple, 2005–2014</span></div>
+        <div class="tagline">
+          Justin Garcia<br>
+          <span
+            class="role-label"
+            data-label-en="iOS engineer"
+            data-label-ja="<span class='latin'>iOS</span><span class='ja-text'>エンジニア</span>"
+          >iOS engineer</span>
+        </div>
       </div>
       <div class="language-switcher">
         <button type="button" id="language-toggle" aria-label="Switch language">日本語</button>
@@ -81,9 +106,10 @@
         </div>
       </div>
     </div>
-  </div>
+    </div>
+    </div>
 
-  <div class="clock-row">
+    <div class="clock-row">
     <div class="clock-widget">
       <div class="clock-title-bar">
         <div class="close-box"></div>
@@ -103,6 +129,9 @@
       </div>
     </div>
   </div>
+  </div>
+
+  <div class="window-zoom-rect" id="window-zoom-rect" hidden aria-hidden="true"></div>
   
   <script>
     function timeInZone(date, timeZone) {
@@ -157,20 +186,369 @@
       languageToggle.blur();
     });
 
+    const aboutSlot = document.getElementById('about-slot');
+    const aboutDialog = document.getElementById('about-dialog');
+    const aboutDesktopIcon = document.getElementById('about-desktop-icon');
+    const aboutCloseButton = aboutDialog?.querySelector('.close-box--close');
+    const windowZoomRect = document.getElementById('window-zoom-rect');
+    let expandedAboutHeight = 0;
+    let isWindowAnimating = false;
+
+    const ZOOM_OPEN_MS = 220;
+    const ZOOM_CLOSE_MS = 200;
+    const ZOOM_SHADE_MS = 110;
+    const BOOT_ICON_PAUSE_MS = 500;
+
+    function prefersReducedMotion() {
+      return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    }
+
+    function getRect(element) {
+      const rect = element.getBoundingClientRect();
+      return {
+        left: rect.left,
+        top: rect.top,
+        width: rect.width,
+        height: rect.height,
+      };
+    }
+
+    function getAboutIconRect() {
+      const icon = aboutDesktopIcon.querySelector('.desktop-icon-image') || aboutDesktopIcon;
+      return getRect(icon);
+    }
+
+    function getAboutIconTargetRect(slotHeight) {
+      const icon = aboutDesktopIcon.querySelector('.desktop-icon-image') || aboutDesktopIcon;
+      const wasIconHidden = aboutDesktopIcon.hidden;
+      const previousMinHeight = aboutSlot.style.minHeight;
+
+      if (slotHeight) {
+        aboutSlot.style.minHeight = `${slotHeight}px`;
+      }
+
+      aboutSlot.classList.add('is-measuring-icon');
+      aboutDesktopIcon.hidden = false;
+      aboutDesktopIcon.style.visibility = 'hidden';
+      aboutDesktopIcon.style.pointerEvents = 'none';
+
+      const rect = getRect(icon);
+
+      aboutDesktopIcon.style.visibility = '';
+      aboutDesktopIcon.style.pointerEvents = '';
+      aboutSlot.classList.remove('is-measuring-icon');
+      aboutDesktopIcon.hidden = wasIconHidden;
+      aboutSlot.style.minHeight = previousMinHeight;
+
+      return rect;
+    }
+
+    function getCollapsedAboutRect() {
+      const dialogRect = aboutDialog.getBoundingClientRect();
+      const titleBarRect = aboutDialog.querySelector('.title-bar').getBoundingClientRect();
+      return {
+        left: dialogRect.left,
+        top: dialogRect.top,
+        width: dialogRect.width,
+        height: titleBarRect.bottom - dialogRect.top,
+      };
+    }
+
+    function measureExpandedAboutSlotHeight() {
+      const wasClosed = aboutDialog.classList.contains('is-closed');
+      const wasShaded = aboutDialog.classList.contains('window-shaded');
+      const wasIconHidden = aboutDesktopIcon.hidden;
+
+      aboutDialog.classList.remove('is-closed', 'window-shaded');
+      aboutSlot.classList.remove('is-closed', 'is-shaded');
+      aboutDesktopIcon.hidden = true;
+
+      const height = aboutSlot.offsetHeight;
+
+      if (wasClosed) {
+        aboutDialog.classList.add('is-closed');
+        aboutSlot.classList.add('is-closed');
+        aboutDesktopIcon.hidden = false;
+      } else {
+        aboutDesktopIcon.hidden = wasIconHidden;
+      }
+      if (wasShaded) {
+        aboutDialog.classList.add('window-shaded');
+        aboutSlot.classList.add('is-shaded');
+      }
+
+      return height;
+    }
+
+    function measureExpandedAboutRect() {
+      const wasClosed = aboutDialog.classList.contains('is-closed');
+      const wasShaded = aboutDialog.classList.contains('window-shaded');
+
+      aboutDialog.classList.remove('is-closed', 'window-shaded');
+      aboutSlot.classList.remove('is-closed', 'is-shaded');
+      aboutDialog.classList.add('is-zoom-hidden');
+
+      const rect = getRect(aboutDialog);
+
+      aboutDialog.classList.remove('is-zoom-hidden');
+      if (wasClosed) {
+        aboutDialog.classList.add('is-closed');
+        aboutSlot.classList.add('is-closed');
+      }
+      if (wasShaded) {
+        aboutDialog.classList.add('window-shaded');
+        aboutSlot.classList.add('is-shaded');
+      }
+
+      return rect;
+    }
+
+    function runZoomAnimation(from, to, duration, onComplete) {
+      if (!windowZoomRect || prefersReducedMotion()) {
+        onComplete?.();
+        return;
+      }
+
+      isWindowAnimating = true;
+      windowZoomRect.hidden = false;
+      windowZoomRect.style.left = `${from.left}px`;
+      windowZoomRect.style.top = `${from.top}px`;
+      windowZoomRect.style.width = `${from.width}px`;
+      windowZoomRect.style.height = `${from.height}px`;
+
+      const start = performance.now();
+
+      function frame(now) {
+        const progress = Math.min((now - start) / duration, 1);
+        windowZoomRect.style.left = `${from.left + (to.left - from.left) * progress}px`;
+        windowZoomRect.style.top = `${from.top + (to.top - from.top) * progress}px`;
+        windowZoomRect.style.width = `${from.width + (to.width - from.width) * progress}px`;
+        windowZoomRect.style.height = `${from.height + (to.height - from.height) * progress}px`;
+
+        if (progress < 1) {
+          requestAnimationFrame(frame);
+          return;
+        }
+
+        windowZoomRect.hidden = true;
+        isWindowAnimating = false;
+        onComplete?.();
+      }
+
+      requestAnimationFrame(frame);
+    }
+
+    function storeExpandedAboutHeight() {
+      if (!aboutDialog.classList.contains('is-closed') && !aboutDialog.classList.contains('window-shaded')) {
+        expandedAboutHeight = aboutSlot.offsetHeight;
+      }
+    }
+
+    function updateAboutShadeLayout() {
+      if (aboutDialog.classList.contains('is-closed')) {
+        return;
+      }
+
+      if (aboutDialog.classList.contains('window-shaded')) {
+        if (!expandedAboutHeight) {
+          expandedAboutHeight = aboutSlot.offsetHeight;
+        }
+        aboutSlot.classList.add('is-shaded');
+        aboutSlot.style.minHeight = `${expandedAboutHeight}px`;
+        aboutDesktopIcon.hidden = false;
+      } else {
+        aboutSlot.classList.remove('is-shaded');
+        aboutSlot.style.minHeight = '';
+        aboutDesktopIcon.hidden = true;
+        storeExpandedAboutHeight();
+      }
+    }
+
+    function applyOpenAboutState({ retainMinHeight = false } = {}) {
+      aboutDialog.classList.remove('is-closed', 'window-shaded', 'is-zoom-hidden');
+      aboutSlot.classList.remove('is-closed', 'is-shaded');
+      if (!retainMinHeight) {
+        aboutSlot.style.minHeight = '';
+      }
+      aboutDesktopIcon.hidden = true;
+      if (!retainMinHeight) {
+        storeExpandedAboutHeight();
+      }
+    }
+
+    function applyCloseAboutState(slotHeight) {
+      aboutDialog.classList.remove('window-shaded', 'is-zoom-hidden');
+      aboutSlot.classList.remove('is-shaded');
+      aboutDialog.classList.add('is-closed');
+      aboutSlot.classList.add('is-closed');
+      aboutSlot.style.minHeight = `${slotHeight}px`;
+      aboutDesktopIcon.hidden = false;
+    }
+
+    function getCloseSlotHeight() {
+      if (!aboutSlot.style.minHeight) {
+        storeExpandedAboutHeight();
+      }
+
+      return parseInt(aboutSlot.style.minHeight, 10)
+        || expandedAboutHeight
+        || aboutSlot.offsetHeight;
+    }
+
+    function openAboutWindow() {
+      if (isWindowAnimating) {
+        return;
+      }
+
+      if (prefersReducedMotion()) {
+        applyOpenAboutState();
+        return;
+      }
+
+      const from = getAboutIconRect();
+      aboutDialog.classList.add('is-zoom-hidden');
+      applyOpenAboutState({ retainMinHeight: true });
+      const to = getRect(aboutDialog);
+      aboutDialog.classList.add('is-zoom-hidden');
+
+      runZoomAnimation(from, to, ZOOM_OPEN_MS, () => {
+        aboutDialog.classList.remove('is-zoom-hidden');
+        aboutSlot.style.minHeight = '';
+        storeExpandedAboutHeight();
+      });
+    }
+
+    function closeAboutWindow() {
+      if (isWindowAnimating) {
+        return;
+      }
+
+      const slotHeight = getCloseSlotHeight();
+
+      if (prefersReducedMotion()) {
+        applyCloseAboutState(slotHeight);
+        return;
+      }
+
+      const from = aboutDialog.classList.contains('window-shaded')
+        ? getCollapsedAboutRect()
+        : getRect(aboutDialog);
+      const to = getAboutIconTargetRect(slotHeight);
+
+      aboutDialog.classList.add('is-zoom-hidden');
+
+      runZoomAnimation(from, to, ZOOM_CLOSE_MS, () => {
+        applyCloseAboutState(slotHeight);
+      });
+    }
+
+    function shadeAboutWindow() {
+      if (isWindowAnimating) {
+        return;
+      }
+
+      expandedAboutHeight = aboutSlot.offsetHeight;
+
+      if (prefersReducedMotion()) {
+        aboutDialog.classList.add('window-shaded');
+        updateAboutShadeLayout();
+        return;
+      }
+
+      const from = getRect(aboutDialog);
+      const to = getCollapsedAboutRect();
+
+      aboutDialog.classList.add('is-zoom-hidden');
+
+      runZoomAnimation(from, to, ZOOM_SHADE_MS, () => {
+        aboutDialog.classList.remove('is-zoom-hidden');
+        aboutDialog.classList.add('window-shaded');
+        updateAboutShadeLayout();
+      });
+    }
+
+    function unshadeAboutWindow() {
+      if (isWindowAnimating) {
+        return;
+      }
+
+      if (prefersReducedMotion()) {
+        aboutDialog.classList.remove('window-shaded');
+        updateAboutShadeLayout();
+        return;
+      }
+
+      const from = getCollapsedAboutRect();
+      const to = measureExpandedAboutRect();
+
+      aboutDialog.classList.add('is-zoom-hidden');
+
+      runZoomAnimation(from, to, ZOOM_SHADE_MS, () => {
+        aboutDialog.classList.remove('window-shaded', 'is-zoom-hidden');
+        updateAboutShadeLayout();
+        storeExpandedAboutHeight();
+      });
+    }
+
     document.querySelectorAll('.title-bar, .clock-title-bar').forEach((titleBar) => {
       const windowElement = titleBar.closest('.mac-dialog, .clock-widget');
       if (!windowElement) return;
 
       titleBar.title = 'Double-click for WindowShade';
       titleBar.addEventListener('dblclick', () => {
+        if (windowElement === aboutDialog) {
+          if (aboutDialog.classList.contains('is-closed')) {
+            return;
+          }
+
+          if (aboutDialog.classList.contains('window-shaded')) {
+            unshadeAboutWindow();
+          } else {
+            shadeAboutWindow();
+          }
+          return;
+        }
+
         windowElement.classList.toggle('window-shaded');
       });
     });
+
+    aboutCloseButton?.addEventListener('click', (event) => {
+      event.stopPropagation();
+      closeAboutWindow();
+    });
+
+    aboutDesktopIcon?.addEventListener('click', () => {
+      if (aboutDialog.classList.contains('is-closed')) {
+        openAboutWindow();
+      } else if (aboutDialog.classList.contains('window-shaded')) {
+        unshadeAboutWindow();
+      }
+    });
+
+    function bootAboutWindow() {
+      expandedAboutHeight = measureExpandedAboutSlotHeight();
+      aboutSlot.style.minHeight = `${expandedAboutHeight}px`;
+
+      if (prefersReducedMotion()) {
+        openAboutWindow();
+        return;
+      }
+
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          setTimeout(() => {
+            openAboutWindow();
+          }, BOOT_ICON_PAUSE_MS);
+        });
+      });
+    }
 
     const savedLanguage = localStorage.getItem('site-language');
     const preferredLanguage = navigator.languages?.[0] || navigator.language || 'en';
     const initialLanguage = savedLanguage || (preferredLanguage.toLowerCase().startsWith('ja') ? 'ja' : 'en');
     setLanguage(initialLanguage);
+    bootAboutWindow();
     updateClocks();
     setInterval(updateClocks, 1000);
   </script>

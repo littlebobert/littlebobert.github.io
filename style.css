@@ -785,73 +785,134 @@ div.patents {
 
   .bottom-row {
     align-items: flex-start;
+    gap: 8px;
+    flex-wrap: nowrap;
   }
 
   .clock-row {
+    flex: 1 1 0;
     min-width: 0;
+    gap: 6px;
   }
 
   .clock-widget {
-    flex: 1;
+    flex: 1 1 0;
     min-width: 0;
   }
 
+  .clock-title-bar {
+    height: 16px;
+    padding: 0 2px;
+  }
+
+  .clock-title-bar .close-box {
+    width: 8px;
+    height: 8px;
+  }
+
   .clock-content {
-    font-size: 12px;
-    padding: 4px 6px;
+    font-size: 10px;
+    padding: 3px 2px;
+    white-space: nowrap;
   }
 
   .clock-title {
-    font-size: 13px;
-    margin-left: 4px;
+    font-size: 11px;
+    margin-left: 2px;
   }
 
   .appearance-panel {
+    flex: 0 0 auto;
     align-self: flex-start;
-    max-width: 34%;
+    min-width: 0;
   }
 
   .appearance-panel .clock-content {
     flex-direction: column;
     justify-content: flex-start;
-    padding: 4px 6px 5px;
+    padding: 3px 4px 4px;
     gap: 3px;
   }
 
   .appearance-radios {
-    flex-direction: column;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    gap: 6px;
+  }
+
+  .appearance-option {
+    font-size: 11px;
     gap: 3px;
   }
 
-  html[data-theme="modern"] .clock-widget:not(.appearance-panel) .clock-content {
+  html[lang="en"] .appearance-option {
     font-size: 11px;
-    padding: 6px 4px;
+  }
+
+  html[lang="ja"] .appearance-option {
+    font-size: 10px;
+  }
+
+  .appearance-option input[type="radio"] {
+    width: 9px;
+    height: 9px;
+  }
+
+  .appearance-option input[type="radio"]::before {
+    width: 4px;
+    height: 4px;
+  }
+
+  html[data-theme="modern"] .clock-widget:not(.appearance-panel) .clock-content {
+    font-size: 10px;
+    padding: 4px 2px;
   }
 
   html[data-theme="modern"] .clock-title-bar {
-    padding: 0 4px 0 44px;
+    height: 22px;
+    padding: 0 2px 0 36px;
+  }
+
+  html[data-theme="modern"] .clock-title-bar .close-box {
+    left: 6px;
+    width: 8px;
+    height: 8px;
+  }
+
+  html[data-theme="modern"] .clock-title-bar::before {
+    left: 20px;
+    width: 8px;
+    height: 8px;
+  }
+
+  html[data-theme="modern"] .clock-title-bar::after {
+    left: 30px;
+    width: 8px;
+    height: 8px;
   }
 
   html[data-theme="modern"] .clock-title {
-    font-size: 10px;
-  }
-
-  html[data-theme="modern"] .appearance-segmented {
-    flex-direction: column;
-    align-items: stretch;
-  }
-
-  html[data-theme="modern"] .appearance-segment {
-    font-size: 10px;
-    padding: 3px 6px;
-    text-align: center;
-  }
-
-  html[lang="ja"][data-theme="modern"] .appearance-segment {
     font-size: 9px;
   }
 
+  html[data-theme="modern"] .appearance-segmented {
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+
+  html[data-theme="modern"] .appearance-segment {
+    font-size: 9px;
+    padding: 2px 5px;
+    white-space: nowrap;
+  }
+
+  html[lang="ja"][data-theme="modern"] .appearance-segment {
+    font-size: 8px;
+    padding: 2px 4px;
+  }
+
   html[data-theme="modern"] .appearance-panel .clock-content {
+    align-items: flex-end;
     justify-content: flex-start;
   }
 }

@@ -293,13 +293,6 @@
       opacity: 0;
     }
 
-    @media (hover: hover) {
-      .sasu-demo-stage.is-revealed:has(.sasu-demo-target:hover) .sasu-guidance-label,
-      .sasu-demo-stage.is-revealed:has(.sasu-demo-target:hover) .sasu-guidance-ring {
-        opacity: 0;
-      }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       .sasu-demo-stage.is-revealed .sasu-guidance-label {
         transform: none;
@@ -626,31 +619,12 @@
     const demoStage = document.getElementById('sasu-demo-stage');
     if (demoWindow && demoStage) {
       const demoTarget = demoStage.querySelector('.sasu-demo-target');
-      let tapHideTimeout = null;
-      let loopInterval = null;
       let hasStarted = false;
 
       const initialAnnotationDelayMs = 1200;
 
       const showAnnotation = () => {
         demoStage.classList.add('is-revealed');
-      };
-
-      const hideAnnotation = () => {
-        demoStage.classList.remove('is-revealed');
-      };
-
-      const cycleAnnotation = () => {
-        if (demoStage.classList.contains('is-tapped')) {
-          return;
-        }
-
-        hideAnnotation();
-        window.setTimeout(() => {
-          if (!demoStage.classList.contains('is-tapped')) {
-            showAnnotation();
-          }
-        }, 500);
       };
 
       const startDemo = () => {
@@ -663,10 +637,6 @@
 
         window.setTimeout(() => {
           showAnnotation();
-
-          if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-            loopInterval = window.setInterval(cycleAnnotation, 4000);
-          }
         }, initialAnnotationDelayMs);
       };
 
@@ -689,17 +659,13 @@
         observer.observe(demoWindow);
       }
 
-      if (demoTarget && window.matchMedia('(hover: none)').matches) {
+      if (demoTarget) {
         demoTarget.addEventListener('click', () => {
           if (!demoStage.classList.contains('is-revealed')) {
             return;
           }
 
           demoStage.classList.add('is-tapped');
-          window.clearTimeout(tapHideTimeout);
-          tapHideTimeout = window.setTimeout(() => {
-            demoStage.classList.remove('is-tapped');
-          }, 800);
         });
       }
     }

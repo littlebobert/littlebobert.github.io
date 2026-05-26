@@ -321,7 +321,8 @@
       font-weight: bold;
     }
 
-    .download-link {
+    .download-link,
+    .download-link:visited {
       display: inline-block;
       border: 1px solid #000;
       border-radius: 4px;
@@ -337,6 +338,12 @@
       border-color: #555;
       color: #fff;
       box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+    }
+
+    html[data-theme="modern"] body.resume-page .download-link,
+    html[data-theme="modern"] body.resume-page .download-link:visited,
+    html[data-theme="modern"] body.resume-page .download-link:hover {
+      color: #fff;
     }
 
     .download-version {
@@ -623,6 +630,8 @@
       let loopInterval = null;
       let hasStarted = false;
 
+      const initialAnnotationDelayMs = 1200;
+
       const showAnnotation = () => {
         demoStage.classList.add('is-revealed');
       };
@@ -651,11 +660,14 @@
 
         hasStarted = true;
         demoStage.classList.add('is-visible');
-        showAnnotation();
 
-        if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-          loopInterval = window.setInterval(cycleAnnotation, 4000);
-        }
+        window.setTimeout(() => {
+          showAnnotation();
+
+          if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            loopInterval = window.setInterval(cycleAnnotation, 4000);
+          }
+        }, initialAnnotationDelayMs);
       };
 
       const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;

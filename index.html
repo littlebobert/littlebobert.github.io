@@ -55,77 +55,140 @@
         data-label-ja="について"
       >About</span>
     </div>
-    <div class="dialog-content">
-      <div class="logo-section">
-        <img src="assets/img-dithered.jpg" alt="Justin Garcia" class="logo-img headshot-classic">
-        <img src="assets/img-color.jpg" alt="Justin Garcia" class="logo-img headshot-modern">
-        <div class="tagline">
-          Justin Garcia<br>
+    <div class="dialog-content stack-content">
+      <div class="stack-top-row">
+        <div class="stack-name">
           <span
-            class="role-label"
-            data-label-en="iOS engineer"
-            data-label-ja="<span class='latin'>iOS</span><span class='ja-text'>エンジニア</span>"
-          >iOS engineer</span>
+            data-label-en="Justin Stack"
+            data-label-ja="<span class='latin'>Justin</span><span class='ja-text'>スタック</span>"
+          >Justin Stack</span>
+          <span class="stack-counter" id="stack-counter">1 / 6</span>
+        </div>
+        <div class="language-switcher">
+          <button type="button" id="language-toggle" aria-label="Switch language">日本語</button>
         </div>
       </div>
-      <div class="language-switcher">
-        <button type="button" id="language-toggle" aria-label="Switch language">日本語</button>
+
+      <div class="hypercard-stack" id="hypercard-stack" aria-live="polite">
+        <section class="stack-card is-active" data-stack-card>
+          <div class="stack-card-kicker" data-label-en="Intro" data-label-ja="イントロ">Intro</div>
+          <div class="stack-card-profile">
+            <span class="stack-card-avatar">
+              <img src="assets/img-dithered.jpg" alt="Justin Garcia" class="headshot-classic">
+              <img src="assets/img-color.jpg" alt="Justin Garcia" class="headshot-modern">
+            </span>
+            <div>
+              <h2>Justin Garcia</h2>
+              <p
+                data-label-en="iOS engineer in Tokyo, shipping speech AI at Kotoba."
+                data-label-ja="<span class='latin'>Tokyo</span><span class='ja-text'>の</span><span class='latin'>iOS</span><span class='ja-text'>エンジニア。</span><span class='latin'>Kotoba</span><span class='ja-text'>で音声</span><span class='latin'>AI</span><span class='ja-text'>をリリースしています。</span>"
+              >iOS engineer in Tokyo, shipping speech AI at Kotoba.</p>
+            </div>
+          </div>
+          <div class="stack-actions">
+            <a href="https://x.com/_bobertdowney">X</a>
+            <a href="https://www.linkedin.com/in/garciajustin/">LinkedIn</a>
+          </div>
+        </section>
+
+        <section class="stack-card" data-stack-card hidden>
+          <div class="stack-card-kicker" data-label-en="What I do" data-label-ja="仕事">What I do</div>
+          <h2
+            data-label-en="Speech AI"
+            data-label-ja="<span class='ja-text'>音声</span><span class='latin'>AI</span>"
+          >Speech AI</h2>
+          <p
+            data-label-en="I work on shipping speech AI at <a href='https://site.kotoba.tech'>Kotoba</a>."
+            data-label-ja="<a href='https://site.kotoba.tech'><span class='latin'>Kotoba</span></a><span class='ja-text'>で音声</span><span class='latin'>AI</span><span class='ja-text'>をリリースする仕事をしています。</span>"
+          >I work on shipping speech AI at <a href="https://site.kotoba.tech">Kotoba</a>.</p>
+          <p
+            data-label-en="Ask me about our <a href='https://kotoba.onelink.me/wkA2/28x5ctzi'>mobile app</a>!"
+            data-label-ja="<span class='ja-text'>私たちの</span><a href='https://kotoba.onelink.me/wkA2/28x5ctzi'><span class='ja-text'>モバイルアプリ</span></a><span class='ja-text'>について聞いてください！</span>"
+          >Ask me about our <a href="https://kotoba.onelink.me/wkA2/28x5ctzi">mobile app</a>!</p>
+        </section>
+
+        <section class="stack-card" data-stack-card hidden>
+          <div class="stack-card-kicker" data-label-en="My app" data-label-ja="自作アプリ">My app</div>
+          <h2>Sasu</h2>
+          <p
+            data-label-en="I made <a href='sasu.html'>Sasu</a>, a macOS app for getting on-screen guidance for Japanese forms and web apps."
+            data-label-ja="<a href='sasu.html'><span class='latin'>Sasu</span></a><span class='ja-text'>は、日本語のフォームやウェブアプリで画面上のガイダンスを得るための</span><span class='latin'>macOS</span><span class='ja-text'>アプリです。</span>"
+          >I made <a href="sasu.html">Sasu</a>, a macOS app for getting on-screen guidance for Japanese forms and web apps.</p>
+          <div class="stack-actions">
+            <a href="sasu.html" data-label-en="Open Sasu" data-label-ja="<span class='latin'>Sasu</span><span class='ja-text'>を見る</span>">Open Sasu</a>
+          </div>
+        </section>
+
+        <section class="stack-card" data-stack-card hidden>
+          <div class="stack-card-kicker" data-label-en="Ask me about" data-label-ja="話題">Ask me about</div>
+          <h2
+            data-label-en="Tell me about"
+            data-label-ja="<span class='ja-text'>聞かせてください</span>"
+          >Tell me about</h2>
+          <ul class="stack-topic-list">
+            <li data-label-en="your app ideas" data-label-ja="<span class='ja-text'>あなたのアプリのアイデア</span>">your app ideas</li>
+            <li data-label-en="fun things to do in Tokyo" data-label-ja="<span class='ja-text'>東京で楽しいこと</span>">fun things to do in Tokyo</li>
+            <li data-label-en="if you go running too" data-label-ja="<span class='ja-text'>あなたもランニングするなら</span>">if you go running too</li>
+          </ul>
+        </section>
+
+        <section class="stack-card" data-stack-card hidden>
+          <div class="stack-card-kicker" data-label-en="Recent hobby" data-label-ja="最近の趣味">Recent hobby</div>
+          <h2
+            data-label-en="Running in Tokyo"
+            data-label-ja="<span class='ja-text'>東京でランニング</span>"
+          >Running in Tokyo</h2>
+          <div class="memory-bar-section">
+            <div class="memory-label">
+              <span><strong data-label-en="Current running goal:" data-label-ja="今のランニング目標:">Current running goal:</strong></span>
+              <span class="memory-amount">21.1km / 25km</span>
+            </div>
+            <div class="memory-bar">
+              <div class="memory-bar-fill" style="width: 84.4%;"></div>
+            </div>
+          </div>
+          <div class="stack-actions">
+            <a
+              href="https://www.strava.com/athletes/148307110"
+              data-label-en="Open Strava"
+              data-label-ja="<span class='latin'>Strava</span><span class='ja-text'>を見る</span>"
+            >Open Strava</a>
+          </div>
+        </section>
+
+        <section class="stack-card" data-stack-card hidden>
+          <div class="stack-card-kicker" data-label-en="Elsewhere" data-label-ja="リンク">Elsewhere</div>
+          <h2
+            data-label-en="Find me after this"
+            data-label-ja="<span class='ja-text'>また話しましょう</span>"
+          >Find me after this</h2>
+          <p
+            data-label-en="If we met at a hackathon or networking event, X is probably the fastest follow-up."
+            data-label-ja="<span class='ja-text'>ハッカソンやイベントで会ったなら、</span><span class='latin'>X</span><span class='ja-text'>が一番早いと思います。</span>"
+          >If we met at a hackathon or networking event, X is probably the fastest follow-up.</p>
+          <div class="stack-actions stack-actions-grid">
+            <a href="https://x.com/_bobertdowney">@_bobertdowney</a>
+            <a href="https://www.linkedin.com/in/garciajustin/">LinkedIn</a>
+            <a href="resume.html" data-label-en="Resume" data-label-ja="<span class='ja-text'>履歴書</span>">Resume</a>
+          </div>
+        </section>
       </div>
-      <div class="info-grid">
-        <div class="info-row">
-          <span class="info-label" data-label-en="Location:" data-label-ja="今の場所:">Location:</span>
-          <span
-            class="info-value"
-            data-label-en="Tokyo"
-            data-label-ja="<span class='ja-text'>東京</span>"
-          >Tokyo</span>
-        </div>
-        <div class="info-row">
-          <span class="info-label" data-label-en="What I do:" data-label-ja="仕事:">What I do:</span>
-          <span
-            class="info-value"
-            data-label-en="Shipping speech AI at <a href='https://site.kotoba.tech'>Kotoba</a>"
-            data-label-ja="<a href='https://site.kotoba.tech'><span class='latin'>Kotoba</span></a><span class='ja-text'>で音声</span><span class='latin'>AI</span><span class='ja-text'>をリリース</span>"
-          >Shipping speech AI at <a href="https://site.kotoba.tech">Kotoba</a></span>
-        </div>
-        <div class="info-row">
-          <span class="info-label" data-label-en="Recent hobby:" data-label-ja="最近の趣味:">Recent hobby:</span>
-          <span
-            class="info-value"
-            data-label-en="<a href='https://www.strava.com/athletes/148307110'>Running and Strava</a>"
-            data-label-ja="<a href='https://www.strava.com/athletes/148307110'><span class='ja-text'>ランニングと</span><span class='latin'>Strava</span></a>"
-          ><a href="https://www.strava.com/athletes/148307110">Running and Strava</a></span>
-        </div>
-        <div class="info-row">
-          <span class="info-label" data-label-en="My app:" data-label-ja="自作アプリ:">My app:</span>
-          <span class="info-value latin-value"><a href="sasu.html">Sasu</a></span>
-        </div>
-        <div class="info-divider"></div>
-        <div class="info-row">
-          <span class="info-label" data-label-en="X:" data-label-ja="ツイッター:">X:</span>
-          <span class="info-value latin-value"><a href="https://x.com/_bobertdowney">@_bobertdowney</a></span>
-        </div>
-        <div class="info-row">
-          <span class="info-label" data-label-en="LinkedIn:" data-label-ja="リンクトイン:">LinkedIn:</span>
-          <span class="info-value latin-value"><a href="https://www.linkedin.com/in/garciajustin/">garciajustin</a></span>
-        </div>
-        <div class="info-row">
-          <span class="info-label" data-label-en="More:" data-label-ja="詳細:">More:</span>
-          <span
-            class="info-value"
-            data-label-en="<a href='resume.html'>Resume</a>"
-            data-label-ja="<a href='resume.html'><span class='ja-text'>履歴書</span></a>"
-          ><a href="resume.html">Resume</a></span>
-        </div>
-      </div>
-      <div class="memory-bar-section">
-        <div class="memory-label">
-          <span><strong data-label-en="Running goal:" data-label-ja="ランニング目標:">Running goal:</strong></span>
-          <span class="memory-amount">21.1km / 25km</span>
-        </div>
-        <div class="memory-bar">
-          <div class="memory-bar-fill" style="width: 84.4%;"></div>
-        </div>
+
+      <div class="stack-controls" aria-label="Card navigation">
+        <button
+          type="button"
+          class="stack-button stack-button-secondary"
+          id="stack-prev"
+          data-label-en="Back"
+          data-label-ja="戻る"
+        >Back</button>
+        <button
+          type="button"
+          class="stack-button"
+          id="stack-next"
+          data-label-en="Another card"
+          data-label-ja="次のカード"
+        >Another card</button>
       </div>
     </div>
     </div>
@@ -258,13 +321,82 @@
     const aboutDesktopIcon = document.getElementById('about-desktop-icon');
     const aboutCloseButton = aboutDialog?.querySelector('.close-box--close');
     const windowZoomRect = document.getElementById('window-zoom-rect');
+    const hypercardStack = document.getElementById('hypercard-stack');
+    const stackCards = Array.from(document.querySelectorAll('[data-stack-card]'));
+    const stackCounter = document.getElementById('stack-counter');
+    const stackPrevButton = document.getElementById('stack-prev');
+    const stackNextButton = document.getElementById('stack-next');
     let expandedAboutHeight = 0;
     let isWindowAnimating = false;
+    let currentStackCardIndex = 0;
+    let stackTouchStartX = null;
+    let stackTouchStartY = null;
 
     const ZOOM_OPEN_MS = 220;
     const ZOOM_CLOSE_MS = 200;
     const ZOOM_SHADE_MS = 110;
     const BOOT_ICON_PAUSE_MS = 500;
+
+    function updateStackCard() {
+      stackCards.forEach((card, index) => {
+        const isActive = index === currentStackCardIndex;
+        card.hidden = !isActive;
+        card.classList.toggle('is-active', isActive);
+      });
+
+      if (stackCounter) {
+        stackCounter.textContent = `${currentStackCardIndex + 1} / ${stackCards.length}`;
+      }
+
+      requestAnimationFrame(() => {
+        if (!aboutDialog.classList.contains('is-closed') && !aboutDialog.classList.contains('window-shaded')) {
+          storeExpandedAboutHeight();
+        }
+      });
+    }
+
+    function showRelativeStackCard(direction) {
+      if (!stackCards.length) {
+        return;
+      }
+
+      currentStackCardIndex = (currentStackCardIndex + direction + stackCards.length) % stackCards.length;
+      updateStackCard();
+    }
+
+    stackPrevButton?.addEventListener('click', () => {
+      showRelativeStackCard(-1);
+      stackPrevButton.blur();
+    });
+
+    stackNextButton?.addEventListener('click', () => {
+      showRelativeStackCard(1);
+      stackNextButton.blur();
+    });
+
+    hypercardStack?.addEventListener('touchstart', (event) => {
+      const touch = event.changedTouches[0];
+      stackTouchStartX = touch.clientX;
+      stackTouchStartY = touch.clientY;
+    }, { passive: true });
+
+    hypercardStack?.addEventListener('touchend', (event) => {
+      if (stackTouchStartX === null || stackTouchStartY === null) {
+        return;
+      }
+
+      const touch = event.changedTouches[0];
+      const dx = touch.clientX - stackTouchStartX;
+      const dy = touch.clientY - stackTouchStartY;
+      stackTouchStartX = null;
+      stackTouchStartY = null;
+
+      if (Math.abs(dx) < 45 || Math.abs(dx) < Math.abs(dy)) {
+        return;
+      }
+
+      showRelativeStackCard(dx < 0 ? 1 : -1);
+    }, { passive: true });
 
     function prefersReducedMotion() {
       return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -615,6 +747,7 @@
     const preferredLanguage = navigator.languages?.[0] || navigator.language || 'en';
     const initialLanguage = savedLanguage || (preferredLanguage.toLowerCase().startsWith('ja') ? 'ja' : 'en');
     setLanguage(initialLanguage);
+    updateStackCard();
     initSiteTheme();
     document.addEventListener('site-theme-change', () => {
       storeExpandedAboutHeight();

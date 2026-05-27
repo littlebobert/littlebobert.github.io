@@ -57,16 +57,7 @@
     </div>
     <div class="dialog-content stack-content">
       <div class="stack-top-row">
-        <div class="stack-name">
-          <span
-            data-label-en="Justin Stack"
-            data-label-ja="<span class='latin'>Justin</span><span class='ja-text'>スタック</span>"
-          >Justin Stack</span>
-          <span class="stack-counter" id="stack-counter">1 / 6</span>
-        </div>
-        <div class="language-switcher">
-          <button type="button" id="language-toggle" aria-label="Switch language">日本語</button>
-        </div>
+        <span class="stack-counter" id="stack-counter">1 / 6</span>
       </div>
 
       <div class="hypercard-stack" id="hypercard-stack" aria-live="polite">
@@ -111,9 +102,9 @@
           <div class="stack-card-kicker" data-label-en="My app" data-label-ja="自作アプリ">My app</div>
           <h2>Sasu</h2>
           <p
-            data-label-en="I created <a href='sasu.html'>Sasu</a>, a macOS app for getting on-screen guidance for Japanese forms and web apps."
+            data-label-en="I created <a href='sasu.html'>Sasu</a>, a macOS app for on-screen guidance for Japanese forms and web apps."
             data-label-ja="<a href='sasu.html'><span class='latin'>Sasu</span></a><span class='ja-text'>は、日本語のフォームやウェブアプリで画面上のガイダンスを得るための</span><span class='latin'>macOS</span><span class='ja-text'>アプリです。</span>"
-          >I created <a href="sasu.html">Sasu</a>, a macOS app for getting on-screen guidance for Japanese forms and web apps.</p>
+          >I created <a href="sasu.html">Sasu</a>, a macOS app for on-screen guidance for Japanese forms and web apps.</p>
           <div class="stack-actions">
             <a href="sasu.html" data-label-en="Open Sasu" data-label-ja="<span class='latin'>Sasu</span><span class='ja-text'>を見る</span>">Open Sasu</a>
           </div>
@@ -158,12 +149,8 @@
             data-label-en="Find me after this"
             data-label-ja="<span class='ja-text'>また話しましょう</span>"
           >Find me after this</h2>
-          <p
-            data-label-en="If we met at a hackathon or networking event, X is probably the fastest follow-up."
-            data-label-ja="<span class='ja-text'>ハッカソンやイベントで会ったなら、</span><span class='latin'>X</span><span class='ja-text'>が一番早いと思います。</span>"
-          >If we met at a hackathon or networking event, X is probably the fastest follow-up.</p>
-          <div class="stack-actions stack-actions-grid">
-            <a href="https://x.com/_bobertdowney">@_bobertdowney</a>
+          <div class="stack-actions">
+            <a href="https://x.com/_bobertdowney">X</a>
             <a href="https://www.linkedin.com/in/garciajustin/">LinkedIn</a>
             <a href="resume.html" data-label-en="Resume" data-label-ja="<span class='ja-text'>履歴書</span>">Resume</a>
           </div>
@@ -198,7 +185,19 @@
         <span class="clock-title">Tokyo</span>
       </div>
       <div class="clock-content">
-        <span id="tokyo-hours">--</span>:<span id="tokyo-minutes">--</span><span class="time-separator">:</span><span id="tokyo-seconds">--</span>
+        <div class="digital-clock">
+          <span id="tokyo-hours">--</span>:<span id="tokyo-minutes">--</span><span class="time-separator">:</span><span id="tokyo-seconds">--</span>
+        </div>
+        <div class="analog-clock" aria-hidden="true">
+          <span class="analog-mark analog-mark-12">12</span>
+          <span class="analog-mark analog-mark-3">3</span>
+          <span class="analog-mark analog-mark-6">6</span>
+          <span class="analog-mark analog-mark-9">9</span>
+          <span class="analog-hand analog-hour" id="tokyo-analog-hour"></span>
+          <span class="analog-hand analog-minute" id="tokyo-analog-minute"></span>
+          <span class="analog-hand analog-second" id="tokyo-analog-second"></span>
+          <span class="analog-pin"></span>
+        </div>
       </div>
     </div>
     <div class="clock-widget">
@@ -207,7 +206,19 @@
         <span class="clock-title">Tampa</span>
       </div>
       <div class="clock-content">
-        <span id="tampa-hours">--</span>:<span id="tampa-minutes">--</span><span class="time-separator">:</span><span id="tampa-seconds">--</span>
+        <div class="digital-clock">
+          <span id="tampa-hours">--</span>:<span id="tampa-minutes">--</span><span class="time-separator">:</span><span id="tampa-seconds">--</span>
+        </div>
+        <div class="analog-clock" aria-hidden="true">
+          <span class="analog-mark analog-mark-12">12</span>
+          <span class="analog-mark analog-mark-3">3</span>
+          <span class="analog-mark analog-mark-6">6</span>
+          <span class="analog-mark analog-mark-9">9</span>
+          <span class="analog-hand analog-hour" id="tampa-analog-hour"></span>
+          <span class="analog-hand analog-minute" id="tampa-analog-minute"></span>
+          <span class="analog-hand analog-second" id="tampa-analog-second"></span>
+          <span class="analog-pin"></span>
+        </div>
       </div>
     </div>
     </div>
@@ -217,11 +228,17 @@
         <div class="close-box"></div>
         <span
           class="clock-title"
-          data-label-en="Appearance"
-          data-label-ja="外観"
-        >Appearance</span>
+          data-label-en="Settings"
+          data-label-ja="設定"
+        >Settings</span>
       </div>
-      <div class="clock-content appearance-content" aria-label="Theme">
+      <div class="clock-content appearance-content" aria-label="Settings">
+        <div class="language-switcher">
+          <div class="language-segmented" role="radiogroup" aria-label="Language">
+            <button type="button" class="language-segment" data-language-value="en" aria-pressed="false">English</button>
+            <button type="button" class="language-segment" data-language-value="ja" aria-pressed="false">日本語</button>
+          </div>
+        </div>
         <div class="appearance-radios" role="radiogroup" aria-label="Theme">
           <label class="appearance-option">
             <input type="radio" name="site-theme" value="classic" checked>
@@ -252,6 +269,20 @@
             >Modern</span>
           </button>
         </div>
+        <div class="clock-mode-segmented" role="radiogroup" aria-label="Clock display">
+          <button type="button" class="clock-mode-segment" data-clock-mode-value="analog" aria-pressed="false">
+            <span
+              data-label-en="Analog"
+              data-label-ja="アナログ"
+            >Analog</span>
+          </button>
+          <button type="button" class="clock-mode-segment" data-clock-mode-value="digital" aria-pressed="false">
+            <span
+              data-label-en="Digital"
+              data-label-ja="デジタル"
+            >Digital</span>
+          </button>
+        </div>
       </div>
     </div>
     </div>
@@ -276,6 +307,19 @@
       return { h: n('hour'), m: n('minute'), s: n('second') };
     }
 
+    function updateAnalogClock(prefix, time) {
+      const hour = Number(time.h);
+      const minute = Number(time.m);
+      const second = Number(time.s);
+      const hourDeg = ((hour % 12) + minute / 60 + second / 3600) * 30;
+      const minuteDeg = (minute + second / 60) * 6;
+      const secondDeg = second * 6;
+
+      document.getElementById(`${prefix}-analog-hour`).style.transform = `translateX(-50%) rotate(${hourDeg}deg)`;
+      document.getElementById(`${prefix}-analog-minute`).style.transform = `translateX(-50%) rotate(${minuteDeg}deg)`;
+      document.getElementById(`${prefix}-analog-second`).style.transform = `translateX(-50%) rotate(${secondDeg}deg)`;
+    }
+
     function updateClocks() {
       const now = new Date();
 
@@ -283,16 +327,50 @@
       document.getElementById('tokyo-hours').textContent = tokyo.h;
       document.getElementById('tokyo-minutes').textContent = tokyo.m;
       document.getElementById('tokyo-seconds').textContent = tokyo.s;
+      updateAnalogClock('tokyo', tokyo);
 
       const tampa = timeInZone(now, 'America/New_York');
       document.getElementById('tampa-hours').textContent = tampa.h;
       document.getElementById('tampa-minutes').textContent = tampa.m;
       document.getElementById('tampa-seconds').textContent = tampa.s;
+      updateAnalogClock('tampa', tampa);
     }
 
-    const languageToggle = document.getElementById('language-toggle');
+    const CLOCK_MODE_STORAGE_KEY = 'clock-display-mode';
+    const clockModeButtons = document.querySelectorAll('.clock-mode-segment');
+    const languageButtons = document.querySelectorAll('.language-segment');
     const labelElements = document.querySelectorAll('[data-label-en][data-label-ja]');
     let currentLanguage = 'en';
+
+    function normalizeClockMode(mode) {
+      return mode === 'analog' ? 'analog' : 'digital';
+    }
+
+    function getSavedClockMode() {
+      try {
+        return normalizeClockMode(localStorage.getItem(CLOCK_MODE_STORAGE_KEY));
+      } catch {
+        return 'digital';
+      }
+    }
+
+    function setClockMode(mode) {
+      const value = normalizeClockMode(mode);
+      document.documentElement.dataset.clockMode = value;
+      try {
+        localStorage.setItem(CLOCK_MODE_STORAGE_KEY, value);
+      } catch {}
+      clockModeButtons.forEach((button) => {
+        button.setAttribute('aria-pressed', button.dataset.clockModeValue === value ? 'true' : 'false');
+      });
+    }
+
+    clockModeButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setClockMode(button.dataset.clockModeValue);
+        button.blur();
+      });
+    });
 
     function setLanguage(language) {
       currentLanguage = language === 'ja' ? 'ja' : 'en';
@@ -301,15 +379,18 @@
       });
 
       document.documentElement.lang = currentLanguage;
-      languageToggle.textContent = currentLanguage === 'ja' ? 'English' : '日本語';
-      languageToggle.setAttribute('aria-pressed', currentLanguage === 'en');
+      languageButtons.forEach((button) => {
+        button.setAttribute('aria-pressed', button.dataset.languageValue === currentLanguage ? 'true' : 'false');
+      });
       document.title = currentLanguage === 'ja' ? 'Justin Garcia について' : 'About Justin Garcia';
       localStorage.setItem('site-language', currentLanguage);
     }
 
-    languageToggle.addEventListener('click', () => {
-      setLanguage(currentLanguage === 'ja' ? 'en' : 'ja');
-      languageToggle.blur();
+    languageButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setLanguage(button.dataset.languageValue);
+        button.blur();
+      });
     });
 
     const aboutSlot = document.getElementById('about-slot');
@@ -744,6 +825,7 @@
     const initialLanguage = savedLanguage || (preferredLanguage.toLowerCase().startsWith('ja') ? 'ja' : 'en');
     setLanguage(initialLanguage);
     updateStackCard();
+    setClockMode(getSavedClockMode());
     initSiteTheme();
     document.addEventListener('site-theme-change', () => {
       storeExpandedAboutHeight();

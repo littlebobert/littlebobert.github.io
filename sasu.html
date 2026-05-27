@@ -620,8 +620,10 @@
     if (demoWindow && demoStage) {
       const demoTarget = demoStage.querySelector('.sasu-demo-target');
       let hasStarted = false;
+      let reappearTimeout = null;
 
       const initialAnnotationDelayMs = 1200;
+      const reappearDelayMs = 1500;
 
       const showAnnotation = () => {
         demoStage.classList.add('is-revealed');
@@ -666,6 +668,10 @@
           }
 
           demoStage.classList.add('is-tapped');
+          window.clearTimeout(reappearTimeout);
+          reappearTimeout = window.setTimeout(() => {
+            demoStage.classList.remove('is-tapped');
+          }, reappearDelayMs);
         });
       }
     }

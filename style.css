@@ -584,8 +584,29 @@ html[lang="ja"] .stack-card p .latin {
   min-height: 0;
 }
 
+.feed-panel {
+  position: relative;
+}
+
+.feed-panel.has-scroll-overflow::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 4px;
+  bottom: 0;
+  height: 22px;
+  pointer-events: none;
+  z-index: 1;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.35) 0%,
+    rgba(255, 255, 255, 0.7) 45%,
+    #fff 100%
+  );
+}
+
 .news-feed {
-  max-height: 150px;
+  max-height: 136px;
   overflow: auto;
   padding-right: 4px;
 }
@@ -613,9 +634,13 @@ html[lang="ja"] .stack-card p .latin {
 }
 
 .news-item-title {
-  display: block;
+  display: -webkit-box;
+  overflow: hidden;
   font-size: 20px;
   line-height: 1.08;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
 }
 
 .stack-card .news-item-meta {
@@ -637,7 +662,7 @@ html[lang="ja"] .stack-card p .latin {
 }
 
 .x-feed {
-  max-height: 150px;
+  max-height: 136px;
   overflow: auto;
   padding-right: 4px;
 }
@@ -749,10 +774,15 @@ html[lang="ja"] .stack-card p .latin {
 .stack-card .x-post-text {
   grid-column: 2;
   margin-bottom: 6px;
+  display: -webkit-box;
+  overflow: hidden;
   font-size: 20px;
   font-weight: normal;
   line-height: 1.12;
-  white-space: pre-wrap;
+  line-clamp: 3;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  white-space: normal;
 }
 
 html[lang="ja"] .stack-card .x-post-text {
@@ -1299,6 +1329,7 @@ html[lang="en"] .memory-label strong {
   flex: 1;
   gap: 12px;
   min-width: 0;
+  align-items: flex-start;
 }
 
 .appearance-panel {
@@ -1835,11 +1866,11 @@ div.patents {
   }
 
   .x-feed {
-    max-height: 140px;
+    max-height: 128px;
   }
 
   .news-feed {
-    max-height: 140px;
+    max-height: 128px;
   }
 
   .x-post-media {
@@ -2449,6 +2480,11 @@ html[data-theme="modern"] .stack-card .news-item-meta {
   font-family: inherit;
   font-size: 12px;
   color: rgba(0, 0, 0, 0.55);
+}
+
+html[data-theme="modern"] .feed-panel.has-scroll-overflow::after {
+  height: 28px;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff 88%);
 }
 
 html[data-theme="modern"] .stack-card .news-item-description {

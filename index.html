@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <script src="theme.js"></script>
   <title>About Justin Garcia</title>
-  <link href='style.css?v=96' rel='stylesheet'>
+  <link href='style.css?v=102' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://littlebobert.github.io/">
   <meta name="description" content="iOS engineer in Tokyo." />
@@ -202,12 +202,14 @@
             data-label-en="Japan news"
             data-label-ja="<span class='ja-text'>日本ニュース</span>"
           >Japan news</h2>
-          <div class="news-feed" id="japan-news-feed" aria-live="polite">
-            <p
-              class="news-feed-status"
-              data-label-en="Loading headlines..."
-              data-label-ja="<span class='ja-text'>ヘッドラインを読み込み中...</span>"
-            >Loading headlines...</p>
+          <div class="feed-panel" id="japan-news-feed-panel">
+            <div class="news-feed" id="japan-news-feed" aria-live="polite">
+              <p
+                class="news-feed-status"
+                data-label-en="Loading headlines..."
+                data-label-ja="<span class='ja-text'>ヘッドラインを読み込み中...</span>"
+              >Loading headlines...</p>
+            </div>
           </div>
           <div class="stack-actions">
             <a
@@ -231,24 +233,22 @@
               class="x-feed-tab"
               data-x-feed-tab="mine"
               aria-selected="false"
-              data-label-en="Mine"
-              data-label-ja="<span class='ja-text'>自分</span>"
             >Mine</button>
             <button
               type="button"
               class="x-feed-tab"
               data-x-feed-tab="following"
               aria-selected="true"
-              data-label-en="Following"
-              data-label-ja="<span class='ja-text'>フォロー中</span>"
             >Following</button>
           </div>
-          <div class="x-feed" id="x-feed" aria-live="polite">
-            <p
-              class="x-feed-status"
-              data-label-en="Loading daily snapshot..."
-              data-label-ja="<span class='ja-text'>毎日のスナップショットを読み込み中...</span>"
-            >Loading daily snapshot...</p>
+          <div class="feed-panel" id="x-feed-panel">
+            <div class="x-feed" id="x-feed" aria-live="polite">
+              <p
+                class="x-feed-status"
+                data-label-en="Loading daily snapshot..."
+                data-label-ja="<span class='ja-text'>毎日のスナップショットを読み込み中...</span>"
+              >Loading daily snapshot...</p>
+            </div>
           </div>
           <div class="stack-actions">
             <a
@@ -755,6 +755,85 @@
       return [...posts].sort((a, b) => xPostTime(b) - xPostTime(a));
     }
 
+    function getXPostsForTab(tab) {
+      if (!xSnapshotData) {
+        return [];
+      }
+      if (tab === 'following') {
+        return Array.isArray(xSnapshotData.followingPosts) ? xSnapshotData.followingPosts : [];
+      }
+      return Array.isArray(xSnapshotData.posts) ? xSnapshotData.posts : [];
+    }
+
+    function updateXFeedTabLabels() {
+      const mineCount = getXPostsForTab('mine').length;
+      const followingCount = getXPostsForTab('following').length;
+
+      xFeedTabButtons.forEach((button) => {
+        const tab = button.dataset.xFeedTab;
+        const count = tab === 'following' ? followingCount : mineCount;
+        if (currentLanguage === 'ja') {
+          const label = tab === 'following' ? 'フォロー中' : '自分';
+          button.textContent = `${label} (${count})`;
+          return;
+        }
+        const label = tab === 'following' ? 'Following' : 'Mine';
+        button.textContent = `${label} (${count})`;
+      });
+    }
+
+    function formatJapanNewsSnapshotNote(updatedAt, count) {
+      const safeCount = Math.max(0, Number(count) || 0);
+      if (currentLanguage === 'ja') {
+        if (updatedAt) {
+          return `${updatedAt}のスナップショット。${safeCount}件`;
+        }
+        return `${safeCount}件`;
+      }
+      const headlineWord = safeCount === 1 ? 'headline' : 'headlines';
+      if (updatedAt) {
+        return `Snapshot from ${updatedAt}. ${safeCount} ${headlineWord}`;
+      }
+      return `${safeCount} ${headlineWord}`;
+    }
+
+    function updateFeedScrollFade(feedElement) {
+      if (!feedElement) {
+        return;
+      }
+
+      const feedPanel = feedElement.closest('.feed-panel');
+      const stackCard = feedElement.closest('[data-stack-card]');
+
+      requestAnimationFrame(() => {
+        if (stackCard?.hidden) {
+          feedPanel?.classList.remove('has-scroll-overflow');
+          return;
+        }
+
+        const hasOverflow = feedElement.scrollHeight > feedElement.clientHeight + 1;
+        const atBottom = feedElement.scrollTop + feedElement.clientHeight >= feedElement.scrollHeight - 1;
+        const showFade = hasOverflow && !atBottom;
+
+        feedPanel?.classList.toggle('has-scroll-overflow', showFade);
+      });
+    }
+
+    function refreshFeedScrollFades() {
+      updateFeedScrollFade(japanNewsFeedElement);
+      updateFeedScrollFade(xFeedElement);
+    }
+
+    function bindFeedScrollFade(feedElement) {
+      if (!feedElement) {
+        return;
+      }
+
+      const update = () => updateFeedScrollFade(feedElement);
+      feedElement.addEventListener('scroll', update, { passive: true });
+      return update;
+    }
+
     function formatNewsDate(value) {
       const date = new Date(value);
       if (Number.isNaN(date.getTime())) {
@@ -777,6 +856,7 @@
       status.className = 'news-feed-status';
       status.textContent = message;
       japanNewsFeedElement.append(status);
+      updateFeedScrollFade(japanNewsFeedElement);
     }
 
     function createJapanNewsItem(item) {
@@ -832,16 +912,15 @@
 
       japanNewsFeedElement.textContent = '';
       const updatedAt = formatNewsDate(japanNewsData.updatedAt);
-      if (updatedAt) {
-        const note = document.createElement('p');
-        note.className = 'news-feed-updated';
-        note.textContent = localizedText(`Snapshot: ${updatedAt}`, `スナップショット: ${updatedAt}`);
-        japanNewsFeedElement.append(note);
-      }
+      const note = document.createElement('p');
+      note.className = 'news-feed-updated';
+      note.textContent = formatJapanNewsSnapshotNote(updatedAt, items.length);
+      japanNewsFeedElement.append(note);
 
       items.forEach((item) => {
         japanNewsFeedElement.append(createJapanNewsItem(item));
       });
+      updateFeedScrollFade(japanNewsFeedElement);
     }
 
     async function fetchJapanNews() {
@@ -1034,6 +1113,7 @@
       status.className = 'x-feed-status';
       status.textContent = message;
       xFeedElement.append(status);
+      updateFeedScrollFade(xFeedElement);
     }
 
     function normalizeXFeed(value) {
@@ -1135,6 +1215,8 @@
         return;
       }
 
+      updateXFeedTabLabels();
+
       if (xSnapshotDidFail) {
         appendXFeedStatus(localizedText('X gremlin is sleeping.', 'Xの妖精は寝ています。'));
         return;
@@ -1157,16 +1239,21 @@
 
       xFeedElement.textContent = '';
       const updatedAt = formatXPostDate(xSnapshotData.updatedAt);
+      const postCount = posts.length;
       if (updatedAt) {
         const note = document.createElement('p');
         note.className = 'x-feed-updated';
-        note.textContent = localizedText(`Snapshot: ${updatedAt}`, `スナップショット: ${updatedAt}`);
+        note.textContent = localizedText(
+          `Snapshot from ${updatedAt}. ${postCount} ${postCount === 1 ? 'post' : 'posts'}`,
+          `${updatedAt}のスナップショット。${postCount}件`
+        );
         xFeedElement.append(note);
       }
 
       posts.forEach((post) => {
         xFeedElement.append(createXPostElement(post));
       });
+      updateFeedScrollFade(xFeedElement);
     }
 
     async function fetchXSnapshot() {
@@ -1235,6 +1322,7 @@
       }
       renderJapanNews();
       renderXSnapshot();
+      updateXFeedTabLabels();
     }
 
     languageButtons.forEach((button) => {
@@ -1328,6 +1416,7 @@
         if (!aboutDialog.classList.contains('is-closed') && !aboutDialog.classList.contains('window-shaded')) {
           storeExpandedAboutHeight();
         }
+        refreshFeedScrollFades();
       });
     }
 
@@ -2145,6 +2234,8 @@
     updateClocks();
     fetchWeather();
     fetchVisitorCount();
+    bindFeedScrollFade(japanNewsFeedElement);
+    bindFeedScrollFade(xFeedElement);
     fetchJapanNews();
     fetchXSnapshot();
     setInterval(updateClocks, 1000);

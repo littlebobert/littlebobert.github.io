@@ -647,10 +647,9 @@
       }
 
       const subject = 'Hello from your map';
-      const body = [
-        'I am from around:',
-        selectedMapPlace,
-      ].filter(Boolean).join('\n');
+      const body = currentLanguage === 'ja'
+        ? `${selectedMapPlace}から来ました`
+        : `I am from ${selectedMapPlace}`;
       window.location.href = `mailto:justin.garcia@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
 

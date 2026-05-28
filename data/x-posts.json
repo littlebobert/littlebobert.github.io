@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-05-28T14:23:12.939Z",
+  "updatedAt": "2026-05-28T15:24:18.163Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "followingUsernames": [
@@ -26,6 +26,7 @@
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
@@ -45,13 +46,15 @@
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/mine-post-2058169102771143024-0.png"
+          "image": "assets/generated/x/mine-post-2058169102771143024-0.png",
+          "imageModern": "assets/generated/x/mine-post-2058169102771143024-0-modern.png"
         }
       ]
     },
@@ -70,13 +73,15 @@
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/mine-post-2058158639563862475-0.png"
+          "image": "assets/generated/x/mine-post-2058158639563862475-0.png",
+          "imageModern": "assets/generated/x/mine-post-2058158639563862475-0-modern.png"
         }
       ]
     },
@@ -95,13 +100,15 @@
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/mine-post-2058093593286594723-0.png"
+          "image": "assets/generated/x/mine-post-2058093593286594723-0.png",
+          "imageModern": "assets/generated/x/mine-post-2058093593286594723-0-modern.png"
         }
       ]
     },
@@ -120,13 +127,15 @@
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/mine-post-2057941200213303664-0.png"
+          "image": "assets/generated/x/mine-post-2057941200213303664-0.png",
+          "imageModern": "assets/generated/x/mine-post-2057941200213303664-0-modern.png"
         }
       ]
     },
@@ -145,6 +154,7 @@
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
@@ -171,13 +181,15 @@
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/mine-post-2055988524302897423-0.png"
+          "image": "assets/generated/x/mine-post-2055988524302897423-0.png",
+          "imageModern": "assets/generated/x/mine-post-2055988524302897423-0-modern.png"
         }
       ]
     }
@@ -190,6 +202,7 @@
       "url": "https://x.com/Pontifex/status/2059964149892104242",
       "urls": [],
       "avatar": "assets/generated/x/following-pontifex-avatar.png",
+      "avatarModern": "assets/generated/x/following-pontifex-avatar-modern.png",
       "authorName": "Pope Leo XIV",
       "username": "Pontifex",
       "media": []
@@ -201,6 +214,7 @@
       "url": "https://x.com/Pontifex/status/2059960378478690532",
       "urls": [],
       "avatar": "assets/generated/x/following-pontifex-avatar.png",
+      "avatarModern": "assets/generated/x/following-pontifex-avatar-modern.png",
       "authorName": "Pope Leo XIV",
       "username": "Pontifex",
       "media": []
@@ -220,6 +234,7 @@
         }
       ],
       "avatar": "assets/generated/x/following-paulskallas-avatar.png",
+      "avatarModern": "assets/generated/x/following-paulskallas-avatar-modern.png",
       "authorName": "LindyMan",
       "username": "PaulSkallas",
       "media": []
@@ -231,6 +246,7 @@
       "url": "https://x.com/PaulSkallas/status/2059949205217493246",
       "urls": [],
       "avatar": "assets/generated/x/following-paulskallas-avatar.png",
+      "avatarModern": "assets/generated/x/following-paulskallas-avatar-modern.png",
       "authorName": "LindyMan",
       "username": "PaulSkallas",
       "media": []
@@ -242,6 +258,7 @@
       "url": "https://x.com/paularambles/status/2059872597878399158",
       "urls": [],
       "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "avatarModern": "assets/generated/x/following-paularambles-avatar-modern.png",
       "authorName": "“paula”",
       "username": "paularambles",
       "media": []
@@ -268,6 +285,7 @@
         }
       ],
       "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "avatarModern": "assets/generated/x/following-paularambles-avatar-modern.png",
       "authorName": "“paula”",
       "username": "paularambles",
       "media": []
@@ -287,6 +305,7 @@
         }
       ],
       "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "avatarModern": "assets/generated/x/following-paularambles-avatar-modern.png",
       "authorName": "“paula”",
       "username": "paularambles",
       "media": []
@@ -298,6 +317,7 @@
       "url": "https://x.com/paularambles/status/2059728538992033958",
       "urls": [],
       "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "avatarModern": "assets/generated/x/following-paularambles-avatar-modern.png",
       "authorName": "“paula”",
       "username": "paularambles",
       "media": []
@@ -309,6 +329,7 @@
       "url": "https://x.com/paularambles/status/2059728293658837036",
       "urls": [],
       "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "avatarModern": "assets/generated/x/following-paularambles-avatar-modern.png",
       "authorName": "“paula”",
       "username": "paularambles",
       "media": []
@@ -328,6 +349,7 @@
         }
       ],
       "avatar": "assets/generated/x/following-mike_matas-avatar.png",
+      "avatarModern": "assets/generated/x/following-mike_matas-avatar-modern.png",
       "authorName": "Mike Matas",
       "username": "mike_matas",
       "media": []
@@ -347,6 +369,7 @@
         }
       ],
       "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "avatarModern": "assets/generated/x/following-paularambles-avatar-modern.png",
       "authorName": "“paula”",
       "username": "paularambles",
       "media": []
@@ -366,13 +389,15 @@
         }
       ],
       "avatar": "assets/generated/x/following-paulskallas-avatar.png",
+      "avatarModern": "assets/generated/x/following-paulskallas-avatar-modern.png",
       "authorName": "LindyMan",
       "username": "PaulSkallas",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/following-paulskallas-post-2059690748769943723-0.png"
+          "image": "assets/generated/x/following-paulskallas-post-2059690748769943723-0.png",
+          "imageModern": "assets/generated/x/following-paulskallas-post-2059690748769943723-0-modern.png"
         }
       ]
     },
@@ -383,6 +408,7 @@
       "url": "https://x.com/paularambles/status/2059679773253902452",
       "urls": [],
       "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "avatarModern": "assets/generated/x/following-paularambles-avatar-modern.png",
       "authorName": "“paula”",
       "username": "paularambles",
       "media": []
@@ -394,6 +420,7 @@
       "url": "https://x.com/paularambles/status/2059664770287215045",
       "urls": [],
       "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "avatarModern": "assets/generated/x/following-paularambles-avatar-modern.png",
       "authorName": "“paula”",
       "username": "paularambles",
       "media": []
@@ -405,6 +432,7 @@
       "url": "https://x.com/paularambles/status/2059664742915125348",
       "urls": [],
       "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "avatarModern": "assets/generated/x/following-paularambles-avatar-modern.png",
       "authorName": "“paula”",
       "username": "paularambles",
       "media": []
@@ -424,13 +452,15 @@
         }
       ],
       "avatar": "assets/generated/x/following-paulg-avatar.png",
+      "avatarModern": "assets/generated/x/following-paulg-avatar-modern.png",
       "authorName": "Paul Graham",
       "username": "paulg",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/following-paulg-post-2059645319457931358-0.png"
+          "image": "assets/generated/x/following-paulg-post-2059645319457931358-0.png",
+          "imageModern": "assets/generated/x/following-paulg-post-2059645319457931358-0-modern.png"
         }
       ]
     },
@@ -449,13 +479,15 @@
         }
       ],
       "avatar": "assets/generated/x/following-paulg-avatar.png",
+      "avatarModern": "assets/generated/x/following-paulg-avatar-modern.png",
       "authorName": "Paul Graham",
       "username": "paulg",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/following-paulg-post-2059642638022652347-0.png"
+          "image": "assets/generated/x/following-paulg-post-2059642638022652347-0.png",
+          "imageModern": "assets/generated/x/following-paulg-post-2059642638022652347-0-modern.png"
         }
       ]
     },
@@ -466,6 +498,7 @@
       "url": "https://x.com/PaulSkallas/status/2059623443801256368",
       "urls": [],
       "avatar": "assets/generated/x/following-paulskallas-avatar.png",
+      "avatarModern": "assets/generated/x/following-paulskallas-avatar-modern.png",
       "authorName": "LindyMan",
       "username": "PaulSkallas",
       "media": []
@@ -485,13 +518,15 @@
         }
       ],
       "avatar": "assets/generated/x/following-paulg-avatar.png",
+      "avatarModern": "assets/generated/x/following-paulg-avatar-modern.png",
       "authorName": "Paul Graham",
       "username": "paulg",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/following-paulg-post-2059618578211438884-0.png"
+          "image": "assets/generated/x/following-paulg-post-2059618578211438884-0.png",
+          "imageModern": "assets/generated/x/following-paulg-post-2059618578211438884-0-modern.png"
         }
       ]
     },
@@ -502,6 +537,7 @@
       "url": "https://x.com/Pontifex/status/2059605541719343245",
       "urls": [],
       "avatar": "assets/generated/x/following-pontifex-avatar.png",
+      "avatarModern": "assets/generated/x/following-pontifex-avatar-modern.png",
       "authorName": "Pope Leo XIV",
       "username": "Pontifex",
       "media": []

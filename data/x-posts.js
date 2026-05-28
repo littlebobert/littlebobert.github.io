@@ -1,8 +1,15 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-05-28T12:57:43.627Z",
+  "updatedAt": "2026-05-28T14:23:12.939Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
-  "followingUsernames": [],
+  "followingUsernames": [
+    "PaulSkallas",
+    "Pontifex",
+    "paularambles",
+    "paulg",
+    "mike_matas",
+    "chan_k"
+  ],
   "posts": [
     {
       "id": "2059070952529661966",
@@ -72,7 +79,432 @@ window.X_POSTS_SNAPSHOT = {
           "image": "assets/generated/x/mine-post-2058158639563862475-0.png"
         }
       ]
+    },
+    {
+      "id": "2058093593286594723",
+      "text": "すみません、日本のスティーブ・ジョブズは誰ですか？ https://t.co/Bc8QWXl0oq",
+      "createdAt": "2026-05-23T07:52:04.000Z",
+      "url": "https://x.com/_bobertdowney/status/2058093593286594723",
+      "urls": [
+        {
+          "url": "https://t.co/Bc8QWXl0oq",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2058093593286594723/photo/1",
+          "displayUrl": "pic.x.com/Bc8QWXl0oq",
+          "start": 26,
+          "end": 49
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2058093593286594723-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2057941200213303664",
+      "text": "初めてブンタンを食べました。今高知へ行きたい。 https://t.co/8eSaDuSGis",
+      "createdAt": "2026-05-22T21:46:31.000Z",
+      "url": "https://x.com/_bobertdowney/status/2057941200213303664",
+      "urls": [
+        {
+          "url": "https://t.co/8eSaDuSGis",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2057941200213303664/photo/1",
+          "displayUrl": "pic.x.com/8eSaDuSGis",
+          "start": 24,
+          "end": 47
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2057941200213303664-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2056570211835478443",
+      "text": "worth the weights https://t.co/Q4shFwUoFR",
+      "createdAt": "2026-05-19T02:58:42.000Z",
+      "url": "https://x.com/_bobertdowney/status/2056570211835478443",
+      "urls": [
+        {
+          "url": "https://t.co/Q4shFwUoFR",
+          "expandedUrl": "https://developer.apple.com/wwdc26/",
+          "displayUrl": "developer.apple.com/wwdc26/",
+          "start": 18,
+          "end": 41
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2055988524302897423",
+      "text": "made a tool to help me navigate Japanese websites https://t.co/99aXvlxGAp https://t.co/TeghuU9Ogs",
+      "createdAt": "2026-05-17T12:27:17.000Z",
+      "url": "https://x.com/_bobertdowney/status/2055988524302897423",
+      "urls": [
+        {
+          "url": "https://t.co/99aXvlxGAp",
+          "expandedUrl": "https://littlebobert.github.io/sasu.html",
+          "displayUrl": "littlebobert.github.io/sasu.html",
+          "start": 50,
+          "end": 73
+        },
+        {
+          "url": "https://t.co/TeghuU9Ogs",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2055988524302897423/photo/1",
+          "displayUrl": "pic.x.com/TeghuU9Ogs",
+          "start": 74,
+          "end": 97
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2055988524302897423-0.png"
+        }
+      ]
     }
   ],
-  "followingPosts": []
+  "followingPosts": [
+    {
+      "id": "2059964149892104242",
+      "text": "Evangelization does not rely on the efficiency of structures or on social relevance, nor even on the consensus that may be received at a given moment. Trust in the guidance of the Holy Spirit remains the essential aspect, following the paths He indicates in order to lead many",
+      "createdAt": "2026-05-28T11:45:00.000Z",
+      "url": "https://x.com/Pontifex/status/2059964149892104242",
+      "urls": [],
+      "avatar": "assets/generated/x/following-pontifex-avatar.png",
+      "authorName": "Pope Leo XIV",
+      "username": "Pontifex",
+      "media": []
+    },
+    {
+      "id": "2059960378478690532",
+      "text": "Technological progress — valuable in itself — requires careful discernment of the anthropological vision that guides it and the ends it pursues. If technological development advances without a corresponding ethical and social progress, the result may be an increase in means",
+      "createdAt": "2026-05-28T11:30:01.000Z",
+      "url": "https://x.com/Pontifex/status/2059960378478690532",
+      "urls": [],
+      "avatar": "assets/generated/x/following-pontifex-avatar.png",
+      "authorName": "Pope Leo XIV",
+      "username": "Pontifex",
+      "media": []
+    },
+    {
+      "id": "2059952737014394887",
+      "text": "Yup. Once we exit this short period of time, homes will be cheap and abundant. Many of the big problems people face today will fade away. \n\nYou're just living in a very expensive time period. https://t.co/SFsGrsXMO5",
+      "createdAt": "2026-05-28T10:59:39.000Z",
+      "url": "https://x.com/PaulSkallas/status/2059952737014394887",
+      "urls": [
+        {
+          "url": "https://t.co/SFsGrsXMO5",
+          "expandedUrl": "https://twitter.com/cornoisseur/status/2059859824028840415",
+          "displayUrl": "x.com/cornoisseur/st…",
+          "start": 192,
+          "end": 215
+        }
+      ],
+      "avatar": "assets/generated/x/following-paulskallas-avatar.png",
+      "authorName": "LindyMan",
+      "username": "PaulSkallas",
+      "media": []
+    },
+    {
+      "id": "2059949205217493246",
+      "text": "lots of posts about a particular city being amazing in the summer. Every city is great in the summer. The season lifts everyone's mood. \n\nThe real question is what city is great in the winter when the weather brings everyone down.",
+      "createdAt": "2026-05-28T10:45:37.000Z",
+      "url": "https://x.com/PaulSkallas/status/2059949205217493246",
+      "urls": [],
+      "avatar": "assets/generated/x/following-paulskallas-avatar.png",
+      "authorName": "LindyMan",
+      "username": "PaulSkallas",
+      "media": []
+    },
+    {
+      "id": "2059872597878399158",
+      "text": "one of my favorite sf activities is taking people on their first waymo rides, i should turn this into an airbnb experience for people who can’t install the waymo app because it’s only available in the US app store",
+      "createdAt": "2026-05-28T05:41:12.000Z",
+      "url": "https://x.com/paularambles/status/2059872597878399158",
+      "urls": [],
+      "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "authorName": "“paula”",
+      "username": "paularambles",
+      "media": []
+    },
+    {
+      "id": "2059802250776887561",
+      "text": "https://t.co/yhhoRlZNTL https://t.co/g1OTASeuzj",
+      "createdAt": "2026-05-28T01:01:40.000Z",
+      "url": "https://x.com/paularambles/status/2059802250776887561",
+      "urls": [
+        {
+          "url": "https://t.co/yhhoRlZNTL",
+          "expandedUrl": "https://x.com/paularambles/status/2056018369791582355",
+          "displayUrl": "x.com/paularambles/s…",
+          "start": 0,
+          "end": 23
+        },
+        {
+          "url": "https://t.co/g1OTASeuzj",
+          "expandedUrl": "https://twitter.com/paularambles/status/2056018369791582355",
+          "displayUrl": "x.com/paularambles/s…",
+          "start": 24,
+          "end": 47
+        }
+      ],
+      "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "authorName": "“paula”",
+      "username": "paularambles",
+      "media": []
+    },
+    {
+      "id": "2059802047067939327",
+      "text": "the most magical place in california https://t.co/ZzvdO89v2e",
+      "createdAt": "2026-05-28T01:00:51.000Z",
+      "url": "https://x.com/paularambles/status/2059802047067939327",
+      "urls": [
+        {
+          "url": "https://t.co/ZzvdO89v2e",
+          "expandedUrl": "https://twitter.com/marikatff/status/2059801334103294369",
+          "displayUrl": "x.com/marikatff/stat…",
+          "start": 37,
+          "end": 60
+        }
+      ],
+      "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "authorName": "“paula”",
+      "username": "paularambles",
+      "media": []
+    },
+    {
+      "id": "2059728538992033958",
+      "text": "the only person marked safe so far is @noampomsky",
+      "createdAt": "2026-05-27T20:08:46.000Z",
+      "url": "https://x.com/paularambles/status/2059728538992033958",
+      "urls": [],
+      "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "authorName": "“paula”",
+      "username": "paularambles",
+      "media": []
+    },
+    {
+      "id": "2059728293658837036",
+      "text": "pangram's chrome extension has ruined substack for me. wdym all my favorite writers are just three models in a trench coat",
+      "createdAt": "2026-05-27T20:07:47.000Z",
+      "url": "https://x.com/paularambles/status/2059728293658837036",
+      "urls": [],
+      "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "authorName": "“paula”",
+      "username": "paularambles",
+      "media": []
+    },
+    {
+      "id": "2059704448998379618",
+      "text": "Formula 1 drivers Lewis Hamilton and Charles Leclerc experiencing Ferrari Luce. https://t.co/ZL0l8rM7Re",
+      "createdAt": "2026-05-27T18:33:02.000Z",
+      "url": "https://x.com/mike_matas/status/2059704448998379618",
+      "urls": [
+        {
+          "url": "https://t.co/ZL0l8rM7Re",
+          "expandedUrl": "https://twitter.com/trungtphan/status/2059689517888716830",
+          "displayUrl": "x.com/trungtphan/sta…",
+          "start": 80,
+          "end": 103
+        }
+      ],
+      "avatar": "assets/generated/x/following-mike_matas-avatar.png",
+      "authorName": "Mike Matas",
+      "username": "mike_matas",
+      "media": []
+    },
+    {
+      "id": "2059693041682968653",
+      "text": "i got back home from a trip to cairo and nearly burst into tears of happiness when a car stopped for me at a crosswalk https://t.co/2D1KGfRgIZ",
+      "createdAt": "2026-05-27T17:47:43.000Z",
+      "url": "https://x.com/paularambles/status/2059693041682968653",
+      "urls": [
+        {
+          "url": "https://t.co/2D1KGfRgIZ",
+          "expandedUrl": "https://twitter.com/hopes_revenge/status/2059612587994832980",
+          "displayUrl": "x.com/hopes_revenge/…",
+          "start": 119,
+          "end": 142
+        }
+      ],
+      "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "authorName": "“paula”",
+      "username": "paularambles",
+      "media": []
+    },
+    {
+      "id": "2059690748769943723",
+      "text": "https://t.co/Yfomj0O4Hu",
+      "createdAt": "2026-05-27T17:38:36.000Z",
+      "url": "https://x.com/PaulSkallas/status/2059690748769943723",
+      "urls": [
+        {
+          "url": "https://t.co/Yfomj0O4Hu",
+          "expandedUrl": "https://x.com/PaulSkallas/status/2059690748769943723/photo/1",
+          "displayUrl": "pic.x.com/Yfomj0O4Hu",
+          "start": 0,
+          "end": 23
+        }
+      ],
+      "avatar": "assets/generated/x/following-paulskallas-avatar.png",
+      "authorName": "LindyMan",
+      "username": "PaulSkallas",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/following-paulskallas-post-2059690748769943723-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2059679773253902452",
+      "text": "waymo but it comes with a hairdryer, who's building this",
+      "createdAt": "2026-05-27T16:54:59.000Z",
+      "url": "https://x.com/paularambles/status/2059679773253902452",
+      "urls": [],
+      "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "authorName": "“paula”",
+      "username": "paularambles",
+      "media": []
+    },
+    {
+      "id": "2059664770287215045",
+      "text": "this would kill a finnish person",
+      "createdAt": "2026-05-27T15:55:22.000Z",
+      "url": "https://x.com/paularambles/status/2059664770287215045",
+      "urls": [],
+      "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "authorName": "“paula”",
+      "username": "paularambles",
+      "media": []
+    },
+    {
+      "id": "2059664742915125348",
+      "text": "US gym culture is crazy because wdym you’re in the sauna fully clothed with sneakers and noise-cancelling headphones",
+      "createdAt": "2026-05-27T15:55:16.000Z",
+      "url": "https://x.com/paularambles/status/2059664742915125348",
+      "urls": [],
+      "avatar": "assets/generated/x/following-paularambles-avatar.png",
+      "authorName": "“paula”",
+      "username": "paularambles",
+      "media": []
+    },
+    {
+      "id": "2059645319457931358",
+      "text": "Gustaf (right) when he was in YC. You can see why our nickname for this startup was \"the band\". https://t.co/5zF9Rx8HfA",
+      "createdAt": "2026-05-27T14:38:05.000Z",
+      "url": "https://x.com/paulg/status/2059645319457931358",
+      "urls": [
+        {
+          "url": "https://t.co/5zF9Rx8HfA",
+          "expandedUrl": "https://x.com/paulg/status/2059645319457931358/photo/1",
+          "displayUrl": "pic.x.com/5zF9Rx8HfA",
+          "start": 96,
+          "end": 119
+        }
+      ],
+      "avatar": "assets/generated/x/following-paulg-avatar.png",
+      "authorName": "Paul Graham",
+      "username": "paulg",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/following-paulg-post-2059645319457931358-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2059642638022652347",
+      "text": "One of my favorite pictures ever. 17 years ago. https://t.co/GQTUt8xx3x",
+      "createdAt": "2026-05-27T14:27:25.000Z",
+      "url": "https://x.com/paulg/status/2059642638022652347",
+      "urls": [
+        {
+          "url": "https://t.co/GQTUt8xx3x",
+          "expandedUrl": "https://x.com/paulg/status/2059642638022652347/photo/1",
+          "displayUrl": "pic.x.com/GQTUt8xx3x",
+          "start": 48,
+          "end": 71
+        }
+      ],
+      "avatar": "assets/generated/x/following-paulg-avatar.png",
+      "authorName": "Paul Graham",
+      "username": "paulg",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/following-paulg-post-2059642638022652347-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2059623443801256368",
+      "text": "Something people forget is that in the 80s and 90s photos of super cars would be everywhere in society. Offices. Stores. In peoples bedrooms\n\nA huge chunk of the population was a car enthsuasist of some degree \n\nThat's faded a lot over time. Cars are not this cool thing anymore",
+      "createdAt": "2026-05-27T13:11:09.000Z",
+      "url": "https://x.com/PaulSkallas/status/2059623443801256368",
+      "urls": [],
+      "avatar": "assets/generated/x/following-paulskallas-avatar.png",
+      "authorName": "LindyMan",
+      "username": "PaulSkallas",
+      "media": []
+    },
+    {
+      "id": "2059618578211438884",
+      "text": "14 yo asked how to prove the Pythagorean theorem so I drew him this. https://t.co/SDcWEhVLKD",
+      "createdAt": "2026-05-27T12:51:49.000Z",
+      "url": "https://x.com/paulg/status/2059618578211438884",
+      "urls": [
+        {
+          "url": "https://t.co/SDcWEhVLKD",
+          "expandedUrl": "https://x.com/paulg/status/2059618578211438884/photo/1",
+          "displayUrl": "pic.x.com/SDcWEhVLKD",
+          "start": 69,
+          "end": 92
+        }
+      ],
+      "avatar": "assets/generated/x/following-paulg-avatar.png",
+      "authorName": "Paul Graham",
+      "username": "paulg",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/following-paulg-post-2059618578211438884-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2059605541719343245",
+      "text": "I follow with concern the war in #Ukraine, which is experiencing a sharp intensification in these days. I wish to express my closeness to all those suffering due to recent attacks carried out even against civilians. War does not solve problems but worsens them. It does not create",
+      "createdAt": "2026-05-27T12:00:01.000Z",
+      "url": "https://x.com/Pontifex/status/2059605541719343245",
+      "urls": [],
+      "avatar": "assets/generated/x/following-pontifex-avatar.png",
+      "authorName": "Pope Leo XIV",
+      "username": "Pontifex",
+      "media": []
+    }
+  ]
 };

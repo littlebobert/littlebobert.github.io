@@ -537,13 +537,20 @@ html[lang="ja"] .stack-topic-list .latin {
   background-size: 4px 4px;
   background-position: 0 0, 0 2px, 2px -2px, -2px 0;
   cursor: crosshair;
-  touch-action: none;
+  touch-action: auto;
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
 }
 
+.stack-card-map .world-map-frame {
+  align-self: center;
+  width: 96%;
+}
+
 .world-map-frame.is-zoomed {
   cursor: grab;
+  overscroll-behavior: contain;
+  touch-action: none;
 }
 
 .world-map-frame.is-panning {
@@ -654,10 +661,21 @@ html[lang="ja"] .stack-topic-list .latin {
 }
 
 .map-location-status {
-  min-height: 18px;
+  box-sizing: border-box;
+  height: 22px;
   margin: 6px 0 0;
+  padding-top: 1px;
   font-size: 16px;
-  line-height: 1.1;
+  line-height: 20px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+html[lang="ja"] .stack-card .map-location-status {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 20px;
 }
 
 .stack-actions {
@@ -1351,6 +1369,33 @@ div.patents {
 
   .stack-card p {
     font-size: 19px;
+  }
+
+  .stack-card-map {
+    padding: 12px 10px;
+  }
+
+  .stack-card-map .stack-card-kicker {
+    margin-bottom: 6px;
+  }
+
+  .stack-card-map h2 {
+    margin-bottom: 8px;
+    font-size: 26px;
+  }
+
+  .stack-card-map .world-map-note {
+    margin-bottom: 0;
+    font-size: 17px;
+  }
+
+  .stack-card-map .world-map-frame {
+    width: 94%;
+    margin-top: 6px;
+  }
+
+  .stack-card-map .map-controls {
+    margin-top: 6px;
   }
 
   .stack-actions a,

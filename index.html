@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <script src="theme.js"></script>
   <title>About Justin Garcia</title>
-  <link href='style.css?v=86' rel='stylesheet'>
+  <link href='style.css?v=89' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://littlebobert.github.io/">
   <meta name="description" content="iOS engineer in Tokyo." />
@@ -161,7 +161,7 @@
           </div>
         </section>
 
-        <section class="stack-card" data-stack-card hidden>
+        <section class="stack-card stack-card-map" data-stack-card hidden>
           <div class="stack-card-kicker" data-label-en="Email me!" data-label-ja="<span class='ja-text'>メールして！</span>">Email me!</div>
           <h2
             data-label-en="Where are you from?"
@@ -477,11 +477,14 @@
     let mapPanY = 0;
     let mapPointerStart = null;
     let suppressMapClick = false;
+    let lastMapTap = null;
 
     const ZOOM_OPEN_MS = 220;
     const ZOOM_CLOSE_MS = 200;
     const ZOOM_SHADE_MS = 110;
     const BOOT_ICON_PAUSE_MS = 500;
+    const MAP_DOUBLE_TAP_MS = 320;
+    const MAP_DOUBLE_TAP_DISTANCE = 28;
 
     function updateStackCard() {
       stackCards.forEach((card, index) => {
@@ -549,6 +552,33 @@
       return group;
     }
 
+    function getSvgElementClientCenter(element) {
+      const svg = element?.ownerSVGElement || element;
+      const viewBox = svg?.viewBox?.baseVal;
+      if (!element?.getBBox || !viewBox || !worldMapObject) {
+        return null;
+      }
+
+      const box = element.getBBox();
+      if (!box.width && !box.height) {
+        return null;
+      }
+
+      const objectRect = worldMapObject.getBoundingClientRect();
+      return {
+        clientX: objectRect.left + ((box.x + box.width / 2 - viewBox.x) / viewBox.width) * objectRect.width,
+        clientY: objectRect.top + ((box.y + box.height / 2 - viewBox.y) / viewBox.height) * objectRect.height,
+      };
+    }
+
+    function getCountryPinPoint(countryGroup, eventTarget, fallbackPoint) {
+      const countryShape = eventTarget?.closest?.('path,circle,ellipse,polygon,rect');
+      const pinTarget = countryShape && countryGroup?.contains(countryShape)
+        ? countryShape
+        : countryGroup;
+      return getSvgElementClientCenter(pinTarget) || fallbackPoint;
+    }
+
     function updateMapStatus(text) {
       if (mapLocationStatus) {
         mapLocationStatus.textContent = text;
@@ -564,8 +594,9 @@
       }
     }
 
-    function placeMapPin(clientX, clientY, countryGroup) {
-      const point = getMapPoint(clientX, clientY);
+    function placeMapPin(countryGroup, eventTarget, fallbackPoint) {
+      const pinPoint = getCountryPinPoint(countryGroup, eventTarget, fallbackPoint);
+      const point = pinPoint ? getMapPoint(pinPoint.clientX, pinPoint.clientY) : null;
       if (!point || !countryGroup || !selectedMapPin || !mapEmailButton) {
         updateMapStatus('Tap a country on the map.');
         return;
@@ -600,18 +631,35 @@
       worldMapFrame.classList.toggle('is-zoomed', mapZoom > 1);
     }
 
-    function setMapZoom(nextZoom) {
+    function setMapZoom(nextZoom, focusPoint = null) {
       const previousZoom = mapZoom;
       mapZoom = clamp(nextZoom, 1, 4);
       if (mapZoom === 1) {
         mapPanX = 0;
         mapPanY = 0;
+      } else if (previousZoom > 0 && focusPoint && worldMapFrame) {
+        const rect = worldMapFrame.getBoundingClientRect();
+        const ratio = mapZoom / previousZoom;
+        const focusX = focusPoint.clientX - rect.left - rect.width / 2;
+        const focusY = focusPoint.clientY - rect.top - rect.height / 2;
+        mapPanX = mapPanX * ratio + focusX * (1 - ratio);
+        mapPanY = mapPanY * ratio + focusY * (1 - ratio);
       } else if (previousZoom > 0) {
         const ratio = mapZoom / previousZoom;
         mapPanX *= ratio;
         mapPanY *= ratio;
       }
       setMapTransform();
+    }
+
+    function isMapDoubleTap(point) {
+      const now = performance.now();
+      const wasDoubleTap = lastMapTap
+        && now - lastMapTap.time < MAP_DOUBLE_TAP_MS
+        && Math.hypot(point.clientX - lastMapTap.clientX, point.clientY - lastMapTap.clientY) < MAP_DOUBLE_TAP_DISTANCE;
+
+      lastMapTap = wasDoubleTap ? null : { time: now, clientX: point.clientX, clientY: point.clientY };
+      return wasDoubleTap;
     }
 
     function captureMapPointer(pointerId) {
@@ -712,7 +760,12 @@
       }, 0);
 
       if (!didPan) {
-        placeMapPin(point.clientX, point.clientY, getCountryGroup(event.target));
+        if (isMapDoubleTap(point)) {
+          setMapZoom(mapZoom + 0.5, point);
+          return;
+        }
+
+        placeMapPin(getCountryGroup(event.target), event.target, point);
       }
     }
 
@@ -728,7 +781,15 @@
       }
 
       const point = getOuterMapClientPoint(event);
-      placeMapPin(point.clientX, point.clientY, getCountryGroup(event.target));
+      placeMapPin(getCountryGroup(event.target), event.target, point);
+    }
+
+    function handleMapTouchMove(event) {
+      if (mapZoom <= 1 || !event.cancelable) {
+        return;
+      }
+
+      event.preventDefault();
     }
 
     function wireMapPointerTarget(target) {
@@ -742,6 +803,7 @@
       target.addEventListener('pointerup', handleMapPointerUp);
       target.addEventListener('pointercancel', handleMapPointerCancel);
       target.addEventListener('click', handleMapClick);
+      target.addEventListener('touchmove', handleMapTouchMove, { passive: false });
     }
 
     function prepareMapSvg() {

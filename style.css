@@ -754,11 +754,6 @@ html[lang="ja"] .stack-card p .latin {
   image-rendering: pixelated;
 }
 
-.x-post-avatar-modern,
-.x-post-media-modern {
-  display: none;
-}
-
 .x-post-identity {
   grid-column: 2;
   display: flex;
@@ -813,6 +808,11 @@ html[lang="ja"] .stack-card .x-post-text {
   border: 2px solid #000;
   object-fit: contain;
   image-rendering: pixelated;
+}
+
+.x-post-avatar-modern,
+.x-post-media-modern {
+  display: none;
 }
 
 .x-post-link {

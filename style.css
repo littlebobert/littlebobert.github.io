@@ -383,6 +383,15 @@ html[lang="ja"] .language-switcher > button {
   white-space: nowrap;
 }
 
+.stack-visitor-counter {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 16px;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
 .hypercard-stack {
   position: relative;
   margin: 0 6px 6px 0;
@@ -742,21 +751,27 @@ html[lang="ja"] .stack-card .map-location-status {
   min-height: 34px;
   padding: 5px 10px;
   border: 2px solid #000;
-  box-shadow: 1px 1px 0 #000;
+  box-shadow:
+    2px 2px 0 #000,
+    inset 1px 1px 0 #fff,
+    inset -2px -2px 0 #9b9b9b;
   background: #fff;
   color: #000;
   font-size: 18px;
   line-height: 1;
   text-align: center;
   text-decoration: none;
+  text-shadow: 1px 1px 0 #fff;
   -webkit-tap-highlight-color: transparent;
 }
 
 .stack-actions a:hover {
-  background: #000;
-  color: #fff;
-  box-shadow: none;
-  transform: translate(1px, 1px);
+  background: #fff;
+  color: #000;
+  box-shadow:
+    inset 2px 2px 0 #777,
+    inset -1px -1px 0 #fff;
+  transform: translate(2px, 2px);
 }
 
 .stack-controls {
@@ -772,18 +787,25 @@ html[lang="ja"] .stack-card .map-location-status {
   min-height: 40px;
   padding: 5px 10px;
   border: 2px solid #000;
-  box-shadow: 2px 2px 0 #000;
+  box-shadow:
+    2px 2px 0 #000,
+    inset 1px 1px 0 #fff,
+    inset -2px -2px 0 #9b9b9b;
   background: #fff;
   color: #000;
   cursor: pointer;
   font-family: 'VT323', 'Monaco', monospace;
   font-size: 20px;
   line-height: 1;
+  text-shadow: 1px 1px 0 #fff;
   -webkit-tap-highlight-color: transparent;
 }
 
 .stack-button-secondary {
-  box-shadow: 1px 1px 0 #000;
+  box-shadow:
+    2px 2px 0 #000,
+    inset 1px 1px 0 #fff,
+    inset -2px -2px 0 #9b9b9b;
 }
 
 .stack-button:focus-visible,
@@ -798,7 +820,9 @@ html[lang="ja"] .stack-card .map-location-status {
   .appearance-segment:hover,
   .appearance-segment:active,
   .clock-mode-segment:hover,
-  .clock-mode-segment:active {
+  .clock-mode-segment:active,
+  .weather-unit-segment:hover,
+  .weather-unit-segment:active {
     background: #000;
     color: #fff;
     box-shadow: none;
@@ -806,7 +830,15 @@ html[lang="ja"] .stack-card .map-location-status {
   }
 
   .stack-button:hover,
-  .stack-button:active,
+  .stack-button:active {
+    background: #fff;
+    color: #000;
+    box-shadow:
+      inset 2px 2px 0 #777,
+      inset -1px -1px 0 #fff;
+    transform: translate(2px, 2px);
+  }
+
   .map-control-button:not(:disabled):hover,
   .map-control-button:not(:disabled):active {
     background: #000;
@@ -1118,7 +1150,8 @@ html[data-clock-mode="analog"] .analog-clock {
 
 .language-segmented,
 .appearance-segmented,
-.clock-mode-segmented {
+.clock-mode-segmented,
+.weather-unit-segmented {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   align-items: stretch;
@@ -1129,7 +1162,8 @@ html[data-clock-mode="analog"] .analog-clock {
 
 .language-segment,
 .appearance-segment,
-.clock-mode-segment {
+.clock-mode-segment,
+.weather-unit-segment {
   appearance: none;
   -webkit-appearance: none;
   display: inline-flex;
@@ -1153,13 +1187,15 @@ html[data-clock-mode="analog"] .analog-clock {
 
 .language-segment:first-child,
 .appearance-segment:first-child,
-.clock-mode-segment:first-child {
+.clock-mode-segment:first-child,
+.weather-unit-segment:first-child {
   border-left: none;
 }
 
 .language-segment[aria-pressed="true"],
 .appearance-segment[aria-pressed="true"],
-.clock-mode-segment[aria-pressed="true"] {
+.clock-mode-segment[aria-pressed="true"],
+.weather-unit-segment[aria-pressed="true"] {
   background:
     linear-gradient(45deg, #5f5f5f 25%, transparent 25%),
     linear-gradient(-45deg, #5f5f5f 25%, transparent 25%),
@@ -1178,7 +1214,8 @@ html[data-clock-mode="analog"] .analog-clock {
 
 html[lang="ja"] .language-segment,
 html[lang="ja"] .appearance-segment,
-html[lang="ja"] .clock-mode-segment {
+html[lang="ja"] .clock-mode-segment,
+html[lang="ja"] .weather-unit-segment {
   font-size: 12px;
   font-weight: bold;
 }
@@ -1190,9 +1227,45 @@ html[lang="ja"]:not([data-theme="modern"]) .language-segment[data-language-value
 
 .language-segment:focus-visible,
 .appearance-segment:focus-visible,
-.clock-mode-segment:focus-visible {
+.clock-mode-segment:focus-visible,
+.weather-unit-segment:focus-visible {
   outline: 2px solid #000;
   outline-offset: 2px;
+}
+
+.clock-weather {
+  margin-top: 3px;
+  font-variant-numeric: tabular-nums;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.visitor-counter {
+  letter-spacing: 1px;
+  font-variant-numeric: tabular-nums;
+}
+
+.weather-attribution {
+  display: flex;
+  justify-content: flex-end;
+  gap: 3px;
+  margin-top: 2px;
+  border-top: 1px solid #000;
+  padding-top: 2px;
+  font-size: 11px;
+  line-height: 1;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.weather-attribution a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.weather-attribution a:hover {
+  background: #000;
+  color: #fff;
 }
 
 .appearance-option {
@@ -1585,7 +1658,8 @@ div.patents {
 
   html[data-theme="modern"] .language-segmented,
   html[data-theme="modern"] .appearance-segmented,
-  html[data-theme="modern"] .clock-mode-segmented {
+  html[data-theme="modern"] .clock-mode-segmented,
+  html[data-theme="modern"] .weather-unit-segmented {
     flex-direction: row;
     flex-wrap: nowrap;
     width: auto;
@@ -1594,7 +1668,8 @@ div.patents {
 
   html[data-theme="modern"] .language-segment,
   html[data-theme="modern"] .appearance-segment,
-  html[data-theme="modern"] .clock-mode-segment {
+  html[data-theme="modern"] .clock-mode-segment,
+  html[data-theme="modern"] .weather-unit-segment {
     font-size: 10px;
     padding: 3px 7px;
     white-space: nowrap;
@@ -1602,7 +1677,8 @@ div.patents {
 
   html[lang="ja"][data-theme="modern"] .language-segment,
   html[lang="ja"][data-theme="modern"] .appearance-segment,
-  html[lang="ja"][data-theme="modern"] .clock-mode-segment {
+  html[lang="ja"][data-theme="modern"] .clock-mode-segment,
+  html[lang="ja"][data-theme="modern"] .weather-unit-segment {
     font-size: 11px;
     padding: 3px 5px;
   }
@@ -1750,6 +1826,21 @@ html[data-theme="modern"] .clock-widget:not(.appearance-panel) .clock-content {
   text-align: right;
 }
 
+html[data-theme="modern"] .weather-attribution {
+  border-top-color: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.55);
+}
+
+html[data-theme="modern"] .weather-attribution a {
+  color: #0066cc;
+}
+
+html[data-theme="modern"] .weather-attribution a:hover {
+  background: transparent;
+  color: #004499;
+  text-decoration: underline;
+}
+
 html[data-theme="modern"] .analog-clock {
   width: 54px;
   height: 54px;
@@ -1782,7 +1873,8 @@ html[data-theme="modern"] .appearance-radios {
 
 html[data-theme="modern"] .language-segmented,
 html[data-theme="modern"] .appearance-segmented,
-html[data-theme="modern"] .clock-mode-segmented {
+html[data-theme="modern"] .clock-mode-segmented,
+html[data-theme="modern"] .weather-unit-segmented {
   display: grid;
   background: rgba(0, 0, 0, 0.08);
   border: none;
@@ -1794,7 +1886,8 @@ html[data-theme="modern"] .clock-mode-segmented {
 
 html[data-theme="modern"] .language-segment,
 html[data-theme="modern"] .appearance-segment,
-html[data-theme="modern"] .clock-mode-segment {
+html[data-theme="modern"] .clock-mode-segment,
+html[data-theme="modern"] .weather-unit-segment {
   display: inline-flex;
   border: none;
   background: transparent;
@@ -1814,14 +1907,16 @@ html[data-theme="modern"] .clock-mode-segment {
 
 html[lang="ja"][data-theme="modern"] .language-segment,
 html[lang="ja"][data-theme="modern"] .appearance-segment,
-html[lang="ja"][data-theme="modern"] .clock-mode-segment {
+html[lang="ja"][data-theme="modern"] .clock-mode-segment,
+html[lang="ja"][data-theme="modern"] .weather-unit-segment {
   font-size: 13px;
   font-weight: 600;
 }
 
 html[data-theme="modern"] .language-segment[aria-pressed="true"],
 html[data-theme="modern"] .appearance-segment[aria-pressed="true"],
-html[data-theme="modern"] .clock-mode-segment[aria-pressed="true"] {
+html[data-theme="modern"] .clock-mode-segment[aria-pressed="true"],
+html[data-theme="modern"] .weather-unit-segment[aria-pressed="true"] {
   background: #fff;
   color: rgba(0, 0, 0, 0.88);
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
@@ -1829,7 +1924,8 @@ html[data-theme="modern"] .clock-mode-segment[aria-pressed="true"] {
 
 html[data-theme="modern"] .language-segment:focus-visible,
 html[data-theme="modern"] .appearance-segment:focus-visible,
-html[data-theme="modern"] .clock-mode-segment:focus-visible {
+html[data-theme="modern"] .clock-mode-segment:focus-visible,
+html[data-theme="modern"] .weather-unit-segment:focus-visible {
   outline: 2px solid #007aff;
   outline-offset: 1px;
 }

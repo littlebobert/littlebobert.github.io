@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <script src="theme.js"></script>
   <title>About Justin Garcia</title>
-  <link href='style.css?v=93' rel='stylesheet'>
+  <link href='style.css?v=95' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://littlebobert.github.io/">
   <meta name="description" content="iOS engineer in Tokyo." />
@@ -58,6 +58,13 @@
     <div class="dialog-content stack-content">
       <div class="stack-top-row">
         <span class="stack-counter" id="stack-counter">1 / 6</span>
+        <div class="stack-visitor-counter">
+          <span
+            data-label-en="Visitors:"
+            data-label-ja="訪問者:"
+          >Visitors:</span>
+          <span class="visitor-counter" id="visitor-count" aria-live="polite">-</span>
+        </div>
       </div>
 
       <div class="hypercard-stack" id="hypercard-stack" aria-live="polite">
@@ -247,6 +254,7 @@
           <span class="analog-hand analog-second" id="tokyo-analog-second"></span>
           <span class="analog-pin"></span>
         </div>
+        <div class="clock-weather" id="tokyo-weather" aria-live="polite">-</div>
       </div>
     </div>
     <div class="clock-widget">
@@ -268,6 +276,7 @@
           <span class="analog-hand analog-second" id="tampa-analog-second"></span>
           <span class="analog-pin"></span>
         </div>
+        <div class="clock-weather" id="tampa-weather" aria-live="polite">-</div>
       </div>
     </div>
     </div>
@@ -332,6 +341,27 @@
             >Digital</span>
           </button>
         </div>
+        <div class="weather-unit-segmented" role="radiogroup" aria-label="Weather units">
+          <button type="button" class="weather-unit-segment" data-weather-unit-value="metric" aria-pressed="false">
+            <span
+              data-label-en="Metric"
+              data-label-ja="メートル法"
+            >Metric</span>
+          </button>
+          <button type="button" class="weather-unit-segment" data-weather-unit-value="imperial" aria-pressed="false">
+            <span
+              data-label-en="Imperial"
+              data-label-ja="ヤード・ポンド法"
+            >Imperial</span>
+          </button>
+        </div>
+        <div class="weather-attribution">
+          <span
+            data-label-en="Weather by:"
+            data-label-ja="天気:"
+          >Weather by:</span>
+          <a href="https://open-meteo.com/" data-label-en="Open-Meteo" data-label-ja="Open-Meteo">Open-Meteo</a>
+        </div>
       </div>
     </div>
     </div>
@@ -386,13 +416,40 @@
     }
 
     const CLOCK_MODE_STORAGE_KEY = 'clock-display-mode';
+    const WEATHER_UNIT_STORAGE_KEY = 'weather-unit';
+    const VISITOR_COUNTED_STORAGE_KEY = 'page-views-counter-counted';
+    const VISITOR_COUNTER_BASE_URL = 'https://page-views-api.ratneshc.com/api/v1';
+    const VISITOR_COUNTER_SITE = 'littlebobert.github.io';
+    const VISITOR_COUNTER_PATH = '/';
     const clockModeButtons = document.querySelectorAll('.clock-mode-segment');
+    const weatherUnitButtons = document.querySelectorAll('.weather-unit-segment');
     const languageButtons = document.querySelectorAll('.language-segment');
     const labelElements = document.querySelectorAll('[data-label-en][data-label-ja]');
+    const visitorCountElement = document.getElementById('visitor-count');
+    const weatherLocations = [
+      {
+        id: 'tokyo',
+        name: 'Tokyo',
+        latitude: 35.6762,
+        longitude: 139.6503,
+      },
+      {
+        id: 'tampa',
+        name: 'Tampa',
+        latitude: 27.9506,
+        longitude: -82.4572,
+      },
+    ];
+    let currentWeatherUnit = 'imperial';
+    let weatherReadings = {};
     let currentLanguage = 'en';
 
     function normalizeClockMode(mode) {
       return mode === 'analog' ? 'analog' : 'digital';
+    }
+
+    function normalizeWeatherUnit(unit) {
+      return unit === 'metric' ? 'metric' : 'imperial';
     }
 
     function getSavedClockMode() {
@@ -414,9 +471,174 @@
       });
     }
 
+    function getSavedWeatherUnit() {
+      try {
+        return normalizeWeatherUnit(localStorage.getItem(WEATHER_UNIT_STORAGE_KEY));
+      } catch {
+        return 'imperial';
+      }
+    }
+
+    function setWeatherUnit(unit) {
+      currentWeatherUnit = normalizeWeatherUnit(unit);
+      try {
+        localStorage.setItem(WEATHER_UNIT_STORAGE_KEY, currentWeatherUnit);
+      } catch {}
+      weatherUnitButtons.forEach((button) => {
+        button.setAttribute('aria-pressed', button.dataset.weatherUnitValue === currentWeatherUnit ? 'true' : 'false');
+      });
+      renderWeather();
+    }
+
+    function formatTemperature(celsius) {
+      if (typeof celsius !== 'number') {
+        return '-';
+      }
+      if (currentWeatherUnit === 'metric') {
+        return `${Math.round(celsius)}C`;
+      }
+      return `${Math.round((celsius * 9) / 5 + 32)}F`;
+    }
+
+    function weatherCodeLabel(code) {
+      if (code === 0) return 'Clear';
+      if ([1, 2, 3].includes(code)) return 'Clouds';
+      if ([45, 48].includes(code)) return 'Fog';
+      if ([51, 53, 55, 56, 57].includes(code)) return 'Drizzle';
+      if ([61, 63, 65, 66, 67, 80, 81, 82].includes(code)) return 'Rain';
+      if ([71, 73, 75, 77, 85, 86].includes(code)) return 'Snow';
+      if ([95, 96, 99].includes(code)) return 'Storm';
+      return 'Weather';
+    }
+
+    function renderWeather() {
+      weatherLocations.forEach((location) => {
+        const element = document.getElementById(`${location.id}-weather`);
+        const reading = weatherReadings[location.id];
+        if (!element) {
+          return;
+        }
+        if (!reading) {
+          element.textContent = '-';
+          return;
+        }
+        element.textContent = `${formatTemperature(reading.temperatureC)} ${weatherCodeLabel(reading.weatherCode)}`;
+      });
+    }
+
+    async function fetchWeather() {
+      try {
+        const responses = await Promise.all(weatherLocations.map(async (location) => {
+          const params = new URLSearchParams({
+            latitude: location.latitude,
+            longitude: location.longitude,
+            current: 'temperature_2m,weather_code',
+            temperature_unit: 'celsius',
+          });
+          const response = await fetch(`https://api.open-meteo.com/v1/forecast?${params}`);
+          if (!response.ok) {
+            throw new Error(`Weather request failed: ${response.status}`);
+          }
+          const data = await response.json();
+          return {
+            id: location.id,
+            temperatureC: data.current?.temperature_2m,
+            weatherCode: data.current?.weather_code,
+          };
+        }));
+
+        weatherReadings = responses.reduce((readings, reading) => {
+          readings[reading.id] = reading;
+          return readings;
+        }, {});
+        renderWeather();
+      } catch (error) {
+        weatherReadings = {};
+        weatherLocations.forEach((location) => {
+          const element = document.getElementById(`${location.id}-weather`);
+          if (element) {
+            element.textContent = '-';
+          }
+        });
+      }
+    }
+
+    function hasCountedVisitorThisSession() {
+      try {
+        return sessionStorage.getItem(VISITOR_COUNTED_STORAGE_KEY) === 'true';
+      } catch {
+        return false;
+      }
+    }
+
+    function markVisitorCountedThisSession() {
+      try {
+        sessionStorage.setItem(VISITOR_COUNTED_STORAGE_KEY, 'true');
+      } catch {}
+    }
+
+    function formatVisitorCount(value) {
+      const count = Number(value);
+      if (!Number.isFinite(count)) {
+        return '-';
+      }
+      return String(Math.max(0, Math.floor(count)));
+    }
+
+    function visitorCounterUrl(endpoint) {
+      const params = new URLSearchParams({
+        site: VISITOR_COUNTER_SITE,
+        path: VISITOR_COUNTER_PATH,
+      });
+      return `${VISITOR_COUNTER_BASE_URL}/${endpoint}?${params}`;
+    }
+
+    async function fetchVisitorCount() {
+      if (!visitorCountElement) {
+        return;
+      }
+
+      const controller = new AbortController();
+      const timeout = window.setTimeout(() => controller.abort(), 4000);
+
+      try {
+        if (!hasCountedVisitorThisSession()) {
+          const trackResponse = await fetch(visitorCounterUrl('track'), {
+            cache: 'no-store',
+            signal: controller.signal,
+          });
+          if (!trackResponse.ok) {
+            throw new Error(`Visitor counter tracking failed: ${trackResponse.status}`);
+          }
+          markVisitorCountedThisSession();
+        }
+
+        const response = await fetch(visitorCounterUrl('views'), {
+          cache: 'no-store',
+          signal: controller.signal,
+        });
+        if (!response.ok) {
+          throw new Error(`Visitor counter request failed: ${response.status}`);
+        }
+        const data = await response.json();
+        visitorCountElement.textContent = formatVisitorCount(data.views);
+      } catch (error) {
+        visitorCountElement.textContent = '-';
+      } finally {
+        window.clearTimeout(timeout);
+      }
+    }
+
     clockModeButtons.forEach((button) => {
       button.addEventListener('click', () => {
         setClockMode(button.dataset.clockModeValue);
+        button.blur();
+      });
+    });
+
+    weatherUnitButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setWeatherUnit(button.dataset.weatherUnitValue);
         button.blur();
       });
     });
@@ -1283,6 +1505,7 @@
     setLanguage(initialLanguage);
     updateStackCard();
     setClockMode(getSavedClockMode());
+    setWeatherUnit(getSavedWeatherUnit());
     initSiteTheme();
     document.addEventListener('site-theme-change', () => {
       storeExpandedAboutHeight();
@@ -1293,7 +1516,10 @@
     prepareMapSvg();
     bootAboutWindow();
     updateClocks();
+    fetchWeather();
+    fetchVisitorCount();
     setInterval(updateClocks, 1000);
+    setInterval(fetchWeather, 30 * 60 * 1000);
   </script>
 </body>
 

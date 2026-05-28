@@ -90,9 +90,9 @@
             data-label-ja="<span class='latin'>Kotoba</span><span class='ja-text'>のモバイル</span>"
           >Mobile at Kotoba</h2>
           <p
-            data-label-en="I work on <a href='https://site.kotoba.tech'>shipping speech AI</a>."
-            data-label-ja="<span class='ja-text'>音声</span><span class='latin'>AI</span><span class='ja-text'>を</span><a href='https://site.kotoba.tech'><span class='ja-text'>リリースする仕事</span></a><span class='ja-text'>をしています。</span>"
-          >I work on <a href="https://site.kotoba.tech">shipping speech AI</a>.</p>
+            data-label-en="I work on shipping <a href='https://site.kotoba.tech'>speech AI</a>."
+            data-label-ja="<a href='https://site.kotoba.tech'><span class='ja-text'>音声</span><span class='latin'>AI</span></a><span class='ja-text'>をリリースする仕事をしています。</span>"
+          >I work on shipping <a href="https://site.kotoba.tech">speech AI</a>.</p>
           <p
             data-label-en="Ask me about our <a href='https://kotoba.onelink.me/wkA2/28x5ctzi'>mobile app</a>!"
             data-label-ja="<span class='ja-text'>私たちの</span><a href='https://kotoba.onelink.me/wkA2/28x5ctzi'><span class='ja-text'>モバイルアプリ</span></a><span class='ja-text'>について聞いてください！</span>"
@@ -162,16 +162,16 @@
         </section>
 
         <section class="stack-card stack-card-map" data-stack-card hidden>
-          <div class="stack-card-kicker" data-label-en="Email me!" data-label-ja="<span class='ja-text'>メールして！</span>">Email me!</div>
+          <div class="stack-card-kicker" data-label-en="Guestbook" data-label-ja="<span class='ja-text'>ゲストブック</span>">Guestbook</div>
           <h2
             data-label-en="Where are you from?"
             data-label-ja="どこから来ましたか？"
           >Where are you from?</h2>
           <p
             class="world-map-note"
-            data-label-en="Zoom in and tap your country, then tap Email me."
-            data-label-ja="<span class='ja-text'>ズームして国をタップしてから、メールしてください。</span>"
-          >Zoom in and tap your country, then tap Email me.</p>
+            data-label-en="Zoom in and tap your country, then sign the guestbook."
+            data-label-ja="<span class='ja-text'>ズームして国をタップしてから、ゲストブックに記帳してください。</span>"
+          >Zoom in and tap your country, then sign the guestbook.</p>
           <div
             class="world-map-frame"
             id="world-map-frame"
@@ -198,9 +198,9 @@
               class="map-control-button map-email-button"
               id="map-email-button"
               disabled
-              data-label-en="Email me"
-              data-label-ja="メールする"
-            >Email me</button>
+              data-label-en="Sign guestbook"
+              data-label-ja="記帳する"
+            >Sign guestbook</button>
           </div>
           <p class="map-location-status" id="map-location-status" aria-live="polite"></p>
         </section>
@@ -646,7 +646,7 @@
       const pinPoint = getCountryPinPoint(countryGroup, eventTarget, fallbackPoint);
       const point = pinPoint ? getMapPoint(pinPoint.clientX, pinPoint.clientY) : null;
       if (!point || !countryGroup || !selectedMapPin || !mapEmailButton) {
-        updateMapStatus('Tap a country on the map.');
+        updateMapStatus('Pick your country first.');
         return;
       }
 
@@ -738,14 +738,14 @@
 
     function openMapEmail() {
       if (!selectedMapPlace) {
-        updateMapStatus('Place a pin first.');
+        updateMapStatus('Pick your country first.');
         return;
       }
 
-      const subject = 'Hello from your map';
+      const subject = 'Guestbook';
       const body = currentLanguage === 'ja'
-        ? `${selectedMapPlace}から来ました`
-        : `I’m from ${selectedMapPlace}`;
+        ? `${selectedMapPlace}から来ました。`
+        : `I’m from ${selectedMapPlace}.`;
       window.location.href = `mailto:justin.garcia@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
 
@@ -889,7 +889,7 @@
       }
 
       event.preventDefault();
-      updateMapStatus('Tap a country on the map.');
+      updateMapStatus('Pick your country first.');
     });
 
     stackPrevButton?.addEventListener('click', () => {

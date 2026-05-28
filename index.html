@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <script src="theme.js"></script>
   <title>About Justin Garcia</title>
-  <link href='style.css?v=90' rel='stylesheet'>
+  <link href='style.css?v=93' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://littlebobert.github.io/">
   <meta name="description" content="iOS engineer in Tokyo." />
@@ -25,7 +25,7 @@
   <meta name="twitter:image" content="https://littlebobert.github.io/assets/about-social.png?v=1" />
 </head>
 
-<body>
+<body class="home-page">
   <div class="desktop">
     <div class="about-slot is-closed" id="about-slot">
     <button
@@ -478,6 +478,8 @@
     let mapPointerStart = null;
     let suppressMapClick = false;
     let lastMapTap = null;
+    let lastPageTap = null;
+    let stackTransitionTimeout = null;
 
     const ZOOM_OPEN_MS = 220;
     const ZOOM_CLOSE_MS = 200;
@@ -485,13 +487,35 @@
     const BOOT_ICON_PAUSE_MS = 500;
     const MAP_DOUBLE_TAP_MS = 320;
     const MAP_DOUBLE_TAP_DISTANCE = 28;
+    const STACK_WIPE_MS = 220;
 
-    function updateStackCard() {
+    function clearStackTransition() {
+      if (stackTransitionTimeout) {
+        clearTimeout(stackTransitionTimeout);
+        stackTransitionTimeout = null;
+      }
+      hypercardStack?.classList.remove('is-card-wiping');
+      hypercardStack?.removeAttribute('data-card-transition');
+    }
+
+    function updateStackCard(direction = 0) {
+      const shouldAnimate = direction !== 0 && hypercardStack && !prefersReducedMotion();
+      if (shouldAnimate) {
+        clearStackTransition();
+        hypercardStack.dataset.cardTransition = direction > 0 ? 'next' : 'prev';
+      }
+
       stackCards.forEach((card, index) => {
         const isActive = index === currentStackCardIndex;
         card.hidden = !isActive;
         card.classList.toggle('is-active', isActive);
       });
+
+      if (shouldAnimate) {
+        void hypercardStack.offsetWidth;
+        hypercardStack.classList.add('is-card-wiping');
+        stackTransitionTimeout = setTimeout(clearStackTransition, STACK_WIPE_MS + 40);
+      }
 
       if (stackCounter) {
         stackCounter.textContent = `${currentStackCardIndex + 1} / ${stackCards.length}`;
@@ -510,12 +534,36 @@
       }
 
       currentStackCardIndex = (currentStackCardIndex + direction + stackCards.length) % stackCards.length;
-      updateStackCard();
+      updateStackCard(direction);
     }
 
     function clamp(value, min, max) {
       return Math.min(Math.max(value, min), max);
     }
+
+    function preventPageDoubleTapZoom(event) {
+      if (event.changedTouches.length !== 1) {
+        return;
+      }
+
+      const touch = event.changedTouches[0];
+      const now = performance.now();
+      const wasDoubleTap = lastPageTap
+        && now - lastPageTap.time < MAP_DOUBLE_TAP_MS
+        && Math.hypot(touch.clientX - lastPageTap.clientX, touch.clientY - lastPageTap.clientY) < MAP_DOUBLE_TAP_DISTANCE;
+
+      if (wasDoubleTap) {
+        if (event.cancelable) {
+          event.preventDefault();
+        }
+        lastPageTap = null;
+        return;
+      }
+
+      lastPageTap = { time: now, clientX: touch.clientX, clientY: touch.clientY };
+    }
+
+    document.addEventListener('touchend', preventPageDoubleTapZoom, { passive: false });
 
     function getMapPoint(clientX, clientY) {
       if (!worldMapFrame || !worldMapLayer) {
@@ -877,6 +925,12 @@
 
       showRelativeStackCard(dx < 0 ? 1 : -1);
     }, { passive: true });
+
+    hypercardStack?.addEventListener('animationend', (event) => {
+      if (event.target.classList.contains('stack-card')) {
+        clearStackTransition();
+      }
+    });
 
     function prefersReducedMotion() {
       return window.matchMedia('(prefers-reduced-motion: reduce)').matches;

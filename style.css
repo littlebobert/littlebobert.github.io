@@ -29,6 +29,12 @@ body {
   background-position: 0 0, 0 2px, 2px -2px, -2px 0px;
 }
 
+body.home-page,
+body.home-page button,
+body.home-page a {
+  touch-action: manipulation;
+}
+
 body:not(.resume-page) {
   display: -webkit-flex;
   display: flex;
@@ -417,6 +423,49 @@ html[lang="ja"] .language-switcher > button {
   display: none;
 }
 
+.hypercard-stack.is-card-wiping .stack-card.is-active {
+  animation-duration: 220ms;
+  animation-timing-function: steps(10, end);
+  animation-fill-mode: both;
+  will-change: clip-path, transform;
+}
+
+.hypercard-stack.is-card-wiping[data-card-transition="next"] .stack-card.is-active {
+  animation-name: stack-wipe-next;
+}
+
+.hypercard-stack.is-card-wiping[data-card-transition="prev"] .stack-card.is-active {
+  animation-name: stack-wipe-prev;
+}
+
+@keyframes stack-wipe-next {
+  from {
+    -webkit-clip-path: inset(0 100% 0 0);
+    clip-path: inset(0 100% 0 0);
+    transform: translateX(10px);
+  }
+
+  to {
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes stack-wipe-prev {
+  from {
+    -webkit-clip-path: inset(0 0 0 100%);
+    clip-path: inset(0 0 0 100%);
+    transform: translateX(-10px);
+  }
+
+  to {
+    -webkit-clip-path: inset(0 0 0 0);
+    clip-path: inset(0 0 0 0);
+    transform: translateX(0);
+  }
+}
+
 .stack-card-kicker {
   align-self: flex-start;
   margin-bottom: 8px;
@@ -537,7 +586,7 @@ html[lang="ja"] .stack-topic-list .latin {
   background-size: 4px 4px;
   background-position: 0 0, 0 2px, 2px -2px, -2px 0;
   cursor: crosshair;
-  touch-action: auto;
+  touch-action: manipulation;
   overflow: hidden;
   -webkit-tap-highlight-color: transparent;
 }
@@ -2088,6 +2137,10 @@ html[data-theme="modern"] .memory-bar-fill {
 }
 
 @media (prefers-reduced-motion: reduce) {
+  .hypercard-stack.is-card-wiping .stack-card.is-active {
+    animation: none;
+  }
+
   html[data-theme="modern"] .memory-bar-fill {
     animation: none;
     background: #007aff;

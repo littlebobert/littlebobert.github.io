@@ -808,6 +808,16 @@ html[lang="ja"] .stack-card .map-location-status {
     inset -2px -2px 0 #9b9b9b;
 }
 
+.stack-button:hover,
+.stack-button:active {
+  background: #fff;
+  color: #000;
+  box-shadow:
+    inset 2px 2px 0 #777,
+    inset -1px -1px 0 #fff;
+  transform: translate(2px, 2px);
+}
+
 .stack-button:focus-visible,
 .stack-actions a:focus-visible {
   outline: 2px solid #000;
@@ -827,16 +837,6 @@ html[lang="ja"] .stack-card .map-location-status {
     color: #fff;
     box-shadow: none;
     transform: none;
-  }
-
-  .stack-button:hover,
-  .stack-button:active {
-    background: #fff;
-    color: #000;
-    box-shadow:
-      inset 2px 2px 0 #777,
-      inset -1px -1px 0 #fff;
-    transform: translate(2px, 2px);
   }
 
   .map-control-button:not(:disabled):hover,

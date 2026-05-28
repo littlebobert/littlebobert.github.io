@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <script src="theme.js"></script>
   <title>About Justin Garcia</title>
-  <link href='style.css?v=82' rel='stylesheet'>
+  <link href='style.css?v=86' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://littlebobert.github.io/">
   <meta name="description" content="iOS engineer in Tokyo." />
@@ -146,14 +146,63 @@
         <section class="stack-card" data-stack-card hidden>
           <div class="stack-card-kicker" data-label-en="Elsewhere" data-label-ja="リンク">Elsewhere</div>
           <h2
-            data-label-en="Find me after this"
-            data-label-ja="<span class='ja-text'>また話しましょう</span>"
-          >Find me after this</h2>
+            data-label-en="Let me add you"
+            data-label-ja="<span class='ja-text'>追加させてください</span>"
+          >Let me add you</h2>
+          <p
+            data-label-en="Are you active on any of these platforms?"
+            data-label-ja="<span class='ja-text'>この中でよく使っているものはありますか？</span>"
+          >Are you active on any of these platforms?</p>
           <div class="stack-actions">
             <a href="https://x.com/_bobertdowney">X</a>
+            <a href="https://www.instagram.com/bobertdowney/">Instagram</a>
             <a href="https://www.linkedin.com/in/garciajustin/">LinkedIn</a>
             <a href="resume.html" data-label-en="Resume" data-label-ja="<span class='ja-text'>履歴書</span>">Resume</a>
           </div>
+        </section>
+
+        <section class="stack-card" data-stack-card hidden>
+          <div class="stack-card-kicker" data-label-en="Email me!" data-label-ja="<span class='ja-text'>メールして！</span>">Email me!</div>
+          <h2
+            data-label-en="Where are you from?"
+            data-label-ja="どこから来ましたか？"
+          >Where are you from?</h2>
+          <p
+            class="world-map-note"
+            data-label-en="Zoom in and tap your country, then tap Email me."
+            data-label-ja="<span class='ja-text'>ズームして国をタップしてから、メールしてください。</span>"
+          >Zoom in and tap your country, then tap Email me.</p>
+          <div
+            class="world-map-frame"
+            id="world-map-frame"
+            role="button"
+            tabindex="0"
+            aria-label="Tap your country to place a pin"
+          >
+            <div class="world-map-layer" id="world-map-layer">
+              <object
+                id="world-map-svg"
+                class="world-map-img world-map-svg"
+                type="image/svg+xml"
+                data="assets/world-states.svg"
+                aria-label="World map"
+              ></object>
+              <span class="map-pin selected-map-pin" id="selected-map-pin" aria-hidden="true" hidden></span>
+            </div>
+          </div>
+          <div class="map-controls" aria-label="Map controls">
+            <button type="button" class="map-control-button" id="map-zoom-out" aria-label="Zoom out">-</button>
+            <button type="button" class="map-control-button" id="map-zoom-in" aria-label="Zoom in">+</button>
+            <button
+              type="button"
+              class="map-control-button map-email-button"
+              id="map-email-button"
+              disabled
+              data-label-en="Email me"
+              data-label-ja="メールする"
+            >Email me</button>
+          </div>
+          <p class="map-location-status" id="map-location-status" aria-live="polite"></p>
         </section>
       </div>
 
@@ -384,6 +433,10 @@
       });
       document.title = currentLanguage === 'ja' ? 'Justin Garcia について' : 'About Justin Garcia';
       localStorage.setItem('site-language', currentLanguage);
+      if (selectedMapCountryCode) {
+        selectedMapPlace = getRegionName(selectedMapCountryCode);
+        updateMapStatus(selectedMapPlace);
+      }
     }
 
     languageButtons.forEach((button) => {
@@ -403,11 +456,27 @@
     const stackCounter = document.getElementById('stack-counter');
     const stackPrevButton = document.getElementById('stack-prev');
     const stackNextButton = document.getElementById('stack-next');
+    const worldMapFrame = document.getElementById('world-map-frame');
+    const worldMapLayer = document.getElementById('world-map-layer');
+    const worldMapObject = document.getElementById('world-map-svg');
+    const selectedMapPin = document.getElementById('selected-map-pin');
+    const mapLocationStatus = document.getElementById('map-location-status');
+    const mapEmailButton = document.getElementById('map-email-button');
+    const mapZoomInButton = document.getElementById('map-zoom-in');
+    const mapZoomOutButton = document.getElementById('map-zoom-out');
     let expandedAboutHeight = 0;
     let isWindowAnimating = false;
     let currentStackCardIndex = 0;
     let stackTouchStartX = null;
     let stackTouchStartY = null;
+    let selectedMapCountryCode = '';
+    let selectedMapPlace = '';
+    let selectedMapCountryElement = null;
+    let mapZoom = 1;
+    let mapPanX = 0;
+    let mapPanY = 0;
+    let mapPointerStart = null;
+    let suppressMapClick = false;
 
     const ZOOM_OPEN_MS = 220;
     const ZOOM_CLOSE_MS = 200;
@@ -440,6 +509,279 @@
       currentStackCardIndex = (currentStackCardIndex + direction + stackCards.length) % stackCards.length;
       updateStackCard();
     }
+
+    function clamp(value, min, max) {
+      return Math.min(Math.max(value, min), max);
+    }
+
+    function getMapPoint(clientX, clientY) {
+      if (!worldMapFrame || !worldMapLayer) {
+        return null;
+      }
+
+      const layerRect = worldMapLayer.getBoundingClientRect();
+      const x = clamp(clientX - layerRect.left, 0, layerRect.width);
+      const y = clamp(clientY - layerRect.top, 0, layerRect.height);
+      return {
+        pinXPercent: (x / layerRect.width) * 100,
+        pinYPercent: (y / layerRect.height) * 100,
+      };
+    }
+
+    function getOuterMapClientPoint(event) {
+      if (event.view === window || !worldMapObject) {
+        return { clientX: event.clientX, clientY: event.clientY };
+      }
+
+      const objectRect = worldMapObject.getBoundingClientRect();
+      return {
+        clientX: objectRect.left + event.clientX,
+        clientY: objectRect.top + event.clientY,
+      };
+    }
+
+    function getCountryGroup(target) {
+      const group = target?.closest?.('g[id]');
+      if (!group || !/^[A-Z]{2}$/.test(group.id)) {
+        return null;
+      }
+
+      return group;
+    }
+
+    function updateMapStatus(text) {
+      if (mapLocationStatus) {
+        mapLocationStatus.textContent = text;
+      }
+    }
+
+    function getRegionName(countryCode) {
+      try {
+        const displayNames = new Intl.DisplayNames([document.documentElement.lang || 'en'], { type: 'region' });
+        return displayNames.of(countryCode) || countryCode;
+      } catch (error) {
+        return countryCode;
+      }
+    }
+
+    function placeMapPin(clientX, clientY, countryGroup) {
+      const point = getMapPoint(clientX, clientY);
+      if (!point || !countryGroup || !selectedMapPin || !mapEmailButton) {
+        updateMapStatus('Tap a country on the map.');
+        return;
+      }
+
+      selectedMapCountryElement?.classList.remove('is-selected');
+      selectedMapCountryCode = countryGroup.id;
+      selectedMapPlace = getRegionName(selectedMapCountryCode);
+      selectedMapCountryElement = countryGroup;
+      selectedMapCountryElement.classList.add('is-selected');
+      selectedMapPin.hidden = false;
+      selectedMapPin.style.left = `${point.pinXPercent}%`;
+      selectedMapPin.style.top = `${point.pinYPercent}%`;
+      mapEmailButton.disabled = false;
+      updateMapStatus(selectedMapPlace);
+    }
+
+    function setMapTransform() {
+      if (!worldMapFrame) {
+        return;
+      }
+
+      const rect = worldMapFrame.getBoundingClientRect();
+      const maxPanX = (rect.width * (mapZoom - 1)) / 2;
+      const maxPanY = (rect.height * (mapZoom - 1)) / 2;
+      mapPanX = clamp(mapPanX, -maxPanX, maxPanX);
+      mapPanY = clamp(mapPanY, -maxPanY, maxPanY);
+      worldMapFrame.style.setProperty('--map-zoom', mapZoom);
+      worldMapFrame.style.setProperty('--map-pin-scale', 1 / mapZoom);
+      worldMapFrame.style.setProperty('--map-pan-x', `${mapPanX}px`);
+      worldMapFrame.style.setProperty('--map-pan-y', `${mapPanY}px`);
+      worldMapFrame.classList.toggle('is-zoomed', mapZoom > 1);
+    }
+
+    function setMapZoom(nextZoom) {
+      const previousZoom = mapZoom;
+      mapZoom = clamp(nextZoom, 1, 4);
+      if (mapZoom === 1) {
+        mapPanX = 0;
+        mapPanY = 0;
+      } else if (previousZoom > 0) {
+        const ratio = mapZoom / previousZoom;
+        mapPanX *= ratio;
+        mapPanY *= ratio;
+      }
+      setMapTransform();
+    }
+
+    function captureMapPointer(pointerId) {
+      try {
+        worldMapFrame?.setPointerCapture?.(pointerId);
+      } catch (error) {
+        // Synthetic pointer events used by test tools do not always create an active pointer.
+      }
+    }
+
+    function releaseMapPointer(pointerId) {
+      try {
+        worldMapFrame?.releasePointerCapture?.(pointerId);
+      } catch (error) {
+        // Ignore stale pointer capture state after cancelled drags.
+      }
+    }
+
+    mapZoomInButton?.addEventListener('click', () => {
+      setMapZoom(mapZoom + 0.5);
+      mapZoomInButton.blur();
+    });
+
+    mapZoomOutButton?.addEventListener('click', () => {
+      setMapZoom(mapZoom - 0.5);
+      mapZoomOutButton.blur();
+    });
+
+    function openMapEmail() {
+      if (!selectedMapPlace) {
+        updateMapStatus('Place a pin first.');
+        return;
+      }
+
+      const subject = 'Hello from your map';
+      const body = [
+        'I am from around:',
+        selectedMapPlace,
+      ].filter(Boolean).join('\n');
+      window.location.href = `mailto:justin.garcia@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    mapEmailButton?.addEventListener('click', () => {
+      openMapEmail();
+      mapEmailButton.blur();
+    });
+
+    function handleMapPointerDown(event) {
+      if (event.button !== 0) {
+        return;
+      }
+
+      event.preventDefault();
+      const point = getOuterMapClientPoint(event);
+      mapPointerStart = {
+        clientX: point.clientX,
+        clientY: point.clientY,
+        panX: mapPanX,
+        panY: mapPanY,
+        didPan: false,
+      };
+      captureMapPointer(event.pointerId);
+      worldMapFrame.classList.toggle('is-panning', mapZoom > 1);
+    }
+
+    function handleMapPointerMove(event) {
+      if (!mapPointerStart || mapZoom <= 1) {
+        return;
+      }
+
+      event.preventDefault();
+      const point = getOuterMapClientPoint(event);
+      const dx = point.clientX - mapPointerStart.clientX;
+      const dy = point.clientY - mapPointerStart.clientY;
+      if (Math.abs(dx) > 3 || Math.abs(dy) > 3) {
+        mapPointerStart.didPan = true;
+      }
+      mapPanX = mapPointerStart.panX + dx;
+      mapPanY = mapPointerStart.panY + dy;
+      setMapTransform();
+    }
+
+    function handleMapPointerUp(event) {
+      if (!mapPointerStart) {
+        return;
+      }
+
+      event.preventDefault();
+      releaseMapPointer(event.pointerId);
+      worldMapFrame.classList.remove('is-panning');
+      const point = getOuterMapClientPoint(event);
+      const dx = point.clientX - mapPointerStart.clientX;
+      const dy = point.clientY - mapPointerStart.clientY;
+      const didPan = mapPointerStart.didPan || Math.hypot(dx, dy) > 6;
+      mapPointerStart = null;
+      suppressMapClick = true;
+      setTimeout(() => {
+        suppressMapClick = false;
+      }, 0);
+
+      if (!didPan) {
+        placeMapPin(point.clientX, point.clientY, getCountryGroup(event.target));
+      }
+    }
+
+    function handleMapPointerCancel(event) {
+      releaseMapPointer(event.pointerId);
+      worldMapFrame.classList.remove('is-panning');
+      mapPointerStart = null;
+    }
+
+    function handleMapClick(event) {
+      if (suppressMapClick) {
+        return;
+      }
+
+      const point = getOuterMapClientPoint(event);
+      placeMapPin(point.clientX, point.clientY, getCountryGroup(event.target));
+    }
+
+    function wireMapPointerTarget(target) {
+      if (!target || target.__worldMapWired) {
+        return;
+      }
+
+      target.__worldMapWired = true;
+      target.addEventListener('pointerdown', handleMapPointerDown);
+      target.addEventListener('pointermove', handleMapPointerMove);
+      target.addEventListener('pointerup', handleMapPointerUp);
+      target.addEventListener('pointercancel', handleMapPointerCancel);
+      target.addEventListener('click', handleMapClick);
+    }
+
+    function prepareMapSvg() {
+      const svgDocument = worldMapObject?.contentDocument;
+      const svg = svgDocument?.documentElement;
+      if (!svg) {
+        return;
+      }
+
+      const isModern = document.documentElement.dataset.theme === 'modern';
+      let style = svgDocument.getElementById('world-map-interaction-style');
+      if (!style) {
+        style = svgDocument.createElementNS('http://www.w3.org/2000/svg', 'style');
+        style.id = 'world-map-interaction-style';
+        svg.insertBefore(style, svg.firstChild);
+      }
+
+      style.textContent = `
+        #World, #Ocean { fill: transparent; stroke: none; }
+        g[id] { cursor: pointer; }
+        g[id] path { fill: ${isModern ? '#1d1d1f' : '#000'}; stroke: ${isModern ? 'rgba(255, 255, 255, 0.45)' : '#333'}; stroke-width: ${isModern ? '0.35' : '0.5'}; }
+        g[id].is-selected path { stroke: #fff; stroke-width: 1.2; }
+        text { display: none; }
+      `;
+      svg.setAttribute('focusable', 'false');
+      wireMapPointerTarget(svgDocument);
+    }
+
+    wireMapPointerTarget(worldMapFrame);
+    worldMapObject?.addEventListener('load', prepareMapSvg);
+
+    worldMapFrame?.addEventListener('keydown', (event) => {
+      if (event.key !== 'Enter' && event.key !== ' ') {
+        return;
+      }
+
+      event.preventDefault();
+      updateMapStatus('Tap a country on the map.');
+    });
 
     stackPrevButton?.addEventListener('click', () => {
       showRelativeStackCard(-1);
@@ -829,7 +1171,11 @@
     initSiteTheme();
     document.addEventListener('site-theme-change', () => {
       storeExpandedAboutHeight();
+      prepareMapSvg();
     });
+    window.addEventListener('resize', setMapTransform);
+    setMapTransform();
+    prepareMapSvg();
     bootAboutWindow();
     updateClocks();
     setInterval(updateClocks, 1000);

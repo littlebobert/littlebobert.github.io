@@ -519,6 +519,147 @@ html[lang="ja"] .stack-topic-list .latin {
   font-weight: normal;
 }
 
+.world-map-frame {
+  --map-zoom: 1;
+  --map-pin-scale: 1;
+  --map-pan-x: 0px;
+  --map-pan-y: 0px;
+  position: relative;
+  aspect-ratio: 1000 / 507.209;
+  margin-top: 8px;
+  border: 2px solid #000;
+  background:
+    linear-gradient(45deg, #ddd 25%, transparent 25%),
+    linear-gradient(-45deg, #ddd 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #ddd 75%),
+    linear-gradient(-45deg, transparent 75%, #ddd 75%),
+    #fff;
+  background-size: 4px 4px;
+  background-position: 0 0, 0 2px, 2px -2px, -2px 0;
+  cursor: crosshair;
+  touch-action: none;
+  overflow: hidden;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.world-map-frame.is-zoomed {
+  cursor: grab;
+}
+
+.world-map-frame.is-panning {
+  cursor: grabbing;
+}
+
+.world-map-frame:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.world-map-layer {
+  position: absolute;
+  inset: 0;
+  transform: translate(var(--map-pan-x), var(--map-pan-y)) scale(var(--map-zoom));
+  transform-origin: center;
+}
+
+.world-map-img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  image-rendering: auto;
+  pointer-events: none;
+  filter: invert(1) contrast(1.25);
+}
+
+.world-map-svg {
+  filter: none;
+  pointer-events: auto;
+}
+
+.map-pin {
+  position: absolute;
+  width: 9px;
+  height: 9px;
+  background: #000;
+  border-radius: 50% 50% 50% 0;
+  box-shadow: 0 0 0 1.5px #fff;
+  transform: translate(-50%, -100%) rotate(-45deg) scale(var(--map-pin-scale));
+  transform-origin: 50% 50%;
+  pointer-events: none;
+}
+
+.map-pin::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: #fff;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.map-pin[hidden] {
+  display: none;
+}
+
+.world-map-note {
+  margin-bottom: 0;
+}
+
+.map-controls {
+  display: flex;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.map-control-button {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 30px;
+  padding: 4px 10px;
+  border: 2px solid #000;
+  box-shadow: 1px 1px 0 #000;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  font-family: 'VT323', 'Monaco', monospace;
+  font-size: 18px;
+  line-height: 1;
+  -webkit-tap-highlight-color: transparent;
+}
+
+#map-zoom-in,
+#map-zoom-out {
+  min-width: 34px;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.map-email-button {
+  margin-left: auto;
+}
+
+.map-control-button:disabled {
+  color: #777;
+  cursor: default;
+  box-shadow: none;
+}
+
+.map-control-button:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.map-location-status {
+  min-height: 18px;
+  margin: 6px 0 0;
+  font-size: 16px;
+  line-height: 1.1;
+}
+
 .stack-actions {
   display: flex;
   flex-wrap: wrap;
@@ -598,7 +739,9 @@ html[lang="ja"] .stack-topic-list .latin {
   }
 
   .stack-button:hover,
-  .stack-button:active {
+  .stack-button:active,
+  .map-control-button:not(:disabled):hover,
+  .map-control-button:not(:disabled):active {
     background: #000;
     color: #fff;
     box-shadow: none;
@@ -1768,6 +1911,49 @@ html[data-theme="modern"] .stack-card-avatar {
   border: none;
   border-radius: 18px;
   box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.08);
+}
+
+html[data-theme="modern"] .world-map-frame {
+  border: none;
+  border-radius: 12px;
+  background:
+    radial-gradient(circle at 25% 20%, rgba(0, 122, 255, 0.12), transparent 28%),
+    radial-gradient(circle at 72% 38%, rgba(88, 86, 214, 0.12), transparent 30%),
+    rgba(0, 0, 0, 0.04);
+  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+}
+
+html[data-theme="modern"] .world-map-img {
+  filter: none;
+  opacity: 0.68;
+}
+
+html[data-theme="modern"] .map-pin {
+  background: #007aff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22), 0 0 0 2px #fff;
+}
+
+html[data-theme="modern"] .map-control-button {
+  border: none;
+  border-radius: 8px;
+  box-shadow: none;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+  background: rgba(0, 122, 255, 0.12);
+  color: #0066cc;
+}
+
+html[data-theme="modern"] .map-control-button:disabled {
+  background: rgba(0, 0, 0, 0.06);
+  color: rgba(0, 0, 0, 0.35);
+}
+
+html[data-theme="modern"] .map-location-status {
+  font-family: inherit;
+  font-size: 12px;
+  color: rgba(0, 0, 0, 0.55);
 }
 
 html[data-theme="modern"] .stack-actions a,

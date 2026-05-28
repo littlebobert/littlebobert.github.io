@@ -585,7 +585,7 @@ html[lang="ja"] .stack-card p .latin {
 }
 
 .news-feed {
-  max-height: 230px;
+  max-height: 150px;
   overflow: auto;
   padding-right: 4px;
 }
@@ -637,7 +637,7 @@ html[lang="ja"] .stack-card p .latin {
 }
 
 .x-feed {
-  max-height: 230px;
+  max-height: 150px;
   overflow: auto;
   padding-right: 4px;
 }
@@ -1835,11 +1835,11 @@ div.patents {
   }
 
   .x-feed {
-    max-height: 220px;
+    max-height: 140px;
   }
 
   .news-feed {
-    max-height: 220px;
+    max-height: 140px;
   }
 
   .x-post-media {

@@ -230,7 +230,7 @@
               type="button"
               class="x-feed-tab"
               data-x-feed-tab="mine"
-              aria-selected="true"
+              aria-selected="false"
               data-label-en="Mine"
               data-label-ja="<span class='ja-text'>自分</span>"
             >Mine</button>
@@ -238,7 +238,7 @@
               type="button"
               class="x-feed-tab"
               data-x-feed-tab="following"
-              aria-selected="false"
+              aria-selected="true"
               data-label-en="Following"
               data-label-ja="<span class='ja-text'>フォロー中</span>"
             >Following</button>
@@ -541,7 +541,7 @@
     let japanNewsDidFail = false;
     let xSnapshotData = window.X_POSTS_SNAPSHOT || null;
     let xSnapshotDidFail = false;
-    let currentXFeed = 'mine';
+    let currentXFeed = 'following';
 
     function normalizeClockMode(mode) {
       return mode === 'analog' ? 'analog' : 'digital';

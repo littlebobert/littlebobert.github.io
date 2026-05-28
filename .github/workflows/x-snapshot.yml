@@ -30,9 +30,9 @@ jobs:
         env:
           X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
           X_USERNAME: _bobertdowney
-          X_POST_LIMIT: 5
+          X_POST_LIMIT: ${{ vars.X_POST_LIMIT || 5 }}
           X_FOLLOWING_USERNAMES: ${{ vars.X_FOLLOWING_USERNAMES }}
-          X_FOLLOWING_POST_LIMIT: 8
+          X_FOLLOWING_POST_LIMIT: ${{ vars.X_FOLLOWING_POST_LIMIT || 8 }}
 
       - name: Commit generated snapshot
         run: |

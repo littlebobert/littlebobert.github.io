@@ -1,9 +1,15 @@
 window.JAPAN_NEWS_SNAPSHOT = {
-  "updatedAt": "2026-05-28T13:01:57.048Z",
+  "updatedAt": "2026-05-28T14:22:50.710Z",
   "sourceName": "NHK World Japan",
   "sourceUrl": "https://www3.nhk.or.jp/nhkworld/en/news/",
   "feedUrl": "https://www3.nhk.or.jp/nhkworld/data/en/news/all.json",
   "items": [
+    {
+      "title": "Takaichi, Marcos agree to launch formal negotiations on GSOMIA",
+      "url": "https://www3.nhk.or.jp/nhkworld/en/news/20260528_20/",
+      "publishedAt": "2026-05-28T13:03:00.000Z",
+      "description": "Japanese Prime Minister Takaichi Sanae and Philippine President Ferdinand Marcos Jr. held talks in Tokyo on Thursday. The two countries agreed to upgrade their bilateral relations to a Comprehensive Strategic Partnership."
+    },
     {
       "title": "Japan's Aeon to start selling fully farmed eels online on Friday",
       "url": "https://www3.nhk.or.jp/nhkworld/en/news/20260528_19/",
@@ -27,12 +33,6 @@ window.JAPAN_NEWS_SNAPSHOT = {
       "url": "https://www3.nhk.or.jp/nhkworld/en/news/20260528_11/",
       "publishedAt": "2026-05-28T08:23:00.000Z",
       "description": "Prosecutors on Thursday indicted a man in Kyoto Prefecture, western Japan, on charges of murdering his 11-year-old son and abandoning his body in mountain forests."
-    },
-    {
-      "title": "Japan launches new disaster information system",
-      "url": "https://www3.nhk.or.jp/nhkworld/en/news/20260528_06/",
-      "publishedAt": "2026-05-28T06:00:00.000Z",
-      "description": "A revised disaster information announcement system was rolled out in Japan on Thursday afternoon to better communicate degrees of risks to the public."
     }
   ]
 };

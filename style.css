@@ -1816,8 +1816,13 @@ div.patents {
   }
 
   .stack-card {
-    min-height: 300px;
+    min-height: 0;
     padding: 14px 12px;
+  }
+
+  .stack-card-x-feed,
+  .stack-card-news {
+    min-height: 0;
   }
 
   .stack-card-profile {
@@ -1900,13 +1905,21 @@ div.patents {
   }
 
   .clock-row {
-    display: contents;
+    display: flex;
+    grid-column: 1 / 3;
+    gap: 6px;
+    align-items: flex-start;
+    align-self: start;
+    height: fit-content;
+    min-width: 0;
   }
 
   .clock-widget:not(.appearance-panel) {
     width: max-content;
     max-width: 100%;
-    justify-self: start;
+    flex: 0 0 auto;
+    align-self: flex-start;
+    height: fit-content;
   }
 
   .clock-title-bar {

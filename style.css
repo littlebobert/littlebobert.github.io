@@ -230,10 +230,14 @@ button.close-box {
   font-family: 'VT323', 'Monaco', monospace;
   font-weight: normal;
   font-size: 18px;
+  line-height: 14px;
+  height: 14px;
   white-space: nowrap;
   padding: 0 8px;
   background: #fff;
   color: #000;
+  display: inline-flex;
+  align-items: center;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -421,7 +425,7 @@ html[lang="ja"] .language-switcher > button {
   z-index: 2;
   display: flex;
   flex-direction: column;
-  min-height: 262px;
+  min-height: 0;
   padding: 14px;
   border: 2px solid #000;
   background: #fff;
@@ -600,9 +604,14 @@ html[lang="ja"] .stack-topic-list .latin {
   -webkit-tap-highlight-color: transparent;
 }
 
+.stack-card-map {
+  min-height: 0;
+  padding-bottom: 8px;
+}
+
 .stack-card-map .world-map-frame {
   align-self: center;
-  width: 96%;
+  width: 100%;
 }
 
 .world-map-frame.is-zoomed {
@@ -720,11 +729,11 @@ html[lang="ja"] .stack-topic-list .latin {
 
 .map-location-status {
   box-sizing: border-box;
-  height: 22px;
-  margin: 6px 0 0;
+  height: 20px;
+  margin: 4px 0 0;
   padding-top: 1px;
   font-size: 16px;
-  line-height: 20px;
+  line-height: 18px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -765,7 +774,7 @@ html[lang="ja"] .stack-card .map-location-status {
   -webkit-tap-highlight-color: transparent;
 }
 
-.stack-actions a:hover {
+.stack-actions a:active {
   background: #fff;
   color: #000;
   box-shadow:
@@ -808,7 +817,6 @@ html[lang="ja"] .stack-card .map-location-status {
     inset -2px -2px 0 #9b9b9b;
 }
 
-.stack-button:hover,
 .stack-button:active {
   background: #fff;
   color: #000;
@@ -837,6 +845,16 @@ html[lang="ja"] .stack-card .map-location-status {
     color: #fff;
     box-shadow: none;
     transform: none;
+  }
+
+  .stack-actions a:hover,
+  .stack-button:hover {
+    background: #fff;
+    color: #000;
+    box-shadow:
+      inset 2px 2px 0 #777,
+      inset -1px -1px 0 #fff;
+    transform: translate(2px, 2px);
   }
 
   .map-control-button:not(:disabled):hover,
@@ -1247,14 +1265,13 @@ html[lang="ja"]:not([data-theme="modern"]) .language-segment[data-language-value
 
 .weather-attribution {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   gap: 3px;
   margin-top: 2px;
-  border-top: 1px solid #000;
-  padding-top: 2px;
-  font-size: 11px;
+  padding-top: 1px;
+  font-size: 9px;
   line-height: 1;
-  text-align: right;
+  text-align: center;
   white-space: nowrap;
 }
 
@@ -1827,7 +1844,6 @@ html[data-theme="modern"] .clock-widget:not(.appearance-panel) .clock-content {
 }
 
 html[data-theme="modern"] .weather-attribution {
-  border-top-color: rgba(0, 0, 0, 0.1);
   color: rgba(0, 0, 0, 0.55);
 }
 
@@ -2047,6 +2063,7 @@ html[data-theme="modern"] .hypercard-stack::after {
 html[data-theme="modern"] .stack-card {
   border: none;
   border-radius: 12px;
+  min-height: 0;
   background: rgba(255, 255, 255, 0.88);
   box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.08);
   color: rgba(0, 0, 0, 0.88);
@@ -2170,18 +2187,30 @@ html[data-theme="modern"] .stack-button-secondary {
   color: rgba(0, 0, 0, 0.72);
 }
 
-html[data-theme="modern"] .stack-actions a:hover,
-html[data-theme="modern"] .stack-button:hover,
+html[data-theme="modern"] .stack-actions a:active,
 html[data-theme="modern"] .stack-button:active {
   background: rgba(0, 122, 255, 0.18);
   color: #004499;
   transform: none;
 }
 
-html[data-theme="modern"] .stack-button-secondary:hover,
 html[data-theme="modern"] .stack-button-secondary:active {
   background: rgba(0, 0, 0, 0.1);
   color: rgba(0, 0, 0, 0.85);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html[data-theme="modern"] .stack-actions a:hover,
+  html[data-theme="modern"] .stack-button:hover {
+    background: rgba(0, 122, 255, 0.18);
+    color: #004499;
+    transform: none;
+  }
+
+  html[data-theme="modern"] .stack-button-secondary:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: rgba(0, 0, 0, 0.85);
+  }
 }
 
 html[data-theme="modern"] .stack-button:focus-visible,

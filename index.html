@@ -97,9 +97,9 @@
             data-label-ja="<span class='latin'>Kotoba</span><span class='ja-text'>のモバイル</span>"
           >Mobile at Kotoba</h2>
           <p
-            data-label-en="I work on shipping <a href='https://site.kotoba.tech'>speech AI</a>."
+            data-label-en="I work on shipping <a href='https://site.kotoba.tech'>speech AI</a> products."
             data-label-ja="<a href='https://site.kotoba.tech'><span class='ja-text'>音声</span><span class='latin'>AI</span></a><span class='ja-text'>をリリースする仕事をしています。</span>"
-          >I work on shipping <a href="https://site.kotoba.tech">speech AI</a>.</p>
+          >I work on shipping <a href="https://site.kotoba.tech">speech AI</a> products.</p>
           <p
             data-label-en="Ask me about our <a href='https://kotoba.onelink.me/wkA2/28x5ctzi'>mobile app</a>!"
             data-label-ja="<span class='ja-text'>私たちの</span><a href='https://kotoba.onelink.me/wkA2/28x5ctzi'><span class='ja-text'>モバイルアプリ</span></a><span class='ja-text'>について聞いてください！</span>"
@@ -255,6 +255,9 @@
           <span class="analog-pin"></span>
         </div>
         <div class="clock-weather" id="tokyo-weather" aria-live="polite">-</div>
+        <div class="weather-attribution">
+          <a href="https://open-meteo.com/" data-label-en="Open-Meteo" data-label-ja="Open-Meteo">Open-Meteo</a>
+        </div>
       </div>
     </div>
     <div class="clock-widget">
@@ -355,13 +358,6 @@
             >Imperial</span>
           </button>
         </div>
-        <div class="weather-attribution">
-          <span
-            data-label-en="Weather by:"
-            data-label-ja="天気:"
-          >Weather by:</span>
-          <a href="https://open-meteo.com/" data-label-en="Open-Meteo" data-label-ja="Open-Meteo">Open-Meteo</a>
-        </div>
       </div>
     </div>
     </div>
@@ -415,6 +411,7 @@
       updateAnalogClock('tampa', tampa);
     }
 
+    const STACK_CARD_STORAGE_KEY = 'about-stack-card-index';
     const CLOCK_MODE_STORAGE_KEY = 'clock-display-mode';
     const WEATHER_UNIT_STORAGE_KEY = 'weather-unit';
     const VISITOR_COUNTED_STORAGE_KEY = 'page-views-counter-counted';
@@ -701,6 +698,7 @@
     let suppressMapClick = false;
     let lastMapTap = null;
     let lastPageTap = null;
+    let lastTouchWindowShadeAt = 0;
     let stackTransitionTimeout = null;
 
     const ZOOM_OPEN_MS = 220;
@@ -743,6 +741,10 @@
         stackCounter.textContent = `${currentStackCardIndex + 1} / ${stackCards.length}`;
       }
 
+      try {
+        localStorage.setItem(STACK_CARD_STORAGE_KEY, String(currentStackCardIndex));
+      } catch {}
+
       requestAnimationFrame(() => {
         if (!aboutDialog.classList.contains('is-closed') && !aboutDialog.classList.contains('window-shaded')) {
           storeExpandedAboutHeight();
@@ -759,9 +761,21 @@
       updateStackCard(direction);
     }
 
+    function getSavedStackCardIndex() {
+      try {
+        const savedIndex = Number(localStorage.getItem(STACK_CARD_STORAGE_KEY));
+        if (Number.isInteger(savedIndex) && savedIndex >= 0 && savedIndex < stackCards.length) {
+          return savedIndex;
+        }
+      } catch {}
+      return 0;
+    }
+
     function clamp(value, min, max) {
       return Math.min(Math.max(value, min), max);
     }
+
+    currentStackCardIndex = getSavedStackCardIndex();
 
     function preventPageDoubleTapZoom(event) {
       if (event.changedTouches.length !== 1) {
@@ -777,6 +791,12 @@
       if (wasDoubleTap) {
         if (event.cancelable) {
           event.preventDefault();
+        }
+        const titleBar = event.target.closest?.('.title-bar, .clock-title-bar');
+        if (titleBar) {
+          const windowElement = titleBar.closest('.mac-dialog, .clock-widget');
+          lastTouchWindowShadeAt = now;
+          toggleWindowShade(windowElement);
         }
         lastPageTap = null;
         return;
@@ -1445,26 +1465,37 @@
       });
     }
 
+    function toggleWindowShade(windowElement) {
+      if (!windowElement) {
+        return;
+      }
+
+      if (windowElement === aboutDialog) {
+        if (aboutDialog.classList.contains('is-closed')) {
+          return;
+        }
+
+        if (aboutDialog.classList.contains('window-shaded')) {
+          unshadeAboutWindow();
+        } else {
+          shadeAboutWindow();
+        }
+        return;
+      }
+
+      windowElement.classList.toggle('window-shaded');
+    }
+
     document.querySelectorAll('.title-bar, .clock-title-bar').forEach((titleBar) => {
       const windowElement = titleBar.closest('.mac-dialog, .clock-widget');
       if (!windowElement) return;
 
       titleBar.title = 'Double-click for WindowShade';
       titleBar.addEventListener('dblclick', () => {
-        if (windowElement === aboutDialog) {
-          if (aboutDialog.classList.contains('is-closed')) {
-            return;
-          }
-
-          if (aboutDialog.classList.contains('window-shaded')) {
-            unshadeAboutWindow();
-          } else {
-            shadeAboutWindow();
-          }
+        if (performance.now() - lastTouchWindowShadeAt < 500) {
           return;
         }
-
-        windowElement.classList.toggle('window-shaded');
+        toggleWindowShade(windowElement);
       });
     });
 

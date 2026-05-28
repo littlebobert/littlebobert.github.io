@@ -1,5 +1,5 @@
 window.JAPAN_NEWS_SNAPSHOT = {
-  "updatedAt": "2026-05-28T12:32:08.555Z",
+  "updatedAt": "2026-05-28T13:01:57.048Z",
   "sourceName": "NHK World Japan",
   "sourceUrl": "https://www3.nhk.or.jp/nhkworld/en/news/",
   "feedUrl": "https://www3.nhk.or.jp/nhkworld/data/en/news/all.json",

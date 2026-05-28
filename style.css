@@ -1111,7 +1111,14 @@ html[data-clock-mode="analog"] .analog-clock {
 .language-segment[aria-pressed="true"],
 .appearance-segment[aria-pressed="true"],
 .clock-mode-segment[aria-pressed="true"] {
-  background: #000;
+  background:
+    linear-gradient(45deg, #5f5f5f 25%, transparent 25%),
+    linear-gradient(-45deg, #5f5f5f 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #5f5f5f 75%),
+    linear-gradient(-45deg, transparent 75%, #5f5f5f 75%),
+    #777;
+  background-size: 4px 4px;
+  background-position: 0 0, 0 2px, 2px -2px, -2px 0;
   color: #fff;
 }
 

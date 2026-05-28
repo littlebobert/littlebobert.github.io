@@ -2007,7 +2007,7 @@ div.patents {
 @media (max-width: 480px) {
   body {
     padding: 10px;
-    padding-top: 20px;
+    padding-top: 14px;
   }
 
   .stack-content {
@@ -2070,7 +2070,7 @@ div.patents {
     align-self: stretch;
     width: 100%;
     margin-top: 4px;
-    aspect-ratio: 1000 / 620;
+    aspect-ratio: 1000 / 507.209;
     max-height: min(38svh, 240px);
   }
 
@@ -2090,7 +2090,7 @@ div.patents {
   }
 
   .stack-card-puzzle h2 {
-    margin-bottom: 6px;
+    margin-bottom: 2px;
     font-size: 26px;
   }
 
@@ -2100,7 +2100,7 @@ div.patents {
   }
 
   .stack-card-puzzle .puzzle-stage {
-    width: min(100%, 252px);
+    width: min(100%, 236px);
   }
 
   .stack-card-video {
@@ -2167,6 +2167,7 @@ div.patents {
     display: grid;
     grid-template-columns: auto auto minmax(0, 1fr);
     gap: 6px;
+    margin-top: 8px;
     align-items: start;
   }
 

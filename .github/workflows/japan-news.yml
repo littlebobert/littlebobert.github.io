@@ -1,0 +1,45 @@
+name: Build Japan News Snapshot
+
+on:
+  schedule:
+    - cron: "13 */12 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Japan news snapshot
+        run: npm run build:japan-news
+        env:
+          JAPAN_NEWS_SOURCE_URL: ${{ vars.JAPAN_NEWS_SOURCE_URL }}
+          JAPAN_NEWS_FEED_URL: ${{ vars.JAPAN_NEWS_FEED_URL }}
+          JAPAN_NEWS_LIMIT: 5
+
+      - name: Commit generated snapshot
+        run: |
+          if [[ -n "$(git status --porcelain data/japan-news.json data/japan-news.js)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add data/japan-news.json data/japan-news.js
+            git commit -m "Update Japan news snapshot"
+            git push
+          else
+            echo "No Japan news snapshot changes to commit."
+          fi

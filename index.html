@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <script src="theme.js"></script>
   <title>About Justin Garcia</title>
-  <link href='style.css?v=95' rel='stylesheet'>
+  <link href='style.css?v=96' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://littlebobert.github.io/">
   <meta name="description" content="iOS engineer in Tokyo." />
@@ -57,7 +57,16 @@
     </div>
     <div class="dialog-content stack-content">
       <div class="stack-top-row">
-        <span class="stack-counter" id="stack-counter">1 / 6</span>
+        <div class="stack-position-controls">
+          <span class="stack-counter" id="stack-counter">2 / 10</span>
+          <button
+            type="button"
+            class="stack-index-shortcut"
+            data-stack-jump="0"
+            data-label-en="Index"
+            data-label-ja="<span class='ja-text'>目次</span>"
+          >Index</button>
+        </div>
         <div class="stack-visitor-counter">
           <span
             data-label-en="Visitors:"
@@ -68,6 +77,25 @@
       </div>
 
       <div class="hypercard-stack" id="hypercard-stack" aria-live="polite">
+        <section class="stack-card stack-card-index" data-stack-card hidden>
+          <div class="stack-card-kicker" data-label-en="Index" data-label-ja="<span class='ja-text'>目次</span>">Index</div>
+          <h2
+            data-label-en="Pick a card"
+            data-label-ja="<span class='ja-text'>カードを選ぶ</span>"
+          >Pick a card</h2>
+          <div class="stack-index-grid" aria-label="Card index">
+            <button type="button" class="stack-index-button" data-stack-jump="1" data-label-en="Intro" data-label-ja="イントロ">Intro</button>
+            <button type="button" class="stack-index-button" data-stack-jump="2" data-label-en="Work" data-label-ja="仕事">Work</button>
+            <button type="button" class="stack-index-button" data-stack-jump="3" data-label-en="Sasu" data-label-ja="<span class='latin'>Sasu</span>">Sasu</button>
+            <button type="button" class="stack-index-button" data-stack-jump="4" data-label-en="Tell me" data-label-ja="聞かせて">Tell me</button>
+            <button type="button" class="stack-index-button" data-stack-jump="5" data-label-en="Running" data-label-ja="ランニング">Running</button>
+            <button type="button" class="stack-index-button" data-stack-jump="6" data-label-en="Elsewhere" data-label-ja="リンク">Elsewhere</button>
+            <button type="button" class="stack-index-button" data-stack-jump="7" data-label-en="Japan wires" data-label-ja="日本ニュース">Japan wires</button>
+            <button type="button" class="stack-index-button" data-stack-jump="8" data-label-en="Doom scroll" data-label-ja="<span class='latin'>Doom scroll</span>">Doom scroll</button>
+            <button type="button" class="stack-index-button" data-stack-jump="9" data-label-en="Guestbook" data-label-ja="ゲストブック">Guestbook</button>
+          </div>
+        </section>
+
         <section class="stack-card is-active" data-stack-card>
           <div class="stack-card-kicker" data-label-en="Intro" data-label-ja="イントロ">Intro</div>
           <div class="stack-card-profile">
@@ -165,6 +193,69 @@
             <a href="https://x.com/_bobertdowney">X</a>
             <a href="https://www.instagram.com/bobertdowney/">Instagram</a>
             <a href="https://www.linkedin.com/in/garciajustin/">LinkedIn</a>
+          </div>
+        </section>
+
+        <section class="stack-card stack-card-news" data-stack-card hidden>
+          <div class="stack-card-kicker" data-label-en="Japan wires" data-label-ja="日本ニュース">Japan wires</div>
+          <h2
+            data-label-en="Japan news"
+            data-label-ja="<span class='ja-text'>日本ニュース</span>"
+          >Japan news</h2>
+          <div class="news-feed" id="japan-news-feed" aria-live="polite">
+            <p
+              class="news-feed-status"
+              data-label-en="Loading headlines..."
+              data-label-ja="<span class='ja-text'>ヘッドラインを読み込み中...</span>"
+            >Loading headlines...</p>
+          </div>
+          <div class="stack-actions">
+            <a
+              href="https://www3.nhk.or.jp/nhkworld/en/news/"
+              id="japan-news-source-link"
+              data-label-en="Open source"
+              data-label-ja="<span class='ja-text'>ニュース元を見る</span>"
+            >Open source</a>
+          </div>
+        </section>
+
+        <section class="stack-card stack-card-x-feed" data-stack-card hidden>
+          <div class="stack-card-kicker" data-label-en="Doom scroll" data-label-ja="<span class='latin'>Doom scroll</span>">Doom scroll</div>
+          <h2
+            data-label-en="X posts"
+            data-label-ja="<span class='latin'>X</span><span class='ja-text'>の投稿</span>"
+          >X posts</h2>
+          <div class="x-feed-tabs" role="tablist" aria-label="X feed">
+            <button
+              type="button"
+              class="x-feed-tab"
+              data-x-feed-tab="mine"
+              aria-selected="true"
+              data-label-en="Mine"
+              data-label-ja="<span class='ja-text'>自分</span>"
+            >Mine</button>
+            <button
+              type="button"
+              class="x-feed-tab"
+              data-x-feed-tab="following"
+              aria-selected="false"
+              data-label-en="Following"
+              data-label-ja="<span class='ja-text'>フォロー中</span>"
+            >Following</button>
+          </div>
+          <div class="x-feed" id="x-feed" aria-live="polite">
+            <p
+              class="x-feed-status"
+              data-label-en="Loading daily snapshot..."
+              data-label-ja="<span class='ja-text'>毎日のスナップショットを読み込み中...</span>"
+            >Loading daily snapshot...</p>
+          </div>
+          <div class="stack-actions">
+            <a
+              href="https://x.com/_bobertdowney"
+              data-label-en="Open X"
+              data-label-ja="<span class='latin'>X</span><span class='ja-text'>を見る</span>"
+            >Open X</a>
           </div>
         </section>
 
@@ -365,6 +456,8 @@
 
   <div class="window-zoom-rect" id="window-zoom-rect" hidden aria-hidden="true"></div>
   
+  <script src="data/japan-news.js"></script>
+  <script src="data/x-posts.js"></script>
   <script>
     function timeInZone(date, timeZone) {
       const formatter = new Intl.DateTimeFormat('en-GB', {
@@ -423,6 +516,10 @@
     const languageButtons = document.querySelectorAll('.language-segment');
     const labelElements = document.querySelectorAll('[data-label-en][data-label-ja]');
     const visitorCountElement = document.getElementById('visitor-count');
+    const japanNewsFeedElement = document.getElementById('japan-news-feed');
+    const japanNewsSourceLink = document.getElementById('japan-news-source-link');
+    const xFeedElement = document.getElementById('x-feed');
+    const xFeedTabButtons = document.querySelectorAll('[data-x-feed-tab]');
     const weatherLocations = [
       {
         id: 'tokyo',
@@ -440,6 +537,11 @@
     let currentWeatherUnit = 'imperial';
     let weatherReadings = {};
     let currentLanguage = 'en';
+    let japanNewsData = window.JAPAN_NEWS_SNAPSHOT || null;
+    let japanNewsDidFail = false;
+    let xSnapshotData = window.X_POSTS_SNAPSHOT || null;
+    let xSnapshotDidFail = false;
+    let currentXFeed = 'mine';
 
     function normalizeClockMode(mode) {
       return mode === 'analog' ? 'analog' : 'digital';
@@ -626,6 +728,474 @@
       }
     }
 
+    function localizedText(en, ja) {
+      return currentLanguage === 'ja' ? ja : en;
+    }
+
+    function formatXPostDate(value) {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) {
+        return '';
+      }
+
+      return new Intl.DateTimeFormat(currentLanguage === 'ja' ? 'ja-JP' : 'en', {
+        month: 'short',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+      }).format(date);
+    }
+
+    function xPostTime(post) {
+      const time = new Date(post.createdAt).getTime();
+      return Number.isFinite(time) ? time : 0;
+    }
+
+    function sortXPostsNewestFirst(posts) {
+      return [...posts].sort((a, b) => xPostTime(b) - xPostTime(a));
+    }
+
+    function formatNewsDate(value) {
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) {
+        return '';
+      }
+
+      return new Intl.DateTimeFormat(currentLanguage === 'ja' ? 'ja-JP' : 'en', {
+        month: 'short',
+        day: 'numeric',
+      }).format(date);
+    }
+
+    function appendJapanNewsStatus(message) {
+      if (!japanNewsFeedElement) {
+        return;
+      }
+
+      japanNewsFeedElement.textContent = '';
+      const status = document.createElement('p');
+      status.className = 'news-feed-status';
+      status.textContent = message;
+      japanNewsFeedElement.append(status);
+    }
+
+    function createJapanNewsItem(item) {
+      const article = document.createElement('article');
+      article.className = 'news-item';
+
+      const link = document.createElement('a');
+      link.className = 'news-item-title';
+      link.href = item.url;
+      link.textContent = item.title || localizedText('Untitled', '無題');
+      article.append(link);
+
+      const meta = document.createElement('p');
+      meta.className = 'news-item-meta';
+      const date = formatNewsDate(item.publishedAt);
+      meta.textContent = date ? `${japanNewsData?.sourceName || 'The Japan Times'} / ${date}` : (japanNewsData?.sourceName || 'The Japan Times');
+      article.append(meta);
+
+      if (item.description) {
+        const description = document.createElement('p');
+        description.className = 'news-item-description';
+        description.textContent = item.description;
+        article.append(description);
+      }
+
+      return article;
+    }
+
+    function renderJapanNews() {
+      if (!japanNewsFeedElement) {
+        return;
+      }
+
+      if (japanNewsDidFail) {
+        appendJapanNewsStatus(localizedText('News gremlin is sleeping.', 'ニュースの妖精は寝ています。'));
+        return;
+      }
+
+      if (!japanNewsData) {
+        appendJapanNewsStatus(localizedText('Loading headlines...', 'ヘッドラインを読み込み中...'));
+        return;
+      }
+
+      const items = Array.isArray(japanNewsData.items) ? japanNewsData.items : [];
+      if (!items.length) {
+        appendJapanNewsStatus(localizedText('No headlines captured yet. Run the news snapshot.', 'まだヘッドラインがありません。ニュースのスナップショットを実行してください。'));
+        return;
+      }
+
+      if (japanNewsSourceLink && japanNewsData.sourceUrl) {
+        japanNewsSourceLink.href = japanNewsData.sourceUrl;
+      }
+
+      japanNewsFeedElement.textContent = '';
+      const updatedAt = formatNewsDate(japanNewsData.updatedAt);
+      if (updatedAt) {
+        const note = document.createElement('p');
+        note.className = 'news-feed-updated';
+        note.textContent = localizedText(`Snapshot: ${updatedAt}`, `スナップショット: ${updatedAt}`);
+        japanNewsFeedElement.append(note);
+      }
+
+      items.forEach((item) => {
+        japanNewsFeedElement.append(createJapanNewsItem(item));
+      });
+    }
+
+    async function fetchJapanNews() {
+      if (!japanNewsFeedElement) {
+        return;
+      }
+
+      if (window.JAPAN_NEWS_SNAPSHOT) {
+        japanNewsData = window.JAPAN_NEWS_SNAPSHOT;
+        japanNewsDidFail = false;
+        renderJapanNews();
+      }
+
+      try {
+        const response = await fetch('data/japan-news.json', { cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error(`Japan news request failed: ${response.status}`);
+        }
+        japanNewsData = await response.json();
+        japanNewsDidFail = false;
+      } catch (error) {
+        if (!japanNewsData) {
+          japanNewsDidFail = true;
+        }
+      }
+
+      renderJapanNews();
+    }
+
+    const RETRO_EMOJI_LABELS = new Map([
+      ['\u{1F600}', ':)'],
+      ['\u{1F603}', ':D'],
+      ['\u{1F604}', ':D'],
+      ['\u{1F601}', ':D'],
+      ['\u{1F642}', ':)'],
+      ['\u{1F60A}', ':)'],
+      ['\u{1F609}', ';)'],
+      ['\u{1F602}', 'XD'],
+      ['\u{1F923}', 'ROFL'],
+      ['\u{1F62D}', ';_;'],
+      ['\u{1F605}', '^^;'],
+      ['\u{1F62C}', ':S'],
+      ['\u{1F60E}', 'B)'],
+      ['\u{1F60D}', '<3'],
+      ['\u{1F970}', '<3'],
+      ['\u2764', '<3'],
+      ['\u{1F49C}', '<3'],
+      ['\u{1F525}', '[fire]'],
+      ['\u2728', '*'],
+      ['\u{1F44D}', '[ok]'],
+      ['\u{1F44F}', '[clap]'],
+      ['\u{1F64F}', '[please]'],
+      ['\u{1F480}', '[dead]'],
+      ['\u{1F92F}', '[mind-blown]'],
+      ['\u{1F974}', '[woozy-face]'],
+      ['\u{1F635}', '[dizzy-face]'],
+      ['\u{1F635}\u200D\u{1F4AB}', '[dizzy-face]'],
+      ['\u{1F914}', '[thinking]'],
+      ['\u{1F643}', '(:'],
+      ['\u{1F622}', ':('],
+      ['\u{1F621}', '>:('],
+      ['\u{1F624}', '[huff]'],
+      ['\u{1F680}', '[rocket]'],
+      ['\u2705', '[ok]'],
+      ['\u274C', '[no]'],
+      ['\u2B50', '*'],
+      ['\u2615', '[coffee]'],
+      ['\u{1F37A}', '[beer]'],
+      ['\u{1F37B}', '[cheers]'],
+      ['\u{1F35C}', '[ramen]'],
+      ['\u{1F363}', '[sushi]'],
+      ['\u{1F440}', '[eyes]'],
+      ['\u{1F4A9}', '[poop]'],
+      ['\u{1FAE1}', '[salute]'],
+    ]);
+    const EMOJI_PATTERN = /(?:[\u{1F1E6}-\u{1F1FF}]{2}|[\u{1F300}-\u{1FAFF}][\uFE0E\uFE0F\u{1F3FB}-\u{1F3FF}]*(?:\u200D[\u{1F300}-\u{1FAFF}][\uFE0E\uFE0F\u{1F3FB}-\u{1F3FF}]*)*|[\u2600-\u27BF]\uFE0F?)/gu;
+    const URL_PATTERN = /https?:\/\/[^\s]+/g;
+
+    function normalizeEmojiToken(token) {
+      return token
+        .replace(/[\uFE0E\uFE0F]/g, '')
+        .replace(/[\u{1F3FB}-\u{1F3FF}]/gu, '');
+    }
+
+    function retroEmojiLabel(token) {
+      const normalized = normalizeEmojiToken(token);
+      if (/^[\u{1F1E6}-\u{1F1FF}]{2}$/u.test(normalized)) {
+        return '[flag]';
+      }
+      return RETRO_EMOJI_LABELS.get(normalized) || '[emoji]';
+    }
+
+    function appendRetroText(parent, value) {
+      const text = value || '';
+      let lastIndex = 0;
+
+      text.replace(EMOJI_PATTERN, (match, offset) => {
+        if (offset > lastIndex) {
+          parent.append(document.createTextNode(text.slice(lastIndex, offset)));
+        }
+        parent.append(document.createTextNode(retroEmojiLabel(match)));
+        lastIndex = offset + match.length;
+        return match;
+      });
+
+      if (lastIndex < text.length) {
+        parent.append(document.createTextNode(text.slice(lastIndex)));
+      }
+    }
+
+    function codePointOffsetToStringOffset(text, offset) {
+      if (!Number.isInteger(offset) || offset < 0) {
+        return -1;
+      }
+      return Array.from(text).slice(0, offset).join('').length;
+    }
+
+    function rangesOverlap(a, b) {
+      return a.start < b.end && b.start < a.end;
+    }
+
+    function addLinkRange(ranges, range) {
+      if (
+        !range
+        || range.start < 0
+        || range.end <= range.start
+        || ranges.some((existing) => rangesOverlap(existing, range))
+      ) {
+        return;
+      }
+      ranges.push(range);
+    }
+
+    function buildXPostLinkRanges(text, post) {
+      const ranges = [];
+      const urls = Array.isArray(post.urls) ? post.urls : [];
+
+      urls.forEach((url) => {
+        const href = url.expandedUrl || url.expanded_url || url.url;
+        const label = url.displayUrl || url.display_url || href;
+        let start = url.url ? text.indexOf(url.url) : -1;
+        let end = start >= 0 ? start + url.url.length : -1;
+
+        if (start === -1 && Number.isInteger(url.start) && Number.isInteger(url.end)) {
+          start = codePointOffsetToStringOffset(text, url.start);
+          end = codePointOffsetToStringOffset(text, url.end);
+        }
+
+        addLinkRange(ranges, { start, end, href, label });
+      });
+
+      text.replace(URL_PATTERN, (match, offset) => {
+        addLinkRange(ranges, {
+          start: offset,
+          end: offset + match.length,
+          href: match,
+          label: match.replace(/^https?:\/\//, ''),
+        });
+        return match;
+      });
+
+      return ranges.sort((a, b) => a.start - b.start);
+    }
+
+    function appendLinkedRetroText(parent, text, post) {
+      const ranges = buildXPostLinkRanges(text, post);
+      let cursor = 0;
+
+      ranges.forEach((range) => {
+        appendRetroText(parent, text.slice(cursor, range.start));
+
+        const link = document.createElement('a');
+        link.href = range.href;
+        link.textContent = range.label;
+        parent.append(link);
+
+        cursor = range.end;
+      });
+
+      appendRetroText(parent, text.slice(cursor));
+    }
+
+    function appendXFeedStatus(message) {
+      if (!xFeedElement) {
+        return;
+      }
+
+      xFeedElement.textContent = '';
+      const status = document.createElement('p');
+      status.className = 'x-feed-status';
+      status.textContent = message;
+      xFeedElement.append(status);
+    }
+
+    function normalizeXFeed(value) {
+      return value === 'following' ? 'following' : 'mine';
+    }
+
+    function setXFeed(value) {
+      currentXFeed = normalizeXFeed(value);
+      xFeedTabButtons.forEach((button) => {
+        button.setAttribute('aria-selected', button.dataset.xFeedTab === currentXFeed ? 'true' : 'false');
+      });
+      renderXSnapshot();
+    }
+
+    function getCurrentXPosts() {
+      if (!xSnapshotData) {
+        return [];
+      }
+      if (currentXFeed === 'following') {
+        return sortXPostsNewestFirst(Array.isArray(xSnapshotData.followingPosts) ? xSnapshotData.followingPosts : []);
+      }
+      return sortXPostsNewestFirst(Array.isArray(xSnapshotData.posts) ? xSnapshotData.posts : []);
+    }
+
+    function emptyXFeedMessage() {
+      if (currentXFeed === 'following') {
+        return localizedText(
+          'No following posts yet. Add X_FOLLOWING_USERNAMES and rerun the snapshot.',
+          'フォロー中の投稿はまだありません。X_FOLLOWING_USERNAMESを追加してスナップショットを再実行してください。'
+        );
+      }
+      return localizedText(
+        'No posts captured yet. Run the snapshot action.',
+        'まだ投稿がありません。スナップショットのActionを実行してください。'
+      );
+    }
+
+    function createXPostElement(post) {
+      const article = document.createElement('article');
+      article.className = 'x-post';
+
+      const header = document.createElement('div');
+      header.className = 'x-post-header';
+
+      if (post.avatar) {
+        const avatar = document.createElement('img');
+        avatar.className = 'x-post-avatar';
+        avatar.src = post.avatar;
+        avatar.alt = '';
+        avatar.loading = 'lazy';
+        header.append(avatar);
+      } else {
+        article.classList.add('x-post-no-avatar');
+      }
+
+      const identity = document.createElement('div');
+      identity.className = 'x-post-identity';
+
+      const name = document.createElement('strong');
+      name.textContent = post.authorName || post.username || 'Justin';
+      identity.append(name);
+
+      const meta = document.createElement('span');
+      const username = post.username ? `@${post.username}` : '@_bobertdowney';
+      const date = formatXPostDate(post.createdAt);
+      meta.textContent = date ? `${username} / ${date}` : username;
+      identity.append(meta);
+      header.append(identity);
+      article.append(header);
+
+      const text = document.createElement('p');
+      text.className = 'x-post-text';
+      appendLinkedRetroText(text, post.text || '', post);
+      article.append(text);
+
+      const firstImage = Array.isArray(post.media) ? post.media.find((item) => item.image) : null;
+      if (firstImage) {
+        const image = document.createElement('img');
+        image.className = 'x-post-media';
+        image.src = firstImage.image;
+        image.alt = firstImage.alt || '';
+        image.loading = 'lazy';
+        article.append(image);
+      }
+
+      if (post.url) {
+        const link = document.createElement('a');
+        link.className = 'x-post-link';
+        link.href = post.url;
+        link.textContent = localizedText('Open post', '投稿を見る');
+        article.append(link);
+      }
+
+      return article;
+    }
+
+    function renderXSnapshot() {
+      if (!xFeedElement) {
+        return;
+      }
+
+      if (xSnapshotDidFail) {
+        appendXFeedStatus(localizedText('X gremlin is sleeping.', 'Xの妖精は寝ています。'));
+        return;
+      }
+
+      if (!xSnapshotData) {
+        appendXFeedStatus(localizedText('Loading daily snapshot...', '毎日のスナップショットを読み込み中...'));
+        return;
+      }
+
+      xFeedTabButtons.forEach((button) => {
+        button.setAttribute('aria-selected', button.dataset.xFeedTab === currentXFeed ? 'true' : 'false');
+      });
+
+      const posts = getCurrentXPosts();
+      if (!posts.length) {
+        appendXFeedStatus(emptyXFeedMessage());
+        return;
+      }
+
+      xFeedElement.textContent = '';
+      const updatedAt = formatXPostDate(xSnapshotData.updatedAt);
+      if (updatedAt) {
+        const note = document.createElement('p');
+        note.className = 'x-feed-updated';
+        note.textContent = localizedText(`Snapshot: ${updatedAt}`, `スナップショット: ${updatedAt}`);
+        xFeedElement.append(note);
+      }
+
+      posts.forEach((post) => {
+        xFeedElement.append(createXPostElement(post));
+      });
+    }
+
+    async function fetchXSnapshot() {
+      if (!xFeedElement) {
+        return;
+      }
+
+      if (window.X_POSTS_SNAPSHOT) {
+        xSnapshotData = window.X_POSTS_SNAPSHOT;
+        xSnapshotDidFail = false;
+        renderXSnapshot();
+      }
+
+      try {
+        const response = await fetch('data/x-posts.json', { cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error(`X snapshot request failed: ${response.status}`);
+        }
+        xSnapshotData = await response.json();
+        xSnapshotDidFail = false;
+      } catch (error) {
+        if (!xSnapshotData) {
+          xSnapshotDidFail = true;
+        }
+      }
+
+      renderXSnapshot();
+    }
+
     clockModeButtons.forEach((button) => {
       button.addEventListener('click', () => {
         setClockMode(button.dataset.clockModeValue);
@@ -636,6 +1206,13 @@
     weatherUnitButtons.forEach((button) => {
       button.addEventListener('click', () => {
         setWeatherUnit(button.dataset.weatherUnitValue);
+        button.blur();
+      });
+    });
+
+    xFeedTabButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        setXFeed(button.dataset.xFeedTab);
         button.blur();
       });
     });
@@ -656,6 +1233,8 @@
         selectedMapPlace = getRegionName(selectedMapCountryCode);
         updateMapStatus(selectedMapPlace);
       }
+      renderJapanNews();
+      renderXSnapshot();
     }
 
     languageButtons.forEach((button) => {
@@ -761,6 +1340,16 @@
       updateStackCard(direction);
     }
 
+    function showStackCard(index) {
+      if (!Number.isInteger(index) || index < 0 || index >= stackCards.length || index === currentStackCardIndex) {
+        return;
+      }
+
+      const direction = index > currentStackCardIndex ? 1 : -1;
+      currentStackCardIndex = index;
+      updateStackCard(direction);
+    }
+
     function getSavedStackCardIndex() {
       try {
         const savedIndex = Number(localStorage.getItem(STACK_CARD_STORAGE_KEY));
@@ -768,7 +1357,7 @@
           return savedIndex;
         }
       } catch {}
-      return 0;
+      return stackCards.length > 1 ? 1 : 0;
     }
 
     function clamp(value, min, max) {
@@ -1142,6 +1731,13 @@
     stackNextButton?.addEventListener('click', () => {
       showRelativeStackCard(1);
       stackNextButton.blur();
+    });
+
+    document.querySelectorAll('[data-stack-jump]').forEach((button) => {
+      button.addEventListener('click', () => {
+        showStackCard(Number(button.dataset.stackJump));
+        button.blur();
+      });
     });
 
     hypercardStack?.addEventListener('touchstart', (event) => {
@@ -1549,6 +2145,8 @@
     updateClocks();
     fetchWeather();
     fetchVisitorCount();
+    fetchJapanNews();
+    fetchXSnapshot();
     setInterval(updateClocks, 1000);
     setInterval(fetchWeather, 30 * 60 * 1000);
   </script>

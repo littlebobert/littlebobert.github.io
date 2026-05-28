@@ -1,0 +1,47 @@
+name: Build X Snapshot
+
+on:
+  schedule:
+    - cron: "17 15 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build X snapshot
+        run: npm run build:x-snapshot
+        env:
+          X_BEARER_TOKEN: ${{ secrets.X_BEARER_TOKEN }}
+          X_USERNAME: _bobertdowney
+          X_POST_LIMIT: 5
+          X_FOLLOWING_USERNAMES: ${{ vars.X_FOLLOWING_USERNAMES }}
+          X_FOLLOWING_POST_LIMIT: 8
+
+      - name: Commit generated snapshot
+        run: |
+          if [[ -n "$(git status --porcelain data/x-posts.json data/x-posts.js assets/generated/x)" ]]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            git add data/x-posts.json data/x-posts.js assets/generated/x
+            git commit -m "Update X snapshot"
+            git push
+          else
+            echo "No X snapshot changes to commit."
+          fi

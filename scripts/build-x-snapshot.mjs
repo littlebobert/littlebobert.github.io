@@ -71,6 +71,25 @@ function publicAssetPath(fileName) {
   return `assets/generated/x/${fileName}`;
 }
 
+function modernFileName(fileName) {
+  return fileName.replace(/\.png$/i, '-modern.png');
+}
+
+async function saveModernPng(sourceBuffer, outputPath, options = {}) {
+  const maxWidth = options.maxWidth || 640;
+  const maxHeight = options.maxHeight || 420;
+  await sharp(sourceBuffer)
+    .rotate()
+    .resize({
+      width: maxWidth,
+      height: maxHeight,
+      fit: 'inside',
+      withoutEnlargement: true,
+    })
+    .png({ compressionLevel: 9 })
+    .toFile(outputPath);
+}
+
 async function ditherToPng(sourceBuffer, outputPath, options = {}) {
   const maxWidth = options.maxWidth || 640;
   const maxHeight = options.maxHeight || 420;
@@ -113,11 +132,21 @@ async function ditherToPng(sourceBuffer, outputPath, options = {}) {
     .toFile(outputPath);
 }
 
-async function ditherRemoteImage(url, fileName, options) {
+async function processRemoteImage(url, fileName, options) {
   const sourceBuffer = await fetchBuffer(url);
-  const outputPath = path.join(GENERATED_DIR, fileName);
-  await ditherToPng(sourceBuffer, outputPath, options);
-  return publicAssetPath(fileName);
+  const classicOutputPath = path.join(GENERATED_DIR, fileName);
+  const modernName = modernFileName(fileName);
+  const modernOutputPath = path.join(GENERATED_DIR, modernName);
+
+  await Promise.all([
+    ditherToPng(sourceBuffer, classicOutputPath, options),
+    saveModernPng(sourceBuffer, modernOutputPath, options),
+  ]);
+
+  return {
+    image: publicAssetPath(fileName),
+    imageModern: publicAssetPath(modernName),
+  };
 }
 
 function mediaImageUrl(media) {
@@ -176,25 +205,28 @@ async function fetchTweetsForUser(xUser, count) {
   return fetchJson(`${X_API_BASE_URL}/users/${xUser.id}/tweets?${tweetParams(count)}`);
 }
 
-async function ditherAvatar(xUser, fileName) {
+async function processAvatar(xUser, fileName) {
   let avatar = '';
+  let avatarModern = '';
   if (xUser.profile_image_url) {
     try {
-      avatar = await ditherRemoteImage(withLargeProfileImage(xUser.profile_image_url), fileName, {
+      const processedAvatar = await processRemoteImage(withLargeProfileImage(xUser.profile_image_url), fileName, {
         maxWidth: 96,
         maxHeight: 96,
       });
+      avatar = processedAvatar.image;
+      avatarModern = processedAvatar.imageModern;
     } catch (error) {
-      console.warn(`Could not dither avatar for ${xUser.username}: ${error.message}`);
+      console.warn(`Could not process avatar for ${xUser.username}: ${error.message}`);
     }
   }
-  return avatar;
+  return { avatar, avatarModern };
 }
 
 async function buildPostsForUser(xUser, options) {
   const tweets = await fetchTweetsForUser(xUser, options.count);
   const mediaByKey = new Map((tweets.includes?.media || []).map((media) => [media.media_key, media]));
-  const avatar = await ditherAvatar(xUser, `${safeFilePart(options.mediaPrefix)}-avatar.png`);
+  const { avatar, avatarModern } = await processAvatar(xUser, `${safeFilePart(options.mediaPrefix)}-avatar.png`);
 
   const posts = [];
 
@@ -212,17 +244,18 @@ async function buildPostsForUser(xUser, options) {
 
       try {
         const fileName = `${safeFilePart(options.mediaPrefix)}-post-${tweet.id}-${index}.png`;
-        const imagePath = await ditherRemoteImage(sourceUrl, fileName, {
+        const processedMedia = await processRemoteImage(sourceUrl, fileName, {
           maxWidth: 640,
           maxHeight: 420,
         });
         media.push({
           alt: mediaItem.alt_text || '',
           type: mediaItem.type,
-          image: imagePath,
+          image: processedMedia.image,
+          imageModern: processedMedia.imageModern,
         });
       } catch (error) {
-        console.warn(`Could not dither media for post ${tweet.id}: ${error.message}`);
+        console.warn(`Could not process media for post ${tweet.id}: ${error.message}`);
       }
     }
 
@@ -239,6 +272,7 @@ async function buildPostsForUser(xUser, options) {
         end: url.end,
       })),
       avatar,
+      avatarModern,
       authorName: xUser.name,
       username: xUser.username,
       media,

@@ -58,7 +58,7 @@
     <div class="dialog-content stack-content">
       <div class="stack-top-row">
         <div class="stack-position-controls">
-          <span class="stack-counter" id="stack-counter">2 / 10</span>
+          <span class="stack-counter" id="stack-counter">2 / 12</span>
           <button
             type="button"
             class="stack-index-shortcut"
@@ -93,6 +93,8 @@
             <button type="button" class="stack-index-button" data-stack-jump="7" data-label-en="Japan wires" data-label-ja="日本ニュース">Japan wires</button>
             <button type="button" class="stack-index-button" data-stack-jump="8" data-label-en="Doom scroll" data-label-ja="<span class='latin'>Doom scroll</span>">Doom scroll</button>
             <button type="button" class="stack-index-button" data-stack-jump="9" data-label-en="Guestbook" data-label-ja="ゲストブック">Guestbook</button>
+            <button type="button" class="stack-index-button" data-stack-jump="10" data-label-en="Puzzle" data-label-ja="パズル">Puzzle</button>
+            <button type="button" class="stack-index-button" data-stack-jump="11" data-label-en="One more thing" data-label-ja="<span class='latin'>One more thing</span>">One more thing</button>
           </div>
         </section>
 
@@ -301,6 +303,76 @@
             >Sign guestbook</button>
           </div>
           <p class="map-location-status" id="map-location-status" aria-live="polite"></p>
+        </section>
+
+        <section class="stack-card stack-card-puzzle" data-stack-card hidden>
+          <div class="stack-card-kicker" data-label-en="Puzzle" data-label-ja="パズル">Puzzle</div>
+          <h2
+            data-label-en="Make something wonderful"
+            data-label-ja="<span class='ja-text'>すばらしいものを作ろう</span>"
+          >Make something wonderful</h2>
+          <p
+            class="puzzle-note"
+            data-label-en="Tap a tile next to the blank space."
+            data-label-ja="<span class='ja-text'>空きスペースの隣のタイルをタップ。</span>"
+          >Tap a tile next to the blank space.</p>
+          <div class="sliding-puzzle" id="sliding-puzzle">
+            <div class="puzzle-stage">
+              <div
+                class="puzzle-board"
+                id="puzzle-board"
+                role="group"
+                aria-label="Make something wonderful sliding puzzle"
+              ></div>
+              <div
+                class="puzzle-alert"
+                id="puzzle-alert"
+                role="alertdialog"
+                aria-labelledby="puzzle-alert-message"
+                hidden
+              >
+                <p id="puzzle-alert-message">Never give up. Never surrender.</p>
+                <button type="button" class="puzzle-alert-button" id="puzzle-alert-ok">OK</button>
+              </div>
+            </div>
+            <div class="puzzle-controls">
+              <button
+                type="button"
+                class="stack-button stack-button-secondary"
+                id="puzzle-give-up"
+                data-label-en="Give up"
+                data-label-ja="あきらめる"
+              >Give up</button>
+              <button
+                type="button"
+                class="stack-button"
+                id="puzzle-shuffle"
+                data-label-en="Shuffle"
+                data-label-ja="シャッフル"
+              >Shuffle</button>
+            </div>
+          </div>
+        </section>
+
+        <section class="stack-card stack-card-video" data-stack-card hidden>
+          <div class="stack-card-kicker" data-label-en="One more thing" data-label-ja="<span class='latin'>One more thing</span>">One more thing</div>
+          <h2
+            data-label-en="Here's to the crazy ones"
+            data-label-ja="<span class='latin'>Here's to the crazy ones</span>"
+          >Here's to the crazy ones</h2>
+          <div class="video-embed">
+            <iframe
+              src="https://www.youtube.com/embed/-z4NS2zdrZc"
+              title="Here's to the crazy ones"
+              loading="lazy"
+              allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen
+            ></iframe>
+          </div>
+          <p class="video-fallback">
+            <a href="https://www.youtube.com/watch?v=-z4NS2zdrZc">Watch video on YouTube</a>
+          </p>
         </section>
       </div>
 
@@ -520,6 +592,14 @@
     const japanNewsSourceLink = document.getElementById('japan-news-source-link');
     const xFeedElement = document.getElementById('x-feed');
     const xFeedTabButtons = document.querySelectorAll('[data-x-feed-tab]');
+    const puzzleBoard = document.getElementById('puzzle-board');
+    const puzzleShuffleButton = document.getElementById('puzzle-shuffle');
+    const puzzleGiveUpButton = document.getElementById('puzzle-give-up');
+    const puzzleAlert = document.getElementById('puzzle-alert');
+    const puzzleAlertOkButton = document.getElementById('puzzle-alert-ok');
+    const PUZZLE_SIZE = 4;
+    const PUZZLE_TILE_COUNT = PUZZLE_SIZE * PUZZLE_SIZE;
+    const PUZZLE_EMPTY_TILE = PUZZLE_TILE_COUNT - 1;
     const weatherLocations = [
       {
         id: 'tokyo',
@@ -542,6 +622,8 @@
     let xSnapshotData = window.X_POSTS_SNAPSHOT || null;
     let xSnapshotDidFail = false;
     let currentXFeed = 'following';
+    let puzzleTiles = Array.from({ length: PUZZLE_TILE_COUNT }, (_, index) => index);
+    let puzzleGiveUpLocked = false;
 
     function normalizeClockMode(mode) {
       return mode === 'analog' ? 'analog' : 'digital';
@@ -730,6 +812,139 @@
 
     function localizedText(en, ja) {
       return currentLanguage === 'ja' ? ja : en;
+    }
+
+    function isPuzzleSolved() {
+      return puzzleTiles.every((tile, index) => tile === index);
+    }
+
+    function puzzleCoordinates(index) {
+      return {
+        row: Math.floor(index / PUZZLE_SIZE),
+        column: index % PUZZLE_SIZE,
+      };
+    }
+
+    function getPuzzleNeighborIndexes(index) {
+      const { row, column } = puzzleCoordinates(index);
+      return [
+        row > 0 ? index - PUZZLE_SIZE : null,
+        row < PUZZLE_SIZE - 1 ? index + PUZZLE_SIZE : null,
+        column > 0 ? index - 1 : null,
+        column < PUZZLE_SIZE - 1 ? index + 1 : null,
+      ].filter((value) => value !== null);
+    }
+
+    function getPuzzleEmptyIndex() {
+      return puzzleTiles.indexOf(PUZZLE_EMPTY_TILE);
+    }
+
+    function isPuzzleTileMovable(index) {
+      const emptyIndex = getPuzzleEmptyIndex();
+      if (emptyIndex === -1) {
+        return false;
+      }
+      const tilePosition = puzzleCoordinates(index);
+      const emptyPosition = puzzleCoordinates(emptyIndex);
+      return Math.abs(tilePosition.row - emptyPosition.row) + Math.abs(tilePosition.column - emptyPosition.column) === 1;
+    }
+
+    function swapPuzzleTiles(firstIndex, secondIndex) {
+      const firstTile = puzzleTiles[firstIndex];
+      puzzleTiles[firstIndex] = puzzleTiles[secondIndex];
+      puzzleTiles[secondIndex] = firstTile;
+    }
+
+    function renderPuzzle() {
+      if (!puzzleBoard) {
+        return;
+      }
+
+      puzzleBoard.textContent = '';
+      puzzleTiles.forEach((tile, index) => {
+        const isEmpty = tile === PUZZLE_EMPTY_TILE;
+        const cell = document.createElement(isEmpty ? 'span' : 'button');
+        cell.className = 'puzzle-tile';
+
+        if (isEmpty) {
+          cell.classList.add('is-empty');
+          cell.setAttribute('role', 'img');
+          cell.setAttribute('aria-label', localizedText('Empty space', '空きスペース'));
+        } else {
+          const { row, column } = puzzleCoordinates(tile);
+          const movable = isPuzzleTileMovable(index);
+          cell.type = 'button';
+          cell.classList.toggle('is-movable', movable);
+          cell.style.backgroundPosition = `${(column / (PUZZLE_SIZE - 1)) * 100}% ${(row / (PUZZLE_SIZE - 1)) * 100}%`;
+          cell.setAttribute('aria-label', localizedText(`Tile ${tile + 1}`, `タイル${tile + 1}`));
+          cell.addEventListener('click', () => {
+            movePuzzleTile(index);
+            cell.blur();
+          });
+        }
+
+        puzzleBoard.append(cell);
+      });
+
+      if (puzzleGiveUpButton) {
+        puzzleGiveUpButton.disabled = puzzleGiveUpLocked;
+      }
+    }
+
+    function movePuzzleTile(index) {
+      if (!isPuzzleTileMovable(index)) {
+        return;
+      }
+      swapPuzzleTiles(index, getPuzzleEmptyIndex());
+      if (isPuzzleSolved()) {
+        puzzleGiveUpLocked = true;
+      }
+      renderPuzzle();
+    }
+
+    function resetPuzzle() {
+      puzzleTiles = Array.from({ length: PUZZLE_TILE_COUNT }, (_, index) => index);
+      renderPuzzle();
+    }
+
+    function shufflePuzzle() {
+      puzzleGiveUpLocked = false;
+      resetPuzzle();
+      let emptyIndex = getPuzzleEmptyIndex();
+      let previousEmptyIndex = -1;
+
+      for (let moveIndex = 0; moveIndex < 120; moveIndex += 1) {
+        const neighbors = getPuzzleNeighborIndexes(emptyIndex);
+        const candidates = neighbors.filter((index) => index !== previousEmptyIndex);
+        const nextIndex = candidates.length
+          ? candidates[Math.floor(Math.random() * candidates.length)]
+          : neighbors[0];
+        swapPuzzleTiles(emptyIndex, nextIndex);
+        previousEmptyIndex = emptyIndex;
+        emptyIndex = nextIndex;
+      }
+
+      if (isPuzzleSolved()) {
+        swapPuzzleTiles(emptyIndex, getPuzzleNeighborIndexes(emptyIndex)[0]);
+      }
+
+      renderPuzzle();
+    }
+
+    function showPuzzleAlert() {
+      if (!puzzleAlert) {
+        return;
+      }
+      puzzleAlert.hidden = false;
+      puzzleAlertOkButton?.focus();
+    }
+
+    function hidePuzzleAlert() {
+      if (!puzzleAlert) {
+        return;
+      }
+      puzzleAlert.hidden = true;
+      puzzleGiveUpButton?.focus();
     }
 
     function formatXPostDate(value) {
@@ -1151,6 +1366,33 @@
       );
     }
 
+    function appendThemeImage(parent, options) {
+      if (!options.src) {
+        return;
+      }
+
+      const image = document.createElement('img');
+      image.className = options.className;
+      if (options.modernSrc) {
+        image.classList.add('has-modern-alternate');
+      }
+      image.src = options.src;
+      image.alt = options.alt || '';
+      image.loading = 'lazy';
+      parent.append(image);
+
+      if (!options.modernSrc) {
+        return;
+      }
+
+      const modernImage = document.createElement('img');
+      modernImage.className = `${options.className} ${options.className}-modern`;
+      modernImage.src = options.modernSrc;
+      modernImage.alt = options.alt || '';
+      modernImage.loading = 'lazy';
+      parent.append(modernImage);
+    }
+
     function createXPostElement(post) {
       const article = document.createElement('article');
       article.className = 'x-post';
@@ -1159,12 +1401,11 @@
       header.className = 'x-post-header';
 
       if (post.avatar) {
-        const avatar = document.createElement('img');
-        avatar.className = 'x-post-avatar';
-        avatar.src = post.avatar;
-        avatar.alt = '';
-        avatar.loading = 'lazy';
-        header.append(avatar);
+        appendThemeImage(header, {
+          className: 'x-post-avatar',
+          src: post.avatar,
+          modernSrc: post.avatarModern,
+        });
       } else {
         article.classList.add('x-post-no-avatar');
       }
@@ -1191,12 +1432,12 @@
 
       const firstImage = Array.isArray(post.media) ? post.media.find((item) => item.image) : null;
       if (firstImage) {
-        const image = document.createElement('img');
-        image.className = 'x-post-media';
-        image.src = firstImage.image;
-        image.alt = firstImage.alt || '';
-        image.loading = 'lazy';
-        article.append(image);
+        appendThemeImage(article, {
+          className: 'x-post-media',
+          src: firstImage.image,
+          modernSrc: firstImage.imageModern,
+          alt: firstImage.alt,
+        });
       }
 
       if (post.url) {
@@ -1304,6 +1545,21 @@
       });
     });
 
+    puzzleShuffleButton?.addEventListener('click', () => {
+      shufflePuzzle();
+      puzzleShuffleButton.blur();
+    });
+
+    puzzleGiveUpButton?.addEventListener('click', () => {
+      showPuzzleAlert();
+      puzzleGiveUpButton.blur();
+    });
+
+    puzzleAlertOkButton?.addEventListener('click', () => {
+      hidePuzzleAlert();
+      puzzleAlertOkButton.blur();
+    });
+
     function setLanguage(language) {
       currentLanguage = language === 'ja' ? 'ja' : 'en';
       labelElements.forEach((element) => {
@@ -1323,6 +1579,7 @@
       renderJapanNews();
       renderXSnapshot();
       updateXFeedTabLabels();
+      renderPuzzle();
     }
 
     languageButtons.forEach((button) => {
@@ -2218,6 +2475,7 @@
     const savedLanguage = localStorage.getItem('site-language');
     const preferredLanguage = navigator.languages?.[0] || navigator.language || 'en';
     const initialLanguage = savedLanguage || (preferredLanguage.toLowerCase().startsWith('ja') ? 'ja' : 'en');
+    shufflePuzzle();
     setLanguage(initialLanguage);
     updateStackCard();
     setClockMode(getSavedClockMode());

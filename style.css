@@ -1868,6 +1868,12 @@ html[lang="ja"] body.resume-page .language-switcher button {
   line-height: inherit;
 }
 
+@media print {
+  body.resume-page .language-switcher {
+    display: none;
+  }
+}
+
 div.contact-info {
   padding-bottom: 8pt;
 }

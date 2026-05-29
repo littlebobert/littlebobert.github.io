@@ -1,9 +1,21 @@
 window.JAPAN_NEWS_SNAPSHOT = {
-  "updatedAt": "2026-05-28T15:24:25.389Z",
+  "updatedAt": "2026-05-29T04:38:54.404Z",
   "sourceName": "NHK World Japan",
   "sourceUrl": "https://www3.nhk.or.jp/nhkworld/en/news/",
   "feedUrl": "https://www3.nhk.or.jp/nhkworld/data/en/news/all.json",
   "items": [
+    {
+      "title": "Sources: Japan may aim to more than halve quake death toll in greater Tokyo area",
+      "url": "https://www3.nhk.or.jp/nhkworld/en/news/20260529_03/",
+      "publishedAt": "2026-05-29T02:20:00.000Z",
+      "description": "Sources say Japan's government has drafted a new disaster preparedness basic plan with a 10-year program to more than halve the death toll from a major earthquake feared to hit directly beneath Tokyo."
+    },
+    {
+      "title": "Child 'demons' take part in good health ritual at temple in western Japan",
+      "url": "https://www3.nhk.or.jp/nhkworld/en/news/20260529_07/",
+      "publishedAt": "2026-05-29T04:05:45.000Z",
+      "description": "Children have dressed up as demons in a traditional event at a Buddhist temple in western Japan."
+    },
     {
       "title": "Takaichi, Marcos agree to launch formal negotiations on GSOMIA",
       "url": "https://www3.nhk.or.jp/nhkworld/en/news/20260528_20/",
@@ -21,18 +33,6 @@ window.JAPAN_NEWS_SNAPSHOT = {
       "url": "https://www3.nhk.or.jp/nhkworld/en/news/20260528_10/",
       "publishedAt": "2026-05-28T11:40:00.000Z",
       "description": "Japan's transport ministry officials have carried out on-site inspections of Japan Airlines over pre-flight drinking by cabin attendants that is against in-house rules based on public law."
-    },
-    {
-      "title": "Schoolchildren plant rice in centuries-old terraced paddies in western Japan",
-      "url": "https://www3.nhk.or.jp/nhkworld/en/news/20260528_14/",
-      "publishedAt": "2026-05-28T09:45:40.000Z",
-      "description": "Schoolchildren in the mountainous town of Yoshika in western Japan's Shimane Prefecture have planted rice in a centuries-old terraced rice field."
-    },
-    {
-      "title": "Japan prosecutors indict man for son's murder and abandoning body",
-      "url": "https://www3.nhk.or.jp/nhkworld/en/news/20260528_11/",
-      "publishedAt": "2026-05-28T08:23:00.000Z",
-      "description": "Prosecutors on Thursday indicted a man in Kyoto Prefecture, western Japan, on charges of murdering his 11-year-old son and abandoning his body in mountain forests."
     }
   ]
 };

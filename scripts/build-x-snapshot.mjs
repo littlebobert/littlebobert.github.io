@@ -21,13 +21,6 @@ const bearerToken = process.env.X_BEARER_TOKEN;
 const username = (process.env.X_USERNAME || '_bobertdowney').replace(/^@/, '');
 const requestedPostCount = Number(process.env.X_POST_LIMIT || 5);
 const postCount = Math.min(Math.max(Number.isFinite(requestedPostCount) ? requestedPostCount : 5, 5), 10);
-const requestedFollowingPostCount = Number(process.env.X_FOLLOWING_POST_LIMIT || 8);
-const followingPostCount = Math.min(
-  Math.max(Number.isFinite(requestedFollowingPostCount) ? requestedFollowingPostCount : 8, 1),
-  25,
-);
-const followingUsernames = parseUsernames(process.env.X_FOLLOWING_USERNAMES)
-  .filter((name) => name.toLowerCase() !== username.toLowerCase());
 
 if (!bearerToken) {
   throw new Error('Missing X_BEARER_TOKEN environment variable.');
@@ -157,13 +150,6 @@ function mediaImageUrl(media) {
   return media.preview_image_url;
 }
 
-function parseUsernames(value) {
-  return (value || '')
-    .split(',')
-    .map((name) => name.trim().replace(/^@/, ''))
-    .filter(Boolean);
-}
-
 function safeFilePart(value) {
   return value.toLowerCase().replace(/[^a-z0-9_-]+/g, '-').replace(/^-+|-+$/g, '') || 'x';
 }
@@ -282,25 +268,6 @@ async function buildPostsForUser(xUser, options) {
   return posts;
 }
 
-async function buildFollowingPosts() {
-  const posts = [];
-
-  for (const followingUsername of followingUsernames) {
-    try {
-      const xUser = await fetchUserByUsername(followingUsername);
-      const userPosts = await buildPostsForUser(xUser, {
-        count: Math.max(5, Math.min(followingPostCount, 10)),
-        mediaPrefix: `following-${xUser.username}`,
-      });
-      posts.push(...userPosts);
-    } catch (error) {
-      console.warn(`Could not build following feed for ${followingUsername}: ${error.message}`);
-    }
-  }
-
-  return sortPostsNewestFirst(posts).slice(0, followingPostCount);
-}
-
 async function main() {
   const xUser = await fetchUserByUsername(username);
 
@@ -312,20 +279,17 @@ async function main() {
     count: postCount,
     mediaPrefix: 'mine',
   });
-  const followingPosts = await buildFollowingPosts();
 
   const snapshot = {
     updatedAt: new Date().toISOString(),
     username: xUser.username,
     profileUrl: `${X_WEB_BASE_URL}/${xUser.username}`,
-    followingUsernames,
     posts,
-    followingPosts,
   };
 
   await fs.writeFile(OUTPUT_JSON, `${JSON.stringify(snapshot, null, 2)}\n`);
   await fs.writeFile(OUTPUT_JS, `window.X_POSTS_SNAPSHOT = ${JSON.stringify(snapshot, null, 2)};\n`);
-  console.log(`Wrote ${posts.length} X posts and ${followingPosts.length} following posts to ${path.relative(ROOT_DIR, OUTPUT_JSON)}.`);
+  console.log(`Wrote ${posts.length} X posts to ${path.relative(ROOT_DIR, OUTPUT_JSON)}.`);
 }
 
 await main();

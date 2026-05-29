@@ -58,7 +58,7 @@
     <div class="dialog-content stack-content">
       <div class="stack-top-row">
         <div class="stack-position-controls">
-          <span class="stack-counter" id="stack-counter">2 / 12</span>
+          <span class="stack-counter" id="stack-counter">2 / 11</span>
           <button
             type="button"
             class="stack-index-shortcut"
@@ -90,11 +90,10 @@
             <button type="button" class="stack-index-button" data-stack-jump="4" data-label-en="Tell me" data-label-ja="聞かせて">Tell me</button>
             <button type="button" class="stack-index-button" data-stack-jump="5" data-label-en="Running" data-label-ja="ランニング">Running</button>
             <button type="button" class="stack-index-button" data-stack-jump="6" data-label-en="Elsewhere" data-label-ja="リンク">Elsewhere</button>
-            <button type="button" class="stack-index-button" data-stack-jump="7" data-label-en="Japan wires" data-label-ja="日本ニュース">Japan wires</button>
-            <button type="button" class="stack-index-button" data-stack-jump="8" data-label-en="Doom scroll" data-label-ja="<span class='latin'>Doom scroll</span>">Doom scroll</button>
-            <button type="button" class="stack-index-button" data-stack-jump="9" data-label-en="Guestbook" data-label-ja="ゲストブック">Guestbook</button>
-            <button type="button" class="stack-index-button" data-stack-jump="10" data-label-en="Puzzle" data-label-ja="パズル">Puzzle</button>
-            <button type="button" class="stack-index-button" data-stack-jump="11" data-label-en="One more thing" data-label-ja="<span class='latin'>One more thing</span>">One more thing</button>
+            <button type="button" class="stack-index-button" data-stack-jump="7" data-label-en="Doom scroll" data-label-ja="<span class='latin'>Doom scroll</span>">Doom scroll</button>
+            <button type="button" class="stack-index-button" data-stack-jump="8" data-label-en="Guestbook" data-label-ja="ゲストブック">Guestbook</button>
+            <button type="button" class="stack-index-button" data-stack-jump="9" data-label-en="Puzzle" data-label-ja="パズル">Puzzle</button>
+            <button type="button" class="stack-index-button" data-stack-jump="10" data-label-en="One more thing" data-label-ja="<span class='latin'>One more thing</span>">One more thing</button>
           </div>
         </section>
 
@@ -195,31 +194,6 @@
             <a href="https://x.com/_bobertdowney">X</a>
             <a href="https://www.instagram.com/bobertdowney/">Instagram</a>
             <a href="https://www.linkedin.com/in/garciajustin/">LinkedIn</a>
-          </div>
-        </section>
-
-        <section class="stack-card stack-card-news" data-stack-card hidden>
-          <div class="stack-card-kicker" data-label-en="Japan wires" data-label-ja="日本ニュース">Japan wires</div>
-          <h2
-            data-label-en="Japan news"
-            data-label-ja="<span class='ja-text'>日本ニュース</span>"
-          >Japan news</h2>
-          <div class="feed-panel" id="japan-news-feed-panel">
-            <div class="news-feed" id="japan-news-feed" aria-live="polite">
-              <p
-                class="news-feed-status"
-                data-label-en="Loading headlines..."
-                data-label-ja="<span class='ja-text'>ヘッドラインを読み込み中...</span>"
-              >Loading headlines...</p>
-            </div>
-          </div>
-          <div class="stack-actions">
-            <a
-              href="https://www3.nhk.or.jp/nhkworld/en/news/"
-              id="japan-news-source-link"
-              data-label-en="Open source"
-              data-label-ja="<span class='ja-text'>ニュース元を見る</span>"
-            >Open source</a>
           </div>
         </section>
 
@@ -528,7 +502,6 @@
 
   <div class="window-zoom-rect" id="window-zoom-rect" hidden aria-hidden="true"></div>
   
-  <script src="data/japan-news.js"></script>
   <script src="data/x-posts.js"></script>
   <script>
     function timeInZone(date, timeZone) {
@@ -588,8 +561,6 @@
     const languageButtons = document.querySelectorAll('.language-segment');
     const labelElements = document.querySelectorAll('[data-label-en][data-label-ja]');
     const visitorCountElement = document.getElementById('visitor-count');
-    const japanNewsFeedElement = document.getElementById('japan-news-feed');
-    const japanNewsSourceLink = document.getElementById('japan-news-source-link');
     const xFeedElement = document.getElementById('x-feed');
     const xFeedTabButtons = document.querySelectorAll('[data-x-feed-tab]');
     const puzzleBoard = document.getElementById('puzzle-board');
@@ -617,8 +588,6 @@
     let currentWeatherUnit = 'imperial';
     let weatherReadings = {};
     let currentLanguage = 'en';
-    let japanNewsData = window.JAPAN_NEWS_SNAPSHOT || null;
-    let japanNewsDidFail = false;
     let xSnapshotData = window.X_POSTS_SNAPSHOT || null;
     let xSnapshotDidFail = false;
     let currentXFeed = 'following';
@@ -997,21 +966,6 @@
       });
     }
 
-    function formatJapanNewsSnapshotNote(updatedAt, count) {
-      const safeCount = Math.max(0, Number(count) || 0);
-      if (currentLanguage === 'ja') {
-        if (updatedAt) {
-          return `${updatedAt}のスナップショット。${safeCount}件`;
-        }
-        return `${safeCount}件`;
-      }
-      const headlineWord = safeCount === 1 ? 'headline' : 'headlines';
-      if (updatedAt) {
-        return `Snapshot from ${updatedAt}. ${safeCount} ${headlineWord}`;
-      }
-      return `${safeCount} ${headlineWord}`;
-    }
-
     function updateFeedScrollFade(feedElement) {
       if (!feedElement) {
         return;
@@ -1035,7 +989,6 @@
     }
 
     function refreshFeedScrollFades() {
-      updateFeedScrollFade(japanNewsFeedElement);
       updateFeedScrollFade(xFeedElement);
     }
 
@@ -1047,122 +1000,6 @@
       const update = () => updateFeedScrollFade(feedElement);
       feedElement.addEventListener('scroll', update, { passive: true });
       return update;
-    }
-
-    function formatNewsDate(value) {
-      const date = new Date(value);
-      if (Number.isNaN(date.getTime())) {
-        return '';
-      }
-
-      return new Intl.DateTimeFormat(currentLanguage === 'ja' ? 'ja-JP' : 'en', {
-        month: 'short',
-        day: 'numeric',
-      }).format(date);
-    }
-
-    function appendJapanNewsStatus(message) {
-      if (!japanNewsFeedElement) {
-        return;
-      }
-
-      japanNewsFeedElement.textContent = '';
-      const status = document.createElement('p');
-      status.className = 'news-feed-status';
-      status.textContent = message;
-      japanNewsFeedElement.append(status);
-      updateFeedScrollFade(japanNewsFeedElement);
-    }
-
-    function createJapanNewsItem(item) {
-      const article = document.createElement('article');
-      article.className = 'news-item';
-
-      const link = document.createElement('a');
-      link.className = 'news-item-title';
-      link.href = item.url;
-      link.textContent = item.title || localizedText('Untitled', '無題');
-      article.append(link);
-
-      const meta = document.createElement('p');
-      meta.className = 'news-item-meta';
-      const date = formatNewsDate(item.publishedAt);
-      meta.textContent = date ? `${japanNewsData?.sourceName || 'The Japan Times'} / ${date}` : (japanNewsData?.sourceName || 'The Japan Times');
-      article.append(meta);
-
-      if (item.description) {
-        const description = document.createElement('p');
-        description.className = 'news-item-description';
-        description.textContent = item.description;
-        article.append(description);
-      }
-
-      return article;
-    }
-
-    function renderJapanNews() {
-      if (!japanNewsFeedElement) {
-        return;
-      }
-
-      if (japanNewsDidFail) {
-        appendJapanNewsStatus(localizedText('News gremlin is sleeping.', 'ニュースの妖精は寝ています。'));
-        return;
-      }
-
-      if (!japanNewsData) {
-        appendJapanNewsStatus(localizedText('Loading headlines...', 'ヘッドラインを読み込み中...'));
-        return;
-      }
-
-      const items = Array.isArray(japanNewsData.items) ? japanNewsData.items : [];
-      if (!items.length) {
-        appendJapanNewsStatus(localizedText('No headlines captured yet. Run the news snapshot.', 'まだヘッドラインがありません。ニュースのスナップショットを実行してください。'));
-        return;
-      }
-
-      if (japanNewsSourceLink && japanNewsData.sourceUrl) {
-        japanNewsSourceLink.href = japanNewsData.sourceUrl;
-      }
-
-      japanNewsFeedElement.textContent = '';
-      const updatedAt = formatNewsDate(japanNewsData.updatedAt);
-      const note = document.createElement('p');
-      note.className = 'news-feed-updated';
-      note.textContent = formatJapanNewsSnapshotNote(updatedAt, items.length);
-      japanNewsFeedElement.append(note);
-
-      items.forEach((item) => {
-        japanNewsFeedElement.append(createJapanNewsItem(item));
-      });
-      updateFeedScrollFade(japanNewsFeedElement);
-    }
-
-    async function fetchJapanNews() {
-      if (!japanNewsFeedElement) {
-        return;
-      }
-
-      if (window.JAPAN_NEWS_SNAPSHOT) {
-        japanNewsData = window.JAPAN_NEWS_SNAPSHOT;
-        japanNewsDidFail = false;
-        renderJapanNews();
-      }
-
-      try {
-        const response = await fetch('data/japan-news.json', { cache: 'no-store' });
-        if (!response.ok) {
-          throw new Error(`Japan news request failed: ${response.status}`);
-        }
-        japanNewsData = await response.json();
-        japanNewsDidFail = false;
-      } catch (error) {
-        if (!japanNewsData) {
-          japanNewsDidFail = true;
-        }
-      }
-
-      renderJapanNews();
     }
 
     const RETRO_EMOJI_LABELS = new Map([
@@ -1576,7 +1413,6 @@
         selectedMapPlace = getRegionName(selectedMapCountryCode);
         updateMapStatus(selectedMapPlace);
       }
-      renderJapanNews();
       renderXSnapshot();
       updateXFeedTabLabels();
       renderPuzzle();
@@ -2492,9 +2328,7 @@
     updateClocks();
     fetchWeather();
     fetchVisitorCount();
-    bindFeedScrollFade(japanNewsFeedElement);
     bindFeedScrollFade(xFeedElement);
-    fetchJapanNews();
     fetchXSnapshot();
     setInterval(updateClocks, 1000);
     setInterval(fetchWeather, 30 * 60 * 1000);

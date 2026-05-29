@@ -1,8 +1,6 @@
 name: Build Japan News Snapshot
 
 on:
-  schedule:
-    - cron: "13 */12 * * *"
   workflow_dispatch:
 
 permissions:

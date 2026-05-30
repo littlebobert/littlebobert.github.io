@@ -14,6 +14,10 @@ let currentWeatherUnit = 'imperial';
 let currentLanguage = 'en';
 let kyotoWeatherReading = null;
 let lastTouchWindowShadeAt = 0;
+const pageTitles = {
+  en: 'What would you make if someone else could build it?',
+  ja: '誰かが作ってくれるなら、何を作りたいですか？',
+};
 
 function timeInZone(date, timeZone) {
   const formatter = new Intl.DateTimeFormat('en-GB', {
@@ -175,7 +179,10 @@ function setLanguage(language) {
   languageButtons.forEach((button) => {
     button.setAttribute('aria-pressed', button.dataset.languageValue === currentLanguage ? 'true' : 'false');
   });
-  document.title = 'Kyoto Tech Meetup';
+  const pageTitle = pageTitles[currentLanguage];
+  document.title = pageTitle;
+  document.querySelector('meta[property="og:title"]')?.setAttribute('content', pageTitle);
+  document.querySelector('meta[name="twitter:title"]')?.setAttribute('content', pageTitle);
   try {
     localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLanguage);
   } catch {}

@@ -4,22 +4,32 @@
 <head>
   <meta charset="utf-8">
   <script src="theme.js"></script>
-  <title>Kyoto Community Hack Day</title>
+  <title>Kyoto Tech Meetup</title>
   <link href="style.css?v=104" rel="stylesheet">
+  <link rel="icon" href="assets/kyoto-tech-meetup-favicon.png">
+  <link rel="apple-touch-icon" href="assets/kyoto-tech-meetup-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://littlebobert.github.io/kyoto.html">
   <meta
     name="description"
-    content="Drop your idea for Kyoto community hack day."
+    content="Drop your idea for Kyoto Tech Meetup."
   >
-  <meta property="og:title" content="Kyoto Community Hack Day">
+  <meta property="og:title" content="Kyoto Tech Meetup">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://littlebobert.github.io/kyoto.html">
-  <meta property="og:site_name" content="Kyoto Community Hack Day">
-  <meta property="og:description" content="Drop your idea for Kyoto community hack day.">
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Kyoto Community Hack Day">
-  <meta name="twitter:description" content="Drop your idea for Kyoto community hack day.">
+  <meta property="og:site_name" content="Kyoto Tech Meetup">
+  <meta property="og:description" content="Drop your idea for Kyoto Tech Meetup.">
+  <meta property="og:image" content="https://littlebobert.github.io/assets/kyoto-tech-meetup-social.png?v=1">
+  <meta property="og:image:secure_url" content="https://littlebobert.github.io/assets/kyoto-tech-meetup-social.png?v=1">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Dithered Kyoto street and pagoda photo for Kyoto Tech Meetup">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kyoto Tech Meetup">
+  <meta name="twitter:description" content="Drop your idea for Kyoto Tech Meetup.">
+  <meta name="twitter:image" content="https://littlebobert.github.io/assets/kyoto-tech-meetup-social.png?v=1">
+  <meta name="twitter:image:alt" content="Dithered Kyoto street and pagoda photo for Kyoto Tech Meetup">
   <style>
     body.kyoto-page {
       justify-content: flex-start;
@@ -59,6 +69,97 @@
       padding-top: 0;
     }
 
+    .kyoto-submissions-window {
+      margin-top: 12px;
+    }
+
+    .kyoto-submissions-content {
+      padding: 12px;
+    }
+
+    .submission-board {
+      display: grid;
+      gap: 6px;
+    }
+
+    .submission-card {
+      display: grid;
+      grid-template-columns: 48px minmax(0, 1fr);
+      gap: 8px;
+      padding: 8px;
+      border: 2px solid #000;
+      background: #fff;
+    }
+
+    .submission-card--top {
+      box-shadow: 2px 2px 0 #000;
+    }
+
+    .submission-votes {
+      display: grid;
+      place-items: center;
+      align-content: center;
+      min-height: 46px;
+      border: 2px solid #000;
+      background:
+        linear-gradient(45deg, #ddd 25%, transparent 25%),
+        linear-gradient(-45deg, #ddd 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, #ddd 75%),
+        linear-gradient(-45deg, transparent 75%, #ddd 75%),
+        #fff;
+      background-size: 4px 4px;
+      background-position: 0 0, 0 2px, 2px -2px, -2px 0;
+      line-height: 1;
+    }
+
+    .submission-votes strong {
+      font-size: 24px;
+      font-weight: normal;
+    }
+
+    .submission-votes span {
+      font-size: 12px;
+    }
+
+    .submission-title-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 8px;
+      margin-bottom: 3px;
+    }
+
+    .submission-type,
+    .submission-rank {
+      display: inline-block;
+      padding: 2px 5px;
+      border: 1px solid #000;
+      background: #fff;
+    }
+
+    .submission-meta {
+      display: flex;
+      flex: 0 0 auto;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 4px;
+      font-size: 12px;
+      line-height: 1;
+    }
+
+    .submission-title {
+      margin: 0;
+      font-size: 20px;
+      font-weight: normal;
+      line-height: 1;
+    }
+
+    .submission-description {
+      margin: 0;
+      font-size: 16px;
+      line-height: 1.15;
+    }
+
     .kyoto-widget-dock {
       width: 100%;
       max-width: 480px;
@@ -94,6 +195,24 @@
       line-height: 1.35;
     }
 
+    html[lang="ja"] .submission-votes span,
+    html[lang="ja"] .submission-meta {
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    html[lang="ja"] .submission-title {
+      font-size: 16px;
+      font-weight: bold;
+      line-height: 1.25;
+    }
+
+    html[lang="ja"] .submission-description {
+      font-size: 14px;
+      font-weight: bold;
+      line-height: 1.35;
+    }
+
     html[data-theme="modern"] .kyoto-prompt {
       font-family: inherit;
       font-size: 32px;
@@ -123,6 +242,60 @@
       text-transform: none;
     }
 
+    html[data-theme="modern"] .submission-card {
+      border: none;
+      border-radius: 10px;
+      background: rgba(0, 0, 0, 0.04);
+    }
+
+    html[data-theme="modern"] .submission-card--top {
+      box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.08);
+    }
+
+    html[data-theme="modern"] .submission-votes {
+      border: none;
+      border-radius: 8px;
+      background: rgba(0, 122, 255, 0.12);
+      color: #0066cc;
+      font-family: inherit;
+    }
+
+    html[data-theme="modern"] .submission-votes strong {
+      font-family: inherit;
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    html[data-theme="modern"] .submission-votes span,
+    html[data-theme="modern"] .submission-meta {
+      font-family: inherit;
+      font-size: 11px;
+      font-weight: 600;
+      color: rgba(0, 0, 0, 0.55);
+    }
+
+    html[data-theme="modern"] .submission-type,
+    html[data-theme="modern"] .submission-rank {
+      border: none;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.07);
+    }
+
+    html[data-theme="modern"] .submission-title {
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1.2;
+      color: rgba(0, 0, 0, 0.88);
+    }
+
+    html[data-theme="modern"] .submission-description {
+      font-family: inherit;
+      font-size: 13px;
+      line-height: 1.35;
+      color: rgba(0, 0, 0, 0.72);
+    }
+
     @media (max-width: 680px) {
       .kyoto-content {
         padding: 18px 16px;
@@ -130,6 +303,26 @@
 
       .kyoto-prompt {
         font-size: 24px;
+      }
+
+      .submission-card {
+        grid-template-columns: 44px minmax(0, 1fr);
+      }
+
+      .submission-votes {
+        min-height: 44px;
+      }
+
+      .submission-title {
+        font-size: 18px;
+      }
+
+      .submission-description {
+        font-size: 15px;
+      }
+
+      .submission-title-row {
+        gap: 6px;
       }
 
       .kyoto-widget-dock {
@@ -160,9 +353,9 @@
         <div class="title-bar-stripes-full"></div>
         <span
           class="title-text"
-          data-label-en="Kyoto"
-          data-label-ja="京都"
-        >Kyoto</span>
+          data-label-en="Kyoto Tech Meetup"
+          data-label-ja="Kyoto Tech Meetup"
+        >Kyoto Tech Meetup</span>
       </div>
       <div class="dialog-content kyoto-content">
         <p
@@ -172,15 +365,105 @@
         >What would you make if someone else could build it? Drop your idea &mdash; we&rsquo;ll bring it to life at our monthly meetup.</p>
         <p
           class="kyoto-signoff"
-          data-label-en="&mdash; Kyoto community hack day"
-          data-label-ja="&mdash; 京都コミュニティハックデー"
-        >&mdash; Kyoto community hack day</p>
+          data-label-en="&mdash; Kyoto Tech Meetup"
+          data-label-ja="&mdash; Kyoto Tech Meetup"
+        >&mdash; Kyoto Tech Meetup</p>
         <div class="stack-actions kyoto-actions">
           <a
-            href="mailto:justin.garcia@gmail.com?subject=Kyoto%20Community%20Hack%20Day%20Idea&body=What%20I%27d%20make%20if%20someone%20else%20could%20build%20it%3A%0A"
+            href="mailto:justin.garcia@gmail.com?subject=Kyoto%20Tech%20Meetup&body=What%20I%27d%20make%20if%20someone%20else%20could%20build%20it%3A%0A"
             data-label-en="Submit your idea"
             data-label-ja="アイデアを送る"
           >Submit your idea</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="mac-dialog kyoto-submissions-window">
+      <div class="title-bar">
+        <div class="close-box"></div>
+        <div class="title-bar-stripes-full"></div>
+        <span
+          class="title-text"
+          data-label-en="Top Voted"
+          data-label-ja="人気アイデア"
+        >Top Voted</span>
+      </div>
+      <div class="dialog-content kyoto-submissions-content">
+        <div class="submission-board" aria-label="Current top voted submissions">
+          <article class="submission-card submission-card--top">
+            <div class="submission-votes">
+              <strong>9</strong>
+              <span data-label-en="votes" data-label-ja="票">votes</span>
+            </div>
+            <div>
+              <div class="submission-title-row">
+                <h2
+                  class="submission-title"
+                  data-label-en="Kamo River Meetup Finder"
+                  data-label-ja="鴨川ミートアップ検索"
+                >Kamo River Meetup Finder</h2>
+                <div class="submission-meta">
+                  <span class="submission-rank" data-label-en="#1" data-label-ja="1位">#1</span>
+                  <span class="submission-type" data-label-en="Mobile App" data-label-ja="モバイルアプリ">Mobile App</span>
+                </div>
+              </div>
+              <p
+                class="submission-description"
+                data-label-en="A tiny map that finds casual places nearby for impromptu tech chats."
+                data-label-ja="近くで気軽に技術トークできる場所を探す小さな地図。"
+              >A tiny map that finds casual places nearby for impromptu tech chats.</p>
+            </div>
+          </article>
+
+          <article class="submission-card">
+            <div class="submission-votes">
+              <strong>7</strong>
+              <span data-label-en="votes" data-label-ja="票">votes</span>
+            </div>
+            <div>
+              <div class="submission-title-row">
+                <h2
+                  class="submission-title"
+                  data-label-en="Kyoto Maker Index"
+                  data-label-ja="京都メーカー索引"
+                >Kyoto Maker Index</h2>
+                <div class="submission-meta">
+                  <span class="submission-rank" data-label-en="#2" data-label-ja="2位">#2</span>
+                  <span class="submission-type" data-label-en="Website" data-label-ja="ウェブサイト">Website</span>
+                </div>
+              </div>
+              <p
+                class="submission-description"
+                data-label-en="A directory of local hackers, artists, studios, and open project nights."
+                data-label-ja="地元のハッカー、アーティスト、スタジオ、公開制作日のディレクトリ。"
+              >A directory of local hackers, artists, studios, and open project nights.</p>
+            </div>
+          </article>
+
+          <article class="submission-card">
+            <div class="submission-votes">
+              <strong>6</strong>
+              <span data-label-en="votes" data-label-ja="票">votes</span>
+            </div>
+            <div>
+              <div class="submission-title-row">
+                <h2
+                  class="submission-title"
+                  data-label-en="Temple Bell Synth"
+                  data-label-ja="お寺の鐘シンセ"
+                >Temple Bell Synth</h2>
+                <div class="submission-meta">
+                  <span class="submission-rank" data-label-en="#3" data-label-ja="3位">#3</span>
+                  <span class="submission-type" data-label-en="Art" data-label-ja="アート">Art</span>
+                </div>
+              </div>
+              <p
+                class="submission-description"
+                data-label-en="An ambient browser instrument made from Kyoto street and temple sounds."
+                data-label-ja="京都の街とお寺の音で作る、ブラウザ上のアンビエント楽器。"
+              >An ambient browser instrument made from Kyoto street and temple sounds.</p>
+            </div>
+          </article>
         </div>
       </div>
     </div>

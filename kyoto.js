@@ -175,7 +175,7 @@ function setLanguage(language) {
   languageButtons.forEach((button) => {
     button.setAttribute('aria-pressed', button.dataset.languageValue === currentLanguage ? 'true' : 'false');
   });
-  document.title = currentLanguage === 'ja' ? '京都コミュニティハックデー' : 'Kyoto Community Hack Day';
+  document.title = 'Kyoto Tech Meetup';
   try {
     localStorage.setItem(LANGUAGE_STORAGE_KEY, currentLanguage);
   } catch {}

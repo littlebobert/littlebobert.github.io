@@ -1,8 +1,28 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-05-29T18:17:40.039Z",
+  "updatedAt": "2026-05-30T16:17:52.526Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2060686262902960242",
+      "text": "banger after banger https://t.co/lNHupTYKoa",
+      "createdAt": "2026-05-30T11:34:25.000Z",
+      "url": "https://x.com/_bobertdowney/status/2060686262902960242",
+      "urls": [
+        {
+          "url": "https://t.co/lNHupTYKoa",
+          "expandedUrl": "https://twitter.com/pontifex/status/2060685288163144177",
+          "displayUrl": "x.com/pontifex/statu…",
+          "start": 20,
+          "end": 43
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2059070952529661966",
       "text": "interview with our CTO https://t.co/aKSZdYcS3M",
@@ -150,40 +170,6 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2055988524302897423",
-      "text": "made a tool to help me navigate Japanese websites https://t.co/99aXvlxGAp https://t.co/TeghuU9Ogs",
-      "createdAt": "2026-05-17T12:27:17.000Z",
-      "url": "https://x.com/_bobertdowney/status/2055988524302897423",
-      "urls": [
-        {
-          "url": "https://t.co/99aXvlxGAp",
-          "expandedUrl": "https://littlebobert.github.io/sasu.html",
-          "displayUrl": "littlebobert.github.io/sasu.html",
-          "start": 50,
-          "end": 73
-        },
-        {
-          "url": "https://t.co/TeghuU9Ogs",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2055988524302897423/photo/1",
-          "displayUrl": "pic.x.com/TeghuU9Ogs",
-          "start": 74,
-          "end": 97
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2055988524302897423-0.png",
-          "imageModern": "assets/generated/x/mine-post-2055988524302897423-0-modern.png"
-        }
-      ]
     }
   ]
 };

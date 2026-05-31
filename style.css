@@ -340,6 +340,7 @@ html[data-theme="modern"] .headshot-modern {
 .language-switcher > button {
   background: #fff;
   border: 2px solid #000;
+  border-radius: 4px;
   box-shadow: 1px 1px 0 #000;
   color: #000;
   cursor: pointer;
@@ -400,6 +401,7 @@ html[lang="ja"] .language-switcher > button {
   min-height: 20px;
   padding: 2px 7px;
   border: 2px solid #000;
+  border-radius: 4px;
   box-shadow: 1px 1px 0 #000;
   background: #fff;
   color: #000;
@@ -790,6 +792,7 @@ html[lang="ja"] .stack-card .x-post-text {
   min-height: 34px;
   padding: 5px 8px;
   border: 2px solid #000;
+  border-radius: 4px;
   box-shadow:
     2px 2px 0 #000,
     inset 1px 1px 0 #fff,
@@ -971,6 +974,7 @@ html[lang="ja"] .stack-topic-list .latin {
   min-height: 30px;
   padding: 4px 10px;
   border: 2px solid #000;
+  border-radius: 4px;
   box-shadow: 1px 1px 0 #000;
   background: #fff;
   color: #000;
@@ -1194,6 +1198,7 @@ button.puzzle-tile:focus-visible {
   margin: 0 auto;
   padding: 4px 12px;
   border: 2px solid #000;
+  border-radius: 4px;
   background: #fff;
   box-shadow:
     2px 2px 0 #000,
@@ -1235,6 +1240,7 @@ button.puzzle-tile:focus-visible {
   min-height: 34px;
   padding: 5px 10px;
   border: 2px solid #000;
+  border-radius: 4px;
   box-shadow:
     2px 2px 0 #000,
     inset 1px 1px 0 #fff,
@@ -1271,6 +1277,7 @@ button.puzzle-tile:focus-visible {
   min-height: 40px;
   padding: 5px 10px;
   border: 2px solid #000;
+  border-radius: 4px;
   box-shadow:
     2px 2px 0 #000,
     inset 1px 1px 0 #fff,
@@ -1653,7 +1660,9 @@ html[data-clock-mode="analog"] .analog-clock {
   align-items: stretch;
   width: 100%;
   border: 2px solid #000;
+  border-radius: 4px;
   background: #fff;
+  overflow: hidden;
 }
 
 .language-segment,
@@ -1843,6 +1852,7 @@ body.resume-page .language-switcher button {
   -webkit-appearance: none;
   background: #fff;
   border: 2px solid #000;
+  border-radius: 4px;
   box-shadow: none;
   color: #000;
   cursor: pointer;

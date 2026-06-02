@@ -1,8 +1,35 @@
 {
-  "updatedAt": "2026-06-01T19:59:24.228Z",
+  "updatedAt": "2026-06-02T18:57:22.634Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2061580729830838604",
+      "text": "「Sendai（仙台）」って「AI」が入ってるから、ちょっと気になる(笑) https://t.co/714hWTuzwS",
+      "createdAt": "2026-06-01T22:48:42.000Z",
+      "url": "https://x.com/_bobertdowney/status/2061580729830838604",
+      "urls": [
+        {
+          "url": "https://t.co/714hWTuzwS",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2061580729830838604/video/1",
+          "displayUrl": "pic.x.com/714hWTuzwS",
+          "start": 38,
+          "end": 61
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2061580729830838604-0.png",
+          "imageModern": "assets/generated/x/mine-post-2061580729830838604-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2060686262902960242",
       "text": "banger after banger https://t.co/lNHupTYKoa",
@@ -150,26 +177,6 @@
           "imageModern": "assets/generated/x/mine-post-2057941200213303664-0-modern.png"
         }
       ]
-    },
-    {
-      "id": "2056570211835478443",
-      "text": "worth the weights https://t.co/Q4shFwUoFR",
-      "createdAt": "2026-05-19T02:58:42.000Z",
-      "url": "https://x.com/_bobertdowney/status/2056570211835478443",
-      "urls": [
-        {
-          "url": "https://t.co/Q4shFwUoFR",
-          "expandedUrl": "https://developer.apple.com/wwdc26/",
-          "displayUrl": "developer.apple.com/wwdc26/",
-          "start": 18,
-          "end": 41
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 }

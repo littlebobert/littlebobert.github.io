@@ -1,6 +1,16 @@
 {
   "entries": [
     {
+      "id": "2c605157-7a2a-430d-a338-66a3d7b9ff6e",
+      "name": "Karen Tuder",
+      "countryCode": "US",
+      "countryName": "United States",
+      "comment": "Sadu eats",
+      "signedAt": "2026-06-02T23:12:42.393Z",
+      "approvedAt": "2026-06-02T23:57:48.780Z",
+      "source": "gmail"
+    },
+    {
       "id": "dd9c88a2-fabd-42ca-b957-f0c23c2daeb5",
       "name": "Justin",
       "countryCode": "JP",

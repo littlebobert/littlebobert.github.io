@@ -89,6 +89,7 @@ function processApprovedSubmissionsForHandler_(handler) {
       const result = handler.createPullRequest(submission);
       console.log(`Processed ${handler.id}/${submission.id}: ${result.status}`);
       thread.addLabel(processedLabel);
+      thread.markRead();
     } catch (error) {
       console.error(error && error.stack ? error.stack : error);
       thread.addLabel(errorLabel);

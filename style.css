@@ -1154,6 +1154,23 @@ html[lang="ja"] .tokyo-recommendations-list {
   line-height: 1.1;
 }
 
+.guestbook-summary {
+  margin-bottom: 3px;
+}
+
+.guestbook-entries {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.guestbook-entries li {
+  margin-bottom: 2px;
+}
+
+.guestbook-entries li:last-child {
+  margin-bottom: 0;
+}
+
 html[lang="ja"] .stack-card .map-location-status {
   font-size: 16px;
   font-weight: normal;

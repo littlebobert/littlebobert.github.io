@@ -1228,15 +1228,27 @@ function renderGuestbook() {
   const recentEntries = guestbookEntries.slice(0, 5);
   const countryCount = new Set(guestbookEntries.map((entry) => entry.countryCode).filter(Boolean)).size;
   const summary = localizedText(
-    `Signed from ${countryCount} ${countryCount === 1 ? 'country' : 'countries'}: `,
-    `${countryCount}か国から: `
+    `Signed from ${countryCount} ${countryCount === 1 ? 'country' : 'countries'}:`,
+    `${countryCount}か国から:`
   );
-  guestbookListElement.textContent = summary + recentEntries
-    .map((entry) => {
-      const place = entry.countryName || entry.countryCode;
-      return entry.comment ? `${entry.name} (${place}): ${entry.comment}` : `${entry.name} (${place})`;
-    })
-    .join(' / ');
+  guestbookListElement.textContent = '';
+
+  const summaryElement = document.createElement('div');
+  summaryElement.className = 'guestbook-summary';
+  summaryElement.textContent = summary;
+  guestbookListElement.append(summaryElement);
+
+  const list = document.createElement('ul');
+  list.className = 'guestbook-entries';
+  recentEntries.forEach((entry) => {
+    const item = document.createElement('li');
+    const place = entry.countryName || entry.countryCode;
+    item.textContent = entry.comment
+      ? `${entry.name} - ${place}: ${entry.comment}`
+      : `${entry.name} - ${place}`;
+    list.append(item);
+  });
+  guestbookListElement.append(list);
 }
 
 async function fetchGuestbook() {

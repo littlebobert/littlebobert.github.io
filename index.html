@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <script src="theme.js"></script>
   <title>About Justin Garcia</title>
-  <link href='style.css?v=104' rel='stylesheet'>
+  <link href='style.css?v=105' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://littlebobert.github.io/">
   <meta name="description" content="iOS engineer in Tokyo." />
@@ -59,7 +59,7 @@
     <div class="dialog-content stack-content">
       <div class="stack-top-row">
         <div class="stack-position-controls">
-          <span class="stack-counter" id="stack-counter">2 / 10</span>
+          <span class="stack-counter" id="stack-counter">2 / 11</span>
           <button
             type="button"
             class="stack-index-shortcut"
@@ -93,7 +93,8 @@
             <button type="button" class="stack-index-button" data-stack-jump="6" data-label-en="Elsewhere" data-label-ja="リンク">Elsewhere</button>
             <button type="button" class="stack-index-button" data-stack-jump="7" data-label-en="Doom scroll" data-label-ja="<span class='latin'>Doom scroll</span>">Doom scroll</button>
             <button type="button" class="stack-index-button" data-stack-jump="8" data-label-en="Guestbook" data-label-ja="ゲストブック">Guestbook</button>
-            <button type="button" class="stack-index-button" data-stack-jump="9" data-label-en="One more thing" data-label-ja="<span class='latin'>One more thing</span>">One more thing</button>
+            <button type="button" class="stack-index-button" data-stack-jump="9" data-label-en="Play MUD" data-label-ja="<span class='latin'>Play MUD</span>">Play MUD</button>
+            <button type="button" class="stack-index-button" data-stack-jump="10" data-label-en="One more thing" data-label-ja="<span class='latin'>One more thing</span>">One more thing</button>
           </div>
         </section>
 
@@ -172,6 +173,15 @@
               >if you go running too</a>
             </li>
           </ul>
+          <div class="tokyo-recommendations">
+            <button type="button" class="stack-button stack-button-secondary" id="tokyo-recommendation-button">
+              <span
+                data-label-en="Add Tokyo recommendation"
+                data-label-ja="<span class='latin'>Tokyo</span><span class='ja-text'>おすすめを追加</span>"
+              >Add Tokyo recommendation</span>
+            </button>
+            <div class="tokyo-recommendations-list" id="tokyo-recommendations-list" aria-live="polite"></div>
+          </div>
         </section>
 
         <section class="stack-card" data-stack-card hidden>
@@ -281,6 +291,39 @@
             >Sign guestbook</button>
           </div>
           <p class="map-location-status" id="map-location-status" aria-live="polite"></p>
+          <div class="guestbook-list" id="guestbook-list" aria-live="polite"></div>
+        </section>
+
+        <section class="stack-card stack-card-mud" data-stack-card hidden>
+          <div class="stack-card-kicker" data-label-en="Play MUD" data-label-ja="<span class='latin'>Play MUD</span>">Play MUD</div>
+          <h2
+            data-label-en="Ueno quest"
+            data-label-ja="<span class='latin'>Ueno quest</span>"
+          >Ueno quest</h2>
+          <p
+            class="mud-note"
+            data-label-en="A tiny text adventure set in Tokyo. Get from Ueno to work, then to Shibuya, then home for soba."
+            data-label-ja="<span class='latin'>Tokyo</span><span class='ja-text'>の小さなテキストアドベンチャー。</span><span class='latin'>Ueno</span><span class='ja-text'>から仕事へ、</span><span class='latin'>Shibuya</span><span class='ja-text'>へ、そして家でそば。</span>"
+          >A tiny text adventure set in Tokyo. Get from Ueno to work, then to Shibuya, then home for soba.</p>
+          <div class="mud-terminal" id="mud-log" role="log" aria-live="polite" aria-label="MUD transcript">
+            <p>Click New run, then try: look, get ready, go downstairs.</p>
+          </div>
+          <form class="mud-form" id="mud-form">
+            <label class="sr-only" for="mud-command">MUD command</label>
+            <input
+              type="text"
+              id="mud-command"
+              name="mud-command"
+              placeholder="look"
+              autocomplete="off"
+            >
+            <button type="submit" class="stack-button" id="mud-submit">Send</button>
+          </form>
+          <div class="mud-controls">
+            <button type="button" class="stack-button stack-button-secondary" id="mud-start">New run</button>
+            <span class="mud-status" id="mud-status" aria-live="polite">Ready.</span>
+          </div>
+          <div class="mud-leaderboard" id="mud-leaderboard" aria-live="polite"></div>
         </section>
 
         <section class="stack-card stack-card-puzzle" data-stack-card hidden>
@@ -498,6 +541,430 @@
   
   <script src="data/x-posts.js"></script>
   <script src="index.js?v=1"></script>
+  <script>
+    const MUD_LEADERBOARD_STORAGE_KEY = 'tokyo-mud-leaderboard';
+    const MUD_PUBLIC_LEADERBOARD_URL = 'data/mud-leaderboard.json';
+    const MUD_STAGE_LABELS = {
+      apartment: 'Apartment near Ueno Park',
+      street: 'Street outside the apartment',
+      stationGate: 'Ueno station gates',
+      subway: 'Tokyo Metro',
+      work: 'Office near Otemachi',
+      shibuya: 'Tech event in Shibuya',
+      returnTrain: 'Subway home',
+      home: 'Apartment kitchen',
+      won: 'Home, fed, victorious',
+    };
+    const mudStartButton = document.getElementById('mud-start');
+    const mudForm = document.getElementById('mud-form');
+    const mudCommandInput = document.getElementById('mud-command');
+    const mudLog = document.getElementById('mud-log');
+    const mudStatus = document.getElementById('mud-status');
+    const mudLeaderboard = document.getElementById('mud-leaderboard');
+    let publicMudLeaderboardEntries = [];
+    let mudState = null;
+
+    function createMudState() {
+      return {
+        stage: 'apartment',
+        ready: false,
+        hasRedBull: false,
+        work: {
+          feature: false,
+          bugsFixed: 0,
+          pricing: false,
+        },
+        attendedEvent: false,
+        moves: 0,
+        won: false,
+      };
+    }
+
+    function setMudStatus(message) {
+      if (mudStatus) {
+        mudStatus.textContent = message;
+      }
+    }
+
+    function clearMudLog() {
+      if (mudLog) {
+        mudLog.textContent = '';
+      }
+    }
+
+    function appendMudLine(speaker, text) {
+      if (!mudLog) {
+        return;
+      }
+      const line = document.createElement('p');
+      line.className = `mud-line mud-line-${speaker}`;
+      line.textContent = text;
+      mudLog.append(line);
+      mudLog.scrollTop = mudLog.scrollHeight;
+    }
+
+    function normalizeMudCommand(command) {
+      return command
+        .toLowerCase()
+        .replace(/[^a-z0-9\s]/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+    }
+
+    function commandHas(command, terms) {
+      return terms.some((term) => command.includes(term));
+    }
+
+    function getMudLeaderboard() {
+      try {
+        const value = JSON.parse(localStorage.getItem(MUD_LEADERBOARD_STORAGE_KEY) || '[]');
+        return Array.isArray(value) ? value : [];
+      } catch {
+        return [];
+      }
+    }
+
+    function saveMudLeaderboard(entries) {
+      try {
+        localStorage.setItem(MUD_LEADERBOARD_STORAGE_KEY, JSON.stringify(entries.slice(0, 5)));
+      } catch {}
+    }
+
+    function getCombinedMudLeaderboard() {
+      const entriesById = new Map();
+      publicMudLeaderboardEntries.forEach((entry) => {
+        if (entry?.id) {
+          entriesById.set(entry.id, entry);
+        }
+      });
+      getMudLeaderboard().forEach((entry) => {
+        if (entry?.id && entriesById.has(entry.id)) {
+          return;
+        }
+        entriesById.set(entry?.id || `local-${entry?.completedAt || Math.random()}`, {
+          ...entry,
+          isLocal: true,
+        });
+      });
+      return Array.from(entriesById.values())
+        .filter((entry) => entry?.name && Number.isFinite(Number(entry.moves)))
+        .sort((a, b) => Number(a.moves) - Number(b.moves) || String(a.completedAt || '').localeCompare(String(b.completedAt || '')))
+        .slice(0, 5);
+    }
+
+    function cleanMudLeaderboardName(name) {
+      return (name || 'Anonymous').replace(/\s+/g, ' ').trim().slice(0, 18) || 'Anonymous';
+    }
+
+    function createMudSubmissionId() {
+      if (window.crypto?.randomUUID) {
+        return window.crypto.randomUUID();
+      }
+      return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+    }
+
+    function renderMudLeaderboard() {
+      if (!mudLeaderboard) {
+        return;
+      }
+      const entries = getCombinedMudLeaderboard();
+      if (!entries.length) {
+        mudLeaderboard.textContent = 'Leaderboard: no winners yet.';
+        return;
+      }
+      mudLeaderboard.textContent = `Leaderboard: ${entries
+        .map((entry, index) => `${index + 1}. ${entry.name} (${entry.moves}${entry.isLocal ? ', local' : ''})`)
+        .join(' / ')}`;
+    }
+
+    async function fetchMudLeaderboard() {
+      try {
+        const response = await fetch(MUD_PUBLIC_LEADERBOARD_URL, { cache: 'no-store' });
+        if (!response.ok) {
+          throw new Error(`Leaderboard request failed: ${response.status}`);
+        }
+        const data = await response.json();
+        publicMudLeaderboardEntries = Array.isArray(data.entries) ? data.entries : [];
+      } catch {
+        publicMudLeaderboardEntries = [];
+      }
+      renderMudLeaderboard();
+    }
+
+    function addMudLeaderboardEntry(name, moves) {
+      const cleanName = cleanMudLeaderboardName(name);
+      const entries = getMudLeaderboard();
+      const entry = {
+        id: createMudSubmissionId(),
+        name: cleanName,
+        moves,
+        rank: moves <= 14 ? 'Senior Soba Engineer' : 'Soba Engineer',
+        route: 'Ueno -> Otemachi -> Shibuya -> Ueno',
+        completedAt: new Date().toISOString(),
+      };
+      entries.push(entry);
+      entries.sort((a, b) => a.moves - b.moves || a.completedAt.localeCompare(b.completedAt));
+      saveMudLeaderboard(entries);
+      renderMudLeaderboard();
+      appendMudLine('system', `${cleanName} enters the local leaderboard with ${moves} moves.`);
+      return entry;
+    }
+
+    function openMudScoreEmail(entry) {
+      const payload = {
+        type: 'ueno-quest-score',
+        id: entry.id,
+        name: entry.name,
+        moves: entry.moves,
+        rank: entry.rank,
+        route: entry.route,
+        completedAt: entry.completedAt,
+      };
+      const subject = `UENO QUEST SCORE ${entry.id}`;
+      const body = [
+        'Ueno Quest completion',
+        '',
+        JSON.stringify(payload, null, 2),
+      ].join('\n');
+      window.location.href = `mailto:justin.garcia@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    }
+
+    function workProgressText() {
+      const tasks = [];
+      tasks.push(mudState.work.feature ? 'feature shipped' : 'feature pending');
+      tasks.push(`${mudState.work.bugsFixed}/3 bugs fixed`);
+      tasks.push(mudState.work.pricing ? 'pricing tier pitched' : 'pricing pitch pending');
+      return tasks.join(', ');
+    }
+
+    function workNextStepText() {
+      return canLeaveWork()
+        ? 'All work tasks are done. Go to Shibuya for the tech event.'
+        : `Work board: ${workProgressText()}.`;
+    }
+
+    function describeMudLocation() {
+      if (!mudState) {
+        return 'Click New run to start.';
+      }
+      switch (mudState.stage) {
+        case 'apartment':
+          return mudState.ready
+            ? 'Your apartment near Ueno Park is tidy enough. Shoes wait by the genkan. The stairs lead down.'
+            : 'You wake in an apartment near Ueno Park. A laptop bag, clean shirt, and house keys demand attention.';
+        case 'street':
+          return mudState.hasRedBull
+            ? 'Outside, cicadas buzz over vending machines. A cold Red Bull is in your bag. The subway entrance waits.'
+            : 'You are downstairs near Ueno Park. A konbini glows beside the subway entrance. You need a Red Bull first.';
+        case 'stationGate':
+          return 'At Ueno station gates, commuters stream past. You have caffeine. Time to get on the subway.';
+        case 'subway':
+          return 'The subway rattles south. Ads for English schools and cloud services sway overhead. Otemachi is coming.';
+        case 'work':
+          return `The Otemachi office hums with monitors and canned coffee. ${workNextStepText()}`;
+        case 'shibuya':
+          return mudState.attendedEvent
+            ? 'The Shibuya tech event has ended. Stickers acquired, small talk survived. The subway can take you home.'
+            : 'You arrive at a Shibuya tech event. Someone is explaining agents near the pizza table.';
+        case 'returnTrain':
+          return 'The late subway rolls toward Ueno. Your backpack is heavier with swag and existential dread.';
+        case 'home':
+          return 'Back in your apartment kitchen. A pot, soba noodles, and tsuyu await.';
+        case 'won':
+          return 'You made soba and survived the Tokyo workday. Victory tastes like buckwheat.';
+        default:
+          return 'Tokyo glitches around you. Try look.';
+      }
+    }
+
+    function canLeaveWork() {
+      return mudState.work.feature && mudState.work.bugsFixed >= 3 && mudState.work.pricing;
+    }
+
+    function completeMudRun() {
+      mudState.won = true;
+      mudState.stage = 'won';
+      setMudStatus(`Finished in ${mudState.moves} moves.`);
+      appendMudLine('system', 'You rinse the soba, pour the tsuyu, and sit by the window. Ueno is quiet. You win.');
+      const name = window.prompt('You made it home for soba. Name for the local leaderboard?');
+      const entry = addMudLeaderboardEntry(name, mudState.moves);
+      appendMudLine('system', 'Opening an email so Justin can add your score to the public board.');
+      openMudScoreEmail(entry);
+    }
+
+    function handleMudAction(rawCommand) {
+      const command = normalizeMudCommand(rawCommand);
+      if (!command) {
+        return '';
+      }
+      if (command === 'help' || command === '?') {
+        return 'Useful commands: look, inventory, status, get ready, go downstairs, buy red bull, enter subway, get off, implement feature, fix bug, pitch pricing, go shibuya, attend event, go home, make soba.';
+      }
+      if (command === 'look' || command === 'l') {
+        return describeMudLocation();
+      }
+      if (command === 'inventory' || command === 'i') {
+        const items = ['phone', 'wallet', 'Suica'];
+        if (mudState.ready) items.push('laptop bag');
+        if (mudState.hasRedBull) items.push('Red Bull');
+        return `Inventory: ${items.join(', ')}.`;
+      }
+      if (command === 'status') {
+        return `${MUD_STAGE_LABELS[mudState.stage]}. Moves: ${mudState.moves}. ${workProgressText()}.`;
+      }
+
+      mudState.moves += 1;
+      setMudStatus(`${mudState.moves} moves.`);
+
+      if (mudState.stage === 'apartment') {
+        if (commandHas(command, ['get ready', 'shower', 'dress', 'pack', 'keys', 'laptop'])) {
+          mudState.ready = true;
+          return 'You shower, dress, grab keys, wallet, Suica, and laptop bag. The morning has been compiled.';
+        }
+        if (commandHas(command, ['downstairs', 'leave', 'go out', 'stairs'])) {
+          if (!mudState.ready) {
+            return 'You are not ready. The laptop bag stares at you with professional disappointment.';
+          }
+          mudState.stage = 'street';
+          return 'You lock the apartment and go downstairs. Ueno Park breathes green across the morning street.';
+        }
+        return 'You need to get ready before leaving the apartment.';
+      }
+
+      if (mudState.stage === 'street') {
+        if (commandHas(command, ['buy red bull', 'red bull', 'konbini', 'convenience', 'combini'])) {
+          mudState.hasRedBull = true;
+          mudState.stage = 'stationGate';
+          return 'You buy a Red Bull from the konbini. The clerk bags it with the gravity of a sacred relic.';
+        }
+        if (commandHas(command, ['subway', 'station', 'train'])) {
+          return 'You cannot enter the subway uncaffeinated. The quest demands Red Bull.';
+        }
+        return 'The konbini glows. Buy a Red Bull before entering the subway.';
+      }
+
+      if (mudState.stage === 'stationGate') {
+        if (commandHas(command, ['enter subway', 'get on', 'board', 'subway', 'train', 'tap in'])) {
+          mudState.stage = 'subway';
+          return 'You tap through the gate and board the subway. The doors chime shut.';
+        }
+        return 'Get on the subway. The office waits under fluorescent lights.';
+      }
+
+      if (mudState.stage === 'subway') {
+        if (commandHas(command, ['get off', 'otemachi', 'exit', 'leave train'])) {
+          mudState.stage = 'work';
+          return 'You get off at Otemachi and surface among towers. The office absorbs you.';
+        }
+        return 'Stay on until Otemachi. You are not spiritually prepared for a random transfer.';
+      }
+
+      if (mudState.stage === 'work') {
+        if (commandHas(command, ['implement feature', 'ship feature', 'build feature', 'feature'])) {
+          if (mudState.work.feature) {
+            return 'The feature is already implemented. Product nods once, mysteriously.';
+          }
+          mudState.work.feature = true;
+          return `You implement one feature. It even works in the simulator. ${workNextStepText()}`;
+        }
+        if (commandHas(command, ['fix bug', 'bug'])) {
+          if (mudState.work.bugsFixed >= 3) {
+            return `Three bugs are fixed. Any more and QA might get suspicious. ${workNextStepText()}`;
+          }
+          mudState.work.bugsFixed += 1;
+          return `Bug ${mudState.work.bugsFixed} fixed. ${workNextStepText()}`;
+        }
+        if (commandHas(command, ['pitch pricing', 'pricing tier', 'new tier', 'pricing'])) {
+          if (mudState.work.pricing) {
+            return `The pricing tier has already been pitched. ${workNextStepText()}`;
+          }
+          mudState.work.pricing = true;
+          return `You pitch a new pricing tier. Someone says "interesting" in a way that could mean anything. ${workNextStepText()}`;
+        }
+        if (commandHas(command, ['leave', 'shibuya', 'event', 'go out'])) {
+          if (!canLeaveWork()) {
+            return `You cannot leave yet. Work board: ${workProgressText()}.`;
+          }
+          mudState.stage = 'shibuya';
+          return 'Work complete, you escape to Shibuya for a tech event.';
+        }
+        return `Work remains. ${workProgressText()}.`;
+      }
+
+      if (mudState.stage === 'shibuya') {
+        if (commandHas(command, ['attend event', 'event', 'network', 'pizza', 'talk'])) {
+          mudState.attendedEvent = true;
+          return 'You attend the event, nod at an architecture diagram, and acquire two stickers.';
+        }
+        if (commandHas(command, ['go home', 'subway home', 'leave', 'train home'])) {
+          if (!mudState.attendedEvent) {
+            return 'You just got here. Attend the tech event first.';
+          }
+          mudState.stage = 'home';
+          return 'You descend into Shibuya station, ride back toward Ueno, and climb the apartment stairs. The kitchen awaits.';
+        }
+        return 'The event buzzes. Attend it, then you can head home.';
+      }
+
+      if (mudState.stage === 'returnTrain') {
+        if (commandHas(command, ['go home', 'get off', 'ueno', 'apartment', 'home'])) {
+          mudState.stage = 'home';
+          return 'You get back near Ueno Park and climb the apartment stairs. The kitchen awaits.';
+        }
+        return 'Stay on the train until Ueno, then go home.';
+      }
+
+      if (mudState.stage === 'home') {
+        if (commandHas(command, ['make soba', 'cook soba', 'soba', 'noodles'])) {
+          completeMudRun();
+          return '';
+        }
+        return 'You are home. Make soba to finish the run.';
+      }
+
+      if (mudState.stage === 'won') {
+        return 'Run complete. Click New run to try for a better score.';
+      }
+
+      return 'Nothing happens. Tokyo remains undefeated.';
+    }
+
+    function startMudRun() {
+      mudState = createMudState();
+      clearMudLog();
+      setMudStatus('0 moves.');
+      appendMudLine('system', 'UENO QUEST');
+      appendMudLine('system', describeMudLocation());
+      appendMudLine('system', 'Type help for commands.');
+      mudCommandInput?.focus();
+    }
+
+    mudStartButton?.addEventListener('click', () => {
+      startMudRun();
+      mudStartButton.blur();
+    });
+
+    mudForm?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!mudState) {
+        startMudRun();
+      }
+      const command = mudCommandInput?.value.trim();
+      if (!command) {
+        return;
+      }
+      mudCommandInput.value = '';
+      appendMudLine('player', `> ${command}`);
+      const response = handleMudAction(command);
+      if (response) {
+        appendMudLine('system', response);
+      }
+      mudCommandInput?.focus();
+    });
+
+    renderMudLeaderboard();
+    fetchMudLeaderboard();
+  </script>
 </body>
 
 </html>

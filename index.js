@@ -50,11 +50,15 @@ const VISITOR_COUNTED_STORAGE_KEY = 'page-views-counter-counted';
 const VISITOR_COUNTER_BASE_URL = 'https://page-views-api.ratneshc.com/api/v1';
 const VISITOR_COUNTER_SITE = 'littlebobert.github.io';
 const VISITOR_COUNTER_PATH = '/';
+const GUESTBOOK_URL = 'data/guestbook.json';
+const TOKYO_RECOMMENDATIONS_URL = 'data/tokyo-recommendations.json';
 const clockModeButtons = document.querySelectorAll('.clock-mode-segment');
 const weatherUnitButtons = document.querySelectorAll('.weather-unit-segment');
 const languageButtons = document.querySelectorAll('.language-segment');
 const labelElements = document.querySelectorAll('[data-label-en][data-label-ja]');
 const visitorCountElement = document.getElementById('visitor-count');
+const tokyoRecommendationButton = document.getElementById('tokyo-recommendation-button');
+const tokyoRecommendationsListElement = document.getElementById('tokyo-recommendations-list');
 const xFeedElement = document.getElementById('x-feed');
 const puzzleBoard = document.getElementById('puzzle-board');
 const puzzleShuffleButton = document.getElementById('puzzle-shuffle');
@@ -88,6 +92,7 @@ let weatherReadings = {};
 let currentLanguage = 'en';
 let xSnapshotData = window.X_POSTS_SNAPSHOT || null;
 let xSnapshotDidFail = false;
+let tokyoRecommendations = [];
 let puzzleTiles = Array.from({ length: PUZZLE_TILE_COUNT }, (_, index) => index);
 let puzzleGiveUpLocked = false;
 
@@ -874,6 +879,8 @@ function setLanguage(language) {
   }
   renderXSnapshot();
   renderPuzzle();
+  renderGuestbook();
+  renderTokyoRecommendations();
 }
 
 languageButtons.forEach((button) => {
@@ -881,6 +888,11 @@ languageButtons.forEach((button) => {
     setLanguage(button.dataset.languageValue);
     button.blur();
   });
+});
+
+tokyoRecommendationButton?.addEventListener('click', () => {
+  openTokyoRecommendationEmail();
+  tokyoRecommendationButton.blur();
 });
 
 const aboutSlot = document.getElementById('about-slot');
@@ -898,6 +910,7 @@ const worldMapLayer = document.getElementById('world-map-layer');
 const worldMapObject = document.getElementById('world-map-svg');
 const selectedMapPin = document.getElementById('selected-map-pin');
 const mapLocationStatus = document.getElementById('map-location-status');
+const guestbookListElement = document.getElementById('guestbook-list');
 const mapEmailButton = document.getElementById('map-email-button');
 const mapZoomInButton = document.getElementById('map-zoom-in');
 const mapZoomOutButton = document.getElementById('map-zoom-out');
@@ -909,6 +922,7 @@ let stackTouchStartY = null;
 let selectedMapCountryCode = '';
 let selectedMapPlace = '';
 let selectedMapCountryElement = null;
+let guestbookEntries = [];
 let mapZoom = 1;
 let mapPanX = 0;
 let mapPanY = 0;
@@ -1104,6 +1118,25 @@ function updateMapStatus(text) {
   }
 }
 
+function createSubmissionId() {
+  if (window.crypto?.randomUUID) {
+    return window.crypto.randomUUID();
+  }
+  return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
+}
+
+function cleanGuestbookName(value) {
+  return (value || 'Anonymous').replace(/\s+/g, ' ').trim().slice(0, 18) || 'Anonymous';
+}
+
+function cleanSubmissionText(value, maxLength) {
+  return (value || '')
+    .replace(/[\u0000-\u001F\u007F<>]/g, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+    .slice(0, maxLength);
+}
+
 function getRegionName(countryCode) {
   try {
     const displayNames = new Intl.DisplayNames([document.documentElement.lang || 'en'], { type: 'region' });
@@ -1111,6 +1144,117 @@ function getRegionName(countryCode) {
   } catch (error) {
     return countryCode;
   }
+}
+
+function renderTokyoRecommendations() {
+  if (!tokyoRecommendationsListElement) {
+    return;
+  }
+
+  if (!tokyoRecommendations.length) {
+    tokyoRecommendationsListElement.textContent = localizedText(
+      'Tokyo recommendations: none public yet.',
+      'Tokyoおすすめ: まだ公開されていません。'
+    );
+    return;
+  }
+
+  tokyoRecommendationsListElement.textContent = localizedText('Tokyo recommendations: ', 'Tokyoおすすめ: ')
+    + tokyoRecommendations.slice(0, 4).map((entry) => {
+      const label = entry.comment
+        ? `${entry.recommendation} - ${entry.comment}`
+        : entry.recommendation;
+      return `${label} (${entry.name})`;
+    }).join(' / ');
+}
+
+async function fetchTokyoRecommendations() {
+  if (!tokyoRecommendationsListElement) {
+    return;
+  }
+
+  try {
+    const response = await fetch(TOKYO_RECOMMENDATIONS_URL, { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error(`Tokyo recommendations request failed: ${response.status}`);
+    }
+    const data = await response.json();
+    tokyoRecommendations = Array.isArray(data.entries) ? data.entries : [];
+  } catch (error) {
+    tokyoRecommendations = [];
+  }
+  renderTokyoRecommendations();
+}
+
+function openTokyoRecommendationEmail() {
+  const recommendation = cleanSubmissionText(window.prompt('What do you recommend in Tokyo?'), 80);
+  if (!recommendation) {
+    return;
+  }
+
+  const name = cleanGuestbookName(window.prompt('Your name for the recommendation?'));
+  const comment = cleanSubmissionText(window.prompt('Optional comment?'), 140);
+  const recommendationId = createSubmissionId();
+  const payload = {
+    type: 'tokyo-recommendation',
+    id: recommendationId,
+    name,
+    recommendation,
+    comment,
+    submittedAt: new Date().toISOString(),
+  };
+  const subject = `TOKYO RECOMMENDATION ${recommendationId}`;
+  const body = [
+    'Tokyo recommendation',
+    '',
+    JSON.stringify(payload, null, 2),
+  ].join('\n');
+  window.location.href = `mailto:justin.garcia@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+}
+
+function renderGuestbook() {
+  if (!guestbookListElement) {
+    return;
+  }
+
+  if (!guestbookEntries.length) {
+    guestbookListElement.textContent = localizedText(
+      'Guestbook: no public entries yet.',
+      'ゲストブック: まだ公開エントリーはありません。'
+    );
+    return;
+  }
+
+  const recentEntries = guestbookEntries.slice(0, 5);
+  const countryCount = new Set(guestbookEntries.map((entry) => entry.countryCode).filter(Boolean)).size;
+  const summary = localizedText(
+    `Signed from ${countryCount} ${countryCount === 1 ? 'country' : 'countries'}: `,
+    `${countryCount}か国から: `
+  );
+  guestbookListElement.textContent = summary + recentEntries
+    .map((entry) => {
+      const place = entry.countryName || entry.countryCode;
+      return entry.comment ? `${entry.name} (${place}): ${entry.comment}` : `${entry.name} (${place})`;
+    })
+    .join(' / ');
+}
+
+async function fetchGuestbook() {
+  if (!guestbookListElement) {
+    return;
+  }
+
+  try {
+    const response = await fetch(GUESTBOOK_URL, { cache: 'no-store' });
+    if (!response.ok) {
+      throw new Error(`Guestbook request failed: ${response.status}`);
+    }
+    const data = await response.json();
+    guestbookEntries = Array.isArray(data.entries) ? data.entries : [];
+  } catch (error) {
+    guestbookEntries = [];
+  }
+  renderGuestbook();
 }
 
 function placeMapPin(countryGroup, eventTarget, fallbackPoint) {
@@ -1208,15 +1352,29 @@ mapZoomOutButton?.addEventListener('click', () => {
 });
 
 function openMapEmail() {
-  if (!selectedMapPlace) {
+  if (!selectedMapPlace || !selectedMapCountryCode) {
     updateMapStatus('Pick your country first.');
     return;
   }
 
-  const subject = 'Guestbook';
-  const body = currentLanguage === 'ja'
-    ? `${selectedMapPlace}から来ました。`
-    : `I’m from ${selectedMapPlace}.`;
+  const name = cleanGuestbookName(window.prompt('Name for the guestbook?'));
+  const comment = cleanSubmissionText(window.prompt('Optional guestbook comment?'), 120);
+  const entryId = createSubmissionId();
+  const payload = {
+    type: 'guestbook-entry',
+    id: entryId,
+    name,
+    countryCode: selectedMapCountryCode,
+    countryName: selectedMapPlace,
+    comment,
+    signedAt: new Date().toISOString(),
+  };
+  const subject = `GUESTBOOK ENTRY ${entryId}`;
+  const body = [
+    'Guestbook entry',
+    '',
+    JSON.stringify(payload, null, 2),
+  ].join('\n');
   window.location.href = `mailto:justin.garcia@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 }
 
@@ -1788,5 +1946,7 @@ fetchWeather();
 fetchVisitorCount();
 bindFeedScrollFade(xFeedElement);
 fetchXSnapshot();
+fetchGuestbook();
+fetchTokyoRecommendations();
 setInterval(updateClocks, 1000);
 setInterval(fetchWeather, 30 * 60 * 1000);

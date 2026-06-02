@@ -1159,13 +1159,23 @@ function renderTokyoRecommendations() {
     return;
   }
 
-  tokyoRecommendationsListElement.textContent = localizedText('Tokyo recommendations: ', 'Tokyoおすすめ: ')
-    + tokyoRecommendations.slice(0, 4).map((entry) => {
-      const label = entry.comment
-        ? `${entry.recommendation} - ${entry.comment}`
-        : entry.recommendation;
-      return `${label} (${entry.name})`;
-    }).join(' / ');
+  tokyoRecommendationsListElement.textContent = '';
+
+  const summaryElement = document.createElement('div');
+  summaryElement.className = 'tokyo-recommendations-summary';
+  summaryElement.textContent = localizedText('Tokyo recommendations:', 'Tokyoおすすめ:');
+  tokyoRecommendationsListElement.append(summaryElement);
+
+  const list = document.createElement('ul');
+  list.className = 'tokyo-recommendations-entries';
+  tokyoRecommendations.slice(0, 4).forEach((entry) => {
+    const item = document.createElement('li');
+    item.textContent = entry.comment
+      ? `${entry.recommendation} - ${entry.comment} (${entry.name})`
+      : `${entry.recommendation} (${entry.name})`;
+    list.append(item);
+  });
+  tokyoRecommendationsListElement.append(list);
 }
 
 async function fetchTokyoRecommendations() {

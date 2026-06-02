@@ -672,9 +672,21 @@
         mudLeaderboard.textContent = 'Leaderboard: no winners yet.';
         return;
       }
-      mudLeaderboard.textContent = `Leaderboard: ${entries
-        .map((entry, index) => `${index + 1}. ${entry.name} (${entry.moves}${entry.isLocal ? ', local' : ''})`)
-        .join(' / ')}`;
+      mudLeaderboard.textContent = '';
+
+      const summaryElement = document.createElement('div');
+      summaryElement.className = 'mud-leaderboard-summary';
+      summaryElement.textContent = 'Leaderboard:';
+      mudLeaderboard.append(summaryElement);
+
+      const list = document.createElement('ul');
+      list.className = 'mud-leaderboard-entries';
+      entries.forEach((entry, index) => {
+        const item = document.createElement('li');
+        item.textContent = `${index + 1}. ${entry.name} - ${entry.moves} moves${entry.isLocal ? ' (local)' : ''}`;
+        list.append(item);
+      });
+      mudLeaderboard.append(list);
     }
 
     async function fetchMudLeaderboard() {

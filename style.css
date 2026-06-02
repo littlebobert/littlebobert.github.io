@@ -892,6 +892,27 @@ html[lang="ja"] .tokyo-recommendations-list {
   line-height: 1.1;
 }
 
+.tokyo-recommendations-summary,
+.mud-leaderboard-summary {
+  margin-bottom: 3px;
+}
+
+.tokyo-recommendations-entries,
+.mud-leaderboard-entries {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.tokyo-recommendations-entries li,
+.mud-leaderboard-entries li {
+  margin-bottom: 2px;
+}
+
+.tokyo-recommendations-entries li:last-child,
+.mud-leaderboard-entries li:last-child {
+  margin-bottom: 0;
+}
+
 .stack-card-mud {
   min-height: 0;
 }

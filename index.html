@@ -718,7 +718,7 @@
       entries.sort((a, b) => a.moves - b.moves || a.completedAt.localeCompare(b.completedAt));
       saveMudLeaderboard(entries);
       renderMudLeaderboard();
-      appendMudLine('system', `${cleanName} enters the local leaderboard with ${moves} moves.`);
+      appendMudLine('system', `${cleanName} has a pending leaderboard score with ${moves} moves.`);
       return entry;
     }
 
@@ -798,7 +798,7 @@
       mudState.stage = 'won';
       setMudStatus(`Finished in ${mudState.moves} moves.`);
       appendMudLine('system', 'You rinse the soba, pour the tsuyu, and sit by the window. Ueno is quiet. You win.');
-      const name = window.prompt('You made it home for soba. Name for the local leaderboard?');
+      const name = window.prompt('You made it home for soba. Name for the leaderboard submission?');
       const entry = addMudLeaderboardEntry(name, mudState.moves);
       appendMudLine('system', 'Opening an email so Justin can add your score to the public board.');
       openMudScoreEmail(entry);
@@ -908,14 +908,16 @@
           mudState.attendedEvent = true;
           return 'You attend the event, nod at an architecture diagram, and acquire two stickers.';
         }
-        if (commandHas(command, ['go home', 'subway home', 'leave', 'train home'])) {
+        if (commandHas(command, ['go home', 'go subway', 'subway home', 'subway', 'station', 'leave', 'train home', 'take train'])) {
           if (!mudState.attendedEvent) {
             return 'You just got here. Attend the tech event first.';
           }
           mudState.stage = 'home';
           return 'You descend into Shibuya station, ride back toward Ueno, and climb the apartment stairs. The kitchen awaits.';
         }
-        return 'The event buzzes. Attend it, then you can head home.';
+        return mudState.attendedEvent
+          ? 'The event is over. Take the subway home.'
+          : 'The event buzzes. Attend it, then you can head home.';
       }
 
       if (mudState.stage === 'returnTrain') {

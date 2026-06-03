@@ -1,8 +1,42 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-06-02T18:57:22.634Z",
+  "updatedAt": "2026-06-03T19:01:46.597Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2061985572223377506",
+      "text": "I was tired of App Store Connect’s slow web interface, and wanted a way for my team to do releases easily when I’m out, so I made this. I hope you find it useful: https://t.co/6ojbESKFhU https://t.co/TQil5UwqEc",
+      "createdAt": "2026-06-03T01:37:24.000Z",
+      "url": "https://x.com/_bobertdowney/status/2061985572223377506",
+      "urls": [
+        {
+          "url": "https://t.co/6ojbESKFhU",
+          "expandedUrl": "https://github.com/littlebobert/sendai",
+          "displayUrl": "github.com/littlebobert/s…",
+          "start": 163,
+          "end": 186
+        },
+        {
+          "url": "https://t.co/TQil5UwqEc",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2061985572223377506/photo/1",
+          "displayUrl": "pic.x.com/TQil5UwqEc",
+          "start": 187,
+          "end": 210
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2061985572223377506-0.png",
+          "imageModern": "assets/generated/x/mine-post-2061985572223377506-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2061580729830838604",
       "text": "「Sendai（仙台）」って「AI」が入ってるから、ちょっと気になる(笑) https://t.co/714hWTuzwS",

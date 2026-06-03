@@ -310,7 +310,12 @@
           </div>
           <div class="mud-command-buttons" id="mud-command-buttons" aria-label="Available MUD commands"></div>
           <form class="mud-form" id="mud-form">
-            <label class="sr-only" for="mud-command">MUD command</label>
+            <label
+              class="sr-only"
+              for="mud-command"
+              data-label-en="MUD command"
+              data-label-ja="<span class='latin'>MUD</span><span class='ja-text'>コマンド</span>"
+            >MUD command</label>
             <input
               type="text"
               id="mud-command"
@@ -318,11 +323,11 @@
               placeholder="look"
               autocomplete="off"
             >
-            <button type="submit" class="stack-button" id="mud-submit">Send</button>
+            <button type="submit" class="stack-button" id="mud-submit" data-label-en="Send" data-label-ja="送信">Send</button>
           </form>
           <div class="mud-controls">
             <button type="button" class="stack-button stack-button-secondary" id="mud-start">New run</button>
-            <span class="mud-status" id="mud-status" aria-live="polite">Ready.</span>
+            <span class="mud-status" id="mud-status" aria-live="polite" data-label-en="Ready." data-label-ja="準備完了。">Ready.</span>
           </div>
           <div class="mud-leaderboard" id="mud-leaderboard" aria-live="polite"></div>
         </section>
@@ -565,6 +570,25 @@
       question: 'Asked event question',
       textMom: 'Texted mom',
     };
+    const MUD_STAGE_LABELS_JA = {
+      apartment: '上野公園近くのアパート',
+      street: 'アパートの外',
+      stationGate: '上野駅の改札',
+      subway: '東京メトロ',
+      work: '大手町のオフィス',
+      shibuya: 'テックイベント',
+      returnTrain: '帰りの地下鉄',
+      home: 'アパートのキッチン',
+      won: '帰宅、食事、勝利',
+    };
+    const MUD_SIDE_QUEST_LABELS_JA = {
+      plant: 'ベランダの植物に水をあげた',
+      park: '上野公園に寄った',
+      tourist: '迷った旅行者を助けた',
+      refactor: '古いコードをリファクタした',
+      question: 'イベントで質問した',
+      textMom: '母にメッセージした',
+    };
     const mudStartButton = document.getElementById('mud-start');
     const mudForm = document.getElementById('mud-form');
     const mudCommandInput = document.getElementById('mud-command');
@@ -574,6 +598,34 @@
     const mudLeaderboard = document.getElementById('mud-leaderboard');
     let publicMudLeaderboardEntries = [];
     let mudState = null;
+
+    function isMudJapanese() {
+      return document.documentElement.lang === 'ja';
+    }
+
+    function mudText(en, ja) {
+      return isMudJapanese() ? ja : en;
+    }
+
+    function mudStageLabel(stage) {
+      return isMudJapanese() ? MUD_STAGE_LABELS_JA[stage] || MUD_STAGE_LABELS[stage] : MUD_STAGE_LABELS[stage];
+    }
+
+    function mudSideQuestLabel(key) {
+      return isMudJapanese() ? MUD_SIDE_QUEST_LABELS_JA[key] || MUD_SIDE_QUEST_LABELS[key] : MUD_SIDE_QUEST_LABELS[key];
+    }
+
+    function mudMovesText(moves) {
+      return mudText(`${moves} moves.`, `${moves}手。`);
+    }
+
+    function mudFinishedText(moves) {
+      return mudText(`Finished in ${moves} moves.`, `${moves}手でクリア。`);
+    }
+
+    function mudReadyText() {
+      return mudText('Ready.', '準備完了。');
+    }
 
     function createMudState() {
       return {
@@ -650,6 +702,25 @@
       }
     }
 
+    function renderMudIdleMessage() {
+      if (!mudLog) {
+        return;
+      }
+      mudLog.textContent = '';
+      const line = document.createElement('p');
+      line.textContent = mudText(
+        'Click New run, then try: look, get ready, go downstairs.',
+        '「New run」をクリックして、「見る」「身支度する」「下へ行く」を試してみてください。',
+      );
+      mudLog.append(line);
+    }
+
+    function renderMudInputLanguage() {
+      if (mudCommandInput) {
+        mudCommandInput.placeholder = mudText('look', '見る');
+      }
+    }
+
     function appendMudLine(speaker, text) {
       if (!mudLog) {
         return;
@@ -664,7 +735,7 @@
     function normalizeMudCommand(command) {
       return command
         .toLowerCase()
-        .replace(/[^a-z0-9\s]/g, ' ')
+        .replace(/[^\p{L}\p{N}\s]/gu, ' ')
         .replace(/\s+/g, ' ')
         .trim();
     }
@@ -759,14 +830,14 @@
       }
       const entries = getCombinedMudLeaderboard();
       if (!entries.length) {
-        mudLeaderboard.textContent = 'Leaderboard: no winners yet.';
+        mudLeaderboard.textContent = mudText('Leaderboard: no winners yet.', 'リーダーボード：まだ勝者はいません。');
         return;
       }
       mudLeaderboard.textContent = '';
 
       const summaryElement = document.createElement('div');
       summaryElement.className = 'mud-leaderboard-summary';
-      summaryElement.textContent = 'Leaderboard:';
+      summaryElement.textContent = mudText('Leaderboard:', 'リーダーボード：');
       mudLeaderboard.append(summaryElement);
 
       const list = document.createElement('ul');
@@ -774,8 +845,14 @@
       entries.forEach((entry, index) => {
         const item = document.createElement('li');
         const sideQuestCount = getEntrySideQuestCount(entry);
-        const sideQuestText = sideQuestCount ? `, ${sideQuestCount} side quest${sideQuestCount === 1 ? '' : 's'}` : '';
-        item.textContent = `${index + 1}. ${entry.name} - ${entry.moves} moves${sideQuestText}${entry.isLocal ? ' (local)' : ''}`;
+        const sideQuestText = sideQuestCount
+          ? mudText(`, ${sideQuestCount} side quest${sideQuestCount === 1 ? '' : 's'}`, `、サイドクエスト${sideQuestCount}件`)
+          : '';
+        const localText = entry.isLocal ? mudText(' (local)', '（ローカル）') : '';
+        item.textContent = mudText(
+          `${index + 1}. ${entry.name} - ${entry.moves} moves${sideQuestText}${localText}`,
+          `${index + 1}. ${entry.name} - ${entry.moves}手${sideQuestText}${localText}`,
+        );
         list.append(item);
       });
       mudLeaderboard.append(list);
@@ -813,7 +890,10 @@
       entries.sort((a, b) => a.moves - b.moves || getEntrySideQuestCount(b) - getEntrySideQuestCount(a) || a.completedAt.localeCompare(b.completedAt));
       saveMudLeaderboard(entries);
       renderMudLeaderboard();
-      appendMudLine('system', `${cleanName} has a pending leaderboard score with ${moves} moves and ${sideQuests.length} side quests.`);
+      appendMudLine('system', mudText(
+        `${cleanName} has a pending leaderboard score with ${moves} moves and ${sideQuests.length} side quests.`,
+        `${cleanName}のリーダーボード申請：${moves}手、サイドクエスト${sideQuests.length}件。`,
+      ));
       return entry;
     }
 
@@ -839,50 +919,93 @@
     }
 
     function workProgressText() {
-      const tasks = [];
-      tasks.push(mudState.work.feature ? 'feature shipped' : 'feature pending');
-      tasks.push(`${mudState.work.bugsFixed}/3 bugs fixed`);
-      tasks.push(mudState.work.pricing ? 'pricing tier pitched' : 'pricing pitch pending');
+      const tasks = isMudJapanese()
+        ? [
+          mudState.work.feature ? '機能リリース済み' : '機能は未完了',
+          `バグ修正 ${mudState.work.bugsFixed}/3`,
+          mudState.work.pricing ? '料金プラン提案済み' : '料金プランは未提案',
+        ]
+        : [
+          mudState.work.feature ? 'feature shipped' : 'feature pending',
+          `${mudState.work.bugsFixed}/3 bugs fixed`,
+          mudState.work.pricing ? 'pricing tier pitched' : 'pricing pitch pending',
+        ];
       return tasks.join(', ');
     }
 
     function workNextStepText() {
       return canLeaveWork()
-        ? 'All work tasks are done. Go to Shibuya for the tech event.'
-        : `Work board: ${workProgressText()}.`;
+        ? mudText('All work tasks are done. Go to the tech event.', '仕事はすべて完了。テックイベントへ向かいましょう。')
+        : mudText(`Work board: ${workProgressText()}.`, `仕事ボード：${workProgressText()}。`);
     }
 
     function describeMudLocation() {
       if (!mudState) {
-        return 'Click New run to start.';
+        return mudText('Click New run to start.', '「New run」で開始します。');
       }
       switch (mudState.stage) {
         case 'apartment':
           return mudState.ready
-            ? 'Your apartment near Ueno Park is tidy enough. Shoes wait by the genkan. The stairs lead down.'
-            : 'You wake in an apartment near Ueno Park. A laptop bag, clean shirt, and house keys demand attention.';
+            ? mudText(
+              'Your apartment near Ueno Park is tidy enough. Shoes wait by the genkan. The stairs lead down.',
+              '上野公園近くのアパートは、まあまあ片付いています。玄関に靴、下へ続く階段。',
+            )
+            : mudText(
+              'You wake in an apartment near Ueno Park. A laptop bag, clean shirt, and house keys demand attention.',
+              '上野公園近くのアパートで目覚めます。ラップトップバッグ、きれいなシャツ、家の鍵があなたを待っています。',
+            );
         case 'street':
           return mudState.hasRedBull
-            ? 'Outside, cicadas buzz over vending machines. A cold Red Bull is in your bag. The subway entrance waits.'
-            : 'You are downstairs near Ueno Park. A konbini glows beside the subway entrance. You need a Red Bull first.';
+            ? mudText(
+              'Outside, cicadas buzz over vending machines. A cold Red Bull is in your bag. The subway entrance waits.',
+              '外では自販機の上で蝉が鳴いています。冷えたRed Bullはバッグの中。地下鉄入口が待っています。',
+            )
+            : mudText(
+              'You are downstairs near Ueno Park. A konbini glows beside the subway entrance. You need a Red Bull first.',
+              '上野公園近くの路上にいます。地下鉄入口の横でコンビニが光っています。まずRed Bullが必要です。',
+            );
         case 'stationGate':
-          return 'At Ueno station gates, commuters stream past. You have caffeine. Time to get on the subway.';
+          return mudText(
+            'At Ueno station gates, commuters stream past. You have caffeine. Time to get on the subway.',
+            '上野駅の改札で通勤客が流れていきます。カフェインは確保済み。地下鉄に乗る時間です。',
+          );
         case 'subway':
-          return 'The subway rattles south. Ads for English schools and cloud services sway overhead. Otemachi is coming.';
+          return mudText(
+            'The subway rattles south. Ads for English schools and cloud services sway overhead. Otemachi is coming.',
+            '地下鉄は南へ揺れます。英会話とクラウドサービスの広告が頭上で揺れています。大手町が近づいています。',
+          );
         case 'work':
-          return `The Otemachi office hums with monitors and canned coffee. ${workNextStepText()}`;
+          return mudText(
+            `The Otemachi office hums with monitors and canned coffee. ${workNextStepText()}`,
+            `大手町のオフィスはモニターと缶コーヒーで低く唸っています。${workNextStepText()}`,
+          );
         case 'shibuya':
           return mudState.attendedEvent
-            ? 'The Shibuya tech event has ended. Stickers acquired, small talk survived. The subway can take you home.'
-            : 'You arrive at a Shibuya tech event. Someone is explaining agents near the pizza table.';
+            ? mudText(
+              'The tech event has ended. Stickers acquired, small talk survived. The subway can take you home.',
+              'テックイベントは終了しました。ステッカーを手に入れ、雑談も生き延びました。地下鉄で帰れます。',
+            )
+            : mudText(
+              'You arrive at a tech event. Someone is explaining agents near the pizza table.',
+              'テックイベントに到着しました。ピザの横で誰かがエージェントについて説明しています。',
+            );
         case 'returnTrain':
-          return 'The late subway rolls toward Ueno. Your backpack is heavier with swag and existential dread.';
+          return mudText(
+            'The late subway rolls toward Ueno. Your backpack is heavier with swag and existential dread.',
+            '夜の地下鉄は上野へ向かいます。バックパックはノベルティと実存的不安で少し重い。',
+          );
         case 'home':
-          return 'Back in your apartment kitchen. A pot, soba noodles, and tsuyu await.';
+          return mudText(
+            'Back in your apartment kitchen. A pot, soba noodles, and tsuyu await.',
+            'アパートのキッチンに戻りました。鍋、そば、つゆが待っています。',
+          );
         case 'won':
-          return 'You made soba and survived the Tokyo workday. Victory tastes like buckwheat.';
+          return mudText(
+            'You made soba and survived the Tokyo workday. Victory tastes like buckwheat.',
+            'そばを作り、東京の仕事日を生き延びました。勝利はそばの味。',
+          );
         default:
-          return 'Tokyo glitches around you. Try look.';
+          return mudText('Tokyo glitches around you. Try look.', '東京が少しバグっています。「見る」を試してください。');
       }
     }
 
@@ -896,63 +1019,66 @@
       }
 
       const commands = [
-        { label: 'Look', command: 'look' },
-        { label: 'Inventory', command: 'inventory' },
+        { label: mudText('Look', '見る'), command: 'look' },
+        { label: mudText('Inventory', '持ち物'), command: 'inventory' },
       ];
 
       if (mudState.stage === 'apartment') {
         if (!mudState.sideQuests.plant) {
-          commands.push({ label: 'Water plant', command: 'water plant' });
+          commands.push({ label: mudText('Water plant', '植物に水をあげる'), command: 'water plant' });
         }
         if (!mudState.ready) {
-          commands.push({ label: 'Get ready', command: 'get ready' });
+          commands.push({ label: mudText('Get ready', '身支度する'), command: 'get ready' });
         } else {
-          commands.push({ label: 'Go downstairs', command: 'go downstairs' });
+          commands.push({ label: mudText('Go downstairs', '下へ行く'), command: 'go downstairs' });
         }
       } else if (mudState.stage === 'street') {
         if (!mudState.sideQuests.park) {
-          commands.push({ label: 'Visit Ueno Park', command: 'visit Ueno Park' });
+          commands.push({ label: mudText('Visit Ueno Park', '上野公園に寄る'), command: 'visit Ueno Park' });
         }
-        commands.push({ label: 'Buy Red Bull', command: 'buy red bull' });
+        commands.push({ label: mudText('Buy Red Bull', 'Red Bullを買う'), command: 'buy red bull' });
       } else if (mudState.stage === 'stationGate') {
         if (!mudState.sideQuests.tourist) {
-          commands.push({ label: 'Help tourist', command: 'help tourist' });
+          commands.push({ label: mudText('Help tourist', '旅行者を助ける'), command: 'help tourist' });
         }
-        commands.push({ label: 'Get on subway', command: 'get on subway' });
+        commands.push({ label: mudText('Get on subway', '地下鉄に乗る'), command: 'get on subway' });
       } else if (mudState.stage === 'subway') {
-        commands.push({ label: 'Get off at Otemachi', command: 'get off at Otemachi' });
+        commands.push({ label: mudText('Get off at Otemachi', '大手町で降りる'), command: 'get off at Otemachi' });
       } else if (mudState.stage === 'work') {
         if (!mudState.sideQuests.refactor) {
-          commands.push({ label: 'Refactor old code', command: 'refactor old code' });
+          commands.push({ label: mudText('Refactor old code', '古いコードを直す'), command: 'refactor old code' });
         }
         if (!mudState.work.feature) {
-          commands.push({ label: 'Implement feature', command: 'implement feature' });
+          commands.push({ label: mudText('Implement feature', '機能を実装する'), command: 'implement feature' });
         }
         if (mudState.work.bugsFixed < 3) {
-          commands.push({ label: `Fix bug ${mudState.work.bugsFixed + 1}`, command: 'fix bug' });
+          commands.push({
+            label: mudText(`Fix bug ${mudState.work.bugsFixed + 1}`, `バグ${mudState.work.bugsFixed + 1}を直す`),
+            command: 'fix bug',
+          });
         }
         if (!mudState.work.pricing) {
-          commands.push({ label: 'Pitch pricing tier', command: 'pitch pricing tier' });
+          commands.push({ label: mudText('Pitch pricing tier', '料金プランを提案する'), command: 'pitch pricing tier' });
         }
         if (canLeaveWork()) {
-          commands.push({ label: 'Go to Shibuya', command: 'go shibuya' });
+          commands.push({ label: mudText('Go to tech event', 'テックイベントへ行く'), command: 'go shibuya' });
         }
       } else if (mudState.stage === 'shibuya') {
         if (!mudState.sideQuests.question) {
-          commands.push({ label: 'Ask a question', command: 'ask a question' });
+          commands.push({ label: mudText('Ask a question', '質問する'), command: 'ask a question' });
         }
         if (!mudState.attendedEvent) {
-          commands.push({ label: 'Attend tech event', command: 'attend tech event' });
+          commands.push({ label: mudText('Attend tech event', 'イベントに参加する'), command: 'attend tech event' });
         } else {
-          commands.push({ label: 'Take subway home', command: 'go subway' });
+          commands.push({ label: mudText('Take subway home', '地下鉄で帰る'), command: 'go subway' });
         }
       } else if (mudState.stage === 'returnTrain') {
-        commands.push({ label: 'Go home', command: 'go home' });
+        commands.push({ label: mudText('Go home', '家へ帰る'), command: 'go home' });
       } else if (mudState.stage === 'home') {
         if (!mudState.sideQuests.textMom) {
-          commands.push({ label: 'Text mom', command: 'text mom' });
+          commands.push({ label: mudText('Text mom', '母にメッセージする'), command: 'text mom' });
         }
-        commands.push({ label: 'Make soba', command: 'make soba' });
+        commands.push({ label: mudText('Make soba', 'そばを作る'), command: 'make soba' });
       }
 
       return commands;
@@ -972,7 +1098,7 @@
         button.className = 'mud-command-button';
         button.textContent = option.label;
         button.addEventListener('click', () => {
-          executeMudCommand(option.command);
+          executeMudCommand(option.command, option.label);
           button.blur();
         });
         mudCommandButtons.append(button);
@@ -983,17 +1109,29 @@
       mudState.won = true;
       mudState.stage = 'won';
       const sideQuestCount = getCompletedSideQuestKeys().length;
-      setMudStatus(`Finished in ${mudState.moves} moves.`);
-      appendMudLine('system', 'You rinse the soba, pour the tsuyu, and sit by the window. Ueno is quiet. You win.');
-      appendMudLine('system', `Run summary: ${mudState.moves} moves, ${sideQuestCount}/${Object.keys(MUD_SIDE_QUEST_LABELS).length} side quests.`);
+      setMudStatus(mudFinishedText(mudState.moves));
+      appendMudLine('system', mudText(
+        'You rinse the soba, pour the tsuyu, and sit by the window. Ueno is quiet. You win.',
+        'そばをしめ、つゆを注ぎ、窓辺に座る。上野は静かです。勝利です。',
+      ));
+      appendMudLine('system', mudText(
+        `Run summary: ${mudState.moves} moves, ${sideQuestCount}/${Object.keys(MUD_SIDE_QUEST_LABELS).length} side quests.`,
+        `結果：${mudState.moves}手、サイドクエスト${sideQuestCount}/${Object.keys(MUD_SIDE_QUEST_LABELS).length}件。`,
+      ));
       saveMudState();
-      const name = window.prompt('You made it home for soba. Name for the leaderboard submission?');
+      const name = window.prompt(mudText(
+        'You made it home for soba. Name for the leaderboard submission?',
+        'そばを作って帰宅成功。リーダーボード申請用の名前は？',
+      ));
       const entry = addMudLeaderboardEntry(name, mudState.moves);
-      appendMudLine('system', 'Opening an email so Justin can add your score to the public board.');
+      appendMudLine('system', mudText(
+        'Opening an email so Justin can add your score to the public board.',
+        'Justinが公開ボードにスコアを追加できるよう、メールを開きます。',
+      ));
       openMudScoreEmail(entry);
     }
 
-    function executeMudCommand(command) {
+    function executeMudCommand(command, displayCommand = command) {
       if (!mudState) {
         startMudRun();
       }
@@ -1001,7 +1139,7 @@
         return;
       }
 
-      appendMudLine('player', `> ${command}`);
+      appendMudLine('player', `> ${displayCommand}`);
       const response = handleMudAction(command);
       if (response) {
         appendMudLine('system', response);
@@ -1016,190 +1154,304 @@
       if (!command) {
         return '';
       }
-      if (command === 'help' || command === '?') {
-        return 'Use the buttons for available commands. Low moves matter, but optional side quests can improve a run.';
+      if (command === 'help' || command === '?' || command === 'ヘルプ') {
+        return mudText(
+          'Use the buttons for available commands. Low moves matter, but optional side quests can improve a run.',
+          '使えるコマンドはボタンで表示されます。少ない手数も大事ですが、サイドクエストも記録されます。',
+        );
       }
-      if (command === 'look' || command === 'l') {
+      if (command === 'look' || command === 'l' || command === '見る') {
         return describeMudLocation();
       }
-      if (command === 'inventory' || command === 'i') {
-        const items = ['phone', 'wallet', 'Suica'];
-        if (mudState.ready) items.push('laptop bag');
+      if (command === 'inventory' || command === 'i' || command === '持ち物') {
+        const items = isMudJapanese() ? ['スマホ', '財布', 'Suica'] : ['phone', 'wallet', 'Suica'];
+        if (mudState.ready) items.push(mudText('laptop bag', 'ラップトップバッグ'));
         if (mudState.hasRedBull) items.push('Red Bull');
-        return `Inventory: ${items.join(', ')}.`;
+        return mudText(`Inventory: ${items.join(', ')}.`, `持ち物：${items.join('、')}。`);
       }
-      if (command === 'status') {
+      if (command === 'status' || command === 'ステータス') {
         const sideQuestCount = getCompletedSideQuestKeys().length;
-        return `${MUD_STAGE_LABELS[mudState.stage]}. Moves: ${mudState.moves}. Side quests: ${sideQuestCount}/${Object.keys(MUD_SIDE_QUEST_LABELS).length}. ${workProgressText()}.`;
+        return mudText(
+          `${mudStageLabel(mudState.stage)}. Moves: ${mudState.moves}. Side quests: ${sideQuestCount}/${Object.keys(MUD_SIDE_QUEST_LABELS).length}. ${workProgressText()}.`,
+          `${mudStageLabel(mudState.stage)}。手数：${mudState.moves}。サイドクエスト：${sideQuestCount}/${Object.keys(MUD_SIDE_QUEST_LABELS).length}。${workProgressText()}。`,
+        );
       }
 
       mudState.moves += 1;
-      setMudStatus(`${mudState.moves} moves.`);
+      setMudStatus(mudMovesText(mudState.moves));
 
       if (mudState.stage === 'apartment') {
-        if (commandHas(command, ['water plant', 'plant', 'balcony'])) {
+        if (commandHas(command, ['water plant', 'plant', 'balcony', '植物', '水'])) {
           if (mudState.sideQuests.plant) {
-            return 'The balcony plant is already watered. It looks smugly hydrated.';
+            return mudText(
+              'The balcony plant is already watered. It looks smugly hydrated.',
+              'ベランダの植物にはもう水をあげました。妙に満足げです。',
+            );
           }
           mudState.sideQuests.plant = true;
-          return 'You water the balcony plant. It will remember this when Tokyo summer arrives.';
+          return mudText(
+            'You water the balcony plant. It will remember this when Tokyo summer arrives.',
+            'ベランダの植物に水をあげました。東京の夏が来たら、きっと覚えていてくれます。',
+          );
         }
-        if (commandHas(command, ['get ready', 'shower', 'dress', 'pack', 'keys', 'laptop'])) {
+        if (commandHas(command, ['get ready', 'shower', 'dress', 'pack', 'keys', 'laptop', '身支度', '準備', 'シャワー', '着替え', '鍵'])) {
           mudState.ready = true;
-          return 'You shower, dress, grab keys, wallet, Suica, and laptop bag. The morning has been compiled.';
+          return mudText(
+            'You shower, dress, grab keys, wallet, Suica, and laptop bag. The morning has been compiled.',
+            'シャワーを浴び、着替えて、鍵、財布、Suica、ラップトップバッグを持ちました。朝のビルド成功。',
+          );
         }
-        if (commandHas(command, ['downstairs', 'leave', 'go out', 'stairs'])) {
+        if (commandHas(command, ['downstairs', 'leave', 'go out', 'stairs', '下', '出る', '階段'])) {
           if (!mudState.ready) {
-            return 'You are not ready. The laptop bag stares at you with professional disappointment.';
+            return mudText(
+              'You are not ready. The laptop bag stares at you with professional disappointment.',
+              'まだ準備ができていません。ラップトップバッグが仕事用の失望感で見つめています。',
+            );
           }
           mudState.stage = 'street';
-          return 'You lock the apartment and go downstairs. Ueno Park breathes green across the morning street.';
+          return mudText(
+            'You lock the apartment and go downstairs. Ueno Park breathes green across the morning street.',
+            'アパートに鍵をかけて下へ降ります。朝の通りの向こうで、上野公園の緑が息をしています。',
+          );
         }
-        return 'You need to get ready before leaving the apartment.';
+        return mudText(
+          'You need to get ready before leaving the apartment.',
+          'アパートを出る前に身支度が必要です。',
+        );
       }
 
       if (mudState.stage === 'street') {
-        if (commandHas(command, ['visit ueno park', 'ueno park', 'park', 'pond'])) {
+        if (commandHas(command, ['visit ueno park', 'ueno park', 'park', 'pond', '上野公園', '公園', '池'])) {
           if (mudState.sideQuests.park) {
-            return 'You already visited Ueno Park. The swan boats remain emotionally unavailable.';
+            return mudText(
+              'You already visited Ueno Park. The swan boats remain emotionally unavailable.',
+              '上野公園にはもう寄りました。スワンボートは相変わらず感情を見せません。',
+            );
           }
           mudState.sideQuests.park = true;
-          return 'You detour through Ueno Park. Shinobazu Pond sparkles; a crow judges your calendar management.';
+          return mudText(
+            'You detour through Ueno Park. Shinobazu Pond sparkles; a crow judges your calendar management.',
+            '上野公園を少し回り道します。不忍池がきらめき、カラスがあなたの予定管理を批評しています。',
+          );
         }
-        if (commandHas(command, ['buy red bull', 'red bull', 'konbini', 'convenience', 'combini'])) {
+        if (commandHas(command, ['buy red bull', 'red bull', 'konbini', 'convenience', 'combini', '買う', 'コンビニ'])) {
           mudState.hasRedBull = true;
           mudState.stage = 'stationGate';
-          return 'You buy a Red Bull from the konbini. The clerk bags it with the gravity of a sacred relic.';
+          return mudText(
+            'You buy a Red Bull from the konbini. The clerk bags it with the gravity of a sacred relic.',
+            'コンビニでRed Bullを買いました。店員さんは聖遺物のような重みで袋に入れてくれます。',
+          );
         }
-        if (commandHas(command, ['subway', 'station', 'train'])) {
-          return 'You cannot enter the subway uncaffeinated. The quest demands Red Bull.';
+        if (commandHas(command, ['subway', 'station', 'train', '地下鉄', '駅', '電車'])) {
+          return mudText(
+            'You cannot enter the subway uncaffeinated. The quest demands Red Bull.',
+            'カフェインなしでは地下鉄に入れません。このクエストにはRed Bullが必要です。',
+          );
         }
-        return 'The konbini glows. Buy a Red Bull before entering the subway.';
+        return mudText(
+          'The konbini glows. Buy a Red Bull before entering the subway.',
+          'コンビニが光っています。地下鉄に入る前にRed Bullを買いましょう。',
+        );
       }
 
       if (mudState.stage === 'stationGate') {
-        if (commandHas(command, ['help tourist', 'tourist', 'directions', 'help'])) {
+        if (commandHas(command, ['help tourist', 'tourist', 'directions', 'help', '旅行者', '観光客', '道案内', '助ける'])) {
           if (mudState.sideQuests.tourist) {
-            return 'The tourist has already been helped and is now confidently walking the wrong way by choice.';
+            return mudText(
+              'The tourist has already been helped and is now confidently walking the wrong way by choice.',
+              '旅行者はもう助けました。今は自分の意志で堂々と逆方向へ歩いています。',
+            );
           }
           mudState.sideQuests.tourist = true;
-          return 'You help a lost tourist find the Ginza line. They reward you with a grateful thumbs-up.';
+          return mudText(
+            'You help a lost tourist find the Ginza line. They reward you with a grateful thumbs-up.',
+            '迷った旅行者に銀座線の場所を教えました。感謝のサムズアップをもらいます。',
+          );
         }
-        if (commandHas(command, ['enter subway', 'get on', 'board', 'subway', 'train', 'tap in'])) {
+        if (commandHas(command, ['enter subway', 'get on', 'board', 'subway', 'train', 'tap in', '地下鉄', '乗る', '改札', '電車'])) {
           mudState.stage = 'subway';
-          return 'You tap through the gate and board the subway. The doors chime shut.';
+          return mudText(
+            'You tap through the gate and board the subway. The doors chime shut.',
+            '改札をタッチして地下鉄に乗ります。ドアがチャイムとともに閉まります。',
+          );
         }
-        return 'Get on the subway. The office waits under fluorescent lights.';
+        return mudText(
+          'Get on the subway. The office waits under fluorescent lights.',
+          '地下鉄に乗りましょう。蛍光灯の下でオフィスが待っています。',
+        );
       }
 
       if (mudState.stage === 'subway') {
-        if (commandHas(command, ['get off', 'otemachi', 'exit', 'leave train'])) {
+        if (commandHas(command, ['get off', 'otemachi', 'exit', 'leave train', '大手町', '降りる', '出る'])) {
           mudState.stage = 'work';
-          return 'You get off at Otemachi and surface among towers. The office absorbs you.';
+          return mudText(
+            'You get off at Otemachi and surface among towers. The office absorbs you.',
+            '大手町で降り、高層ビルの間に出ます。オフィスに吸い込まれました。',
+          );
         }
-        return 'Stay on until Otemachi. You are not spiritually prepared for a random transfer.';
+        return mudText(
+          'Stay on until Otemachi. You are not spiritually prepared for a random transfer.',
+          '大手町まで乗り続けましょう。ランダムな乗り換えに耐える心の準備はまだありません。',
+        );
       }
 
       if (mudState.stage === 'work') {
-        if (commandHas(command, ['refactor old code', 'refactor', 'old code', 'cleanup'])) {
+        if (commandHas(command, ['refactor old code', 'refactor', 'old code', 'cleanup', 'リファクタ', '古いコード', '直す', '整理'])) {
           if (mudState.sideQuests.refactor) {
-            return 'The old code has already been refactored. You briefly consider rewriting it in Rust anyway.';
+            return mudText(
+              'The old code has already been refactored. You briefly consider rewriting it in Rust anyway.',
+              '古いコードはもうリファクタ済みです。それでも一瞬Rustで書き直すことを考えます。',
+            );
           }
           mudState.sideQuests.refactor = true;
-          return 'You refactor old code nobody asked about. The diff is smaller and your soul is lighter.';
+          return mudText(
+            'You refactor old code nobody asked about. The diff is smaller and your soul is lighter.',
+            '誰にも頼まれていない古いコードをリファクタしました。差分は小さくなり、心は軽くなります。',
+          );
         }
-        if (commandHas(command, ['implement feature', 'ship feature', 'build feature', 'feature'])) {
+        if (commandHas(command, ['implement feature', 'ship feature', 'build feature', 'feature', '機能', '実装', 'リリース'])) {
           if (mudState.work.feature) {
-            return 'The feature is already implemented. Product nods once, mysteriously.';
+            return mudText(
+              'The feature is already implemented. Product nods once, mysteriously.',
+              'その機能はもう実装済みです。プロダクト担当が謎めいたうなずきを一度します。',
+            );
           }
           mudState.work.feature = true;
-          return `You implement one feature. It even works in the simulator. ${workNextStepText()}`;
+          return mudText(
+            `You implement one feature. It even works in the simulator. ${workNextStepText()}`,
+            `機能を1つ実装しました。シミュレータでも動いています。${workNextStepText()}`,
+          );
         }
-        if (commandHas(command, ['fix bug', 'bug'])) {
+        if (commandHas(command, ['fix bug', 'bug', 'バグ', '修正'])) {
           if (mudState.work.bugsFixed >= 3) {
-            return `Three bugs are fixed. Any more and QA might get suspicious. ${workNextStepText()}`;
+            return mudText(
+              `Three bugs are fixed. Any more and QA might get suspicious. ${workNextStepText()}`,
+              `バグは3つ修正済みです。これ以上直すとQAに怪しまれます。${workNextStepText()}`,
+            );
           }
           mudState.work.bugsFixed += 1;
-          return `Bug ${mudState.work.bugsFixed} fixed. ${workNextStepText()}`;
+          return mudText(
+            `Bug ${mudState.work.bugsFixed} fixed. ${workNextStepText()}`,
+            `バグ${mudState.work.bugsFixed}を修正しました。${workNextStepText()}`,
+          );
         }
-        if (commandHas(command, ['pitch pricing', 'pricing tier', 'new tier', 'pricing'])) {
+        if (commandHas(command, ['pitch pricing', 'pricing tier', 'new tier', 'pricing', '料金', 'プラン', '提案'])) {
           if (mudState.work.pricing) {
-            return `The pricing tier has already been pitched. ${workNextStepText()}`;
+            return mudText(
+              `The pricing tier has already been pitched. ${workNextStepText()}`,
+              `料金プランはもう提案済みです。${workNextStepText()}`,
+            );
           }
           mudState.work.pricing = true;
-          return `You pitch a new pricing tier. Someone says "interesting" in a way that could mean anything. ${workNextStepText()}`;
+          return mudText(
+            `You pitch a new pricing tier. Someone says "interesting" in a way that could mean anything. ${workNextStepText()}`,
+            `新しい料金プランを提案しました。誰かが「面白いですね」と、何とも取れる声で言います。${workNextStepText()}`,
+          );
         }
-        if (commandHas(command, ['leave', 'shibuya', 'event', 'go out'])) {
+        if (commandHas(command, ['leave', 'shibuya', 'event', 'go out', '出る', 'イベント', 'テックイベント', '渋谷'])) {
           if (!canLeaveWork()) {
-            return `You cannot leave yet. Work board: ${workProgressText()}.`;
+            return mudText(
+              `You cannot leave yet. Work board: ${workProgressText()}.`,
+              `まだ帰れません。仕事ボード：${workProgressText()}。`,
+            );
           }
           mudState.stage = 'shibuya';
-          return 'Work complete, you escape to Shibuya for a tech event.';
+          return mudText(
+            'Work complete, you escape to a tech event.',
+            '仕事完了。テックイベントへ脱出します。',
+          );
         }
-        return `Work remains. ${workProgressText()}.`;
+        return mudText(`Work remains. ${workProgressText()}.`, `仕事が残っています。${workProgressText()}。`);
       }
 
       if (mudState.stage === 'shibuya') {
-        if (commandHas(command, ['ask question', 'question', 'q a', 'panel'])) {
+        if (commandHas(command, ['ask question', 'question', 'q a', 'panel', '質問', '聞く'])) {
           if (mudState.sideQuests.question) {
-            return 'You already asked a question. Asking another would transform networking into performance art.';
+            return mudText(
+              'You already asked a question. Asking another would transform networking into performance art.',
+              'もう質問しました。さらに聞くと、ネットワーキングが舞台芸術になります。',
+            );
           }
           mudState.sideQuests.question = true;
-          return 'You ask a question about on-device AI. Three people nod; one person checks LinkedIn.';
+          return mudText(
+            'You ask a question about on-device AI. Three people nod; one person checks LinkedIn.',
+            'オンデバイスAIについて質問しました。3人がうなずき、1人がLinkedInを確認します。',
+          );
         }
-        if (commandHas(command, ['attend event', 'event', 'network', 'pizza', 'talk'])) {
+        if (commandHas(command, ['attend event', 'event', 'network', 'pizza', 'talk', 'イベント', '参加', 'ピザ', '話'])) {
           mudState.attendedEvent = true;
-          return 'You attend the event, nod at an architecture diagram, and acquire two stickers.';
+          return mudText(
+            'You attend the event, nod at an architecture diagram, and acquire two stickers.',
+            'イベントに参加し、アーキテクチャ図にうなずき、ステッカーを2枚手に入れました。',
+          );
         }
-        if (commandHas(command, ['go home', 'go subway', 'subway home', 'subway', 'station', 'leave', 'train home', 'take train'])) {
+        if (commandHas(command, ['go home', 'go subway', 'subway home', 'subway', 'station', 'leave', 'train home', 'take train', '帰る', '地下鉄', '駅', '電車'])) {
           if (!mudState.attendedEvent) {
-            return 'You just got here. Attend the tech event first.';
+            return mudText(
+              'You just got here. Attend the tech event first.',
+              '着いたばかりです。まずテックイベントに参加しましょう。',
+            );
           }
           mudState.stage = 'home';
-          return 'You descend into Shibuya station, ride back toward Ueno, and climb the apartment stairs. The kitchen awaits.';
+          return mudText(
+            'You descend into the station, ride back toward Ueno, and climb the apartment stairs. The kitchen awaits.',
+            '駅へ降り、上野方面へ戻り、アパートの階段を上ります。キッチンが待っています。',
+          );
         }
         return mudState.attendedEvent
-          ? 'The event is over. Take the subway home.'
-          : 'The event buzzes. Attend it, then you can head home.';
+          ? mudText('The event is over. Take the subway home.', 'イベントは終わりました。地下鉄で帰りましょう。')
+          : mudText('The event buzzes. Attend it, then you can head home.', 'イベントはにぎわっています。参加してから帰れます。');
       }
 
       if (mudState.stage === 'returnTrain') {
-        if (commandHas(command, ['go home', 'get off', 'ueno', 'apartment', 'home'])) {
+        if (commandHas(command, ['go home', 'get off', 'ueno', 'apartment', 'home', '帰る', '降りる', '上野', 'アパート'])) {
           mudState.stage = 'home';
-          return 'You get back near Ueno Park and climb the apartment stairs. The kitchen awaits.';
+          return mudText(
+            'You get back near Ueno Park and climb the apartment stairs. The kitchen awaits.',
+            '上野公園の近くまで戻り、アパートの階段を上ります。キッチンが待っています。',
+          );
         }
-        return 'Stay on the train until Ueno, then go home.';
+        return mudText('Stay on the train until Ueno, then go home.', '上野まで乗ってから家へ帰りましょう。');
       }
 
       if (mudState.stage === 'home') {
-        if (commandHas(command, ['text mom', 'mom', 'message family'])) {
+        if (commandHas(command, ['text mom', 'mom', 'message family', '母', 'メッセージ', '連絡'])) {
           if (mudState.sideQuests.textMom) {
-            return 'You already texted mom. She has not replied, which means she is either busy or composing an essay.';
+            return mudText(
+              'You already texted mom. She has not replied, which means she is either busy or composing an essay.',
+              '母にはもうメッセージしました。返信がないのは、忙しいか、長文を準備しているかのどちらかです。',
+            );
           }
           mudState.sideQuests.textMom = true;
-          return 'You text your mom that you made it home. Somewhere, a notification becomes a side quest complete.';
+          return mudText(
+            'You text your mom that you made it home. Somewhere, a notification becomes a side quest complete.',
+            '無事帰ったと母にメッセージしました。どこかで通知がサイドクエスト完了になります。',
+          );
         }
-        if (commandHas(command, ['make soba', 'cook soba', 'soba', 'noodles'])) {
+        if (commandHas(command, ['make soba', 'cook soba', 'soba', 'noodles', 'そば', '作る', '料理', '麺'])) {
           completeMudRun();
           return '';
         }
-        return 'You are home. Make soba to finish the run.';
+        return mudText('You are home. Make soba to finish the run.', '家にいます。そばを作ればクリアです。');
       }
 
       if (mudState.stage === 'won') {
-        return 'Run complete. Click New run to try for a better score.';
+        return mudText(
+          'Run complete. Click New run to try for a better score.',
+          'クリア済みです。より良いスコアを狙うならNew runをクリックしてください。',
+        );
       }
 
-      return 'Nothing happens. Tokyo remains undefeated.';
+      return mudText('Nothing happens. Tokyo remains undefeated.', '何も起きません。東京はまだ手強い。');
     }
 
     function startMudRun() {
       mudState = createMudState();
       clearMudLog();
-      setMudStatus('0 moves.');
+      setMudStatus(mudMovesText(0));
       appendMudLine('system', 'UENO QUEST');
       appendMudLine('system', describeMudLocation());
-      appendMudLine('system', 'Type help for commands.');
+      appendMudLine('system', mudText('Type help for commands.', 'コマンド一覧は「help」で確認できます。'));
       saveMudState();
       renderMudCommandButtons();
       mudCommandInput?.focus();
@@ -1213,12 +1465,37 @@
 
       mudState = savedState;
       clearMudLog();
-      setMudStatus(mudState.won ? `Finished in ${mudState.moves} moves.` : `${mudState.moves} moves.`);
-      appendMudLine('system', mudState.won ? 'Restored completed UENO QUEST run.' : 'Restored saved UENO QUEST run.');
+      setMudStatus(mudState.won ? mudFinishedText(mudState.moves) : mudMovesText(mudState.moves));
+      appendMudLine('system', mudState.won
+        ? mudText('Restored completed UENO QUEST run.', 'クリア済みのUENO QUESTを復元しました。')
+        : mudText('Restored saved UENO QUEST run.', '保存されたUENO QUESTを復元しました。'));
       appendMudLine('system', describeMudLocation());
-      appendMudLine('system', 'Click New run to reset, or continue with the buttons below.');
+      appendMudLine('system', mudText(
+        'Click New run to reset, or continue with the buttons below.',
+        'リセットするにはNew run、続けるには下のボタンを使ってください。',
+      ));
       renderMudCommandButtons();
       return true;
+    }
+
+    function refreshMudLanguage() {
+      renderMudLeaderboard();
+      renderMudInputLanguage();
+      if (!mudState) {
+        setMudStatus(mudReadyText());
+        renderMudIdleMessage();
+        renderMudCommandButtons();
+        return;
+      }
+      clearMudLog();
+      setMudStatus(mudState.won ? mudFinishedText(mudState.moves) : mudMovesText(mudState.moves));
+      appendMudLine('system', mudText('Current UENO QUEST run.', '現在のUENO QUESTです。'));
+      appendMudLine('system', describeMudLocation());
+      appendMudLine('system', mudText(
+        'Click New run to reset, or continue with the buttons below.',
+        'リセットするにはNew run、続けるには下のボタンを使ってください。',
+      ));
+      renderMudCommandButtons();
     }
 
     mudStartButton?.addEventListener('click', () => {
@@ -1240,10 +1517,13 @@
     });
 
     renderMudLeaderboard();
+    renderMudInputLanguage();
     if (!restoreMudRun()) {
+      renderMudIdleMessage();
       renderMudCommandButtons();
     }
     fetchMudLeaderboard();
+    document.addEventListener('site-language-change', refreshMudLanguage);
   </script>
 </body>
 

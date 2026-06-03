@@ -881,6 +881,9 @@ function setLanguage(language) {
   renderPuzzle();
   renderGuestbook();
   renderTokyoRecommendations();
+  document.dispatchEvent(new CustomEvent('site-language-change', {
+    detail: { language: currentLanguage },
+  }));
 }
 
 languageButtons.forEach((button) => {

@@ -954,6 +954,46 @@ html[lang="ja"] .tokyo-recommendations-list {
   color: #ddd;
 }
 
+.mud-command-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 8px;
+}
+
+.mud-command-buttons[hidden] {
+  display: none;
+}
+
+.mud-command-button {
+  appearance: none;
+  -webkit-appearance: none;
+  min-height: 28px;
+  padding: 4px 8px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  box-shadow: 1px 1px 0 #000;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  font-family: 'VT323', 'Monaco', monospace;
+  font-size: 17px;
+  line-height: 1;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mud-command-button:active {
+  box-shadow:
+    inset 2px 2px 0 #777,
+    inset -1px -1px 0 #fff;
+  transform: translate(1px, 1px);
+}
+
+.mud-command-button:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
 .mud-form {
   display: grid;
   grid-template-columns: minmax(0, 1fr) auto;
@@ -2892,6 +2932,28 @@ html[data-theme="modern"] .mud-terminal {
 
 html[data-theme="modern"] .mud-line-system {
   color: rgba(245, 245, 247, 0.82);
+}
+
+html[data-theme="modern"] .mud-command-button {
+  min-height: 30px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(0, 122, 255, 0.12);
+  box-shadow: none;
+  color: #0066cc;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+html[data-theme="modern"] .mud-command-button:active {
+  background: rgba(0, 122, 255, 0.18);
+  color: #004499;
+  transform: none;
+}
+
+html[data-theme="modern"] .mud-command-button:focus-visible {
+  outline: 2px solid #007aff;
 }
 
 html[data-theme="modern"] .mud-form input {

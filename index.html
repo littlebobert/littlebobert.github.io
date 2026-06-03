@@ -302,12 +302,13 @@
           >Ueno quest</h2>
           <p
             class="mud-note"
-            data-label-en="A tiny text adventure set in Tokyo. Get from Ueno to work, then to Shibuya, then home for soba."
-            data-label-ja="<span class='latin'>Tokyo</span><span class='ja-text'>の小さなテキストアドベンチャー。</span><span class='latin'>Ueno</span><span class='ja-text'>から仕事へ、</span><span class='latin'>Shibuya</span><span class='ja-text'>へ、そして家でそば。</span>"
-          >A tiny text adventure set in Tokyo. Get from Ueno to work, then to Shibuya, then home for soba.</p>
+            data-label-en="A tiny text adventure set in Tokyo. Get from Ueno to work, then to a tech event, then home for soba."
+            data-label-ja="<span class='latin'>Tokyo</span><span class='ja-text'>の小さなテキストアドベンチャー。</span><span class='latin'>Ueno</span><span class='ja-text'>から仕事へ、テックイベントへ、そして家でそば。</span>"
+          >A tiny text adventure set in Tokyo. Get from Ueno to work, then to a tech event, then home for soba.</p>
           <div class="mud-terminal" id="mud-log" role="log" aria-live="polite" aria-label="MUD transcript">
             <p>Click New run, then try: look, get ready, go downstairs.</p>
           </div>
+          <div class="mud-command-buttons" id="mud-command-buttons" aria-label="Available MUD commands"></div>
           <form class="mud-form" id="mud-form">
             <label class="sr-only" for="mud-command">MUD command</label>
             <input
@@ -543,6 +544,7 @@
   <script src="index.js?v=1"></script>
   <script>
     const MUD_LEADERBOARD_STORAGE_KEY = 'tokyo-mud-leaderboard';
+    const MUD_STATE_STORAGE_KEY = 'tokyo-mud-current-run';
     const MUD_PUBLIC_LEADERBOARD_URL = 'data/mud-leaderboard.json';
     const MUD_STAGE_LABELS = {
       apartment: 'Apartment near Ueno Park',
@@ -555,9 +557,18 @@
       home: 'Apartment kitchen',
       won: 'Home, fed, victorious',
     };
+    const MUD_SIDE_QUEST_LABELS = {
+      plant: 'Watered balcony plant',
+      park: 'Visited Ueno Park',
+      tourist: 'Helped lost tourist',
+      refactor: 'Refactored old code',
+      question: 'Asked event question',
+      textMom: 'Texted mom',
+    };
     const mudStartButton = document.getElementById('mud-start');
     const mudForm = document.getElementById('mud-form');
     const mudCommandInput = document.getElementById('mud-command');
+    const mudCommandButtons = document.getElementById('mud-command-buttons');
     const mudLog = document.getElementById('mud-log');
     const mudStatus = document.getElementById('mud-status');
     const mudLeaderboard = document.getElementById('mud-leaderboard');
@@ -575,9 +586,56 @@
           pricing: false,
         },
         attendedEvent: false,
+        sideQuests: {},
         moves: 0,
         won: false,
       };
+    }
+
+    function normalizeStoredMudState(value) {
+      if (!value || typeof value !== 'object') {
+        return null;
+      }
+
+      const state = createMudState();
+      if (Object.prototype.hasOwnProperty.call(MUD_STAGE_LABELS, value.stage)) {
+        state.stage = value.stage;
+      }
+      state.ready = Boolean(value.ready);
+      state.hasRedBull = Boolean(value.hasRedBull);
+      state.work = {
+        feature: Boolean(value.work?.feature),
+        bugsFixed: Math.min(Math.max(Number(value.work?.bugsFixed) || 0, 0), 3),
+        pricing: Boolean(value.work?.pricing),
+      };
+      state.attendedEvent = Boolean(value.attendedEvent);
+      state.sideQuests = Object.keys(MUD_SIDE_QUEST_LABELS).reduce((sideQuests, key) => {
+        sideQuests[key] = Boolean(value.sideQuests?.[key]);
+        return sideQuests;
+      }, {});
+      state.moves = Math.min(Math.max(Number(value.moves) || 0, 0), 999);
+      state.won = Boolean(value.won);
+      if (state.won) {
+        state.stage = 'won';
+      }
+      return state;
+    }
+
+    function getSavedMudState() {
+      try {
+        return normalizeStoredMudState(JSON.parse(localStorage.getItem(MUD_STATE_STORAGE_KEY) || 'null'));
+      } catch {
+        return null;
+      }
+    }
+
+    function saveMudState() {
+      if (!mudState) {
+        return;
+      }
+      try {
+        localStorage.setItem(MUD_STATE_STORAGE_KEY, JSON.stringify(mudState));
+      } catch {}
     }
 
     function setMudStatus(message) {
@@ -648,8 +706,40 @@
       });
       return Array.from(entriesById.values())
         .filter((entry) => entry?.name && Number.isFinite(Number(entry.moves)))
-        .sort((a, b) => Number(a.moves) - Number(b.moves) || String(a.completedAt || '').localeCompare(String(b.completedAt || '')))
+        .sort((a, b) => (
+          Number(a.moves) - Number(b.moves)
+          || getEntrySideQuestCount(b) - getEntrySideQuestCount(a)
+          || String(a.completedAt || '').localeCompare(String(b.completedAt || ''))
+        ))
         .slice(0, 5);
+    }
+
+    function getCompletedSideQuestKeys() {
+      if (!mudState?.sideQuests) {
+        return [];
+      }
+      return Object.keys(MUD_SIDE_QUEST_LABELS).filter((key) => mudState.sideQuests[key]);
+    }
+
+    function getCompletedSideQuestNames() {
+      return getCompletedSideQuestKeys().map((key) => MUD_SIDE_QUEST_LABELS[key]);
+    }
+
+    function getEntrySideQuestCount(entry) {
+      if (Array.isArray(entry?.sideQuests)) {
+        return entry.sideQuests.length;
+      }
+      return Number(entry?.sideQuestCount) || 0;
+    }
+
+    function mudRankForRun(moves, sideQuestCount) {
+      if (moves <= 14) {
+        return 'Senior Soba Engineer';
+      }
+      if (sideQuestCount >= 4) {
+        return 'Tokyo Completionist';
+      }
+      return 'Soba Engineer';
     }
 
     function cleanMudLeaderboardName(name) {
@@ -683,7 +773,9 @@
       list.className = 'mud-leaderboard-entries';
       entries.forEach((entry, index) => {
         const item = document.createElement('li');
-        item.textContent = `${index + 1}. ${entry.name} - ${entry.moves} moves${entry.isLocal ? ' (local)' : ''}`;
+        const sideQuestCount = getEntrySideQuestCount(entry);
+        const sideQuestText = sideQuestCount ? `, ${sideQuestCount} side quest${sideQuestCount === 1 ? '' : 's'}` : '';
+        item.textContent = `${index + 1}. ${entry.name} - ${entry.moves} moves${sideQuestText}${entry.isLocal ? ' (local)' : ''}`;
         list.append(item);
       });
       mudLeaderboard.append(list);
@@ -706,19 +798,22 @@
     function addMudLeaderboardEntry(name, moves) {
       const cleanName = cleanMudLeaderboardName(name);
       const entries = getMudLeaderboard();
+      const sideQuests = getCompletedSideQuestNames();
       const entry = {
         id: createMudSubmissionId(),
         name: cleanName,
         moves,
-        rank: moves <= 14 ? 'Senior Soba Engineer' : 'Soba Engineer',
+        sideQuests,
+        sideQuestCount: sideQuests.length,
+        rank: mudRankForRun(moves, sideQuests.length),
         route: 'Ueno -> Otemachi -> Shibuya -> Ueno',
         completedAt: new Date().toISOString(),
       };
       entries.push(entry);
-      entries.sort((a, b) => a.moves - b.moves || a.completedAt.localeCompare(b.completedAt));
+      entries.sort((a, b) => a.moves - b.moves || getEntrySideQuestCount(b) - getEntrySideQuestCount(a) || a.completedAt.localeCompare(b.completedAt));
       saveMudLeaderboard(entries);
       renderMudLeaderboard();
-      appendMudLine('system', `${cleanName} has a pending leaderboard score with ${moves} moves.`);
+      appendMudLine('system', `${cleanName} has a pending leaderboard score with ${moves} moves and ${sideQuests.length} side quests.`);
       return entry;
     }
 
@@ -728,6 +823,8 @@
         id: entry.id,
         name: entry.name,
         moves: entry.moves,
+        sideQuests: entry.sideQuests,
+        sideQuestCount: entry.sideQuestCount,
         rank: entry.rank,
         route: entry.route,
         completedAt: entry.completedAt,
@@ -793,15 +890,125 @@
       return mudState.work.feature && mudState.work.bugsFixed >= 3 && mudState.work.pricing;
     }
 
+    function getMudCommandOptions() {
+      if (!mudState || mudState.won) {
+        return [];
+      }
+
+      const commands = [
+        { label: 'Look', command: 'look' },
+        { label: 'Inventory', command: 'inventory' },
+      ];
+
+      if (mudState.stage === 'apartment') {
+        if (!mudState.sideQuests.plant) {
+          commands.push({ label: 'Water plant', command: 'water plant' });
+        }
+        if (!mudState.ready) {
+          commands.push({ label: 'Get ready', command: 'get ready' });
+        } else {
+          commands.push({ label: 'Go downstairs', command: 'go downstairs' });
+        }
+      } else if (mudState.stage === 'street') {
+        if (!mudState.sideQuests.park) {
+          commands.push({ label: 'Visit Ueno Park', command: 'visit Ueno Park' });
+        }
+        commands.push({ label: 'Buy Red Bull', command: 'buy red bull' });
+      } else if (mudState.stage === 'stationGate') {
+        if (!mudState.sideQuests.tourist) {
+          commands.push({ label: 'Help tourist', command: 'help tourist' });
+        }
+        commands.push({ label: 'Get on subway', command: 'get on subway' });
+      } else if (mudState.stage === 'subway') {
+        commands.push({ label: 'Get off at Otemachi', command: 'get off at Otemachi' });
+      } else if (mudState.stage === 'work') {
+        if (!mudState.sideQuests.refactor) {
+          commands.push({ label: 'Refactor old code', command: 'refactor old code' });
+        }
+        if (!mudState.work.feature) {
+          commands.push({ label: 'Implement feature', command: 'implement feature' });
+        }
+        if (mudState.work.bugsFixed < 3) {
+          commands.push({ label: `Fix bug ${mudState.work.bugsFixed + 1}`, command: 'fix bug' });
+        }
+        if (!mudState.work.pricing) {
+          commands.push({ label: 'Pitch pricing tier', command: 'pitch pricing tier' });
+        }
+        if (canLeaveWork()) {
+          commands.push({ label: 'Go to Shibuya', command: 'go shibuya' });
+        }
+      } else if (mudState.stage === 'shibuya') {
+        if (!mudState.sideQuests.question) {
+          commands.push({ label: 'Ask a question', command: 'ask a question' });
+        }
+        if (!mudState.attendedEvent) {
+          commands.push({ label: 'Attend tech event', command: 'attend tech event' });
+        } else {
+          commands.push({ label: 'Take subway home', command: 'go subway' });
+        }
+      } else if (mudState.stage === 'returnTrain') {
+        commands.push({ label: 'Go home', command: 'go home' });
+      } else if (mudState.stage === 'home') {
+        if (!mudState.sideQuests.textMom) {
+          commands.push({ label: 'Text mom', command: 'text mom' });
+        }
+        commands.push({ label: 'Make soba', command: 'make soba' });
+      }
+
+      return commands;
+    }
+
+    function renderMudCommandButtons() {
+      if (!mudCommandButtons) {
+        return;
+      }
+
+      mudCommandButtons.textContent = '';
+      const commands = getMudCommandOptions();
+      mudCommandButtons.hidden = !commands.length;
+      commands.forEach((option) => {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.className = 'mud-command-button';
+        button.textContent = option.label;
+        button.addEventListener('click', () => {
+          executeMudCommand(option.command);
+          button.blur();
+        });
+        mudCommandButtons.append(button);
+      });
+    }
+
     function completeMudRun() {
       mudState.won = true;
       mudState.stage = 'won';
+      const sideQuestCount = getCompletedSideQuestKeys().length;
       setMudStatus(`Finished in ${mudState.moves} moves.`);
       appendMudLine('system', 'You rinse the soba, pour the tsuyu, and sit by the window. Ueno is quiet. You win.');
+      appendMudLine('system', `Run summary: ${mudState.moves} moves, ${sideQuestCount}/${Object.keys(MUD_SIDE_QUEST_LABELS).length} side quests.`);
+      saveMudState();
       const name = window.prompt('You made it home for soba. Name for the leaderboard submission?');
       const entry = addMudLeaderboardEntry(name, mudState.moves);
       appendMudLine('system', 'Opening an email so Justin can add your score to the public board.');
       openMudScoreEmail(entry);
+    }
+
+    function executeMudCommand(command) {
+      if (!mudState) {
+        startMudRun();
+      }
+      if (!command) {
+        return;
+      }
+
+      appendMudLine('player', `> ${command}`);
+      const response = handleMudAction(command);
+      if (response) {
+        appendMudLine('system', response);
+      }
+      saveMudState();
+      renderMudCommandButtons();
+      mudCommandInput?.focus();
     }
 
     function handleMudAction(rawCommand) {
@@ -810,7 +1017,7 @@
         return '';
       }
       if (command === 'help' || command === '?') {
-        return 'Useful commands: look, inventory, status, get ready, go downstairs, buy red bull, enter subway, get off, implement feature, fix bug, pitch pricing, go shibuya, attend event, go home, make soba.';
+        return 'Use the buttons for available commands. Low moves matter, but optional side quests can improve a run.';
       }
       if (command === 'look' || command === 'l') {
         return describeMudLocation();
@@ -822,13 +1029,21 @@
         return `Inventory: ${items.join(', ')}.`;
       }
       if (command === 'status') {
-        return `${MUD_STAGE_LABELS[mudState.stage]}. Moves: ${mudState.moves}. ${workProgressText()}.`;
+        const sideQuestCount = getCompletedSideQuestKeys().length;
+        return `${MUD_STAGE_LABELS[mudState.stage]}. Moves: ${mudState.moves}. Side quests: ${sideQuestCount}/${Object.keys(MUD_SIDE_QUEST_LABELS).length}. ${workProgressText()}.`;
       }
 
       mudState.moves += 1;
       setMudStatus(`${mudState.moves} moves.`);
 
       if (mudState.stage === 'apartment') {
+        if (commandHas(command, ['water plant', 'plant', 'balcony'])) {
+          if (mudState.sideQuests.plant) {
+            return 'The balcony plant is already watered. It looks smugly hydrated.';
+          }
+          mudState.sideQuests.plant = true;
+          return 'You water the balcony plant. It will remember this when Tokyo summer arrives.';
+        }
         if (commandHas(command, ['get ready', 'shower', 'dress', 'pack', 'keys', 'laptop'])) {
           mudState.ready = true;
           return 'You shower, dress, grab keys, wallet, Suica, and laptop bag. The morning has been compiled.';
@@ -844,6 +1059,13 @@
       }
 
       if (mudState.stage === 'street') {
+        if (commandHas(command, ['visit ueno park', 'ueno park', 'park', 'pond'])) {
+          if (mudState.sideQuests.park) {
+            return 'You already visited Ueno Park. The swan boats remain emotionally unavailable.';
+          }
+          mudState.sideQuests.park = true;
+          return 'You detour through Ueno Park. Shinobazu Pond sparkles; a crow judges your calendar management.';
+        }
         if (commandHas(command, ['buy red bull', 'red bull', 'konbini', 'convenience', 'combini'])) {
           mudState.hasRedBull = true;
           mudState.stage = 'stationGate';
@@ -856,6 +1078,13 @@
       }
 
       if (mudState.stage === 'stationGate') {
+        if (commandHas(command, ['help tourist', 'tourist', 'directions', 'help'])) {
+          if (mudState.sideQuests.tourist) {
+            return 'The tourist has already been helped and is now confidently walking the wrong way by choice.';
+          }
+          mudState.sideQuests.tourist = true;
+          return 'You help a lost tourist find the Ginza line. They reward you with a grateful thumbs-up.';
+        }
         if (commandHas(command, ['enter subway', 'get on', 'board', 'subway', 'train', 'tap in'])) {
           mudState.stage = 'subway';
           return 'You tap through the gate and board the subway. The doors chime shut.';
@@ -872,6 +1101,13 @@
       }
 
       if (mudState.stage === 'work') {
+        if (commandHas(command, ['refactor old code', 'refactor', 'old code', 'cleanup'])) {
+          if (mudState.sideQuests.refactor) {
+            return 'The old code has already been refactored. You briefly consider rewriting it in Rust anyway.';
+          }
+          mudState.sideQuests.refactor = true;
+          return 'You refactor old code nobody asked about. The diff is smaller and your soul is lighter.';
+        }
         if (commandHas(command, ['implement feature', 'ship feature', 'build feature', 'feature'])) {
           if (mudState.work.feature) {
             return 'The feature is already implemented. Product nods once, mysteriously.';
@@ -904,6 +1140,13 @@
       }
 
       if (mudState.stage === 'shibuya') {
+        if (commandHas(command, ['ask question', 'question', 'q a', 'panel'])) {
+          if (mudState.sideQuests.question) {
+            return 'You already asked a question. Asking another would transform networking into performance art.';
+          }
+          mudState.sideQuests.question = true;
+          return 'You ask a question about on-device AI. Three people nod; one person checks LinkedIn.';
+        }
         if (commandHas(command, ['attend event', 'event', 'network', 'pizza', 'talk'])) {
           mudState.attendedEvent = true;
           return 'You attend the event, nod at an architecture diagram, and acquire two stickers.';
@@ -929,6 +1172,13 @@
       }
 
       if (mudState.stage === 'home') {
+        if (commandHas(command, ['text mom', 'mom', 'message family'])) {
+          if (mudState.sideQuests.textMom) {
+            return 'You already texted mom. She has not replied, which means she is either busy or composing an essay.';
+          }
+          mudState.sideQuests.textMom = true;
+          return 'You text your mom that you made it home. Somewhere, a notification becomes a side quest complete.';
+        }
         if (commandHas(command, ['make soba', 'cook soba', 'soba', 'noodles'])) {
           completeMudRun();
           return '';
@@ -950,7 +1200,25 @@
       appendMudLine('system', 'UENO QUEST');
       appendMudLine('system', describeMudLocation());
       appendMudLine('system', 'Type help for commands.');
+      saveMudState();
+      renderMudCommandButtons();
       mudCommandInput?.focus();
+    }
+
+    function restoreMudRun() {
+      const savedState = getSavedMudState();
+      if (!savedState) {
+        return false;
+      }
+
+      mudState = savedState;
+      clearMudLog();
+      setMudStatus(mudState.won ? `Finished in ${mudState.moves} moves.` : `${mudState.moves} moves.`);
+      appendMudLine('system', mudState.won ? 'Restored completed UENO QUEST run.' : 'Restored saved UENO QUEST run.');
+      appendMudLine('system', describeMudLocation());
+      appendMudLine('system', 'Click New run to reset, or continue with the buttons below.');
+      renderMudCommandButtons();
+      return true;
     }
 
     mudStartButton?.addEventListener('click', () => {
@@ -968,15 +1236,13 @@
         return;
       }
       mudCommandInput.value = '';
-      appendMudLine('player', `> ${command}`);
-      const response = handleMudAction(command);
-      if (response) {
-        appendMudLine('system', response);
-      }
-      mudCommandInput?.focus();
+      executeMudCommand(command);
     });
 
     renderMudLeaderboard();
+    if (!restoreMudRun()) {
+      renderMudCommandButtons();
+    }
     fetchMudLeaderboard();
   </script>
 </body>

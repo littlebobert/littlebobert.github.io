@@ -147,6 +147,8 @@ function normalizeMudScore_(payload) {
   const id = cleanId_(payload.id);
   const name = cleanName_(payload.name);
   const moves = Number(payload.moves);
+  const sideQuests = cleanTextArray_(payload.sideQuests || [], 40, 12);
+  const sideQuestCount = Math.max(sideQuests.length, Number(payload.sideQuestCount) || 0);
   const completedAt = String(payload.completedAt || '');
   const completedTime = new Date(completedAt).getTime();
 
@@ -164,7 +166,9 @@ function normalizeMudScore_(payload) {
     id,
     name,
     moves,
-    rank: cleanText_(payload.rank || (moves <= 14 ? 'Senior Soba Engineer' : 'Soba Engineer'), 40),
+    sideQuests,
+    sideQuestCount,
+    rank: cleanText_(payload.rank || mudRankForSubmission_(moves, sideQuestCount), 40),
     route: cleanText_(payload.route || 'Ueno -> Otemachi -> Shibuya -> Ueno', 80),
     completedAt: new Date(completedTime).toISOString(),
     approvedAt: new Date().toISOString(),
@@ -181,6 +185,7 @@ function createMudScorePullRequest_(score) {
     isDuplicate: (entry) => entry.id === score.id,
     sortEntries: (entries) => entries.sort((a, b) => (
       Number(a.moves) - Number(b.moves)
+      || getSideQuestCount_(b) - getSideQuestCount_(a)
       || String(a.completedAt).localeCompare(String(b.completedAt))
     )),
     branchPrefix: 'mud-score',
@@ -191,6 +196,8 @@ function createMudScorePullRequest_(score) {
       '',
       `- Name: ${score.name}`,
       `- Moves: ${score.moves}`,
+      `- Side quests: ${score.sideQuestCount}`,
+      score.sideQuests.length ? `- Side quest names: ${score.sideQuests.join(', ')}` : '- Side quest names: none',
       `- Rank: ${score.rank}`,
       `- Score ID: ${score.id}`,
     ].join('\n'),
@@ -426,6 +433,33 @@ function cleanName_(value) {
 function cleanCountryCode_(value) {
   const countryCode = String(value || '').trim().toUpperCase();
   return /^[A-Z]{2}$/.test(countryCode) ? countryCode : '';
+}
+
+function cleanTextArray_(value, itemMaxLength, maxItems) {
+  if (!Array.isArray(value)) {
+    return [];
+  }
+  return value
+    .map((item) => cleanText_(item, itemMaxLength))
+    .filter(Boolean)
+    .slice(0, maxItems);
+}
+
+function getSideQuestCount_(entry) {
+  if (Array.isArray(entry && entry.sideQuests)) {
+    return entry.sideQuests.length;
+  }
+  return Number(entry && entry.sideQuestCount) || 0;
+}
+
+function mudRankForSubmission_(moves, sideQuestCount) {
+  if (moves <= 14) {
+    return 'Senior Soba Engineer';
+  }
+  if (sideQuestCount >= 4) {
+    return 'Tokyo Completionist';
+  }
+  return 'Soba Engineer';
 }
 
 function cleanText_(value, maxLength) {

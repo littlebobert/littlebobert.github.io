@@ -1,0 +1,264 @@
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <script src="theme.js?v=2"></script>
+  <title>You’re invited to Sasu</title>
+  <link href='style.css?v=125' rel='stylesheet'>
+  <link rel="icon" href="assets/sasu-icon.png">
+  <link rel="apple-touch-icon" href="assets/sasu-icon.png">
+  <link rel="canonical" href="https://littlebobert.github.io/sasu-invite.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta
+    name="description"
+    content="You’ve been invited to try Sasu, a macOS app for understanding Japanese websites and forms."
+  />
+  <meta property="og:title" content="You’re invited to Sasu" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://littlebobert.github.io/sasu-invite.html" />
+  <meta property="og:site_name" content="Sasu (指す)" />
+  <meta
+    property="og:description"
+    content="Open your private Sasu invite and try the macOS app without creating an OpenAI API key."
+  />
+  <meta property="og:image" content="https://littlebobert.github.io/assets/sasu-social.png?v=2" />
+  <meta property="og:image:secure_url" content="https://littlebobert.github.io/assets/sasu-social.png?v=2" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Sasu app icon" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="You’re invited to Sasu" />
+  <meta
+    name="twitter:description"
+    content="Open your private Sasu invite and try the macOS app without creating an OpenAI API key."
+  />
+  <meta name="twitter:image" content="https://littlebobert.github.io/assets/sasu-social.png?v=2" />
+  <meta name="twitter:image:alt" content="Sasu app icon" />
+  <style>
+    html {
+      overflow-y: scroll;
+      scrollbar-gutter: stable;
+    }
+
+    .sasu-page {
+      max-width: 600px;
+      margin: 0 auto;
+      font-family: 'Verdana', 'Geneva', sans-serif;
+      font-size: 10pt;
+      line-height: 1.5em;
+      color: black;
+    }
+
+    .sasu-hero {
+      padding-bottom: 8pt;
+    }
+
+    .sasu-hero-header {
+      display: flex;
+      align-items: center;
+      gap: 10pt;
+    }
+
+    .sasu-icon {
+      width: 56px;
+      height: 56px;
+    }
+
+    .sasu-page h1 {
+      margin: 0;
+      font-size: 18pt;
+      line-height: 1.2em;
+    }
+
+    .sasu-subtitle {
+      padding-top: 2pt;
+      font-weight: bold;
+    }
+
+    .invite-card {
+      margin-top: 12pt;
+      padding: 12pt;
+      border: 1px solid #1f6b42;
+      border-radius: 8px;
+      background: #f5fff8;
+    }
+
+    .download-link,
+    .download-link:visited {
+      display: inline-block;
+      border: 1px solid #000;
+      border-radius: 4px;
+      padding: 3pt 7pt;
+      background: #000;
+      color: #fff;
+      text-decoration: none;
+      transition: background 120ms ease, box-shadow 120ms ease;
+    }
+
+    .download-link:hover {
+      background: #555;
+      border-color: #555;
+      color: #fff;
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+    }
+
+    .download-version,
+    .small-note {
+      font-size: 9pt;
+    }
+
+    .small-note {
+      padding-top: 5pt;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: baseline;
+      gap: 8pt;
+      padding-top: 8pt;
+    }
+
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      padding-bottom: 8pt;
+      font-size: 9pt;
+    }
+
+    .language-switcher button {
+      appearance: none;
+      -webkit-appearance: none;
+      border: 1px solid #aaa;
+      border-radius: 4px;
+      background: white;
+      padding: 2pt 6pt;
+      font: inherit;
+      cursor: pointer;
+      box-shadow: none;
+    }
+
+    .home-link {
+      padding-top: 10pt;
+    }
+  </style>
+</head>
+
+<body class="resume-page">
+  <div class="sasu-page">
+    <div class="language-switcher">
+      <button type="button" id="language-toggle" aria-label="Switch language">日本語</button>
+    </div>
+
+    <div class="sasu-hero">
+      <div class="sasu-hero-header">
+        <img class="sasu-icon" src="assets/sasu-icon.png" alt="Sasu app icon">
+        <div>
+          <h1 data-label-en="You’re invited to Sasu" data-label-ja="Sasuに招待されました">You’re invited to Sasu</h1>
+          <div
+            class="sasu-subtitle"
+            data-label-en="Japanese websites, explained on screen"
+            data-label-ja="日本語のWebサイトを画面上で説明"
+          >Japanese websites, explained on screen</div>
+        </div>
+      </div>
+
+      <div class="invite-card">
+        <div
+          data-label-en="This private invite lets you try Sasu without creating your own OpenAI API key."
+          data-label-ja="このプライベート招待で、自分のOpenAI APIキーを作らずにSasuを試せます。"
+        >This private invite lets you try Sasu without creating your own OpenAI API key.</div>
+
+        <div class="actions">
+          <a
+            class="download-link"
+            href="https://github.com/littlebobert/sasu/releases/download/0.1.10/Sasu-0.1.10-mac.zip"
+            data-label-en="Download for macOS"
+            data-label-ja="macOS版をダウンロード"
+          >Download for macOS</a>
+          <span
+            class="download-version"
+            data-label-en="(version 0.1.10)"
+            data-label-ja="（バージョン 0.1.10）"
+          >(version 0.1.10)</span>
+        </div>
+
+        <div class="actions">
+          <a
+            class="download-link"
+            id="open-invite-link"
+            href="#"
+            data-label-en="Open Sasu with invite"
+            data-label-ja="招待でSasuを開く"
+          >Open Sasu with invite</a>
+        </div>
+
+        <div
+          class="small-note"
+          id="invite-note"
+          data-label-en="Install Sasu first, then click Open Sasu with invite. If macOS asks, allow this page to open Sasu."
+          data-label-ja="先にSasuをインストールしてから、「招待でSasuを開く」をクリックしてください。macOSから確認された場合は、このページからSasuを開くことを許可してください。"
+        >Install Sasu first, then click Open Sasu with invite. If macOS asks, allow this page to open Sasu.</div>
+      </div>
+    </div>
+
+    <div
+      class="small-note"
+      data-label-en="Sasu only sends your screenshot or copied clipboard text when you ask. With invite access, requests go through the Sasu server and then to OpenAI."
+      data-label-ja="Sasuは、依頼したときだけスクリーンショットまたはコピーしたクリップボードのテキストを送信します。招待アクセスでは、リクエストはSasuのサーバーを経由してOpenAIに送信されます。"
+    >Sasu only sends your screenshot or copied clipboard text when you ask. With invite access, requests go through the Sasu server and then to OpenAI.</div>
+
+    <div class="home-link">
+      <a href="sasu.html" data-label-en="Learn more about Sasu" data-label-ja="Sasuについて詳しく見る">Learn more about Sasu</a>
+    </div>
+  </div>
+
+  <script>
+    const labelElements = document.querySelectorAll('[data-label-en][data-label-ja]');
+    const languageToggle = document.getElementById('language-toggle');
+    const openInviteLink = document.getElementById('open-invite-link');
+    const inviteNote = document.getElementById('invite-note');
+    let currentLanguage = 'en';
+
+    function setLanguage(language) {
+      currentLanguage = language === 'ja' ? 'ja' : 'en';
+      labelElements.forEach((element) => {
+        element.textContent = element.dataset[`label${currentLanguage === 'ja' ? 'Ja' : 'En'}`];
+      });
+
+      document.documentElement.lang = currentLanguage;
+      languageToggle.textContent = currentLanguage === 'ja' ? 'English' : '日本語';
+      localStorage.setItem('sasu-language', currentLanguage);
+    }
+
+    function inviteCodeFromHash() {
+      const hash = window.location.hash.replace(/^#/, '');
+      const params = new URLSearchParams(hash);
+      return params.get('invite');
+    }
+
+    languageToggle.addEventListener('click', () => {
+      setLanguage(currentLanguage === 'ja' ? 'en' : 'ja');
+    });
+
+    const savedLanguage = localStorage.getItem('sasu-language');
+    const preferredLanguage = navigator.languages?.[0] || navigator.language || 'en';
+    const initialLanguage = savedLanguage || (preferredLanguage.toLowerCase().startsWith('ja') ? 'ja' : 'en');
+    setLanguage(initialLanguage);
+
+    const inviteCode = inviteCodeFromHash();
+    if (inviteCode) {
+      openInviteLink.href = `sasu://invite?code=${encodeURIComponent(inviteCode)}`;
+    } else {
+      openInviteLink.removeAttribute('href');
+      openInviteLink.style.opacity = '0.5';
+      openInviteLink.style.cursor = 'not-allowed';
+      inviteNote.dataset.labelEn = 'This invite link is missing an invite code. Ask for a new Sasu invite link.';
+      inviteNote.dataset.labelJa = 'この招待リンクには招待コードがありません。新しいSasu招待リンクを依頼してください。';
+      setLanguage(currentLanguage);
+    }
+  </script>
+</body>
+
+</html>

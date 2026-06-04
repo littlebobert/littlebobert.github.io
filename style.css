@@ -2775,8 +2775,8 @@ html[data-theme="classic"] .clock-title-bar {
 html[data-theme="classic"] .title-bar-stripes-full {
   background: repeating-linear-gradient(
     to bottom,
-    #8999c8 0,
-    #8999c8 1px,
+    var(--classic-ink) 0,
+    var(--classic-ink) 1px,
     var(--classic-chrome) 1px,
     var(--classic-chrome) 3px
   );

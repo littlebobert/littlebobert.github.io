@@ -1118,7 +1118,6 @@ function fallbackTitleFromUrl(url) {
       'resume.html': { en: 'Resume', ja: '履歴書' },
       'sasu.html': { en: 'Sasu', ja: 'Sasu' },
       'kyoto.html': { en: 'Kyoto', ja: '京都' },
-      'store-agent.html': { en: 'Sendai', ja: 'Sendai' },
     };
     if (titles[filename]) {
       return titles[filename];

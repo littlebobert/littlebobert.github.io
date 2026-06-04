@@ -344,6 +344,22 @@
       font-size: 9pt;
     }
 
+    .invite-panel {
+      margin-top: 10pt;
+      padding: 10pt;
+      border: 1px solid #1f6b42;
+      border-radius: 8px;
+      background: #f5fff8;
+    }
+
+    .invite-panel[hidden] {
+      display: none;
+    }
+
+    .invite-panel .download-link {
+      margin-top: 6pt;
+    }
+
     .small-note {
       padding-top: 5pt;
       font-size: 9pt;
@@ -400,10 +416,32 @@
       >(version 0.1.8)</span>
       <div
         class="small-note"
-        data-label-en="Requires macOS 13 or newer, an OpenAI API key, and Screen Recording permission."
-        data-label-ja="macOS 13以降、OpenAI APIキー、画面収録の許可が必要です。"
+        data-label-en="Requires macOS 13 or newer, Screen Recording permission, and either an invite or your own OpenAI API key."
+        data-label-ja="macOS 13以降、画面収録の許可、招待または自分のOpenAI APIキーが必要です。"
       >
-        Requires macOS 13 or newer, an OpenAI API key, and Screen Recording permission.
+        Requires macOS 13 or newer, Screen Recording permission, and either an invite or your own OpenAI API key.
+      </div>
+      <div class="invite-panel" id="invite-panel" hidden>
+        <h2
+          data-label-en="You’ve been invited to Sasu"
+          data-label-ja="Sasuに招待されました"
+        >You’ve been invited to Sasu</h2>
+        <div
+          data-label-en="Download and install Sasu, then come back to this page and open your invite."
+          data-label-ja="Sasuをダウンロードしてインストールした後、このページに戻って招待を開いてください。"
+        >Download and install Sasu, then come back to this page and open your invite.</div>
+        <a
+          class="download-link"
+          id="open-invite-link"
+          href="#"
+          data-label-en="Open Sasu with invite"
+          data-label-ja="招待でSasuを開く"
+        >Open Sasu with invite</a>
+        <div
+          class="small-note"
+          data-label-en="If macOS asks, allow this page to open Sasu."
+          data-label-ja="macOSから確認された場合は、このページからSasuを開くことを許可してください。"
+        >If macOS asks, allow this page to open Sasu.</div>
       </div>
     </div>
 
@@ -460,11 +498,10 @@
     <div class="sasu-section">
       <h2 data-label-en="Privacy:" data-label-ja="プライバシー:">Privacy:</h2>
       <div
-        data-label-en="Sasu only sends your screenshot or copied clipboard text to OpenAI when you ask. It doesn’t have its own server. Your OpenAI API key is stored securely in macOS Keychain."
-        data-label-ja="Sasuは、依頼したときだけスクリーンショットまたはコピーしたクリップボードのテキストをOpenAIへ送信します。Sasu専用のサーバーはありません。OpenAI APIキーはmacOSのキーチェーンに安全に保存されます。"
+        data-label-en="Sasu only sends your screenshot or copied clipboard text when you ask. With invite access, requests go through the Sasu server and then to OpenAI. With your own API key, requests go directly to OpenAI. Credentials are stored securely in macOS Keychain."
+        data-label-ja="Sasuは、依頼したときだけスクリーンショットまたはコピーしたクリップボードのテキストを送信します。招待アクセスでは、リクエストはSasuのサーバーを経由してOpenAIに送信されます。自分のAPIキーを使う場合はOpenAIへ直接送信されます。認証情報はmacOSのキーチェーンに安全に保存されます。"
       >
-        Sasu only sends your screenshot or copied clipboard text to OpenAI when you ask. It doesn’t have its own server.
-        Your OpenAI API key is stored securely in macOS Keychain.
+        Sasu only sends your screenshot or copied clipboard text when you ask. With invite access, requests go through the Sasu server and then to OpenAI. With your own API key, requests go directly to OpenAI. Credentials are stored securely in macOS Keychain.
       </div>
     </div>
 
@@ -592,7 +629,15 @@
   <script>
     const labelElements = document.querySelectorAll('[data-label-en][data-label-ja]');
     const languageToggle = document.getElementById('language-toggle');
+    const invitePanel = document.getElementById('invite-panel');
+    const openInviteLink = document.getElementById('open-invite-link');
     let currentLanguage = 'en';
+
+    function inviteCodeFromHash() {
+      const hash = window.location.hash.replace(/^#/, '');
+      const params = new URLSearchParams(hash);
+      return params.get('invite');
+    }
 
     function setLanguage(language) {
       currentLanguage = language === 'ja' ? 'ja' : 'en';
@@ -614,6 +659,12 @@
     const preferredLanguage = navigator.languages?.[0] || navigator.language || 'en';
     const initialLanguage = savedLanguage || (preferredLanguage.toLowerCase().startsWith('ja') ? 'ja' : 'en');
     setLanguage(initialLanguage);
+
+    const inviteCode = inviteCodeFromHash();
+    if (inviteCode && invitePanel && openInviteLink) {
+      invitePanel.hidden = false;
+      openInviteLink.href = `sasu://invite?code=${encodeURIComponent(inviteCode)}`;
+    }
 
     const demoWindow = document.getElementById('sasu-demo-window');
     const demoStage = document.getElementById('sasu-demo-stage');

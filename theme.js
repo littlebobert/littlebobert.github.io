@@ -1,15 +1,22 @@
 (function () {
-  const STORAGE_KEY = 'site-theme';
+  const STORAGE_KEY = 'site-theme-v2';
+  const LEGACY_STORAGE_KEY = 'site-theme';
+  const THEMES = ['bw', 'classic', 'modern'];
 
   function normalizeTheme(theme) {
-    return theme === 'modern' ? 'modern' : 'classic';
+    return THEMES.includes(theme) ? theme : 'bw';
   }
 
   function getSavedTheme() {
     try {
-      return normalizeTheme(localStorage.getItem(STORAGE_KEY));
+      const savedTheme = localStorage.getItem(STORAGE_KEY);
+      if (savedTheme) {
+        return normalizeTheme(savedTheme);
+      }
+
+      return localStorage.getItem(LEGACY_STORAGE_KEY) === 'modern' ? 'modern' : 'bw';
     } catch {
-      return 'classic';
+      return 'bw';
     }
   }
 

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <script src="theme.js"></script>
   <title>About Justin Garcia</title>
-  <link href='style.css?v=105' rel='stylesheet'>
+  <link href='style.css?v=114' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://littlebobert.github.io/">
   <meta name="description" content="iOS engineer in Tokyo." />
@@ -90,11 +90,12 @@
             <button type="button" class="stack-index-button" data-stack-jump="3" data-label-en="Sasu" data-label-ja="<span class='latin'>Sasu</span>">Sasu</button>
             <button type="button" class="stack-index-button" data-stack-jump="4" data-label-en="Tell me" data-label-ja="聞かせて">Tell me</button>
             <button type="button" class="stack-index-button" data-stack-jump="5" data-label-en="Running" data-label-ja="ランニング">Running</button>
-            <button type="button" class="stack-index-button" data-stack-jump="6" data-label-en="Elsewhere" data-label-ja="リンク">Elsewhere</button>
-            <button type="button" class="stack-index-button" data-stack-jump="7" data-label-en="Doom scroll" data-label-ja="<span class='latin'>Doom scroll</span>">Doom scroll</button>
-            <button type="button" class="stack-index-button" data-stack-jump="8" data-label-en="Guestbook" data-label-ja="ゲストブック">Guestbook</button>
-            <button type="button" class="stack-index-button" data-stack-jump="9" data-label-en="Play MUD" data-label-ja="<span class='latin'>Play MUD</span>">Play MUD</button>
-            <button type="button" class="stack-index-button" data-stack-jump="10" data-label-en="One more thing" data-label-ja="<span class='latin'>One more thing</span>">One more thing</button>
+            <button type="button" class="stack-index-button" data-stack-jump="6" data-label-en="Gallery" data-label-ja="ギャラリー">Gallery</button>
+            <button type="button" class="stack-index-button" data-stack-jump="7" data-label-en="Elsewhere" data-label-ja="リンク">Elsewhere</button>
+            <button type="button" class="stack-index-button" data-stack-jump="8" data-label-en="Doom scroll" data-label-ja="<span class='latin'>Doom scroll</span>">Doom scroll</button>
+            <button type="button" class="stack-index-button" data-stack-jump="9" data-label-en="Guestbook" data-label-ja="ゲストブック">Guestbook</button>
+            <button type="button" class="stack-index-button" data-stack-jump="10" data-label-en="Play MUD" data-label-ja="<span class='latin'>Play MUD</span>">Play MUD</button>
+            <button type="button" class="stack-index-button" data-stack-jump="11" data-label-en="One more thing" data-label-ja="<span class='latin'>One more thing</span>">One more thing</button>
           </div>
         </section>
 
@@ -116,7 +117,13 @@
           <div class="stack-actions">
             <a href="https://x.com/_bobertdowney">X</a>
             <a href="https://www.linkedin.com/in/garciajustin/">LinkedIn</a>
-            <a href="resume.html" data-label-en="Resume" data-label-ja="<span class='ja-text'>履歴書</span>">Resume</a>
+            <a
+              href="resume.html"
+              data-label-en="Resume"
+              data-label-ja="<span class='ja-text'>履歴書</span>"
+              data-browser-title-en="Resume"
+              data-browser-title-ja="履歴書"
+            >Resume</a>
           </div>
         </section>
 
@@ -144,7 +151,13 @@
             data-label-ja="<span class='ja-text'>日本語のフォームやウェブアプリで画面上のガイダンスを得るための</span><span class='latin'>macOS</span><span class='ja-text'>アプリを作りました。</span>"
           >I created a macOS app for on-screen guidance for Japanese forms and web apps.</p>
           <div class="stack-actions">
-            <a href="sasu.html" data-label-en="Open Sasu" data-label-ja="<span class='latin'>Sasu</span><span class='ja-text'>を見る</span>">Open Sasu</a>
+            <a
+              href="sasu.html"
+              data-label-en="Open Sasu"
+              data-label-ja="<span class='latin'>Sasu</span><span class='ja-text'>を見る</span>"
+              data-browser-title-en="Sasu"
+              data-browser-title-ja="Sasu"
+            >Open Sasu</a>
           </div>
         </section>
 
@@ -205,6 +218,73 @@
               data-label-en="Open Strava"
               data-label-ja="<span class='latin'>Strava</span><span class='ja-text'>を見る</span>"
             >Open Strava</a>
+          </div>
+        </section>
+
+        <section class="stack-card stack-card-gallery" data-stack-card hidden>
+          <div class="stack-card-kicker" data-label-en="Photos" data-label-ja="写真">Photos</div>
+          <h2 data-label-en="Gallery" data-label-ja="ギャラリー">Gallery</h2>
+          <div class="gallery-grid">
+            <figure class="gallery-item">
+              <button
+                type="button"
+                class="gallery-photo-frame"
+                data-gallery-image="assets/gallery-my-brother-and-me.png"
+                data-gallery-dithered-image="assets/gallery-my-brother-and-me-dithered.png"
+                data-gallery-caption-en="My brother and me"
+                data-gallery-caption-ja="兄と私"
+                aria-label="Open photo: My brother and me"
+              >
+                <img src="assets/gallery-my-brother-and-me-thumb-dithered.png" alt="My brother and me" class="gallery-photo gallery-photo-dithered" loading="lazy">
+                <img src="assets/gallery-my-brother-and-me.png" alt="My brother and me" class="gallery-photo gallery-photo-color" loading="lazy">
+              </button>
+              <figcaption data-label-en="My brother and me" data-label-ja="兄と私">My brother and me</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button
+                type="button"
+                class="gallery-photo-frame"
+                data-gallery-image="assets/gallery-my-mom-my-brother-and-me.png"
+                data-gallery-dithered-image="assets/gallery-my-mom-my-brother-and-me-dithered.png"
+                data-gallery-caption-en="My mom, my brother and me"
+                data-gallery-caption-ja="母と兄と私"
+                aria-label="Open photo: My mom, my brother and me"
+              >
+                <img src="assets/gallery-my-mom-my-brother-and-me-thumb-dithered.png" alt="My mom, my brother and me" class="gallery-photo gallery-photo-dithered gallery-photo-focus-top" loading="lazy">
+                <img src="assets/gallery-my-mom-my-brother-and-me.png" alt="My mom, my brother and me" class="gallery-photo gallery-photo-color gallery-photo-focus-top" loading="lazy">
+              </button>
+              <figcaption data-label-en="My mom, my brother and me" data-label-ja="母と兄と私">My mom, my brother and me</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button
+                type="button"
+                class="gallery-photo-frame"
+                data-gallery-image="assets/gallery-my-dad.png"
+                data-gallery-dithered-image="assets/gallery-my-dad-dithered.png"
+                data-gallery-caption-en="My dad"
+                data-gallery-caption-ja="父"
+                aria-label="Open photo: My dad"
+              >
+                <img src="assets/gallery-my-dad-thumb-dithered.png" alt="My dad" class="gallery-photo gallery-photo-dithered" loading="lazy">
+                <img src="assets/gallery-my-dad.png" alt="My dad" class="gallery-photo gallery-photo-color" loading="lazy">
+              </button>
+              <figcaption data-label-en="My dad" data-label-ja="父">My dad</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button
+                type="button"
+                class="gallery-photo-frame"
+                data-gallery-image="assets/gallery-my-dad-and-me.png"
+                data-gallery-dithered-image="assets/gallery-my-dad-and-me-dithered.png"
+                data-gallery-caption-en="My dad and me"
+                data-gallery-caption-ja="父と私"
+                aria-label="Open photo: My dad and me"
+              >
+                <img src="assets/gallery-my-dad-and-me-thumb-dithered.png" alt="My dad and me" class="gallery-photo gallery-photo-dithered" loading="lazy">
+                <img src="assets/gallery-my-dad-and-me.png" alt="My dad and me" class="gallery-photo gallery-photo-color" loading="lazy">
+              </button>
+              <figcaption data-label-en="My dad and me" data-label-ja="父と私">My dad and me</figcaption>
+            </figure>
           </div>
         </section>
 
@@ -413,6 +493,62 @@
     </div>
     </div>
 
+    <div class="web-browser-slot is-closed" id="web-browser-slot">
+      <div class="mac-dialog web-browser-dialog is-closed" id="web-browser-dialog" aria-label="Desktop Browser">
+        <div class="title-bar">
+          <button type="button" class="close-box close-box--close" id="web-browser-close" aria-label="Close"></button>
+          <div class="title-bar-stripes-full"></div>
+          <span
+            class="title-text"
+            id="web-browser-title"
+            data-label-en="Desktop Browser"
+            data-label-ja="デスクトップブラウザ"
+          >Desktop Browser</span>
+        </div>
+        <div class="dialog-content web-browser-content">
+          <div class="web-browser-toolbar">
+            <span class="web-browser-address" id="web-browser-address">about:blank</span>
+            <button
+              type="button"
+              class="web-browser-open-external"
+              id="web-browser-open-external"
+              data-label-en="Open normally"
+              data-label-ja="普通に開く"
+            >Open normally</button>
+          </div>
+          <iframe
+            class="web-browser-frame"
+            id="web-browser-frame"
+            title="Desktop Browser page"
+            src="about:blank"
+          ></iframe>
+        </div>
+      </div>
+    </div>
+
+    <div class="gallery-viewer-slot is-closed" id="gallery-viewer-slot">
+      <div class="mac-dialog gallery-viewer-dialog is-closed" id="gallery-viewer-dialog" aria-label="Photo Viewer">
+        <div class="title-bar">
+          <button type="button" class="close-box close-box--close" id="gallery-viewer-close" aria-label="Close"></button>
+          <div class="title-bar-stripes-full"></div>
+          <span
+            class="title-text"
+            id="gallery-viewer-title"
+            data-label-en="Photo Viewer"
+            data-label-ja="写真ビューア"
+          >Photo Viewer</span>
+        </div>
+        <div class="dialog-content gallery-viewer-content">
+          <figure class="gallery-viewer-figure">
+            <span class="gallery-viewer-image-frame">
+              <img alt="" class="gallery-viewer-image" id="gallery-viewer-image">
+            </span>
+            <figcaption id="gallery-viewer-caption"></figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+
     <div class="bottom-row">
     <div class="clock-row">
     <div class="clock-widget">
@@ -482,7 +618,14 @@
         </div>
         <div class="appearance-radios" role="radiogroup" aria-label="Theme">
           <label class="appearance-option">
-            <input type="radio" name="site-theme" value="classic" checked>
+            <input type="radio" name="site-theme" value="bw" checked>
+            <span
+              data-label-en="B/W"
+              data-label-ja="白黒"
+            >B/W</span>
+          </label>
+          <label class="appearance-option">
+            <input type="radio" name="site-theme" value="classic">
             <span
               data-label-en="Classic"
               data-label-ja="クラシック"
@@ -497,6 +640,12 @@
           </label>
         </div>
         <div class="appearance-segmented" role="radiogroup" aria-label="Theme">
+          <button type="button" class="appearance-segment" data-theme-value="bw" aria-pressed="false">
+            <span
+              data-label-en="B/W"
+              data-label-ja="白黒"
+            >B/W</span>
+          </button>
           <button type="button" class="appearance-segment" data-theme-value="classic" aria-pressed="false">
             <span
               data-label-en="Classic"
@@ -546,7 +695,7 @@
   <div class="window-zoom-rect" id="window-zoom-rect" hidden aria-hidden="true"></div>
   
   <script src="data/x-posts.js"></script>
-  <script src="index.js?v=1"></script>
+  <script src="index.js?v=5"></script>
   <script>
     const MUD_LEADERBOARD_STORAGE_KEY = 'tokyo-mud-leaderboard';
     const MUD_STATE_STORAGE_KEY = 'tokyo-mud-current-run';

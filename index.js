@@ -902,6 +902,20 @@ const aboutSlot = document.getElementById('about-slot');
 const aboutDialog = document.getElementById('about-dialog');
 const aboutDesktopIcon = document.getElementById('about-desktop-icon');
 const aboutCloseButton = aboutDialog?.querySelector('.close-box--close');
+const webBrowserSlot = document.getElementById('web-browser-slot');
+const webBrowserDialog = document.getElementById('web-browser-dialog');
+const webBrowserCloseButton = document.getElementById('web-browser-close');
+const webBrowserFrame = document.getElementById('web-browser-frame');
+const webBrowserAddress = document.getElementById('web-browser-address');
+const webBrowserOpenExternalButton = document.getElementById('web-browser-open-external');
+const webBrowserTitle = document.getElementById('web-browser-title');
+const galleryPhotoButtons = document.querySelectorAll('.gallery-photo-frame[data-gallery-image]');
+const galleryViewerSlot = document.getElementById('gallery-viewer-slot');
+const galleryViewerDialog = document.getElementById('gallery-viewer-dialog');
+const galleryViewerCloseButton = document.getElementById('gallery-viewer-close');
+const galleryViewerImage = document.getElementById('gallery-viewer-image');
+const galleryViewerCaption = document.getElementById('gallery-viewer-caption');
+const galleryViewerTitle = document.getElementById('gallery-viewer-title');
 const windowZoomRect = document.getElementById('window-zoom-rect');
 const hypercardStack = document.getElementById('hypercard-stack');
 const stackCards = Array.from(document.querySelectorAll('[data-stack-card]'));
@@ -935,6 +949,9 @@ let lastMapTap = null;
 let lastPageTap = null;
 let lastTouchWindowShadeAt = 0;
 let stackTransitionTimeout = null;
+let currentWebBrowserUrl = '';
+let currentWebBrowserTitle = null;
+let currentGalleryPhoto = null;
 
 const ZOOM_OPEN_MS = 220;
 const ZOOM_CLOSE_MS = 200;
@@ -1022,6 +1039,231 @@ function clamp(value, min, max) {
 }
 
 currentStackCardIndex = getSavedStackCardIndex();
+
+function isSameSitePageUrl(url) {
+  if (!['http:', 'https:', 'file:'].includes(url.protocol)) {
+    return false;
+  }
+
+  if (url.protocol === 'file:' || window.location.protocol === 'file:') {
+    return url.protocol === window.location.protocol && url.pathname !== window.location.pathname;
+  }
+
+  return url.origin === window.location.origin;
+}
+
+function shouldOpenInDesktopBrowser(link, event) {
+  if (event.defaultPrevented || event.button !== 0) {
+    return false;
+  }
+
+  if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) {
+    return false;
+  }
+
+  if (link.target && link.target !== '_self') {
+    return false;
+  }
+
+  if (link.hasAttribute('download')) {
+    return false;
+  }
+
+  const href = link.getAttribute('href');
+  if (!href || href.startsWith('#')) {
+    return false;
+  }
+
+  let url;
+  try {
+    url = new URL(link.href, window.location.href);
+  } catch {
+    return false;
+  }
+
+  return isSameSitePageUrl(url);
+}
+
+function formatBrowserAddress(url) {
+  try {
+    const parsedUrl = new URL(url, window.location.href);
+    if (parsedUrl.protocol === 'file:') {
+      return parsedUrl.pathname.split('/').pop() || parsedUrl.pathname;
+    }
+
+    return `${parsedUrl.pathname.replace(/^\//, '') || '/'}${parsedUrl.hash}`;
+  } catch {
+    return url;
+  }
+}
+
+function textFromHtml(html) {
+  const template = document.createElement('template');
+  template.innerHTML = html;
+  return template.content.textContent.trim();
+}
+
+function stripActionText(text) {
+  return text
+    .replace(/^Open\s+/i, '')
+    .replace(/\s+を見る$/, '')
+    .trim();
+}
+
+function fallbackTitleFromUrl(url) {
+  try {
+    const parsedUrl = new URL(url, window.location.href);
+    const filename = parsedUrl.pathname.split('/').pop();
+    const titles = {
+      'resume.html': { en: 'Resume', ja: '履歴書' },
+      'sasu.html': { en: 'Sasu', ja: 'Sasu' },
+      'kyoto.html': { en: 'Kyoto', ja: '京都' },
+      'store-agent.html': { en: 'Sendai', ja: 'Sendai' },
+    };
+    if (titles[filename]) {
+      return titles[filename];
+    }
+
+    const fallback = filename
+      ? filename.replace(/\.html$/i, '').replace(/[-_]+/g, ' ')
+      : 'Desktop Browser';
+    return { en: fallback, ja: fallback };
+  } catch {
+    return { en: 'Desktop Browser', ja: 'デスクトップブラウザ' };
+  }
+}
+
+function titleFromLink(url, link) {
+  const fallback = fallbackTitleFromUrl(url);
+  if (!link) {
+    return fallback;
+  }
+
+  const titleEn = link.dataset.browserTitleEn
+    || (link.dataset.labelEn ? stripActionText(textFromHtml(link.dataset.labelEn)) : '');
+  const titleJa = link.dataset.browserTitleJa
+    || (link.dataset.labelJa ? stripActionText(textFromHtml(link.dataset.labelJa)) : '');
+  return {
+    en: titleEn || fallback.en,
+    ja: titleJa || titleEn || fallback.ja,
+  };
+}
+
+function localizedWindowTitle(title) {
+  if (!title) {
+    return '';
+  }
+
+  return currentLanguage === 'ja' ? title.ja || title.en : title.en || title.ja;
+}
+
+function updateDesktopBrowserTitle() {
+  if (webBrowserTitle && currentWebBrowserTitle) {
+    webBrowserTitle.textContent = localizedWindowTitle(currentWebBrowserTitle);
+  }
+}
+
+function openDesktopBrowser(url, title = fallbackTitleFromUrl(url)) {
+  if (!webBrowserSlot || !webBrowserDialog || !webBrowserFrame) {
+    window.location.href = url;
+    return;
+  }
+
+  currentWebBrowserUrl = url;
+  currentWebBrowserTitle = title;
+  webBrowserFrame.src = url;
+  if (webBrowserAddress) {
+    webBrowserAddress.textContent = formatBrowserAddress(url);
+  }
+  updateDesktopBrowserTitle();
+
+  webBrowserSlot.classList.remove('is-closed');
+  webBrowserDialog.classList.remove('is-closed', 'window-shaded');
+  webBrowserDialog.scrollIntoView({ block: 'nearest', behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+}
+
+function closeDesktopBrowser() {
+  if (!webBrowserSlot || !webBrowserDialog || !webBrowserFrame) {
+    return;
+  }
+
+  webBrowserSlot.classList.add('is-closed');
+  webBrowserDialog.classList.remove('window-shaded');
+  webBrowserDialog.classList.add('is-closed');
+  webBrowserFrame.src = 'about:blank';
+  currentWebBrowserUrl = '';
+  currentWebBrowserTitle = null;
+  if (webBrowserAddress) {
+    webBrowserAddress.textContent = 'about:blank';
+  }
+  if (webBrowserTitle) {
+    webBrowserTitle.textContent = localizedText('Desktop Browser', 'デスクトップブラウザ');
+  }
+}
+
+function getGalleryPhotoSource(photo) {
+  if (!photo) {
+    return '';
+  }
+
+  return document.documentElement.dataset.theme === 'bw'
+    ? photo.ditheredImage
+    : photo.image;
+}
+
+function updateGalleryViewerPhoto() {
+  if (!currentGalleryPhoto || !galleryViewerImage || !galleryViewerCaption) {
+    return;
+  }
+
+  const isDithered = document.documentElement.dataset.theme === 'bw';
+  const title = localizedWindowTitle({
+    en: currentGalleryPhoto.captionEn,
+    ja: currentGalleryPhoto.captionJa,
+  });
+  galleryViewerImage.src = getGalleryPhotoSource(currentGalleryPhoto);
+  galleryViewerImage.alt = currentGalleryPhoto.captionEn;
+  galleryViewerImage.classList.toggle('is-dithered', isDithered);
+  galleryViewerCaption.textContent = title;
+  if (galleryViewerTitle) {
+    galleryViewerTitle.textContent = title;
+  }
+}
+
+function openGalleryViewer(button) {
+  if (!galleryViewerSlot || !galleryViewerDialog || !galleryViewerImage || !galleryViewerCaption) {
+    return;
+  }
+
+  currentGalleryPhoto = {
+    image: button.dataset.galleryImage,
+    ditheredImage: button.dataset.galleryDitheredImage,
+    captionEn: button.dataset.galleryCaptionEn,
+    captionJa: button.dataset.galleryCaptionJa,
+  };
+  updateGalleryViewerPhoto();
+  galleryViewerSlot.classList.remove('is-closed');
+  galleryViewerDialog.classList.remove('is-closed', 'window-shaded');
+  galleryViewerDialog.scrollIntoView({ block: 'nearest', behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+}
+
+function closeGalleryViewer() {
+  if (!galleryViewerSlot || !galleryViewerDialog || !galleryViewerImage || !galleryViewerCaption) {
+    return;
+  }
+
+  galleryViewerSlot.classList.add('is-closed');
+  galleryViewerDialog.classList.remove('window-shaded');
+  galleryViewerDialog.classList.add('is-closed');
+  galleryViewerImage.removeAttribute('src');
+  galleryViewerImage.alt = '';
+  galleryViewerImage.classList.remove('is-dithered');
+  galleryViewerCaption.textContent = '';
+  if (galleryViewerTitle) {
+    galleryViewerTitle.textContent = localizedText('Photo Viewer', '写真ビューア');
+  }
+  currentGalleryPhoto = null;
+}
 
 function preventPageDoubleTapZoom(event) {
   if (event.changedTouches.length !== 1) {
@@ -1771,6 +2013,8 @@ function applyOpenAboutState({ retainMinHeight = false } = {}) {
 }
 
 function applyCloseAboutState(slotHeight) {
+  closeDesktopBrowser();
+  closeGalleryViewer();
   aboutDialog.classList.remove('window-shaded', 'is-zoom-hidden');
   aboutSlot.classList.remove('is-shaded');
   aboutDialog.classList.add('is-closed');
@@ -1921,6 +2165,48 @@ document.querySelectorAll('.title-bar, .clock-title-bar').forEach((titleBar) => 
 aboutCloseButton?.addEventListener('click', (event) => {
   event.stopPropagation();
   closeAboutWindow();
+});
+
+webBrowserCloseButton?.addEventListener('click', (event) => {
+  event.stopPropagation();
+  closeDesktopBrowser();
+});
+
+galleryViewerCloseButton?.addEventListener('click', (event) => {
+  event.stopPropagation();
+  closeGalleryViewer();
+});
+
+galleryPhotoButtons.forEach((button) => {
+  button.addEventListener('click', () => {
+    openGalleryViewer(button);
+    button.blur();
+  });
+});
+
+webBrowserOpenExternalButton?.addEventListener('click', () => {
+  if (currentWebBrowserUrl) {
+    window.location.href = currentWebBrowserUrl;
+  }
+});
+
+document.addEventListener('site-theme-change', () => {
+  updateGalleryViewerPhoto();
+});
+
+document.addEventListener('site-language-change', () => {
+  updateDesktopBrowserTitle();
+  updateGalleryViewerPhoto();
+});
+
+document.addEventListener('click', (event) => {
+  const link = event.target.closest?.('a[href]');
+  if (!link || !shouldOpenInDesktopBrowser(link, event)) {
+    return;
+  }
+
+  event.preventDefault();
+  openDesktopBrowser(link.href, titleFromLink(link.href, link));
 });
 
 aboutDesktopIcon?.addEventListener('click', () => {

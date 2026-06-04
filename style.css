@@ -2892,12 +2892,12 @@ html[data-theme="classic"] .appearance-segment,
 html[data-theme="classic"] .clock-mode-segment,
 html[data-theme="classic"] .weather-unit-segment {
   border-left: 1px solid var(--classic-shadow);
-  background: var(--classic-accent);
-  color: #fff;
+  background: #eeeeee;
+  color: var(--classic-ink);
   box-shadow:
-    inset 1px 1px 0 #c1cdf2,
-    inset -1px -1px 0 var(--classic-accent-dark);
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+    inset 1px 1px 0 var(--classic-highlight),
+    inset -1px -1px 0 var(--classic-shadow);
+  text-shadow: 1px 1px 0 var(--classic-highlight);
 }
 
 html[data-theme="classic"] .language-segment:first-child,
@@ -2911,13 +2911,13 @@ html[data-theme="classic"] .language-segment[aria-pressed="true"],
 html[data-theme="classic"] .appearance-segment[aria-pressed="true"],
 html[data-theme="classic"] .clock-mode-segment[aria-pressed="true"],
 html[data-theme="classic"] .weather-unit-segment[aria-pressed="true"] {
-  background: var(--classic-accent);
-  color: #fff;
+  background: #c9c9c9;
+  color: var(--classic-ink);
   box-shadow:
-    inset 1px 1px 0 var(--classic-accent-dark),
-    inset -1px -1px 0 #d8e0f8,
-    inset 0 0 0 2px rgba(0, 0, 0, 0.18);
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.45);
+    inset 1px 1px 0 var(--classic-shadow),
+    inset -1px -1px 0 var(--classic-highlight),
+    inset 0 0 0 1px #a6a6a6;
+  text-shadow: 1px 1px 0 var(--classic-highlight);
 }
 
 html[data-theme="classic"] .stack-actions a,
@@ -3093,18 +3093,27 @@ html[data-theme="classic"] .feed-panel.has-scroll-overflow::after {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  html[data-theme="classic"] button.close-box--close:hover,
   html[data-theme="classic"] .language-segment:hover,
   html[data-theme="classic"] .appearance-segment:hover,
   html[data-theme="classic"] .clock-mode-segment:hover,
   html[data-theme="classic"] .weather-unit-segment:hover {
-    background: #8fa3df;
-    color: #fff;
+    background: #f8f8f8;
+    color: var(--classic-ink);
     box-shadow:
-      inset 1px 1px 0 #d8e0f8,
-      inset -1px -1px 0 var(--classic-accent-dark),
-      0 0 0 1px #c1cdf2;
+      inset 1px 1px 0 var(--classic-highlight),
+      inset -1px -1px 0 var(--classic-shadow);
     transform: none;
+  }
+
+  html[data-theme="classic"] .language-segment[aria-pressed="true"]:hover,
+  html[data-theme="classic"] .appearance-segment[aria-pressed="true"]:hover,
+  html[data-theme="classic"] .clock-mode-segment[aria-pressed="true"]:hover,
+  html[data-theme="classic"] .weather-unit-segment[aria-pressed="true"]:hover {
+    background: #d2d2d2;
+    box-shadow:
+      inset 1px 1px 0 var(--classic-shadow),
+      inset -1px -1px 0 var(--classic-highlight),
+      inset 0 0 0 1px #9f9f9f;
   }
 
   html[data-theme="classic"] button.close-box--close:hover {

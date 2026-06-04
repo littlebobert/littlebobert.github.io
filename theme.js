@@ -4,7 +4,7 @@
   const THEMES = ['bw', 'classic', 'modern'];
 
   function normalizeTheme(theme) {
-    return THEMES.includes(theme) ? theme : 'bw';
+    return THEMES.includes(theme) ? theme : 'classic';
   }
 
   function getSavedTheme() {
@@ -14,9 +14,14 @@
         return normalizeTheme(savedTheme);
       }
 
-      return localStorage.getItem(LEGACY_STORAGE_KEY) === 'modern' ? 'modern' : 'bw';
+      const legacyTheme = localStorage.getItem(LEGACY_STORAGE_KEY);
+      if (legacyTheme) {
+        return legacyTheme === 'modern' ? 'modern' : 'bw';
+      }
+
+      return 'classic';
     } catch {
-      return 'bw';
+      return 'classic';
     }
   }
 

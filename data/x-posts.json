@@ -1,8 +1,35 @@
 {
-  "updatedAt": "2026-06-04T17:57:57.712Z",
+  "updatedAt": "2026-06-05T17:25:31.020Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2062727977864204663",
+      "text": "JIS配列のMacBook、謎に誇らしい https://t.co/1iGaksCSCo",
+      "createdAt": "2026-06-05T02:47:28.000Z",
+      "url": "https://x.com/_bobertdowney/status/2062727977864204663",
+      "urls": [
+        {
+          "url": "https://t.co/1iGaksCSCo",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2062727977864204663/photo/1",
+          "displayUrl": "pic.x.com/1iGaksCSCo",
+          "start": 21,
+          "end": 44
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2062727977864204663-0.png",
+          "imageModern": "assets/generated/x/mine-post-2062727977864204663-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2062414856742117641",
       "text": "フロリダにハマってる人っている？ https://t.co/AGJthkwGkC",
@@ -175,33 +202,6 @@
           "type": "photo",
           "image": "assets/generated/x/mine-post-2058158639563862475-0.png",
           "imageModern": "assets/generated/x/mine-post-2058158639563862475-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2058093593286594723",
-      "text": "すみません、日本のスティーブ・ジョブズは誰ですか？ https://t.co/Bc8QWXl0oq",
-      "createdAt": "2026-05-23T07:52:04.000Z",
-      "url": "https://x.com/_bobertdowney/status/2058093593286594723",
-      "urls": [
-        {
-          "url": "https://t.co/Bc8QWXl0oq",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2058093593286594723/photo/1",
-          "displayUrl": "pic.x.com/Bc8QWXl0oq",
-          "start": 26,
-          "end": 49
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2058093593286594723-0.png",
-          "imageModern": "assets/generated/x/mine-post-2058093593286594723-0-modern.png"
         }
       ]
     }

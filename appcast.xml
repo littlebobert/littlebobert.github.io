@@ -12,7 +12,7 @@
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[Expand invite system.
 ]]></description>
-            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.13/Sasu-0.1.14-mac.zip" length="5290669" type="application/octet-stream" sparkle:edSignature="KBSm9Gy7PbS6CCDMEax7+YvzEcFY+Um4Wx9yn4tk+dbynptGJ15WDjCS6Qnz+4CMURQYlvjggyTenbgOYsSXDA=="/>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.14/Sasu-0.1.14-mac.zip" length="5290669" type="application/octet-stream" sparkle:edSignature="KBSm9Gy7PbS6CCDMEax7+YvzEcFY+Um4Wx9yn4tk+dbynptGJ15WDjCS6Qnz+4CMURQYlvjggyTenbgOYsSXDA=="/>
         </item>
         <item>
             <title>0.1.13</title>
@@ -24,7 +24,7 @@
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[Fix onboarding bugs.
 ]]></description>
-            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.12/Sasu-0.1.13-mac.zip" length="5290329" type="application/octet-stream" sparkle:edSignature="o3ZhqL0C2t31/ATkRxU+3YCurI/BypBcr+n9NpVFwRZvM1EzPlLLeWOfvJwdz2ImwHRm3RUGiXuEeXM2XWdkDQ=="/>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.13/Sasu-0.1.13-mac.zip" length="5290329" type="application/octet-stream" sparkle:edSignature="o3ZhqL0C2t31/ATkRxU+3YCurI/BypBcr+n9NpVFwRZvM1EzPlLLeWOfvJwdz2ImwHRm3RUGiXuEeXM2XWdkDQ=="/>
         </item>
         <item>
             <title>0.1.12</title>
@@ -36,7 +36,7 @@
             <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
             <description sparkle:format="markdown"><![CDATA[Added a way to report bugs.
 ]]></description>
-            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.11/Sasu-0.1.12-mac.zip" length="5301021" type="application/octet-stream" sparkle:edSignature="giwL40iEhL7TF4rTZgG6O+gvdf4QImYIPKY6Gei84v7LDbbvj8e+Xn/8CX1EqQQGn3pD+mOCokZ8iAue5MhkBg=="/>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.12/Sasu-0.1.12-mac.zip" length="5301021" type="application/octet-stream" sparkle:edSignature="giwL40iEhL7TF4rTZgG6O+gvdf4QImYIPKY6Gei84v7LDbbvj8e+Xn/8CX1EqQQGn3pD+mOCokZ8iAue5MhkBg=="/>
         </item>
     </channel>
 </rss>

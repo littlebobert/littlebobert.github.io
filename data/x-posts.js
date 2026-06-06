@@ -1,8 +1,94 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-06-05T17:25:31.020Z",
+  "updatedAt": "2026-06-06T16:36:03.644Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2063187475997262253",
+      "text": "Apple TV持ってきて良かった〜 https://t.co/h9uniPUmOc",
+      "createdAt": "2026-06-06T09:13:21.000Z",
+      "url": "https://x.com/_bobertdowney/status/2063187475997262253",
+      "urls": [
+        {
+          "url": "https://t.co/h9uniPUmOc",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2063187475997262253/photo/1",
+          "displayUrl": "pic.x.com/h9uniPUmOc",
+          "start": 19,
+          "end": 42
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2063187475997262253-0.png",
+          "imageModern": "assets/generated/x/mine-post-2063187475997262253-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2063167460434677863",
+      "text": "Venmoが一番好きなSNS",
+      "createdAt": "2026-06-06T07:53:49.000Z",
+      "url": "https://x.com/_bobertdowney/status/2063167460434677863",
+      "urls": [],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2063164393140199850",
+      "text": "同僚、コストコのサーモン好きだといいな…(お土産です) https://t.co/v4VWWipLd7",
+      "createdAt": "2026-06-06T07:41:37.000Z",
+      "url": "https://x.com/_bobertdowney/status/2063164393140199850",
+      "urls": [
+        {
+          "url": "https://t.co/v4VWWipLd7",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2063164393140199850/photo/1",
+          "displayUrl": "pic.x.com/v4VWWipLd7",
+          "start": 28,
+          "end": 51
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2063164393140199850-0.png",
+          "imageModern": "assets/generated/x/mine-post-2063164393140199850-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2063071822502125964",
+      "text": "ここでWWDCのネタバレ浴びてます 😔 https://t.co/xLw8MtOEfc",
+      "createdAt": "2026-06-06T01:33:47.000Z",
+      "url": "https://x.com/_bobertdowney/status/2063071822502125964",
+      "urls": [
+        {
+          "url": "https://t.co/xLw8MtOEfc",
+          "expandedUrl": "https://twitter.com/f55_2001/status/1966025318751470013",
+          "displayUrl": "x.com/f55_2001/statu…",
+          "start": 20,
+          "end": 43
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2062727977864204663",
       "text": "JIS配列のMacBook、謎に誇らしい https://t.co/1iGaksCSCo",
@@ -150,60 +236,6 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2058169102771143024",
-      "text": "my mom made this for me because I’m an Apple fanboy 🥴 https://t.co/4ueqVpHZKM",
-      "createdAt": "2026-05-23T12:52:07.000Z",
-      "url": "https://x.com/_bobertdowney/status/2058169102771143024",
-      "urls": [
-        {
-          "url": "https://t.co/4ueqVpHZKM",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2058169102771143024/photo/1",
-          "displayUrl": "pic.x.com/4ueqVpHZKM",
-          "start": 54,
-          "end": 77
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2058169102771143024-0.png",
-          "imageModern": "assets/generated/x/mine-post-2058169102771143024-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2058158639563862475",
-      "text": "水天宮前駅のこの水槽が好きです https://t.co/Kfq66iUl6G",
-      "createdAt": "2026-05-23T12:10:33.000Z",
-      "url": "https://x.com/_bobertdowney/status/2058158639563862475",
-      "urls": [
-        {
-          "url": "https://t.co/Kfq66iUl6G",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2058158639563862475/photo/1",
-          "displayUrl": "pic.x.com/Kfq66iUl6G",
-          "start": 16,
-          "end": 39
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2058158639563862475-0.png",
-          "imageModern": "assets/generated/x/mine-post-2058158639563862475-0-modern.png"
-        }
-      ]
     }
   ]
 };

@@ -1,8 +1,75 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-06-06T16:36:03.644Z",
+  "updatedAt": "2026-06-07T16:46:38.029Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2063406693707649476",
+      "text": "やっと流行に乗れた https://t.co/jsDnFuAQxs",
+      "createdAt": "2026-06-06T23:44:26.000Z",
+      "url": "https://x.com/_bobertdowney/status/2063406693707649476",
+      "urls": [
+        {
+          "url": "https://t.co/jsDnFuAQxs",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2063406693707649476/photo/1",
+          "displayUrl": "pic.x.com/jsDnFuAQxs",
+          "start": 10,
+          "end": 33
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2063406693707649476-0.png",
+          "imageModern": "assets/generated/x/mine-post-2063406693707649476-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2063375518909820953",
+      "text": "夢かな? https://t.co/xrIDAmSPGt",
+      "createdAt": "2026-06-06T21:40:34.000Z",
+      "url": "https://x.com/_bobertdowney/status/2063375518909820953",
+      "urls": [
+        {
+          "url": "https://t.co/xrIDAmSPGt",
+          "expandedUrl": "https://twitter.com/kotoba_tech/status/2063373481543373263",
+          "displayUrl": "x.com/kotoba_tech/st…",
+          "start": 5,
+          "end": 28
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2063375259601117641",
+      "text": "私の彼女が「泊まりに行って2時にWWDC一緒に見れるよ」って言ってくれてる、夢かな? 🥹 https://t.co/454VuIHWGX",
+      "createdAt": "2026-06-06T21:39:32.000Z",
+      "url": "https://x.com/_bobertdowney/status/2063375259601117641",
+      "urls": [
+        {
+          "url": "https://t.co/454VuIHWGX",
+          "expandedUrl": "https://developer.apple.com/jp/wwdc26/",
+          "displayUrl": "developer.apple.com/jp/wwdc26/",
+          "start": 45,
+          "end": 68
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2063187475997262253",
       "text": "Apple TV持ってきて良かった〜 https://t.co/h9uniPUmOc",
@@ -169,73 +236,6 @@ window.X_POSTS_SNAPSHOT = {
           "imageModern": "assets/generated/x/mine-post-2061985572223377506-0-modern.png"
         }
       ]
-    },
-    {
-      "id": "2061580729830838604",
-      "text": "「Sendai（仙台）」って「AI」が入ってるから、ちょっと気になる(笑) https://t.co/714hWTuzwS",
-      "createdAt": "2026-06-01T22:48:42.000Z",
-      "url": "https://x.com/_bobertdowney/status/2061580729830838604",
-      "urls": [
-        {
-          "url": "https://t.co/714hWTuzwS",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2061580729830838604/video/1",
-          "displayUrl": "pic.x.com/714hWTuzwS",
-          "start": 38,
-          "end": 61
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2061580729830838604-0.png",
-          "imageModern": "assets/generated/x/mine-post-2061580729830838604-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2060686262902960242",
-      "text": "banger after banger https://t.co/lNHupTYKoa",
-      "createdAt": "2026-05-30T11:34:25.000Z",
-      "url": "https://x.com/_bobertdowney/status/2060686262902960242",
-      "urls": [
-        {
-          "url": "https://t.co/lNHupTYKoa",
-          "expandedUrl": "https://twitter.com/pontifex/status/2060685288163144177",
-          "displayUrl": "x.com/pontifex/statu…",
-          "start": 20,
-          "end": 43
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2059070952529661966",
-      "text": "interview with our CTO https://t.co/aKSZdYcS3M",
-      "createdAt": "2026-05-26T00:35:45.000Z",
-      "url": "https://x.com/_bobertdowney/status/2059070952529661966",
-      "urls": [
-        {
-          "url": "https://t.co/aKSZdYcS3M",
-          "expandedUrl": "https://www.youtube.com/watch?v=gx6V2jKFkIA",
-          "displayUrl": "youtube.com/watch?v=gx6V2j…",
-          "start": 23,
-          "end": 46
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 };

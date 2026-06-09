@@ -1,8 +1,28 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-06-08T18:09:24.522Z",
+  "updatedAt": "2026-06-09T17:31:48.877Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2064307765796082168",
+      "text": "I want to check some of these out. I went to Saihōji with my mom https://t.co/ag2T8XId6J",
+      "createdAt": "2026-06-09T11:24:59.000Z",
+      "url": "https://x.com/_bobertdowney/status/2064307765796082168",
+      "urls": [
+        {
+          "url": "https://t.co/ag2T8XId6J",
+          "expandedUrl": "https://twitter.com/saekisj20/status/2064258766837789172",
+          "displayUrl": "x.com/saekisj20/stat…",
+          "start": 65,
+          "end": 88
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2064030345624981736",
       "text": "おはようございます https://t.co/harwW7JCk9",
@@ -27,72 +47,6 @@ window.X_POSTS_SNAPSHOT = {
           "type": "photo",
           "image": "assets/generated/x/mine-post-2064030345624981736-0.png",
           "imageModern": "assets/generated/x/mine-post-2064030345624981736-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2064027154506277223",
-      "text": "もしかしたら、ヒューマンインターフェースデザインの新責任者、スティーブ・ルメイ氏の話が聞けるかもしれませんね。基調講演で「スティーブ」という名前の人から話を聞くのは縁起が良いと思うんです。",
-      "createdAt": "2026-06-08T16:49:56.000Z",
-      "url": "https://x.com/_bobertdowney/status/2064027154506277223",
-      "urls": [],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2063988041581318529",
-      "text": "I’m worried that the Apple Krampus will visit me tonight https://t.co/jMkRPplY8n",
-      "createdAt": "2026-06-08T14:14:30.000Z",
-      "url": "https://x.com/_bobertdowney/status/2063988041581318529",
-      "urls": [
-        {
-          "url": "https://t.co/jMkRPplY8n",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2063988041581318529/photo/1",
-          "displayUrl": "pic.x.com/jMkRPplY8n",
-          "start": 57,
-          "end": 80
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2063988041581318529-0.png",
-          "imageModern": "assets/generated/x/mine-post-2063988041581318529-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2063933438831595994",
-      "text": "ちょうどいいタイミング https://t.co/sDMHfpu56h",
-      "createdAt": "2026-06-08T10:37:32.000Z",
-      "url": "https://x.com/_bobertdowney/status/2063933438831595994",
-      "urls": [
-        {
-          "url": "https://t.co/sDMHfpu56h",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2063933438831595994/photo/1",
-          "displayUrl": "pic.x.com/sDMHfpu56h",
-          "start": 12,
-          "end": 35
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2063933438831595994-0.png",
-          "imageModern": "assets/generated/x/mine-post-2063933438831595994-0-modern.png"
         }
       ]
     },
@@ -226,6 +180,53 @@ window.X_POSTS_SNAPSHOT = {
           "type": "photo",
           "image": "assets/generated/x/mine-post-2063164393140199850-0.png",
           "imageModern": "assets/generated/x/mine-post-2063164393140199850-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2063071822502125964",
+      "text": "ここでWWDCのネタバレ浴びてます 😔 https://t.co/xLw8MtOEfc",
+      "createdAt": "2026-06-06T01:33:47.000Z",
+      "url": "https://x.com/_bobertdowney/status/2063071822502125964",
+      "urls": [
+        {
+          "url": "https://t.co/xLw8MtOEfc",
+          "expandedUrl": "https://twitter.com/f55_2001/status/1966025318751470013",
+          "displayUrl": "x.com/f55_2001/statu…",
+          "start": 20,
+          "end": 43
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2062727977864204663",
+      "text": "JIS配列のMacBook、謎に誇らしい https://t.co/1iGaksCSCo",
+      "createdAt": "2026-06-05T02:47:28.000Z",
+      "url": "https://x.com/_bobertdowney/status/2062727977864204663",
+      "urls": [
+        {
+          "url": "https://t.co/1iGaksCSCo",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2062727977864204663/photo/1",
+          "displayUrl": "pic.x.com/1iGaksCSCo",
+          "start": 21,
+          "end": 44
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2062727977864204663-0.png",
+          "imageModern": "assets/generated/x/mine-post-2062727977864204663-0-modern.png"
         }
       ]
     }

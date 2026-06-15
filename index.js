@@ -57,6 +57,7 @@ const weatherUnitButtons = document.querySelectorAll('.weather-unit-segment');
 const languageButtons = document.querySelectorAll('.language-segment');
 const labelElements = document.querySelectorAll('[data-label-en][data-label-ja]');
 const visitorCountElement = document.getElementById('visitor-count');
+const qrCodeButton = document.getElementById('qr-code-button');
 const tokyoRecommendationButton = document.getElementById('tokyo-recommendation-button');
 const tokyoRecommendationsListElement = document.getElementById('tokyo-recommendations-list');
 const xFeedElement = document.getElementById('x-feed');
@@ -916,6 +917,9 @@ const galleryViewerCloseButton = document.getElementById('gallery-viewer-close')
 const galleryViewerImage = document.getElementById('gallery-viewer-image');
 const galleryViewerCaption = document.getElementById('gallery-viewer-caption');
 const galleryViewerTitle = document.getElementById('gallery-viewer-title');
+const qrCodeSlot = document.getElementById('qr-code-slot');
+const qrCodeDialog = document.getElementById('qr-code-dialog');
+const qrCodeCloseButton = document.getElementById('qr-code-close');
 const windowZoomRect = document.getElementById('window-zoom-rect');
 const hypercardStack = document.getElementById('hypercard-stack');
 const stackCards = Array.from(document.querySelectorAll('[data-stack-card]'));
@@ -1262,6 +1266,26 @@ function closeGalleryViewer() {
     galleryViewerTitle.textContent = localizedText('Photo Viewer', '写真ビューア');
   }
   currentGalleryPhoto = null;
+}
+
+function openQrCodeWindow() {
+  if (!qrCodeSlot || !qrCodeDialog) {
+    return;
+  }
+
+  qrCodeSlot.classList.remove('is-closed');
+  qrCodeDialog.classList.remove('is-closed', 'window-shaded');
+  qrCodeDialog.scrollIntoView({ block: 'nearest', behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+}
+
+function closeQrCodeWindow() {
+  if (!qrCodeSlot || !qrCodeDialog) {
+    return;
+  }
+
+  qrCodeSlot.classList.add('is-closed');
+  qrCodeDialog.classList.remove('window-shaded');
+  qrCodeDialog.classList.add('is-closed');
 }
 
 function preventPageDoubleTapZoom(event) {
@@ -2014,6 +2038,7 @@ function applyOpenAboutState({ retainMinHeight = false } = {}) {
 function applyCloseAboutState(slotHeight) {
   closeDesktopBrowser();
   closeGalleryViewer();
+  closeQrCodeWindow();
   aboutDialog.classList.remove('window-shaded', 'is-zoom-hidden');
   aboutSlot.classList.remove('is-shaded');
   aboutDialog.classList.add('is-closed');
@@ -2174,6 +2199,16 @@ webBrowserCloseButton?.addEventListener('click', (event) => {
 galleryViewerCloseButton?.addEventListener('click', (event) => {
   event.stopPropagation();
   closeGalleryViewer();
+});
+
+qrCodeCloseButton?.addEventListener('click', (event) => {
+  event.stopPropagation();
+  closeQrCodeWindow();
+});
+
+qrCodeButton?.addEventListener('click', () => {
+  openQrCodeWindow();
+  qrCodeButton.blur();
 });
 
 galleryPhotoButtons.forEach((button) => {

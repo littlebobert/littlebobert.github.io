@@ -139,7 +139,18 @@ body:not(.resume-page) {
   margin-top: 0;
 }
 
-.gallery-viewer-slot.is-closed {
+.qr-code-slot {
+  position: absolute;
+  top: 24px;
+  left: 0;
+  right: 0;
+  z-index: 14;
+  width: auto;
+  margin-top: 0;
+}
+
+.gallery-viewer-slot.is-closed,
+.qr-code-slot.is-closed {
   display: none;
 }
 
@@ -153,12 +164,26 @@ body:not(.resume-page) {
   width: 100%;
 }
 
+.qr-code-dialog {
+  max-width: 360px;
+  width: 100%;
+  margin: 0 auto;
+}
+
 .web-browser-content {
   padding: 8px;
 }
 
 .gallery-viewer-content {
   padding: 8px;
+}
+
+.qr-code-content {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  padding: 16px;
+  text-align: center;
 }
 
 .web-browser-toolbar {
@@ -217,6 +242,21 @@ body:not(.resume-page) {
   min-height: 320px;
   border: 2px solid #000;
   background: #fff;
+}
+
+.qr-code-image {
+  display: block;
+  width: min(100%, 280px);
+  height: auto;
+  image-rendering: pixelated;
+  border: 2px solid #000;
+  background: #fff;
+}
+
+.qr-code-caption {
+  margin: 0;
+  font-size: 18px;
+  line-height: 1.15;
 }
 
 .desktop-icon[hidden] {
@@ -500,7 +540,8 @@ html[lang="ja"] .language-switcher > button {
   min-width: 0;
 }
 
-.stack-index-shortcut {
+.stack-index-shortcut,
+.qr-code-button {
   appearance: none;
   -webkit-appearance: none;
   min-height: 20px;
@@ -517,14 +558,16 @@ html[lang="ja"] .language-switcher > button {
   -webkit-tap-highlight-color: transparent;
 }
 
-.stack-index-shortcut:active {
+.stack-index-shortcut:active,
+.qr-code-button:active {
   box-shadow:
     inset 2px 2px 0 #777,
     inset -1px -1px 0 #fff;
   transform: translate(1px, 1px);
 }
 
-.stack-index-shortcut:focus-visible {
+.stack-index-shortcut:focus-visible,
+.qr-code-button:focus-visible {
   outline: 2px solid #000;
   outline-offset: 2px;
 }
@@ -1758,7 +1801,8 @@ button.puzzle-tile:focus-visible {
   .stack-actions a:hover,
   .stack-button:hover,
   .stack-index-button:hover,
-  .stack-index-shortcut:hover {
+  .stack-index-shortcut:hover,
+  .qr-code-button:hover {
     background: #fff;
     color: #000;
     box-shadow:
@@ -2924,6 +2968,7 @@ html[data-theme="classic"] .stack-actions a,
 html[data-theme="classic"] .stack-button,
 html[data-theme="classic"] .stack-index-button,
 html[data-theme="classic"] .stack-index-shortcut,
+html[data-theme="classic"] .qr-code-button,
 html[data-theme="classic"] .mud-command-button,
 html[data-theme="classic"] .map-control-button,
 html[data-theme="classic"] .puzzle-alert-button,
@@ -2947,6 +2992,7 @@ html[data-theme="classic"] .stack-actions a:active,
 html[data-theme="classic"] .stack-button:active,
 html[data-theme="classic"] .stack-index-button:active,
 html[data-theme="classic"] .stack-index-shortcut:active,
+html[data-theme="classic"] .qr-code-button:active,
 html[data-theme="classic"] .mud-command-button:active,
 html[data-theme="classic"] .map-control-button:not(:disabled):active,
 html[data-theme="classic"] .puzzle-alert-button:active,
@@ -2966,6 +3012,7 @@ html[data-theme="classic"] .stack-button:focus-visible,
 html[data-theme="classic"] .stack-actions a:focus-visible,
 html[data-theme="classic"] .stack-index-button:focus-visible,
 html[data-theme="classic"] .stack-index-shortcut:focus-visible,
+html[data-theme="classic"] .qr-code-button:focus-visible,
 html[data-theme="classic"] .mud-command-button:focus-visible,
 html[data-theme="classic"] .mud-form input:focus-visible,
 html[data-theme="classic"] .map-control-button:focus-visible,
@@ -3124,6 +3171,7 @@ html[data-theme="classic"] .feed-panel.has-scroll-overflow::after {
   html[data-theme="classic"] .stack-button:hover,
   html[data-theme="classic"] .stack-index-button:hover,
   html[data-theme="classic"] .stack-index-shortcut:hover,
+  html[data-theme="classic"] .qr-code-button:hover,
   html[data-theme="classic"] .mud-command-button:hover,
   html[data-theme="classic"] .map-control-button:not(:disabled):hover,
   html[data-theme="classic"] .puzzle-alert-button:hover,
@@ -3925,7 +3973,8 @@ html[data-theme="modern"] .web-browser-open-external {
   color: #0066cc;
 }
 
-html[data-theme="modern"] .stack-index-shortcut {
+html[data-theme="modern"] .stack-index-shortcut,
+html[data-theme="modern"] .qr-code-button {
   border: none;
   border-radius: 6px;
   box-shadow: none;
@@ -3946,6 +3995,7 @@ html[data-theme="modern"] .stack-actions a:active,
 html[data-theme="modern"] .stack-button:active,
 html[data-theme="modern"] .stack-index-button:active,
 html[data-theme="modern"] .stack-index-shortcut:active,
+html[data-theme="modern"] .qr-code-button:active,
 html[data-theme="modern"] .web-browser-open-external:active {
   background: rgba(0, 122, 255, 0.18);
   color: #004499;
@@ -3962,6 +4012,7 @@ html[data-theme="modern"] .stack-button-secondary:active {
   html[data-theme="modern"] .stack-button:hover,
   html[data-theme="modern"] .stack-index-button:hover,
   html[data-theme="modern"] .stack-index-shortcut:hover,
+  html[data-theme="modern"] .qr-code-button:hover,
   html[data-theme="modern"] .web-browser-open-external:hover {
     background: rgba(0, 122, 255, 0.18);
     color: #004499;
@@ -3978,6 +4029,7 @@ html[data-theme="modern"] .stack-button:focus-visible,
 html[data-theme="modern"] .stack-actions a:focus-visible,
 html[data-theme="modern"] .stack-index-button:focus-visible,
 html[data-theme="modern"] .stack-index-shortcut:focus-visible,
+html[data-theme="modern"] .qr-code-button:focus-visible,
 html[data-theme="modern"] .web-browser-open-external:focus-visible {
   outline: 2px solid #007aff;
   outline-offset: 2px;

@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <script src="theme.js?v=2"></script>
   <title>About Justin Garcia</title>
-  <link href='style.css?v=125' rel='stylesheet'>
+  <link href='style.css?v=126' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://littlebobert.github.io/">
   <meta name="description" content="iOS engineer in Tokyo." />
@@ -67,6 +67,14 @@
             data-label-en="Index"
             data-label-ja="<span class='ja-text'>目次</span>"
           >Index</button>
+          <button
+            type="button"
+            class="qr-code-button"
+            id="qr-code-button"
+            aria-label="Open QR code"
+            data-label-en="QR"
+            data-label-ja="QR"
+          >QR</button>
         </div>
         <div class="stack-visitor-counter">
           <span
@@ -549,6 +557,32 @@
       </div>
     </div>
 
+    <div class="qr-code-slot is-closed" id="qr-code-slot">
+      <div class="mac-dialog qr-code-dialog is-closed" id="qr-code-dialog" aria-label="QR Code">
+        <div class="title-bar">
+          <button type="button" class="close-box close-box--close" id="qr-code-close" aria-label="Close"></button>
+          <div class="title-bar-stripes-full"></div>
+          <span
+            class="title-text"
+            data-label-en="QR Code"
+            data-label-ja="QRコード"
+          >QR Code</span>
+        </div>
+        <div class="dialog-content qr-code-content">
+          <img
+            class="qr-code-image"
+            src="assets/site-qr.png"
+            alt="QR code for littlebobert.github.io"
+          >
+          <p
+            class="qr-code-caption"
+            data-label-en="Scan to open this site."
+            data-label-ja="スキャンしてこのサイトを開く。"
+          >Scan to open this site.</p>
+        </div>
+      </div>
+    </div>
+
     <div class="bottom-row">
     <div class="clock-row">
     <div class="clock-widget">
@@ -695,7 +729,7 @@
   <div class="window-zoom-rect" id="window-zoom-rect" hidden aria-hidden="true"></div>
   
   <script src="data/x-posts.js"></script>
-  <script src="index.js?v=5"></script>
+  <script src="index.js?v=6"></script>
   <script>
     const MUD_LEADERBOARD_STORAGE_KEY = 'tokyo-mud-leaderboard';
     const MUD_STATE_STORAGE_KEY = 'tokyo-mud-current-run';

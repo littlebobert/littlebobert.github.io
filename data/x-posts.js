@@ -1,8 +1,35 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-06-16T18:58:43.495Z",
+  "updatedAt": "2026-06-17T18:00:18.411Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2067228559664619667",
+      "text": "some Steve Jobs fanboy at a previous company was always going around saying “this app is shit” apparently. he eventually got fired https://t.co/Eq4SXWeZWP",
+      "createdAt": "2026-06-17T12:51:10.000Z",
+      "url": "https://x.com/_bobertdowney/status/2067228559664619667",
+      "urls": [
+        {
+          "url": "https://t.co/Eq4SXWeZWP",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2067228559664619667/photo/1",
+          "displayUrl": "pic.x.com/Eq4SXWeZWP",
+          "start": 131,
+          "end": 154
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2067228559664619667-0.png",
+          "imageModern": "assets/generated/x/mine-post-2067228559664619667-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2064307765796082168",
       "text": "I want to check some of these out. I went to Saihōji with my mom https://t.co/ag2T8XId6J",
@@ -202,33 +229,6 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2062727977864204663",
-      "text": "JIS配列のMacBook、謎に誇らしい https://t.co/1iGaksCSCo",
-      "createdAt": "2026-06-05T02:47:28.000Z",
-      "url": "https://x.com/_bobertdowney/status/2062727977864204663",
-      "urls": [
-        {
-          "url": "https://t.co/1iGaksCSCo",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2062727977864204663/photo/1",
-          "displayUrl": "pic.x.com/1iGaksCSCo",
-          "start": 21,
-          "end": 44
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2062727977864204663-0.png",
-          "imageModern": "assets/generated/x/mine-post-2062727977864204663-0-modern.png"
-        }
-      ]
     }
   ]
 };

@@ -1,8 +1,28 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-06-17T18:00:18.411Z",
+  "updatedAt": "2026-06-18T18:12:00.139Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2067500873631273091",
+      "text": "no Keychron schwag at this event, but voice is the future https://t.co/7gvxx1vJ3f",
+      "createdAt": "2026-06-18T06:53:15.000Z",
+      "url": "https://x.com/_bobertdowney/status/2067500873631273091",
+      "urls": [
+        {
+          "url": "https://t.co/7gvxx1vJ3f",
+          "expandedUrl": "https://twitter.com/kotoba_tech/status/2066887896280514953",
+          "displayUrl": "x.com/kotoba_tech/st…",
+          "start": 58,
+          "end": 81
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2067228559664619667",
       "text": "some Steve Jobs fanboy at a previous company was always going around saying “this app is shit” apparently. he eventually got fired https://t.co/Eq4SXWeZWP",
@@ -209,26 +229,6 @@ window.X_POSTS_SNAPSHOT = {
           "imageModern": "assets/generated/x/mine-post-2063164393140199850-0-modern.png"
         }
       ]
-    },
-    {
-      "id": "2063071822502125964",
-      "text": "ここでWWDCのネタバレ浴びてます 😔 https://t.co/xLw8MtOEfc",
-      "createdAt": "2026-06-06T01:33:47.000Z",
-      "url": "https://x.com/_bobertdowney/status/2063071822502125964",
-      "urls": [
-        {
-          "url": "https://t.co/xLw8MtOEfc",
-          "expandedUrl": "https://twitter.com/f55_2001/status/1966025318751470013",
-          "displayUrl": "x.com/f55_2001/statu…",
-          "start": 20,
-          "end": 43
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 };

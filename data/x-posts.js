@@ -1,8 +1,62 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-06-20T16:55:02.086Z",
+  "updatedAt": "2026-06-21T16:55:47.103Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2068583870929555927",
+      "text": "whenever I think of a banger social media post my girlfriend just pats me on the shoulder 🤡 https://t.co/lcH1aPMQv8",
+      "createdAt": "2026-06-21T06:36:41.000Z",
+      "url": "https://x.com/_bobertdowney/status/2068583870929555927",
+      "urls": [
+        {
+          "url": "https://t.co/lcH1aPMQv8",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2068583870929555927/video/1",
+          "displayUrl": "pic.x.com/lcH1aPMQv8",
+          "start": 92,
+          "end": 115
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2068583870929555927-0.png",
+          "imageModern": "assets/generated/x/mine-post-2068583870929555927-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2068497912343277870",
+      "text": "I’m trying to not use AI this weekend https://t.co/eLcAX0zHx2",
+      "createdAt": "2026-06-21T00:55:07.000Z",
+      "url": "https://x.com/_bobertdowney/status/2068497912343277870",
+      "urls": [
+        {
+          "url": "https://t.co/eLcAX0zHx2",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2068497912343277870/photo/1",
+          "displayUrl": "pic.x.com/eLcAX0zHx2",
+          "start": 38,
+          "end": 61
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2068497912343277870-0.png",
+          "imageModern": "assets/generated/x/mine-post-2068497912343277870-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2067500873631273091",
       "text": "no Keychron schwag at this event, but voice is the future https://t.co/7gvxx1vJ3f",
@@ -188,45 +242,6 @@ window.X_POSTS_SNAPSHOT = {
           "type": "photo",
           "image": "assets/generated/x/mine-post-2063187475997262253-0.png",
           "imageModern": "assets/generated/x/mine-post-2063187475997262253-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2063167460434677863",
-      "text": "Venmoが一番好きなSNS",
-      "createdAt": "2026-06-06T07:53:49.000Z",
-      "url": "https://x.com/_bobertdowney/status/2063167460434677863",
-      "urls": [],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2063164393140199850",
-      "text": "同僚、コストコのサーモン好きだといいな…(お土産です) https://t.co/v4VWWipLd7",
-      "createdAt": "2026-06-06T07:41:37.000Z",
-      "url": "https://x.com/_bobertdowney/status/2063164393140199850",
-      "urls": [
-        {
-          "url": "https://t.co/v4VWWipLd7",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2063164393140199850/photo/1",
-          "displayUrl": "pic.x.com/v4VWWipLd7",
-          "start": 28,
-          "end": 51
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2063164393140199850-0.png",
-          "imageModern": "assets/generated/x/mine-post-2063164393140199850-0-modern.png"
         }
       ]
     }

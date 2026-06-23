@@ -1,8 +1,149 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-06-22T18:53:23.317Z",
+  "updatedAt": "2026-06-23T17:22:19.426Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2069399951847907770",
+      "text": "went to a tech event at 7pm and had to step outside immediately to take a work call. but I guess I’m not a real salary man until I drink hard, pass out on the subway and miss my stop? https://t.co/fMQSrGgWi5",
+      "createdAt": "2026-06-23T12:39:30.000Z",
+      "url": "https://x.com/_bobertdowney/status/2069399951847907770",
+      "urls": [
+        {
+          "url": "https://t.co/fMQSrGgWi5",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2069399951847907770/photo/1",
+          "displayUrl": "pic.x.com/fMQSrGgWi5",
+          "start": 184,
+          "end": 207
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2069399951847907770-0.png",
+          "imageModern": "assets/generated/x/mine-post-2069399951847907770-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2069205293767278986",
+      "text": "is there a way as of the latest macOS Golden Gate beta to turn off the reply suggestions in Messages but leave Siri etc. enabled? https://t.co/1eJNHgr5qo",
+      "createdAt": "2026-06-22T23:46:00.000Z",
+      "url": "https://x.com/_bobertdowney/status/2069205293767278986",
+      "urls": [
+        {
+          "url": "https://t.co/1eJNHgr5qo",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2069205293767278986/photo/1",
+          "displayUrl": "pic.x.com/1eJNHgr5qo",
+          "start": 130,
+          "end": 153
+        },
+        {
+          "url": "https://t.co/1eJNHgr5qo",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2069205293767278986/photo/1",
+          "displayUrl": "pic.x.com/1eJNHgr5qo",
+          "start": 130,
+          "end": 153
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2069205293767278986-0.png",
+          "imageModern": "assets/generated/x/mine-post-2069205293767278986-0-modern.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2069205293767278986-1.png",
+          "imageModern": "assets/generated/x/mine-post-2069205293767278986-1-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2069201867129929997",
+      "text": "Fugu Ultra seems OK but it’s very slow (inside Cursor). asked it to summarize and answer a couple of questions about a 6k line diff in a decent sized repo and it took over 5 minutes. plus the 5 hour quota seems pretty intense even for the $100/month plan. maybe Ultra is just https://t.co/U90FhWpAg3",
+      "createdAt": "2026-06-22T23:32:23.000Z",
+      "url": "https://x.com/_bobertdowney/status/2069201867129929997",
+      "urls": [
+        {
+          "url": "https://t.co/U90FhWpAg3",
+          "expandedUrl": "https://twitter.com/SakanaAILabs/status/2068861630327443966",
+          "displayUrl": "x.com/SakanaAILabs/s…",
+          "start": 276,
+          "end": 299
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2069184800754397459",
+      "text": "I thought I was cool for having a Japanese keyboard but my Japanese coworker was at my desk and tried to use it and gave up. he’s been using the US English keyboard his whole life 🤡 https://t.co/7jmsd6a8zw",
+      "createdAt": "2026-06-22T22:24:34.000Z",
+      "url": "https://x.com/_bobertdowney/status/2069184800754397459",
+      "urls": [
+        {
+          "url": "https://t.co/7jmsd6a8zw",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2069184800754397459/photo/1",
+          "displayUrl": "pic.x.com/7jmsd6a8zw",
+          "start": 182,
+          "end": 205
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2069184800754397459-0.png",
+          "imageModern": "assets/generated/x/mine-post-2069184800754397459-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2069153015978938478",
+      "text": "my girlfriend’s hat blew off while we were walking across a bridge over a deep gorge. I caught it before it went over. she seemed impressed. ultimate frisbee finally paying off🤡 https://t.co/wrYL7GRMR2",
+      "createdAt": "2026-06-22T20:18:16.000Z",
+      "url": "https://x.com/_bobertdowney/status/2069153015978938478",
+      "urls": [
+        {
+          "url": "https://t.co/wrYL7GRMR2",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2069153015978938478/photo/1",
+          "displayUrl": "pic.x.com/wrYL7GRMR2",
+          "start": 178,
+          "end": 201
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2069153015978938478-0.png",
+          "imageModern": "assets/generated/x/mine-post-2069153015978938478-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2068583870929555927",
       "text": "whenever I think of a banger social media post my girlfriend just pats me on the shoulder 🤡 https://t.co/lcH1aPMQv8",
@@ -112,8 +253,8 @@ window.X_POSTS_SNAPSHOT = {
       "urls": [
         {
           "url": "https://t.co/ag2T8XId6J",
-          "expandedUrl": "https://twitter.com/saekisj20/status/2064258766837789172",
-          "displayUrl": "x.com/saekisj20/stat…",
+          "expandedUrl": "https://twitter.com/SaekiSJ20/status/2064258766837789172",
+          "displayUrl": "x.com/SaekiSJ20/stat…",
           "start": 65,
           "end": 88
         }
@@ -123,127 +264,6 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2064030345624981736",
-      "text": "おはようございます https://t.co/harwW7JCk9",
-      "createdAt": "2026-06-08T17:02:36.000Z",
-      "url": "https://x.com/_bobertdowney/status/2064030345624981736",
-      "urls": [
-        {
-          "url": "https://t.co/harwW7JCk9",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2064030345624981736/photo/1",
-          "displayUrl": "pic.x.com/harwW7JCk9",
-          "start": 10,
-          "end": 33
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2064030345624981736-0.png",
-          "imageModern": "assets/generated/x/mine-post-2064030345624981736-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2063406693707649476",
-      "text": "やっと流行に乗れた https://t.co/jsDnFuAQxs",
-      "createdAt": "2026-06-06T23:44:26.000Z",
-      "url": "https://x.com/_bobertdowney/status/2063406693707649476",
-      "urls": [
-        {
-          "url": "https://t.co/jsDnFuAQxs",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2063406693707649476/photo/1",
-          "displayUrl": "pic.x.com/jsDnFuAQxs",
-          "start": 10,
-          "end": 33
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2063406693707649476-0.png",
-          "imageModern": "assets/generated/x/mine-post-2063406693707649476-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2063375518909820953",
-      "text": "夢かな? https://t.co/xrIDAmSPGt",
-      "createdAt": "2026-06-06T21:40:34.000Z",
-      "url": "https://x.com/_bobertdowney/status/2063375518909820953",
-      "urls": [
-        {
-          "url": "https://t.co/xrIDAmSPGt",
-          "expandedUrl": "https://twitter.com/kotoba_tech/status/2063373481543373263",
-          "displayUrl": "x.com/kotoba_tech/st…",
-          "start": 5,
-          "end": 28
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2063375259601117641",
-      "text": "私の彼女が「泊まりに行って2時にWWDC一緒に見れるよ」って言ってくれてる、夢かな? 🥹 https://t.co/454VuIHWGX",
-      "createdAt": "2026-06-06T21:39:32.000Z",
-      "url": "https://x.com/_bobertdowney/status/2063375259601117641",
-      "urls": [
-        {
-          "url": "https://t.co/454VuIHWGX",
-          "expandedUrl": "https://developer.apple.com/jp/wwdc26/",
-          "displayUrl": "developer.apple.com/jp/wwdc26/",
-          "start": 45,
-          "end": 68
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2063187475997262253",
-      "text": "Apple TV持ってきて良かった〜 https://t.co/h9uniPUmOc",
-      "createdAt": "2026-06-06T09:13:21.000Z",
-      "url": "https://x.com/_bobertdowney/status/2063187475997262253",
-      "urls": [
-        {
-          "url": "https://t.co/h9uniPUmOc",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2063187475997262253/photo/1",
-          "displayUrl": "pic.x.com/h9uniPUmOc",
-          "start": 19,
-          "end": 42
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2063187475997262253-0.png",
-          "imageModern": "assets/generated/x/mine-post-2063187475997262253-0-modern.png"
-        }
-      ]
     }
   ]
 };

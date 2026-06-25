@@ -1,35 +1,8 @@
 {
-  "updatedAt": "2026-06-24T17:21:10.438Z",
+  "updatedAt": "2026-06-25T17:25:03.157Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
-    {
-      "id": "2069399951847907770",
-      "text": "went to a tech event at 7pm and had to step outside immediately to take a work call. but I guess I’m not a real salary man until I drink hard, pass out on the subway and miss my stop? https://t.co/fMQSrGgWi5",
-      "createdAt": "2026-06-23T12:39:30.000Z",
-      "url": "https://x.com/_bobertdowney/status/2069399951847907770",
-      "urls": [
-        {
-          "url": "https://t.co/fMQSrGgWi5",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2069399951847907770/photo/1",
-          "displayUrl": "pic.x.com/fMQSrGgWi5",
-          "start": 184,
-          "end": 207
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2069399951847907770-0.png",
-          "imageModern": "assets/generated/x/mine-post-2069399951847907770-0-modern.png"
-        }
-      ]
-    },
     {
       "id": "2069205293767278986",
       "text": "is there a way as of the latest macOS Golden Gate beta to turn off the reply suggestions in Messages but leave Siri etc. enabled? https://t.co/1eJNHgr5qo",
@@ -264,6 +237,33 @@
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
+    },
+    {
+      "id": "2064030345624981736",
+      "text": "おはようございます https://t.co/harwW7JCk9",
+      "createdAt": "2026-06-08T17:02:36.000Z",
+      "url": "https://x.com/_bobertdowney/status/2064030345624981736",
+      "urls": [
+        {
+          "url": "https://t.co/harwW7JCk9",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2064030345624981736/photo/1",
+          "displayUrl": "pic.x.com/harwW7JCk9",
+          "start": 10,
+          "end": 33
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2064030345624981736-0.png",
+          "imageModern": "assets/generated/x/mine-post-2064030345624981736-0-modern.png"
+        }
+      ]
     }
   ]
 }

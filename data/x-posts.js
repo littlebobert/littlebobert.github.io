@@ -1,8 +1,48 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-06-25T17:25:03.157Z",
+  "updatedAt": "2026-06-26T17:11:17.847Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2070339388060606759",
+      "text": "おはようございます\n\nlive English audio and subtitles courtesy of Kotoba https://t.co/qhlryLoeFZ",
+      "createdAt": "2026-06-26T02:52:29.000Z",
+      "url": "https://x.com/_bobertdowney/status/2070339388060606759",
+      "urls": [
+        {
+          "url": "https://t.co/qhlryLoeFZ",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2070339388060606759/photo/1",
+          "displayUrl": "pic.x.com/qhlryLoeFZ",
+          "start": 63,
+          "end": 86
+        },
+        {
+          "url": "https://t.co/qhlryLoeFZ",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2070339388060606759/photo/1",
+          "displayUrl": "pic.x.com/qhlryLoeFZ",
+          "start": 63,
+          "end": 86
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2070339388060606759-0.png",
+          "imageModern": "assets/generated/x/mine-post-2070339388060606759-0-modern.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2070339388060606759-1.png",
+          "imageModern": "assets/generated/x/mine-post-2070339388060606759-1-modern.png"
+        }
+      ]
+    },
     {
       "id": "2069205293767278986",
       "text": "is there a way as of the latest macOS Golden Gate beta to turn off the reply suggestions in Messages but leave Siri etc. enabled? https://t.co/1eJNHgr5qo",
@@ -237,33 +277,6 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2064030345624981736",
-      "text": "おはようございます https://t.co/harwW7JCk9",
-      "createdAt": "2026-06-08T17:02:36.000Z",
-      "url": "https://x.com/_bobertdowney/status/2064030345624981736",
-      "urls": [
-        {
-          "url": "https://t.co/harwW7JCk9",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2064030345624981736/photo/1",
-          "displayUrl": "pic.x.com/harwW7JCk9",
-          "start": 10,
-          "end": 33
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2064030345624981736-0.png",
-          "imageModern": "assets/generated/x/mine-post-2064030345624981736-0-modern.png"
-        }
-      ]
     }
   ]
 };

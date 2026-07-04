@@ -1,8 +1,155 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-07-03T16:47:17.213Z",
+  "updatedAt": "2026-07-04T16:17:33.153Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2073410624575733778",
+      "text": "I’d really like to meet this couple that grow my favorite fruit (bankan) https://t.co/wxLEFgRwbr",
+      "createdAt": "2026-07-04T14:16:29.000Z",
+      "url": "https://x.com/_bobertdowney/status/2073410624575733778",
+      "urls": [
+        {
+          "url": "https://t.co/wxLEFgRwbr",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2073410624575733778/photo/1",
+          "displayUrl": "pic.x.com/wxLEFgRwbr",
+          "start": 73,
+          "end": 96
+        },
+        {
+          "url": "https://t.co/wxLEFgRwbr",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2073410624575733778/photo/1",
+          "displayUrl": "pic.x.com/wxLEFgRwbr",
+          "start": 73,
+          "end": 96
+        },
+        {
+          "url": "https://t.co/wxLEFgRwbr",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2073410624575733778/photo/1",
+          "displayUrl": "pic.x.com/wxLEFgRwbr",
+          "start": 73,
+          "end": 96
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2073410624575733778-0.png",
+          "imageModern": "assets/generated/x/mine-post-2073410624575733778-0-modern.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2073410624575733778-1.png",
+          "imageModern": "assets/generated/x/mine-post-2073410624575733778-1-modern.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2073410624575733778-2.png",
+          "imageModern": "assets/generated/x/mine-post-2073410624575733778-2-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2073376968951873661",
+      "text": "アメリカ人です https://t.co/FmuH0LBKk3",
+      "createdAt": "2026-07-04T12:02:45.000Z",
+      "url": "https://x.com/_bobertdowney/status/2073376968951873661",
+      "urls": [
+        {
+          "url": "https://t.co/FmuH0LBKk3",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2073376968951873661/photo/1",
+          "displayUrl": "pic.x.com/FmuH0LBKk3",
+          "start": 8,
+          "end": 31
+        },
+        {
+          "url": "https://t.co/FmuH0LBKk3",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2073376968951873661/photo/1",
+          "displayUrl": "pic.x.com/FmuH0LBKk3",
+          "start": 8,
+          "end": 31
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2073376968951873661-0.png",
+          "imageModern": "assets/generated/x/mine-post-2073376968951873661-0-modern.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2073376968951873661-1.png",
+          "imageModern": "assets/generated/x/mine-post-2073376968951873661-1-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2073375731250544950",
+      "text": "God Bless America https://t.co/hLRbKvc9OY",
+      "createdAt": "2026-07-04T11:57:50.000Z",
+      "url": "https://x.com/_bobertdowney/status/2073375731250544950",
+      "urls": [
+        {
+          "url": "https://t.co/hLRbKvc9OY",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2073375731250544950/photo/1",
+          "displayUrl": "pic.x.com/hLRbKvc9OY",
+          "start": 18,
+          "end": 41
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2073375731250544950-0.png",
+          "imageModern": "assets/generated/x/mine-post-2073375731250544950-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2073317905195032652",
+      "text": "N4-ing https://t.co/eN9BgCDQZV",
+      "createdAt": "2026-07-04T08:08:03.000Z",
+      "url": "https://x.com/_bobertdowney/status/2073317905195032652",
+      "urls": [
+        {
+          "url": "https://t.co/eN9BgCDQZV",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2073317905195032652/photo/1",
+          "displayUrl": "pic.x.com/eN9BgCDQZV",
+          "start": 7,
+          "end": 30
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2073317905195032652-0.png",
+          "imageModern": "assets/generated/x/mine-post-2073317905195032652-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2072955781302112319",
       "text": "I rarely speak in the office except today I asked everyone why they hadn’t heard of The Rizzler 🤡",
@@ -139,134 +286,6 @@ window.X_POSTS_SNAPSHOT = {
           "type": "photo",
           "image": "assets/generated/x/mine-post-2069184800754397459-0.png",
           "imageModern": "assets/generated/x/mine-post-2069184800754397459-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2069153015978938478",
-      "text": "my girlfriend’s hat blew off while we were walking across a bridge over a deep gorge. I caught it before it went over. she seemed impressed. ultimate frisbee finally paying off🤡 https://t.co/wrYL7GRMR2",
-      "createdAt": "2026-06-22T20:18:16.000Z",
-      "url": "https://x.com/_bobertdowney/status/2069153015978938478",
-      "urls": [
-        {
-          "url": "https://t.co/wrYL7GRMR2",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2069153015978938478/photo/1",
-          "displayUrl": "pic.x.com/wrYL7GRMR2",
-          "start": 178,
-          "end": 201
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2069153015978938478-0.png",
-          "imageModern": "assets/generated/x/mine-post-2069153015978938478-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2068583870929555927",
-      "text": "whenever I think of a banger social media post my girlfriend just pats me on the shoulder 🤡 https://t.co/lcH1aPMQv8",
-      "createdAt": "2026-06-21T06:36:41.000Z",
-      "url": "https://x.com/_bobertdowney/status/2068583870929555927",
-      "urls": [
-        {
-          "url": "https://t.co/lcH1aPMQv8",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2068583870929555927/video/1",
-          "displayUrl": "pic.x.com/lcH1aPMQv8",
-          "start": 92,
-          "end": 115
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2068583870929555927-0.png",
-          "imageModern": "assets/generated/x/mine-post-2068583870929555927-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2068497912343277870",
-      "text": "I’m trying to not use AI this weekend https://t.co/eLcAX0zHx2",
-      "createdAt": "2026-06-21T00:55:07.000Z",
-      "url": "https://x.com/_bobertdowney/status/2068497912343277870",
-      "urls": [
-        {
-          "url": "https://t.co/eLcAX0zHx2",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2068497912343277870/photo/1",
-          "displayUrl": "pic.x.com/eLcAX0zHx2",
-          "start": 38,
-          "end": 61
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2068497912343277870-0.png",
-          "imageModern": "assets/generated/x/mine-post-2068497912343277870-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2067500873631273091",
-      "text": "no Keychron schwag at this event, but voice is the future https://t.co/7gvxx1vJ3f",
-      "createdAt": "2026-06-18T06:53:15.000Z",
-      "url": "https://x.com/_bobertdowney/status/2067500873631273091",
-      "urls": [
-        {
-          "url": "https://t.co/7gvxx1vJ3f",
-          "expandedUrl": "https://twitter.com/kotoba_tech/status/2066887896280514953",
-          "displayUrl": "x.com/kotoba_tech/st…",
-          "start": 58,
-          "end": 81
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2067228559664619667",
-      "text": "some Steve Jobs fanboy at a previous company was always going around saying “this app is shit” apparently. he eventually got fired https://t.co/Eq4SXWeZWP",
-      "createdAt": "2026-06-17T12:51:10.000Z",
-      "url": "https://x.com/_bobertdowney/status/2067228559664619667",
-      "urls": [
-        {
-          "url": "https://t.co/Eq4SXWeZWP",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2067228559664619667/photo/1",
-          "displayUrl": "pic.x.com/Eq4SXWeZWP",
-          "start": 131,
-          "end": 154
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2067228559664619667-0.png",
-          "imageModern": "assets/generated/x/mine-post-2067228559664619667-0-modern.png"
         }
       ]
     }

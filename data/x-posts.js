@@ -1,8 +1,35 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-07-04T16:17:33.153Z",
+  "updatedAt": "2026-07-05T16:29:33.638Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2073599842589479115",
+      "text": "my nephew is playing the 4th of July web game I made with me and he’s taken out over 250 redcoats 🥹 https://t.co/liR8gGQuSx",
+      "createdAt": "2026-07-05T02:48:22.000Z",
+      "url": "https://x.com/_bobertdowney/status/2073599842589479115",
+      "urls": [
+        {
+          "url": "https://t.co/liR8gGQuSx",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2073599842589479115/photo/1",
+          "displayUrl": "pic.x.com/liR8gGQuSx",
+          "start": 100,
+          "end": 123
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2073599842589479115-0.png",
+          "imageModern": "assets/generated/x/mine-post-2073599842589479115-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2073410624575733778",
       "text": "I’d really like to meet this couple that grow my favorite fruit (bankan) https://t.co/wxLEFgRwbr",
@@ -239,53 +266,6 @@ window.X_POSTS_SNAPSHOT = {
           "type": "photo",
           "image": "assets/generated/x/mine-post-2069205293767278986-1.png",
           "imageModern": "assets/generated/x/mine-post-2069205293767278986-1-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2069201867129929997",
-      "text": "Fugu Ultra seems OK but it’s very slow (inside Cursor). asked it to summarize and answer a couple of questions about a 6k line diff in a decent sized repo and it took over 5 minutes. plus the 5 hour quota seems pretty intense even for the $100/month plan. maybe Ultra is just https://t.co/U90FhWpAg3",
-      "createdAt": "2026-06-22T23:32:23.000Z",
-      "url": "https://x.com/_bobertdowney/status/2069201867129929997",
-      "urls": [
-        {
-          "url": "https://t.co/U90FhWpAg3",
-          "expandedUrl": "https://twitter.com/SakanaAILabs/status/2068861630327443966",
-          "displayUrl": "x.com/SakanaAILabs/s…",
-          "start": 276,
-          "end": 299
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2069184800754397459",
-      "text": "I thought I was cool for having a Japanese keyboard but my Japanese coworker was at my desk and tried to use it and gave up. he’s been using the US English keyboard his whole life 🤡 https://t.co/7jmsd6a8zw",
-      "createdAt": "2026-06-22T22:24:34.000Z",
-      "url": "https://x.com/_bobertdowney/status/2069184800754397459",
-      "urls": [
-        {
-          "url": "https://t.co/7jmsd6a8zw",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2069184800754397459/photo/1",
-          "displayUrl": "pic.x.com/7jmsd6a8zw",
-          "start": 182,
-          "end": 205
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2069184800754397459-0.png",
-          "imageModern": "assets/generated/x/mine-post-2069184800754397459-0-modern.png"
         }
       ]
     }

@@ -3,6 +3,18 @@
     <channel>
         <title>Sasu</title>
         <item>
+            <title>0.1.20</title>
+            <pubDate>Mon, 06 Jul 2026 09:36:17 +0900</pubDate>
+            <link>http://sasu.jp</link>
+            <sparkle:version>17</sparkle:version>
+            <sparkle:shortVersionString>0.1.20</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[Tries to fix a permissions bug.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.20/Sasu-0.1.20-mac.zip" length="5360630" type="application/octet-stream" sparkle:edSignature="49VZG5aH48TvuJyIJIIZYwZBma0rMoDS6rEfAF3gFHERk0VSP2pWF6KCSbm+eqwEFpPNz7pTLrnPoNiuM4/bAQ=="/>
+        </item>
+        <item>
             <title>0.1.19</title>
             <pubDate>Mon, 06 Jul 2026 09:07:15 +0900</pubDate>
             <link>http://sasu.jp</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[Try to fix Translate Clipboard prompt.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.18/Sasu-0.1.18-mac.zip" length="5330110" type="application/octet-stream" sparkle:edSignature="frkW9bIOuc57kJJV+iGDZp22udkH9RRIRRe0MoHVq4kfgzwRm/ULsO+2KL1JbzMXIvB9v8xY8oSk0BB4ATciAg=="/>
-        </item>
-        <item>
-            <title>0.1.17</title>
-            <pubDate>Thu, 25 Jun 2026 12:13:15 +0900</pubDate>
-            <link>http://sasu.jp</link>
-            <sparkle:version>14</sparkle:version>
-            <sparkle:shortVersionString>0.1.17</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[Permissions bug fix.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.17/Sasu-0.1.17-mac.zip" length="5327894" type="application/octet-stream" sparkle:edSignature="KcLW9eddHP+RPxPF/wRSGNBwVd7/OnUkcaxLBPf3eidTQ+eN9B9Tqh7AhCF039OUfQqzytOz07Xu0SoKmnCCDw=="/>
         </item>
     </channel>
 </rss>

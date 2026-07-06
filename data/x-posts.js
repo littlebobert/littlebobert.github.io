@@ -1,8 +1,47 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-07-05T16:29:33.638Z",
+  "updatedAt": "2026-07-06T17:54:55.204Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2074086834951581929",
+      "text": "problem: I get a lot of work messages in Japanese and on iPhone there’s no fast way to translate them. at tonight’s Claude Fable workshop I created a way to translate them all while I’m not at my desk https://t.co/eUgvxvIjfY",
+      "createdAt": "2026-07-06T11:03:30.000Z",
+      "url": "https://x.com/_bobertdowney/status/2074086834951581929",
+      "urls": [
+        {
+          "url": "https://t.co/eUgvxvIjfY",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2074086834951581929/video/1",
+          "displayUrl": "pic.x.com/eUgvxvIjfY",
+          "start": 201,
+          "end": 224
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2074086834951581929-0.png",
+          "imageModern": "assets/generated/x/mine-post-2074086834951581929-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2074072357241847827",
+      "text": "Claude Fable 5 Meetup Tokyo なう",
+      "createdAt": "2026-07-06T10:05:59.000Z",
+      "url": "https://x.com/_bobertdowney/status/2074072357241847827",
+      "urls": [],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2073599842589479115",
       "text": "my nephew is playing the 4th of July web game I made with me and he’s taken out over 250 redcoats 🥹 https://t.co/liR8gGQuSx",
@@ -188,86 +227,6 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2070339388060606759",
-      "text": "おはようございます\n\nlive English audio and subtitles courtesy of Kotoba https://t.co/qhlryLoeFZ",
-      "createdAt": "2026-06-26T02:52:29.000Z",
-      "url": "https://x.com/_bobertdowney/status/2070339388060606759",
-      "urls": [
-        {
-          "url": "https://t.co/qhlryLoeFZ",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2070339388060606759/photo/1",
-          "displayUrl": "pic.x.com/qhlryLoeFZ",
-          "start": 63,
-          "end": 86
-        },
-        {
-          "url": "https://t.co/qhlryLoeFZ",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2070339388060606759/photo/1",
-          "displayUrl": "pic.x.com/qhlryLoeFZ",
-          "start": 63,
-          "end": 86
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2070339388060606759-0.png",
-          "imageModern": "assets/generated/x/mine-post-2070339388060606759-0-modern.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2070339388060606759-1.png",
-          "imageModern": "assets/generated/x/mine-post-2070339388060606759-1-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2069205293767278986",
-      "text": "is there a way as of the latest macOS Golden Gate beta to turn off the reply suggestions in Messages but leave Siri etc. enabled? https://t.co/1eJNHgr5qo",
-      "createdAt": "2026-06-22T23:46:00.000Z",
-      "url": "https://x.com/_bobertdowney/status/2069205293767278986",
-      "urls": [
-        {
-          "url": "https://t.co/1eJNHgr5qo",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2069205293767278986/photo/1",
-          "displayUrl": "pic.x.com/1eJNHgr5qo",
-          "start": 130,
-          "end": 153
-        },
-        {
-          "url": "https://t.co/1eJNHgr5qo",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2069205293767278986/photo/1",
-          "displayUrl": "pic.x.com/1eJNHgr5qo",
-          "start": 130,
-          "end": 153
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2069205293767278986-0.png",
-          "imageModern": "assets/generated/x/mine-post-2069205293767278986-0-modern.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2069205293767278986-1.png",
-          "imageModern": "assets/generated/x/mine-post-2069205293767278986-1-modern.png"
-        }
-      ]
     }
   ]
 };

@@ -1,5 +1,5 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-07-06T17:54:55.204Z",
+  "updatedAt": "2026-07-07T17:27:39.163Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
@@ -41,33 +41,6 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2073599842589479115",
-      "text": "my nephew is playing the 4th of July web game I made with me and he’s taken out over 250 redcoats 🥹 https://t.co/liR8gGQuSx",
-      "createdAt": "2026-07-05T02:48:22.000Z",
-      "url": "https://x.com/_bobertdowney/status/2073599842589479115",
-      "urls": [
-        {
-          "url": "https://t.co/liR8gGQuSx",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2073599842589479115/photo/1",
-          "displayUrl": "pic.x.com/liR8gGQuSx",
-          "start": 100,
-          "end": 123
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2073599842589479115-0.png",
-          "imageModern": "assets/generated/x/mine-post-2073599842589479115-0-modern.png"
-        }
-      ]
     },
     {
       "id": "2073410624575733778",
@@ -227,6 +200,86 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
+    },
+    {
+      "id": "2070339388060606759",
+      "text": "おはようございます\n\nlive English audio and subtitles courtesy of Kotoba https://t.co/qhlryLoeFZ",
+      "createdAt": "2026-06-26T02:52:29.000Z",
+      "url": "https://x.com/_bobertdowney/status/2070339388060606759",
+      "urls": [
+        {
+          "url": "https://t.co/qhlryLoeFZ",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2070339388060606759/photo/1",
+          "displayUrl": "pic.x.com/qhlryLoeFZ",
+          "start": 63,
+          "end": 86
+        },
+        {
+          "url": "https://t.co/qhlryLoeFZ",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2070339388060606759/photo/1",
+          "displayUrl": "pic.x.com/qhlryLoeFZ",
+          "start": 63,
+          "end": 86
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2070339388060606759-0.png",
+          "imageModern": "assets/generated/x/mine-post-2070339388060606759-0-modern.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2070339388060606759-1.png",
+          "imageModern": "assets/generated/x/mine-post-2070339388060606759-1-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2069205293767278986",
+      "text": "is there a way as of the latest macOS Golden Gate beta to turn off the reply suggestions in Messages but leave Siri etc. enabled? https://t.co/1eJNHgr5qo",
+      "createdAt": "2026-06-22T23:46:00.000Z",
+      "url": "https://x.com/_bobertdowney/status/2069205293767278986",
+      "urls": [
+        {
+          "url": "https://t.co/1eJNHgr5qo",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2069205293767278986/photo/1",
+          "displayUrl": "pic.x.com/1eJNHgr5qo",
+          "start": 130,
+          "end": 153
+        },
+        {
+          "url": "https://t.co/1eJNHgr5qo",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2069205293767278986/photo/1",
+          "displayUrl": "pic.x.com/1eJNHgr5qo",
+          "start": 130,
+          "end": 153
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2069205293767278986-0.png",
+          "imageModern": "assets/generated/x/mine-post-2069205293767278986-0-modern.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2069205293767278986-1.png",
+          "imageModern": "assets/generated/x/mine-post-2069205293767278986-1-modern.png"
+        }
+      ]
     }
   ]
 };

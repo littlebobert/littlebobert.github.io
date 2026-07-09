@@ -1,8 +1,35 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-07-08T16:52:25.048Z",
+  "updatedAt": "2026-07-09T17:27:36.621Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2075035780205142207",
+      "text": "Need translation while typing or reading Japanese with one keyboard shortcut? Try out my free macOS app, Sasu. It can also (with your permission) scan and give guidance on the entire Safari page you’re on, including parts off-screen.\n\nAnd it gives you on-screen guidance without https://t.co/eQTppVBVNF",
+      "createdAt": "2026-07-09T01:54:16.000Z",
+      "url": "https://x.com/_bobertdowney/status/2075035780205142207",
+      "urls": [
+        {
+          "url": "https://t.co/eQTppVBVNF",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2075035780205142207/photo/1",
+          "displayUrl": "pic.x.com/eQTppVBVNF",
+          "start": 279,
+          "end": 302
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2075035780205142207-0.png",
+          "imageModern": "assets/generated/x/mine-post-2075035780205142207-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2074086834951581929",
       "text": "problem: I get a lot of work messages in Japanese and on iPhone there’s no fast way to translate them. at tonight’s Claude Fable workshop I created a way to translate them all while I’m not at my desk https://t.co/eUgvxvIjfY",
@@ -238,46 +265,6 @@ window.X_POSTS_SNAPSHOT = {
           "type": "photo",
           "image": "assets/generated/x/mine-post-2070339388060606759-1.png",
           "imageModern": "assets/generated/x/mine-post-2070339388060606759-1-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2069205293767278986",
-      "text": "is there a way as of the latest macOS Golden Gate beta to turn off the reply suggestions in Messages but leave Siri etc. enabled? https://t.co/1eJNHgr5qo",
-      "createdAt": "2026-06-22T23:46:00.000Z",
-      "url": "https://x.com/_bobertdowney/status/2069205293767278986",
-      "urls": [
-        {
-          "url": "https://t.co/1eJNHgr5qo",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2069205293767278986/photo/1",
-          "displayUrl": "pic.x.com/1eJNHgr5qo",
-          "start": 130,
-          "end": 153
-        },
-        {
-          "url": "https://t.co/1eJNHgr5qo",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2069205293767278986/photo/1",
-          "displayUrl": "pic.x.com/1eJNHgr5qo",
-          "start": 130,
-          "end": 153
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2069205293767278986-0.png",
-          "imageModern": "assets/generated/x/mine-post-2069205293767278986-0-modern.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2069205293767278986-1.png",
-          "imageModern": "assets/generated/x/mine-post-2069205293767278986-1-modern.png"
         }
       ]
     }

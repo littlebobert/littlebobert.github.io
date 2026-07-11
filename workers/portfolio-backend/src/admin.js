@@ -66,7 +66,9 @@ function adminPage(email) {
         pre.textContent = JSON.stringify(entry, null, 2);
         article.append(pre);
         const actions = contact
-          ? [['read', 'Mark read'], ['archive', 'Archive']]
+          ? entry.status === 'unread'
+            ? [['read', 'Mark read'], ['archive', 'Archive']]
+            : [['archive', 'Archive']]
           : [['approve', 'Approve'], ['reject', 'Reject']];
         actions.forEach(([action, label]) => {
           const button = document.createElement('button');

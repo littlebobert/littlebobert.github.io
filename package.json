@@ -1,6 +1,7 @@
 {
   "private": true,
   "scripts": {
+    "build:sasu-pages": "node scripts/build-sasu-pages.mjs",
     "build:japan-news": "node scripts/build-japan-news.mjs",
     "build:japan-news:local": "node scripts/build-japan-news-local.mjs",
     "build:x-snapshot": "node scripts/build-x-snapshot.mjs",

@@ -7,12 +7,21 @@
 
     currentLanguage = language === 'ja' ? 'ja' : 'en';
     labelElements.forEach((element) => {
-      element.textContent = element.dataset[`label${currentLanguage === 'ja' ? 'Ja' : 'En'}`];
+      const label = element.dataset[`label${currentLanguage === 'ja' ? 'Ja' : 'En'}`];
+      if (element instanceof HTMLMetaElement) {
+        element.content = label;
+      } else {
+        element.textContent = label;
+      }
     });
 
     document.documentElement.lang = currentLanguage;
     if (languageToggle) {
       languageToggle.textContent = currentLanguage === 'ja' ? 'English' : '日本語';
+      languageToggle.setAttribute(
+        'aria-label',
+        currentLanguage === 'ja' ? 'Switch to English' : '日本語に切り替える'
+      );
     }
 
     localStorage.setItem('sasu-language', currentLanguage);

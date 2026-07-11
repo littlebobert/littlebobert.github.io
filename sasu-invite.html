@@ -3,7 +3,10 @@
 <head>
   <meta charset="utf-8">
   <script src="theme.js?v=2"></script>
-  <title>You’re invited to Sasu</title>
+  <title
+    data-label-en="You’re invited to Sasu"
+    data-label-ja="Sasuへの招待"
+  >You’re invited to Sasu</title>
   <link href='style.css?v=125' rel='stylesheet'>
   <link href='sasu-common.css?v=1' rel='stylesheet'>
   <link rel="icon" href="assets/sasu-icon.png">
@@ -13,14 +16,23 @@
   <meta
     name="description"
     content="You’ve been invited to try Sasu, a macOS app for understanding Japanese websites and forms."
+    data-label-en="You’ve been invited to try Sasu, a macOS app for understanding Japanese websites and forms."
+    data-label-ja="Sasuへの招待が届いています。英語のWebサイトやフォームを理解するためのmacOSアプリをお試しください。"
   />
-  <meta property="og:title" content="You’re invited to Sasu" />
+  <meta
+    property="og:title"
+    content="You’re invited to Sasu"
+    data-label-en="You’re invited to Sasu"
+    data-label-ja="Sasuへの招待"
+  />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sasu.jp/sasu-invite" />
   <meta property="og:site_name" content="Sasu (指す)" />
   <meta
     property="og:description"
     content="Open your private Sasu invite and try the macOS app without creating an OpenAI API key."
+    data-label-en="Open your private Sasu invite and try the macOS app without creating an OpenAI API key."
+    data-label-ja="Sasuの限定招待を開き、OpenAI APIキーを用意せずにmacOSアプリをお試しください。"
   />
   <meta property="og:image" content="https://sasu.jp/assets/sasu-social.png?v=2" />
   <meta property="og:image:secure_url" content="https://sasu.jp/assets/sasu-social.png?v=2" />
@@ -29,10 +41,17 @@
   <meta property="og:image:height" content="630" />
   <meta property="og:image:alt" content="Sasu app icon" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="You’re invited to Sasu" />
+  <meta
+    name="twitter:title"
+    content="You’re invited to Sasu"
+    data-label-en="You’re invited to Sasu"
+    data-label-ja="Sasuへの招待"
+  />
   <meta
     name="twitter:description"
     content="Open your private Sasu invite and try the macOS app without creating an OpenAI API key."
+    data-label-en="Open your private Sasu invite and try the macOS app without creating an OpenAI API key."
+    data-label-ja="Sasuの限定招待を開き、OpenAI APIキーを用意せずにmacOSアプリをお試しください。"
   />
   <meta name="twitter:image" content="https://sasu.jp/assets/sasu-social.png?v=2" />
   <meta name="twitter:image:alt" content="Sasu app icon" />
@@ -119,14 +138,14 @@
           <div
             class="sasu-subtitle"
             data-label-en="Japanese websites, explained on screen"
-            data-label-ja="日本語のWebサイトを画面上で説明"
+            data-label-ja="英語のWebサイトを画面上で案内"
           >Japanese websites, explained on screen</div>
         </div>
       </div>
       <div
         class="sasu-tagline"
         data-label-en="Understand Japanese websites and forms without browser translation breaking the page. Works in any app."
-        data-label-ja="ブラウザ翻訳でページを崩さずに、日本語のWebサイトとフォームを理解できます。どのアプリでも使えます。"
+        data-label-ja="ブラウザ翻訳のようにページのレイアウトを崩すことなく、英語のWebサイトやフォームを理解できます。どのアプリでも使えます。"
       >
         Understand Japanese websites and forms without browser translation breaking the page. Works in any app.
       </div>
@@ -134,7 +153,7 @@
       <div class="invite-card">
         <div
           data-label-en="This private invite lets you try Sasu without creating your own OpenAI API key."
-          data-label-ja="このプライベート招待で、自分のOpenAI APIキーを作らずにSasuを試せます。"
+          data-label-ja="この限定招待を使うと、自分でOpenAI APIキーを用意せずにSasuを試せます。"
         >This private invite lets you try Sasu without creating your own OpenAI API key.</div>
 
         <div class="invite-step">
@@ -168,7 +187,7 @@
           <div
             class="small-note"
             data-label-en="After Sasu is installed, click this button to connect your invite."
-            data-label-ja="Sasuをインストールした後、このボタンをクリックして招待を接続してください。"
+            data-label-ja="Sasuをインストールした後、このボタンをクリックして招待をSasuに登録してください。"
           >After Sasu is installed, click this button to connect your invite.</div>
           <div class="actions">
             <a
@@ -176,7 +195,7 @@
               id="open-invite-link"
               href="#"
               data-label-en="Open Sasu with invite"
-              data-label-ja="招待でSasuを開く"
+              data-label-ja="招待を使ってSasuを開く"
             >Open Sasu with invite</a>
           </div>
           <div
@@ -282,7 +301,7 @@
     </div>
   </div>
 
-  <script src="sasu-common.js?v=1"></script>
+  <script src="sasu-common.js?v=2"></script>
   <script>
     const downloadLink = document.getElementById('download-link');
     const openInviteStep = document.getElementById('open-invite-step');

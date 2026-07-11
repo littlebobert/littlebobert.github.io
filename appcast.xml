@@ -3,6 +3,18 @@
     <channel>
         <title>Sasu</title>
         <item>
+            <title>0.1.24</title>
+            <pubDate>Sat, 11 Jul 2026 18:39:54 +0900</pubDate>
+            <link>https://sasu.jp</link>
+            <sparkle:version>21</sparkle:version>
+            <sparkle:shortVersionString>0.1.24</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[Safari fix, switch to Cloudflare, and fix the app for Japanese users
+]]></description>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.24/Sasu-0.1.24-mac.zip" length="5387042" type="application/octet-stream" sparkle:edSignature="RsuXzFVUGidHdEwkya+kBkkzmq6Pf5fTE83Hdq2fqUCvVxeBn8wOIh+fLg9Oi4E2nuPj5387CmFWqErOvFInCA=="/>
+        </item>
+        <item>
             <title>0.1.23</title>
             <pubDate>Wed, 08 Jul 2026 14:10:52 +0900</pubDate>
             <link>https://sasu.jp</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[Fixed text selection bug in the transcript window.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.22/Sasu-0.1.22-mac.zip" length="5383355" type="application/octet-stream" sparkle:edSignature="ADPJw/CB1zBbOoKGTl52vaKHFj2lSj1vMWxj/bsQVevAJ1cZVYdQfUe9ODcaGj1qPHspQOZOPniA5m3WKiheAA=="/>
-        </item>
-        <item>
-            <title>0.1.21</title>
-            <pubDate>Mon, 06 Jul 2026 14:07:07 +0900</pubDate>
-            <link>https://sasu.jp</link>
-            <sparkle:version>18</sparkle:version>
-            <sparkle:shortVersionString>0.1.21</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[Added furigana for clipboard translations.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.1.21/Sasu-0.1.21-mac.zip" length="5383280" type="application/octet-stream" sparkle:edSignature="amBs1BL0XGNOdCi+rPiSq2w2PjxBlJTsR6h4LOQM2MJAdsf1IcIqYu5czh1q1b9iuzSxDRtm43MS8+/9C33MDA=="/>
         </item>
     </channel>
 </rss>

@@ -47,11 +47,15 @@ const STACK_CARD_STORAGE_KEY = 'about-stack-card-index';
 const CLOCK_MODE_STORAGE_KEY = 'clock-display-mode';
 const WEATHER_UNIT_STORAGE_KEY = 'weather-unit';
 const VISITOR_COUNTED_STORAGE_KEY = 'page-views-counter-counted';
-const VISITOR_COUNTER_BASE_URL = 'https://page-views-api.ratneshc.com/api/v1';
-const VISITOR_COUNTER_SITE = 'littlebobert.github.io';
+const PORTFOLIO_API_BASE_URL = 'https://portfolio-backend.justin-garcia.workers.dev';
+const TURNSTILE_SITE_KEY = '0x4AAAAAADzny1gQWxbt_9AA';
+const VISITOR_COUNTER_BASE_URL = PORTFOLIO_API_BASE_URL
+  ? `${PORTFOLIO_API_BASE_URL}/api/v1`
+  : 'https://page-views-api.ratneshc.com/api/v1';
+const VISITOR_COUNTER_SITE = PORTFOLIO_API_BASE_URL ? 'justin-garcia.pages.dev' : 'littlebobert.github.io';
 const VISITOR_COUNTER_PATH = '/';
-const GUESTBOOK_URL = 'data/guestbook.json';
-const TOKYO_RECOMMENDATIONS_URL = 'data/tokyo-recommendations.json';
+const GUESTBOOK_FALLBACK_URL = 'data/guestbook.json';
+const TOKYO_RECOMMENDATIONS_FALLBACK_URL = 'data/tokyo-recommendations.json';
 const clockModeButtons = document.querySelectorAll('.clock-mode-segment');
 const weatherUnitButtons = document.querySelectorAll('.weather-unit-segment');
 const languageButtons = document.querySelectorAll('.language-segment');
@@ -69,6 +73,16 @@ const puzzleAlertMessage = document.getElementById('puzzle-alert-message');
 const puzzleAlertVideo = document.getElementById('puzzle-alert-video');
 const puzzleAlertVideoFrame = document.getElementById('puzzle-alert-video-frame');
 const puzzleAlertOkButton = document.getElementById('puzzle-alert-ok');
+const contactSubmissionLinks = document.querySelectorAll('.contact-submission-link');
+const submissionOverlay = document.getElementById('submission-overlay');
+const submissionForm = document.getElementById('submission-form');
+const submissionFields = document.getElementById('submission-fields');
+const submissionTitle = document.getElementById('submission-title');
+const submissionStatus = document.getElementById('submission-status');
+const submissionSubmitButton = document.getElementById('submission-submit');
+const submissionCloseButton = document.getElementById('submission-close');
+const submissionCancelButton = document.getElementById('submission-cancel');
+const submissionTurnstile = document.getElementById('submission-turnstile');
 const PUZZLE_SIZE = 4;
 const PUZZLE_TILE_COUNT = PUZZLE_SIZE * PUZZLE_SIZE;
 const PUZZLE_EMPTY_TILE = PUZZLE_TILE_COUNT - 1;
@@ -96,6 +110,9 @@ let xSnapshotDidFail = false;
 let tokyoRecommendations = [];
 let puzzleTiles = Array.from({ length: PUZZLE_TILE_COUNT }, (_, index) => index);
 let puzzleGiveUpLocked = false;
+let activeSubmission = null;
+let submissionTurnstileToken = '';
+let submissionTurnstileWidgetId = null;
 
 function normalizeClockMode(mode) {
   return mode === 'analog' ? 'analog' : 'digital';
@@ -895,7 +912,7 @@ languageButtons.forEach((button) => {
 });
 
 tokyoRecommendationButton?.addEventListener('click', () => {
-  openTokyoRecommendationEmail();
+  openPortfolioSubmission('tokyo-recommendation');
   tokyoRecommendationButton.blur();
 });
 
@@ -1405,6 +1422,273 @@ function cleanSubmissionText(value, maxLength) {
     .slice(0, maxLength);
 }
 
+function submissionDefinition(kind, context = {}) {
+  const commonName = {
+    name: 'name',
+    label: localizedText('Your name', 'お名前'),
+    maxLength: 50,
+    placeholder: localizedText('Anonymous', '匿名'),
+  };
+  if (kind === 'guestbook') {
+    return {
+      title: localizedText('Sign the guestbook', 'ゲストブックに署名'),
+      endpoint: '/api/submissions/guestbook',
+      fields: [
+        { ...commonName, maxLength: 18 },
+        {
+          name: 'comment',
+          label: localizedText('Comment (optional)', 'コメント（任意）'),
+          maxLength: 120,
+          multiline: true,
+        },
+      ],
+      payload(values) {
+        return {
+          id: createSubmissionId(),
+          name: cleanGuestbookName(values.name),
+          countryCode: context.countryCode,
+          countryName: context.countryName,
+          comment: cleanSubmissionText(values.comment, 120),
+          signedAt: new Date().toISOString(),
+        };
+      },
+    };
+  }
+  if (kind === 'tokyo-recommendation') {
+    return {
+      title: localizedText('Add Tokyo recommendation', 'Tokyoおすすめを追加'),
+      endpoint: '/api/submissions/tokyo-recommendation',
+      fields: [
+        {
+          name: 'recommendation',
+          label: localizedText('What do you recommend?', 'おすすめは何ですか？'),
+          maxLength: 80,
+          required: true,
+        },
+        { ...commonName, maxLength: 18 },
+        {
+          name: 'comment',
+          label: localizedText('Comment (optional)', 'コメント（任意）'),
+          maxLength: 140,
+          multiline: true,
+        },
+      ],
+      payload(values) {
+        return {
+          id: createSubmissionId(),
+          name: cleanGuestbookName(values.name),
+          recommendation: cleanSubmissionText(values.recommendation, 80),
+          comment: cleanSubmissionText(values.comment, 140),
+          submittedAt: new Date().toISOString(),
+        };
+      },
+    };
+  }
+  if (kind === 'mud-score') {
+    return {
+      title: localizedText('Submit UENO QUEST score', 'UENO QUESTスコアを送信'),
+      endpoint: '/api/submissions/mud-score',
+      fields: [{ ...commonName, maxLength: 18 }],
+      payload(values) {
+        const moves = Number(context.moves);
+        const sideQuests = Array.isArray(context.sideQuests) ? context.sideQuests : [];
+        const sideQuestCount = sideQuests.length;
+        return {
+          id: createSubmissionId(),
+          name: cleanGuestbookName(values.name),
+          moves,
+          sideQuests,
+          sideQuestCount,
+          rank: moves <= 14 ? 'Senior Soba Engineer' : sideQuestCount >= 4 ? 'Tokyo Completionist' : 'Soba Engineer',
+          route: 'Ueno -> Otemachi -> Shibuya -> Ueno',
+          completedAt: context.completedAt || new Date().toISOString(),
+        };
+      },
+    };
+  }
+  if (kind === 'contact') {
+    const categoryLabels = {
+      'app-idea': localizedText('Share an app idea', 'アプリのアイデアを送る'),
+      tokyo: localizedText('Share a Tokyo recommendation', 'Tokyoのおすすめを送る'),
+      running: localizedText('Send a running message', 'ランニングについて送る'),
+    };
+    return {
+      title: categoryLabels[context.category] || localizedText('Send a message', 'メッセージを送る'),
+      endpoint: '/api/contact',
+      fields: [
+        commonName,
+        {
+          name: 'email',
+          label: localizedText('Reply email (optional)', '返信先メール（任意）'),
+          maxLength: 254,
+          type: 'email',
+        },
+        {
+          name: 'message',
+          label: localizedText('Message', 'メッセージ'),
+          maxLength: 2000,
+          required: true,
+          multiline: true,
+        },
+      ],
+      payload(values) {
+        return {
+          id: createSubmissionId(),
+          category: context.category,
+          name: cleanSubmissionText(values.name, 50) || 'Anonymous',
+          email: cleanSubmissionText(values.email, 254),
+          message: cleanSubmissionText(values.message, 2000),
+        };
+      },
+    };
+  }
+  return null;
+}
+
+function createSubmissionField(field) {
+  const label = document.createElement('label');
+  label.textContent = field.label;
+  const input = document.createElement(field.multiline ? 'textarea' : 'input');
+  input.name = field.name;
+  input.maxLength = field.maxLength;
+  input.required = Boolean(field.required);
+  if (!field.multiline) {
+    input.type = field.type || 'text';
+  }
+  if (field.placeholder) {
+    input.placeholder = field.placeholder;
+  }
+  label.append(input);
+  return label;
+}
+
+function setSubmissionStatus(message, isError = false) {
+  if (!submissionStatus) return;
+  submissionStatus.textContent = message;
+  submissionStatus.classList.toggle('is-error', isError);
+}
+
+function removeSubmissionTurnstile() {
+  if (submissionTurnstileWidgetId !== null && window.turnstile) {
+    window.turnstile.remove(submissionTurnstileWidgetId);
+  }
+  submissionTurnstileWidgetId = null;
+  submissionTurnstileToken = '';
+  if (submissionTurnstile) {
+    submissionTurnstile.textContent = '';
+  }
+}
+
+async function renderSubmissionTurnstile() {
+  if (!TURNSTILE_SITE_KEY) {
+    setSubmissionStatus(localizedText('Submission service is not configured yet.', '送信サービスはまだ設定されていません。'), true);
+    return;
+  }
+  for (let attempt = 0; attempt < 50 && !window.turnstile; attempt += 1) {
+    await new Promise((resolve) => window.setTimeout(resolve, 100));
+  }
+  if (!window.turnstile || !submissionTurnstile) {
+    setSubmissionStatus(localizedText('Human verification could not load.', '本人確認を読み込めませんでした。'), true);
+    return;
+  }
+  submissionTurnstileWidgetId = window.turnstile.render(submissionTurnstile, {
+    sitekey: TURNSTILE_SITE_KEY,
+    theme: 'auto',
+    action: 'portfolio-submission',
+    callback(token) {
+      submissionTurnstileToken = token;
+      setSubmissionStatus('');
+    },
+    'expired-callback'() {
+      submissionTurnstileToken = '';
+    },
+    'error-callback'() {
+      submissionTurnstileToken = '';
+      setSubmissionStatus(localizedText('Human verification failed to load.', '本人確認の読み込みに失敗しました。'), true);
+    },
+  });
+}
+
+function closeSubmissionDialog() {
+  if (!submissionOverlay) return;
+  submissionOverlay.hidden = true;
+  activeSubmission = null;
+  submissionForm?.reset();
+  removeSubmissionTurnstile();
+}
+
+function openPortfolioSubmission(kind, context = {}) {
+  const definition = submissionDefinition(kind, context);
+  if (!definition || !submissionOverlay || !submissionForm || !submissionFields) {
+    return;
+  }
+  activeSubmission = { kind, context, definition };
+  submissionTitle.textContent = definition.title;
+  submissionFields.textContent = '';
+  definition.fields.forEach((field) => submissionFields.append(createSubmissionField(field)));
+  submissionOverlay.hidden = false;
+  submissionSubmitButton.disabled = !PORTFOLIO_API_BASE_URL || !TURNSTILE_SITE_KEY;
+  setSubmissionStatus('');
+  renderSubmissionTurnstile();
+  submissionFields.querySelector('input, textarea')?.focus();
+}
+
+window.openPortfolioSubmission = openPortfolioSubmission;
+
+submissionForm?.addEventListener('submit', async (event) => {
+  event.preventDefault();
+  if (!activeSubmission || !submissionTurnstileToken) {
+    setSubmissionStatus(localizedText('Complete the human verification first.', '先に本人確認を完了してください。'), true);
+    return;
+  }
+  const values = Object.fromEntries(new FormData(submissionForm).entries());
+  const payload = activeSubmission.definition.payload(values);
+  submissionSubmitButton.disabled = true;
+  setSubmissionStatus(localizedText('Sending…', '送信中…'));
+  try {
+    const response = await fetch(`${PORTFOLIO_API_BASE_URL}${activeSubmission.definition.endpoint}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ ...payload, turnstileToken: submissionTurnstileToken }),
+    });
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok) {
+      throw new Error(result.error || `Request failed: ${response.status}`);
+    }
+    document.dispatchEvent(new CustomEvent('portfolio-submission-accepted', {
+      detail: { kind: activeSubmission.kind, payload, result },
+    }));
+    setSubmissionStatus(activeSubmission.kind === 'contact'
+      ? localizedText('Message received. Thank you!', 'メッセージを受け取りました。ありがとうございます！')
+      : localizedText('Submitted for approval. Thank you!', '承認待ちとして送信しました。ありがとうございます！'));
+    window.setTimeout(closeSubmissionDialog, 1200);
+  } catch (error) {
+    setSubmissionStatus(error.message || localizedText('Submission failed.', '送信に失敗しました。'), true);
+    submissionSubmitButton.disabled = false;
+    if (window.turnstile && submissionTurnstileWidgetId !== null) {
+      window.turnstile.reset(submissionTurnstileWidgetId);
+      submissionTurnstileToken = '';
+    }
+  }
+});
+
+submissionCloseButton?.addEventListener('click', closeSubmissionDialog);
+submissionCancelButton?.addEventListener('click', closeSubmissionDialog);
+submissionOverlay?.addEventListener('click', (event) => {
+  if (event.target === submissionOverlay) closeSubmissionDialog();
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && submissionOverlay && !submissionOverlay.hidden) {
+    closeSubmissionDialog();
+  }
+});
+contactSubmissionLinks.forEach((link) => {
+  link.addEventListener('click', (event) => {
+    event.preventDefault();
+    openPortfolioSubmission('contact', { category: link.dataset.contactCategory });
+  });
+});
+
 function getRegionName(countryCode) {
   try {
     const displayNames = new Intl.DisplayNames([document.documentElement.lang || 'en'], { type: 'region' });
@@ -1452,42 +1736,31 @@ async function fetchTokyoRecommendations() {
   }
 
   try {
-    const response = await fetch(TOKYO_RECOMMENDATIONS_URL, { cache: 'no-store' });
-    if (!response.ok) {
-      throw new Error(`Tokyo recommendations request failed: ${response.status}`);
-    }
-    const data = await response.json();
-    tokyoRecommendations = Array.isArray(data.entries) ? data.entries : [];
+    tokyoRecommendations = await fetchPortfolioEntries(
+      '/api/content/tokyo-recommendations',
+      TOKYO_RECOMMENDATIONS_FALLBACK_URL,
+    );
   } catch (error) {
     tokyoRecommendations = [];
   }
   renderTokyoRecommendations();
 }
 
-function openTokyoRecommendationEmail() {
-  const recommendation = cleanSubmissionText(window.prompt('What do you recommend in Tokyo?'), 80);
-  if (!recommendation) {
-    return;
+async function fetchPortfolioEntries(apiPath, fallbackUrl) {
+  if (PORTFOLIO_API_BASE_URL) {
+    try {
+      const response = await fetch(`${PORTFOLIO_API_BASE_URL}${apiPath}`, { cache: 'no-store' });
+      if (!response.ok) throw new Error(`API request failed: ${response.status}`);
+      const data = await response.json();
+      return Array.isArray(data.entries) ? data.entries : [];
+    } catch (error) {
+      // Preserve the checked-in snapshot as a read-only fallback during rollout.
+    }
   }
-
-  const name = cleanGuestbookName(window.prompt('Your name for the recommendation?'));
-  const comment = cleanSubmissionText(window.prompt('Optional comment?'), 140);
-  const recommendationId = createSubmissionId();
-  const payload = {
-    type: 'tokyo-recommendation',
-    id: recommendationId,
-    name,
-    recommendation,
-    comment,
-    submittedAt: new Date().toISOString(),
-  };
-  const subject = `TOKYO RECOMMENDATION ${recommendationId}`;
-  const body = [
-    'Tokyo recommendation',
-    '',
-    JSON.stringify(payload, null, 2),
-  ].join('\n');
-  window.location.href = `mailto:justin.garcia@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  const fallbackResponse = await fetch(fallbackUrl, { cache: 'no-store' });
+  if (!fallbackResponse.ok) throw new Error(`Fallback request failed: ${fallbackResponse.status}`);
+  const fallbackData = await fallbackResponse.json();
+  return Array.isArray(fallbackData.entries) ? fallbackData.entries : [];
 }
 
 function renderGuestbook() {
@@ -1535,12 +1808,7 @@ async function fetchGuestbook() {
   }
 
   try {
-    const response = await fetch(GUESTBOOK_URL, { cache: 'no-store' });
-    if (!response.ok) {
-      throw new Error(`Guestbook request failed: ${response.status}`);
-    }
-    const data = await response.json();
-    guestbookEntries = Array.isArray(data.entries) ? data.entries : [];
+    guestbookEntries = await fetchPortfolioEntries('/api/content/guestbook', GUESTBOOK_FALLBACK_URL);
   } catch (error) {
     guestbookEntries = [];
   }
@@ -1641,35 +1909,20 @@ mapZoomOutButton?.addEventListener('click', () => {
   mapZoomOutButton.blur();
 });
 
-function openMapEmail() {
+function openMapSubmission() {
   if (!selectedMapPlace || !selectedMapCountryCode) {
     updateMapStatus('Pick your country first.');
     return;
   }
 
-  const name = cleanGuestbookName(window.prompt('Name for the guestbook?'));
-  const comment = cleanSubmissionText(window.prompt('Optional guestbook comment?'), 120);
-  const entryId = createSubmissionId();
-  const payload = {
-    type: 'guestbook-entry',
-    id: entryId,
-    name,
+  openPortfolioSubmission('guestbook', {
     countryCode: selectedMapCountryCode,
     countryName: selectedMapPlace,
-    comment,
-    signedAt: new Date().toISOString(),
-  };
-  const subject = `GUESTBOOK ENTRY ${entryId}`;
-  const body = [
-    'Guestbook entry',
-    '',
-    JSON.stringify(payload, null, 2),
-  ].join('\n');
-  window.location.href = `mailto:justin.garcia@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
 }
 
 mapEmailButton?.addEventListener('click', () => {
-  openMapEmail();
+  openMapSubmission();
   mapEmailButton.blur();
 });
 

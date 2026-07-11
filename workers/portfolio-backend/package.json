@@ -1,0 +1,18 @@
+{
+  "name": "portfolio-backend",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "npm test",
+    "deploy": "wrangler deploy",
+    "dev": "wrangler dev",
+    "seed": "node scripts/generate-seed.mjs",
+    "test": "node --test test/*.test.js"
+  },
+  "dependencies": {
+    "jose": "^6.2.3"
+  },
+  "devDependencies": {
+    "wrangler": "^4.110.0"
+  }
+}

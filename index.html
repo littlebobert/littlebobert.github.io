@@ -4,8 +4,9 @@
 <head>
   <meta charset="utf-8">
   <script src="theme.js?v=2"></script>
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
   <title>About Justin Garcia</title>
-  <link href='style.css?v=127' rel='stylesheet'>
+  <link href='style.css?v=128' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://justin-garcia.pages.dev/">
   <meta name="description" content="iOS engineer in Tokyo." />
@@ -175,21 +176,27 @@
           <ul class="stack-topic-list">
             <li>
               <a
-                href="mailto:justin.garcia@gmail.com?subject=App%20idea&body=Here's%20an%20app%20idea%3A%20"
+                href="#"
+                class="contact-submission-link"
+                data-contact-category="app-idea"
                 data-label-en="your app ideas"
                 data-label-ja="<span class='ja-text'>あなたのアプリのアイデア</span>"
               >your app ideas</a>
             </li>
             <li>
               <a
-                href="mailto:justin.garcia@gmail.com?subject=Tokyo%20recommendation&body=Here's%20something%20fun%20to%20do%20in%20Tokyo%3A%20"
+                href="#"
+                class="contact-submission-link"
+                data-contact-category="tokyo"
                 data-label-en="your recommendations for things to do in Tokyo"
                 data-label-ja="<span class='ja-text'>東京で楽しいことのおすすめ</span>"
               >your recommendations for things to do in Tokyo</a>
             </li>
             <li>
               <a
-                href="mailto:justin.garcia@gmail.com?subject=Running&body=I%20go%20running%20too%3A%20"
+                href="#"
+                class="contact-submission-link"
+                data-contact-category="running"
                 data-label-en="if you go running too"
                 data-label-ja="<span class='ja-text'>あなたもランニングするなら</span>"
               >if you go running too</a>
@@ -714,10 +721,29 @@
     </div>
   </div>
 
+  <div class="submission-overlay" id="submission-overlay" hidden>
+    <div class="mac-dialog submission-dialog" role="dialog" aria-modal="true" aria-labelledby="submission-title">
+      <div class="title-bar">
+        <button type="button" class="close-box close-box--close" id="submission-close" aria-label="Close"></button>
+        <div class="title-bar-stripes-full"></div>
+        <span class="title-text" id="submission-title">Send to Justin</span>
+      </div>
+      <form class="submission-form" id="submission-form">
+        <div id="submission-fields"></div>
+        <div id="submission-turnstile"></div>
+        <p class="submission-status" id="submission-status" aria-live="polite"></p>
+        <div class="submission-actions">
+          <button type="button" id="submission-cancel">Cancel</button>
+          <button type="submit" id="submission-submit">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
   <div class="window-zoom-rect" id="window-zoom-rect" hidden aria-hidden="true"></div>
   
   <script src="data/x-posts.js"></script>
-  <script src="index.js?v=6"></script>
+  <script src="index.js?v=7"></script>
   <script>
     const MUD_LEADERBOARD_STORAGE_KEY = 'tokyo-mud-leaderboard';
     const MUD_STATE_STORAGE_KEY = 'tokyo-mud-current-run';
@@ -974,27 +1000,6 @@
       return Number(entry?.sideQuestCount) || 0;
     }
 
-    function mudRankForRun(moves, sideQuestCount) {
-      if (moves <= 14) {
-        return 'Senior Soba Engineer';
-      }
-      if (sideQuestCount >= 4) {
-        return 'Tokyo Completionist';
-      }
-      return 'Soba Engineer';
-    }
-
-    function cleanMudLeaderboardName(name) {
-      return (name || 'Anonymous').replace(/\s+/g, ' ').trim().slice(0, 18) || 'Anonymous';
-    }
-
-    function createMudSubmissionId() {
-      if (window.crypto?.randomUUID) {
-        return window.crypto.randomUUID();
-      }
-      return `${Date.now()}-${Math.random().toString(36).slice(2, 10)}`;
-    }
-
     function renderMudLeaderboard() {
       if (!mudLeaderboard) {
         return;
@@ -1031,62 +1036,26 @@
 
     async function fetchMudLeaderboard() {
       try {
-        const response = await fetch(MUD_PUBLIC_LEADERBOARD_URL, { cache: 'no-store' });
-        if (!response.ok) {
-          throw new Error(`Leaderboard request failed: ${response.status}`);
+        let data = null;
+        if (PORTFOLIO_API_BASE_URL) {
+          try {
+            const apiResponse = await fetch(`${PORTFOLIO_API_BASE_URL}/api/content/mud-leaderboard`, { cache: 'no-store' });
+            if (!apiResponse.ok) throw new Error(`Leaderboard API request failed: ${apiResponse.status}`);
+            data = await apiResponse.json();
+          } catch {
+            data = null;
+          }
         }
-        const data = await response.json();
+        if (!data) {
+          const response = await fetch(MUD_PUBLIC_LEADERBOARD_URL, { cache: 'no-store' });
+          if (!response.ok) throw new Error(`Leaderboard request failed: ${response.status}`);
+          data = await response.json();
+        }
         publicMudLeaderboardEntries = Array.isArray(data.entries) ? data.entries : [];
       } catch {
         publicMudLeaderboardEntries = [];
       }
       renderMudLeaderboard();
-    }
-
-    function addMudLeaderboardEntry(name, moves) {
-      const cleanName = cleanMudLeaderboardName(name);
-      const entries = getMudLeaderboard();
-      const sideQuests = getCompletedSideQuestNames();
-      const entry = {
-        id: createMudSubmissionId(),
-        name: cleanName,
-        moves,
-        sideQuests,
-        sideQuestCount: sideQuests.length,
-        rank: mudRankForRun(moves, sideQuests.length),
-        route: 'Ueno -> Otemachi -> Shibuya -> Ueno',
-        completedAt: new Date().toISOString(),
-      };
-      entries.push(entry);
-      entries.sort((a, b) => a.moves - b.moves || getEntrySideQuestCount(b) - getEntrySideQuestCount(a) || a.completedAt.localeCompare(b.completedAt));
-      saveMudLeaderboard(entries);
-      renderMudLeaderboard();
-      appendMudLine('system', mudText(
-        `${cleanName} has a pending leaderboard score with ${moves} moves and ${sideQuests.length} side quests.`,
-        `${cleanName}のリーダーボード申請：${moves}手、サイドクエスト${sideQuests.length}件。`,
-      ));
-      return entry;
-    }
-
-    function openMudScoreEmail(entry) {
-      const payload = {
-        type: 'ueno-quest-score',
-        id: entry.id,
-        name: entry.name,
-        moves: entry.moves,
-        sideQuests: entry.sideQuests,
-        sideQuestCount: entry.sideQuestCount,
-        rank: entry.rank,
-        route: entry.route,
-        completedAt: entry.completedAt,
-      };
-      const subject = `UENO QUEST SCORE ${entry.id}`;
-      const body = [
-        'Ueno Quest completion',
-        '',
-        JSON.stringify(payload, null, 2),
-      ].join('\n');
-      window.location.href = `mailto:justin.garcia@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     }
 
     function workProgressText() {
@@ -1290,16 +1259,15 @@
         `結果：${mudState.moves}手、サイドクエスト${sideQuestCount}/${Object.keys(MUD_SIDE_QUEST_LABELS).length}件。`,
       ));
       saveMudState();
-      const name = window.prompt(mudText(
-        'You made it home for soba. Name for the leaderboard submission?',
-        'そばを作って帰宅成功。リーダーボード申請用の名前は？',
-      ));
-      const entry = addMudLeaderboardEntry(name, mudState.moves);
       appendMudLine('system', mudText(
-        'Opening an email so Justin can add your score to the public board.',
-        'Justinが公開ボードにスコアを追加できるよう、メールを開きます。',
+        'Submit your score for approval in the dialog.',
+        'ダイアログからスコアを承認待ちとして送信できます。',
       ));
-      openMudScoreEmail(entry);
+      window.openPortfolioSubmission?.('mud-score', {
+        moves: mudState.moves,
+        sideQuests: getCompletedSideQuestNames(),
+        completedAt: new Date().toISOString(),
+      });
     }
 
     function executeMudCommand(command, displayCommand = command) {
@@ -1685,6 +1653,22 @@
       }
       mudCommandInput.value = '';
       executeMudCommand(command);
+    });
+
+    document.addEventListener('portfolio-submission-accepted', (event) => {
+      if (event.detail?.kind !== 'mud-score') {
+        return;
+      }
+      const payload = event.detail.payload;
+      const entries = getMudLeaderboard();
+      entries.push(payload);
+      entries.sort((a, b) => a.moves - b.moves || getEntrySideQuestCount(b) - getEntrySideQuestCount(a) || a.completedAt.localeCompare(b.completedAt));
+      saveMudLeaderboard(entries);
+      renderMudLeaderboard();
+      appendMudLine('system', mudText(
+        `${payload.name} has a pending leaderboard score with ${payload.moves} moves and ${payload.sideQuests.length} side quests.`,
+        `${payload.name}のリーダーボード申請：${payload.moves}手、サイドクエスト${payload.sideQuests.length}件。`,
+      ));
     });
 
     renderMudLeaderboard();

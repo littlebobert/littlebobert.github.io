@@ -1,8 +1,62 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-07-12T16:15:02.614Z",
+  "updatedAt": "2026-07-13T17:24:33.199Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2076652115427266906",
+      "text": "promptin' away again in Margaritaville, searchin' for my lost package.json https://t.co/Di2qpO0bU3",
+      "createdAt": "2026-07-13T12:57:01.000Z",
+      "url": "https://x.com/_bobertdowney/status/2076652115427266906",
+      "urls": [
+        {
+          "url": "https://t.co/Di2qpO0bU3",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2076652115427266906/photo/1",
+          "displayUrl": "pic.x.com/Di2qpO0bU3",
+          "start": 75,
+          "end": 98
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2076652115427266906-0.png",
+          "imageModern": "assets/generated/x/mine-post-2076652115427266906-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2076413487665078411",
+      "text": "remember the viral app Words with Friends? this is \"vibe code with friends\". this is Blanket Fort, and it’s my submission for RevenueCat’s Shipaton hackathon.\n\nthere are tons of vibe coding tools out there that let you create apps, but have you ever tried to use one to https://t.co/4WXMjK7lhO",
+      "createdAt": "2026-07-12T21:08:48.000Z",
+      "url": "https://x.com/_bobertdowney/status/2076413487665078411",
+      "urls": [
+        {
+          "url": "https://t.co/4WXMjK7lhO",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2076413487665078411/video/1",
+          "displayUrl": "pic.x.com/4WXMjK7lhO",
+          "start": 270,
+          "end": 293
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2076413487665078411-0.png",
+          "imageModern": "assets/generated/x/mine-post-2076413487665078411-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2075035780205142207",
       "text": "Need translation while typing or reading Japanese with one keyboard shortcut? Try out my free macOS app, Sasu. It can also (with your permission) scan and give guidance on the entire Safari page you’re on, including parts off-screen.\n\nAnd it gives you on-screen guidance without https://t.co/eQTppVBVNF",
@@ -213,58 +267,6 @@ window.X_POSTS_SNAPSHOT = {
           "type": "photo",
           "image": "assets/generated/x/mine-post-2073317905195032652-0.png",
           "imageModern": "assets/generated/x/mine-post-2073317905195032652-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2072955781302112319",
-      "text": "I rarely speak in the office except today I asked everyone why they hadn’t heard of The Rizzler 🤡",
-      "createdAt": "2026-07-03T08:09:06.000Z",
-      "url": "https://x.com/_bobertdowney/status/2072955781302112319",
-      "urls": [],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2070339388060606759",
-      "text": "おはようございます\n\nlive English audio and subtitles courtesy of Kotoba https://t.co/qhlryLoeFZ",
-      "createdAt": "2026-06-26T02:52:29.000Z",
-      "url": "https://x.com/_bobertdowney/status/2070339388060606759",
-      "urls": [
-        {
-          "url": "https://t.co/qhlryLoeFZ",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2070339388060606759/photo/1",
-          "displayUrl": "pic.x.com/qhlryLoeFZ",
-          "start": 63,
-          "end": 86
-        },
-        {
-          "url": "https://t.co/qhlryLoeFZ",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2070339388060606759/photo/1",
-          "displayUrl": "pic.x.com/qhlryLoeFZ",
-          "start": 63,
-          "end": 86
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2070339388060606759-0.png",
-          "imageModern": "assets/generated/x/mine-post-2070339388060606759-0-modern.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2070339388060606759-1.png",
-          "imageModern": "assets/generated/x/mine-post-2070339388060606759-1-modern.png"
         }
       ]
     }

@@ -1,35 +1,8 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-07-13T17:24:33.199Z",
+  "updatedAt": "2026-07-14T16:40:09.152Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
-    {
-      "id": "2076652115427266906",
-      "text": "promptin' away again in Margaritaville, searchin' for my lost package.json https://t.co/Di2qpO0bU3",
-      "createdAt": "2026-07-13T12:57:01.000Z",
-      "url": "https://x.com/_bobertdowney/status/2076652115427266906",
-      "urls": [
-        {
-          "url": "https://t.co/Di2qpO0bU3",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2076652115427266906/photo/1",
-          "displayUrl": "pic.x.com/Di2qpO0bU3",
-          "start": 75,
-          "end": 98
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2076652115427266906-0.png",
-          "imageModern": "assets/generated/x/mine-post-2076652115427266906-0-modern.png"
-        }
-      ]
-    },
     {
       "id": "2076413487665078411",
       "text": "remember the viral app Words with Friends? this is \"vibe code with friends\". this is Blanket Fort, and it’s my submission for RevenueCat’s Shipaton hackathon.\n\nthere are tons of vibe coding tools out there that let you create apps, but have you ever tried to use one to https://t.co/4WXMjK7lhO",
@@ -269,6 +242,18 @@ window.X_POSTS_SNAPSHOT = {
           "imageModern": "assets/generated/x/mine-post-2073317905195032652-0-modern.png"
         }
       ]
+    },
+    {
+      "id": "2072955781302112319",
+      "text": "I rarely speak in the office except today I asked everyone why they hadn’t heard of The Rizzler 🤡",
+      "createdAt": "2026-07-03T08:09:06.000Z",
+      "url": "https://x.com/_bobertdowney/status/2072955781302112319",
+      "urls": [],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
     }
   ]
 };

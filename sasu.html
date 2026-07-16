@@ -5,7 +5,7 @@
   <script src="theme.js?v=2"></script>
   <title>Sasu (指す)</title>
   <link href='style.css?v=125' rel='stylesheet'>
-  <link href='sasu-common.css?v=1' rel='stylesheet'>
+  <link href='sasu-common.css?v=2' rel='stylesheet'>
   <link rel="icon" href="assets/sasu-icon.png">
   <link rel="apple-touch-icon" href="assets/sasu-icon.png">
   <link rel="canonical" href="https://sasu.jp/">
@@ -15,12 +15,16 @@
     content="Understand Japanese websites and forms without browser translation breaking the page. Works in any app."
     data-label-en="Understand Japanese websites and forms without browser translation breaking the page. Works in any app."
     data-label-ja="ブラウザ翻訳のようにページのレイアウトを崩すことなく、英語のWebサイトやフォームを理解できます。どのアプリでも使えます。"
+    data-label-zh-hant="無需使用會破壞頁面版面的瀏覽器翻譯，也能理解日文網站和表單。適用於任何 App。"
+    data-label-zh-hans="无需使用会破坏页面布局的浏览器翻译，也能理解日文网站和表单。适用于任何 App。"
   />
   <meta
     property="og:title"
     content="Japanese websites, explained on screen"
     data-label-en="Japanese websites, explained on screen"
     data-label-ja="英語のWebサイトを画面上で案内"
+    data-label-zh-hant="在畫面上解說日文網站"
+    data-label-zh-hans="在屏幕上讲解日文网站"
   />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://sasu.jp/" />
@@ -30,6 +34,8 @@
     content="Understand Japanese websites and forms without browser translation breaking the page. Works in any app."
     data-label-en="Understand Japanese websites and forms without browser translation breaking the page. Works in any app."
     data-label-ja="ブラウザ翻訳のようにページのレイアウトを崩すことなく、英語のWebサイトやフォームを理解できます。どのアプリでも使えます。"
+    data-label-zh-hant="無需使用會破壞頁面版面的瀏覽器翻譯，也能理解日文網站和表單。適用於任何 App。"
+    data-label-zh-hans="无需使用会破坏页面布局的浏览器翻译，也能理解日文网站和表单。适用于任何 App。"
   />
   <meta property="og:image" content="https://sasu.jp/assets/sasu-social.png?v=2" />
   <meta property="og:image:secure_url" content="https://sasu.jp/assets/sasu-social.png?v=2" />
@@ -43,12 +49,16 @@
     content="Japanese websites, explained on screen"
     data-label-en="Japanese websites, explained on screen"
     data-label-ja="英語のWebサイトを画面上で案内"
+    data-label-zh-hant="在畫面上解說日文網站"
+    data-label-zh-hans="在屏幕上讲解日文网站"
   />
   <meta
     name="twitter:description"
     content="Understand Japanese websites and forms without browser translation breaking the page. Works in any app."
     data-label-en="Understand Japanese websites and forms without browser translation breaking the page. Works in any app."
     data-label-ja="ブラウザ翻訳のようにページのレイアウトを崩すことなく、英語のWebサイトやフォームを理解できます。どのアプリでも使えます。"
+    data-label-zh-hant="無需使用會破壞頁面版面的瀏覽器翻譯，也能理解日文網站和表單。適用於任何 App。"
+    data-label-zh-hans="无需使用会破坏页面布局的浏览器翻译，也能理解日文网站和表单。适用于任何 App。"
   />
   <meta name="twitter:image" content="https://sasu.jp/assets/sasu-social.png?v=2" />
   <meta name="twitter:image:alt" content="Sasu app icon" />
@@ -83,7 +93,19 @@
 <body class="resume-page">
   <div class="sasu-page">
     <div class="language-switcher">
-      <button type="button" id="language-toggle" aria-label="Switch language">日本語</button>
+      <label
+        for="language-select"
+        data-label-en="Language"
+        data-label-ja="言語"
+        data-label-zh-hant="語言"
+        data-label-zh-hans="语言"
+      >Language</label>
+      <select id="language-select" aria-label="Language">
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="zh-Hant">繁體中文</option>
+        <option value="zh-Hans">简体中文</option>
+      </select>
     </div>
 
     <div class="sasu-hero">
@@ -95,6 +117,8 @@
             class="sasu-subtitle"
             data-label-en="Japanese websites, explained on screen"
             data-label-ja="英語のWebサイトを画面上で案内"
+            data-label-zh-hant="在畫面上解說日文網站"
+            data-label-zh-hans="在屏幕上讲解日文网站"
           >
             Japanese websites, explained on screen
           </div>
@@ -104,6 +128,8 @@
         class="sasu-tagline"
         data-label-en="Understand Japanese websites and forms without browser translation breaking the page. Works in any app."
         data-label-ja="ブラウザ翻訳のようにページのレイアウトを崩すことなく、英語のWebサイトやフォームを理解できます。どのアプリでも使えます。"
+        data-label-zh-hant="無需使用會破壞頁面版面的瀏覽器翻譯，也能理解日文網站和表單。適用於任何 App。"
+        data-label-zh-hans="无需使用会破坏页面布局的浏览器翻译，也能理解日文网站和表单。适用于任何 App。"
       >
         Understand Japanese websites and forms without browser translation breaking the page. Works in any app.
       </div>
@@ -112,16 +138,22 @@
         href="https://github.com/littlebobert/sasu/releases/download/0.1.27/Sasu-0.1.27-mac.zip"
         data-label-en="Download for macOS"
         data-label-ja="macOS版をダウンロード"
+        data-label-zh-hant="下載 macOS 版"
+        data-label-zh-hans="下载 macOS 版"
       >Download for macOS</a>
       <span
         class="download-version"
         data-label-en="(version 0.1.27)"
         data-label-ja="（バージョン 0.1.27）"
+        data-label-zh-hant="（版本 0.1.27）"
+        data-label-zh-hans="（版本 0.1.27）"
       >(version 0.1.27)</span>
       <div
         class="small-note"
         data-label-en="Requires macOS 13 or newer, Screen Recording permission, and either an invite or your own OpenAI API key."
         data-label-ja="macOS 13以降、画面収録の許可、招待または自分のOpenAI APIキーが必要です。"
+        data-label-zh-hant="需要 macOS 13 或更新版本、螢幕錄製權限，以及邀請或您自己的 OpenAI API 金鑰。"
+        data-label-zh-hans="需要 macOS 13 或更高版本、屏幕录制权限，以及邀请或您自己的 OpenAI API 密钥。"
       >
         Requires macOS 13 or newer, Screen Recording permission, and either an invite or your own OpenAI API key.
       </div>
@@ -129,10 +161,14 @@
         <h2
           data-label-en="You’ve been invited to Sasu"
           data-label-ja="Sasuに招待されました"
+          data-label-zh-hant="您已受邀使用 Sasu"
+          data-label-zh-hans="您已受邀使用 Sasu"
         >You’ve been invited to Sasu</h2>
         <div
           data-label-en="Download and install Sasu, then come back to this page and open your invite."
           data-label-ja="Sasuをダウンロードしてインストールした後、このページに戻って招待を開いてください。"
+          data-label-zh-hant="下載並安裝 Sasu，然後返回此頁面並開啟邀請。"
+          data-label-zh-hans="下载并安装 Sasu，然后返回此页面并打开邀请。"
         >Download and install Sasu, then come back to this page and open your invite.</div>
         <a
           class="download-link"
@@ -140,11 +176,15 @@
           href="#"
           data-label-en="Open Sasu with invite"
           data-label-ja="招待を使ってSasuを開く"
+          data-label-zh-hant="使用邀請開啟 Sasu"
+          data-label-zh-hans="使用邀请打开 Sasu"
         >Open Sasu with invite</a>
         <div
           class="small-note"
           data-label-en="If macOS asks, allow this page to open Sasu."
           data-label-ja="macOSから確認された場合は、このページからSasuを開くことを許可してください。"
+          data-label-zh-hant="如果 macOS 詢問，請允許此頁面開啟 Sasu。"
+          data-label-zh-hans="如果 macOS 询问，请允许此页面打开 Sasu。"
         >If macOS asks, allow this page to open Sasu.</div>
       </div>
     </div>
@@ -155,6 +195,8 @@
           class="sasu-demo-label"
           data-label-en="Example:"
           data-label-ja="例:"
+          data-label-zh-hant="範例："
+          data-label-zh-hans="示例："
         >Example:</figcaption>
         <div class="sasu-demo-window" id="sasu-demo-window">
           <div class="sasu-demo-titlebar" aria-hidden="true">
@@ -176,6 +218,8 @@
                 aria-hidden="true"
                 data-label-en="Start tax return"
                 data-label-ja="確定申告を開始する"
+                data-label-zh-hant="開始報稅"
+                data-label-zh-hans="开始报税"
               >Start tax return</div>
               <div class="sasu-demo-target">
                 <div class="sasu-demo-button">
@@ -195,15 +239,24 @@
           class="sasu-demo-caption"
           data-label-en="Ask a question and get on-screen guidance."
           data-label-ja="質問すると、画面上で案内を表示します。"
+          data-label-zh-hant="提出問題，即可獲得畫面上的操作指引。"
+          data-label-zh-hans="提出问题，即可获得屏幕上的操作指引。"
         >Ask a question and get on-screen guidance.</figcaption>
       </figure>
     </div>
 
     <div class="sasu-section">
-      <h2 data-label-en="Privacy:" data-label-ja="プライバシー:">Privacy:</h2>
+      <h2
+        data-label-en="Privacy:"
+        data-label-ja="プライバシー:"
+        data-label-zh-hant="隱私："
+        data-label-zh-hans="隐私："
+      >Privacy:</h2>
       <div
         data-label-en="Sasu only sends your screenshot or copied clipboard text when you ask. With invite access, requests go through the Sasu server and then to OpenAI. With your own API key, requests go directly to OpenAI. Credentials are stored securely in macOS Keychain."
         data-label-ja="Sasuは、依頼したときだけスクリーンショットまたはコピーしたクリップボードのテキストを送信します。招待アクセスでは、リクエストはSasuのサーバーを経由してOpenAIに送信されます。自分のAPIキーを使う場合はOpenAIへ直接送信されます。認証情報はmacOSのキーチェーンに安全に保存されます。"
+        data-label-zh-hant="Sasu 只會在您提出要求時傳送螢幕截圖或複製到剪貼簿的文字。使用邀請存取時，請求會先經過 Sasu 伺服器，再傳送至 OpenAI。使用您自己的 API 金鑰時，請求會直接傳送至 OpenAI。認證資料會安全地儲存在 macOS 鑰匙圈中。"
+        data-label-zh-hans="Sasu 只会在您提出请求时发送屏幕截图或复制到剪贴板的文本。使用邀请访问时，请求会先经过 Sasu 服务器，再发送至 OpenAI。使用您自己的 API 密钥时，请求会直接发送至 OpenAI。凭据会安全地存储在 macOS 钥匙串中。"
       >
         Sasu only sends your screenshot or copied clipboard text when you ask. With invite access, requests go through the Sasu server and then to OpenAI. With your own API key, requests go directly to OpenAI. Credentials are stored securely in macOS Keychain.
       </div>
@@ -212,15 +265,24 @@
           href="https://github.com/littlebobert/sasu-internal"
           data-label-en="View the source code on GitHub."
           data-label-ja="ソースコードをGitHubで見る。"
+          data-label-zh-hant="在 GitHub 上查看原始碼。"
+          data-label-zh-hans="在 GitHub 上查看源代码。"
         >View the source code on GitHub.</a>
       </div>
     </div>
 
     <div class="sasu-section">
-      <h2 data-label-en="Why I made this:" data-label-ja="作った理由:">Why I made this:</h2>
+      <h2
+        data-label-en="Why I made this:"
+        data-label-ja="作った理由:"
+        data-label-zh-hant="開發初衷："
+        data-label-zh-hans="开发初衷："
+      >Why I made this:</h2>
       <div
         data-label-en="I recently started working in Japan and sometimes need help understanding forms and other web pages. Browser translation can rearrange or break the page layout, and pasting screenshots into an AI chat gives no on-screen guidance. The app name is 指す — “to point.”"
         data-label-ja="日本で働いていて、フォームやその他のWebページを理解するために助けが必要になることがあります。ブラウザ翻訳はページのレイアウトを変えたり崩したりすることがあり、スクリーンショットをAIチャットに貼り付けても画面上で案内してくれません。アプリ名は「指す」です。意味は「指し示す」です。"
+        data-label-zh-hant="我最近開始在日本工作，有時需要協助理解表單和其他網頁。瀏覽器翻譯可能會重新排列或破壞頁面版面，而將螢幕截圖貼到 AI 聊天中也無法獲得畫面上的操作指引。App 名稱「指す」在日文中意為「指向」。"
+        data-label-zh-hans="我最近开始在日本工作，有时需要帮助理解表单和其他网页。浏览器翻译可能会重新排列或破坏页面布局，而将屏幕截图粘贴到 AI 聊天中也无法获得屏幕上的操作指引。App 名称“指す”在日语中意为“指向”。"
       >
         I recently started working in Japan and sometimes need help understanding forms and other web pages. Browser translation can rearrange or break the page layout, and pasting screenshots into an AI chat gives no on-screen guidance. The app name is 指す — “to point.”
       </div>
@@ -228,7 +290,12 @@
 
     <div class="sasu-section release-notes">
       <details>
-        <summary data-label-en="Release notes" data-label-ja="リリースノート">Release notes</summary>
+        <summary
+          data-label-en="Release notes"
+          data-label-ja="リリースノート"
+          data-label-zh-hant="版本資訊"
+          data-label-zh-hans="发行说明"
+        >Release notes</summary>
                                                                                                                         <h3
         data-label-en="0.1.27"
         data-label-ja="0.1.27"
@@ -237,6 +304,8 @@
         <li
           data-label-en="Follow up fixes for Traditional and Simplified Chinese support."
           data-label-ja="繁体字中国語と簡体字中国語のサポートに関する追加修正を行いました。"
+          data-label-zh-hant="針對繁體中文和簡體中文支援進行了後續修正。"
+          data-label-zh-hans="针对繁体中文和简体中文支持进行了后续修复。"
         >Follow up fixes for Traditional and Simplified Chinese support.</li>
       </ul>
 
@@ -248,6 +317,8 @@
         <li
           data-label-en="Added support for Traditional and Simplied Chinese UI, added a target language option."
           data-label-ja="繁体字中国語と簡体字中国語のUIに対応し、対象言語オプションを追加しました。"
+          data-label-zh-hant="新增繁體中文和簡體中文介面支援，並新增目標語言選項。"
+          data-label-zh-hans="新增繁体中文和简体中文界面支持，并新增目标语言选项。"
         >Added support for Traditional and Simplied Chinese UI, added a target language option.</li>
       </ul>
 
@@ -259,6 +330,8 @@
         <li
           data-label-en="Added a text size setting, bumped gpt to 5.6"
           data-label-ja="テキストサイズ設定を追加し、GPTを5.6にアップデートしました。"
+          data-label-zh-hant="新增文字大小設定，並將 GPT 升級至 5.6。"
+          data-label-zh-hans="新增文本大小设置，并将 GPT 升级至 5.6。"
         >Added a text size setting, bumped gpt to 5.6</li>
       </ul>
 
@@ -270,6 +343,8 @@
         <li
           data-label-en="Safari fix, switch to Cloudflare, and fix the app for Japanese users"
           data-label-ja="Safariの修正、Cloudflareへの切り替え、日本のユーザー向けのアプリ修正を行いました。"
+          data-label-zh-hant="修正 Safari 問題、切換至 Cloudflare，並修正日文使用者遇到的 App 問題。"
+          data-label-zh-hans="修复 Safari 问题、切换至 Cloudflare，并修复日语用户遇到的 App 问题。"
         >Safari fix, switch to Cloudflare, and fix the app for Japanese users</li>
       </ul>
 
@@ -281,6 +356,8 @@
         <li
           data-label-en="Tries to fix flickering when the app opens"
           data-label-ja="アプリ起動時のちらつきの修正を試みます。"
+          data-label-zh-hant="嘗試修正 App 開啟時的閃爍問題。"
+          data-label-zh-hans="尝试修复 App 打开时的闪烁问题。"
         >Tries to fix flickering when the app opens</li>
       </ul>
 
@@ -292,6 +369,8 @@
         <li
           data-label-en="Fixed text selection bug in the transcript window."
           data-label-ja="文字起こしウィンドウでテキストを選択できない不具合を修正しました。"
+          data-label-zh-hant="修正對話記錄視窗中的文字選取問題。"
+          data-label-zh-hans="修复对话记录窗口中的文本选择问题。"
         >Fixed text selection bug in the transcript window.</li>
       </ul>
 
@@ -303,6 +382,8 @@
         <li
           data-label-en="Added furigana for clipboard translations."
           data-label-ja="クリップボード翻訳にふりがなを追加しました。"
+          data-label-zh-hant="為剪貼簿翻譯新增振假名。"
+          data-label-zh-hans="为剪贴板翻译新增振假名。"
         >Added furigana for clipboard translations.</li>
       </ul>
 
@@ -314,6 +395,8 @@
         <li
           data-label-en="Tries to fix a permissions bug."
           data-label-ja="権限に関する不具合の修正を試みます。"
+          data-label-zh-hant="嘗試修正權限問題。"
+          data-label-zh-hans="尝试修复权限问题。"
         >Tries to fix a permissions bug.</li>
       </ul>
 
@@ -325,6 +408,8 @@
         <li
           data-label-en="Added full Safari page context feature."
           data-label-ja="Safariページ全体のコンテキスト機能を追加しました。"
+          data-label-zh-hant="新增完整 Safari 頁面內容功能。"
+          data-label-zh-hans="新增完整 Safari 页面内容功能。"
         >Added full Safari page context feature.</li>
       </ul>
 
@@ -336,6 +421,8 @@
         <li
           data-label-en="Try to fix Translate Clipboard prompt."
           data-label-ja="「クリップボードを翻訳」プロンプトの修正を試みました。"
+          data-label-zh-hant="嘗試修正「翻譯剪貼簿」提示詞。"
+          data-label-zh-hans="尝试修复“翻译剪贴板”提示词。"
         >Try to fix Translate Clipboard prompt.</li>
       </ul>
 
@@ -347,6 +434,8 @@
         <li
           data-label-en="Permissions bug fix."
           data-label-ja="権限に関するバグを修正しました。"
+          data-label-zh-hant="修正權限問題。"
+          data-label-zh-hans="修复权限问题。"
         >Permissions bug fix.</li>
       </ul>
 
@@ -358,6 +447,8 @@
         <li
           data-label-en="Bug fix: prompt to relaunch Sasu after enabling the AX setting."
           data-label-ja="バグ修正：AX設定を有効にした後に、Sasuの再起動を促すようにしました。"
+          data-label-zh-hant="問題修正：啟用輔助使用設定後，提示重新啟動 Sasu。"
+          data-label-zh-hans="问题修复：启用辅助功能设置后，提示重新启动 Sasu。"
         >Bug fix: prompt to relaunch Sasu after enabling the AX setting.</li>
       </ul>
 
@@ -369,6 +460,8 @@
         <li
           data-label-en="Added a Translate Selection feature, and support Japanese users by going in the opposite direction (to English)."
           data-label-ja="選択範囲の翻訳機能を追加し、日本語ユーザー向けに逆方向（英語へ）の翻訳にも対応しました。"
+          data-label-zh-hant="新增「翻譯所選內容」功能，並支援日文使用者反向翻譯成英文。"
+          data-label-zh-hans="新增“翻译所选内容”功能，并支持日语用户反向翻译成英语。"
         >Added a Translate Selection feature, and support Japanese users by going in the opposite direction (to English).</li>
       </ul>
 
@@ -380,6 +473,8 @@
         <li
           data-label-en="Expanded invite system."
           data-label-ja="招待システムを拡張しました。"
+          data-label-zh-hant="擴充邀請系統。"
+          data-label-zh-hans="扩展邀请系统。"
         >Expanded invite system.</li>
       </ul>
 
@@ -391,6 +486,8 @@
         <li
           data-label-en="Fix onboarding bugs."
           data-label-ja="オンボーディングの不具合を修正しました。"
+          data-label-zh-hant="修正初始設定流程的問題。"
+          data-label-zh-hans="修复初始设置流程的问题。"
         >Fix onboarding bugs.</li>
       </ul>
 
@@ -402,6 +499,8 @@
         <li
           data-label-en="Added a way to report bugs."
           data-label-ja="バグを報告する方法を追加しました。"
+          data-label-zh-hant="新增回報問題的方式。"
+          data-label-zh-hans="新增报告问题的方式。"
         >Added a way to report bugs.</li>
       </ul>
 
@@ -413,6 +512,8 @@
         <li
           data-label-en="Added some onboarding guidance."
           data-label-ja="オンボーディングの案内をいくつか追加しました。"
+          data-label-zh-hant="新增初始設定指引。"
+          data-label-zh-hans="新增初始设置指引。"
         >Added some onboarding guidance.</li>
       </ul>
 
@@ -424,6 +525,8 @@
         <li
           data-label-en="Fixed the macOS download so Gatekeeper recognizes Sasu as notarized."
           data-label-ja="macOS版のダウンロードを修正し、GatekeeperがSasuを公証済みとして認識するようにしました。"
+          data-label-zh-hant="修正 macOS 下載版本，讓 Gatekeeper 能辨識 Sasu 已完成公證。"
+          data-label-zh-hans="修复 macOS 下载版本，让 Gatekeeper 能识别 Sasu 已完成公证。"
         >Fixed the macOS download so Gatekeeper recognizes Sasu as notarized.</li>
       </ul>
 
@@ -435,6 +538,8 @@
         <li
           data-label-en="Added an invite system for friends and family."
           data-label-ja="友人や家族向けの招待システムを追加しました。"
+          data-label-zh-hant="新增供親友使用的邀請系統。"
+          data-label-zh-hans="新增供亲友使用的邀请系统。"
         >Added an invite system for friends and family.</li>
       </ul>
 
@@ -446,6 +551,8 @@
         <li
           data-label-en="Added a faster model option."
           data-label-ja="より高速なモデルオプションを追加しました。"
+          data-label-zh-hant="新增速度更快的模型選項。"
+          data-label-zh-hans="新增速度更快的模型选项。"
         >Added a faster model option.</li>
       </ul>
 
@@ -457,6 +564,8 @@
         <li
           data-label-en="Fixed a bug where guidance would be in the wrong place if the target button contained no text."
           data-label-ja="対象のボタンにテキストがない場合、案内が誤った位置に表示される不具合を修正しました。"
+          data-label-zh-hant="修正目標按鈕沒有文字時，操作指引可能出現在錯誤位置的問題。"
+          data-label-zh-hans="修复目标按钮没有文本时，操作指引可能出现在错误位置的问题。"
         >Fixed a bug where guidance would be in the wrong place if the target button contained no text.</li>
       </ul>
 
@@ -468,6 +577,8 @@
         <li
           data-label-en="Added automatic updates."
           data-label-ja="自動アップデートを追加しました。"
+          data-label-zh-hant="新增自動更新。"
+          data-label-zh-hans="新增自动更新。"
         >Added automatic updates.</li>
       </ul>
 
@@ -479,6 +590,8 @@
           <li
             data-label-en="Fixed a bug where the guidance text could sometimes appear off-screen."
             data-label-ja="案内テキストが画面外に表示されることがある不具合を修正しました。"
+            data-label-zh-hant="修正操作指引文字有時會顯示在畫面外的問題。"
+            data-label-zh-hans="修复操作指引文本有时会显示在屏幕外的问题。"
           >Fixed a bug where the guidance text could sometimes appear off-screen.</li>
         </ul>
 
@@ -487,6 +600,8 @@
           <li
             data-label-en="Added Translate Clipboard."
             data-label-ja="「クリップボードを翻訳」を追加しました。"
+            data-label-zh-hant="新增「翻譯剪貼簿」。"
+            data-label-zh-hans="新增“翻译剪贴板”。"
           >Added Translate Clipboard.</li>
         </ul>
 
@@ -495,6 +610,8 @@
           <li
             data-label-en="Fixed window z-index issues."
             data-label-ja="ウィンドウの重なり順の問題を修正しました。"
+            data-label-zh-hant="修正視窗層級問題。"
+            data-label-zh-hans="修复窗口层级问题。"
           >Fixed window z-index issues.</li>
         </ul>
 
@@ -503,10 +620,14 @@
           <li
             data-label-en="Fixed a bug where some words would run together in the transcript."
             data-label-ja="会話履歴で一部の単語がつながって表示される不具合を修正しました。"
+            data-label-zh-hant="修正對話記錄中部分單字會連在一起的問題。"
+            data-label-zh-hans="修复对话记录中部分单词会连在一起的问题。"
           >Fixed a bug where some words would run together in the transcript.</li>
           <li
             data-label-en="When an answer finishes while Sasu is in the background, Sasu now bounces the Dock icon instead of bringing itself to the foreground."
             data-label-ja="Sasuがバックグラウンドにある間に回答が完了した場合、前面に出る代わりにDockアイコンで通知するようにしました。"
+            data-label-zh-hant="當 Sasu 在背景完成回答時，現在會讓 Dock 圖示彈跳，而不是自行移到前景。"
+            data-label-zh-hans="当 Sasu 在后台完成回答时，现在会让 Dock 图标弹跳，而不是自行移到前台。"
           >When an answer finishes while Sasu is in the background, Sasu now bounces the Dock icon instead of bringing itself to the foreground.</li>
         </ul>
 
@@ -515,38 +636,58 @@
           <li
             data-label-en="Added double-click to expand screenshot previews."
             data-label-ja="スクリーンショットのプレビューをダブルクリックで拡大表示できるようにしました。"
+            data-label-zh-hant="新增按兩下放大螢幕截圖預覽的功能。"
+            data-label-zh-hans="新增双击放大屏幕截图预览的功能。"
           >Added double-click to expand screenshot previews.</li>
           <li
             data-label-en="Improved transcript rendering so questions, answers, links, and markdown are selectable and easier to read."
             data-label-ja="質問、回答、リンク、Markdownを選択しやすく、読みやすくするため、会話履歴の表示を改善しました。"
+            data-label-zh-hant="改善對話記錄顯示，讓問題、回答、連結和 Markdown 更容易選取與閱讀。"
+            data-label-zh-hans="改进对话记录显示，让问题、回答、链接和 Markdown 更容易选择与阅读。"
           >Improved transcript rendering so questions, answers, links, and markdown are selectable and easier to read.</li>
           <li
             data-label-en="Links in answers now open in the browser, and support Copy Link."
             data-label-ja="回答内のリンクをブラウザで開けるようにし、「リンクをコピー」にも対応しました。"
+            data-label-zh-hant="回答中的連結現在會在瀏覽器中開啟，並支援「複製連結」。"
+            data-label-zh-hans="回答中的链接现在会在浏览器中打开，并支持“复制链接”。"
           >Links in answers now open in the browser, and support Copy Link.</li>
           <li
             data-label-en="Suggested highlights now appear in chronological transcript order under the answer that produced them."
             data-label-ja="ハイライト候補が、それを生成した回答の下に会話の時系列順で表示されるようになりました。"
+            data-label-zh-hant="建議的醒目提示現在會依對話時間順序，顯示在產生它們的回答下方。"
+            data-label-zh-hans="建议的高亮提示现在会按对话时间顺序，显示在生成它们的回答下方。"
           >Suggested highlights now appear in chronological transcript order under the answer that produced them.</li>
           <li
             data-label-en="Fixed Settings and About window ordering."
             data-label-ja="設定ウィンドウとAboutウィンドウの重なり順を修正しました。"
+            data-label-zh-hant="修正「設定」與「關於」視窗的層級順序。"
+            data-label-zh-hans="修复“设置”与“关于”窗口的层级顺序。"
           >Fixed Settings and About window ordering.</li>
         </ul>
 
         <h3>0.1.0</h3>
         <ul>
-          <li data-label-en="Initial release." data-label-ja="初回リリース。">Initial release.</li>
+          <li
+            data-label-en="Initial release."
+            data-label-ja="初回リリース。"
+            data-label-zh-hant="首次發布。"
+            data-label-zh-hans="首次发布。"
+          >Initial release.</li>
         </ul>
       </details>
     </div>
 
     <div class="home-link">
-      <span data-label-en="Created by" data-label-ja="作成者">Created by</span>
+      <span
+        data-label-en="Created by"
+        data-label-ja="作成者"
+        data-label-zh-hant="製作者"
+        data-label-zh-hans="制作者"
+      >Created by</span>
       <a href="https://justin-garcia.pages.dev">Justin Garcia</a>
     </div>
   </div>
-  <script src="sasu-common.js?v=2"></script>
+  <script src="sasu-common.js?v=3"></script>
   <script>
     const invitePanel = document.getElementById('invite-panel');
     const openInviteLink = document.getElementById('open-invite-link');

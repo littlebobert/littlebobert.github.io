@@ -1,8 +1,109 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-07-17T16:35:57.350Z",
+  "updatedAt": "2026-07-18T16:12:57.932Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2078435369935315447",
+      "text": "reminds me of Apple’s eWorld online service from the 90s. I posted the @huggingface x @kotoba_tech event https://t.co/wb7Oe3XrBo",
+      "createdAt": "2026-07-18T11:03:02.000Z",
+      "url": "https://x.com/_bobertdowney/status/2078435369935315447",
+      "urls": [
+        {
+          "url": "https://t.co/wb7Oe3XrBo",
+          "expandedUrl": "https://twitter.com/aorblue/status/2078386731456528651",
+          "displayUrl": "x.com/aorblue/status…",
+          "start": 105,
+          "end": 128
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2078376236968182176",
+      "text": "終わりました. the Hermes agent is just running off my laptop for now though 🤡 #aimeetup #OpenAIBuildWeek https://t.co/ghErFPvbg8",
+      "createdAt": "2026-07-18T07:08:03.000Z",
+      "url": "https://x.com/_bobertdowney/status/2078376236968182176",
+      "urls": [
+        {
+          "url": "https://t.co/ghErFPvbg8",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2078376236968182176/photo/1",
+          "displayUrl": "pic.x.com/ghErFPvbg8",
+          "start": 99,
+          "end": 122
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2078376236968182176-0.png",
+          "imageModern": "assets/generated/x/mine-post-2078376236968182176-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2078330067973963934",
+      "text": "Global Build Week Community Event - Tokyo なう\n#aimeetup #OpenAI #BuildWeek https://t.co/POKAUoeHB0",
+      "createdAt": "2026-07-18T04:04:36.000Z",
+      "url": "https://x.com/_bobertdowney/status/2078330067973963934",
+      "urls": [
+        {
+          "url": "https://t.co/POKAUoeHB0",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2078330067973963934/photo/1",
+          "displayUrl": "pic.x.com/POKAUoeHB0",
+          "start": 74,
+          "end": 97
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2078330067973963934-0.png",
+          "imageModern": "assets/generated/x/mine-post-2078330067973963934-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2078324095205486889",
+      "text": "Global Build Week Community Event - Tokyo なう\n#aimeetup #OpenAI #BuildWeek https://t.co/jOPUHsQp3a",
+      "createdAt": "2026-07-18T03:40:52.000Z",
+      "url": "https://x.com/_bobertdowney/status/2078324095205486889",
+      "urls": [
+        {
+          "url": "https://t.co/jOPUHsQp3a",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2078324095205486889/photo/1",
+          "displayUrl": "pic.x.com/jOPUHsQp3a",
+          "start": 74,
+          "end": 97
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2078324095205486889-0.png",
+          "imageModern": "assets/generated/x/mine-post-2078324095205486889-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2076413487665078411",
       "text": "remember the viral app Words with Friends? this is \"vibe code with friends\". this is Blanket Fort, and it’s my submission for RevenueCat’s Shipaton hackathon.\n\nthere are tons of vibe coding tools out there that let you create apps, but have you ever tried to use one to https://t.co/4WXMjK7lhO",
@@ -188,72 +289,6 @@ window.X_POSTS_SNAPSHOT = {
           "imageModern": "assets/generated/x/mine-post-2073376968951873661-1-modern.png"
         }
       ]
-    },
-    {
-      "id": "2073375731250544950",
-      "text": "God Bless America https://t.co/hLRbKvc9OY",
-      "createdAt": "2026-07-04T11:57:50.000Z",
-      "url": "https://x.com/_bobertdowney/status/2073375731250544950",
-      "urls": [
-        {
-          "url": "https://t.co/hLRbKvc9OY",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2073375731250544950/photo/1",
-          "displayUrl": "pic.x.com/hLRbKvc9OY",
-          "start": 18,
-          "end": 41
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2073375731250544950-0.png",
-          "imageModern": "assets/generated/x/mine-post-2073375731250544950-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2073317905195032652",
-      "text": "N4-ing https://t.co/eN9BgCDQZV",
-      "createdAt": "2026-07-04T08:08:03.000Z",
-      "url": "https://x.com/_bobertdowney/status/2073317905195032652",
-      "urls": [
-        {
-          "url": "https://t.co/eN9BgCDQZV",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2073317905195032652/photo/1",
-          "displayUrl": "pic.x.com/eN9BgCDQZV",
-          "start": 7,
-          "end": 30
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2073317905195032652-0.png",
-          "imageModern": "assets/generated/x/mine-post-2073317905195032652-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2072955781302112319",
-      "text": "I rarely speak in the office except today I asked everyone why they hadn’t heard of The Rizzler 🤡",
-      "createdAt": "2026-07-03T08:09:06.000Z",
-      "url": "https://x.com/_bobertdowney/status/2072955781302112319",
-      "urls": [],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 };

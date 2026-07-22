@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-07-21T16:46:58.220Z",
+  "updatedAt": "2026-07-22T16:51:18.334Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
@@ -27,33 +27,6 @@
           "type": "photo",
           "image": "assets/generated/x/mine-post-2079550951875326041-0.png",
           "imageModern": "assets/generated/x/mine-post-2079550951875326041-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2079506456827879494",
-      "text": "Google Maps guys mapping little alleyways I guess? https://t.co/rFbeV4hmuY",
-      "createdAt": "2026-07-21T09:59:09.000Z",
-      "url": "https://x.com/_bobertdowney/status/2079506456827879494",
-      "urls": [
-        {
-          "url": "https://t.co/rFbeV4hmuY",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2079506456827879494/video/1",
-          "displayUrl": "pic.x.com/rFbeV4hmuY",
-          "start": 51,
-          "end": 74
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2079506456827879494-0.png",
-          "imageModern": "assets/generated/x/mine-post-2079506456827879494-0-modern.png"
         }
       ]
     },
@@ -236,6 +209,33 @@
           "type": "photo",
           "image": "assets/generated/x/mine-post-2075035780205142207-0.png",
           "imageModern": "assets/generated/x/mine-post-2075035780205142207-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2074086834951581929",
+      "text": "problem: I get a lot of work messages in Japanese and on iPhone there’s no fast way to translate them. at tonight’s Claude Fable workshop I created a way to translate them all while I’m not at my desk https://t.co/eUgvxvIjfY",
+      "createdAt": "2026-07-06T11:03:30.000Z",
+      "url": "https://x.com/_bobertdowney/status/2074086834951581929",
+      "urls": [
+        {
+          "url": "https://t.co/eUgvxvIjfY",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2074086834951581929/video/1",
+          "displayUrl": "pic.x.com/eUgvxvIjfY",
+          "start": 201,
+          "end": 224
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2074086834951581929-0.png",
+          "imageModern": "assets/generated/x/mine-post-2074086834951581929-0-modern.png"
         }
       ]
     }

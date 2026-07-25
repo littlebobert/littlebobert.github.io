@@ -1,6 +1,21 @@
+* {
+  box-sizing: border-box;
+}
+
 html {
   overflow-y: scroll;
   scrollbar-gutter: stable;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body.sasu-site {
+  max-width: 100%;
+  margin: 0;
+  padding: 12pt;
+  overflow-x: hidden;
+  background: #fff;
+  color: #000;
 }
 
 .sasu-page {
@@ -72,12 +87,6 @@ html {
   background-repeat: no-repeat;
 }
 
-html[data-theme="modern"] body.resume-page .language-switcher select {
-  border: none;
-  background-color: rgba(0, 0, 0, 0.06);
-  font-weight: 500;
-}
-
 .sasu-hero,
 .sasu-section {
   padding-bottom: 8pt;
@@ -90,8 +99,13 @@ html[data-theme="modern"] body.resume-page .language-switcher select {
 }
 
 .sasu-icon {
+  display: block;
+  flex: 0 0 56px;
   width: 56px;
   height: 56px;
+  max-width: none;
+  object-fit: contain;
+  image-rendering: auto;
 }
 
 .sasu-subtitle {
@@ -310,12 +324,6 @@ html[data-theme="modern"] body.resume-page .language-switcher select {
   border-color: #555;
   color: #fff;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
-}
-
-html[data-theme="modern"] body.resume-page .download-link,
-html[data-theme="modern"] body.resume-page .download-link:visited,
-html[data-theme="modern"] body.resume-page .download-link:hover {
-  color: #fff;
 }
 
 .download-version {

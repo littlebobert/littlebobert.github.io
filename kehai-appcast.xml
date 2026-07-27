@@ -3,6 +3,20 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.1.1</title>
+            <pubDate>Mon, 27 Jul 2026 22:05:11 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>2</sparkle:version>
+            <sparkle:shortVersionString>0.1.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[Kehai 0.1.1
+
+- Bug fixes.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.1/Kehai-0.1.1-mac.zip" length="4891162" type="application/octet-stream" sparkle:edSignature="14bassyXLFgGaVJc5V8Kgaw5hdETOVed6D5lHQ/rtR8JHfIf++DaPYO8P/lZ8jWmLW2paqFarqGJJuN+YhUOBA=="/>
+        </item>
+        <item>
             <title>0.1.0</title>
             <pubDate>Mon, 27 Jul 2026 21:12:09 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>

@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.1.5</title>
+            <pubDate>Tue, 28 Jul 2026 08:22:16 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>6</sparkle:version>
+            <sparkle:shortVersionString>0.1.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Added a way to exclude certain apps from AI requests.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.5/Kehai-0.1.5-mac.zip" length="4982081" type="application/octet-stream" sparkle:edSignature="MeWU1MqBHtQDHw72esqglAmHr7FsBsTeSX8wj7QNlUn8OoyyCxgrAcGaw6G1a0BbGxFsuQ+fn8uSUZwPPJ8XCw=="/>
+        </item>
+        <item>
             <title>0.1.4</title>
             <pubDate>Tue, 28 Jul 2026 07:57:38 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,20 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Added group by task, AI search, and misc. improvements.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.3/Kehai-0.1.3-mac.zip" length="4955702" type="application/octet-stream" sparkle:edSignature="gX7JfnRYfSF4e8VfR6iqmeSwoI3/6eClHeQ2aUmNxKdutjmm36yrHfyA3RXx35+uai7UEmyhkEGyAoHQZcp2BQ=="/>
-        </item>
-        <item>
-            <title>0.1.2</title>
-            <pubDate>Mon, 27 Jul 2026 22:12:53 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>3</sparkle:version>
-            <sparkle:shortVersionString>0.1.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[Kehai 0.1.2
-
-- Fix thumbnail rendering bug.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.2/Kehai-0.1.2-mac.zip" length="4893774" type="application/octet-stream" sparkle:edSignature="mw0Uh80/EWOn3QvgeB10Q+z0KPC9vUjkTyJu5ogObRABGAIQlf5uY2yuX3DUob9HLhDpV6zzkLulKyDeprv1Aw=="/>
         </item>
     </channel>
 </rss>

@@ -87,14 +87,17 @@
     .traffic span:nth-child(2) { background: #febc2e; }
     .traffic span:nth-child(3) { background: #28c840; }
     .browser-toolbar { display: flex; justify-content: space-between; gap: 10px; padding: 13px 14px 7px; }
-    .group-button { padding: 7px 11px; border-radius: 5px; background: #1677d2; color: #fff; font: 600 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
-    .search-box { width: 42%; padding: 7px 10px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 5px; background: #fff; color: #777; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
+    .group-button { padding: 7px 11px; border: 0; border-radius: 5px; background: #1677d2; color: #fff; font: 600 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
+    .search-box { box-sizing: border-box; width: 42%; padding: 7px 10px; border: 1px solid rgba(0, 0, 0, 0.16); border-radius: 5px; outline: none; background: #fff; color: #333; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
+    .search-box:focus { border-color: #1681e2; box-shadow: 0 0 0 2px rgba(22, 129, 226, 0.22); }
     .task-pills { display: flex; flex-wrap: wrap; gap: 7px; padding: 6px 14px 4px; }
-    .task-pill { padding: 6px 10px; border: 1px solid rgba(0, 0, 0, 0.12); border-radius: 999px; background: #fff; color: #444; font: 600 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
-    .task-pill:first-child { border-color: #1677d2; background: #eaf4fd; color: #1264ad; }
+    .task-pill { cursor: pointer; padding: 6px 10px; border: 1px solid rgba(0, 0, 0, 0.12); border-radius: 999px; background: #fff; color: #444; font: 600 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
+    .task-pill:hover { background: #f7f7f7; }
+    .task-pill.is-selected { border-color: #1677d2; background: #eaf4fd; color: #1264ad; }
     .window-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; padding: 10px 14px 16px; }
     .window-card { padding: 7px; border-radius: 9px; background: #e8e8e9; }
-    .window-card:first-child { box-shadow: 0 0 0 2px #1784e8; }
+    .window-card.is-selected { box-shadow: 0 0 0 2px #1784e8; }
+    .window-card[hidden] { display: none; }
     .window-preview { height: 78px; border-radius: 5px; background: linear-gradient(135deg, #fff 0 34%, #d7dce1 34% 38%, #f8f8f8 38% 64%, #bbb 64% 67%, #f7f7f7 67%); }
     .window-card:nth-child(2) .window-preview { background: linear-gradient(160deg, #1e2732 0 72%, #3d9d73 72% 75%, #1e2732 75%); }
     .window-card:nth-child(3) .window-preview { background: linear-gradient(145deg, #52205d 0 24%, #f7f4f7 24% 70%, #7d4e83 70%); }
@@ -139,18 +142,19 @@
             Kehai
           </div>
           <div class="browser-toolbar">
-            <span class="group-button">Regenerate Groups</span>
-            <span class="search-box">Search windows and Safari tabs</span>
+            <button class="group-button" type="button">Regenerate Groups</button>
+            <input class="search-box" type="search" placeholder="Search windows and Safari tabs" aria-label="Search example windows">
           </div>
           <div class="task-pills" aria-label="Example task groups">
-            <span class="task-pill">Sales proposal</span>
-            <span class="task-pill">Camping trip</span>
-            <span class="task-pill">Production outage</span>
+            <button class="task-pill is-selected" type="button" data-group="all" aria-pressed="true">All</button>
+            <button class="task-pill" type="button" data-group="sales" aria-pressed="false">Sales proposal</button>
+            <button class="task-pill" type="button" data-group="camping" aria-pressed="false">Camping trip</button>
+            <button class="task-pill" type="button" data-group="outage" aria-pressed="false">Production outage</button>
           </div>
-          <div class="window-grid">
-            <div class="window-card"><div class="window-preview"></div><div class="window-name">Research notes</div><div class="app-label">Safari</div></div>
-            <div class="window-card"><div class="window-preview"></div><div class="window-name">Project terminal</div><div class="app-label">Terminal</div></div>
-            <div class="window-card"><div class="window-preview"></div><div class="window-name">Team conversation</div><div class="app-label">Slack</div></div>
+          <div class="window-grid" aria-live="polite">
+            <div class="window-card is-selected" data-group="sales" data-search="research notes safari sales proposal"><div class="window-preview"></div><div class="window-name">Research notes</div><div class="app-label">Safari</div></div>
+            <div class="window-card" data-group="outage" data-search="project terminal production outage terminal"><div class="window-preview"></div><div class="window-name">Project terminal</div><div class="app-label">Terminal</div></div>
+            <div class="window-card" data-group="camping" data-search="team conversation camping trip slack"><div class="window-preview"></div><div class="window-name">Team conversation</div><div class="app-label">Slack</div></div>
           </div>
         </div>
         <figcaption class="browser-caption">Browse windows grouped by task.</figcaption>
@@ -192,6 +196,42 @@
       </details>
     </section>
   </main>
+  <script>
+    const demo = document.querySelector('.browser-demo');
+    const search = demo.querySelector('.search-box');
+    const pills = [...demo.querySelectorAll('.task-pill')];
+    const cards = [...demo.querySelectorAll('.window-card')];
+    let selectedGroup = 'all';
+
+    function updateDemo() {
+      const query = search.value.trim().toLocaleLowerCase();
+      let firstVisibleCard = null;
+
+      cards.forEach((card) => {
+        const matchesGroup = selectedGroup === 'all' || card.dataset.group === selectedGroup;
+        const matchesSearch = !query || card.dataset.search.includes(query);
+        card.hidden = !(matchesGroup && matchesSearch);
+        card.classList.remove('is-selected');
+        if (!card.hidden && !firstVisibleCard) firstVisibleCard = card;
+      });
+
+      firstVisibleCard?.classList.add('is-selected');
+    }
+
+    pills.forEach((pill) => {
+      pill.addEventListener('click', () => {
+        selectedGroup = pill.dataset.group;
+        pills.forEach((candidate) => {
+          const isSelected = candidate === pill;
+          candidate.classList.toggle('is-selected', isSelected);
+          candidate.setAttribute('aria-pressed', String(isSelected));
+        });
+        updateDemo();
+      });
+    });
+
+    search.addEventListener('input', updateDemo);
+  </script>
 </body>
 
 </html>

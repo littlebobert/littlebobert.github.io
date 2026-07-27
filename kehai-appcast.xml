@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Kehai</title>
+        <item>
+            <title>0.1.0</title>
+            <pubDate>Mon, 27 Jul 2026 21:12:09 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>1</sparkle:version>
+            <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[Kehai’s first public release.
+
+- Browse current Mac windows and Safari tabs in one visual, searchable view.
+- Generate task-based groups with OpenAI and retain them across launches.
+- Navigate by keyboard, preview selected windows live, and return directly to interrupted work.
+- Hide individual windows or permanently exclude apps from capture and AI grouping.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.0/Kehai-0.1.0-mac.zip" length="4891449" type="application/octet-stream" sparkle:edSignature="qTNiblX6jQYNn3ZnQMPM9aZQXGCsnEMQ32AtvGUcSHTAMPl40nGgrc8+rfPkL1wKz4yYbEat+/9LxnwbxfwjDw=="/>
+        </item>
+    </channel>
+</rss>

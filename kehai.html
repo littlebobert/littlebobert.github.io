@@ -55,6 +55,9 @@
     .kehai-subtitle { padding-top: 2pt; color: var(--kehai-red-dark); font-weight: bold; }
     .kehai-tagline { max-width: 500px; padding: 11pt 0 10pt; font-size: 12pt; line-height: 1.35; }
     .kehai-hero .small-note { font-size: 10pt; }
+    .kehai-version { padding-left: 5pt; font-size: 10pt; }
+    .release-notes summary { cursor: pointer; font-weight: bold; }
+    .release-notes ul { margin-bottom: 0; }
 
     .kehai-download,
     .kehai-download:visited {
@@ -123,8 +126,9 @@
         </div>
       </div>
       <div class="kehai-tagline">Browse windows intelligently grouped by task, not by app. Quickly return to your last task after an interruption.</div>
-      <a class="kehai-download" href="https://github.com/littlebobert/kehai">Download</a>
-      <div class="small-note">Open source for macOS. Download currently opens GitHub.</div>
+      <a class="kehai-download" href="https://github.com/littlebobert/kehai/releases/download/0.1.0/Kehai-0.1.0-mac.zip">Download for macOS</a>
+      <span class="kehai-version">(version 0.1.0)</span>
+      <div class="small-note">Requires macOS 14 or newer on an Apple Silicon Mac. An OpenAI API key is required to generate task groups.</div>
     </section>
 
     <section class="sasu-section">
@@ -167,6 +171,18 @@
     <section class="kehai-detail">
       <h2>Why “Kehai”?</h2>
       <p><em>Kehai</em> (気配) is the sense that something is present without being seen.</p>
+    </section>
+
+    <section class="kehai-detail">
+      <details class="release-notes">
+        <summary>Changelog</summary>
+        <h2>0.1.0</h2>
+        <ul>
+          <li>Browse current Mac windows and Safari tabs in one visual, searchable view.</li>
+          <li>Generate task-based groups with OpenAI and retain them across launches.</li>
+          <li>Hide individual windows, permanently exclude apps, and jump back with keyboard navigation.</li>
+        </ul>
+      </details>
     </section>
   </main>
 </body>

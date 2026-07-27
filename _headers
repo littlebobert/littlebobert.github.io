@@ -1,3 +1,7 @@
 /appcast.xml
   Cache-Control: no-cache
   Content-Type: application/xml; charset=utf-8
+
+/kehai-appcast.xml
+  Cache-Control: no-cache
+  Content-Type: application/xml; charset=utf-8

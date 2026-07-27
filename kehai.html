@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Kehai (気配)</title>
+  <link href="sasu-common.css?v=3" rel="stylesheet">
+  <link rel="icon" href="assets/kehai-icon.png?v=1">
+  <link rel="apple-touch-icon" href="assets/kehai-icon.png?v=1">
+  <link rel="canonical" href="https://littlebobert.github.io/kehai.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Kehai helps you pick up where you left off after an interruption.">
+  <meta property="og:title" content="Kehai: Pick up where you left off">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://littlebobert.github.io/kehai.html">
+  <meta property="og:site_name" content="Kehai (気配)">
+  <meta property="og:description" content="A visual browser for returning to interrupted work on macOS.">
+  <meta property="og:image" content="https://littlebobert.github.io/assets/kehai-icon.png?v=1">
+  <meta property="og:image:alt" content="Kehai app icon">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Kehai: Pick up where you left off">
+  <meta name="twitter:description" content="A visual browser for returning to interrupted work on macOS.">
+  <meta name="twitter:image" content="https://littlebobert.github.io/assets/kehai-icon.png?v=1">
+  <style>
+    :root {
+      --kehai-ink: #27231f;
+      --kehai-red: #9e4938;
+      --kehai-red-dark: #713124;
+      --kehai-paper: #f6f1e8;
+      --kehai-line: rgba(39, 35, 31, 0.16);
+    }
+
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 12pt; }
+
+    .kehai-hero {
+      margin-bottom: 12pt;
+      padding: 18pt;
+    }
+
+    .kehai-title-row {
+      display: flex;
+      align-items: center;
+      gap: 14pt;
+    }
+
+    .kehai-icon {
+      width: 88px;
+      height: 88px;
+      flex: 0 0 88px;
+      object-fit: contain;
+    }
+
+    .kehai-title-row h1 { color: var(--kehai-ink); }
+    .kehai-subtitle { padding-top: 2pt; color: var(--kehai-red-dark); font-weight: bold; }
+    .kehai-tagline { max-width: 500px; padding: 11pt 0 10pt; font-size: 12pt; line-height: 1.35; }
+    .kehai-hero .small-note { font-size: 10pt; }
+
+    .kehai-download,
+    .kehai-download:visited {
+      display: inline-block;
+      padding: 5pt 10pt;
+      border: 1px solid var(--kehai-red-dark);
+      border-radius: 5px;
+      background: var(--kehai-red);
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 120ms ease, box-shadow 120ms ease;
+    }
+
+    .kehai-download:hover {
+      background: var(--kehai-red-dark);
+      box-shadow: 0 2px 7px rgba(113, 49, 36, 0.28);
+    }
+
+    .browser-demo { margin: 0 auto 12pt; }
+    .browser-demo-label { margin: 0 0 9px; color: #555; font-size: 11pt; font-weight: bold; text-align: center; }
+    .browser-window { overflow: hidden; border: 1px solid var(--kehai-line); border-radius: 11px; background: #f5f5f6; box-shadow: 0 10px 28px rgba(39, 35, 31, 0.12); }
+    .browser-titlebar { position: relative; min-height: 37px; padding: 11px 12px; border-bottom: 1px solid rgba(0, 0, 0, 0.08); background: linear-gradient(#f2f2f2, #e5e5e5); color: #444; font: 600 10pt/1 -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; }
+    .traffic { position: absolute; left: 12px; top: 13px; display: flex; gap: 6px; }
+    .traffic span { width: 9px; height: 9px; border-radius: 50%; }
+    .traffic span:nth-child(1) { background: #ff5f57; }
+    .traffic span:nth-child(2) { background: #febc2e; }
+    .traffic span:nth-child(3) { background: #28c840; }
+    .browser-toolbar { display: flex; justify-content: space-between; gap: 10px; padding: 13px 14px 7px; }
+    .group-button { padding: 7px 11px; border-radius: 5px; background: #1677d2; color: #fff; font: 600 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
+    .search-box { width: 42%; padding: 7px 10px; border: 1px solid rgba(0, 0, 0, 0.1); border-radius: 5px; background: #fff; color: #777; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
+    .task-pills { display: flex; flex-wrap: wrap; gap: 7px; padding: 6px 14px 4px; }
+    .task-pill { padding: 6px 10px; border: 1px solid rgba(0, 0, 0, 0.12); border-radius: 999px; background: #fff; color: #444; font: 600 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
+    .task-pill:first-child { border-color: #1677d2; background: #eaf4fd; color: #1264ad; }
+    .window-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; padding: 10px 14px 16px; }
+    .window-card { padding: 7px; border-radius: 9px; background: #e8e8e9; }
+    .window-card:first-child { box-shadow: 0 0 0 2px #1784e8; }
+    .window-preview { height: 78px; border-radius: 5px; background: linear-gradient(135deg, #fff 0 34%, #d7dce1 34% 38%, #f8f8f8 38% 64%, #bbb 64% 67%, #f7f7f7 67%); }
+    .window-card:nth-child(2) .window-preview { background: linear-gradient(160deg, #1e2732 0 72%, #3d9d73 72% 75%, #1e2732 75%); }
+    .window-card:nth-child(3) .window-preview { background: linear-gradient(145deg, #52205d 0 24%, #f7f4f7 24% 70%, #7d4e83 70%); }
+    .window-name { overflow: hidden; margin-top: 7px; color: #333; font: 600 10pt -apple-system, BlinkMacSystemFont, sans-serif; text-overflow: ellipsis; white-space: nowrap; }
+    .app-label { overflow: hidden; margin-top: 2px; color: #777; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; text-overflow: ellipsis; white-space: nowrap; }
+    .browser-caption { margin: 0; padding: 9pt 6pt 0; color: #444; font-size: 11pt; text-align: center; }
+
+    .kehai-detail { padding: 10pt 0 8pt; border-top: 1px solid #ddd; }
+    .kehai-detail p { margin: 0; }
+
+    @media (max-width: 520px) {
+      .kehai-hero { padding: 14pt; }
+      .kehai-icon { width: 70px; height: 70px; flex-basis: 70px; }
+      .window-grid { grid-template-columns: 1fr 1fr; }
+      .window-card:nth-child(3) { display: none; }
+      .window-preview { height: 68px; }
+    }
+  </style>
+</head>
+
+<body class="sasu-site">
+  <main class="sasu-page">
+    <section class="kehai-hero">
+      <div class="kehai-title-row">
+        <img class="kehai-icon" src="assets/kehai-icon.png?v=1" alt="Kehai app icon">
+        <div>
+          <h1>Kehai (気配)</h1>
+          <div class="kehai-subtitle">Pick up where you left off.</div>
+        </div>
+      </div>
+      <div class="kehai-tagline">Browse windows intelligently grouped by task, not by app. Quickly return to your last task after an interruption.</div>
+      <a class="kehai-download" href="https://github.com/littlebobert/kehai">Download</a>
+      <div class="small-note">Open source for macOS. Download currently opens GitHub.</div>
+    </section>
+
+    <section class="sasu-section">
+      <figure class="browser-demo">
+        <figcaption class="browser-demo-label">Your work, at a glance:</figcaption>
+        <div class="browser-window" aria-label="Illustration of the Kehai window browser">
+          <div class="browser-titlebar">
+            <span class="traffic" aria-hidden="true"><span></span><span></span><span></span></span>
+            Kehai
+          </div>
+          <div class="browser-toolbar">
+            <span class="group-button">Regenerate Groups</span>
+            <span class="search-box">Search windows and Safari tabs</span>
+          </div>
+          <div class="task-pills" aria-label="Example task groups">
+            <span class="task-pill">Sales proposal</span>
+            <span class="task-pill">Camping trip</span>
+            <span class="task-pill">Production outage</span>
+          </div>
+          <div class="window-grid">
+            <div class="window-card"><div class="window-preview"></div><div class="window-name">Research notes</div><div class="app-label">Safari</div></div>
+            <div class="window-card"><div class="window-preview"></div><div class="window-name">Project terminal</div><div class="app-label">Terminal</div></div>
+            <div class="window-card"><div class="window-preview"></div><div class="window-name">Team conversation</div><div class="app-label">Slack</div></div>
+          </div>
+        </div>
+        <figcaption class="browser-caption">See your windows as they are, then jump straight back in.</figcaption>
+      </figure>
+    </section>
+
+    <section class="kehai-detail">
+      <h2>What it does:</h2>
+      <p>Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task. Then returning to work starts with context, not app names.</p>
+    </section>
+
+    <section class="kehai-detail">
+      <h2>Privacy:</h2>
+      <p>You choose when AI grouping runs. Apps can be permanently excluded from capture and AI, and the source is open for inspection.</p>
+    </section>
+
+    <section class="kehai-detail">
+      <h2>Why “Kehai”?</h2>
+      <p><em>Kehai</em> (気配) is the sense that something is present without being seen.</p>
+    </section>
+  </main>
+</body>
+
+</html>

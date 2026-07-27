@@ -57,7 +57,10 @@
     .kehai-hero .small-note { font-size: 10pt; }
     .kehai-version { padding-left: 5pt; font-size: 10pt; }
     .release-notes summary { cursor: pointer; font-weight: bold; }
+    .release-notes[open] > h2:first-of-type { margin-top: 14pt; }
     .release-notes ul { margin-bottom: 0; }
+    .kehai-footer { padding: 16pt 0 8pt; border-top: 1px solid #ddd; color: #555; text-align: center; }
+    .kehai-footer p { margin: 4pt 0; }
 
     .kehai-download,
     .kehai-download:visited {
@@ -189,7 +192,7 @@
 
     <section class="kehai-detail">
       <h2>Privacy:</h2>
-      <p>You choose when AI grouping runs. Apps can be permanently excluded from capture and AI, and the source is open for inspection.</p>
+      <p>When you generate groups, Kehai sends OpenAI window and Safari-tab titles, app names, recent focus activity, and small, compressed screenshots of eligible windows. Smart Search sends only your query and window metadata—never screenshots. You can exclude an app from AI while keeping it visible in the browser, or exclude it from Kehai entirely. The source is open for inspection.</p>
     </section>
 
     <section class="kehai-detail">
@@ -224,6 +227,11 @@
         </ul>
       </details>
     </section>
+
+    <footer class="kehai-footer">
+      <p><a href="https://github.com/littlebobert/kehai">View the source code on GitHub</a></p>
+      <p>Created by <a href="https://littlebobert.github.io">Justin Garcia</a></p>
+    </footer>
   </main>
   <script>
     const demo = document.querySelector('.browser-demo');

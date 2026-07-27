@@ -87,7 +87,9 @@
     .traffic span:nth-child(2) { background: #febc2e; }
     .traffic span:nth-child(3) { background: #28c840; }
     .browser-toolbar { display: flex; justify-content: space-between; gap: 10px; padding: 13px 14px 7px; }
-    .group-button { padding: 7px 11px; border: 0; border-radius: 5px; background: #1677d2; color: #fff; font: 600 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
+    .group-button { cursor: pointer; padding: 7px 11px; border: 1px solid rgba(0, 0, 0, 0.18); border-radius: 5px; background: linear-gradient(#fff, #ececec); color: #333; font: 600 10pt -apple-system, BlinkMacSystemFont, sans-serif; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06); }
+    .group-button:hover { background: linear-gradient(#fafafa, #e5e5e5); }
+    .group-button:active { background: #dedede; }
     .search-box { box-sizing: border-box; width: 42%; padding: 7px 10px; border: 1px solid rgba(0, 0, 0, 0.16); border-radius: 5px; outline: none; background: #fff; color: #333; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
     .search-box:focus { border-color: #1681e2; box-shadow: 0 0 0 2px rgba(22, 129, 226, 0.22); }
     .task-pills { display: flex; flex-wrap: wrap; gap: 7px; padding: 6px 14px 4px; }

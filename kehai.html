@@ -86,23 +86,28 @@
     .traffic span:nth-child(1) { background: #ff5f57; }
     .traffic span:nth-child(2) { background: #febc2e; }
     .traffic span:nth-child(3) { background: #28c840; }
-    .browser-toolbar { display: flex; justify-content: space-between; gap: 10px; padding: 13px 14px 7px; }
+    .browser-toolbar { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 13px 14px 6px; }
+    .browser-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
     .group-button { cursor: pointer; padding: 7px 11px; border: 1px solid rgba(0, 0, 0, 0.18); border-radius: 5px; background: linear-gradient(#fff, #ececec); color: #333; font: 600 10pt -apple-system, BlinkMacSystemFont, sans-serif; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06); }
     .group-button:hover { background: linear-gradient(#fafafa, #e5e5e5); }
     .group-button:active { background: #dedede; }
-    .search-box { box-sizing: border-box; width: 42%; padding: 7px 10px; border: 1px solid rgba(0, 0, 0, 0.16); border-radius: 5px; outline: none; background: #fff; color: #333; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
+    .browser-check { display: inline-flex; align-items: center; gap: 5px; color: #444; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; white-space: nowrap; }
+    .browser-check input { accent-color: #1681e2; }
+    .search-control { width: 42%; min-width: 210px; }
+    .search-box { box-sizing: border-box; width: 100%; padding: 7px 10px; border: 1px solid rgba(0, 0, 0, 0.16); border-radius: 5px; outline: none; background: #fff; color: #333; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
     .search-box:focus { border-color: #1681e2; box-shadow: 0 0 0 2px rgba(22, 129, 226, 0.22); }
-    .task-pills { display: flex; flex-wrap: wrap; gap: 7px; padding: 6px 14px 4px; }
-    .task-pill { cursor: pointer; padding: 6px 10px; border: 1px solid rgba(0, 0, 0, 0.12); border-radius: 999px; background: #fff; color: #444; font: 600 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
-    .task-pill:hover { background: #f7f7f7; }
-    .task-pill.is-selected { border-color: #1677d2; background: #eaf4fd; color: #1264ad; }
-    .window-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; padding: 10px 14px 16px; }
+    .search-hint { padding: 3px 2px 0; color: #777; font: 9pt -apple-system, BlinkMacSystemFont, sans-serif; }
+    .task-sections { min-height: 338px; }
+    .task-section { padding: 7px 14px 8px; }
+    .task-section[hidden], .window-card[hidden] { display: none; }
+    .task-section-title { margin: 0 0 8px; color: #333; font: 700 11pt -apple-system, BlinkMacSystemFont, sans-serif; }
+    .window-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; }
     .window-card { padding: 7px; border-radius: 9px; background: #e8e8e9; }
     .window-card.is-selected { box-shadow: 0 0 0 2px #1784e8; }
-    .window-card[hidden] { display: none; }
     .window-preview { height: 78px; border-radius: 5px; background: linear-gradient(135deg, #fff 0 34%, #d7dce1 34% 38%, #f8f8f8 38% 64%, #bbb 64% 67%, #f7f7f7 67%); }
-    .window-card:nth-child(2) .window-preview { background: linear-gradient(160deg, #1e2732 0 72%, #3d9d73 72% 75%, #1e2732 75%); }
-    .window-card:nth-child(3) .window-preview { background: linear-gradient(145deg, #52205d 0 24%, #f7f4f7 24% 70%, #7d4e83 70%); }
+    .window-preview.terminal { background: linear-gradient(160deg, #1e2732 0 72%, #3d9d73 72% 75%, #1e2732 75%); }
+    .window-preview.chat { background: linear-gradient(145deg, #52205d 0 24%, #f7f4f7 24% 70%, #7d4e83 70%); }
+    .window-preview.document { background: linear-gradient(150deg, #f9f7f1 0 58%, #c9b898 58% 61%, #fff 61%); }
     .window-name { overflow: hidden; margin-top: 7px; color: #333; font: 600 10pt -apple-system, BlinkMacSystemFont, sans-serif; text-overflow: ellipsis; white-space: nowrap; }
     .app-label { overflow: hidden; margin-top: 2px; color: #777; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; text-overflow: ellipsis; white-space: nowrap; }
     .browser-caption { margin: 0; padding: 9pt 6pt 0; color: #444; font-size: 11pt; text-align: center; }
@@ -113,8 +118,9 @@
     @media (max-width: 520px) {
       .kehai-hero { padding: 14pt; }
       .kehai-icon { width: 70px; height: 70px; flex-basis: 70px; }
+      .browser-toolbar { flex-direction: column; }
+      .search-control { width: 100%; }
       .window-grid { grid-template-columns: 1fr 1fr; }
-      .window-card:nth-child(3) { display: none; }
       .window-preview { height: 68px; }
     }
   </style>
@@ -144,19 +150,32 @@
             Kehai
           </div>
           <div class="browser-toolbar">
-            <button class="group-button" type="button">Regenerate Groups</button>
-            <input class="search-box" type="search" placeholder="Search windows and Safari tabs" aria-label="Search example windows">
+            <div class="browser-controls">
+              <button class="group-button" type="button">Regenerate Groups</button>
+              <label class="browser-check"><input class="group-toggle" type="checkbox" checked> Group by Task</label>
+            </div>
+            <div class="search-control">
+              <input class="search-box" type="search" placeholder="Search windows and Safari tabs" aria-label="Search example windows">
+              <div class="search-hint">Command-Return for Smart Search</div>
+            </div>
           </div>
-          <div class="task-pills" aria-label="Example task groups">
-            <button class="task-pill is-selected" type="button" data-group="all" aria-pressed="true">All</button>
-            <button class="task-pill" type="button" data-group="sales" aria-pressed="false">Sales proposal</button>
-            <button class="task-pill" type="button" data-group="camping" aria-pressed="false">Camping trip</button>
-            <button class="task-pill" type="button" data-group="outage" aria-pressed="false">Production outage</button>
-          </div>
-          <div class="window-grid" aria-live="polite">
-            <div class="window-card is-selected" data-group="sales" data-search="research notes safari sales proposal"><div class="window-preview"></div><div class="window-name">Research notes</div><div class="app-label">Safari</div></div>
-            <div class="window-card" data-group="outage" data-search="project terminal production outage terminal"><div class="window-preview"></div><div class="window-name">Project terminal</div><div class="app-label">Terminal</div></div>
-            <div class="window-card" data-group="camping" data-search="team conversation camping trip slack"><div class="window-preview"></div><div class="window-name">Team conversation</div><div class="app-label">Slack</div></div>
+          <div class="task-sections" aria-live="polite">
+            <section class="task-section" data-group="sales">
+              <h3 class="task-section-title">Sales proposal</h3>
+              <div class="window-grid">
+                <div class="window-card is-selected" data-search="research notes safari sales proposal"><div class="window-preview"></div><div class="window-name">Research notes</div><div class="app-label">Safari</div></div>
+                <div class="window-card" data-search="proposal draft pages sales"><div class="window-preview document"></div><div class="window-name">Proposal draft</div><div class="app-label">Pages</div></div>
+                <div class="window-card" data-search="client conversation slack sales"><div class="window-preview chat"></div><div class="window-name">Client conversation</div><div class="app-label">Slack</div></div>
+              </div>
+            </section>
+            <section class="task-section" data-group="outage">
+              <h3 class="task-section-title">Production outage</h3>
+              <div class="window-grid">
+                <div class="window-card" data-search="project terminal production outage logs"><div class="window-preview terminal"></div><div class="window-name">Production logs</div><div class="app-label">Terminal</div></div>
+                <div class="window-card" data-search="incident dashboard safari production outage"><div class="window-preview"></div><div class="window-name">Incident dashboard</div><div class="app-label">Safari</div></div>
+                <div class="window-card" data-search="incident response slack production outage"><div class="window-preview chat"></div><div class="window-name">Incident response</div><div class="app-label">Slack</div></div>
+              </div>
+            </section>
           </div>
         </div>
         <figcaption class="browser-caption">Browse windows grouped by task.</figcaption>
@@ -201,38 +220,28 @@
   <script>
     const demo = document.querySelector('.browser-demo');
     const search = demo.querySelector('.search-box');
-    const pills = [...demo.querySelectorAll('.task-pill')];
+    const groupToggle = demo.querySelector('.group-toggle');
+    const sections = [...demo.querySelectorAll('.task-section')];
     const cards = [...demo.querySelectorAll('.window-card')];
-    let selectedGroup = 'all';
 
     function updateDemo() {
       const query = search.value.trim().toLocaleLowerCase();
       let firstVisibleCard = null;
 
       cards.forEach((card) => {
-        const matchesGroup = selectedGroup === 'all' || card.dataset.group === selectedGroup;
-        const matchesSearch = !query || card.dataset.search.includes(query);
-        card.hidden = !(matchesGroup && matchesSearch);
+        card.hidden = Boolean(query) && !card.dataset.search.includes(query);
         card.classList.remove('is-selected');
         if (!card.hidden && !firstVisibleCard) firstVisibleCard = card;
       });
-
+      sections.forEach((section) => {
+        section.hidden = ![...section.querySelectorAll('.window-card')].some((card) => !card.hidden);
+        section.querySelector('.task-section-title').hidden = !groupToggle.checked;
+      });
       firstVisibleCard?.classList.add('is-selected');
     }
 
-    pills.forEach((pill) => {
-      pill.addEventListener('click', () => {
-        selectedGroup = pill.dataset.group;
-        pills.forEach((candidate) => {
-          const isSelected = candidate === pill;
-          candidate.classList.toggle('is-selected', isSelected);
-          candidate.setAttribute('aria-pressed', String(isSelected));
-        });
-        updateDemo();
-      });
-    });
-
     search.addEventListener('input', updateDemo);
+    groupToggle.addEventListener('change', updateDemo);
   </script>
 </body>
 

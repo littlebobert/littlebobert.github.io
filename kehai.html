@@ -31,7 +31,7 @@
     }
 
     body.sasu-site { background: #fff; }
-    .sasu-page { padding-top: 12pt; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
 
     .kehai-hero {
       margin-bottom: 12pt;
@@ -59,7 +59,7 @@
     .release-notes summary { cursor: pointer; font-weight: bold; }
     .release-notes[open] > h2:first-of-type { margin-top: 14pt; }
     .release-notes ul { margin-bottom: 0; }
-    .kehai-footer { padding: 16pt 0 8pt; border-top: 1px solid #ddd; color: #555; text-align: center; }
+    .kehai-footer { padding: 16pt 0 8pt; color: #555; text-align: center; }
     .kehai-footer p { margin: 4pt 0; }
 
     .kehai-download,
@@ -105,6 +105,10 @@
     .task-section[hidden], .window-card[hidden] { display: none; }
     .task-section-title { margin: 0 0 8px; color: #333; font: 700 11pt -apple-system, BlinkMacSystemFont, sans-serif; }
     .window-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; }
+    .task-sections:not(.is-grouped) { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; padding: 7px 14px 8px; align-content: start; }
+    .task-sections:not(.is-grouped) .task-section { display: contents; }
+    .task-sections:not(.is-grouped) .task-section-title { display: none; }
+    .task-sections:not(.is-grouped) .window-grid { display: contents; }
     .window-card { padding: 7px; border-radius: 9px; background: #e8e8e9; }
     .window-card.is-selected { box-shadow: 0 0 0 2px #1784e8; }
     .window-preview { height: 78px; border-radius: 5px; background: linear-gradient(135deg, #fff 0 34%, #d7dce1 34% 38%, #f8f8f8 38% 64%, #bbb 64% 67%, #f7f7f7 67%); }
@@ -115,15 +119,16 @@
     .app-label { overflow: hidden; margin-top: 2px; color: #777; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; text-overflow: ellipsis; white-space: nowrap; }
     .browser-caption { margin: 0; padding: 9pt 6pt 0; color: #444; font-size: 11pt; text-align: center; }
 
-    .kehai-detail { padding: 10pt 0 8pt; border-top: 1px solid #ddd; }
+    .kehai-detail { padding: 10pt 0 8pt; }
     .kehai-detail p { margin: 0; }
 
     @media (max-width: 520px) {
+      .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
       .kehai-hero { padding: 14pt; }
       .kehai-icon { width: 70px; height: 70px; flex-basis: 70px; }
       .browser-toolbar { flex-direction: column; }
       .search-control { width: 100%; }
-      .window-grid { grid-template-columns: 1fr 1fr; }
+      .window-grid, .task-sections:not(.is-grouped) { grid-template-columns: 1fr 1fr; }
       .window-preview { height: 68px; }
     }
   </style>
@@ -162,7 +167,7 @@
               <div class="search-hint">Command-Return for Smart Search</div>
             </div>
           </div>
-          <div class="task-sections" aria-live="polite">
+          <div class="task-sections is-grouped" aria-live="polite">
             <section class="task-section" data-group="sales">
               <h3 class="task-section-title">Sales proposal</h3>
               <div class="window-grid">
@@ -192,7 +197,8 @@
 
     <section class="kehai-detail">
       <h2>Privacy:</h2>
-      <p>When you generate groups, Kehai sends OpenAI window and Safari-tab titles, app names, recent focus activity, and small, compressed screenshots of eligible windows. Smart Search sends only your query and window metadata—never screenshots. You can exclude an app from AI while keeping it visible in the browser, or exclude it from Kehai entirely. The source is open for inspection.</p>
+      <p>When you generate groups, Kehai sends OpenAI window and Safari-tab titles, app names, recent focus activity, and small, compressed screenshots of eligible windows. Smart Search sends only your query and window metadata—never screenshots. You can exclude an app from AI while keeping it visible in the browser, or exclude it from Kehai entirely.</p>
+      <p><a href="https://github.com/littlebobert/kehai">View the source code on GitHub.</a></p>
     </section>
 
     <section class="kehai-detail">
@@ -233,7 +239,6 @@
     </section>
 
     <footer class="kehai-footer">
-      <p><a href="https://github.com/littlebobert/kehai">View the source code on GitHub</a></p>
       <p>Created by <a href="https://littlebobert.github.io">Justin Garcia</a></p>
     </footer>
   </main>
@@ -241,6 +246,7 @@
     const demo = document.querySelector('.browser-demo');
     const search = demo.querySelector('.search-box');
     const groupToggle = demo.querySelector('.group-toggle');
+    const taskSections = demo.querySelector('.task-sections');
     const sections = [...demo.querySelectorAll('.task-section')];
     const cards = [...demo.querySelectorAll('.window-card')];
 
@@ -255,8 +261,8 @@
       });
       sections.forEach((section) => {
         section.hidden = ![...section.querySelectorAll('.window-card')].some((card) => !card.hidden);
-        section.querySelector('.task-section-title').hidden = !groupToggle.checked;
       });
+      taskSections.classList.toggle('is-grouped', groupToggle.checked);
       firstVisibleCard?.classList.add('is-selected');
     }
 

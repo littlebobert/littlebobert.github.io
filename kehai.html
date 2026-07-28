@@ -91,9 +91,6 @@
     .traffic span:nth-child(3) { background: #28c840; }
     .browser-toolbar { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 13px 14px 6px; }
     .browser-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
-    .group-button { cursor: pointer; padding: 7px 11px; border: 1px solid rgba(0, 0, 0, 0.18); border-radius: 5px; background: linear-gradient(#fff, #ececec); color: #333; font: 600 10pt -apple-system, BlinkMacSystemFont, sans-serif; box-shadow: 0 1px 1px rgba(0, 0, 0, 0.06); }
-    .group-button:hover { background: linear-gradient(#fafafa, #e5e5e5); }
-    .group-button:active { background: #dedede; }
     .browser-check { display: inline-flex; align-items: center; gap: 5px; color: #444; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; white-space: nowrap; }
     .browser-check input { accent-color: #1681e2; }
     .search-control { width: 42%; min-width: 210px; }
@@ -109,6 +106,12 @@
     .task-sections:not(.is-grouped) .task-section { display: contents; }
     .task-sections:not(.is-grouped) .task-section-title { display: none; }
     .task-sections:not(.is-grouped) .window-grid { display: contents; }
+    .task-sections:not(.is-grouped) .task-section:nth-of-type(1) .window-card:nth-child(1) { order: 1; }
+    .task-sections:not(.is-grouped) .task-section:nth-of-type(2) .window-card:nth-child(1) { order: 2; }
+    .task-sections:not(.is-grouped) .task-section:nth-of-type(1) .window-card:nth-child(2) { order: 3; }
+    .task-sections:not(.is-grouped) .task-section:nth-of-type(2) .window-card:nth-child(2) { order: 4; }
+    .task-sections:not(.is-grouped) .task-section:nth-of-type(1) .window-card:nth-child(3) { order: 5; }
+    .task-sections:not(.is-grouped) .task-section:nth-of-type(2) .window-card:nth-child(3) { order: 6; }
     .window-card { padding: 7px; border-radius: 9px; background: #e8e8e9; }
     .window-card.is-selected { box-shadow: 0 0 0 2px #1784e8; }
     .window-preview { height: 78px; border-radius: 5px; background: linear-gradient(135deg, #fff 0 34%, #d7dce1 34% 38%, #f8f8f8 38% 64%, #bbb 64% 67%, #f7f7f7 67%); }
@@ -159,7 +162,6 @@
           </div>
           <div class="browser-toolbar">
             <div class="browser-controls">
-              <button class="group-button" type="button">Regenerate Groups</button>
               <label class="browser-check"><input class="group-toggle" type="checkbox" checked> Group by Task</label>
             </div>
             <div class="search-control">

@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.1.7</title>
+            <pubDate>Tue, 28 Jul 2026 10:51:01 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>8</sparkle:version>
+            <sparkle:shortVersionString>0.1.7</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fix bugs in the Close Window feature.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.7/Kehai-0.1.7-mac.zip" length="5026585" type="application/octet-stream" sparkle:edSignature="oYw6IfKnKddBMOH8gRlLoGkzyX9niBaLPjX6Hi7iET9UGddpeh5/V97EbY8T+Ggz7pzvYX17nRwC5sCUlYyzCA=="/>
+        </item>
+        <item>
             <title>0.1.6</title>
             <pubDate>Tue, 28 Jul 2026 09:55:44 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Added a way to exclude certain apps from AI requests.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.5/Kehai-0.1.5-mac.zip" length="4982081" type="application/octet-stream" sparkle:edSignature="MeWU1MqBHtQDHw72esqglAmHr7FsBsTeSX8wj7QNlUn8OoyyCxgrAcGaw6G1a0BbGxFsuQ+fn8uSUZwPPJ8XCw=="/>
-        </item>
-        <item>
-            <title>0.1.4</title>
-            <pubDate>Tue, 28 Jul 2026 07:57:38 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>5</sparkle:version>
-            <sparkle:shortVersionString>0.1.4</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Added a way to update your OpenAI API key in Settings.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.4/Kehai-0.1.4-mac.zip" length="4978378" type="application/octet-stream" sparkle:edSignature="9FCErO8eqB0W1BMpWgo7ObqqFp5sYkiJN1Sse3NWJSdvAJJtHpH0BmwIW4jt5Qz8DCtvXPAUZzLG4ncVuhsJDQ=="/>
         </item>
     </channel>
 </rss>

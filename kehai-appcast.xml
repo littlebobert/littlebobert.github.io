@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.1.8</title>
+            <pubDate>Tue, 28 Jul 2026 11:12:28 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>9</sparkle:version>
+            <sparkle:shortVersionString>0.1.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Added a Japanese language mode and fixed some bugs.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.8/Kehai-0.1.8-mac.zip" length="5039857" type="application/octet-stream" sparkle:edSignature="FvHzYfi6rYXu/Wv/Svr31mh1BDURcMz78ziu0y/ToHp3+QSPscNAP5WTOHwWIaKnfcXUm7n0OhplHo9zmoOqDg=="/>
+        </item>
+        <item>
             <title>0.1.7</title>
             <pubDate>Tue, 28 Jul 2026 10:51:01 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Added keyboard shortcuts for more functionality, fixed a duplicate window bug.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.6/Kehai-0.1.6-mac.zip" length="5005475" type="application/octet-stream" sparkle:edSignature="BE4rCm3EjmPci0Hqbne0iVR2MNUixZtyb+d8voBAInVu92oIh1vkHv/piG1VazLfvum0ks3Q8pXAeIHtU9ftBw=="/>
-        </item>
-        <item>
-            <title>0.1.5</title>
-            <pubDate>Tue, 28 Jul 2026 08:22:16 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>6</sparkle:version>
-            <sparkle:shortVersionString>0.1.5</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Added a way to exclude certain apps from AI requests.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.5/Kehai-0.1.5-mac.zip" length="4982081" type="application/octet-stream" sparkle:edSignature="MeWU1MqBHtQDHw72esqglAmHr7FsBsTeSX8wj7QNlUn8OoyyCxgrAcGaw6G1a0BbGxFsuQ+fn8uSUZwPPJ8XCw=="/>
         </item>
     </channel>
 </rss>

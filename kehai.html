@@ -131,10 +131,10 @@
       .kehai-icon { width: 70px; height: 70px; flex-basis: 70px; }
       .browser-toolbar { flex-direction: column; }
       .search-control { width: 100%; }
-      .task-sections.is-grouped { display: grid; grid-template-columns: 1fr 1fr; }
-      .task-sections.is-grouped .task-section { min-width: 0; }
-      .task-sections.is-grouped .window-grid { grid-auto-flow: row; grid-template-columns: 1fr; }
-      .task-sections:not(.is-grouped) { grid-template-columns: 1fr 1fr; }
+      .task-sections.is-grouped { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
+      .task-sections.is-grouped .task-section { width: 100%; min-width: 0; }
+      .task-sections.is-grouped .window-grid { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .task-sections:not(.is-grouped) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .window-preview { height: 68px; }
     }
   </style>

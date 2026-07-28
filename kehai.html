@@ -99,22 +99,20 @@
     .search-box { box-sizing: border-box; width: 100%; padding: 7px 10px; border: 1px solid rgba(0, 0, 0, 0.16); border-radius: 5px; outline: none; background: #fff; color: #333; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
     .search-box:focus { border-color: #1681e2; box-shadow: 0 0 0 2px rgba(22, 129, 226, 0.22); }
     .search-hint { padding: 3px 2px 0; color: #777; font: 9pt -apple-system, BlinkMacSystemFont, sans-serif; }
-    .task-sections { min-height: 338px; }
-    .task-section { padding: 7px 14px 8px; }
+    .task-sections { min-height: 338px; padding: 7px 14px 14px; align-content: start; }
+    .task-sections.is-grouped { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 18px 11px; }
+    .task-section { flex: 0 0 auto; }
     .task-section[hidden], .window-card[hidden] { display: none; }
     .task-section-title { margin: 0 0 8px; color: #333; font: 700 11pt -apple-system, BlinkMacSystemFont, sans-serif; }
-    .window-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; }
-    .task-sections:not(.is-grouped) { display: grid; grid-template-columns: repeat(3, 1fr); gap: 11px; padding: 7px 14px 8px; align-content: start; }
+    .window-grid { display: grid; grid-auto-flow: column; grid-auto-columns: 150px; gap: 11px; }
+    .task-sections:not(.is-grouped) { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; }
     .task-sections:not(.is-grouped) .task-section { display: contents; }
     .task-sections:not(.is-grouped) .task-section-title { display: none; }
     .task-sections:not(.is-grouped) .window-grid { display: contents; }
-    .task-sections:not(.is-grouped) .task-section:nth-of-type(1) .window-card:nth-child(1) { order: 1; }
-    .task-sections:not(.is-grouped) .task-section:nth-of-type(2) .window-card:nth-child(1) { order: 2; }
-    .task-sections:not(.is-grouped) .task-section:nth-of-type(1) .window-card:nth-child(2) { order: 3; }
-    .task-sections:not(.is-grouped) .task-section:nth-of-type(2) .window-card:nth-child(2) { order: 4; }
-    .task-sections:not(.is-grouped) .task-section:nth-of-type(1) .window-card:nth-child(3) { order: 5; }
-    .task-sections:not(.is-grouped) .task-section:nth-of-type(2) .window-card:nth-child(3) { order: 6; }
-    .window-card { padding: 7px; border-radius: 9px; background: #e8e8e9; }
+    .window-card { min-width: 0; padding: 7px; border-radius: 9px; background: #e8e8e9; }
+    .task-sections.is-grouped .task-section:nth-of-type(1) .window-card { background: rgba(77, 148, 245, 0.18); }
+    .task-sections.is-grouped .task-section:nth-of-type(2) .window-card { background: rgba(158, 117, 224, 0.18); }
+    .task-sections.is-grouped .task-section:nth-of-type(3) .window-card { background: rgba(61, 179, 153, 0.18); }
     .window-card.is-selected { box-shadow: 0 0 0 2px #1784e8; }
     .window-preview { height: 78px; border-radius: 5px; background: linear-gradient(135deg, #fff 0 34%, #d7dce1 34% 38%, #f8f8f8 38% 64%, #bbb 64% 67%, #f7f7f7 67%); }
     .window-preview.terminal { background: linear-gradient(160deg, #1e2732 0 72%, #3d9d73 72% 75%, #1e2732 75%); }
@@ -133,7 +131,10 @@
       .kehai-icon { width: 70px; height: 70px; flex-basis: 70px; }
       .browser-toolbar { flex-direction: column; }
       .search-control { width: 100%; }
-      .window-grid, .task-sections:not(.is-grouped) { grid-template-columns: 1fr 1fr; }
+      .task-sections.is-grouped { display: grid; grid-template-columns: 1fr 1fr; }
+      .task-sections.is-grouped .task-section { min-width: 0; }
+      .task-sections.is-grouped .window-grid { grid-auto-flow: row; grid-template-columns: 1fr; }
+      .task-sections:not(.is-grouped) { grid-template-columns: 1fr 1fr; }
       .window-preview { height: 68px; }
     }
   </style>
@@ -185,15 +186,20 @@
               <div class="window-grid">
                 <div class="window-card is-selected" data-search="research notes safari sales proposal"><div class="window-preview"></div><div class="window-name" data-label-en="Research notes" data-label-ja="調査メモ">Research notes</div><div class="app-label">Safari</div></div>
                 <div class="window-card" data-search="proposal draft pages sales"><div class="window-preview document"></div><div class="window-name" data-label-en="Proposal draft" data-label-ja="提案書の下書き">Proposal draft</div><div class="app-label">Pages</div></div>
-                <div class="window-card" data-search="client conversation slack sales"><div class="window-preview chat"></div><div class="window-name" data-label-en="Client conversation" data-label-ja="顧客との会話">Client conversation</div><div class="app-label">Slack</div></div>
               </div>
             </section>
             <section class="task-section" data-group="outage">
               <h3 class="task-section-title" data-label-en="Production outage" data-label-ja="本番障害">Production outage</h3>
               <div class="window-grid">
                 <div class="window-card" data-search="project terminal production outage logs"><div class="window-preview terminal"></div><div class="window-name" data-label-en="Production logs" data-label-ja="本番ログ">Production logs</div><div class="app-label">Terminal</div></div>
-                <div class="window-card" data-search="incident dashboard safari production outage"><div class="window-preview"></div><div class="window-name" data-label-en="Incident dashboard" data-label-ja="障害ダッシュボード">Incident dashboard</div><div class="app-label">Safari</div></div>
-                <div class="window-card" data-search="incident response slack production outage"><div class="window-preview chat"></div><div class="window-name" data-label-en="Incident response" data-label-ja="障害対応">Incident response</div><div class="app-label">Slack</div></div>
+              </div>
+            </section>
+            <section class="task-section" data-group="camping">
+              <h3 class="task-section-title" data-label-en="Camping trip" data-label-ja="キャンプ旅行">Camping trip</h3>
+              <div class="window-grid">
+                <div class="window-card" data-search="camping conversation slack trip"><div class="window-preview chat"></div><div class="window-name" data-label-en="Trip conversation" data-label-ja="旅行の会話">Trip conversation</div><div class="app-label">Slack</div></div>
+                <div class="window-card" data-search="camping map safari trip"><div class="window-preview"></div><div class="window-name" data-label-en="Campsite map" data-label-ja="キャンプ場の地図">Campsite map</div><div class="app-label">Safari</div></div>
+                <div class="window-card" data-search="camping packing list pages trip"><div class="window-preview document"></div><div class="window-name" data-label-en="Packing list" data-label-ja="持ち物リスト">Packing list</div><div class="app-label">Pages</div></div>
               </div>
             </section>
           </div>

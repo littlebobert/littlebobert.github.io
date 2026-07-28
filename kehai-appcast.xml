@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.1.21</title>
+            <pubDate>Wed, 29 Jul 2026 08:45:18 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>22</sparkle:version>
+            <sparkle:shortVersionString>0.1.21</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Add app icons so Kehai can replace the Command Tab appswitcher.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.21/Kehai-0.1.21-mac.zip" length="5119460" type="application/octet-stream" sparkle:edSignature="X+LhSsj+Y6IYcg7MzNsBn2Gl7ZsK/TGzxETjcLpBBEz6fIxPmFrQnUidlpsQDLcSKhOwMhXEGE2+L7AZ1y3tDg=="/>
+        </item>
+        <item>
             <title>0.1.20</title>
             <pubDate>Wed, 29 Jul 2026 07:57:22 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Tried to fix thumbnail refresh and ordering.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.19/Kehai-0.1.19-mac.zip" length="5097852" type="application/octet-stream" sparkle:edSignature="dsIs3Pp6gN3Y39pKyVSjMpL9dO5Gc/YfC9tRp+CfHpOHYjMVfSrhysSbuzjAFNffB/hZYGAM/Mh36XWt/OMvAw=="/>
-        </item>
-        <item>
-            <title>0.1.18</title>
-            <pubDate>Tue, 28 Jul 2026 20:53:25 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>19</sparkle:version>
-            <sparkle:shortVersionString>0.1.18</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Added a macOS style app switcher focus halo mode and improved refresh performance.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.18/Kehai-0.1.18-mac.zip" length="5070990" type="application/octet-stream" sparkle:edSignature="vbZhBaCByl+a6POOVTnaHxf6DjYmL6AiUHzWpnfMzKvJm9gxI2kX7x/h2i/yYzG9H9bmJXNzQVC3RIn5DID2Aw=="/>
         </item>
     </channel>
 </rss>

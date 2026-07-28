@@ -82,9 +82,9 @@
       box-shadow: 0 2px 7px rgba(113, 49, 36, 0.28);
     }
 
-    .browser-demo { margin: 0 auto 12pt; }
+    .browser-demo { width: 502px; max-width: 100%; margin: -6pt auto 12pt; }
     .browser-demo-label { margin: 0 0 9px; color: #555; font-size: 11pt; font-weight: bold; text-align: center; }
-    .browser-window { overflow: hidden; border: 1px solid var(--kehai-line); border-radius: 11px; background: #f5f5f6; box-shadow: 0 10px 28px rgba(39, 35, 31, 0.12); }
+    .browser-window { width: 100%; overflow: hidden; border: 1px solid var(--kehai-line); border-radius: 11px; background: #f5f5f6; box-shadow: 0 10px 28px rgba(39, 35, 31, 0.12); }
     .browser-titlebar { position: relative; min-height: 37px; padding: 11px 12px; border-bottom: 1px solid rgba(0, 0, 0, 0.08); background: linear-gradient(#f2f2f2, #e5e5e5); color: #444; font: 600 10pt/1 -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; }
     .traffic { position: absolute; left: 12px; top: 13px; display: flex; gap: 6px; }
     .traffic span { width: 9px; height: 9px; border-radius: 50%; }
@@ -95,17 +95,17 @@
     .browser-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
     .browser-check { display: inline-flex; align-items: center; gap: 5px; color: #444; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; white-space: nowrap; }
     .browser-check input { accent-color: #1681e2; }
-    .search-control { width: 42%; min-width: 210px; }
+    .search-control { width: 62%; min-width: 250px; }
     .search-box { box-sizing: border-box; width: 100%; padding: 7px 10px; border: 1px solid rgba(0, 0, 0, 0.16); border-radius: 5px; outline: none; background: #fff; color: #333; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
     .search-box:focus { border-color: #1681e2; box-shadow: 0 0 0 2px rgba(22, 129, 226, 0.22); }
     .search-hint { padding: 3px 2px 0; color: #777; font: 9pt -apple-system, BlinkMacSystemFont, sans-serif; }
     .task-sections { padding: 7px 14px 12px; align-content: start; }
     .task-sections.is-grouped { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 18px 11px; }
-    .task-section { flex: 0 0 auto; }
+    .task-section { width: min-content; flex: 0 0 auto; }
     .task-section[hidden], .window-card[hidden] { display: none; }
     .task-section-title { margin: 0 0 8px; color: #333; font: 700 11pt -apple-system, BlinkMacSystemFont, sans-serif; }
     .window-grid { display: grid; grid-auto-flow: column; grid-auto-columns: 150px; gap: 11px; }
-    .task-sections:not(.is-grouped) { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 11px; }
+    .task-sections:not(.is-grouped) { display: grid; grid-template-columns: repeat(3, 150px); gap: 11px; }
     .task-sections:not(.is-grouped) .task-section { display: contents; }
     .task-sections:not(.is-grouped) .task-section-title { display: none; }
     .task-sections:not(.is-grouped) .window-grid { display: contents; }
@@ -154,7 +154,7 @@
         <img class="kehai-icon" src="assets/kehai-icon.png?v=1" alt="Kehai app icon">
         <div>
           <h1>Kehai (気配)</h1>
-          <div class="kehai-subtitle" data-label-en="Tame your windows." data-label-ja="ウインドウを、すっきり整理。">Tame your windows.</div>
+          <div class="kehai-subtitle" data-label-en="Tame your windows" data-label-ja="ウインドウを、すっきり整理">Tame your windows</div>
         </div>
       </div>
       <div class="kehai-tagline" data-label-en="Browse windows intelligently grouped by task, not by app. Quickly return to your last task after an interruption." data-label-ja="アプリ別ではなく、タスク別に賢くグループ化されたウインドウを一覧表示。中断後も、直前の作業へすぐに戻れます。">Browse windows intelligently grouped by task, not by app. Quickly return to your last task after an interruption.</div>
@@ -210,12 +210,12 @@
 
     <section class="kehai-detail">
       <h2 data-label-en="What it does:" data-label-ja="できること：">What it does:</h2>
-      <p data-label-en="Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task. Then returning to work starts with context, not app names." data-label-ja="Kehaiは、開いているウインドウとSafariのタブを1つの検索可能なブラウザに表示し、プロジェクトやタスク別に賢くグループ化します。作業に戻るとき、アプリ名ではなく文脈から再開できます。">Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task. Then returning to work starts with context, not app names.</p>
+      <p data-label-en="Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task. Now returning to work starts with context." data-label-ja="Kehaiは、開いているウインドウとSafariのタブを1つの検索可能なブラウザに表示し、プロジェクトやタスク別に賢くグループ化します。これで作業に戻るとき、文脈から再開できます。">Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task. Now returning to work starts with context.</p>
     </section>
 
     <section class="kehai-detail">
       <h2 data-label-en="Privacy:" data-label-ja="プライバシー：">Privacy:</h2>
-      <p data-label-en="When you generate groups, Kehai sends OpenAI window and Safari-tab titles, app names, recent focus activity, and small, compressed screenshots of eligible windows. Smart Search sends only your query and window metadata—never screenshots. You can exclude an app from AI while keeping it visible in the browser, or exclude it from Kehai entirely." data-label-ja="グループを生成すると、Kehaiは対象ウインドウとSafariタブのタイトル、アプリ名、最近のフォーカス履歴、小さく圧縮したスクリーンショットをOpenAIに送信します。スマート検索が送信するのは検索内容とウインドウのメタデータだけで、スクリーンショットは送信しません。アプリをブラウザに表示したままAIから除外することも、Kehaiから完全に除外することもできます。">When you generate groups, Kehai sends OpenAI window and Safari-tab titles, app names, recent focus activity, and small, compressed screenshots of eligible windows. Smart Search sends only your query and window metadata—never screenshots. You can exclude an app from AI while keeping it visible in the browser, or exclude it from Kehai entirely.</p>
+      <p data-label-en="When Kehai generates groups, it sends OpenAI window and Safari-tab titles, app names, recent focus activity, and small, compressed screenshots of eligible windows. Smart Search sends only your query and window metadata, never screenshots. You can exclude an app from AI queries while keeping it visible in the browser, or exclude it from Kehai entirely." data-label-ja="Kehaiがグループを生成すると、対象ウインドウとSafariタブのタイトル、アプリ名、最近のフォーカス履歴、小さく圧縮したスクリーンショットをOpenAIに送信します。スマート検索が送信するのは検索内容とウインドウのメタデータだけで、スクリーンショットは送信しません。アプリをブラウザに表示したままAIクエリから除外することも、Kehaiから完全に除外することもできます。">When Kehai generates groups, it sends OpenAI window and Safari-tab titles, app names, recent focus activity, and small, compressed screenshots of eligible windows. Smart Search sends only your query and window metadata, never screenshots. You can exclude an app from AI queries while keeping it visible in the browser, or exclude it from Kehai entirely.</p>
       <p><a href="https://github.com/littlebobert/kehai" data-label-en="View the source code on GitHub." data-label-ja="ソースコードをGitHubで見る。">View the source code on GitHub.</a></p>
     </section>
 

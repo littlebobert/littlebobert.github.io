@@ -9,17 +9,17 @@
   <link rel="apple-touch-icon" href="assets/kehai-icon.png?v=1">
   <link rel="canonical" href="https://littlebobert.github.io/kehai.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Kehai helps you pick up where you left off after an interruption.">
-  <meta property="og:title" content="Kehai: Pick up where you left off">
+  <meta name="description" content="Kehai helps you pick up where you left off after an interruption." data-label-en="Kehai helps you pick up where you left off after an interruption." data-label-ja="Kehaiは、中断した作業をすぐに再開できるようにします。">
+  <meta property="og:title" content="Kehai: Pick up where you left off" data-label-en="Kehai: Pick up where you left off" data-label-ja="Kehai：中断した作業をすぐに再開">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://littlebobert.github.io/kehai.html">
   <meta property="og:site_name" content="Kehai (気配)">
-  <meta property="og:description" content="A visual browser for returning to interrupted work on macOS.">
+  <meta property="og:description" content="A visual browser for returning to interrupted work on macOS." data-label-en="A visual browser for returning to interrupted work on macOS." data-label-ja="中断したMacでの作業に戻るためのビジュアルブラウザ。">
   <meta property="og:image" content="https://littlebobert.github.io/assets/kehai-icon.png?v=1">
   <meta property="og:image:alt" content="Kehai app icon">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Kehai: Pick up where you left off">
-  <meta name="twitter:description" content="A visual browser for returning to interrupted work on macOS.">
+  <meta name="twitter:title" content="Kehai: Pick up where you left off" data-label-en="Kehai: Pick up where you left off" data-label-ja="Kehai：中断した作業をすぐに再開">
+  <meta name="twitter:description" content="A visual browser for returning to interrupted work on macOS." data-label-en="A visual browser for returning to interrupted work on macOS." data-label-ja="中断したMacでの作業に戻るためのビジュアルブラウザ。">
   <meta name="twitter:image" content="https://littlebobert.github.io/assets/kehai-icon.png?v=1">
   <style>
     :root {
@@ -61,6 +61,8 @@
     .release-notes ul { margin-bottom: 0; }
     .kehai-footer { padding: 16pt 0 8pt; color: #555; text-align: center; }
     .kehai-footer p { margin: 4pt 0; }
+    .language-switcher { display: flex; justify-content: flex-end; align-items: center; gap: 6pt; padding: 0 4pt 8pt; font-size: 10pt; }
+    .language-switcher select { font: inherit; }
 
     .kehai-download,
     .kehai-download:visited {
@@ -139,120 +141,156 @@
 
 <body class="sasu-site">
   <main class="sasu-page">
+    <div class="language-switcher">
+      <label for="language-select" data-label-en="Language" data-label-ja="言語">Language</label>
+      <select id="language-select" aria-label="Language">
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+      </select>
+    </div>
     <section class="kehai-hero">
       <div class="kehai-title-row">
         <img class="kehai-icon" src="assets/kehai-icon.png?v=1" alt="Kehai app icon">
         <div>
           <h1>Kehai (気配)</h1>
-          <div class="kehai-subtitle">Pick up where you left off.</div>
+          <div class="kehai-subtitle" data-label-en="Pick up where you left off." data-label-ja="中断した作業を、すぐに再開。">Pick up where you left off.</div>
         </div>
       </div>
-      <div class="kehai-tagline">Browse windows intelligently grouped by task, not by app. Quickly return to your last task after an interruption.</div>
-      <a class="kehai-download" href="https://github.com/littlebobert/kehai/releases/download/0.1.7/Kehai-0.1.7-mac.zip">Download for macOS</a>
-      <span class="kehai-version">(version 0.1.7)</span>
-      <div class="small-note">Requires macOS 14 or newer on an Apple Silicon Mac. An OpenAI API key is required to generate task groups.</div>
+      <div class="kehai-tagline" data-label-en="Browse windows intelligently grouped by task, not by app. Quickly return to your last task after an interruption." data-label-ja="アプリ別ではなく、タスク別に賢くグループ化されたウインドウを一覧表示。中断後も、直前の作業へすぐに戻れます。">Browse windows intelligently grouped by task, not by app. Quickly return to your last task after an interruption.</div>
+      <a class="kehai-download" href="https://github.com/littlebobert/kehai/releases/download/0.1.7/Kehai-0.1.7-mac.zip" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
+      <span class="kehai-version" data-label-en="(version 0.1.7)" data-label-ja="（バージョン 0.1.7）">(version 0.1.7)</span>
+      <div class="small-note" data-label-en="Requires macOS 14 or newer on an Apple Silicon Mac. An OpenAI API key is required to generate task groups." data-label-ja="Apple Silicon搭載MacとmacOS 14以降が必要です。タスクグループの生成にはOpenAI APIキーが必要です。">Requires macOS 14 or newer on an Apple Silicon Mac. An OpenAI API key is required to generate task groups.</div>
     </section>
 
     <section class="sasu-section">
       <figure class="browser-demo">
-        <div class="browser-window" aria-label="Illustration of the Kehai window browser">
+        <div class="browser-window" aria-label="Illustration of the Kehai window browser" data-aria-label-en="Illustration of the Kehai window browser" data-aria-label-ja="Kehaiウインドウブラウザのイメージ">
           <div class="browser-titlebar">
             <span class="traffic" aria-hidden="true"><span></span><span></span><span></span></span>
             Kehai
           </div>
           <div class="browser-toolbar">
             <div class="browser-controls">
-              <label class="browser-check"><input class="group-toggle" type="checkbox" checked> Group by Task</label>
+              <label class="browser-check"><input class="group-toggle" type="checkbox" checked> <span data-label-en="Group by task" data-label-ja="タスク別にグループ化">Group by task</span></label>
             </div>
             <div class="search-control">
-              <input class="search-box" type="search" placeholder="Search windows and Safari tabs" aria-label="Search example windows">
-              <div class="search-hint">Command-Return for Smart Search</div>
+              <input class="search-box" type="search" placeholder="Search windows and Safari tabs" aria-label="Search example windows" data-placeholder-en="Search windows and Safari tabs" data-placeholder-ja="ウインドウとSafariのタブを検索" data-aria-label-en="Search example windows" data-aria-label-ja="サンプルのウインドウを検索">
+              <div class="search-hint" data-label-en="Command-Return for Smart Search" data-label-ja="Command-Returnでスマート検索">Command-Return for Smart Search</div>
             </div>
           </div>
           <div class="task-sections is-grouped" aria-live="polite">
             <section class="task-section" data-group="sales">
-              <h3 class="task-section-title">Sales proposal</h3>
+              <h3 class="task-section-title" data-label-en="Sales proposal" data-label-ja="営業提案">Sales proposal</h3>
               <div class="window-grid">
-                <div class="window-card is-selected" data-search="research notes safari sales proposal"><div class="window-preview"></div><div class="window-name">Research notes</div><div class="app-label">Safari</div></div>
-                <div class="window-card" data-search="proposal draft pages sales"><div class="window-preview document"></div><div class="window-name">Proposal draft</div><div class="app-label">Pages</div></div>
-                <div class="window-card" data-search="client conversation slack sales"><div class="window-preview chat"></div><div class="window-name">Client conversation</div><div class="app-label">Slack</div></div>
+                <div class="window-card is-selected" data-search="research notes safari sales proposal"><div class="window-preview"></div><div class="window-name" data-label-en="Research notes" data-label-ja="調査メモ">Research notes</div><div class="app-label">Safari</div></div>
+                <div class="window-card" data-search="proposal draft pages sales"><div class="window-preview document"></div><div class="window-name" data-label-en="Proposal draft" data-label-ja="提案書の下書き">Proposal draft</div><div class="app-label">Pages</div></div>
+                <div class="window-card" data-search="client conversation slack sales"><div class="window-preview chat"></div><div class="window-name" data-label-en="Client conversation" data-label-ja="顧客との会話">Client conversation</div><div class="app-label">Slack</div></div>
               </div>
             </section>
             <section class="task-section" data-group="outage">
-              <h3 class="task-section-title">Production outage</h3>
+              <h3 class="task-section-title" data-label-en="Production outage" data-label-ja="本番障害">Production outage</h3>
               <div class="window-grid">
-                <div class="window-card" data-search="project terminal production outage logs"><div class="window-preview terminal"></div><div class="window-name">Production logs</div><div class="app-label">Terminal</div></div>
-                <div class="window-card" data-search="incident dashboard safari production outage"><div class="window-preview"></div><div class="window-name">Incident dashboard</div><div class="app-label">Safari</div></div>
-                <div class="window-card" data-search="incident response slack production outage"><div class="window-preview chat"></div><div class="window-name">Incident response</div><div class="app-label">Slack</div></div>
+                <div class="window-card" data-search="project terminal production outage logs"><div class="window-preview terminal"></div><div class="window-name" data-label-en="Production logs" data-label-ja="本番ログ">Production logs</div><div class="app-label">Terminal</div></div>
+                <div class="window-card" data-search="incident dashboard safari production outage"><div class="window-preview"></div><div class="window-name" data-label-en="Incident dashboard" data-label-ja="障害ダッシュボード">Incident dashboard</div><div class="app-label">Safari</div></div>
+                <div class="window-card" data-search="incident response slack production outage"><div class="window-preview chat"></div><div class="window-name" data-label-en="Incident response" data-label-ja="障害対応">Incident response</div><div class="app-label">Slack</div></div>
               </div>
             </section>
           </div>
         </div>
-        <figcaption class="browser-caption">Browse windows grouped by task.</figcaption>
+        <figcaption class="browser-caption" data-label-en="Browse windows grouped by task." data-label-ja="タスク別にグループ化されたウインドウを一覧表示。">Browse windows grouped by task.</figcaption>
       </figure>
     </section>
 
     <section class="kehai-detail">
-      <h2>What it does:</h2>
-      <p>Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task. Then returning to work starts with context, not app names.</p>
+      <h2 data-label-en="What it does:" data-label-ja="できること：">What it does:</h2>
+      <p data-label-en="Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task. Then returning to work starts with context, not app names." data-label-ja="Kehaiは、開いているウインドウとSafariのタブを1つの検索可能なブラウザに表示し、プロジェクトやタスク別に賢くグループ化します。作業に戻るとき、アプリ名ではなく文脈から再開できます。">Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task. Then returning to work starts with context, not app names.</p>
     </section>
 
     <section class="kehai-detail">
-      <h2>Privacy:</h2>
-      <p>When you generate groups, Kehai sends OpenAI window and Safari-tab titles, app names, recent focus activity, and small, compressed screenshots of eligible windows. Smart Search sends only your query and window metadata—never screenshots. You can exclude an app from AI while keeping it visible in the browser, or exclude it from Kehai entirely.</p>
-      <p><a href="https://github.com/littlebobert/kehai">View the source code on GitHub.</a></p>
+      <h2 data-label-en="Privacy:" data-label-ja="プライバシー：">Privacy:</h2>
+      <p data-label-en="When you generate groups, Kehai sends OpenAI window and Safari-tab titles, app names, recent focus activity, and small, compressed screenshots of eligible windows. Smart Search sends only your query and window metadata—never screenshots. You can exclude an app from AI while keeping it visible in the browser, or exclude it from Kehai entirely." data-label-ja="グループを生成すると、Kehaiは対象ウインドウとSafariタブのタイトル、アプリ名、最近のフォーカス履歴、小さく圧縮したスクリーンショットをOpenAIに送信します。スマート検索が送信するのは検索内容とウインドウのメタデータだけで、スクリーンショットは送信しません。アプリをブラウザに表示したままAIから除外することも、Kehaiから完全に除外することもできます。">When you generate groups, Kehai sends OpenAI window and Safari-tab titles, app names, recent focus activity, and small, compressed screenshots of eligible windows. Smart Search sends only your query and window metadata—never screenshots. You can exclude an app from AI while keeping it visible in the browser, or exclude it from Kehai entirely.</p>
+      <p><a href="https://github.com/littlebobert/kehai" data-label-en="View the source code on GitHub." data-label-ja="ソースコードをGitHubで見る。">View the source code on GitHub.</a></p>
     </section>
 
     <section class="kehai-detail">
-      <h2>Why “Kehai”?</h2>
-      <p><em>Kehai</em> (気配) is the sense that something is present without being seen.</p>
+      <h2 data-label-en="Why “Kehai”?" data-label-ja="なぜ「Kehai」？">Why “Kehai”?</h2>
+      <p data-label-en="Kehai (気配) is the sense that something is present without being seen." data-label-ja="Kehai（気配）は、目には見えなくても何かの存在を感じることです。"><em>Kehai</em> (気配) is the sense that something is present without being seen.</p>
     </section>
 
     <section class="kehai-detail">
       <details class="release-notes">
-        <summary>Changelog</summary>
+        <summary data-label-en="Changelog" data-label-ja="変更履歴">Changelog</summary>
         <h2>0.1.7</h2>
         <ul>
-          <li>Fix bugs in the Close Window feature.</li>
+          <li data-label-en="Fix bugs in the Close Window feature." data-label-ja="「ウインドウを閉じる」機能の不具合を修正しました。">Fix bugs in the Close Window feature.</li>
         </ul>
         <h2>0.1.6</h2>
         <ul>
-          <li>Added keyboard shortcuts for more functionality, fixed a duplicate window bug.</li>
+          <li data-label-en="Added keyboard shortcuts for more functionality, fixed a duplicate window bug." data-label-ja="各種機能のキーボードショートカットを追加し、ウインドウが重複する不具合を修正しました。">Added keyboard shortcuts for more functionality, fixed a duplicate window bug.</li>
         </ul>
         <h2>0.1.5</h2>
         <ul>
-          <li>Added a way to exclude certain apps from AI requests.</li>
+          <li data-label-en="Added a way to exclude certain apps from AI requests." data-label-ja="特定のアプリをAIリクエストから除外できるようにしました。">Added a way to exclude certain apps from AI requests.</li>
         </ul>
         <h2>0.1.4</h2>
         <ul>
-          <li>Added a way to update your OpenAI API key in Settings.</li>
+          <li data-label-en="Added a way to update your OpenAI API key in Settings." data-label-ja="設定からOpenAI APIキーを更新できるようにしました。">Added a way to update your OpenAI API key in Settings.</li>
         </ul>
         <h2>0.1.3</h2>
         <ul>
-          <li>Added group by task, AI search, and misc. improvements.</li>
+          <li data-label-en="Added group by task, AI search, and misc. improvements." data-label-ja="タスク別グループ化、AI検索、その他の改善を追加しました。">Added group by task, AI search, and misc. improvements.</li>
         </ul>
         <h2>0.1.2</h2>
         <ul>
-          <li>Fix thumbnail rendering bug.</li>
+          <li data-label-en="Fix thumbnail rendering bug." data-label-ja="サムネイル表示の不具合を修正しました。">Fix thumbnail rendering bug.</li>
         </ul>
         <h2>0.1.1</h2>
         <ul>
-          <li>Bug fixes.</li>
+          <li data-label-en="Bug fixes." data-label-ja="不具合を修正しました。">Bug fixes.</li>
         </ul>
         <h2>0.1.0</h2>
         <ul>
-          <li>Browse current Mac windows and Safari tabs in one visual, searchable view.</li>
-          <li>Generate task-based groups with OpenAI and retain them across launches.</li>
-          <li>Hide individual windows, permanently exclude apps, and jump back with keyboard navigation.</li>
+          <li data-label-en="Browse current Mac windows and Safari tabs in one visual, searchable view." data-label-ja="現在開いているMacのウインドウとSafariのタブを、検索可能な1つのビジュアル画面で閲覧できます。">Browse current Mac windows and Safari tabs in one visual, searchable view.</li>
+          <li data-label-en="Generate task-based groups with OpenAI and retain them across launches." data-label-ja="OpenAIでタスク別グループを生成し、次回起動時にも保持します。">Generate task-based groups with OpenAI and retain them across launches.</li>
+          <li data-label-en="Hide individual windows, permanently exclude apps, and jump back with keyboard navigation." data-label-ja="個別のウインドウを非表示にし、アプリを恒久的に除外し、キーボード操作で目的の作業へ戻れます。">Hide individual windows, permanently exclude apps, and jump back with keyboard navigation.</li>
         </ul>
       </details>
     </section>
 
     <footer class="kehai-footer">
-      <p>Created by <a href="https://littlebobert.github.io">Justin Garcia</a></p>
+      <p><span data-label-en="Created by" data-label-ja="制作：">Created by</span> <a href="https://littlebobert.github.io">Justin Garcia</a></p>
     </footer>
   </main>
   <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSelect = document.getElementById('language-select');
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-placeholder-en][data-placeholder-ja]').forEach((element) => {
+        element.placeholder = selected === 'ja' ? element.dataset.placeholderJa : element.dataset.placeholderEn;
+      });
+      document.querySelectorAll('[data-aria-label-en][data-aria-label-ja]').forEach((element) => {
+        element.setAttribute('aria-label', selected === 'ja' ? element.dataset.ariaLabelJa : element.dataset.ariaLabelEn);
+      });
+      document.documentElement.lang = selected;
+      languageSelect.value = selected;
+      if (persist) localStorage.setItem('kehai-language', selected);
+    }
+
+    languageSelect.addEventListener('change', () => setLanguage(languageSelect.value));
+    setLanguage(localStorage.getItem('kehai-language') || preferredLanguage(), false);
+
     const demo = document.querySelector('.browser-demo');
     const search = demo.querySelector('.search-box');
     const groupToggle = demo.querySelector('.group-toggle');
@@ -265,7 +303,8 @@
       let firstVisibleCard = null;
 
       cards.forEach((card) => {
-        card.hidden = Boolean(query) && !card.dataset.search.includes(query);
+        const searchableText = `${card.dataset.search} ${card.textContent}`.toLocaleLowerCase();
+        card.hidden = Boolean(query) && !searchableText.includes(query);
         card.classList.remove('is-selected');
         if (!card.hidden && !firstVisibleCard) firstVisibleCard = card;
       });

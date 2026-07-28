@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.1.16</title>
+            <pubDate>Tue, 28 Jul 2026 18:06:14 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>17</sparkle:version>
+            <sparkle:shortVersionString>0.1.16</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Try to fix a bug with the install helper.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.16/Kehai-0.1.16-mac.zip" length="5066863" type="application/octet-stream" sparkle:edSignature="ZMFiBELHA0s4zVA9bsm5VRIJ4QiBM/xakXinhXKVXZsEzUQZ/YIkTgDE5grBJGmj2judFsZPHQlwCp5vhj11Dw=="/>
+        </item>
+        <item>
             <title>0.1.15</title>
             <pubDate>Tue, 28 Jul 2026 16:50:16 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Tried to fix the Move to Applications feature.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.14/Kehai-0.1.14-mac.zip" length="5045670" type="application/octet-stream" sparkle:edSignature="EZoMgxJPn/9Dk91ygnrcTf9EON7cQj6EXgpIuyz/ZtFwrEaZgVdlzhiETDArrIP/HzbrKTDCks38tEIYrd68Cw=="/>
-        </item>
-        <item>
-            <title>0.1.13</title>
-            <pubDate>Tue, 28 Jul 2026 13:04:50 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>14</sparkle:version>
-            <sparkle:shortVersionString>0.1.13</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Tried to fix the Move to Applications feature.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.13/Kehai-0.1.13-mac.zip" length="5045364" type="application/octet-stream" sparkle:edSignature="avIhoUdKjmtpuxFlUWacsEUFrgPNjTYmmdgrULaeiOv9k6SCC5B3ViHQSSV2PpXK7Syqk1kSuQWUg+JqPdq6DQ=="/>
         </item>
     </channel>
 </rss>

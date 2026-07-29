@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.1.22</title>
+            <pubDate>Wed, 29 Jul 2026 09:21:51 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>23</sparkle:version>
+            <sparkle:shortVersionString>0.1.22</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Make app icons participate in filtering.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.22/Kehai-0.1.22-mac.zip" length="5122045" type="application/octet-stream" sparkle:edSignature="4LyoCTFofuJoFxVjHSXFpQLaCUI7xMkXSYvjt0PFLuds1KYA/SRj8JEEblAgqNCBIi4RRflSnraKkkeCyaI9Bw=="/>
+        </item>
+        <item>
             <title>0.1.21</title>
             <pubDate>Wed, 29 Jul 2026 08:45:18 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed bugs in thumbnail ordering and mouse wheel scrolling.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.20/Kehai-0.1.20-mac.zip" length="5103300" type="application/octet-stream" sparkle:edSignature="rpdK79U6CPCh8Djv1annasWugFeFsjkjlM43qhsDVLO2kn0DkUTK37jk0Mn02GB627zmlRUz8krO7qxALugjBA=="/>
-        </item>
-        <item>
-            <title>0.1.19</title>
-            <pubDate>Tue, 28 Jul 2026 22:38:42 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>20</sparkle:version>
-            <sparkle:shortVersionString>0.1.19</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Tried to fix thumbnail refresh and ordering.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.19/Kehai-0.1.19-mac.zip" length="5097852" type="application/octet-stream" sparkle:edSignature="dsIs3Pp6gN3Y39pKyVSjMpL9dO5Gc/YfC9tRp+CfHpOHYjMVfSrhysSbuzjAFNffB/hZYGAM/Mh36XWt/OMvAw=="/>
         </item>
     </channel>
 </rss>

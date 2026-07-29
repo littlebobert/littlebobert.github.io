@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.1.24</title>
+            <pubDate>Wed, 29 Jul 2026 12:05:26 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>26</sparkle:version>
+            <sparkle:shortVersionString>0.1.24</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Add a way to quit apps and close windows with a key.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.24/Kehai-0.1.24-mac.zip" length="5164473" type="application/octet-stream" sparkle:edSignature="p2+CAosgVnR+Lgfmt/Q7K0YMAsHml+K6Odlttp47WGszBXDN6XjCqeFpP8U2cao+GHQQkRDweBLB6szPeBd5Dw=="/>
+        </item>
+        <item>
             <title>0.1.23</title>
             <pubDate>Wed, 29 Jul 2026 10:44:01 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Make app icons participate in filtering.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.22/Kehai-0.1.22-mac.zip" length="5122045" type="application/octet-stream" sparkle:edSignature="4LyoCTFofuJoFxVjHSXFpQLaCUI7xMkXSYvjt0PFLuds1KYA/SRj8JEEblAgqNCBIi4RRflSnraKkkeCyaI9Bw=="/>
-        </item>
-        <item>
-            <title>0.1.21</title>
-            <pubDate>Wed, 29 Jul 2026 08:45:18 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>22</sparkle:version>
-            <sparkle:shortVersionString>0.1.21</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Add app icons so Kehai can replace the Command Tab appswitcher.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.21/Kehai-0.1.21-mac.zip" length="5119460" type="application/octet-stream" sparkle:edSignature="X+LhSsj+Y6IYcg7MzNsBn2Gl7ZsK/TGzxETjcLpBBEz6fIxPmFrQnUidlpsQDLcSKhOwMhXEGE2+L7AZ1y3tDg=="/>
         </item>
     </channel>
 </rss>

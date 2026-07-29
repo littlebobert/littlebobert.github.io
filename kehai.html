@@ -82,8 +82,11 @@
       box-shadow: 0 2px 7px rgba(113, 49, 36, 0.28);
     }
 
-    .browser-demo { width: 502px; max-width: 100%; margin: -6pt auto 12pt; }
+    .browser-demo { width: 502px; max-width: 100%; margin: -6pt auto 18pt; }
+    .browser-demo + .browser-demo { margin-top: 18pt; }
     .browser-demo-label { margin: 0 0 9px; color: #555; font-size: 11pt; font-weight: bold; text-align: center; }
+    .problem-demo .task-sections { display: grid; grid-template-columns: repeat(3, 150px); gap: 11px; }
+    .problem-demo .window-card { background: #e8e8e9; }
     .browser-window { width: 100%; overflow: hidden; border: 1px solid var(--kehai-line); border-radius: 11px; background: #f5f5f6; box-shadow: 0 10px 28px rgba(39, 35, 31, 0.12); }
     .browser-titlebar { position: relative; min-height: 37px; padding: 11px 12px; border-bottom: 1px solid rgba(0, 0, 0, 0.08); background: linear-gradient(#f2f2f2, #e5e5e5); color: #444; font: 600 10pt/1 -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; }
     .traffic { position: absolute; left: 12px; top: 13px; display: flex; gap: 6px; }
@@ -134,7 +137,7 @@
       .task-sections.is-grouped { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
       .task-sections.is-grouped .task-section { width: 100%; min-width: 0; }
       .task-sections.is-grouped .window-grid { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
-      .task-sections:not(.is-grouped) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .task-sections:not(.is-grouped), .problem-demo .task-sections { grid-template-columns: repeat(2, minmax(0, 1fr)); }
       .window-preview { height: 68px; }
     }
   </style>
@@ -164,12 +167,32 @@
     </section>
 
     <section class="sasu-section">
-      <figure class="browser-demo">
-        <div class="browser-demo-label" data-label-en="Mockup:" data-label-ja="モックアップ：">Mockup:</div>
+      <figure class="browser-demo problem-demo">
+        <div class="browser-demo-label" data-label-en="The Problem:" data-label-ja="課題：">The Problem:</div>
+        <div class="browser-window" aria-label="Illustration of an unorganized all-windows view" data-aria-label-en="Illustration of an unorganized all-windows view" data-aria-label-ja="整理されていない全ウインドウ表示のイメージ">
+          <div class="browser-titlebar">
+            <span class="traffic" aria-hidden="true"><span></span><span></span><span></span></span>
+          </div>
+          <div class="task-sections">
+            <div class="window-card"><div class="window-preview terminal"></div><div class="window-name" data-label-en="Production logs" data-label-ja="本番ログ">Production logs</div><div class="app-label">Terminal</div></div>
+            <div class="window-card"><div class="window-preview chat"></div><div class="window-name" data-label-en="Trip conversation" data-label-ja="旅行の会話">Trip conversation</div><div class="app-label">Slack</div></div>
+            <div class="window-card"><div class="window-preview"></div><div class="window-name" data-label-en="Research notes" data-label-ja="調査メモ">Research notes</div><div class="app-label">Safari</div></div>
+            <div class="window-card"><div class="window-preview document"></div><div class="window-name" data-label-en="Packing list" data-label-ja="持ち物リスト">Packing list</div><div class="app-label">Pages</div></div>
+            <div class="window-card"><div class="window-preview terminal"></div><div class="window-name" data-label-en="Build output" data-label-ja="ビルド出力">Build output</div><div class="app-label">Terminal</div></div>
+            <div class="window-card"><div class="window-preview"></div><div class="window-name" data-label-en="Campsite map" data-label-ja="キャンプ場の地図">Campsite map</div><div class="app-label">Safari</div></div>
+            <div class="window-card"><div class="window-preview document"></div><div class="window-name" data-label-en="Proposal draft" data-label-ja="提案書の下書き">Proposal draft</div><div class="app-label">Pages</div></div>
+            <div class="window-card"><div class="window-preview chat"></div><div class="window-name" data-label-en="Incident thread" data-label-ja="障害対応スレッド">Incident thread</div><div class="app-label">Slack</div></div>
+            <div class="window-card"><div class="window-preview"></div><div class="window-name" data-label-en="Reference page" data-label-ja="参考ページ">Reference page</div><div class="app-label">Safari</div></div>
+          </div>
+        </div>
+        <figcaption class="browser-caption" data-label-en="Every window, with no context." data-label-ja="すべてのウインドウが、文脈なく並ぶ。">Every window, with no context.</figcaption>
+      </figure>
+
+      <figure class="browser-demo kehai-demo">
+        <div class="browser-demo-label">Kehai:</div>
         <div class="browser-window" aria-label="Illustration of the Kehai window browser" data-aria-label-en="Illustration of the Kehai window browser" data-aria-label-ja="Kehaiウインドウブラウザのイメージ">
           <div class="browser-titlebar">
             <span class="traffic" aria-hidden="true"><span></span><span></span><span></span></span>
-            Kehai
           </div>
           <div class="browser-toolbar">
             <div class="browser-controls">
@@ -358,7 +381,7 @@
     languageSelect.addEventListener('change', () => setLanguage(languageSelect.value));
     setLanguage(localStorage.getItem('kehai-language') || preferredLanguage(), false);
 
-    const demo = document.querySelector('.browser-demo');
+    const demo = document.querySelector('.kehai-demo');
     const search = demo.querySelector('.search-box');
     const groupToggle = demo.querySelector('.group-toggle');
     const taskSections = demo.querySelector('.task-sections');

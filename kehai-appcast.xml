@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.1.25</title>
+            <pubDate>Wed, 29 Jul 2026 18:54:04 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>27</sparkle:version>
+            <sparkle:shortVersionString>0.1.25</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Added support for drag and drop into apps and windows.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.25/Kehai-0.1.25-mac.zip" length="5184796" type="application/octet-stream" sparkle:edSignature="IUf1R+bS3UH8UHCLma9YlXaCsN6QaRVvTouZLukTwxKEBhlNpXGXqi1h48vGjDVMhNNcsLhIdCHukYX9+0qTCA=="/>
+        </item>
+        <item>
             <title>0.1.24</title>
             <pubDate>Wed, 29 Jul 2026 12:05:26 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Added an Anthropic option and cleaned up the UI a bit.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.23/Kehai-0.1.23-mac.zip" length="5154282" type="application/octet-stream" sparkle:edSignature="3PiQqSCRI3YAmDw/GjZQhk6H9iJQnxq/DmRUo+8WdJz0k0Lsu4Xyu09+qAkXCmBh/RvoAoS1z3sHy2Pi8jv7Dw=="/>
-        </item>
-        <item>
-            <title>0.1.22</title>
-            <pubDate>Wed, 29 Jul 2026 09:21:51 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>23</sparkle:version>
-            <sparkle:shortVersionString>0.1.22</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Make app icons participate in filtering.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.22/Kehai-0.1.22-mac.zip" length="5122045" type="application/octet-stream" sparkle:edSignature="4LyoCTFofuJoFxVjHSXFpQLaCUI7xMkXSYvjt0PFLuds1KYA/SRj8JEEblAgqNCBIi4RRflSnraKkkeCyaI9Bw=="/>
         </item>
     </channel>
 </rss>

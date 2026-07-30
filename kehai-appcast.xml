@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.2.2</title>
+            <pubDate>Fri, 31 Jul 2026 08:12:58 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>32</sparkle:version>
+            <sparkle:shortVersionString>0.2.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Try to fix mouse hover over app icon section bugs.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.2/Kehai-0.2.2-mac.zip" length="5218475" type="application/octet-stream" sparkle:edSignature="NmL5snHlgpEARcbUYdiJgZ5vQmB+/UNobGVuLaeXdYt7lTmNyV2uj5RbSt29JOvv+RU93Ae0uMZkRBxYJ22fBA=="/>
+        </item>
+        <item>
             <title>0.2.1</title>
             <pubDate>Fri, 31 Jul 2026 07:57:30 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Added window filtering by app.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.0/Kehai-0.2.0-mac.zip" length="5222329" type="application/octet-stream" sparkle:edSignature="0qCVuaKbuHDEFpIO61gCWJAZGwVy85O9zkxxi710qvynj/V0Y+lrWzglRTT00yr41XDSEuXPbtzExBhbhwpUAA=="/>
-        </item>
-        <item>
-            <title>0.1.27</title>
-            <pubDate>Thu, 30 Jul 2026 08:46:39 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>29</sparkle:version>
-            <sparkle:shortVersionString>0.1.27</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed a bug where the app switcher didn't show an app unless it had a window open.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.27/Kehai-0.1.27-mac.zip" length="5196654" type="application/octet-stream" sparkle:edSignature="hFSWZDk2ATVY6oSQIKIeZAEAHv0w5DVanlpgYk3Xx+ULY8/yR/jDXyjTiFygSSKVGtaInpGHhguXaMuTF2RcBQ=="/>
         </item>
     </channel>
 </rss>

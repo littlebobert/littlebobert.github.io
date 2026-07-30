@@ -9,17 +9,17 @@
   <link rel="apple-touch-icon" href="assets/kehai-icon.png?v=1">
   <link rel="canonical" href="https://littlebobert.github.io/kehai.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Kehai intelligently groups your Mac windows by task." data-label-en="Kehai intelligently groups your Mac windows by task." data-label-ja="Kehaiは、Macのウインドウをタスク別に賢くグループ化します。">
+  <meta name="description" content="Find Mac windows and Safari tabs faster, grouped by project or task." data-label-en="Find Mac windows and Safari tabs faster, grouped by project or task." data-label-ja="MacのウインドウとSafariのタブを、プロジェクトやタスク別に整理してすばやく見つけられます。">
   <meta property="og:title" content="Kehai: Tame your windows" data-label-en="Kehai: Tame your windows" data-label-ja="Kehai：ウインドウをすっきり整理">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://littlebobert.github.io/kehai.html">
   <meta property="og:site_name" content="Kehai (気配)">
-  <meta property="og:description" content="A visual browser for returning to interrupted work on macOS." data-label-en="A visual browser for returning to interrupted work on macOS." data-label-ja="中断したMacでの作業に戻るためのビジュアルブラウザ。">
+  <meta property="og:description" content="Find Mac windows and Safari tabs faster, then return to your work with its context intact." data-label-en="Find Mac windows and Safari tabs faster, then return to your work with its context intact." data-label-ja="MacのウインドウとSafariのタブをすばやく見つけ、作業の文脈を保ったまま再開できます。">
   <meta property="og:image" content="https://littlebobert.github.io/assets/kehai-icon.png?v=1">
   <meta property="og:image:alt" content="Kehai app icon">
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="Kehai: Tame your windows" data-label-en="Kehai: Tame your windows" data-label-ja="Kehai：ウインドウをすっきり整理">
-  <meta name="twitter:description" content="A visual browser for returning to interrupted work on macOS." data-label-en="A visual browser for returning to interrupted work on macOS." data-label-ja="中断したMacでの作業に戻るためのビジュアルブラウザ。">
+  <meta name="twitter:description" content="Find Mac windows and Safari tabs faster, then return to your work with its context intact." data-label-en="Find Mac windows and Safari tabs faster, then return to your work with its context intact." data-label-ja="MacのウインドウとSafariのタブをすばやく見つけ、作業の文脈を保ったまま再開できます。">
   <meta name="twitter:image" content="https://littlebobert.github.io/assets/kehai-icon.png?v=1">
   <style>
     :root {
@@ -97,15 +97,26 @@
     .traffic span:nth-child(1) { background: #ff5f57; }
     .traffic span:nth-child(2) { background: #febc2e; }
     .traffic span:nth-child(3) { background: #28c840; }
-    .browser-toolbar { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; padding: 13px 14px 6px; }
-    .browser-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; }
-    .browser-check { display: inline-flex; align-items: center; gap: 5px; color: #444; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; white-space: nowrap; }
-    .browser-check input { accent-color: #1681e2; }
-    .search-control { width: 62%; min-width: 250px; }
+    .browser-toolbar { padding: 13px 14px 8px; }
+    .search-control { width: 68%; min-width: 250px; }
     .search-box { box-sizing: border-box; width: 100%; padding: 7px 10px; border: 1px solid rgba(0, 0, 0, 0.16); border-radius: 5px; outline: none; background: #fff; color: #333; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
     .search-box:focus { border-color: #1681e2; box-shadow: 0 0 0 2px rgba(22, 129, 226, 0.22); }
-    .search-hint { padding: 3px 2px 0; color: #777; font: 9pt -apple-system, BlinkMacSystemFont, sans-serif; }
-    .task-sections { padding: 7px 14px 12px; align-content: start; }
+    .app-filter-section { padding: 3px 14px 9px; border-bottom: 1px solid rgba(0, 0, 0, 0.07); }
+    .app-filter-label { margin-bottom: 7px; color: #777; font: 9pt -apple-system, BlinkMacSystemFont, sans-serif; }
+    .app-filters { display: flex; align-items: flex-start; gap: 13px; overflow-x: auto; margin: -4px; padding: 6px; }
+    .app-filter { min-width: 42px; padding: 0; border: 0; background: transparent; color: #555; cursor: pointer; font: 8.5pt -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; }
+    .app-filter-icon { display: grid; width: 34px; height: 34px; margin: 0 auto 4px; place-items: center; border-radius: 8px; background: #777; color: #fff; font-size: 16px; font-weight: 700; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.22); }
+    .app-filter[data-app="all"] .app-filter-icon { background: linear-gradient(135deg, #777, #aaa); font-size: 12px; }
+    .app-filter[data-app="safari"] .app-filter-icon { background: linear-gradient(135deg, #4bc4ff, #1575db); }
+    .app-filter[data-app="terminal"] .app-filter-icon { background: linear-gradient(135deg, #3d4650, #111820); color: #65e69d; }
+    .app-filter[data-app="slack"] .app-filter-icon { background: linear-gradient(135deg, #8a4b91, #4a154b); }
+    .app-filter[data-app="pages"] .app-filter-icon { background: linear-gradient(135deg, #ffb539, #ef7d18); }
+    .app-filter[aria-pressed="true"] .app-filter-icon { box-shadow: 0 0 0 3px #f5f5f6, 0 0 0 5px #1784e8; }
+    .browser-view-controls { display: flex; align-items: center; padding: 9px 14px 0; }
+    .view-switch { display: inline-flex; padding: 2px; border: 1px solid rgba(0, 0, 0, 0.12); border-radius: 6px; background: #e5e5e7; }
+    .view-option { padding: 4px 9px; border: 0; border-radius: 4px; background: transparent; color: #555; cursor: pointer; font: 9pt -apple-system, BlinkMacSystemFont, sans-serif; white-space: nowrap; }
+    .view-option[aria-pressed="true"] { background: #fff; color: #222; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18); }
+    .task-sections { padding: 9px 14px 12px; align-content: start; }
     .task-sections.is-grouped { display: flex; flex-wrap: wrap; align-items: flex-start; gap: 18px 11px; }
     .task-section { width: min-content; flex: 0 0 auto; }
     .task-section[hidden], .window-card[hidden] { display: none; }
@@ -135,8 +146,8 @@
       .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
       .kehai-hero { padding: 14pt; }
       .kehai-icon { width: 70px; height: 70px; flex-basis: 70px; }
-      .browser-toolbar { flex-direction: column; }
-      .search-control { width: 100%; }
+      .search-control { width: 100%; min-width: 0; }
+      .app-filters { gap: 9px; }
       .task-sections.is-grouped { display: grid; grid-template-columns: minmax(0, 1fr); gap: 18px; }
       .task-sections.is-grouped .task-section { width: 100%; min-width: 0; }
       .task-sections.is-grouped .window-grid { grid-auto-flow: row; grid-auto-columns: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -163,7 +174,7 @@
           <div class="kehai-subtitle" data-label-en="Tame your windows" data-label-ja="ウインドウを、すっきり整理">Tame your windows</div>
         </div>
       </div>
-      <div class="kehai-tagline" data-label-en="Browse windows intelligently grouped by task, not by app. Quickly return to your last task after an interruption." data-label-ja="アプリ別ではなく、タスク別に賢くグループ化されたウインドウを一覧表示。中断後も、直前の作業へすぐに戻れます。">Browse windows intelligently grouped by task, not by app. Quickly return to your last task after an interruption.</div>
+      <div class="kehai-tagline" data-label-en="Find the window you want faster. Quickly return to your last task after an interruption." data-label-ja="目的のウインドウをすばやく見つけ、中断後も直前の作業へすぐに戻れます。">Find the window you want faster. Quickly return to your last task after an interruption.</div>
       <a class="kehai-download" href="https://github.com/littlebobert/kehai/releases/download/0.2.0/Kehai-0.2.0-mac.zip" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
       <span class="kehai-version" data-label-en="(version 0.2.0)" data-label-ja="（バージョン 0.2.0）">(version 0.2.0)</span>
       <div class="small-note" data-label-en="Requires macOS 14 or newer on an Apple Silicon Mac. An OpenAI API key is required to generate task groups." data-label-ja="Apple Silicon搭載MacとmacOS 14以降が必要です。タスクグループの生成にはOpenAI APIキーが必要です。">Requires macOS 14 or newer on an Apple Silicon Mac. An OpenAI API key is required to generate task groups.</div>
@@ -198,45 +209,57 @@
             <span class="traffic" aria-hidden="true"><span></span><span></span><span></span></span>
           </div>
           <div class="browser-toolbar">
-            <div class="browser-controls">
-              <label class="browser-check"><input class="group-toggle" type="checkbox" checked> <span data-label-en="Group by task" data-label-ja="タスク別にグループ化">Group by task</span></label>
-            </div>
             <div class="search-control">
               <input class="search-box" type="search" placeholder="Search windows and Safari tabs" aria-label="Search example windows" data-placeholder-en="Search windows and Safari tabs" data-placeholder-ja="ウインドウとSafariのタブを検索" data-aria-label-en="Search example windows" data-aria-label-ja="サンプルのウインドウを検索">
-              <div class="search-hint" data-label-en="Command-Return for Smart Search" data-label-ja="Command-Returnでスマート検索">Command-Return for Smart Search</div>
+            </div>
+          </div>
+          <div class="app-filter-section">
+            <div class="app-filter-label" data-label-en="Filter by app" data-label-ja="アプリで絞り込む">Filter by app</div>
+            <div class="app-filters" role="group" aria-label="Filter example windows by app" data-aria-label-en="Filter example windows by app" data-aria-label-ja="サンプルのウインドウをアプリで絞り込む">
+              <button class="app-filter" type="button" data-app="all" aria-pressed="true"><span class="app-filter-icon">All</span><span data-label-en="All" data-label-ja="すべて">All</span></button>
+              <button class="app-filter" type="button" data-app="safari" aria-pressed="false"><span class="app-filter-icon">S</span><span>Safari</span></button>
+              <button class="app-filter" type="button" data-app="terminal" aria-pressed="false"><span class="app-filter-icon">›_</span><span>Terminal</span></button>
+              <button class="app-filter" type="button" data-app="slack" aria-pressed="false"><span class="app-filter-icon">S</span><span>Slack</span></button>
+              <button class="app-filter" type="button" data-app="pages" aria-pressed="false"><span class="app-filter-icon">P</span><span>Pages</span></button>
+            </div>
+          </div>
+          <div class="browser-view-controls">
+            <div class="view-switch" role="group" aria-label="Choose window organization" data-aria-label-en="Choose window organization" data-aria-label-ja="ウインドウの表示順を選択">
+              <button class="view-option" type="button" data-view="task" aria-pressed="true" data-label-en="By Task" data-label-ja="タスク別">By Task</button>
+              <button class="view-option" type="button" data-view="recent" aria-pressed="false" data-label-en="Most Recent" data-label-ja="最近使った順">Most Recent</button>
             </div>
           </div>
           <div class="task-sections is-grouped" aria-live="polite">
             <section class="task-section" data-group="sales">
               <h3 class="task-section-title" data-label-en="Sales proposal" data-label-ja="営業提案">Sales proposal</h3>
               <div class="window-grid">
-                <div class="window-card is-selected" data-search="research notes safari sales proposal"><div class="window-preview"></div><div class="window-name" data-label-en="Research notes" data-label-ja="調査メモ">Research notes</div><div class="app-label">Safari</div></div>
-                <div class="window-card" data-search="proposal draft pages sales"><div class="window-preview document"></div><div class="window-name" data-label-en="Proposal draft" data-label-ja="提案書の下書き">Proposal draft</div><div class="app-label">Pages</div></div>
+                <div class="window-card is-selected" data-app="safari" data-search="research notes safari sales proposal"><div class="window-preview"></div><div class="window-name" data-label-en="Research notes" data-label-ja="調査メモ">Research notes</div><div class="app-label">Safari</div></div>
+                <div class="window-card" data-app="pages" data-search="proposal draft pages sales"><div class="window-preview document"></div><div class="window-name" data-label-en="Proposal draft" data-label-ja="提案書の下書き">Proposal draft</div><div class="app-label">Pages</div></div>
               </div>
             </section>
             <section class="task-section" data-group="outage">
               <h3 class="task-section-title" data-label-en="Production outage" data-label-ja="本番障害">Production outage</h3>
               <div class="window-grid">
-                <div class="window-card" data-search="project terminal production outage logs"><div class="window-preview terminal"></div><div class="window-name" data-label-en="Production logs" data-label-ja="本番ログ">Production logs</div><div class="app-label">Terminal</div></div>
+                <div class="window-card" data-app="terminal" data-search="project terminal production outage logs"><div class="window-preview terminal"></div><div class="window-name" data-label-en="Production logs" data-label-ja="本番ログ">Production logs</div><div class="app-label">Terminal</div></div>
               </div>
             </section>
             <section class="task-section" data-group="camping">
               <h3 class="task-section-title" data-label-en="Camping trip" data-label-ja="キャンプ旅行">Camping trip</h3>
               <div class="window-grid">
-                <div class="window-card" data-search="camping conversation slack trip"><div class="window-preview chat"></div><div class="window-name" data-label-en="Trip conversation" data-label-ja="旅行の会話">Trip conversation</div><div class="app-label">Slack</div></div>
-                <div class="window-card" data-search="camping map safari trip"><div class="window-preview"></div><div class="window-name" data-label-en="Campsite map" data-label-ja="キャンプ場の地図">Campsite map</div><div class="app-label">Safari</div></div>
-                <div class="window-card" data-search="camping packing list pages trip"><div class="window-preview document"></div><div class="window-name" data-label-en="Packing list" data-label-ja="持ち物リスト">Packing list</div><div class="app-label">Pages</div></div>
+                <div class="window-card" data-app="slack" data-search="camping conversation slack trip"><div class="window-preview chat"></div><div class="window-name" data-label-en="Trip conversation" data-label-ja="旅行の会話">Trip conversation</div><div class="app-label">Slack</div></div>
+                <div class="window-card" data-app="safari" data-search="camping map safari trip"><div class="window-preview"></div><div class="window-name" data-label-en="Campsite map" data-label-ja="キャンプ場の地図">Campsite map</div><div class="app-label">Safari</div></div>
+                <div class="window-card" data-app="pages" data-search="camping packing list pages trip"><div class="window-preview document"></div><div class="window-name" data-label-en="Packing list" data-label-ja="持ち物リスト">Packing list</div><div class="app-label">Pages</div></div>
               </div>
             </section>
           </div>
         </div>
-        <figcaption class="browser-caption" data-label-en="Browse windows grouped by task." data-label-ja="タスク別にグループ化されたウインドウを一覧表示。">Browse windows grouped by task.</figcaption>
+        <figcaption class="browser-caption" data-label-en="Browse by task or recency. Filter by app, or use Smart Search to find the right window." data-label-ja="タスク別または最近使った順に閲覧。アプリで絞り込むか、スマート検索で目的のウインドウを見つけられます。">Browse by task or recency. Filter by app, or use Smart Search to find the right window.</figcaption>
       </figure>
     </section>
 
     <section class="kehai-detail">
       <h2 data-label-en="What it does:" data-label-ja="できること：">What it does:</h2>
-      <p data-label-en="Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task. Now returning to work starts with context." data-label-ja="Kehaiは、開いているウインドウとSafariのタブを1つの検索可能なブラウザに表示し、プロジェクトやタスク別に賢くグループ化します。これで作業に戻るとき、文脈から再開できます。">Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task. Now returning to work starts with context.</p>
+      <p data-label-en="Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task. Return to your work with its context intact." data-label-ja="Kehaiは、開いているウインドウとSafariのタブを1つの検索可能なブラウザに表示し、プロジェクトやタスク別に賢くグループ化します。作業の文脈を保ったまま再開できます。">Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task. Return to your work with its context intact.</p>
     </section>
 
     <section class="kehai-detail">
@@ -410,10 +433,13 @@
 
     const demo = document.querySelector('.kehai-demo');
     const search = demo.querySelector('.search-box');
-    const groupToggle = demo.querySelector('.group-toggle');
     const taskSections = demo.querySelector('.task-sections');
     const sections = [...demo.querySelectorAll('.task-section')];
     const cards = [...demo.querySelectorAll('.window-card')];
+    const appFilters = [...demo.querySelectorAll('.app-filter')];
+    const viewOptions = [...demo.querySelectorAll('.view-option')];
+    let selectedApp = 'all';
+    let selectedView = 'task';
 
     function updateDemo() {
       const query = search.value.trim().toLocaleLowerCase();
@@ -421,19 +447,34 @@
 
       cards.forEach((card) => {
         const searchableText = `${card.dataset.search} ${card.textContent}`.toLocaleLowerCase();
-        card.hidden = Boolean(query) && !searchableText.includes(query);
+        const matchesSearch = !query || searchableText.includes(query);
+        const matchesApp = selectedApp === 'all' || card.dataset.app === selectedApp;
+        card.hidden = !matchesSearch || !matchesApp;
         card.classList.remove('is-selected');
         if (!card.hidden && !firstVisibleCard) firstVisibleCard = card;
       });
       sections.forEach((section) => {
         section.hidden = ![...section.querySelectorAll('.window-card')].some((card) => !card.hidden);
       });
-      taskSections.classList.toggle('is-grouped', groupToggle.checked);
+      taskSections.classList.toggle('is-grouped', selectedView === 'task');
       firstVisibleCard?.classList.add('is-selected');
     }
 
     search.addEventListener('input', updateDemo);
-    groupToggle.addEventListener('change', updateDemo);
+    viewOptions.forEach((option) => {
+      option.addEventListener('click', () => {
+        selectedView = option.dataset.view;
+        viewOptions.forEach((item) => item.setAttribute('aria-pressed', String(item === option)));
+        updateDemo();
+      });
+    });
+    appFilters.forEach((filter) => {
+      filter.addEventListener('click', () => {
+        selectedApp = filter.dataset.app;
+        appFilters.forEach((item) => item.setAttribute('aria-pressed', String(item === filter)));
+        updateDemo();
+      });
+    });
   </script>
 </body>
 

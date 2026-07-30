@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.2.0</title>
+            <pubDate>Thu, 30 Jul 2026 21:50:47 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>30</sparkle:version>
+            <sparkle:shortVersionString>0.2.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Added window filtering by app.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.0/Kehai-0.2.0-mac.zip" length="5222329" type="application/octet-stream" sparkle:edSignature="0qCVuaKbuHDEFpIO61gCWJAZGwVy85O9zkxxi710qvynj/V0Y+lrWzglRTT00yr41XDSEuXPbtzExBhbhwpUAA=="/>
+        </item>
+        <item>
             <title>0.1.27</title>
             <pubDate>Thu, 30 Jul 2026 08:46:39 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Tried to fix drag and drop bugs.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.26/Kehai-0.1.26-mac.zip" length="5194440" type="application/octet-stream" sparkle:edSignature="zycPT5OEaqM8wZhVSzPfKKjMXJ3+ly0FoB7lHh0bGticKZE61qFcfMO4QvQPpw89Ptr5SN8cHA8SJZ9HvxUpAA=="/>
-        </item>
-        <item>
-            <title>0.1.25</title>
-            <pubDate>Wed, 29 Jul 2026 18:54:04 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>27</sparkle:version>
-            <sparkle:shortVersionString>0.1.25</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Added support for drag and drop into apps and windows.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.1.25/Kehai-0.1.25-mac.zip" length="5184796" type="application/octet-stream" sparkle:edSignature="IUf1R+bS3UH8UHCLma9YlXaCsN6QaRVvTouZLukTwxKEBhlNpXGXqi1h48vGjDVMhNNcsLhIdCHukYX9+0qTCA=="/>
         </item>
     </channel>
 </rss>

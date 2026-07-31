@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.2.4</title>
+            <pubDate>Fri, 31 Jul 2026 13:47:32 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>34</sparkle:version>
+            <sparkle:shortVersionString>0.2.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed a bug where if you launch with the keyboard shortcut then come to rest on All Windows, that doesn't retain the focused appearance.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.4/Kehai-0.2.4-mac.zip" length="5220918" type="application/octet-stream" sparkle:edSignature="70A+obb3jO9F3pNkzsvOsGcG0p6au1ugrTewjWOXVvBFF0M5stPs+gdzu+0KYSRoRsoqdPddvtMan94iqYFVCA=="/>
+        </item>
+        <item>
             <title>0.2.3</title>
             <pubDate>Fri, 31 Jul 2026 12:49:39 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Try to fix mouse hover over app icon section bugs.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.2/Kehai-0.2.2-mac.zip" length="5218475" type="application/octet-stream" sparkle:edSignature="NmL5snHlgpEARcbUYdiJgZ5vQmB+/UNobGVuLaeXdYt7lTmNyV2uj5RbSt29JOvv+RU93Ae0uMZkRBxYJ22fBA=="/>
-        </item>
-        <item>
-            <title>0.2.1</title>
-            <pubDate>Fri, 31 Jul 2026 07:57:30 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>31</sparkle:version>
-            <sparkle:shortVersionString>0.2.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed bugs with mouse hover.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.1/Kehai-0.2.1-mac.zip" length="5222322" type="application/octet-stream" sparkle:edSignature="rP0hnPvxLqyZ2xQoireKtKbl7+1mjoX6tx3vhJ6aMBjAvpFMsU3eAkcaxPhn3dIfSxm0rPLHVTiuYUKJEWoTCw=="/>
         </item>
     </channel>
 </rss>

@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.2.7</title>
+            <pubDate>Fri, 31 Jul 2026 18:38:32 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>37</sparkle:version>
+            <sparkle:shortVersionString>0.2.7</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed rendering glitch with app names.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.7/Kehai-0.2.7-mac.zip" length="5228595" type="application/octet-stream" sparkle:edSignature="ECKXS8kWkXy8hLRHadec6v97su+k8Lu4PtaQ4PnElPhBgL6rEQBqX+3M8/vumURG/0kTUVr6Fkmdgj9voMMnCA=="/>
+        </item>
+        <item>
             <title>0.2.6</title>
             <pubDate>Fri, 31 Jul 2026 15:43:34 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Try to prune already closed windows better.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.5/Kehai-0.2.5-mac.zip" length="5222283" type="application/octet-stream" sparkle:edSignature="7XI6pZpBhd8no2VDP2wXglPYzcwWgSE0v0dammv2CUkUzwvXAhUrnEX+si7AwpjGx+exEyr3PcZ8efRnRcIFCA=="/>
-        </item>
-        <item>
-            <title>0.2.4</title>
-            <pubDate>Fri, 31 Jul 2026 13:47:32 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>34</sparkle:version>
-            <sparkle:shortVersionString>0.2.4</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed a bug where if you launch with the keyboard shortcut then come to rest on All Windows, that doesn't retain the focused appearance.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.4/Kehai-0.2.4-mac.zip" length="5220918" type="application/octet-stream" sparkle:edSignature="70A+obb3jO9F3pNkzsvOsGcG0p6au1ugrTewjWOXVvBFF0M5stPs+gdzu+0KYSRoRsoqdPddvtMan94iqYFVCA=="/>
         </item>
     </channel>
 </rss>

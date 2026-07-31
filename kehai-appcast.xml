@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.2.6</title>
+            <pubDate>Fri, 31 Jul 2026 15:43:34 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>36</sparkle:version>
+            <sparkle:shortVersionString>0.2.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Another Safari window fix.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.6/Kehai-0.2.6-mac.zip" length="5228328" type="application/octet-stream" sparkle:edSignature="l98O1Shyr2PbY4swD9S0aMYtZVk1ZQ4N3AwzMnhFKzYpecGvGCIyYFhAKNQl5JMIA7zlPj3o1Lb02BzdQ3iIDQ=="/>
+        </item>
+        <item>
             <title>0.2.5</title>
             <pubDate>Fri, 31 Jul 2026 13:55:38 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed a bug where if you launch with the keyboard shortcut then come to rest on All Windows, that doesn't retain the focused appearance.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.4/Kehai-0.2.4-mac.zip" length="5220918" type="application/octet-stream" sparkle:edSignature="70A+obb3jO9F3pNkzsvOsGcG0p6au1ugrTewjWOXVvBFF0M5stPs+gdzu+0KYSRoRsoqdPddvtMan94iqYFVCA=="/>
-        </item>
-        <item>
-            <title>0.2.3</title>
-            <pubDate>Fri, 31 Jul 2026 12:49:39 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>33</sparkle:version>
-            <sparkle:shortVersionString>0.2.3</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Avoid updating the app icon section when Kehai launches via the keyboard shortcut unless something needs to be added.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.3/Kehai-0.2.3-mac.zip" length="5220863" type="application/octet-stream" sparkle:edSignature="To7nBZKutXWpgKMBnlkF6tCGWvAUzi393hyxWeg6inSDrWIzcQavp2o8nEyxC9X11TYH/aW+eFwtfmoCWyZlCw=="/>
         </item>
     </channel>
 </rss>

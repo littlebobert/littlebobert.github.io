@@ -99,8 +99,13 @@
     .traffic span:nth-child(3) { background: #28c840; }
     .browser-toolbar { padding: 13px 14px 8px; }
     .search-control { width: 68%; min-width: 250px; }
-    .search-box { box-sizing: border-box; width: 100%; padding: 7px 10px; border: 1px solid rgba(0, 0, 0, 0.16); border-radius: 5px; outline: none; background: #fff; color: #333; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
+    .search-field { position: relative; }
+    .search-box { box-sizing: border-box; width: 100%; padding: 7px 30px 7px 10px; border: 1px solid rgba(0, 0, 0, 0.16); border-radius: 5px; outline: none; background: #fff; color: #333; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
     .search-box:focus { border-color: #1681e2; box-shadow: 0 0 0 2px rgba(22, 129, 226, 0.22); }
+    .search-clear { position: absolute; top: 50%; right: 6px; width: 22px; height: 22px; padding: 0; transform: translateY(-50%); border: 0; border-radius: 50%; background: transparent; color: #777; cursor: pointer; font: 16px/22px -apple-system, BlinkMacSystemFont, sans-serif; }
+    .search-clear:hover { background: rgba(0, 0, 0, 0.08); color: #333; }
+    .search-clear[hidden] { display: none; }
+    .search-clear:focus-visible { outline: 2px solid rgba(22, 129, 226, 0.45); outline-offset: 1px; }
     .recent-searches { display: flex; align-items: baseline; gap: 7px; margin-top: 6px; color: #777; font: 8.5pt -apple-system, BlinkMacSystemFont, sans-serif; }
     .recent-search { padding: 0; border: 0; background: transparent; color: #1675c1; cursor: pointer; font: inherit; text-decoration: underline; text-underline-offset: 2px; }
     .recent-search:hover { color: #0b5794; }
@@ -214,7 +219,10 @@
           </div>
           <div class="browser-toolbar">
             <div class="search-control">
-              <input class="search-box" type="search" placeholder="Search windows and Safari tabs" aria-label="Search example windows" data-placeholder-en="Search windows and Safari tabs" data-placeholder-ja="ウインドウとSafariのタブを検索" data-aria-label-en="Search example windows" data-aria-label-ja="サンプルのウインドウを検索">
+              <div class="search-field">
+                <input class="search-box" type="search" placeholder="Search windows and Safari tabs" aria-label="Search example windows" data-placeholder-en="Search windows and Safari tabs" data-placeholder-ja="ウインドウとSafariのタブを検索" data-aria-label-en="Search example windows" data-aria-label-ja="サンプルのウインドウを検索">
+                <button class="search-clear" type="button" aria-label="Clear search" data-aria-label-en="Clear search" data-aria-label-ja="検索を消去" hidden>×</button>
+              </div>
               <div class="recent-searches">
                 <span data-label-en="Recent searches:" data-label-ja="最近の検索：">Recent searches:</span>
                 <button class="recent-search" type="button" data-query="map" data-label-en="map" data-label-ja="地図">map</button>
@@ -470,6 +478,7 @@
 
     const demo = document.querySelector('.kehai-demo');
     const search = demo.querySelector('.search-box');
+    const searchClear = demo.querySelector('.search-clear');
     const taskSections = demo.querySelector('.task-sections');
     const sections = [...demo.querySelectorAll('.task-section')];
     const cards = [...demo.querySelectorAll('.window-card')];
@@ -481,6 +490,7 @@
 
     function updateDemo() {
       const query = search.value.trim().toLocaleLowerCase();
+      searchClear.hidden = !query;
       let firstVisibleCard = null;
 
       cards.forEach((card) => {
@@ -499,6 +509,10 @@
     }
 
     search.addEventListener('input', updateDemo);
+    searchClear.addEventListener('click', () => {
+      search.value = '';
+      updateDemo();
+    });
     recentSearches.forEach((recentSearch) => {
       recentSearch.addEventListener('click', () => {
         search.value = recentSearch.dataset.query;

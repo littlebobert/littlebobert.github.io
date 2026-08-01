@@ -34,8 +34,8 @@
     .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
 
     .kehai-hero {
-      margin-bottom: 12pt;
-      padding: 18pt;
+      margin-bottom: 0;
+      padding: 18pt 18pt 10pt;
     }
 
     .kehai-title-row {
@@ -150,6 +150,7 @@
 
     .kehai-detail { padding: 10pt 0 8pt; }
     .kehai-detail p { margin: 0; }
+    .privacy-source { padding-top: 7pt; }
 
     @media (max-width: 520px) {
       .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
@@ -270,7 +271,7 @@
             </section>
           </div>
         </div>
-        <figcaption class="browser-caption" data-label-en="Browse by task or recency. Filter by app, or use Smart Search to find the right window." data-label-ja="タスク別または最近使った順に閲覧。アプリで絞り込むか、スマート検索で目的のウインドウを見つけられます。">Browse by task or recency. Filter by app, or use Smart Search to find the right window.</figcaption>
+        <figcaption class="browser-caption" data-label-en="Browse by task or recency. Filter windows by app, or use AI powered Smart Search to find what you want." data-label-ja="タスク別または最近使った順に閲覧。アプリでウインドウを絞り込むか、AIを活用したスマート検索で目的のものを見つけられます。">Browse by task or recency. Filter windows by app, or use AI powered Smart Search to find what you want.</figcaption>
       </figure>
     </section>
 
@@ -282,7 +283,7 @@
     <section class="kehai-detail">
       <h2 data-label-en="Privacy:" data-label-ja="プライバシー：">Privacy:</h2>
       <p data-label-en="Only if you enable AI task grouping, Kehai will send the following to the AI provider you choose: app and window titles and IDs, Safari-tab titles and website URLs, recent app/window focus activity, and up to 12 small, compressed screenshots of eligible windows. Smart Search sends your query, app and window titles and IDs, Safari-tab titles and website URLs, and existing task-group names, but never screenshots or focus history. You can exclude an app from AI requests while keeping it visible in the browser, or exclude it from Kehai entirely." data-label-ja="AIタスクグループ化を有効にした場合にのみ、Kehaiは選択したAIプロバイダーへ、対象ウインドウのアプリ名、タイトル、ID、SafariタブのタイトルとWebサイトURL、最近のアプリ／ウインドウのフォーカス履歴、および最大12枚の小さく圧縮したスクリーンショットを送信します。スマート検索は、検索内容、アプリ名、ウインドウのタイトルとID、SafariタブのタイトルとWebサイトURL、既存のタスクグループ名を送信しますが、スクリーンショットやフォーカス履歴は送信しません。アプリをブラウザに表示したままAIリクエストから除外することも、Kehaiから完全に除外することもできます。">Only if you enable AI task grouping, Kehai will send the following to the AI provider you choose: app and window titles and IDs, Safari-tab titles and website URLs, recent app/window focus activity, and up to 12 small, compressed screenshots of eligible windows. Smart Search sends your query, app and window titles and IDs, Safari-tab titles and website URLs, and existing task-group names, but never screenshots or focus history. You can exclude an app from AI requests while keeping it visible in the browser, or exclude it from Kehai entirely.</p>
-      <p><a href="https://github.com/littlebobert/kehai" data-label-en="View the source code on GitHub." data-label-ja="ソースコードをGitHubで見る。">View the source code on GitHub.</a></p>
+      <p class="privacy-source"><a href="https://github.com/littlebobert/kehai" data-label-en="View the source code on GitHub." data-label-ja="ソースコードをGitHubで見る。">View the source code on GitHub.</a></p>
     </section>
 
     <section class="kehai-detail">

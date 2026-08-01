@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.2.9</title>
+            <pubDate>Sat, 01 Aug 2026 13:53:34 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>39</sparkle:version>
+            <sparkle:shortVersionString>0.2.9</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed a quit bug.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.9/Kehai-0.2.9-mac.zip" length="5230931" type="application/octet-stream" sparkle:edSignature="XFFohFvni0VgDK+mQ6HoWKAvmA2q6Vbxy6ZKYArJF5kIRjI6r1riExq8q9cOxgCRWD54IzV027cCCx/gBSqSCQ=="/>
+        </item>
+        <item>
             <title>0.2.8</title>
             <pubDate>Sat, 01 Aug 2026 13:41:14 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed rendering glitch with app names.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.7/Kehai-0.2.7-mac.zip" length="5228595" type="application/octet-stream" sparkle:edSignature="ECKXS8kWkXy8hLRHadec6v97su+k8Lu4PtaQ4PnElPhBgL6rEQBqX+3M8/vumURG/0kTUVr6Fkmdgj9voMMnCA=="/>
-        </item>
-        <item>
-            <title>0.2.6</title>
-            <pubDate>Fri, 31 Jul 2026 15:43:34 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>36</sparkle:version>
-            <sparkle:shortVersionString>0.2.6</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Another Safari window fix.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.6/Kehai-0.2.6-mac.zip" length="5228328" type="application/octet-stream" sparkle:edSignature="l98O1Shyr2PbY4swD9S0aMYtZVk1ZQ4N3AwzMnhFKzYpecGvGCIyYFhAKNQl5JMIA7zlPj3o1Lb02BzdQ3iIDQ=="/>
         </item>
     </channel>
 </rss>

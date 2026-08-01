@@ -101,6 +101,10 @@
     .search-control { width: 68%; min-width: 250px; }
     .search-box { box-sizing: border-box; width: 100%; padding: 7px 10px; border: 1px solid rgba(0, 0, 0, 0.16); border-radius: 5px; outline: none; background: #fff; color: #333; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
     .search-box:focus { border-color: #1681e2; box-shadow: 0 0 0 2px rgba(22, 129, 226, 0.22); }
+    .recent-searches { display: flex; align-items: baseline; gap: 7px; margin-top: 6px; color: #777; font: 8.5pt -apple-system, BlinkMacSystemFont, sans-serif; }
+    .recent-search { padding: 0; border: 0; background: transparent; color: #1675c1; cursor: pointer; font: inherit; text-decoration: underline; text-underline-offset: 2px; }
+    .recent-search:hover { color: #0b5794; }
+    .recent-search:focus-visible { border-radius: 2px; outline: 2px solid rgba(22, 129, 226, 0.45); outline-offset: 2px; }
     .app-filter-section { padding: 3px 14px 9px; border-bottom: 1px solid rgba(0, 0, 0, 0.07); }
     .app-filter-label { margin-bottom: 7px; color: #777; font: 9pt -apple-system, BlinkMacSystemFont, sans-serif; }
     .app-filters { display: flex; align-items: flex-start; gap: 13px; overflow-x: auto; margin: -4px; padding: 6px; }
@@ -174,7 +178,7 @@
           <div class="kehai-subtitle" data-label-en="Tame your windows" data-label-ja="ウインドウを、すっきり整理">Tame your windows</div>
         </div>
       </div>
-      <div class="kehai-tagline" data-label-en="Find the window you want faster. Quickly return to your last task after an interruption." data-label-ja="目的のウインドウをすばやく見つけ、中断後も直前の作業へすぐに戻れます。">Find the window you want faster. Quickly return to your last task after an interruption.</div>
+      <div class="kehai-tagline" data-label-en="Find the window you want faster." data-label-ja="目的のウインドウをすばやく見つけられます。">Find the window you want faster.</div>
       <a class="kehai-download" href="https://github.com/littlebobert/kehai/releases/download/0.2.7/Kehai-0.2.7-mac.zip" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
       <span class="kehai-version" data-label-en="(version 0.2.7)" data-label-ja="（バージョン 0.2.7）">(version 0.2.7)</span>
       <div class="small-note" data-label-en="Requires macOS 14 or newer on an Apple Silicon Mac. An OpenAI API key is required to generate task groups." data-label-ja="Apple Silicon搭載MacとmacOS 14以降が必要です。タスクグループの生成にはOpenAI APIキーが必要です。">Requires macOS 14 or newer on an Apple Silicon Mac. An OpenAI API key is required to generate task groups.</div>
@@ -211,6 +215,11 @@
           <div class="browser-toolbar">
             <div class="search-control">
               <input class="search-box" type="search" placeholder="Search windows and Safari tabs" aria-label="Search example windows" data-placeholder-en="Search windows and Safari tabs" data-placeholder-ja="ウインドウとSafariのタブを検索" data-aria-label-en="Search example windows" data-aria-label-ja="サンプルのウインドウを検索">
+              <div class="recent-searches">
+                <span data-label-en="Recent searches:" data-label-ja="最近の検索：">Recent searches:</span>
+                <button class="recent-search" type="button" data-query="map" data-label-en="map" data-label-ja="地図">map</button>
+                <button class="recent-search" type="button" data-query="logs" data-label-en="logs" data-label-ja="ログ">logs</button>
+              </div>
             </div>
           </div>
           <div class="app-filter-section">
@@ -259,12 +268,12 @@
 
     <section class="kehai-detail">
       <h2 data-label-en="What it does:" data-label-ja="できること：">What it does:</h2>
-      <p data-label-en="Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task. Return to your work with its context intact." data-label-ja="Kehaiは、開いているウインドウとSafariのタブを1つの検索可能なブラウザに表示し、プロジェクトやタスク別に賢くグループ化します。作業の文脈を保ったまま再開できます。">Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task. Return to your work with its context intact.</p>
+      <p data-label-en="Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task." data-label-ja="Kehaiは、開いているウインドウとSafariのタブを1つの検索可能なブラウザに表示し、プロジェクトやタスク別に賢くグループ化します。">Kehai shows your open windows and Safari tabs in one searchable browser, intelligently grouped by project or task.</p>
     </section>
 
     <section class="kehai-detail">
       <h2 data-label-en="Privacy:" data-label-ja="プライバシー：">Privacy:</h2>
-      <p data-label-en="When Kehai generates groups, it sends OpenAI window and Safari-tab titles, app names, recent focus activity, and small, compressed screenshots of eligible windows. Smart Search sends only your query and window metadata, never screenshots. You can exclude an app from AI queries while keeping it visible in the browser, or exclude it from Kehai entirely." data-label-ja="Kehaiがグループを生成すると、対象ウインドウとSafariタブのタイトル、アプリ名、最近のフォーカス履歴、小さく圧縮したスクリーンショットをOpenAIに送信します。スマート検索が送信するのは検索内容とウインドウのメタデータだけで、スクリーンショットは送信しません。アプリをブラウザに表示したままAIクエリから除外することも、Kehaiから完全に除外することもできます。">When Kehai generates groups, it sends OpenAI window and Safari-tab titles, app names, recent focus activity, and small, compressed screenshots of eligible windows. Smart Search sends only your query and window metadata, never screenshots. You can exclude an app from AI queries while keeping it visible in the browser, or exclude it from Kehai entirely.</p>
+      <p data-label-en="Only if you enable AI task grouping, Kehai will send the following to the AI provider you choose: app and window titles and IDs, Safari-tab titles and website URLs, recent app/window focus activity, and up to 12 small, compressed screenshots of eligible windows. Smart Search sends your query, app and window titles and IDs, Safari-tab titles and website URLs, and existing task-group names, but never screenshots or focus history. You can exclude an app from AI requests while keeping it visible in the browser, or exclude it from Kehai entirely." data-label-ja="AIタスクグループ化を有効にした場合にのみ、Kehaiは選択したAIプロバイダーへ、対象ウインドウのアプリ名、タイトル、ID、SafariタブのタイトルとWebサイトURL、最近のアプリ／ウインドウのフォーカス履歴、および最大12枚の小さく圧縮したスクリーンショットを送信します。スマート検索は、検索内容、アプリ名、ウインドウのタイトルとID、SafariタブのタイトルとWebサイトURL、既存のタスクグループ名を送信しますが、スクリーンショットやフォーカス履歴は送信しません。アプリをブラウザに表示したままAIリクエストから除外することも、Kehaiから完全に除外することもできます。">Only if you enable AI task grouping, Kehai will send the following to the AI provider you choose: app and window titles and IDs, Safari-tab titles and website URLs, recent app/window focus activity, and up to 12 small, compressed screenshots of eligible windows. Smart Search sends your query, app and window titles and IDs, Safari-tab titles and website URLs, and existing task-group names, but never screenshots or focus history. You can exclude an app from AI requests while keeping it visible in the browser, or exclude it from Kehai entirely.</p>
       <p><a href="https://github.com/littlebobert/kehai" data-label-en="View the source code on GitHub." data-label-ja="ソースコードをGitHubで見る。">View the source code on GitHub.</a></p>
     </section>
 
@@ -466,6 +475,7 @@
     const cards = [...demo.querySelectorAll('.window-card')];
     const appFilters = [...demo.querySelectorAll('.app-filter')];
     const viewOptions = [...demo.querySelectorAll('.view-option')];
+    const recentSearches = [...demo.querySelectorAll('.recent-search')];
     let selectedApp = 'all';
     let selectedView = 'task';
 
@@ -489,6 +499,13 @@
     }
 
     search.addEventListener('input', updateDemo);
+    recentSearches.forEach((recentSearch) => {
+      recentSearch.addEventListener('click', () => {
+        search.value = recentSearch.dataset.query;
+        search.focus();
+        updateDemo();
+      });
+    });
     viewOptions.forEach((option) => {
       option.addEventListener('click', () => {
         selectedView = option.dataset.view;

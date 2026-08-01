@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.3.8</title>
+            <pubDate>Sun, 02 Aug 2026 06:25:39 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>48</sparkle:version>
+            <sparkle:shortVersionString>0.3.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Improved window thumbnail selection after app filtering in the mini UI.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.8/Kehai-0.3.8-mac.zip" length="5370320" type="application/octet-stream" sparkle:edSignature="MmE2ItBHp8FXxxS43tiq+95E+t1sRHJ5c9eyCu7TITAgUcD7WWle1e1fkXefjEfyCDdQDCpT0DLgvoQCDR/PDg=="/>
+        </item>
+        <item>
             <title>0.3.7</title>
             <pubDate>Sun, 02 Aug 2026 01:29:20 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Improved keyboard navigation and added right-click menus for windows and apps.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.6/Kehai-0.3.6-mac.zip" length="5334427" type="application/octet-stream" sparkle:edSignature="UBmmxohaU69DhXprHqpWg9X6n83U1TWudnvr23zD0V4LUYi1bJNOu1PYi1bbGUJrIoDqt6BEq78mmRv4E8txCw=="/>
-        </item>
-        <item>
-            <title>0.3.5</title>
-            <pubDate>Sat, 01 Aug 2026 21:56:30 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>45</sparkle:version>
-            <sparkle:shortVersionString>0.3.5</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Made window thumbnail refresh smoother and added a way to go backward through the app switcher.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.5/Kehai-0.3.5-mac.zip" length="5311018" type="application/octet-stream" sparkle:edSignature="2/kqG2/Sx+qqPltBp91G5raBXJgOq7o4YUf3k0cI70mbC9wq82WejL4C11O9qv4Jnd0QsK7ZXqMuxMO9C20DDQ=="/>
         </item>
     </channel>
 </rss>

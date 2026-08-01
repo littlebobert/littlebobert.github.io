@@ -704,6 +704,18 @@ html[lang="ja"] .stack-card h2 .latin {
   line-height: 1.2;
 }
 
+.stack-app-entry + .stack-app-entry {
+  margin-top: 22px;
+}
+
+.stack-app-entry p {
+  margin-bottom: 6px;
+}
+
+.stack-app-entry .stack-actions {
+  padding-top: 0;
+}
+
 html[lang="ja"] .stack-card p {
   font-size: 15px;
   font-weight: bold;

@@ -61,8 +61,10 @@
     .release-notes ul { margin-bottom: 0; }
     .kehai-footer { padding: 16pt 0 8pt; color: #555; text-align: center; }
     .kehai-footer p { margin: 4pt 0; }
-    .language-switcher { display: flex; justify-content: flex-end; align-items: center; gap: 6pt; padding: 0 4pt 8pt; font-size: 10pt; }
-    .language-switcher select { font: inherit; }
+    .language-switcher { display: flex; justify-content: flex-end; padding: 0 4pt 8pt; font-size: 10pt; }
+    .language-switch { padding: 2pt 7pt; border: 1px solid rgba(39, 35, 31, 0.22); border-radius: 4px; background: transparent; color: #555; cursor: pointer; font: inherit; }
+    .language-switch:hover { background: rgba(39, 35, 31, 0.06); color: #222; }
+    .language-switch:focus-visible { outline: 2px solid rgba(22, 129, 226, 0.55); outline-offset: 1px; }
 
     .kehai-download,
     .kehai-download:visited {
@@ -170,11 +172,7 @@
 <body class="sasu-site">
   <main class="sasu-page">
     <div class="language-switcher">
-      <label for="language-select" data-label-en="Language" data-label-ja="言語">Language</label>
-      <select id="language-select" aria-label="Language">
-        <option value="en">English</option>
-        <option value="ja">日本語</option>
-      </select>
+      <button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button>
     </div>
     <section class="kehai-hero">
       <div class="kehai-title-row">
@@ -477,7 +475,8 @@
   </main>
   <script>
     const supportedLanguages = ['en', 'ja'];
-    const languageSelect = document.getElementById('language-select');
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
 
     function preferredLanguage() {
       const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
@@ -498,11 +497,13 @@
         element.setAttribute('aria-label', selected === 'ja' ? element.dataset.ariaLabelJa : element.dataset.ariaLabelEn);
       });
       document.documentElement.lang = selected;
-      languageSelect.value = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
       if (persist) localStorage.setItem('kehai-language', selected);
     }
 
-    languageSelect.addEventListener('change', () => setLanguage(languageSelect.value));
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
     setLanguage(localStorage.getItem('kehai-language') || preferredLanguage(), false);
 
     const demo = document.querySelector('.kehai-demo');

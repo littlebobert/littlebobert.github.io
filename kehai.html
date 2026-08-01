@@ -150,6 +150,34 @@
     .app-label { overflow: hidden; margin-top: 2px; color: #777; font: 10pt -apple-system, BlinkMacSystemFont, sans-serif; text-overflow: ellipsis; white-space: nowrap; }
     .browser-caption { margin: 0; padding: 9pt 6pt 0; color: #444; font-size: 11pt; text-align: center; }
 
+    .mini-demo { margin-top: 24pt; }
+    .mini-browser-window { overflow: hidden; border: 1px solid var(--kehai-line); border-radius: 11px; background: #f5f5f6; box-shadow: 0 10px 28px rgba(39, 35, 31, 0.12); }
+    .mini-browser-titlebar { position: relative; min-height: 34px; padding: 10px 12px; border-bottom: 1px solid rgba(0, 0, 0, 0.08); background: linear-gradient(#f2f2f2, #e5e5e5); color: #444; font: 600 9pt/1 -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; }
+    .mini-app-strip { display: flex; align-items: flex-start; gap: 6px; min-height: 78px; padding: 14px 15px 5px; }
+    .mini-app { width: 54px; padding: 0; border: 0; background: transparent; color: #555; cursor: pointer; font: 7.5pt -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; }
+    .mini-app-icon { position: relative; display: grid; width: 38px; height: 38px; margin: 0 auto 9px; place-items: center; border-radius: 9px; background: linear-gradient(135deg, #69717b, #252a31); color: #fff; font: 700 13px -apple-system, BlinkMacSystemFont, sans-serif; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.24); }
+    .mini-app[aria-pressed="true"] .mini-app-icon { box-shadow: 0 0 0 5px #f5f5f6, 0 0 0 7px #1784e8; }
+    .mini-app:focus-visible { border-radius: 4px; outline: 2px solid rgba(22, 129, 226, 0.55); outline-offset: 2px; }
+    .mini-app.all .mini-app-icon { border-radius: 8px; background: linear-gradient(135deg, #777, #aaa); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.24); }
+    .mini-app.all[aria-pressed="true"] .mini-app-icon { border-radius: 8px; box-shadow: 0 0 0 5px #f5f5f6, 0 0 0 7px #1784e8; }
+    .mini-all-grid { display: grid; grid-template-columns: repeat(2, 10px); grid-template-rows: repeat(2, 8px); gap: 2px; }
+    .mini-all-grid span { border: 1.5px solid #fff; border-radius: 1px; }
+    .mini-app.messages .mini-app-icon { background: linear-gradient(145deg, #55ef70, #12b83b); font-size: 15px; }
+    .mini-app.slack .mini-app-icon { background: #fff; color: #4a154b; font-size: 12px; }
+    .mini-app.safari .mini-app-icon { background: linear-gradient(145deg, #50d5ff, #1378dc); }
+    .mini-app.terminal .mini-app-icon { background: linear-gradient(145deg, #3c4249, #0d1115); color: #76efa5; }
+    .mini-app-name { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+    .mini-unread { position: absolute; top: -5px; right: -5px; display: grid; min-width: 16px; height: 16px; padding: 0 3px; place-items: center; border-radius: 9px; background: #ff3b3b; color: #fff; font: 700 9px/1 -apple-system, BlinkMacSystemFont, sans-serif; box-shadow: 0 1px 2px rgba(0, 0, 0, 0.25); }
+    .mini-window-strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-auto-rows: 115px; gap: 8px; min-height: 135px; padding: 7px 12px 13px; }
+    .mini-window-card { box-sizing: border-box; min-width: 0; height: 115px; padding: 7px; border: 1px solid rgba(0, 0, 0, 0.09); border-radius: 9px; background: rgba(224, 224, 226, 0.72); }
+    .mini-window-card[hidden] { display: none; }
+    .mini-empty { display: none; grid-column: 1 / -1; height: 115px; place-items: center; color: #777; font: 600 10pt -apple-system, BlinkMacSystemFont, sans-serif; }
+    .mini-empty.is-visible { display: grid; }
+    .mini-window-title { overflow: hidden; margin-bottom: 5px; color: #333; font: 600 7.5pt -apple-system, BlinkMacSystemFont, sans-serif; text-overflow: ellipsis; white-space: nowrap; }
+    .mini-window-preview { height: 76px; border-radius: 4px; background: linear-gradient(135deg, #fff 0 34%, #d7dce1 34% 38%, #f8f8f8 38% 64%, #bbb 64% 67%, #f7f7f7 67%); }
+    .mini-window-preview.terminal { background: linear-gradient(160deg, #1e2732 0 72%, #3d9d73 72% 75%, #1e2732 75%); }
+    .mini-window-preview.chat { background: linear-gradient(145deg, #52205d 0 24%, #f7f4f7 24% 70%, #7d4e83 70%); }
+
     .kehai-detail { padding: 10pt 0 8pt; }
     .kehai-detail p { margin: 0; }
     .privacy-source { padding-top: 7pt; }
@@ -270,6 +298,29 @@
           </div>
         </div>
         <figcaption class="browser-caption" data-label-en="Browse by task or recency. Filter windows by app, or use AI-powered Smart Search to find what you want." data-label-ja="タスク別または最近使った順に閲覧。アプリでウインドウを絞り込むか、AIを活用したスマート検索で目的のものを見つけられます。">Browse by task or recency. Filter windows by app, or use AI-powered Smart Search to find what you want.</figcaption>
+      </figure>
+
+      <figure class="browser-demo mini-demo">
+        <div class="mini-browser-window" role="region" aria-label="Interactive Kehai mini browser example" data-aria-label-en="Interactive Kehai mini browser example" data-aria-label-ja="操作できるKehaiミニブラウザの例">
+          <div class="mini-browser-titlebar">
+            <span class="traffic" aria-hidden="true"><span></span><span></span><span></span></span>
+            Kehai mini
+          </div>
+          <div class="mini-app-strip" role="group" aria-label="Filter mini browser windows by app" data-aria-label-en="Filter mini browser windows by app" data-aria-label-ja="ミニブラウザのウインドウをアプリで絞り込む">
+            <button class="mini-app all" type="button" data-mini-app="all" aria-pressed="true"><span class="mini-app-icon"><span class="mini-all-grid" aria-hidden="true"><span></span><span></span><span></span><span></span></span></span><span class="mini-app-name" data-label-en="All" data-label-ja="すべて">All</span></button>
+            <button class="mini-app messages" type="button" data-mini-app="messages" aria-pressed="false"><span class="mini-app-icon">M<span class="mini-unread">3</span></span><span class="mini-app-name">Messages</span></button>
+            <button class="mini-app safari" type="button" data-mini-app="safari" aria-pressed="false"><span class="mini-app-icon">S</span><span class="mini-app-name">Safari</span></button>
+            <button class="mini-app slack" type="button" data-mini-app="slack" aria-pressed="false"><span class="mini-app-icon">S</span><span class="mini-app-name">Slack</span></button>
+            <button class="mini-app terminal" type="button" data-mini-app="terminal" aria-pressed="false"><span class="mini-app-icon">›_</span><span class="mini-app-name">Terminal</span></button>
+          </div>
+          <div class="mini-window-strip" aria-live="polite">
+            <div class="mini-window-card" data-mini-window-app="messages"><div class="mini-window-title">Messages · Weekend plans</div><div class="mini-window-preview chat"></div></div>
+            <div class="mini-window-card" data-mini-window-app="safari"><div class="mini-window-title">Safari · Project research</div><div class="mini-window-preview"></div></div>
+            <div class="mini-window-card" data-mini-window-app="terminal"><div class="mini-window-title">Terminal · Development server</div><div class="mini-window-preview terminal"></div></div>
+            <div class="mini-empty" data-label-en="No open windows" data-label-ja="開いているウインドウはありません">No open windows</div>
+          </div>
+        </div>
+        <figcaption class="browser-caption" data-label-en="Switch apps or windows faster with a mini browser that appears under your pointer." data-label-ja="ポインタの下に表示されるミニブラウザで、アプリやウインドウをよりすばやく切り替えられます。">Switch apps or windows faster with a mini browser that appears under your pointer.</figcaption>
       </figure>
     </section>
 
@@ -577,6 +628,31 @@
         selectedApp = filter.dataset.app;
         appFilters.forEach((item) => item.setAttribute('aria-pressed', String(item === filter)));
         updateDemo();
+      });
+    });
+
+    const miniDemo = document.querySelector('.mini-demo');
+    const miniApps = [...miniDemo.querySelectorAll('.mini-app')];
+    const miniWindows = [...miniDemo.querySelectorAll('.mini-window-card')];
+    const miniEmpty = miniDemo.querySelector('.mini-empty');
+
+    function selectMiniApp(app) {
+      let visibleWindows = 0;
+      miniApps.forEach((item) => item.setAttribute('aria-pressed', String(item.dataset.miniApp === app)));
+      miniWindows.forEach((windowCard) => {
+        windowCard.hidden = app !== 'all' && windowCard.dataset.miniWindowApp !== app;
+        if (!windowCard.hidden) visibleWindows += 1;
+      });
+      miniEmpty.classList.toggle('is-visible', visibleWindows === 0);
+    }
+
+    miniApps.forEach((app) => {
+      app.addEventListener('pointerdown', (event) => {
+        if (event.pointerType !== 'mouse') selectMiniApp(app.dataset.miniApp);
+      });
+      app.addEventListener('click', () => selectMiniApp(app.dataset.miniApp));
+      app.addEventListener('pointerenter', (event) => {
+        if (event.pointerType === 'mouse') selectMiniApp(app.dataset.miniApp);
       });
     });
   </script>

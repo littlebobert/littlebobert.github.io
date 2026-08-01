@@ -1090,6 +1090,10 @@ function shouldOpenInDesktopBrowser(link, event) {
     return false;
   }
 
+  if (link.hasAttribute('data-no-mini-browser')) {
+    return false;
+  }
+
   const href = link.getAttribute('href');
   if (!href || href.startsWith('#')) {
     return false;

@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.3.1</title>
+            <pubDate>Sat, 01 Aug 2026 16:16:00 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>41</sparkle:version>
+            <sparkle:shortVersionString>0.3.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Made some mini UI improvements.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.1/Kehai-0.3.1-mac.zip" length="5291697" type="application/octet-stream" sparkle:edSignature="2gSrIIeM/aBwE0njsv0MMm084DihDdyIWtq0L4xWDfBLbyq/Dk7EZRfpqunvTbJoNSX5b2PWewCyhCK9lvs2CQ=="/>
+        </item>
+        <item>
             <title>0.3.0</title>
             <pubDate>Sat, 01 Aug 2026 15:32:45 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed a quit bug.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.9/Kehai-0.2.9-mac.zip" length="5230931" type="application/octet-stream" sparkle:edSignature="XFFohFvni0VgDK+mQ6HoWKAvmA2q6Vbxy6ZKYArJF5kIRjI6r1riExq8q9cOxgCRWD54IzV027cCCx/gBSqSCQ=="/>
-        </item>
-        <item>
-            <title>0.2.8</title>
-            <pubDate>Sat, 01 Aug 2026 13:41:14 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>38</sparkle:version>
-            <sparkle:shortVersionString>0.2.8</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed zombie window bug.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.8/Kehai-0.2.8-mac.zip" length="5228629" type="application/octet-stream" sparkle:edSignature="Zxnc5E/FHqJl9IHhj/3/DcZl7Rr6NCO7IXtxEeNBZqf/9UukRo3cjmK7Syh6FDNWmhhJ4XHWOBR9rKf2o4HtAA=="/>
         </item>
     </channel>
 </rss>

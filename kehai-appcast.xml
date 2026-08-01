@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.3.3</title>
+            <pubDate>Sat, 01 Aug 2026 16:48:48 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>43</sparkle:version>
+            <sparkle:shortVersionString>0.3.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Made some minor fixes.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.3/Kehai-0.3.3-mac.zip" length="5291971" type="application/octet-stream" sparkle:edSignature="DvkYmoQyjI180RdVpDEeCzDSpUwhp3mTCxihlmbQCmaf5Bmwa+tFjWF+SjONA6CKualO6Q/GnWy2tD3qzn7dAw=="/>
+        </item>
+        <item>
             <title>0.3.2</title>
             <pubDate>Sat, 01 Aug 2026 16:30:08 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Made some mini UI improvements.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.1/Kehai-0.3.1-mac.zip" length="5291697" type="application/octet-stream" sparkle:edSignature="2gSrIIeM/aBwE0njsv0MMm084DihDdyIWtq0L4xWDfBLbyq/Dk7EZRfpqunvTbJoNSX5b2PWewCyhCK9lvs2CQ=="/>
-        </item>
-        <item>
-            <title>0.3.0</title>
-            <pubDate>Sat, 01 Aug 2026 15:32:45 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>40</sparkle:version>
-            <sparkle:shortVersionString>0.3.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Added a mini UI near the mouse cursor for faster switching.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.0/Kehai-0.3.0-mac.zip" length="5289210" type="application/octet-stream" sparkle:edSignature="MMnubbGnWK0c6Shld56K6+87n3VsEjQEhETj7U2plkIJDid/zCg6/Qm40YRb7gcaO2YGUaoipUUbAw5KUczoCg=="/>
         </item>
     </channel>
 </rss>

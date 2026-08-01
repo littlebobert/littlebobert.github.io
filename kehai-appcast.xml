@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.3.0</title>
+            <pubDate>Sat, 01 Aug 2026 15:32:45 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>40</sparkle:version>
+            <sparkle:shortVersionString>0.3.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Added a mini UI near the mouse cursor for faster switching.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.0/Kehai-0.3.0-mac.zip" length="5289210" type="application/octet-stream" sparkle:edSignature="MMnubbGnWK0c6Shld56K6+87n3VsEjQEhETj7U2plkIJDid/zCg6/Qm40YRb7gcaO2YGUaoipUUbAw5KUczoCg=="/>
+        </item>
+        <item>
             <title>0.2.9</title>
             <pubDate>Sat, 01 Aug 2026 13:53:34 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed zombie window bug.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.8/Kehai-0.2.8-mac.zip" length="5228629" type="application/octet-stream" sparkle:edSignature="Zxnc5E/FHqJl9IHhj/3/DcZl7Rr6NCO7IXtxEeNBZqf/9UukRo3cjmK7Syh6FDNWmhhJ4XHWOBR9rKf2o4HtAA=="/>
-        </item>
-        <item>
-            <title>0.2.7</title>
-            <pubDate>Fri, 31 Jul 2026 18:38:32 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>37</sparkle:version>
-            <sparkle:shortVersionString>0.2.7</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed rendering glitch with app names.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.2.7/Kehai-0.2.7-mac.zip" length="5228595" type="application/octet-stream" sparkle:edSignature="ECKXS8kWkXy8hLRHadec6v97su+k8Lu4PtaQ4PnElPhBgL6rEQBqX+3M8/vumURG/0kTUVr6Fkmdgj9voMMnCA=="/>
         </item>
     </channel>
 </rss>

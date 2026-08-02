@@ -1,42 +1,8 @@
 {
-  "updatedAt": "2026-08-01T16:16:29.073Z",
+  "updatedAt": "2026-08-02T16:15:59.290Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
-    {
-      "id": "2081746363491254662",
-      "text": "Browse windows grouped intelligently by task, not by app. https://t.co/BVpMHIss6b https://t.co/ZBBAlXGXZo",
-      "createdAt": "2026-07-27T14:19:44.000Z",
-      "url": "https://x.com/_bobertdowney/status/2081746363491254662",
-      "urls": [
-        {
-          "url": "https://t.co/BVpMHIss6b",
-          "expandedUrl": "https://littlebobert.github.io/kehai.html",
-          "displayUrl": "littlebobert.github.io/kehai.html",
-          "start": 58,
-          "end": 81
-        },
-        {
-          "url": "https://t.co/ZBBAlXGXZo",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2081746363491254662/video/1",
-          "displayUrl": "pic.x.com/ZBBAlXGXZo",
-          "start": 82,
-          "end": 105
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2081746363491254662-0.png",
-          "imageModern": "assets/generated/x/mine-post-2081746363491254662-0-modern.png"
-        }
-      ]
-    },
     {
       "id": "2081526776237621548",
       "text": "I finally found a reason to use my OpenClaw🤡. https://t.co/FLn8kEioCd",
@@ -126,8 +92,8 @@
       "urls": [
         {
           "url": "https://t.co/wb7Oe3XrBo",
-          "expandedUrl": "",
-          "displayUrl": "",
+          "expandedUrl": "https://twitter.com/aorblue/status/2078386731456528651",
+          "displayUrl": "x.com/aorblue/status…",
           "start": 105,
           "end": 128
         }
@@ -243,6 +209,33 @@
           "type": "video",
           "image": "assets/generated/x/mine-post-2076413487665078411-0.png",
           "imageModern": "assets/generated/x/mine-post-2076413487665078411-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2075035780205142207",
+      "text": "Need translation while typing or reading Japanese with one keyboard shortcut? Try out my free macOS app, Sasu. It can also (with your permission) scan and give guidance on the entire Safari page you’re on, including parts off-screen.\n\nAnd it gives you on-screen guidance without https://t.co/eQTppVBVNF",
+      "createdAt": "2026-07-09T01:54:16.000Z",
+      "url": "https://x.com/_bobertdowney/status/2075035780205142207",
+      "urls": [
+        {
+          "url": "https://t.co/eQTppVBVNF",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2075035780205142207/photo/1",
+          "displayUrl": "pic.x.com/eQTppVBVNF",
+          "start": 279,
+          "end": 302
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2075035780205142207-0.png",
+          "imageModern": "assets/generated/x/mine-post-2075035780205142207-0-modern.png"
         }
       ]
     }

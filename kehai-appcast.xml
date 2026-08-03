@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.3.9</title>
+            <pubDate>Mon, 03 Aug 2026 13:12:49 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>49</sparkle:version>
+            <sparkle:shortVersionString>0.3.9</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Allow filtering immediately in both mini and full UI.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.9/Kehai-0.3.9-mac.zip" length="5389296" type="application/octet-stream" sparkle:edSignature="vlBgiF0jP7EKJKVxuvrXdTRFQK7GH3NgUK64IKikJEi4FyvIz+gGCTRw/v0Q4k2pPNhIoFuxHxkxIBVxuSH7CQ=="/>
+        </item>
+        <item>
             <title>0.3.8</title>
             <pubDate>Sun, 02 Aug 2026 06:25:39 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Added unread badges.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.7/Kehai-0.3.7-mac.zip" length="5353230" type="application/octet-stream" sparkle:edSignature="HEb4ps5MapbbmFE/YUBj8W+/VgyrLwLD1r6vRaRyhnOqH0ltK3y8Y/opLi65UTSOeo4Ve8gK29l+rT+5X8M2DQ=="/>
-        </item>
-        <item>
-            <title>0.3.6</title>
-            <pubDate>Sat, 01 Aug 2026 22:46:11 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>46</sparkle:version>
-            <sparkle:shortVersionString>0.3.6</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Improved keyboard navigation and added right-click menus for windows and apps.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.6/Kehai-0.3.6-mac.zip" length="5334427" type="application/octet-stream" sparkle:edSignature="UBmmxohaU69DhXprHqpWg9X6n83U1TWudnvr23zD0V4LUYi1bJNOu1PYi1bbGUJrIoDqt6BEq78mmRv4E8txCw=="/>
         </item>
     </channel>
 </rss>

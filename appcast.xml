@@ -3,6 +3,18 @@
     <channel>
         <title>Sasu</title>
         <item>
+            <title>0.2.9</title>
+            <pubDate>Thu, 06 Aug 2026 23:51:33 +0900</pubDate>
+            <link>https://sasu.jp</link>
+            <sparkle:version>34</sparkle:version>
+            <sparkle:shortVersionString>0.2.9</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[Added a Find feature.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.9/Sasu-0.2.9-mac.zip" length="4439156" type="application/octet-stream" sparkle:edSignature="hhKIX9x3Jx15LhpCCY0ko3Ma9f7VHptLCukNo1o1RevibqZ0yiv+0rqVswmKlsX1UKHYnLa54oi80DzFgBOmDg=="/>
+        </item>
+        <item>
             <title>0.2.8</title>
             <pubDate>Wed, 29 Jul 2026 18:03:53 +0900</pubDate>
             <link>https://sasu.jp</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[Only bounce the Dock icon once when translations are finished.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.7/Sasu-0.2.7-mac.zip" length="4319948" type="application/octet-stream" sparkle:edSignature="FTp/kArVCdrO79fYyTPkRBtvm0H2QO7UlIce8jmHipEYazb/ccjdmPfwzqMeo6fj/7cgQ/eWnejRpgr0XjV1AA=="/>
-        </item>
-        <item>
-            <title>0.2.6</title>
-            <pubDate>Sun, 26 Jul 2026 18:45:18 +0900</pubDate>
-            <link>https://sasu.jp</link>
-            <sparkle:version>31</sparkle:version>
-            <sparkle:shortVersionString>0.2.6</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[Fix hang when translating selections on certain Safari pages.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.6/Sasu-0.2.6-mac.zip" length="4312739" type="application/octet-stream" sparkle:edSignature="jqBFfXnIj1pEn9FZi1TVkaKcFlq3jd7qmGJg9Lmk2zWBCqIlvU2Fc+D0AqzKzJmP4OkbgH6KNaaMVVpD1OEWBg=="/>
         </item>
     </channel>
 </rss>

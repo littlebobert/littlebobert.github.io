@@ -1,8 +1,35 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-08-05T16:54:31.352Z",
+  "updatedAt": "2026-08-07T16:11:13.594Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2085330468128575990",
+      "text": "Thing, Japan 🤡 https://t.co/wusgO9mcTM",
+      "createdAt": "2026-08-06T11:41:41.000Z",
+      "url": "https://x.com/_bobertdowney/status/2085330468128575990",
+      "urls": [
+        {
+          "url": "https://t.co/wusgO9mcTM",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2085330468128575990/photo/1",
+          "displayUrl": "pic.x.com/wusgO9mcTM",
+          "start": 15,
+          "end": 38
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2085330468128575990-0.png",
+          "imageModern": "assets/generated/x/mine-post-2085330468128575990-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2081526776237621548",
       "text": "I finally found a reason to use my OpenClaw🤡. https://t.co/FLn8kEioCd",
@@ -209,33 +236,6 @@ window.X_POSTS_SNAPSHOT = {
           "type": "video",
           "image": "assets/generated/x/mine-post-2076413487665078411-0.png",
           "imageModern": "assets/generated/x/mine-post-2076413487665078411-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2075035780205142207",
-      "text": "Need translation while typing or reading Japanese with one keyboard shortcut? Try out my free macOS app, Sasu. It can also (with your permission) scan and give guidance on the entire Safari page you’re on, including parts off-screen.\n\nAnd it gives you on-screen guidance without https://t.co/eQTppVBVNF",
-      "createdAt": "2026-07-09T01:54:16.000Z",
-      "url": "https://x.com/_bobertdowney/status/2075035780205142207",
-      "urls": [
-        {
-          "url": "https://t.co/eQTppVBVNF",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2075035780205142207/photo/1",
-          "displayUrl": "pic.x.com/eQTppVBVNF",
-          "start": 279,
-          "end": 302
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2075035780205142207-0.png",
-          "imageModern": "assets/generated/x/mine-post-2075035780205142207-0-modern.png"
         }
       ]
     }

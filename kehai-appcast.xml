@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.3.15</title>
+            <pubDate>Fri, 07 Aug 2026 16:43:37 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>55</sparkle:version>
+            <sparkle:shortVersionString>0.3.15</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Remove the trail, it's not useful.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.15/Kehai-0.3.15-mac.zip" length="5399973" type="application/octet-stream" sparkle:edSignature="XVkRu4+/6roRIjyS6QtxCxYscA0sanCZsWprimG+Oq68zW6RPCel8924anzT+4OBv/CeqAMpTiY3mPdfX3k/DQ=="/>
+        </item>
+        <item>
             <title>0.3.14</title>
             <pubDate>Fri, 07 Aug 2026 15:12:50 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Added a recents trail.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.13/Kehai-0.3.13-mac.zip" length="5425480" type="application/octet-stream" sparkle:edSignature="XDxeQXIMrfln29JYLM88tL51qt+eRaAH/fU9km/Rpx8wMMfULr3rtVH4uqEdeAbwtqQjYmueNLucUYOF6mbkDg=="/>
-        </item>
-        <item>
-            <title>0.3.12</title>
-            <pubDate>Tue, 04 Aug 2026 10:03:42 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>52</sparkle:version>
-            <sparkle:shortVersionString>0.3.12</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed a bug where selecting a window would switch to the correct app but wrong window.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.12/Kehai-0.3.12-mac.zip" length="5398015" type="application/octet-stream" sparkle:edSignature="nu7kAlmFyTwf6VnuEFTgALHQ+ZO7ie64XeeXA9FVCl/HhxRv+k/fkHnv/AvMkfszPx4qNt+Jr68KlmF26LOQBw=="/>
         </item>
     </channel>
 </rss>

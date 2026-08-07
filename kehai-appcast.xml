@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.3.13</title>
+            <pubDate>Fri, 07 Aug 2026 13:51:37 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>53</sparkle:version>
+            <sparkle:shortVersionString>0.3.13</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Added a recents trail.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.13/Kehai-0.3.13-mac.zip" length="5425480" type="application/octet-stream" sparkle:edSignature="XDxeQXIMrfln29JYLM88tL51qt+eRaAH/fU9km/Rpx8wMMfULr3rtVH4uqEdeAbwtqQjYmueNLucUYOF6mbkDg=="/>
+        </item>
+        <item>
             <title>0.3.12</title>
             <pubDate>Tue, 04 Aug 2026 10:03:42 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed a bug where the mini UI would sometimes not open with the mouse cursor centered above the All Windows button.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.11/Kehai-0.3.11-mac.zip" length="5398031" type="application/octet-stream" sparkle:edSignature="91IOJJPwDmHZlNhkQTPfa1/ro8oVLYrnr44aN6+joNSpMb7C0MFnkvxnNPJscs3LB2IcUWzIrJD1o1BlXIAQBQ=="/>
-        </item>
-        <item>
-            <title>0.3.10</title>
-            <pubDate>Mon, 03 Aug 2026 18:29:33 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>50</sparkle:version>
-            <sparkle:shortVersionString>0.3.10</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Split out Safari tabs finally and made some filtering fixes.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.10/Kehai-0.3.10-mac.zip" length="5398361" type="application/octet-stream" sparkle:edSignature="bv+2tcD2NFxfyQmyz1hexhLfINeJ+aajaUdRtxRL6X6ouNPUK1SadlJuC7GgI6oYc3OGemGShhg1C0ucj8bCBQ=="/>
         </item>
     </channel>
 </rss>

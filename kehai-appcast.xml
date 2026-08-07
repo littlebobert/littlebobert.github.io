@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.3.14</title>
+            <pubDate>Fri, 07 Aug 2026 15:12:50 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>54</sparkle:version>
+            <sparkle:shortVersionString>0.3.14</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Don’t swap the layout direction in the mini UI.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.14/Kehai-0.3.14-mac.zip" length="5426941" type="application/octet-stream" sparkle:edSignature="m+C97PYSJJ5jsx5aIYGfC4agH/nde1a8zeAUDKZRWW5c8jFYN5xxDZkJzmDHfwpEPBaU3W9nLrIpSWaesYznCQ=="/>
+        </item>
+        <item>
             <title>0.3.13</title>
             <pubDate>Fri, 07 Aug 2026 13:51:37 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed a bug where selecting a window would switch to the correct app but wrong window.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.12/Kehai-0.3.12-mac.zip" length="5398015" type="application/octet-stream" sparkle:edSignature="nu7kAlmFyTwf6VnuEFTgALHQ+ZO7ie64XeeXA9FVCl/HhxRv+k/fkHnv/AvMkfszPx4qNt+Jr68KlmF26LOQBw=="/>
-        </item>
-        <item>
-            <title>0.3.11</title>
-            <pubDate>Mon, 03 Aug 2026 20:04:03 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>51</sparkle:version>
-            <sparkle:shortVersionString>0.3.11</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed a bug where the mini UI would sometimes not open with the mouse cursor centered above the All Windows button.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.11/Kehai-0.3.11-mac.zip" length="5398031" type="application/octet-stream" sparkle:edSignature="91IOJJPwDmHZlNhkQTPfa1/ro8oVLYrnr44aN6+joNSpMb7C0MFnkvxnNPJscs3LB2IcUWzIrJD1o1BlXIAQBQ=="/>
         </item>
     </channel>
 </rss>

@@ -1,8 +1,35 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-08-08T15:49:27.739Z",
+  "updatedAt": "2026-08-09T15:50:23.590Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2086361159905710186",
+      "text": "Today at Apple: 一番好きな絵文字は何すか？it was for kids but I wanted someone to ask me 🥴🤡 https://t.co/Y2H3MyxSld",
+      "createdAt": "2026-08-09T07:57:17.000Z",
+      "url": "https://x.com/_bobertdowney/status/2086361159905710186",
+      "urls": [
+        {
+          "url": "https://t.co/Y2H3MyxSld",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2086361159905710186/photo/1",
+          "displayUrl": "pic.x.com/Y2H3MyxSld",
+          "start": 79,
+          "end": 102
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2086361159905710186-0.png",
+          "imageModern": "assets/generated/x/mine-post-2086361159905710186-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2085330468128575990",
       "text": "Thing, Japan 🤡 https://t.co/wusgO9mcTM",
@@ -209,33 +236,6 @@ window.X_POSTS_SNAPSHOT = {
           "type": "photo",
           "image": "assets/generated/x/mine-post-2078324095205486889-0.png",
           "imageModern": "assets/generated/x/mine-post-2078324095205486889-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2076413487665078411",
-      "text": "remember the viral app Words with Friends? this is \"vibe code with friends\". this is Blanket Fort, and it’s my submission for RevenueCat’s Shipaton hackathon.\n\nthere are tons of vibe coding tools out there that let you create apps, but have you ever tried to use one to https://t.co/4WXMjK7lhO",
-      "createdAt": "2026-07-12T21:08:48.000Z",
-      "url": "https://x.com/_bobertdowney/status/2076413487665078411",
-      "urls": [
-        {
-          "url": "https://t.co/4WXMjK7lhO",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2076413487665078411/video/1",
-          "displayUrl": "pic.x.com/4WXMjK7lhO",
-          "start": 270,
-          "end": 293
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2076413487665078411-0.png",
-          "imageModern": "assets/generated/x/mine-post-2076413487665078411-0-modern.png"
         }
       ]
     }

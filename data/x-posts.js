@@ -1,8 +1,136 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-08-09T15:50:23.590Z",
+  "updatedAt": "2026-08-10T16:11:04.535Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2086778564922466412",
+      "text": "I made this for my mom. she hates filling out web forms, especially on mobile.\n\nhttps://t.co/9eD4Qmjhl0 https://t.co/7Or7057C9n",
+      "createdAt": "2026-08-10T11:35:55.000Z",
+      "url": "https://x.com/_bobertdowney/status/2086778564922466412",
+      "urls": [
+        {
+          "url": "https://t.co/9eD4Qmjhl0",
+          "expandedUrl": "https://github.com/littlebobert/ume",
+          "displayUrl": "github.com/littlebobert/u…",
+          "start": 80,
+          "end": 103
+        },
+        {
+          "url": "https://t.co/7Or7057C9n",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2086778564922466412/video/1",
+          "displayUrl": "pic.x.com/7Or7057C9n",
+          "start": 104,
+          "end": 127
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2086778564922466412-0.png",
+          "imageModern": "assets/generated/x/mine-post-2086778564922466412-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2086728487029862508",
+      "text": "Apple Parkビジターセンターのコーヒーマグは、もちろん日本製だ。 https://t.co/5BVr83VnNF",
+      "createdAt": "2026-08-10T08:16:55.000Z",
+      "url": "https://x.com/_bobertdowney/status/2086728487029862508",
+      "urls": [
+        {
+          "url": "https://t.co/5BVr83VnNF",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2086728487029862508/photo/1",
+          "displayUrl": "pic.x.com/5BVr83VnNF",
+          "start": 37,
+          "end": 60
+        },
+        {
+          "url": "https://t.co/5BVr83VnNF",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2086728487029862508/photo/1",
+          "displayUrl": "pic.x.com/5BVr83VnNF",
+          "start": 37,
+          "end": 60
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2086728487029862508-0.png",
+          "imageModern": "assets/generated/x/mine-post-2086728487029862508-0-modern.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2086728487029862508-1.png",
+          "imageModern": "assets/generated/x/mine-post-2086728487029862508-1-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2086591205685731585",
+      "text": "9月のApple発表会、東京でみんなで見る会やる人いる？ https://t.co/n60C1OgQnc",
+      "createdAt": "2026-08-09T23:11:25.000Z",
+      "url": "https://x.com/_bobertdowney/status/2086591205685731585",
+      "urls": [
+        {
+          "url": "https://t.co/n60C1OgQnc",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2086591205685731585/photo/1",
+          "displayUrl": "pic.x.com/n60C1OgQnc",
+          "start": 29,
+          "end": 52
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2086591205685731585-0.png",
+          "imageModern": "assets/generated/x/mine-post-2086591205685731585-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2086557357081788651",
+      "text": "ハッカソンは教会のピクニックのようであるべきです。おいしい食事と、さらに素敵な雰囲気がある場です。 https://t.co/X09CngPZEz",
+      "createdAt": "2026-08-09T20:56:54.000Z",
+      "url": "https://x.com/_bobertdowney/status/2086557357081788651",
+      "urls": [
+        {
+          "url": "https://t.co/X09CngPZEz",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2086557357081788651/photo/1",
+          "displayUrl": "pic.x.com/X09CngPZEz",
+          "start": 50,
+          "end": 73
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2086557357081788651-0.png",
+          "imageModern": "assets/generated/x/mine-post-2086557357081788651-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2086361159905710186",
       "text": "Today at Apple: 一番好きな絵文字は何すか？it was for kids but I wanted someone to ask me 🥴🤡 https://t.co/Y2H3MyxSld",
@@ -135,107 +263,6 @@ window.X_POSTS_SNAPSHOT = {
           "type": "video",
           "image": "assets/generated/x/mine-post-2078625185561972939-0.png",
           "imageModern": "assets/generated/x/mine-post-2078625185561972939-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2078435369935315447",
-      "text": "reminds me of Apple’s eWorld online service from the 90s. I posted the @huggingface x @kotoba_tech event https://t.co/wb7Oe3XrBo",
-      "createdAt": "2026-07-18T11:03:02.000Z",
-      "url": "https://x.com/_bobertdowney/status/2078435369935315447",
-      "urls": [
-        {
-          "url": "https://t.co/wb7Oe3XrBo",
-          "expandedUrl": "https://twitter.com/aorblue/status/2078386731456528651",
-          "displayUrl": "x.com/aorblue/status…",
-          "start": 105,
-          "end": 128
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2078376236968182176",
-      "text": "終わりました. the Hermes agent is just running off my laptop for now though 🤡 #aimeetup #OpenAIBuildWeek https://t.co/ghErFPvbg8",
-      "createdAt": "2026-07-18T07:08:03.000Z",
-      "url": "https://x.com/_bobertdowney/status/2078376236968182176",
-      "urls": [
-        {
-          "url": "https://t.co/ghErFPvbg8",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2078376236968182176/photo/1",
-          "displayUrl": "pic.x.com/ghErFPvbg8",
-          "start": 99,
-          "end": 122
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2078376236968182176-0.png",
-          "imageModern": "assets/generated/x/mine-post-2078376236968182176-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2078330067973963934",
-      "text": "Global Build Week Community Event - Tokyo なう\n#aimeetup #OpenAI #BuildWeek https://t.co/POKAUoeHB0",
-      "createdAt": "2026-07-18T04:04:36.000Z",
-      "url": "https://x.com/_bobertdowney/status/2078330067973963934",
-      "urls": [
-        {
-          "url": "https://t.co/POKAUoeHB0",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2078330067973963934/photo/1",
-          "displayUrl": "pic.x.com/POKAUoeHB0",
-          "start": 74,
-          "end": 97
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2078330067973963934-0.png",
-          "imageModern": "assets/generated/x/mine-post-2078330067973963934-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2078324095205486889",
-      "text": "Global Build Week Community Event - Tokyo なう\n#aimeetup #OpenAI #BuildWeek https://t.co/jOPUHsQp3a",
-      "createdAt": "2026-07-18T03:40:52.000Z",
-      "url": "https://x.com/_bobertdowney/status/2078324095205486889",
-      "urls": [
-        {
-          "url": "https://t.co/jOPUHsQp3a",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2078324095205486889/photo/1",
-          "displayUrl": "pic.x.com/jOPUHsQp3a",
-          "start": 74,
-          "end": 97
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2078324095205486889-0.png",
-          "imageModern": "assets/generated/x/mine-post-2078324095205486889-0-modern.png"
         }
       ]
     }

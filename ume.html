@@ -1,0 +1,522 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Ume (埋め)</title>
+  <link href="sasu-common.css?v=3" rel="stylesheet">
+  <link rel="icon" href="assets/ume-icon.png?v=1">
+  <link rel="apple-touch-icon" href="assets/ume-icon.png?v=1">
+  <link rel="canonical" href="https://littlebobert.github.io/ume.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A private Safari form filler for iPhone, iPad, and Mac." data-label-en="A private Safari form filler for iPhone, iPad, and Mac." data-label-ja="iPhone、iPad、Macで使える、プライバシー重視のSafariフォーム入力支援。">
+  <meta property="og:title" content="Ume: Fill forms once" data-label-en="Ume: Fill forms once" data-label-ja="Ume：フォーム入力を一度で">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://littlebobert.github.io/ume.html">
+  <meta property="og:site_name" content="Ume (埋め)">
+  <meta property="og:description" content="Remember your answers and fill similar Safari forms later." data-label-en="Remember your answers and fill similar Safari forms later." data-label-ja="回答を保存して、次のSafariフォームにすばやく入力。">
+  <meta property="og:image" content="https://littlebobert.github.io/assets/ume-icon.png?v=1">
+  <meta property="og:image:alt" content="Ume app icon">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ume: Fill forms once" data-label-en="Ume: Fill forms once" data-label-ja="Ume：フォーム入力を一度で">
+  <meta name="twitter:description" content="Remember your answers and fill similar Safari forms later." data-label-en="Remember your answers and fill similar Safari forms later." data-label-ja="回答を保存して、次のSafariフォームにすばやく入力。">
+  <meta name="twitter:image" content="https://littlebobert.github.io/assets/ume-icon.png?v=1">
+  <style>
+    :root {
+      --ume-ink: #28251f;
+      --ume-green: #61713f;
+      --ume-green-dark: #3f4d28;
+      --ume-apple: #b4a642;
+      --ume-paper: #f5f1e9;
+      --ume-line: rgba(40, 37, 31, 0.15);
+      --ume-blue: #1675d1;
+    }
+
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+
+    .ume-hero {
+      padding: 18pt;
+    }
+
+    .ume-title-row {
+      display: flex;
+      align-items: center;
+      gap: 14pt;
+    }
+
+    .ume-icon {
+      width: 88px;
+      height: 88px;
+      flex: 0 0 88px;
+      object-fit: contain;
+    }
+
+    .ume-title-row h1 { color: var(--ume-ink); }
+    .ume-subtitle { padding-top: 2pt; color: var(--ume-green-dark); font-weight: bold; }
+    .ume-tagline { max-width: 520px; padding: 11pt 0 10pt; font-size: 12pt; line-height: 1.35; }
+    .ume-hero .small-note { font-size: 10pt; }
+
+    .ume-download,
+    .ume-download:visited {
+      display: inline-block;
+      padding: 5pt 10pt;
+      border: 1px solid var(--ume-green-dark);
+      border-radius: 5px;
+      background: var(--ume-green);
+      color: #fff;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 120ms ease, box-shadow 120ms ease;
+    }
+
+    .ume-download:hover {
+      background: var(--ume-green-dark);
+      box-shadow: 0 2px 7px rgba(63, 77, 40, 0.28);
+    }
+
+    .language-switcher { display: flex; justify-content: flex-end; padding: 0 4pt 8pt; font-size: 10pt; }
+    .language-switch { padding: 2pt 7pt; border: 1px solid rgba(40, 37, 31, 0.22); border-radius: 4px; background: transparent; color: #555; cursor: pointer; font: inherit; }
+    .language-switch:hover { background: rgba(40, 37, 31, 0.06); color: #222; }
+    .language-switch:focus-visible { outline: 2px solid rgba(22, 117, 209, 0.55); outline-offset: 1px; }
+
+    .ume-demo {
+      width: 526px;
+      max-width: 100%;
+      margin: -2pt auto 18pt;
+      text-align: center;
+    }
+
+    .ume-demo-label {
+      margin: 0 0 9px;
+      color: #555;
+      font-size: 11pt;
+      font-weight: bold;
+    }
+
+    .safari-window {
+      overflow: hidden;
+      border: 1px solid var(--ume-line);
+      border-radius: 12px;
+      background: #f5f5f6;
+      box-shadow: 0 10px 28px rgba(40, 37, 31, 0.13);
+      text-align: left;
+    }
+
+    .safari-titlebar {
+      position: relative;
+      min-height: 38px;
+      padding: 11px 12px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+      background: linear-gradient(#f2f2f2, #e5e5e5);
+    }
+
+    .traffic { position: absolute; left: 12px; top: 13px; display: flex; gap: 6px; }
+    .traffic span { width: 9px; height: 9px; border-radius: 50%; }
+    .traffic span:nth-child(1) { background: #ff5f57; }
+    .traffic span:nth-child(2) { background: #febc2e; }
+    .traffic span:nth-child(3) { background: #28c840; }
+
+    .address-bar {
+      width: 56%;
+      min-width: 180px;
+      margin: 0 auto;
+      padding: 4px 12px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 6px;
+      background: rgba(255, 255, 255, 0.92);
+      color: #555;
+      font: 10px/1.2 -apple-system, BlinkMacSystemFont, sans-serif;
+      text-align: center;
+    }
+
+    .demo-content {
+      position: relative;
+      min-height: 350px;
+      padding: 22px 214px 24px 24px;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(180, 166, 66, 0.11), transparent 30%),
+        #fbfaf7;
+    }
+
+    .sample-form h3 {
+      margin: 0 0 4px;
+      padding: 0;
+      color: var(--ume-ink);
+      font: 700 17px/1.2 -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .form-note {
+      margin-bottom: 14px;
+      color: #777;
+      font: 11px/1.35 -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 9px;
+    }
+
+    .field { margin-bottom: 9px; }
+    .field label { display: block; margin-bottom: 4px; color: #4f4a42; font: 600 10px/1.2 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .field input,
+    .field select {
+      width: 100%;
+      height: 29px;
+      padding: 5px 7px;
+      border: 1px solid #c7c3bb;
+      border-radius: 5px;
+      background: #fff;
+      color: #25231f;
+      font: 11px/1.2 -apple-system, BlinkMacSystemFont, sans-serif;
+      transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
+    }
+
+    .field input[readonly] { cursor: default; }
+    .demo-filled .field input,
+    .demo-filled .field select { border-color: #7f9252; background: #fbfff4; box-shadow: 0 0 0 2px rgba(127, 146, 82, 0.12); }
+
+    .fake-submit {
+      display: inline-block;
+      margin-top: 3px;
+      padding: 7px 13px;
+      border: 0;
+      border-radius: 5px;
+      background: #d8d5cf;
+      color: #777;
+      font: 600 10px/1 -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .ume-popover {
+      position: absolute;
+      top: 22px;
+      right: 18px;
+      width: 176px;
+      overflow: hidden;
+      border: 1px solid rgba(0, 0, 0, 0.12);
+      border-radius: 11px;
+      background: rgba(249, 249, 249, 0.98);
+      box-shadow: 0 12px 34px rgba(31, 28, 24, 0.2);
+      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .popover-header {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 11px 8px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.07);
+    }
+
+    .popover-header img { width: 28px; height: 28px; border-radius: 7px; }
+    .popover-title { color: #25231f; font-size: 13px; font-weight: 700; }
+    .popover-subtitle { margin-top: 1px; color: #777; font-size: 9px; }
+    .popover-body { padding: 10px; }
+
+    .ume-action {
+      width: 100%;
+      padding: 8px 8px;
+      border: 1px solid var(--ume-green-dark);
+      border-radius: 6px;
+      background: var(--ume-green);
+      color: #fff;
+      cursor: pointer;
+      font: 700 11px/1.2 -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .ume-action:hover { background: var(--ume-green-dark); }
+    .ume-action:focus-visible { outline: 2px solid rgba(22, 117, 209, 0.55); outline-offset: 2px; }
+    .ume-action:disabled { border-color: #6e8150; background: #7f9252; cursor: default; }
+
+    .remember-action {
+      width: 100%;
+      margin-top: 7px;
+      padding: 7px 5px;
+      border: 1px solid #c8c5be;
+      border-radius: 6px;
+      background: #fff;
+      color: #49453f;
+      font: 600 10px/1.2 -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .fill-status {
+      min-height: 16px;
+      margin-top: 8px;
+      color: var(--ume-green-dark);
+      font-size: 9px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .demo-reset {
+      margin: 8px 0 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #596e36;
+      cursor: pointer;
+      font: 10pt Verdana, Geneva, sans-serif;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .demo-reset[hidden] { display: none; }
+    .ume-caption { margin: 0; padding: 9pt 6pt 0; color: #444; font-size: 11pt; }
+
+    .feature-strip {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 9px;
+      margin: 2pt 0 18pt;
+    }
+
+    .feature-card {
+      padding: 12px;
+      border: 1px solid var(--ume-line);
+      border-radius: 8px;
+      background: var(--ume-paper);
+    }
+
+    .feature-icon { margin-bottom: 6px; color: var(--ume-green-dark); font-size: 18px; line-height: 1; }
+    .feature-card strong { display: block; margin-bottom: 4px; color: var(--ume-ink); }
+    .feature-card p { margin: 0; color: #555; font-size: 9pt; line-height: 1.4; }
+
+    .ume-detail { padding: 10pt 0 8pt; }
+    .ume-detail p { margin: 0; }
+    .privacy-source { padding-top: 7pt; }
+    .bottom-cta { padding: 15pt 0 7pt; text-align: center; }
+    .ume-footer { padding: 13pt 0 8pt; color: #555; text-align: center; }
+    .ume-footer p { margin: 4pt 0; }
+
+    @media (max-width: 560px) {
+      .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
+      .ume-hero { padding: 14pt; }
+      .ume-icon { width: 70px; height: 70px; flex-basis: 70px; }
+      .demo-content { min-height: 520px; padding: 20px 18px 194px; }
+      .ume-popover { top: auto; right: 18px; bottom: 18px; left: 18px; width: auto; }
+      .field-row { grid-template-columns: 1fr; gap: 0; }
+      .feature-strip { grid-template-columns: 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .field input, .field select, .ume-download { transition: none; }
+    }
+  </style>
+</head>
+
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher">
+      <button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button>
+    </div>
+
+    <section class="ume-hero">
+      <div class="ume-title-row">
+        <img class="ume-icon" src="assets/ume-icon.png?v=1" alt="Ume app icon">
+        <div>
+          <h1>Ume (埋め)</h1>
+          <div class="ume-subtitle" data-label-en="Autofill everything, securely." data-label-ja="あらゆるフォームに、安全に自動入力。">Autofill everything, securely.</div>
+        </div>
+      </div>
+      <div class="ume-tagline" data-label-en="A private Safari form filler for iPhone, iPad, and Mac." data-label-ja="iPhone、iPad、Macで使える、プライバシー重視のSafariフォーム入力支援。">A private Safari form filler for iPhone, iPad, and Mac.</div>
+      <a class="ume-download" href="https://github.com/littlebobert/ume" data-label-en="Download Ume" data-label-ja="Umeをダウンロード">Download Ume</a>
+      <div class="small-note" data-label-en="Open source. Build and install with Xcode." data-label-ja="オープンソース。Xcodeからビルドしてインストールできます。">Open source. Build and install with Xcode.</div>
+    </section>
+
+    <section class="sasu-section">
+      <figure class="ume-demo">
+        <div class="ume-demo-label" data-label-en="One tap fills the form with answers you saved." data-label-ja="保存した回答を、ワンタップでフォームに入力。">One tap fills the form with answers you saved.</div>
+        <div class="safari-window" id="ume-demo">
+          <div class="safari-titlebar">
+            <span class="traffic" aria-hidden="true"><span></span><span></span><span></span></span>
+            <div class="address-bar">travel.example</div>
+          </div>
+          <div class="demo-content">
+            <form class="sample-form" aria-label="Example traveler form" data-aria-label-en="Example traveler form" data-aria-label-ja="旅行者フォームの例">
+              <h3 data-label-en="Traveler details" data-label-ja="旅行者情報">Traveler details</h3>
+              <div class="form-note" data-label-en="Enter your details as they appear on your ID." data-label-ja="身分証明書に記載されているとおりに入力してください。">Enter your details as they appear on your ID.</div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="demo-first" data-label-en="First name" data-label-ja="名">First name</label>
+                  <input id="demo-first" type="text" readonly>
+                </div>
+                <div class="field">
+                  <label for="demo-last" data-label-en="Last name" data-label-ja="姓">Last name</label>
+                  <input id="demo-last" type="text" readonly>
+                </div>
+              </div>
+              <div class="field">
+                <label for="demo-email" data-label-en="Email address" data-label-ja="メールアドレス">Email address</label>
+                <input id="demo-email" type="email" readonly>
+              </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="demo-code" data-label-en="Country calling code" data-label-ja="国番号">Country calling code</label>
+                  <select id="demo-code" tabindex="-1" aria-label="Country calling code example" data-aria-label-en="Country calling code example" data-aria-label-ja="国番号の例">
+                    <option value="1|US">United States +1</option>
+                    <option value="81|JP">Japan +81</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="demo-phone" data-label-en="Phone number" data-label-ja="電話番号">Phone number</label>
+                  <input id="demo-phone" type="tel" readonly>
+                </div>
+              </div>
+              <button class="fake-submit" type="button" disabled data-label-en="Continue" data-label-ja="続ける">Continue</button>
+            </form>
+
+            <aside class="ume-popover" aria-label="Ume Safari extension example" data-aria-label-en="Ume Safari extension example" data-aria-label-ja="Ume Safari拡張機能の例">
+              <div class="popover-header">
+                <img src="assets/ume-icon.png?v=1" alt="">
+                <div>
+                  <div class="popover-title">Ume</div>
+                  <div class="popover-subtitle" data-label-en="6 saved answers" data-label-ja="6件の保存済み回答">6 saved answers</div>
+                </div>
+              </div>
+              <div class="popover-body">
+                <button class="ume-action" type="button" data-label-en="Fill this form" data-label-ja="このフォームに入力">Fill this form</button>
+                <button class="remember-action" type="button" tabindex="-1" data-label-en="Remember my answers" data-label-ja="回答を保存">Remember my answers</button>
+                <div class="fill-status" aria-live="polite"></div>
+              </div>
+            </aside>
+          </div>
+        </div>
+        <button class="demo-reset" type="button" hidden data-label-en="Reset demo" data-label-ja="デモをリセット">Reset demo</button>
+        <figcaption class="ume-caption" data-label-en="Ume matches familiar fields locally, fills only when you ask, and never submits the form for you." data-label-ja="Umeは端末上でフォーム項目を照合し、指示したときだけ入力します。フォームを自動送信することはありません。">Ume matches familiar fields locally, fills only when you ask, and never submits the form for you.</figcaption>
+      </figure>
+    </section>
+
+    <section class="feature-strip" aria-label="Ume highlights" data-aria-label-en="Ume highlights" data-aria-label-ja="Umeの特長">
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">⌁</div>
+        <strong data-label-en="Works across forms" data-label-ja="さまざまなフォームに対応">Works across forms</strong>
+        <p data-label-en="Matches labels, names, placeholders, and standard autocomplete hints." data-label-ja="ラベル、名前、プレースホルダー、標準の自動入力ヒントを照合します。">Matches labels, names, placeholders, and standard autocomplete hints.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">◆</div>
+        <strong data-label-en="Private by default" data-label-ja="初期設定からプライベート">Private by default</strong>
+        <p data-label-en="Saved answers are encrypted and stay on your device." data-label-ja="保存した回答は暗号化され、端末内に保管されます。">Saved answers are encrypted and stay on your device.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon" aria-hidden="true">✓</div>
+        <strong data-label-en="You stay in control" data-label-ja="いつでも自分で確認">You stay in control</strong>
+        <p data-label-en="Ambiguous fields are skipped, and Ume never submits a form." data-label-ja="あいまいな項目はスキップし、フォームを自動送信しません。">Ambiguous fields are skipped, and Ume never submits a form.</p>
+      </div>
+    </section>
+
+    <section class="ume-detail">
+      <h2 data-label-en="How it works:" data-label-ja="使い方：">How it works:</h2>
+      <p data-label-en="Complete a form once and choose “Remember my answers.” On a similar form later, open Ume in Safari and choose “Fill this form.” You can inspect, edit, or delete saved answers in the Ume app." data-label-ja="フォームを一度入力して「回答を保存」を選びます。次に似たフォームを開いたとき、SafariでUmeを開き「このフォームに入力」を選びます。保存した回答はUmeアプリで確認、編集、削除できます。">Complete a form once and choose “Remember my answers.” On a similar form later, open Ume in Safari and choose “Fill this form.” You can inspect, edit, or delete saved answers in the Ume app.</p>
+    </section>
+
+    <section class="ume-detail">
+      <h2 data-label-en="Privacy:" data-label-ja="プライバシー：">Privacy:</h2>
+      <p data-label-en="Ume reads eligible form controls only when you ask it to remember or fill a form. Saved answers are encrypted with AES-GCM, and the device-only key is kept in Apple Keychain. Ume collects no analytics and skips passwords, payment details, security codes, secrets, tokens, and Social Security numbers." data-label-ja="Umeは、フォームの保存または入力を指示したときだけ対象項目を読み取ります。保存した回答はAES-GCMで暗号化され、端末専用キーはApple Keychainに保管されます。分析データは収集せず、パスワード、支払い情報、セキュリティコード、秘密情報、トークン、社会保障番号は対象外です。">Ume reads eligible form controls only when you ask it to remember or fill a form. Saved answers are encrypted with AES-GCM, and the device-only key is kept in Apple Keychain. Ume collects no analytics and skips passwords, payment details, security codes, secrets, tokens, and Social Security numbers.</p>
+      <p class="privacy-source"><a href="https://github.com/littlebobert/ume" data-label-en="View the source code on GitHub." data-label-ja="ソースコードをGitHubで見る。">View the source code on GitHub.</a></p>
+    </section>
+
+    <section class="ume-detail">
+      <h2 data-label-en="Optional AI matching:" data-label-ja="任意のAI照合：">Optional AI matching:</h2>
+      <p data-label-en="Local matching always runs first. If you add your own OpenAI or Anthropic API key, Ume can ask that provider to match otherwise-unrecognized fields. It sends sanitized field descriptions—not your saved answers or the values currently entered in the form—and applies returned mappings locally." data-label-ja="まず端末上で照合します。自分のOpenAIまたはAnthropic APIキーを追加すると、認識できなかった項目の照合をAIに依頼できます。送信するのは匿名化された項目の説明だけで、保存した回答やフォームに入力済みの値は送信しません。返された対応関係は端末上で適用します。">Local matching always runs first. If you add your own OpenAI or Anthropic API key, Ume can ask that provider to match otherwise-unrecognized fields. It sends sanitized field descriptions—not your saved answers or the values currently entered in the form—and applies returned mappings locally.</p>
+    </section>
+
+    <section class="ume-detail">
+      <h2 data-label-en="Why “Ume”?" data-label-ja="なぜ「Ume」？">Why “Ume”?</h2>
+      <p data-label-en="Ume (埋め) means “fill it in” in Japanese—a compact command based on umeru (埋める), “to fill in.”" data-label-ja="Ume（埋め）は「入力して」「埋めて」という意味を込めた、動詞「埋める」から取った短い名前です。">Ume (埋め) means “fill it in” in Japanese—a compact command based on umeru (埋める), “to fill in.”</p>
+    </section>
+
+    <section class="ume-detail">
+      <h2 data-label-en="Requirements:" data-label-ja="動作要件：">Requirements:</h2>
+      <p data-label-en="Requires iOS or iPadOS 15 or newer, or macOS 12 or newer. Enable Ume in Safari Extensions and grant website access where needed. Optional AI matching requires your own OpenAI or Anthropic API key." data-label-ja="iOSまたはiPadOS 15以降、もしくはmacOS 12以降が必要です。Safariの拡張機能でUmeを有効にし、必要なWebサイトへのアクセスを許可してください。任意のAI照合には自分のOpenAIまたはAnthropic APIキーが必要です。">Requires iOS or iPadOS 15 or newer, or macOS 12 or newer. Enable Ume in Safari Extensions and grant website access where needed. Optional AI matching requires your own OpenAI or Anthropic API key.</p>
+    </section>
+
+    <div class="bottom-cta">
+      <a class="ume-download" href="https://github.com/littlebobert/ume" data-label-en="Download Ume from GitHub" data-label-ja="GitHubからUmeをダウンロード">Download Ume from GitHub</a>
+    </div>
+
+    <footer class="ume-footer">
+      <p><span data-label-en="Created by" data-label-ja="制作：">Created by</span> <a href="https://littlebobert.github.io">Justin Garcia</a></p>
+    </footer>
+  </main>
+
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-aria-label-en][data-aria-label-ja]').forEach((element) => {
+        element.setAttribute('aria-label', selected === 'ja' ? element.dataset.ariaLabelJa : element.dataset.ariaLabelEn);
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('ume-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('ume-language') || preferredLanguage(), false);
+
+    const demo = document.querySelector('#ume-demo');
+    const fillButton = demo.querySelector('.ume-action');
+    const resetButton = document.querySelector('.demo-reset');
+    const fillStatus = demo.querySelector('.fill-status');
+    const fields = {
+      first: demo.querySelector('#demo-first'),
+      last: demo.querySelector('#demo-last'),
+      email: demo.querySelector('#demo-email'),
+      code: demo.querySelector('#demo-code'),
+      phone: demo.querySelector('#demo-phone')
+    };
+
+    function updateDemoLabels(filled) {
+      fillButton.textContent = filled
+        ? (currentLanguage === 'ja' ? '入力しました' : 'Form filled')
+        : (currentLanguage === 'ja' ? 'このフォームに入力' : 'Fill this form');
+      fillStatus.textContent = filled
+        ? (currentLanguage === 'ja' ? '5項目を端末上で入力しました' : 'Filled 5 fields locally')
+        : '';
+    }
+
+    fillButton.addEventListener('click', () => {
+      fields.first.value = 'Justin';
+      fields.last.value = 'Garcia';
+      fields.email.value = 'justin@example.com';
+      fields.code.value = '81|JP';
+      fields.phone.value = '90-1234-5678';
+      demo.classList.add('demo-filled');
+      fillButton.disabled = true;
+      resetButton.hidden = false;
+      updateDemoLabels(true);
+    });
+
+    resetButton.addEventListener('click', () => {
+      fields.first.value = '';
+      fields.last.value = '';
+      fields.email.value = '';
+      fields.code.value = '1|US';
+      fields.phone.value = '';
+      demo.classList.remove('demo-filled');
+      fillButton.disabled = false;
+      resetButton.hidden = true;
+      updateDemoLabels(false);
+    });
+
+    languageSwitch.addEventListener('click', () => updateDemoLabels(fillButton.disabled));
+  </script>
+</body>
+
+</html>

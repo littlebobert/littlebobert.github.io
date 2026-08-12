@@ -285,6 +285,9 @@
     .ume-detail { padding: 10pt 0 8pt; }
     .ume-detail p { margin: 0; }
     .privacy-source { padding-top: 7pt; }
+    .release-notes summary { cursor: pointer; font-weight: bold; }
+    .release-notes[open] > h2:first-of-type { margin-top: 14pt; }
+    .release-notes ul { margin-bottom: 0; }
     .bottom-cta { padding: 15pt 0 7pt; text-align: center; }
     .ume-footer { padding: 13pt 0 8pt; color: #555; text-align: center; }
     .ume-footer p { margin: 4pt 0; }
@@ -320,8 +323,8 @@
         </div>
       </div>
       <div class="ume-tagline" data-label-en="A private Safari form filler for iPhone, iPad, and Mac." data-label-ja="iPhone、iPad、Macで使える、プライバシー重視のSafariフォーム入力支援。">A private Safari form filler for iPhone, iPad, and Mac.</div>
-      <a class="ume-download" href="https://github.com/littlebobert/ume" data-label-en="Download Ume" data-label-ja="Umeをダウンロード">Download Ume</a>
-      <div class="small-note" data-label-en="Open source. Build and install with Xcode." data-label-ja="オープンソース。Xcodeからビルドしてインストールできます。">Open source. Build and install with Xcode.</div>
+      <a class="ume-download" data-ume-download href="https://github.com/littlebobert/ume/releases/download/v0.1.4/Ume-0.1.4-macOS.dmg" data-label-en="Download Ume for Mac" data-label-ja="Mac版Umeをダウンロード">Download Ume for Mac</a>
+      <div class="small-note"><span data-ume-version>0.1.4</span> · <span data-label-en="Requires macOS 12 or newer." data-label-ja="macOS 12以降が必要です。">Requires macOS 12 or newer.</span></div>
     </section>
 
     <section class="sasu-section">
@@ -431,8 +434,20 @@
       <p data-label-en="Requires iOS or iPadOS 15 or newer, or macOS 12 or newer. Enable Ume in Safari Extensions and grant website access where needed. Optional AI matching requires your own OpenAI or Anthropic API key." data-label-ja="iOSまたはiPadOS 15以降、もしくはmacOS 12以降が必要です。Safariの拡張機能でUmeを有効にし、必要なWebサイトへのアクセスを許可してください。任意のAI照合には自分のOpenAIまたはAnthropic APIキーが必要です。">Requires iOS or iPadOS 15 or newer, or macOS 12 or newer. Enable Ume in Safari Extensions and grant website access where needed. Optional AI matching requires your own OpenAI or Anthropic API key.</p>
     </section>
 
+    <section class="ume-detail">
+      <details class="release-notes">
+        <summary data-label-en="Changelog" data-label-ja="変更履歴">Changelog</summary>
+        <!-- ume-changelog:start -->
+        <h2 data-ume-release="0.1.4">0.1.4</h2>
+        <ul>
+          <li data-label-en="Added clearer drag-to-Applications instructions to the macOS installer." data-label-ja="macOSインストーラーに、アプリケーションフォルダへドラッグする手順をわかりやすく追加しました。">Added clearer drag-to-Applications instructions to the macOS installer.</li>
+        </ul>
+        <!-- ume-changelog:end -->
+      </details>
+    </section>
+
     <div class="bottom-cta">
-      <a class="ume-download" href="https://github.com/littlebobert/ume" data-label-en="Download Ume from GitHub" data-label-ja="GitHubからUmeをダウンロード">Download Ume from GitHub</a>
+      <a class="ume-download" data-ume-download href="https://github.com/littlebobert/ume/releases/download/v0.1.4/Ume-0.1.4-macOS.dmg" data-label-en="Download Ume for Mac" data-label-ja="Mac版Umeをダウンロード">Download Ume for Mac</a>
     </div>
 
     <footer class="ume-footer">

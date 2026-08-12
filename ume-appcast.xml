@@ -1,0 +1,25 @@
+<?xml version="1.0" standalone="yes"?><!-- sparkle-sign-warning:
+IMPORTANT: This file was signed by Sparkle. Any modifications to this file requires re-signing this file with generate_appcast or sign_update! The signed signature will be embedded at the end of this file.
+--><rss xmlns:sparkle="http://www.andymatuschak.org/xml-namespaces/sparkle" version="2.0">
+    <channel>
+        <title>Ume</title>
+        <item>
+            <title>0.1.8</title>
+            <pubDate>Wed, 12 Aug 2026 17:26:39 +0000</pubDate>
+            <link>https://littlebobert.github.io/ume.html</link>
+            <sparkle:version>12.1</sparkle:version>
+            <sparkle:shortVersionString>0.1.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Ume 0.1.8
+
+Added automatic signed macOS updates and a Keychain migration that should stop the extra unlock prompt on Mac.
+
+macOSの自動署名付きアップデートと、Macで余分なロック解除プロンプトが表示されないようにするKeychain移行機能を追加しました。
+]]></description>
+            <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.8/Ume-0.1.8-macOS.dmg" length="5596087" type="application/octet-stream" sparkle:edSignature="SVKt3mgPAQMk3t+jBGWj5mCLxuUqaSgRjX7OhDLzwi+PXUFck3rQH74b/D+cDw0dQtI1K6838VVCOvrpxQQVCQ=="></enclosure>
+        </item>
+    </channel>
+</rss><!-- sparkle-signatures:
+edSignature: sPmZKUd2KmtcKiTF1wmAW+Q8Izacv8xBb9SH1W9xLgI5jENEiSyIXc67K5773fzrWfh1OoiIcK0nx6NN+VmNCQ==
+length: 1483
+-->

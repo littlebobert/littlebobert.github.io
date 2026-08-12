@@ -1,8 +1,28 @@
 {
-  "updatedAt": "2026-08-11T16:12:38.779Z",
+  "updatedAt": "2026-08-12T16:11:52.452Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2087566169263780305",
+      "text": "We’re hiring an AI researcher in San Francisco.\n\nhttps://t.co/PFjmDf5Lq8",
+      "createdAt": "2026-08-12T15:45:34.000Z",
+      "url": "https://x.com/_bobertdowney/status/2087566169263780305",
+      "urls": [
+        {
+          "url": "https://t.co/PFjmDf5Lq8",
+          "expandedUrl": "https://site.kotoba.tech/job/ai-researcher",
+          "displayUrl": "site.kotoba.tech/job/ai-researc…",
+          "start": 49,
+          "end": 72
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2086889642972815509",
       "text": "downloading beta 5 on Apple visitor center WiFi, the way God intended https://t.co/OceSZSRPip",
@@ -263,33 +283,6 @@
           "type": "photo",
           "image": "assets/generated/x/mine-post-2079550951875326041-0.png",
           "imageModern": "assets/generated/x/mine-post-2079550951875326041-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2078625185561972939",
-      "text": "昨日、東京で開催されたOpenAIのBuild Weekイベント、最高に楽しかった！\n@_I__l__l__l__I_ さん、お会いできて嬉しかったです！これからもよろしくお願いします\n@nukonukoさん、参加させていただきありがとうございました！\n@aorblueさん、発表お疲れ様でした\n@YuYoshimuta https://t.co/TDXmG2swKd",
-      "createdAt": "2026-07-18T23:37:17.000Z",
-      "url": "https://x.com/_bobertdowney/status/2078625185561972939",
-      "urls": [
-        {
-          "url": "https://t.co/TDXmG2swKd",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2078625185561972939/video/1",
-          "displayUrl": "pic.x.com/TDXmG2swKd",
-          "start": 161,
-          "end": 184
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2078625185561972939-0.png",
-          "imageModern": "assets/generated/x/mine-post-2078625185561972939-0-modern.png"
         }
       ]
     }

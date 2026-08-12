@@ -9,7 +9,7 @@
   <link rel="apple-touch-icon" href="assets/ume-icon.png?v=1">
   <link rel="canonical" href="https://littlebobert.github.io/ume.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An intelligent private Safari form filler for iPhone, iPad, and Mac." data-label-en="An intelligent private Safari form filler for iPhone, iPad, and Mac." data-label-ja="iPhone、iPad、Macで使える、賢くプライバシー重視のSafariフォーム入力支援。">
+  <meta name="description" content="An intelligent and private Safari form filler for iPhone, iPad, and Mac." data-label-en="An intelligent and private Safari form filler for iPhone, iPad, and Mac." data-label-ja="iPhone、iPad、Macで使える、賢くプライバシー重視のSafariフォーム入力支援。">
   <meta property="og:title" content="Ume: Autofill everything, securely" data-label-en="Ume: Autofill everything, securely" data-label-ja="Ume：あらゆるフォームに、安全に自動入力">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://littlebobert.github.io/ume.html">
@@ -284,7 +284,7 @@
       .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
       .ume-hero { padding: 14pt; }
       .ume-icon { width: 70px; height: 70px; flex-basis: 70px; }
-      .demo-content { min-height: 520px; padding: 20px 18px 194px; }
+      .demo-content { min-height: 690px; padding: 20px 18px 194px; }
       .ume-popover { top: auto; right: 18px; bottom: 18px; left: 18px; width: auto; }
       .field-row { grid-template-columns: 1fr; gap: 0; }
     }
@@ -309,7 +309,7 @@
           <div class="ume-subtitle" data-label-en="Autofill everything, securely." data-label-ja="あらゆるフォームに、安全に自動入力。">Autofill everything, securely.</div>
         </div>
       </div>
-      <div class="ume-tagline" data-label-en="An intelligent private Safari form filler for iPhone, iPad, and Mac." data-label-ja="iPhone、iPad、Macで使える、賢くプライバシー重視のSafariフォーム入力支援。">An intelligent private Safari form filler for iPhone, iPad, and Mac.</div>
+      <div class="ume-tagline" data-label-en="An intelligent and private Safari form filler for iPhone, iPad, and Mac." data-label-ja="iPhone、iPad、Macで使える、賢くプライバシー重視のSafariフォーム入力支援。">An intelligent and private Safari form filler for iPhone, iPad, and Mac.</div>
       <a class="ume-download" data-ume-download href="https://github.com/littlebobert/ume/releases/download/v0.1.9/Ume-0.1.9-macOS.dmg" data-label-en="Download Ume for Mac" data-label-ja="Mac版Umeをダウンロード">Download Ume for Mac</a>
       <div class="small-note"><span data-ume-version>0.1.9</span> · <span data-label-en="Requires macOS 12 or newer." data-label-ja="macOS 12以降が必要です。">Requires macOS 12 or newer.</span></div>
     </section>
@@ -353,6 +353,25 @@
                   <input id="demo-phone" type="tel" readonly>
                 </div>
               </div>
+              <div class="field-row">
+                <div class="field">
+                  <label for="demo-dob" data-label-en="Date of birth" data-label-ja="生年月日">Date of birth</label>
+                  <input id="demo-dob" type="date" readonly>
+                </div>
+                <div class="field">
+                  <label for="demo-gender" data-label-en="Gender" data-label-ja="性別">Gender</label>
+                  <select id="demo-gender" tabindex="-1" aria-label="Gender example" data-aria-label-en="Gender example" data-aria-label-ja="性別の例">
+                    <option value="" data-label-en="Select" data-label-ja="選択">Select</option>
+                    <option value="female" data-label-en="Female" data-label-ja="女性">Female</option>
+                    <option value="male" data-label-en="Male" data-label-ja="男性">Male</option>
+                    <option value="unspecified" data-label-en="Unspecified" data-label-ja="指定しない">Unspecified</option>
+                  </select>
+                </div>
+              </div>
+              <div class="field">
+                <label for="demo-flyer" data-label-en="Frequent flyer number" data-label-ja="マイレージ番号">Frequent flyer number</label>
+                <input id="demo-flyer" type="text" readonly>
+              </div>
               <button class="fake-submit" type="button" disabled data-label-en="Continue" data-label-ja="続ける">Continue</button>
             </form>
 
@@ -361,7 +380,7 @@
                 <img src="assets/ume-icon.png?v=1" alt="">
                 <div>
                   <div class="popover-title">Ume</div>
-                  <div class="popover-subtitle" data-label-en="6 saved answers" data-label-ja="6件の保存済み回答">6 saved answers</div>
+                  <div class="popover-subtitle" data-label-en="9 saved answers" data-label-ja="9件の保存済み回答">9 saved answers</div>
                 </div>
               </div>
               <div class="popover-body">
@@ -380,7 +399,7 @@
 
     <section class="ume-detail">
       <h2 data-label-en="How it works:" data-label-ja="使い方：">How it works:</h2>
-      <p data-label-en="Complete a form once and choose “Remember my answers.” On a similar form later, open Ume in Safari and choose “Fill this form.” You can inspect, edit, or delete saved answers in the Ume app." data-label-ja="フォームを一度入力して「回答を保存」を選びます。次に似たフォームを開いたとき、SafariでUmeを開き「このフォームに入力」を選びます。保存した回答はUmeアプリで確認、編集、削除できます。">Complete a form once and choose “Remember my answers.” On a similar form later, open Ume in Safari and choose “Fill this form.” You can inspect, edit, or delete saved answers in the Ume app.</p>
+      <p data-label-en="Complete a form once and choose “Remember my answers.” On forms later, open Ume and choose “Fill this form.” You can inspect, edit, or delete saved answers in the Ume app." data-label-ja="フォームを一度入力して「回答を保存」を選びます。後でフォームを開いたとき、Umeを開き「このフォームに入力」を選びます。保存した回答はUmeアプリで確認、編集、削除できます。">Complete a form once and choose “Remember my answers.” On forms later, open Ume and choose “Fill this form.” You can inspect, edit, or delete saved answers in the Ume app.</p>
     </section>
 
     <section class="ume-detail">
@@ -441,7 +460,7 @@
     </div>
 
     <footer class="ume-footer">
-      <p><span data-label-en="Created by" data-label-ja="制作：">Created by</span> <a href="https://littlebobert.github.io">Justin Garcia</a></p>
+      <p><span data-label-en="Made by" data-label-ja="日本の">Made by</span> <a href="https://littlebobert.github.io">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja=" が制作。"> in Japan.</span></p>
     </footer>
   </main>
 
@@ -484,7 +503,10 @@
       last: demo.querySelector('#demo-last'),
       email: demo.querySelector('#demo-email'),
       code: demo.querySelector('#demo-code'),
-      phone: demo.querySelector('#demo-phone')
+      phone: demo.querySelector('#demo-phone'),
+      dob: demo.querySelector('#demo-dob'),
+      gender: demo.querySelector('#demo-gender'),
+      flyer: demo.querySelector('#demo-flyer')
     };
 
     function updateDemoLabels(filled) {
@@ -492,7 +514,7 @@
         ? (currentLanguage === 'ja' ? '入力しました' : 'Form filled')
         : (currentLanguage === 'ja' ? 'このフォームに入力' : 'Fill this form');
       fillStatus.textContent = filled
-        ? (currentLanguage === 'ja' ? '5項目を端末上で入力しました' : 'Filled 5 fields locally')
+        ? (currentLanguage === 'ja' ? '8項目を端末上で入力しました' : 'Filled 8 fields locally')
         : '';
     }
 
@@ -502,6 +524,9 @@
       fields.email.value = 'justin@example.com';
       fields.code.value = '81|JP';
       fields.phone.value = '90-1234-5678';
+      fields.dob.value = '1988-07-22';
+      fields.gender.value = 'male';
+      fields.flyer.value = 'NH1234567890';
       demo.classList.add('demo-filled');
       fillButton.disabled = true;
       resetButton.hidden = false;
@@ -514,6 +539,9 @@
       fields.email.value = '';
       fields.code.value = '1|US';
       fields.phone.value = '';
+      fields.dob.value = '';
+      fields.gender.value = '';
+      fields.flyer.value = '';
       demo.classList.remove('demo-filled');
       fillButton.disabled = false;
       resetButton.hidden = true;

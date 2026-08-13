@@ -6,6 +6,21 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.1.10</title>
+            <pubDate>Thu, 13 Aug 2026 14:48:42 +0000</pubDate>
+            <link>https://littlebobert.github.io/ume.html</link>
+            <sparkle:version>15.1</sparkle:version>
+            <sparkle:shortVersionString>0.1.10</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Ume 0.1.10
+
+Fixed adding and deleting saved answers in Settings, and made Debug Logs always available in the Safari extension.
+
+「設定」で保存済みの回答を追加・削除する際の問題を修正し、Safari拡張機能でデバッグログを常に利用できるようにしました。
+]]></description>
+            <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.10/Ume-0.1.10-macOS.dmg" length="5580215" type="application/octet-stream" sparkle:edSignature="ji9n88HutYUaIBBKeRvKyiqhqYCfxdbGjGornonAc71RnmqBaoK8lkQWyhA3Sg84LVTQEngKdgUJp2FbBGdWBg=="/>
+        </item>
+        <item>
             <title>0.1.9</title>
             <pubDate>Wed, 12 Aug 2026 19:35:36 +0000</pubDate>
             <link>https://littlebobert.github.io/ume.html</link>
@@ -38,6 +53,6 @@ macOSの自動署名付きアップデートと、Macで余分なロック解除
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: wwX2ZZnPIDPvgumz8H9tYauvbgxRzvdyEcB3leem4qnY0rrvtV7/w9xdLfCz6NC1MCNSLyVsMtdFif1GhkDrCw==
-length: 2352
+edSignature: 5/S2ZHibOfUn+sVXh4uRUd+a2onbNZJVEnC/ccON5md7nDv3ULUYDMqRwFbFvZxoQA/z0HGYUsLBTkFxqNDeAA==
+length: 3408
 -->

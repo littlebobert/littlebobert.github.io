@@ -6,6 +6,21 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.1.12</title>
+            <pubDate>Fri, 14 Aug 2026 15:56:52 +0000</pubDate>
+            <link>https://littlebobert.github.io/ume.html</link>
+            <sparkle:version>17.1</sparkle:version>
+            <sparkle:shortVersionString>0.1.12</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Ume 0.1.12
+
+Fixed Add… refocusing a finished phone or date draft, and kept bug-report email headers when the AI log is truncated.
+
+「Add…」で完了済みの電話番号または日付の下書きに再フォーカスされる問題を修正し、AIログが切り詰められた場合もバグ報告メールのヘッダーを保持するようにしました。
+]]></description>
+            <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.12/Ume-0.1.12-macOS.dmg" length="5602743" type="application/octet-stream" sparkle:edSignature="O6VpkTkf4FDg4oF7ys5SNDBf97PyiahgURiy50xzwppfhTdi1953HBRbA/1nvs+UFXpfQLy8fKe9b28q1BMLCQ=="/>
+        </item>
+        <item>
             <title>0.1.11</title>
             <pubDate>Fri, 14 Aug 2026 15:46:13 +0000</pubDate>
             <link>https://littlebobert.github.io/ume.html</link>
@@ -68,6 +83,6 @@ macOSの自動署名付きアップデートと、Macで余分なロック解除
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: X5mU/OrZsFTZ3knoM0dokHk9N7fL8FR871uFu+37azQ/irnLbPHUhYmi6gQScxHazMEccwSBGaUtynI1kURaAA==
-length: 4497
+edSignature: eVSjad7PK9rPwDTg7ce4hztBxTEns6Ak96zu1owH+yB0seb+wiSku1XtirErRrwtajLGNBVfsJC2wCsrJZMWBg==
+length: 5620
 -->

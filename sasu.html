@@ -61,6 +61,8 @@
   <meta name="twitter:image" content="https://sasu.jp/assets/sasu-social.png?v=3" />
   <meta name="twitter:image:alt" content="Sasu app icon" />
   <style>
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+
     .invite-panel {
       margin-top: 10pt;
       padding: 10pt;
@@ -91,19 +93,7 @@
 <body class="sasu-site">
   <div class="sasu-page">
     <div class="language-switcher">
-      <label
-        for="language-select"
-        data-label-en="Language"
-        data-label-ja="言語"
-        data-label-zh-hant="語言"
-        data-label-zh-hans="语言"
-      >Language</label>
-      <select id="language-select" aria-label="Language">
-        <option value="en">English</option>
-        <option value="ja">日本語</option>
-        <option value="zh-Hant">繁體中文</option>
-        <option value="zh-Hans">简体中文</option>
-      </select>
+      <button class="language-switch" type="button" id="language-toggle" aria-label="日本語に切り替える">日本語</button>
     </div>
 
     <div class="sasu-hero">

@@ -1,0 +1,287 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Yubi (指)</title>
+  <link href="sasu-common.css?v=3" rel="stylesheet">
+  <link rel="icon" href="assets/yubi-icon.png?v=1">
+  <link rel="apple-touch-icon" href="assets/yubi-icon.png?v=1">
+  <link rel="canonical" href="https://littlebobert.github.io/yubi.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Translate screens. Type in Japanese." data-label-en="Translate screens. Type in Japanese." data-label-ja="画面を翻訳。日本語で入力。">
+  <meta property="og:title" content="Yubi: Translate screens. Type in Japanese." data-label-en="Yubi: Translate screens. Type in Japanese." data-label-ja="Yubi：画面を翻訳。日本語で入力。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://littlebobert.github.io/yubi.html">
+  <meta property="og:site_name" content="Yubi (指)">
+  <meta property="og:description" content="Translate screens. Type in Japanese." data-label-en="Translate screens. Type in Japanese." data-label-ja="画面を翻訳。日本語で入力。">
+  <meta property="og:image" content="https://littlebobert.github.io/assets/yubi-icon.png?v=1">
+  <meta property="og:image:secure_url" content="https://littlebobert.github.io/assets/yubi-icon.png?v=1">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1024">
+  <meta property="og:image:height" content="1024">
+  <meta property="og:image:alt" content="Yubi app icon">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Yubi: Translate screens. Type in Japanese." data-label-en="Yubi: Translate screens. Type in Japanese." data-label-ja="Yubi：画面を翻訳。日本語で入力。">
+  <meta name="twitter:description" content="Translate screens. Type in Japanese." data-label-en="Translate screens. Type in Japanese." data-label-ja="画面を翻訳。日本語で入力。">
+  <meta name="twitter:image" content="https://littlebobert.github.io/assets/yubi-icon.png?v=1">
+  <meta name="twitter:image:alt" content="Yubi app icon">
+  <style>
+    :root {
+      --yubi-ink: #243040;
+      --yubi-line: rgba(36, 48, 64, 0.14);
+      --yubi-accent: #3d6b8c;
+    }
+
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .sasu-icon { border-radius: 12px; }
+
+    .yubi-demo {
+      width: 320px;
+      max-width: 100%;
+      margin: 6pt auto 18pt;
+      text-align: center;
+    }
+
+    .yubi-demo-label {
+      margin: 0 0 9px;
+      color: #555;
+      font-size: 11pt;
+      font-weight: bold;
+    }
+
+    .phone {
+      overflow: hidden;
+      border: 1px solid var(--yubi-line);
+      border-radius: 28px;
+      background: #f4f1ea;
+      box-shadow: 0 10px 28px rgba(36, 48, 64, 0.13);
+      text-align: left;
+    }
+
+    .phone-screen {
+      min-height: 390px;
+    }
+
+    .notice {
+      padding: 18px 16px 16px;
+    }
+
+    .notice-kicker {
+      margin: 0 0 6px;
+      color: #8a3b2d;
+      font: 700 10px/1.2 -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing: 0.04em;
+    }
+
+    .notice h3 {
+      margin: 0 0 8px;
+      padding: 0;
+      color: var(--yubi-ink);
+      font: 700 16px/1.3 -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .notice p {
+      margin: 0 0 8px;
+      color: #333;
+      font: 12px/1.45 -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .translation {
+      margin: 0 12px 12px;
+      padding: 12px;
+      border: 1px solid rgba(61, 107, 140, 0.22);
+      border-radius: 10px;
+      background: #fff;
+      box-shadow: 0 4px 14px rgba(36, 48, 64, 0.08);
+    }
+
+    .translation[hidden] { display: none; }
+
+    .translation-label {
+      margin: 0 0 4px;
+      color: var(--yubi-accent);
+      font: 700 9px/1.2 -apple-system, BlinkMacSystemFont, sans-serif;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .translation p {
+      margin: 0 0 8px;
+      color: #243040;
+      font: 12px/1.4 -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .translation p:last-child { margin-bottom: 0; }
+
+    .phone-actions {
+      padding: 0 16px 16px;
+    }
+
+    .yubi-action {
+      width: 100%;
+      padding: 8px 8px;
+      border: 1px solid #000;
+      border-radius: 6px;
+      background: #000;
+      color: #fff;
+      cursor: pointer;
+      font: 700 11px/1.2 -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    .yubi-action:hover { background: #555; border-color: #555; }
+    .yubi-action:focus-visible { outline: 2px solid rgba(22, 117, 209, 0.55); outline-offset: 2px; }
+    .yubi-action:disabled { background: #555; border-color: #555; cursor: default; }
+
+    .demo-reset {
+      margin: 8px 0 0;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #3d6b8c;
+      cursor: pointer;
+      font: 10pt Verdana, Geneva, sans-serif;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .demo-reset[hidden] { display: none; }
+    .yubi-caption { margin: 0; padding: 9pt 6pt 0; color: #444; font-size: 11pt; }
+
+    .yubi-detail { padding: 10pt 0 8pt; }
+    .yubi-detail p { margin: 0; }
+    .privacy-source { padding-top: 7pt; }
+    .yubi-footer { padding: 13pt 0 8pt; color: #555; text-align: center; }
+    .yubi-footer p { margin: 4pt 0; }
+
+    @media (max-width: 560px) {
+      .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
+    }
+  </style>
+</head>
+
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher">
+      <button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button>
+    </div>
+
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <img class="sasu-icon" src="assets/yubi-icon.png?v=1" alt="Yubi app icon">
+        <div>
+          <h1>Yubi (指)</h1>
+          <div class="sasu-subtitle" data-label-en="Translate screens. Type in Japanese." data-label-ja="画面を翻訳。日本語で入力。">Translate screens. Type in Japanese.</div>
+        </div>
+      </div>
+      <div class="sasu-tagline" data-label-en="Fast translation for what’s on-screen. Translate to Japanese as you type." data-label-ja="画面上の内容をすばやく翻訳。入力しながら日本語に翻訳。">Fast translation for what’s on-screen. Translate to Japanese as you type.</div>
+      <a class="download-link" href="https://testflight.apple.com/join/f1tdPGTj" data-label-en="Join the Beta" data-label-ja="ベータに参加">Join the Beta</a>
+      <div class="small-note" data-label-en="Join the TestFlight beta. Requires iOS 17 or newer." data-label-ja="TestFlightベータに参加できます。iOS 17以降が必要です。">Join the TestFlight beta. Requires iOS 17 or newer.</div>
+    </section>
+
+    <section class="sasu-section">
+      <figure class="yubi-demo">
+        <div class="yubi-demo-label" data-label-en="Translate what’s on screen." data-label-ja="画面上の内容を翻訳。">Translate what’s on screen.</div>
+        <div class="phone" id="yubi-demo">
+          <div class="phone-screen">
+            <div class="notice">
+              <div class="notice-kicker" data-label-en="Notice" data-label-ja="お知らせ">Notice</div>
+              <h3>本日の受付は17時までです</h3>
+              <p>窓口でのお手続きにはマイナンバーカードをお持ちください。</p>
+              <p>混雑時は番号札をお取りのうえ、お待ちください。</p>
+            </div>
+            <div class="translation" hidden>
+              <div class="translation-label" data-label-en="Summary" data-label-ja="要約">Summary</div>
+              <p data-label-en="Reception closes at 5 p.m. today. Bring your My Number card." data-label-ja="本日の受付は17時まで。マイナンバーカードが必要です。">Reception closes at 5 p.m. today. Bring your My Number card.</p>
+              <div class="translation-label" data-label-en="Translation" data-label-ja="翻訳">Translation</div>
+              <p data-label-en="Today’s reception is until 5:00 p.m. Please bring your My Number card for counter procedures. If it is crowded, take a numbered ticket and wait." data-label-ja="Today’s reception is until 5:00 p.m. Please bring your My Number card for counter procedures. If it is crowded, take a numbered ticket and wait.">Today’s reception is until 5:00 p.m. Please bring your My Number card for counter procedures. If it is crowded, take a numbered ticket and wait.</p>
+            </div>
+            <div class="phone-actions">
+              <button class="yubi-action" type="button" data-label-en="Translate this screen" data-label-ja="この画面を翻訳">Translate this screen</button>
+            </div>
+          </div>
+        </div>
+        <button class="demo-reset" type="button" hidden data-label-en="Reset demo" data-label-ja="デモをリセット">Reset demo</button>
+        <figcaption class="yubi-caption" data-label-en="Or translate as you type with Yubi keyboard." data-label-ja="またはYubiキーボードで、入力しながら翻訳。">Or translate as you type with Yubi keyboard.</figcaption>
+      </figure>
+    </section>
+
+    <section class="yubi-detail">
+      <h2 data-label-en="How it works:" data-label-ja="使い方：">How it works:</h2>
+      <p data-label-en="Press the Action Button and translate what's on screen, or translate what you’ve typed with Yubi keyboard. Yubi uses OpenAI or Anthropic to translate." data-label-ja="アクションボタンを押して画面を翻訳するか、Yubiキーボードで入力した内容を翻訳します。YubiはOpenAIまたはAnthropicを使って翻訳します。">Press the Action Button and translate what's on screen, or translate what you’ve typed with Yubi keyboard. Yubi uses OpenAI or Anthropic to translate.</p>
+    </section>
+
+    <section class="yubi-detail">
+      <h2 data-label-en="Privacy:" data-label-ja="プライバシー：">Privacy:</h2>
+      <p data-label-en="Yubi only sends a screenshot or selected text when you ask, and collects no analytics." data-label-ja="Yubiは指示したときだけスクリーンショットまたは選択テキストを送信し、分析データは収集しません。">Yubi only sends a screenshot or selected text when you ask, and collects no analytics.</p>
+      <p class="privacy-source"><a href="https://github.com/littlebobert/yubi" data-label-en="View the source code on GitHub." data-label-ja="ソースコードをGitHubで見る。">View the source code on GitHub.</a></p>
+    </section>
+
+    <section class="yubi-detail">
+      <h2 data-label-en="Requirements:" data-label-ja="動作要件：">Requirements:</h2>
+      <p data-label-en="Requires iPhone with iOS 17 or newer. Enable Yubi Keyboard in Settings and grant Full Access for translation. Screenshot translation uses the Shortcuts app." data-label-ja="iOS 17以降のiPhoneが必要です。設定でYubiキーボードを有効にし、翻訳のためにフルアクセスを許可してください。スクリーンショット翻訳にはショートカットアプリを使います。">Requires iPhone with iOS 17 or newer. Enable Yubi Keyboard in Settings and grant Full Access for translation. Screenshot translation uses the Shortcuts app.</p>
+    </section>
+
+    <footer class="yubi-footer">
+      <p><span data-label-en="Made by" data-label-ja="日本の">Made by</span> <a href="https://littlebobert.github.io">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja=" が制作。"> in Japan.</span></p>
+    </footer>
+  </main>
+
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('yubi-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('yubi-language') || preferredLanguage(), false);
+
+    const demo = document.querySelector('#yubi-demo');
+    const translateButton = demo.querySelector('.yubi-action');
+    const translation = demo.querySelector('.translation');
+    const resetButton = document.querySelector('.demo-reset');
+
+    function updateDemoLabels(translated) {
+      translateButton.textContent = translated
+        ? (currentLanguage === 'ja' ? '翻訳しました' : 'Translated')
+        : (currentLanguage === 'ja' ? 'この画面を翻訳' : 'Translate this screen');
+    }
+
+    translateButton.addEventListener('click', () => {
+      translation.hidden = false;
+      translateButton.disabled = true;
+      resetButton.hidden = false;
+      updateDemoLabels(true);
+    });
+
+    resetButton.addEventListener('click', () => {
+      translation.hidden = true;
+      translateButton.disabled = false;
+      resetButton.hidden = true;
+      updateDemoLabels(false);
+    });
+
+    languageSwitch.addEventListener('click', () => updateDemoLabels(translateButton.disabled));
+  </script>
+</body>
+
+</html>

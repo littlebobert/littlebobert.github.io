@@ -2331,39 +2331,46 @@ body.resume-page {
 }
 
 body.resume-page .language-switcher {
-  margin: 0 0 8pt;
-  font: inherit;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 5pt;
+  margin: 0;
+  padding-bottom: 8pt;
+  font-size: 9pt;
 }
 
-body.resume-page .language-switcher button {
+body.resume-page .language-switcher > button,
+html[lang="en"] body.resume-page .language-switcher > button,
+html[lang="ja"] body.resume-page .language-switcher > button {
   appearance: none;
   -webkit-appearance: none;
-  background: #fff;
-  border: 2px solid #000;
+  background: white;
+  border: 1px solid #aaa;
   border-radius: 4px;
   box-shadow: none;
-  color: #000;
+  color: inherit;
   cursor: pointer;
-  font-family: 'VT323', 'Monaco', monospace;
-  font-size: 12px;
-  font-weight: bold;
-  padding: 2px 8px;
+  font: inherit;
+  font-size: inherit;
+  font-weight: normal;
+  padding: 2pt 6pt;
+  transform: none;
   -webkit-tap-highlight-color: transparent;
 }
 
 @media (hover: hover) and (pointer: fine) {
-  body.resume-page .language-switcher button:hover,
-  body.resume-page .language-switcher button:active {
-    background: #000;
-    color: #fff;
+  body.resume-page .language-switcher > button:hover,
+  body.resume-page .language-switcher > button:active,
+  html[lang="en"] body.resume-page .language-switcher > button:hover,
+  html[lang="en"] body.resume-page .language-switcher > button:active,
+  html[lang="ja"] body.resume-page .language-switcher > button:hover,
+  html[lang="ja"] body.resume-page .language-switcher > button:active {
+    background: white;
+    color: inherit;
+    box-shadow: none;
+    transform: none;
   }
-}
-
-html[lang="ja"] body.resume-page .language-switcher button {
-  font-family: inherit;
-  font-size: 0.92em;
-  font-weight: normal;
-  line-height: inherit;
 }
 
 @media print {
@@ -2607,10 +2614,7 @@ div.patents {
     min-width: 90px;
   }
 
-  html[lang="ja"] body.resume-page .language-switcher button {
-    font-size: 0.92em;
-    -webkit-text-size-adjust: 100%;
-  }
+
 
   .bottom-row {
     display: flex;
@@ -4107,18 +4111,18 @@ html[data-theme="modern"] body.resume-page {
 
 html[data-theme="modern"] body.resume-page .language-switcher button {
   font-family: inherit;
-  border: none;
-  border-radius: 6px;
-  background: rgba(0, 0, 0, 0.06);
+  border: 1px solid #aaa;
+  border-radius: 4px;
+  background: white;
   box-shadow: none;
-  font-size: 12px;
-  font-weight: 500;
+  font-size: inherit;
+  font-weight: normal;
 }
 
 html[data-theme="modern"] body.resume-page .language-switcher button:hover,
 html[data-theme="modern"] body.resume-page .language-switcher button:active {
-  background: rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.85);
+  background: white;
+  color: inherit;
 }
 
 html[data-theme="modern"] body.resume-page .resume {

@@ -9,12 +9,12 @@
   <link rel="apple-touch-icon" href="assets/ume-icon.png?v=1">
   <link rel="canonical" href="https://littlebobert.github.io/ume.html">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="An intelligent and private Safari form filler for iPhone, iPad, and Mac." data-label-en="An intelligent and private Safari form filler for iPhone, iPad, and Mac." data-label-ja="iPhone、iPad、Macで使える、賢くプライバシー重視のSafariフォーム入力支援。">
-  <meta property="og:title" content="Ume: Autofill everything, securely" data-label-en="Ume: Autofill everything, securely" data-label-ja="Ume：あらゆるフォームに、安全に自動入力">
+  <meta name="description" content="Autofill everything, privately." data-label-en="Autofill everything, privately." data-label-ja="あらゆるフォームに、プライバシーを守って自動入力。">
+  <meta property="og:title" content="Ume: Autofill everything, privately" data-label-en="Ume: Autofill everything, privately" data-label-ja="Ume：あらゆるフォームに、プライバシーを守って自動入力">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://littlebobert.github.io/ume.html">
   <meta property="og:site_name" content="Ume (埋め)">
-  <meta property="og:description" content="Remember answers once and fill similar Safari forms later—privately and on your terms." data-label-en="Remember answers once and fill similar Safari forms later—privately and on your terms." data-label-ja="回答を一度保存すれば、次のSafariフォームにもすばやく安全に入力できます。">
+  <meta property="og:description" content="Autofill everything, privately." data-label-en="Autofill everything, privately." data-label-ja="あらゆるフォームに、プライバシーを守って自動入力。">
   <meta property="og:image" content="https://littlebobert.github.io/assets/ume-icon.png?v=2">
   <meta property="og:image:secure_url" content="https://littlebobert.github.io/assets/ume-icon.png?v=2">
   <meta property="og:image:type" content="image/png">
@@ -22,8 +22,8 @@
   <meta property="og:image:height" content="1024">
   <meta property="og:image:alt" content="Ume app icon">
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="Ume: Autofill everything, securely" data-label-en="Ume: Autofill everything, securely" data-label-ja="Ume：あらゆるフォームに、安全に自動入力">
-  <meta name="twitter:description" content="Remember answers once and fill similar Safari forms later—privately and on your terms." data-label-en="Remember answers once and fill similar Safari forms later—privately and on your terms." data-label-ja="回答を一度保存すれば、次のSafariフォームにもすばやく安全に入力できます。">
+  <meta name="twitter:title" content="Ume: Autofill everything, privately" data-label-en="Ume: Autofill everything, privately" data-label-ja="Ume：あらゆるフォームに、プライバシーを守って自動入力">
+  <meta name="twitter:description" content="Autofill everything, privately." data-label-en="Autofill everything, privately." data-label-ja="あらゆるフォームに、プライバシーを守って自動入力。">
   <meta name="twitter:image" content="https://littlebobert.github.io/assets/ume-icon.png?v=2">
   <meta name="twitter:image:alt" content="Ume app icon">
   <style>
@@ -39,51 +39,6 @@
 
     body.sasu-site { background: #fff; }
     .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
-
-    .ume-hero {
-      padding: 18pt;
-    }
-
-    .ume-title-row {
-      display: flex;
-      align-items: center;
-      gap: 14pt;
-    }
-
-    .ume-icon {
-      width: 88px;
-      height: 88px;
-      flex: 0 0 88px;
-      object-fit: contain;
-    }
-
-    .ume-title-row h1 { color: var(--ume-ink); }
-    .ume-subtitle { padding-top: 2pt; color: var(--ume-green-dark); font-weight: bold; }
-    .ume-tagline { max-width: 520px; padding: 11pt 0 10pt; font-size: 12pt; line-height: 1.35; }
-    .ume-hero .small-note { font-size: 10pt; }
-
-    .ume-download,
-    .ume-download:visited {
-      display: inline-block;
-      padding: 5pt 10pt;
-      border: 1px solid var(--ume-green-dark);
-      border-radius: 5px;
-      background: var(--ume-green);
-      color: #fff;
-      font-weight: bold;
-      text-decoration: none;
-      transition: background 120ms ease, box-shadow 120ms ease;
-    }
-
-    .ume-download:hover {
-      background: var(--ume-green-dark);
-      box-shadow: 0 2px 7px rgba(63, 77, 40, 0.28);
-    }
-
-    .language-switcher { display: flex; justify-content: flex-end; padding: 0 4pt 8pt; font-size: 10pt; }
-    .language-switch { padding: 2pt 7pt; border: 1px solid rgba(40, 37, 31, 0.22); border-radius: 4px; background: transparent; color: #555; cursor: pointer; font: inherit; }
-    .language-switch:hover { background: rgba(40, 37, 31, 0.06); color: #222; }
-    .language-switch:focus-visible { outline: 2px solid rgba(22, 117, 209, 0.55); outline-offset: 1px; }
 
     .ume-demo {
       width: 526px;
@@ -282,15 +237,13 @@
 
     @media (max-width: 560px) {
       .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
-      .ume-hero { padding: 14pt; }
-      .ume-icon { width: 70px; height: 70px; flex-basis: 70px; }
       .demo-content { min-height: 690px; padding: 20px 18px 194px; }
       .ume-popover { top: auto; right: 18px; bottom: 18px; left: 18px; width: auto; }
       .field-row { grid-template-columns: 1fr; gap: 0; }
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .field input, .field select, .ume-download { transition: none; }
+      .field input, .field select, .download-link { transition: none; }
     }
   </style>
 </head>
@@ -301,17 +254,18 @@
       <button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button>
     </div>
 
-    <section class="ume-hero">
-      <div class="ume-title-row">
-        <img class="ume-icon" src="assets/ume-icon.png?v=1" alt="Ume app icon">
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <img class="sasu-icon" src="assets/ume-icon.png?v=1" alt="Ume app icon">
         <div>
           <h1>Ume (埋め)</h1>
-          <div class="ume-subtitle" data-label-en="Autofill everything, securely." data-label-ja="あらゆるフォームに、安全に自動入力。">Autofill everything, securely.</div>
+          <div class="sasu-subtitle" data-label-en="Autofill everything, privately." data-label-ja="あらゆるフォームに、プライバシーを守って自動入力。">Autofill everything, privately.</div>
         </div>
       </div>
-      <div class="ume-tagline" data-label-en="An intelligent and private Safari form filler for iPhone, iPad, and Mac." data-label-ja="iPhone、iPad、Macで使える、賢くプライバシー重視のSafariフォーム入力支援。">An intelligent and private Safari form filler for iPhone, iPad, and Mac.</div>
-      <a class="ume-download" data-ume-download href="https://github.com/littlebobert/ume/releases/download/v0.1.14/Ume-0.1.14-macOS.dmg" data-label-en="Download Ume for Mac" data-label-ja="Mac版Umeをダウンロード">Download Ume for Mac</a>
-      <div class="small-note"><span data-ume-version>0.1.14</span> · <span data-label-en="Requires macOS 12 or newer." data-label-ja="macOS 12以降が必要です。">Requires macOS 12 or newer.</span></div>
+      <div class="sasu-tagline" data-label-en="An intelligent Safari form filler for iPhone, iPad, and Mac." data-label-ja="iPhone、iPad、Macで使える、賢いSafariフォーム入力支援。">An intelligent Safari form filler for iPhone, iPad, and Mac.</div>
+      <a class="download-link" data-ume-download href="https://github.com/littlebobert/ume/releases/download/v0.1.14/Ume-0.1.14-macOS.dmg" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
+      <span class="download-version" data-ume-version data-label-en="(version 0.1.14)" data-label-ja="（バージョン 0.1.14）">(version 0.1.14)</span>
+      <div class="small-note" data-label-en="Requires macOS 12 or newer." data-label-ja="macOS 12以降が必要です。">Requires macOS 12 or newer.</div>
     </section>
 
     <section class="sasu-section">
@@ -476,7 +430,7 @@
     </section>
 
     <div class="bottom-cta">
-      <a class="ume-download" data-ume-download href="https://github.com/littlebobert/ume/releases/download/v0.1.14/Ume-0.1.14-macOS.dmg" data-label-en="Download Ume for Mac" data-label-ja="Mac版Umeをダウンロード">Download Ume for Mac</a>
+      <a class="download-link" data-ume-download href="https://github.com/littlebobert/ume/releases/download/v0.1.14/Ume-0.1.14-macOS.dmg" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
     </div>
 
     <footer class="ume-footer">

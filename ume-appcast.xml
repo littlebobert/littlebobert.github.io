@@ -6,6 +6,21 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.1.11</title>
+            <pubDate>Fri, 14 Aug 2026 15:46:13 +0000</pubDate>
+            <link>https://littlebobert.github.io/ume.html</link>
+            <sparkle:version>16.1</sparkle:version>
+            <sparkle:shortVersionString>0.1.11</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Ume 0.1.11
+
+Fixed a reinstall error when leftover saved answers could not be decrypted, and included diagnostics in About → Report a Bug.
+
+残っていた保存済み回答を復号できない場合に再インストールでエラーが発生する問題を修正し、About → Report a Bug に診断情報を追加しました。
+]]></description>
+            <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.11/Ume-0.1.11-macOS.dmg" length="5596599" type="application/octet-stream" sparkle:edSignature="XnS1+T9yt7JVgbdjOkGKvkcN5FrZ0Me5Ya8pTycCt3dYYgaVmEjvBnfpMlLYYhsC1uC26I8HQqQsZ81Iyyd3CA=="/>
+        </item>
+        <item>
             <title>0.1.10</title>
             <pubDate>Thu, 13 Aug 2026 14:48:42 +0000</pubDate>
             <link>https://littlebobert.github.io/ume.html</link>
@@ -53,6 +68,6 @@ macOSの自動署名付きアップデートと、Macで余分なロック解除
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: 5/S2ZHibOfUn+sVXh4uRUd+a2onbNZJVEnC/ccON5md7nDv3ULUYDMqRwFbFvZxoQA/z0HGYUsLBTkFxqNDeAA==
-length: 3408
+edSignature: X5mU/OrZsFTZ3knoM0dokHk9N7fL8FR871uFu+37azQ/irnLbPHUhYmi6gQScxHazMEccwSBGaUtynI1kURaAA==
+length: 4497
 -->

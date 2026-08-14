@@ -3,6 +3,18 @@
     <channel>
         <title>Sasu</title>
         <item>
+            <title>0.2.10</title>
+            <pubDate>Fri, 14 Aug 2026 13:42:30 -0400</pubDate>
+            <link>https://sasu.jp</link>
+            <sparkle:version>35</sparkle:version>
+            <sparkle:shortVersionString>0.2.10</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[Allow drops on the entire transcript window.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.10/Sasu-0.2.10-mac.zip" length="4441688" type="application/octet-stream" sparkle:edSignature="VBCud0s4rsqKtI23lsgozcWTprrRU9rcS7PAg4BPud+OEfm8ax5gHOs1hGQlhI7Ae3xfzwqczFto+0jNxcjIDw=="/>
+        </item>
+        <item>
             <title>0.2.9</title>
             <pubDate>Thu, 06 Aug 2026 23:51:33 +0900</pubDate>
             <link>https://sasu.jp</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[Added an option for Anthropic and added drag and drop support.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.8/Sasu-0.2.8-mac.zip" length="4404078" type="application/octet-stream" sparkle:edSignature="wdxdGIfhFopsLpt+8VdBeT6b5Qm5bU1LpF0i4SSDKFaD4+JaMIQD1iC+Pbu7IxOsv5ZzznefZkA5PNxQD15HDg=="/>
-        </item>
-        <item>
-            <title>0.2.7</title>
-            <pubDate>Mon, 27 Jul 2026 17:41:19 +0900</pubDate>
-            <link>https://sasu.jp</link>
-            <sparkle:version>32</sparkle:version>
-            <sparkle:shortVersionString>0.2.7</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[Only bounce the Dock icon once when translations are finished.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.7/Sasu-0.2.7-mac.zip" length="4319948" type="application/octet-stream" sparkle:edSignature="FTp/kArVCdrO79fYyTPkRBtvm0H2QO7UlIce8jmHipEYazb/ccjdmPfwzqMeo6fj/7cgQ/eWnejRpgr0XjV1AA=="/>
         </item>
     </channel>
 </rss>

@@ -6,6 +6,21 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.1.14</title>
+            <pubDate>Fri, 14 Aug 2026 17:30:42 +0000</pubDate>
+            <link>https://littlebobert.github.io/ume.html</link>
+            <sparkle:version>19.1</sparkle:version>
+            <sparkle:shortVersionString>0.1.14</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Ume 0.1.14
+
+Composes Full name from first and last, fills Country of residence from the saved address country, and shows English update notes when the app is in English.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="jXeA9JdoKMJMao08jiWVYjZmvFFC5EVkeBiWdqzIyXIRzOITsYlowrdSaHU7d5CRGsoXVybJa5t07XUA1wdAAw==" sparkle:length="407">https://littlebobert.github.io/Ume-0.1.14-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="xvJv+YB7APdqQK353HSdo1F4QHYSeLDUXNCs+UQKJFHSSIITaupvlVfMsVXIaEhpE5SF9RN0kQkpIEFcYBeXDw==" sparkle:length="445">https://littlebobert.github.io/Ume-0.1.14-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.14/Ume-0.1.14-macOS.dmg" length="5614007" type="application/octet-stream" sparkle:edSignature="VKjTP8sDU0aKK98hglP0759Opnem6ecFlF++YI/hHNr8/lGcGFB9vl2p3khyzeZu9pqOshioAMz28XUdTtvyCQ=="/>
+        </item>
+        <item>
             <title>0.1.13</title>
             <pubDate>Fri, 14 Aug 2026 16:22:50 +0000</pubDate>
             <link>https://littlebobert.github.io/ume.html</link>
@@ -97,6 +112,6 @@ macOSの自動署名付きアップデートと、Macで余分なロック解除
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: Ur1m1LKDq9EHslolCRXKW8zdY+q21X9zlfG0ekvc7COcOFrGVo5b3qBcV+mOByB5Yp7KPcL5V2m4j/eIDMeuCA==
-length: 6818
+edSignature: bWlq1YkYbSdF1Wy/4Lb+sOguV3qNPvZ2I/m6RX2cozBmmzUtR00H5MyXRDjG5yxl3kfZM0tQeoqfVrt52Nj3Cw==
+length: 8271
 -->

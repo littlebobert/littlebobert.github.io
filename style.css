@@ -2424,6 +2424,11 @@ div.job-metadata {
   padding-bottom: 3pt;
 }
 
+span.location::before {
+  content: ",";
+  margin-right: 0.3em;
+}
+
 ul.accomplishments {
   padding-top: 2pt;
   padding-bottom: 0pt;

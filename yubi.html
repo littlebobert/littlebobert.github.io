@@ -38,10 +38,18 @@
     .sasu-icon { border-radius: 12px; }
 
     .yubi-demo {
-      width: 320px;
+      width: 460px;
       max-width: 100%;
       margin: 6pt auto 18pt;
       text-align: center;
+    }
+
+    .phone-wrap {
+      position: relative;
+      width: 430px;
+      max-width: 100%;
+      margin: 0 auto;
+      padding-left: 110px;
     }
 
     .yubi-demo-label {
@@ -49,6 +57,48 @@
       color: #555;
       font-size: 11pt;
       font-weight: bold;
+    }
+
+    .action-label {
+      position: absolute;
+      top: 52px;
+      left: 0;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      height: 36px;
+      color: #555;
+      cursor: pointer;
+      font: 9pt/1 Verdana, Geneva, sans-serif;
+      white-space: nowrap;
+    }
+
+    .action-label-arrow {
+      font-size: 11pt;
+      line-height: 1;
+    }
+
+    .action-button {
+      position: absolute;
+      top: 52px;
+      left: 100px;
+      z-index: 2;
+      width: 12px;
+      height: 36px;
+      padding: 0;
+      border: 1px solid #6d6a64;
+      border-radius: 4px 0 0 4px;
+      background: #9a968e;
+      box-shadow: none;
+      cursor: pointer;
+    }
+
+    .action-button:focus-visible { outline: 2px solid rgba(22, 117, 209, 0.55); outline-offset: 2px; }
+    .action-button.is-pressed,
+    .action-button:disabled {
+      background: #7d7972;
+      cursor: default;
     }
 
     .phone {
@@ -115,25 +165,6 @@
 
     .translation p:last-child { margin-bottom: 0; }
 
-    .phone-actions {
-      padding: 0 16px 16px;
-    }
-
-    .yubi-action {
-      width: 100%;
-      padding: 8px 8px;
-      border: 1px solid #000;
-      border-radius: 6px;
-      background: #000;
-      color: #fff;
-      cursor: pointer;
-      font: 700 11px/1.2 -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    .yubi-action:hover { background: #555; border-color: #555; }
-    .yubi-action:focus-visible { outline: 2px solid rgba(22, 117, 209, 0.55); outline-offset: 2px; }
-    .yubi-action:disabled { background: #555; border-color: #555; cursor: default; }
-
     .demo-reset {
       margin: 8px 0 0;
       padding: 0;
@@ -182,23 +213,27 @@
 
     <section class="sasu-section">
       <figure class="yubi-demo">
-        <div class="yubi-demo-label" data-label-en="Translate what’s on screen." data-label-ja="画面上の内容を翻訳。">Translate what’s on screen.</div>
-        <div class="phone" id="yubi-demo">
-          <div class="phone-screen">
-            <div class="notice">
-              <div class="notice-kicker" data-label-en="Notice" data-label-ja="お知らせ">Notice</div>
-              <h3>本日の受付は17時までです</h3>
-              <p>窓口でのお手続きにはマイナンバーカードをお持ちください。</p>
-              <p>混雑時は番号札をお取りのうえ、お待ちください。</p>
-            </div>
-            <div class="translation" hidden>
-              <div class="translation-label" data-label-en="Summary" data-label-ja="要約">Summary</div>
-              <p data-label-en="Reception closes at 5 p.m. today. Bring your My Number card." data-label-ja="本日の受付は17時まで。マイナンバーカードが必要です。">Reception closes at 5 p.m. today. Bring your My Number card.</p>
-              <div class="translation-label" data-label-en="Translation" data-label-ja="翻訳">Translation</div>
-              <p data-label-en="Today’s reception is until 5:00 p.m. Please bring your My Number card for counter procedures. If it is crowded, take a numbered ticket and wait." data-label-ja="Today’s reception is until 5:00 p.m. Please bring your My Number card for counter procedures. If it is crowded, take a numbered ticket and wait.">Today’s reception is until 5:00 p.m. Please bring your My Number card for counter procedures. If it is crowded, take a numbered ticket and wait.</p>
-            </div>
-            <div class="phone-actions">
-              <button class="yubi-action" type="button" data-label-en="Translate this screen" data-label-ja="この画面を翻訳">Translate this screen</button>
+        <div class="yubi-demo-label" data-label-en="Use the Action Button to translate what’s on screen." data-label-ja="アクションボタンで画面上の内容を翻訳。">Use the Action Button to translate what’s on screen.</div>
+        <div class="phone-wrap" id="yubi-demo">
+          <label class="action-label" for="action-button">
+            <span data-label-en="Action Button" data-label-ja="アクションボタン">Action Button</span>
+            <span class="action-label-arrow" aria-hidden="true">→</span>
+          </label>
+          <button class="action-button" id="action-button" type="button" aria-label="Action Button" data-aria-label-en="Action Button" data-aria-label-ja="アクションボタン"></button>
+          <div class="phone">
+            <div class="phone-screen">
+              <div class="notice">
+                <div class="notice-kicker" data-label-en="Notice" data-label-ja="お知らせ">Notice</div>
+                <h3>本日の受付は17時までです</h3>
+                <p>窓口でのお手続きにはマイナンバーカードをお持ちください。</p>
+                <p>混雑時は番号札をお取りのうえ、お待ちください。</p>
+              </div>
+              <div class="translation" hidden>
+                <div class="translation-label" data-label-en="Summary" data-label-ja="要約">Summary</div>
+                <p data-label-en="Reception closes at 5 p.m. today. Bring your My Number card." data-label-ja="本日の受付は17時まで。マイナンバーカードが必要です。">Reception closes at 5 p.m. today. Bring your My Number card.</p>
+                <div class="translation-label" data-label-en="Translation" data-label-ja="翻訳">Translation</div>
+                <p data-label-en="Today’s reception is until 5:00 p.m. Please bring your My Number card for counter procedures. If it is crowded, take a numbered ticket and wait." data-label-ja="Today’s reception is until 5:00 p.m. Please bring your My Number card for counter procedures. If it is crowded, take a numbered ticket and wait.">Today’s reception is until 5:00 p.m. Please bring your My Number card for counter procedures. If it is crowded, take a numbered ticket and wait.</p>
+              </div>
             </div>
           </div>
         </div>
@@ -256,31 +291,34 @@
     setLanguage(localStorage.getItem('yubi-language') || preferredLanguage(), false);
 
     const demo = document.querySelector('#yubi-demo');
-    const translateButton = demo.querySelector('.yubi-action');
+    const actionButton = demo.querySelector('.action-button');
     const translation = demo.querySelector('.translation');
     const resetButton = document.querySelector('.demo-reset');
 
-    function updateDemoLabels(translated) {
-      translateButton.textContent = translated
-        ? (currentLanguage === 'ja' ? '翻訳しました' : 'Translated')
-        : (currentLanguage === 'ja' ? 'この画面を翻訳' : 'Translate this screen');
+    function updateActionButtonLanguage() {
+      actionButton.setAttribute(
+        'aria-label',
+        currentLanguage === 'ja' ? actionButton.dataset.ariaLabelJa : actionButton.dataset.ariaLabelEn
+      );
     }
 
-    translateButton.addEventListener('click', () => {
+    updateActionButtonLanguage();
+
+    actionButton.addEventListener('click', () => {
       translation.hidden = false;
-      translateButton.disabled = true;
+      actionButton.disabled = true;
+      actionButton.classList.add('is-pressed');
       resetButton.hidden = false;
-      updateDemoLabels(true);
     });
 
     resetButton.addEventListener('click', () => {
       translation.hidden = true;
-      translateButton.disabled = false;
+      actionButton.disabled = false;
+      actionButton.classList.remove('is-pressed');
       resetButton.hidden = true;
-      updateDemoLabels(false);
     });
 
-    languageSwitch.addEventListener('click', () => updateDemoLabels(translateButton.disabled));
+    languageSwitch.addEventListener('click', updateActionButtonLanguage);
   </script>
 </body>
 

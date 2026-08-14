@@ -6,7 +6,7 @@
   <script src="theme.js?v=2"></script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
   <title>About Justin Garcia</title>
-  <link href='style.css?v=128' rel='stylesheet'>
+  <link href='style.css?v=129' rel='stylesheet'>
   <style>
     /* Preview: Ume face, sized to the window title (About) */
     body.home-page,
@@ -26,11 +26,13 @@
       color: inherit !important;
       line-height: 1.45 !important;
     }
-    body.home-page a[data-label-en="Open Sasu"],
-    body.home-page a[data-label-en="Open Kehai"],
-    body.home-page a[data-label-en="Open Ume"],
-    body.home-page a[data-label-en="Open Yubi"] {
+    body.home-page .stack-app-entry .stack-actions a {
       font-weight: bold !important;
+      justify-content: flex-start;
+      text-align: left;
+      line-height: 1.35 !important;
+      white-space: normal;
+      height: auto;
     }
     body.home-page .x-post-identity {
       gap: 6px;
@@ -42,7 +44,10 @@
       gap: 6px;
     }
     body.home-page .stack-topic-list li + li {
-      margin-top: 8px;
+      margin-top: 14px;
+    }
+    body.home-page .tokyo-recommendations-entries li {
+      margin-bottom: 8px;
     }
     body.home-page .stack-card .x-post-text {
       line-height: 1.45 !important;
@@ -185,9 +190,9 @@
             data-label-ja="<span class='latin'>Kotoba</span><span class='ja-text'>のモバイル</span>"
           >Mobile at Kotoba</h2>
           <p
-            data-label-en="I work on shipping <a href='https://site.kotoba.tech'>speech AI</a> products."
-            data-label-ja="<a href='https://site.kotoba.tech'><span class='ja-text'>音声</span><span class='latin'>AI</span></a><span class='ja-text'>をリリースする仕事をしています。</span>"
-          >I work on shipping <a href="https://site.kotoba.tech">speech AI</a> products.</p>
+            data-label-en="I work on shipping <a href='https://site.kotoba.tech'>speech AI</a> products at Kotoba."
+            data-label-ja="<span class='latin'>Kotoba</span><span class='ja-text'>で</span><a href='https://site.kotoba.tech'><span class='ja-text'>音声</span><span class='latin'>AI</span></a><span class='ja-text'>プロダクトをリリースする仕事をしています。</span>"
+          >I work on shipping <a href="https://site.kotoba.tech">speech AI</a> products at Kotoba.</p>
           <p
             data-label-en="Ask me about our <a href='https://kotoba.onelink.me/wkA2/28x5ctzi'>mobile app</a>!"
             data-label-ja="<span class='ja-text'>私たちの</span><a href='https://kotoba.onelink.me/wkA2/28x5ctzi'><span class='ja-text'>モバイルアプリ</span></a><span class='ja-text'>について聞いてください！</span>"
@@ -197,66 +202,50 @@
         <section class="stack-card" data-stack-card hidden>
           <div class="stack-card-kicker" data-label-en="My Apps" data-label-ja="自作アプリ">My Apps</div>
           <div class="stack-app-entry">
-            <p
-              data-label-en="<strong>Sasu</strong> — on-screen guidance for foreigners living abroad."
-              data-label-ja="<span class='latin'><strong>Sasu</strong></span><span class='ja-text'>：海外で暮らす外国人向けの画面上ガイダンス。</span>"
-            ><strong>Sasu</strong> — on-screen guidance for foreigners living abroad.</p>
             <div class="stack-actions">
               <a
                 href="https://sasu.jp"
-                data-label-en="Open Sasu"
-                data-label-ja="<span class='latin'>Sasu</span><span class='ja-text'>を見る</span>"
+                data-label-en="<strong>Sasu</strong> — on-screen guidance for foreigners living abroad."
+                data-label-ja="<span class='latin'><strong>Sasu</strong></span><span class='ja-text'>：海外で暮らす外国人向けの画面上ガイダンス。</span>"
                 data-browser-title-en="Sasu"
                 data-browser-title-ja="Sasu"
-              >Open Sasu</a>
+              ><strong>Sasu</strong> — on-screen guidance for foreigners living abroad.</a>
             </div>
           </div>
           <div class="stack-app-entry">
-            <p
-              data-label-en="<strong>Kehai</strong> — tame your windows and switch apps faster."
-              data-label-ja="<span class='latin'><strong>Kehai</strong></span><span class='ja-text'>：ウインドウをすっきり整理し、アプリ切り替えをもっと速く。</span>"
-            ><strong>Kehai</strong> — tame your windows and switch apps faster.</p>
             <div class="stack-actions">
               <a
                 href="kehai.html"
                 data-no-mini-browser
-                data-label-en="Open Kehai"
-                data-label-ja="<span class='latin'>Kehai</span><span class='ja-text'>を見る</span>"
+                data-label-en="<strong>Kehai</strong> — tame your windows and switch apps faster."
+                data-label-ja="<span class='latin'><strong>Kehai</strong></span><span class='ja-text'>：ウインドウをすっきり整理し、アプリ切り替えをもっと速く。</span>"
                 data-browser-title-en="Kehai"
                 data-browser-title-ja="Kehai"
-              >Open Kehai</a>
+              ><strong>Kehai</strong> — tame your windows and switch apps faster.</a>
             </div>
           </div>
           <div class="stack-app-entry">
-            <p
-              data-label-en="<strong>Ume</strong> — autofill everything, privately."
-              data-label-ja="<span class='latin'><strong>Ume</strong></span><span class='ja-text'>：あらゆるフォームに、プライバシーを守って自動入力。</span>"
-            ><strong>Ume</strong> — autofill everything, privately.</p>
             <div class="stack-actions">
               <a
                 href="ume.html"
                 data-no-mini-browser
-                data-label-en="Open Ume"
-                data-label-ja="<span class='latin'>Ume</span><span class='ja-text'>を見る</span>"
+                data-label-en="<strong>Ume</strong> — autofill everything, privately."
+                data-label-ja="<span class='latin'><strong>Ume</strong></span><span class='ja-text'>：あらゆるフォームに、プライバシーを守って自動入力。</span>"
                 data-browser-title-en="Ume"
                 data-browser-title-ja="Ume"
-              >Open Ume</a>
+              ><strong>Ume</strong> — autofill everything, privately.</a>
             </div>
           </div>
           <div class="stack-app-entry">
-            <p
-              data-label-en="<strong>Yubi</strong> — translate what’s on screen and what you type."
-              data-label-ja="<span class='latin'><strong>Yubi</strong></span><span class='ja-text'>：画面上の内容と入力した内容を翻訳。</span>"
-            ><strong>Yubi</strong> — translate what’s on screen and what you type.</p>
             <div class="stack-actions">
               <a
                 href="yubi.html"
                 data-no-mini-browser
-                data-label-en="Open Yubi"
-                data-label-ja="<span class='latin'>Yubi</span><span class='ja-text'>を見る</span>"
+                data-label-en="<strong>Yubi</strong> — translate what’s on screen and what you type."
+                data-label-ja="<span class='latin'><strong>Yubi</strong></span><span class='ja-text'>：画面上の内容と入力した内容を翻訳。</span>"
                 data-browser-title-en="Yubi"
                 data-browser-title-ja="Yubi"
-              >Open Yubi</a>
+              ><strong>Yubi</strong> — translate what’s on screen and what you type.</a>
             </div>
           </div>
         </section>
@@ -396,10 +385,6 @@
 
         <section class="stack-card" data-stack-card hidden>
           <div class="stack-card-kicker" data-label-en="Elsewhere" data-label-ja="リンク">Elsewhere</div>
-          <h2
-            data-label-en="Let me add you"
-            data-label-ja="<span class='ja-text'>追加させてください</span>"
-          >Let me add you</h2>
           <p
             data-label-en="Are you active on any of these platforms?"
             data-label-ja="<span class='ja-text'>この中でよく使っているものはありますか？</span>"
@@ -519,11 +504,7 @@
         </section>
 
         <section class="stack-card stack-card-puzzle" data-stack-card hidden>
-          <div class="stack-card-kicker" data-label-en="Puzzle" data-label-ja="パズル">Puzzle</div>
-          <h2
-            data-label-en="One more thing"
-            data-label-ja="<span class='latin'>One more thing</span>"
-          >One more thing</h2>
+          <div class="stack-card-kicker" data-label-en="One more thing" data-label-ja="<span class='latin'>One more thing</span>">One more thing</div>
           <p
             class="puzzle-note"
             data-label-en="Tap a tile next to the blank space."

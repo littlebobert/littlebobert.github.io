@@ -7,6 +7,46 @@
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
   <title>About Justin Garcia</title>
   <link href='style.css?v=128' rel='stylesheet'>
+  <style>
+    /* Preview: Ume face, sized to the window title (About) */
+    body.home-page,
+    body.home-page * {
+      font-family: 'Verdana', 'Geneva', sans-serif !important;
+      font-size: 11px !important;
+    }
+    body.home-page .stack-index-shortcut,
+    body.home-page .qr-code-button {
+      font-size: 11px !important;
+      min-height: 24px;
+      padding: 4px 9px;
+    }
+    body.home-page .stack-card-kicker {
+      font-size: 11px !important;
+      font-weight: inherit !important;
+      color: inherit !important;
+      line-height: 1.45 !important;
+    }
+    body.home-page a[data-label-en="Open Sasu"],
+    body.home-page a[data-label-en="Open Kehai"],
+    body.home-page a[data-label-en="Open Ume"] {
+      font-weight: bold !important;
+    }
+    body.home-page .x-post-identity {
+      gap: 6px;
+      line-height: 1.45 !important;
+    }
+    body.home-page .x-post-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    body.home-page .stack-topic-list li + li {
+      margin-top: 8px;
+    }
+    body.home-page .stack-card .x-post-text {
+      line-height: 1.45 !important;
+    }
+  </style>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://justin-garcia.pages.dev/">
   <meta name="description" content="iOS engineer in Tokyo." />
@@ -776,7 +816,7 @@
   <div class="window-zoom-rect" id="window-zoom-rect" hidden aria-hidden="true"></div>
   
   <script src="data/x-posts.js"></script>
-  <script src="index.js?v=7"></script>
+  <script src="index.js?v=8"></script>
   <script>
     const MUD_LEADERBOARD_STORAGE_KEY = 'tokyo-mud-leaderboard';
     const MUD_STATE_STORAGE_KEY = 'tokyo-mud-current-run';

@@ -750,9 +750,18 @@ function createXPostElement(post) {
   identity.append(name);
 
   const meta = document.createElement('span');
-  const username = post.username ? `@${post.username}` : '@_bobertdowney';
+  meta.className = 'x-post-meta';
+  const handle = document.createElement('span');
+  handle.className = 'x-post-handle';
+  handle.textContent = post.username ? `@${post.username}` : '@_bobertdowney';
+  meta.append(handle);
   const date = formatXPostDate(post.createdAt);
-  meta.textContent = date ? `${username} / ${date}` : username;
+  if (date) {
+    const dateEl = document.createElement('span');
+    dateEl.className = 'x-post-date';
+    dateEl.textContent = date;
+    meta.append(dateEl);
+  }
   identity.append(meta);
   header.append(identity);
   article.append(header);

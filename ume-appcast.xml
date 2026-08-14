@@ -6,6 +6,20 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.1.13</title>
+            <pubDate>Fri, 14 Aug 2026 16:22:50 +0000</pubDate>
+            <link>https://littlebobert.github.io/ume.html</link>
+            <sparkle:version>18.2</sparkle:version>
+            <sparkle:shortVersionString>0.1.13</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Ume 0.1.13
+
+Put Type first in Saved Data, prefills phone country codes from the Mac region, defaults OpenAI to gpt-5.6-sol with high reasoning, and centers the About window title.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="2CmKuXBRMN/AulQsRy1tMHzzGCkp0ND/Cm/n2HrWLiLDb2v8UJ5TwxyZBgUOzUjEdqF9ITP0pb83PSv5NtfoAQ==" sparkle:length="501">https://littlebobert.github.io/Ume-0.1.13-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.13/Ume-0.1.13-macOS.dmg" length="5617079" type="application/octet-stream" sparkle:edSignature="FKNMKgF29x5kQbNzuguSqFIs45Vqs4TNHUPnMuda6lWuzMvmuacbNczwO8Horv/77YZoLEeIkNB2j/dAGet6DA=="/>
+        </item>
+        <item>
             <title>0.1.12</title>
             <pubDate>Fri, 14 Aug 2026 15:56:52 +0000</pubDate>
             <link>https://littlebobert.github.io/ume.html</link>
@@ -83,6 +97,6 @@ macOSの自動署名付きアップデートと、Macで余分なロック解除
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: eVSjad7PK9rPwDTg7ce4hztBxTEns6Ak96zu1owH+yB0seb+wiSku1XtirErRrwtajLGNBVfsJC2wCsrJZMWBg==
-length: 5620
+edSignature: Ur1m1LKDq9EHslolCRXKW8zdY+q21X9zlfG0ekvc7COcOFrGVo5b3qBcV+mOByB5Yp7KPcL5V2m4j/eIDMeuCA==
+length: 6818
 -->

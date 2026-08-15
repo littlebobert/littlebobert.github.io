@@ -2433,6 +2433,14 @@ div.job {
   padding-bottom: 8pt;
 }
 
+.projects .job {
+  padding-bottom: 4pt;
+}
+
+.projects .overview {
+  padding-top: 0;
+}
+
 div.job-metadata {
   padding-bottom: 3pt;
 }

@@ -378,7 +378,7 @@
     </section>
 
     <section class="ume-detail">
-      <details class="release-notes">
+      <details id="changelog" class="release-notes">
         <summary data-label-en="Changelog" data-label-ja="変更履歴">Changelog</summary>
         <!-- ume-changelog:start -->
 <h2 data-ume-release="0.1.14">0.1.14</h2>
@@ -467,6 +467,13 @@
 
     languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
     setLanguage(localStorage.getItem('ume-language') || preferredLanguage(), false);
+
+    const changelog = document.querySelector('#changelog');
+    function openLinkedSection() {
+      if (window.location.hash === '#changelog') changelog.open = true;
+    }
+    window.addEventListener('hashchange', openLinkedSection);
+    openLinkedSection();
 
     const demo = document.querySelector('#ume-demo');
     const fillButton = demo.querySelector('.ume-action');

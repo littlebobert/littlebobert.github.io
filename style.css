@@ -708,6 +708,19 @@ html[lang="ja"] .stack-card h2 .latin {
   margin-top: 22px;
 }
 
+.stack-card-apps .stack-card-kicker {
+  margin-bottom: 16px;
+}
+
+.stack-card-apps .stack-app-entry + .stack-app-entry {
+  margin-top: 16px;
+}
+
+.stack-card-apps .stack-app-entry .stack-actions {
+  margin-top: 0;
+  padding-top: 0;
+}
+
 .stack-app-entry p {
   margin-bottom: 6px;
 }
@@ -1147,7 +1160,7 @@ html[lang="ja"] .tokyo-recommendations-list {
 }
 
 .tokyo-recommendations .stack-button {
-  margin-bottom: 6px;
+  margin-bottom: 14px;
 }
 
 .tokyo-recommendations-list {

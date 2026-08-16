@@ -1,8 +1,74 @@
 {
-  "updatedAt": "2026-08-15T15:38:33.459Z",
+  "updatedAt": "2026-08-16T15:39:43.888Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2088662770598232213",
+      "text": "now I would give anything for my dad to insult me one more time lol. RIP https://t.co/nnCDtUUNbN",
+      "createdAt": "2026-08-15T16:23:04.000Z",
+      "url": "https://x.com/_bobertdowney/status/2088662770598232213",
+      "urls": [
+        {
+          "url": "https://t.co/nnCDtUUNbN",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2088662770598232213/photo/1",
+          "displayUrl": "pic.x.com/nnCDtUUNbN",
+          "start": 73,
+          "end": 96
+        },
+        {
+          "url": "https://t.co/nnCDtUUNbN",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2088662770598232213/photo/1",
+          "displayUrl": "pic.x.com/nnCDtUUNbN",
+          "start": 73,
+          "end": 96
+        },
+        {
+          "url": "https://t.co/nnCDtUUNbN",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2088662770598232213/photo/1",
+          "displayUrl": "pic.x.com/nnCDtUUNbN",
+          "start": 73,
+          "end": 96
+        },
+        {
+          "url": "https://t.co/nnCDtUUNbN",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2088662770598232213/photo/1",
+          "displayUrl": "pic.x.com/nnCDtUUNbN",
+          "start": 73,
+          "end": 96
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2088662770598232213-0.png",
+          "imageModern": "assets/generated/x/mine-post-2088662770598232213-0-modern.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2088662770598232213-1.png",
+          "imageModern": "assets/generated/x/mine-post-2088662770598232213-1-modern.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2088662770598232213-2.png",
+          "imageModern": "assets/generated/x/mine-post-2088662770598232213-2-modern.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2088662770598232213-3.png",
+          "imageModern": "assets/generated/x/mine-post-2088662770598232213-3-modern.png"
+        }
+      ]
+    },
     {
       "id": "2087566169263780305",
       "text": "We’re hiring an AI researcher in San Francisco.\n\nhttps://t.co/PFjmDf5Lq8",
@@ -229,60 +295,6 @@
           "type": "photo",
           "image": "assets/generated/x/mine-post-2085330468128575990-0.png",
           "imageModern": "assets/generated/x/mine-post-2085330468128575990-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2081526776237621548",
-      "text": "I finally found a reason to use my OpenClaw🤡. https://t.co/FLn8kEioCd",
-      "createdAt": "2026-07-26T23:47:11.000Z",
-      "url": "https://x.com/_bobertdowney/status/2081526776237621548",
-      "urls": [
-        {
-          "url": "https://t.co/FLn8kEioCd",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2081526776237621548/video/1",
-          "displayUrl": "pic.x.com/FLn8kEioCd",
-          "start": 46,
-          "end": 69
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2081526776237621548-0.png",
-          "imageModern": "assets/generated/x/mine-post-2081526776237621548-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2079550951875326041",
-      "text": "this restaurant’s iPad used the original page curl animation. my gf was not as excited about this as I was https://t.co/tEAj5CUhWr",
-      "createdAt": "2026-07-21T12:55:57.000Z",
-      "url": "https://x.com/_bobertdowney/status/2079550951875326041",
-      "urls": [
-        {
-          "url": "https://t.co/tEAj5CUhWr",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2079550951875326041/photo/1",
-          "displayUrl": "pic.x.com/tEAj5CUhWr",
-          "start": 107,
-          "end": 130
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2079550951875326041-0.png",
-          "imageModern": "assets/generated/x/mine-post-2079550951875326041-0-modern.png"
         }
       ]
     }

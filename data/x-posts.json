@@ -1,8 +1,28 @@
 {
-  "updatedAt": "2026-08-16T15:39:43.888Z",
+  "updatedAt": "2026-08-17T15:43:23.983Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2089026776454541462",
+      "text": "is Mistral bad because there's no AC in France? https://t.co/7r9CQOo7FS",
+      "createdAt": "2026-08-16T16:29:30.000Z",
+      "url": "https://x.com/_bobertdowney/status/2089026776454541462",
+      "urls": [
+        {
+          "url": "https://t.co/7r9CQOo7FS",
+          "expandedUrl": "https://twitter.com/MistralAI/status/2087305196841922782",
+          "displayUrl": "x.com/MistralAI/stat…",
+          "start": 48,
+          "end": 71
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2088662770598232213",
       "text": "now I would give anything for my dad to insult me one more time lol. RIP https://t.co/nnCDtUUNbN",
@@ -241,33 +261,6 @@
           "type": "photo",
           "image": "assets/generated/x/mine-post-2086557357081788651-0.png",
           "imageModern": "assets/generated/x/mine-post-2086557357081788651-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2086361159905710186",
-      "text": "Today at Apple: 一番好きな絵文字は何すか？it was for kids but I wanted someone to ask me 🥴🤡 https://t.co/Y2H3MyxSld",
-      "createdAt": "2026-08-09T07:57:17.000Z",
-      "url": "https://x.com/_bobertdowney/status/2086361159905710186",
-      "urls": [
-        {
-          "url": "https://t.co/Y2H3MyxSld",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2086361159905710186/photo/1",
-          "displayUrl": "pic.x.com/Y2H3MyxSld",
-          "start": 79,
-          "end": 102
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2086361159905710186-0.png",
-          "imageModern": "assets/generated/x/mine-post-2086361159905710186-0-modern.png"
         }
       ]
     },

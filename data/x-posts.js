@@ -1,8 +1,48 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-08-17T15:43:23.983Z",
+  "updatedAt": "2026-08-18T15:49:05.788Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2089393893855084670",
+      "text": "Kotoba is hiring a GTM manager in San Francisco https://t.co/eFzZn40MsQ",
+      "createdAt": "2026-08-17T16:48:18.000Z",
+      "url": "https://x.com/_bobertdowney/status/2089393893855084670",
+      "urls": [
+        {
+          "url": "https://t.co/eFzZn40MsQ",
+          "expandedUrl": "https://site.kotoba.tech/job/gtm-manager-(u.s.)",
+          "displayUrl": "site.kotoba.tech/job/gtm-manage…",
+          "start": 48,
+          "end": 71
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2089389696132817332",
+      "text": "the fix is in macOS 26.6.1 from August 6th https://t.co/yjdOzvZsJN",
+      "createdAt": "2026-08-17T16:31:37.000Z",
+      "url": "https://x.com/_bobertdowney/status/2089389696132817332",
+      "urls": [
+        {
+          "url": "https://t.co/yjdOzvZsJN",
+          "expandedUrl": "https://twitter.com/MacRumors/status/2089326408984334430",
+          "displayUrl": "x.com/MacRumors/stat…",
+          "start": 43,
+          "end": 66
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2089026776454541462",
       "text": "is Mistral bad because there's no AC in France? https://t.co/7r9CQOo7FS",
@@ -234,60 +274,6 @@ window.X_POSTS_SNAPSHOT = {
           "type": "photo",
           "image": "assets/generated/x/mine-post-2086591205685731585-0.png",
           "imageModern": "assets/generated/x/mine-post-2086591205685731585-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2086557357081788651",
-      "text": "ハッカソンは教会のピクニックのようであるべきです。おいしい食事と、さらに素敵な雰囲気がある場です。 https://t.co/X09CngPZEz",
-      "createdAt": "2026-08-09T20:56:54.000Z",
-      "url": "https://x.com/_bobertdowney/status/2086557357081788651",
-      "urls": [
-        {
-          "url": "https://t.co/X09CngPZEz",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2086557357081788651/photo/1",
-          "displayUrl": "pic.x.com/X09CngPZEz",
-          "start": 50,
-          "end": 73
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2086557357081788651-0.png",
-          "imageModern": "assets/generated/x/mine-post-2086557357081788651-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2085330468128575990",
-      "text": "Thing, Japan 🤡 https://t.co/wusgO9mcTM",
-      "createdAt": "2026-08-06T11:41:41.000Z",
-      "url": "https://x.com/_bobertdowney/status/2085330468128575990",
-      "urls": [
-        {
-          "url": "https://t.co/wusgO9mcTM",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2085330468128575990/photo/1",
-          "displayUrl": "pic.x.com/wusgO9mcTM",
-          "start": 15,
-          "end": 38
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2085330468128575990-0.png",
-          "imageModern": "assets/generated/x/mine-post-2085330468128575990-0-modern.png"
         }
       ]
     }

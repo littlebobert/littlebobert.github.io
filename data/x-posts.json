@@ -1,8 +1,20 @@
 {
-  "updatedAt": "2026-08-19T15:49:14.667Z",
+  "updatedAt": "2026-08-20T15:50:57.262Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2090425640571060566",
+      "text": "I told my coworker I’m the top Cursor user by token usage in Japan and he didn’t even flinch 🤡",
+      "createdAt": "2026-08-20T13:08:05.000Z",
+      "url": "https://x.com/_bobertdowney/status/2090425640571060566",
+      "urls": [],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2089967315362435393",
       "text": "one time when I said some dumb shit in a mailing list post at Apple someone came into my office while I was at lunch and unplugged my internet",
@@ -14,33 +26,6 @@
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2089965766116528215",
-      "text": "Apple Intelligence if they classified it as a hardware problem https://t.co/tja4moFgR3",
-      "createdAt": "2026-08-19T06:40:42.000Z",
-      "url": "https://x.com/_bobertdowney/status/2089965766116528215",
-      "urls": [
-        {
-          "url": "https://t.co/tja4moFgR3",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2089965766116528215/photo/1",
-          "displayUrl": "pic.x.com/tja4moFgR3",
-          "start": 63,
-          "end": 86
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2089965766116528215-0.png",
-          "imageModern": "assets/generated/x/mine-post-2089965766116528215-0-modern.png"
-        }
-      ]
     },
     {
       "id": "2089389696132817332",

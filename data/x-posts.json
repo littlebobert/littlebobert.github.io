@@ -1,20 +1,8 @@
 {
-  "updatedAt": "2026-08-20T15:50:57.262Z",
+  "updatedAt": "2026-08-21T15:50:57.023Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
-    {
-      "id": "2090425640571060566",
-      "text": "I told my coworker I’m the top Cursor user by token usage in Japan and he didn’t even flinch 🤡",
-      "createdAt": "2026-08-20T13:08:05.000Z",
-      "url": "https://x.com/_bobertdowney/status/2090425640571060566",
-      "urls": [],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
     {
       "id": "2089967315362435393",
       "text": "one time when I said some dumb shit in a mailing list post at Apple someone came into my office while I was at lunch and unplugged my internet",
@@ -251,6 +239,33 @@
           "type": "photo",
           "image": "assets/generated/x/mine-post-2086728487029862508-1.png",
           "imageModern": "assets/generated/x/mine-post-2086728487029862508-1-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2086591205685731585",
+      "text": "9月のApple発表会、東京でみんなで見る会やる人いる？ https://t.co/n60C1OgQnc",
+      "createdAt": "2026-08-09T23:11:25.000Z",
+      "url": "https://x.com/_bobertdowney/status/2086591205685731585",
+      "urls": [
+        {
+          "url": "https://t.co/n60C1OgQnc",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2086591205685731585/photo/1",
+          "displayUrl": "pic.x.com/n60C1OgQnc",
+          "start": 29,
+          "end": 52
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2086591205685731585-0.png",
+          "imageModern": "assets/generated/x/mine-post-2086591205685731585-0-modern.png"
         }
       ]
     }

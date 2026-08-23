@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.4.1</title>
+            <pubDate>Sun, 23 Aug 2026 14:25:21 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>59</sparkle:version>
+            <sparkle:shortVersionString>0.4.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed a few bugs related to the GitHub repositories section.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.4.1/Kehai-0.4.1-mac.zip" length="5570889" type="application/octet-stream" sparkle:edSignature="LxbM831bHNlWJSroDy+RjwWgDzdFvdwwQUbglDbU7xpUyICVJV7EbimgRgmzvoN+Xh/gw7krDpqqdTDWZeAiDg=="/>
+        </item>
+        <item>
             <title>0.4.0</title>
             <pubDate>Sun, 23 Aug 2026 12:06:51 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fix a bug where certain apps like Quicktime would show up despite them not running.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.17/Kehai-0.3.17-mac.zip" length="5402278" type="application/octet-stream" sparkle:edSignature="8JuEgJRGhwWZgKN5aAqczDJVwdztXL2qj9ijaXP1FybmnmZOGdXn6zhjnSTGw1LdUhMbXHWSgLBq8uSI4VCiCw=="/>
-        </item>
-        <item>
-            <title>0.3.16</title>
-            <pubDate>Fri, 14 Aug 2026 13:53:16 -0400</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>56</sparkle:version>
-            <sparkle:shortVersionString>0.3.16</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed a bug where Safari could be slow to switch to.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.3.16/Kehai-0.3.16-mac.zip" length="5399682" type="application/octet-stream" sparkle:edSignature="amCfIMH+vnHINhLP9+o9ivisGYPfxiqi9rKFZc7VgFkg5JsxPXKyI6/lKS18FM0OLVMxWEtik0we7WVcwLN1BQ=="/>
         </item>
     </channel>
 </rss>

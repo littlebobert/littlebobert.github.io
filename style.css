@@ -516,7 +516,7 @@ html[lang="ja"] .language-switcher > button {
 }
 
 .stack-content {
-  padding: 12px 14px 14px;
+  padding: 12px 14px 6px;
 }
 
 .stack-top-row {
@@ -1769,7 +1769,6 @@ button.puzzle-tile:focus-visible {
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  margin-bottom: -8px;
   padding-top: 6px;
 }
 
@@ -2510,7 +2509,7 @@ div.patents {
   }
 
   .stack-content {
-    padding: 10px;
+    padding: 10px 10px 6px;
   }
 
   .stack-top-row {

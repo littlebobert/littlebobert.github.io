@@ -6,7 +6,7 @@
   <script src="theme.js?v=2"></script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
   <title>About Justin Garcia</title>
-  <link href='style.css?v=132' rel='stylesheet'>
+  <link href='style.css?v=135' rel='stylesheet'>
   <style>
     /* Preview: Ume face, sized to the window title (About) */
     body.home-page,
@@ -20,11 +20,30 @@
       min-height: 24px;
       padding: 4px 9px;
     }
+    body.home-page .made-in-japan-badge {
+      font-size: 10px !important;
+      display: inline-flex;
+      align-items: center;
+      color: inherit;
+      letter-spacing: 0.5px;
+    }
     body.home-page .stack-card-kicker {
       font-size: 11px !important;
       font-weight: inherit !important;
       color: inherit !important;
       line-height: 1.45 !important;
+    }
+    body.home-page .stack-card h2,
+    body.home-page .stack-card p,
+    body.home-page .stack-topic-list {
+      font-weight: inherit !important;
+    }
+    body.home-page .language-segment,
+    body.home-page .appearance-segment,
+    body.home-page .clock-mode-segment,
+    body.home-page .weather-unit-segment,
+    body.home-page .appearance-option {
+      font-weight: inherit !important;
     }
     body.home-page .stack-app-entry .stack-actions a {
       font-weight: normal !important;
@@ -576,6 +595,14 @@
           data-label-en="More"
           data-label-ja="もっと見る"
         >More</button>
+      </div>
+
+      <div class="stack-window-footer">
+        <span
+          class="made-in-japan-badge"
+          data-label-en="Made in Japan"
+          data-label-ja="<span class='ja-text'>日本製</span>"
+        >Made in Japan</span>
       </div>
     </div>
     </div>

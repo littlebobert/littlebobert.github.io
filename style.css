@@ -1765,6 +1765,14 @@ button.puzzle-tile:focus-visible {
   margin-top: 12px;
 }
 
+.stack-window-footer {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
+  margin-bottom: -8px;
+  padding-top: 6px;
+}
+
 .stack-button {
   appearance: none;
   -webkit-appearance: none;
@@ -2798,6 +2806,22 @@ div.patents {
 }
 
 /* Classic Mac OS 9-inspired theme */
+html[data-theme="bw"] .stack-actions a,
+html[data-theme="bw"] .stack-button,
+html[data-theme="bw"] .stack-index-button,
+html[data-theme="bw"] .stack-index-shortcut,
+html[data-theme="bw"] .qr-code-button,
+html[data-theme="bw"] .mud-command-button,
+html[data-theme="bw"] .map-control-button,
+html[data-theme="bw"] .puzzle-alert-button,
+html[data-theme="bw"] .web-browser-open-external,
+html[data-theme="bw"] .language-segmented,
+html[data-theme="bw"] .appearance-segmented,
+html[data-theme="bw"] .clock-mode-segmented,
+html[data-theme="bw"] .weather-unit-segmented {
+  border-radius: 2px;
+}
+
 html[data-theme="classic"] {
   --classic-ink: #111;
   --classic-shadow: #777;

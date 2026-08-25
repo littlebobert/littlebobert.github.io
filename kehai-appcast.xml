@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.4.6</title>
+            <pubDate>Tue, 25 Aug 2026 18:52:13 +0900</pubDate>
+            <link>https://littlebobert.github.io/kehai.html</link>
+            <sparkle:version>64</sparkle:version>
+            <sparkle:shortVersionString>0.4.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed bugs with using arrows to move through windows and GitHub repositories.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.4.6/Kehai-0.4.6-mac.zip" length="5741000" type="application/octet-stream" sparkle:edSignature="eSXD35xaoJURPr3pphttOrHKjKGToJqoPRC2E4OeaI7PeTd5rmBXTHnlX1taKQS8p2RBn8u/tPHeoHMQU6IFAA=="/>
+        </item>
+        <item>
             <title>0.4.5</title>
             <pubDate>Mon, 24 Aug 2026 08:16:03 +0900</pubDate>
             <link>https://littlebobert.github.io/kehai.html</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed bugs related to the focused state in the GitHub section.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.4.4/Kehai-0.4.4-mac.zip" length="5750164" type="application/octet-stream" sparkle:edSignature="7RdPTMpr+nBJmOeOrhpG6yIFuaVLlYOZeIZaKtj+zW5rqC6wdxUvSfQs94I1xX/62xWFB3gGb7IIG8mtc0/5Dg=="/>
-        </item>
-        <item>
-            <title>0.4.3</title>
-            <pubDate>Sun, 23 Aug 2026 18:02:31 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>61</sparkle:version>
-            <sparkle:shortVersionString>0.4.3</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Added a new theme: Retrofit
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.4.3/Kehai-0.4.3-mac.zip" length="5746205" type="application/octet-stream" sparkle:edSignature="/BSxItH4/HQQz/mFMS4qmPFvsEB2HveAt5pYW0ADxZsPtfC1ng15EdtZrH//Bm3V3ZlK4tWvEpvLJLo+I+vOCA=="/>
         </item>
     </channel>
 </rss>

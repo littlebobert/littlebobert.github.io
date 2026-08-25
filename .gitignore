@@ -1,6 +1,7 @@
 .DS_Store
 node_modules/
 dist-sasu/
+dist-kehai/
 .env.local
 .npm-cache/
 

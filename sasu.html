@@ -79,6 +79,14 @@
       margin-top: 6pt;
     }
 
+    .privacy-source {
+      padding-top: 7pt;
+    }
+
+    .home-link {
+      text-align: center;
+    }
+
     .release-notes summary {
       cursor: pointer;
       font-weight: bold;
@@ -148,13 +156,11 @@
       >(version 0.2.10)</span>
       <div
         class="small-note"
-        data-label-en="Requires macOS 13 or newer, Screen Recording permission, and either an invite or your own OpenAI API key."
-        data-label-ja="macOS 13以降、画面収録の許可、招待または自分のOpenAI APIキーが必要です。"
-        data-label-zh-hant="需要 macOS 13 或更新版本、螢幕錄製權限，以及邀請或您自己的 OpenAI API 金鑰。"
-        data-label-zh-hans="需要 macOS 13 或更高版本、屏幕录制权限，以及邀请或您自己的 OpenAI API 密钥。"
-      >
-        Requires macOS 13 or newer, Screen Recording permission, and either an invite or your own OpenAI API key.
-      </div>
+        data-label-en="Free and no in-app purchases."
+        data-label-ja="無料で、アプリ内課金はありません。"
+        data-label-zh-hant="免費，且沒有 App 內購買。"
+        data-label-zh-hans="免费，且没有 App 内购买。"
+      >Free and no in-app purchases.</div>
       <div class="invite-panel" id="invite-panel" hidden>
         <h2
           data-label-en="You’ve been invited to Sasu"
@@ -251,14 +257,14 @@
         data-label-zh-hans="隐私："
       >Privacy:</h2>
       <div
-        data-label-en="Sasu only sends your screenshot or copied clipboard text when you ask. With invite access, requests go through the Sasu server and then to OpenAI. With your own API key, requests go directly to OpenAI. Credentials are stored securely in macOS Keychain."
-        data-label-ja="Sasuは、依頼したときだけスクリーンショットまたはコピーしたクリップボードのテキストを送信します。招待アクセスでは、リクエストはSasuのサーバーを経由してOpenAIに送信されます。自分のAPIキーを使う場合はOpenAIへ直接送信されます。認証情報はmacOSのキーチェーンに安全に保存されます。"
-        data-label-zh-hant="Sasu 只會在您提出要求時傳送螢幕截圖或複製到剪貼簿的文字。使用邀請存取時，請求會先經過 Sasu 伺服器，再傳送至 OpenAI。使用您自己的 API 金鑰時，請求會直接傳送至 OpenAI。認證資料會安全地儲存在 macOS 鑰匙圈中。"
-        data-label-zh-hans="Sasu 只会在您提出请求时发送屏幕截图或复制到剪贴板的文本。使用邀请访问时，请求会先经过 Sasu 服务器，再发送至 OpenAI。使用您自己的 API 密钥时，请求会直接发送至 OpenAI。凭据会安全地存储在 macOS 钥匙串中。"
+        data-label-en="Sasu only sends your screenshot or copied clipboard text when you ask. Your requests go directly to your AI provider of choice. Credentials are stored securely in macOS Keychain."
+        data-label-ja="Sasuは、依頼したときだけスクリーンショットまたはコピーしたクリップボードのテキストを送信します。リクエストは、選択したAIプロバイダーへ直接送信されます。認証情報はmacOSのキーチェーンに安全に保存されます。"
+        data-label-zh-hant="Sasu 只會在您提出要求時傳送螢幕截圖或複製到剪貼簿的文字。您的請求會直接傳送至您選擇的 AI 供應商。認證資料會安全地儲存在 macOS 鑰匙圈中。"
+        data-label-zh-hans="Sasu 只会在您提出请求时发送屏幕截图或复制到剪贴板的文本。您的请求会直接发送至您选择的 AI 提供商。凭据会安全地存储在 macOS 钥匙串中。"
       >
-        Sasu only sends your screenshot or copied clipboard text when you ask. With invite access, requests go through the Sasu server and then to OpenAI. With your own API key, requests go directly to OpenAI. Credentials are stored securely in macOS Keychain.
+        Sasu only sends your screenshot or copied clipboard text when you ask. Your requests go directly to your AI provider of choice. Credentials are stored securely in macOS Keychain.
       </div>
-      <div class="small-note">
+      <div class="privacy-source">
         <a
           href="https://github.com/littlebobert/sasu-internal"
           data-label-en="View the source code on GitHub."
@@ -283,6 +289,23 @@
         data-label-zh-hans="我最近开始在日本工作，有时需要帮助理解表单和其他网页。浏览器翻译可能会重新排列或破坏页面布局，而将屏幕截图粘贴到 AI 聊天中也无法获得屏幕上的操作指引。App 名称“指す”在日语中意为“指向”。"
       >
         I recently started working in Japan and sometimes need help understanding forms and other web pages. Browser translation can rearrange or break the page layout, and pasting screenshots into an AI chat gives no on-screen guidance. The app name is 指す — “to point.”
+      </div>
+    </div>
+
+    <div class="sasu-section">
+      <h2
+        data-label-en="Requirements:"
+        data-label-ja="動作要件："
+        data-label-zh-hant="系統需求："
+        data-label-zh-hans="系统要求："
+      >Requirements:</h2>
+      <div
+        data-label-en="Requires macOS 13 or newer, Screen Recording permission, and either an invite or your own OpenAI API key."
+        data-label-ja="macOS 13以降、画面収録の許可、招待または自分のOpenAI APIキーが必要です。"
+        data-label-zh-hant="需要 macOS 13 或更新版本、螢幕錄製權限，以及邀請或您自己的 OpenAI API 金鑰。"
+        data-label-zh-hans="需要 macOS 13 或更高版本、屏幕录制权限，以及邀请或您自己的 OpenAI API 密钥。"
+      >
+        Requires macOS 13 or newer, Screen Recording permission, and either an invite or your own OpenAI API key.
       </div>
     </div>
 

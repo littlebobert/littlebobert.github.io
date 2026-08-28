@@ -233,7 +233,6 @@
     .release-notes h2 { display: inline-block; }
     .release-notes ul { margin-bottom: 0; }
     .release-date { padding-left: 4pt; font-size: 10pt; color: #555; }
-    .bottom-cta { padding: 15pt 0 7pt; text-align: center; }
     .ume-footer { padding: 13pt 0 8pt; color: #555; text-align: center; }
     .ume-footer p { margin: 4pt 0; }
 
@@ -360,23 +359,18 @@
 
     <section class="ume-detail">
       <h2 data-label-en="Privacy:" data-label-ja="プライバシー：">Privacy:</h2>
-      <p data-label-en="Ume reads eligible form controls only when you ask it to remember or fill a form. Saved answers are encrypted with AES-GCM, and the device-only key is kept in Apple Keychain. Ume collects no analytics and skips passwords, payment details, security codes, secrets, tokens, and Social Security numbers." data-label-ja="Umeは、フォームの保存または入力を指示したときだけ対象項目を読み取ります。保存した回答はAES-GCMで暗号化され、端末専用キーはApple Keychainに保管されます。分析データは収集せず、パスワード、支払い情報、セキュリティコード、秘密情報、トークン、社会保障番号は対象外です。">Ume reads eligible form controls only when you ask it to remember or fill a form. Saved answers are encrypted with AES-GCM, and the device-only key is kept in Apple Keychain. Ume collects no analytics and skips passwords, payment details, security codes, secrets, tokens, and Social Security numbers.</p>
+      <p data-label-en="Ume reads eligible form controls only when you ask it to remember or fill a form. Saved answers are encrypted with AES-GCM, and the device-only key is kept in Apple Keychain. Ume collects no analytics and skips passwords, payment details, security codes, secrets, tokens, and Social Security numbers. Ume just sends field descriptions and metadata to your AI provider, not your saved answers or the values currently entered in the form." data-label-ja="Umeは、フォームの保存または入力を指示したときだけ対象項目を読み取ります。保存した回答はAES-GCMで暗号化され、端末専用キーはApple Keychainに保管されます。分析データは収集せず、パスワード、支払い情報、セキュリティコード、秘密情報、トークン、社会保障番号は対象外です。AIプロバイダーへ送信するのは項目の説明とメタデータだけで、保存した回答やフォームに入力済みの値は送信しません。">Ume reads eligible form controls only when you ask it to remember or fill a form. Saved answers are encrypted with AES-GCM, and the device-only key is kept in Apple Keychain. Ume collects no analytics and skips passwords, payment details, security codes, secrets, tokens, and Social Security numbers. Ume just sends field descriptions and metadata to your AI provider, not your saved answers or the values currently entered in the form.</p>
       <p class="privacy-source"><a href="https://github.com/littlebobert/ume" data-label-en="View the source code on GitHub." data-label-ja="ソースコードをGitHubで見る。">View the source code on GitHub.</a></p>
     </section>
 
     <section class="ume-detail">
-      <h2 data-label-en="Optional AI matching:" data-label-ja="任意のAI照合：">Optional AI matching:</h2>
-      <p data-label-en="Local matching always runs first. If you add your own OpenAI or Anthropic API key, Ume can ask that provider to match otherwise-unrecognized fields. It sends sanitized field descriptions—not your saved answers or the values currently entered in the form—and applies returned mappings locally." data-label-ja="まず端末上で照合します。自分のOpenAIまたはAnthropic APIキーを追加すると、認識できなかった項目の照合をAIに依頼できます。送信するのは匿名化された項目の説明だけで、保存した回答やフォームに入力済みの値は送信しません。返された対応関係は端末上で適用します。">Local matching always runs first. If you add your own OpenAI or Anthropic API key, Ume can ask that provider to match otherwise-unrecognized fields. It sends sanitized field descriptions—not your saved answers or the values currently entered in the form—and applies returned mappings locally.</p>
-    </section>
-
-    <section class="ume-detail">
       <h2 data-label-en="Why “Ume”?" data-label-ja="なぜ「Ume」？">Why “Ume”?</h2>
-      <p data-label-en="Ume (埋め) means “fill it in” in Japanese—a compact command based on umeru (埋める), “to fill in.”" data-label-ja="Ume（埋め）は「入力して」「埋めて」という意味を込めた、動詞「埋める」から取った短い名前です。">Ume (埋め) means “fill it in” in Japanese—a compact command based on umeru (埋める), “to fill in.”</p>
+      <p data-label-en="Ume (埋め) means “fill it in” in Japanese." data-label-ja="Ume（埋め）は「入力して」「埋めて」という意味です。">Ume (埋め) means “fill it in” in Japanese.</p>
     </section>
 
     <section class="ume-detail">
       <h2 data-label-en="Requirements:" data-label-ja="動作要件：">Requirements:</h2>
-      <p data-label-en="Requires iOS or iPadOS 15 or newer, or macOS 12 or newer. Enable Ume in Safari Extensions and grant website access where needed. Optional AI matching requires your own OpenAI or Anthropic API key." data-label-ja="iOSまたはiPadOS 15以降、もしくはmacOS 12以降が必要です。Safariの拡張機能でUmeを有効にし、必要なWebサイトへのアクセスを許可してください。任意のAI照合には自分のOpenAIまたはAnthropic APIキーが必要です。">Requires iOS or iPadOS 15 or newer, or macOS 12 or newer. Enable Ume in Safari Extensions and grant website access where needed. Optional AI matching requires your own OpenAI or Anthropic API key.</p>
+      <p data-label-en="Requires iOS or iPadOS 15 or newer, or macOS 12 or newer. Enable Ume in Safari Extensions and grant website access where needed. Requires your own OpenAI or Anthropic API key." data-label-ja="iOSまたはiPadOS 15以降、もしくはmacOS 12以降が必要です。Safariの拡張機能でUmeを有効にし、必要なWebサイトへのアクセスを許可してください。自分のOpenAIまたはAnthropic APIキーが必要です。">Requires iOS or iPadOS 15 or newer, or macOS 12 or newer. Enable Ume in Safari Extensions and grant website access where needed. Requires your own OpenAI or Anthropic API key.</p>
     </section>
 
     <section class="ume-detail">
@@ -441,10 +435,6 @@
         <!-- ume-changelog:end -->
       </details>
     </section>
-
-    <div class="bottom-cta">
-      <a class="download-link" data-ume-download href="https://github.com/littlebobert/ume/releases/download/v0.1.14/Ume-0.1.14-macOS.dmg" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
-    </div>
 
     <footer class="ume-footer">
       <p><span data-label-en="Made by" data-label-ja="日本の">Made by</span> <a href="https://littlebobert.github.io">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja=" が制作。"> in Japan.</span></p>

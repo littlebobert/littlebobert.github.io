@@ -1,8 +1,123 @@
 {
-  "updatedAt": "2026-08-28T00:26:29.691Z",
+  "updatedAt": "2026-08-29T00:01:44.364Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2093325248578134219",
+      "text": "designed in Japan and (maybe soon) made by Grok in space https://t.co/hhVCz0Xkk6",
+      "createdAt": "2026-08-28T13:10:06.000Z",
+      "url": "https://x.com/_bobertdowney/status/2093325248578134219",
+      "urls": [
+        {
+          "url": "https://t.co/hhVCz0Xkk6",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2093325248578134219/photo/1",
+          "displayUrl": "pic.x.com/hhVCz0Xkk6",
+          "start": 57,
+          "end": 80
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2093325248578134219-0.png",
+          "imageModern": "assets/generated/x/mine-post-2093325248578134219-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2093273407785980294",
+      "text": "Kotoba音声翻訳に、リアルタイム音声クローニング機能が加わりました\nhttps://t.co/MCcX7dNGmC https://t.co/L35dXVyKKV",
+      "createdAt": "2026-08-28T09:44:06.000Z",
+      "url": "https://x.com/_bobertdowney/status/2093273407785980294",
+      "urls": [
+        {
+          "url": "https://t.co/MCcX7dNGmC",
+          "expandedUrl": "https://site.kotoba.tech/#playground",
+          "displayUrl": "site.kotoba.tech/#playground",
+          "start": 36,
+          "end": 59
+        },
+        {
+          "url": "https://t.co/L35dXVyKKV",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2093273407785980294/video/1",
+          "displayUrl": "pic.x.com/L35dXVyKKV",
+          "start": 60,
+          "end": 83
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2093273407785980294-0.png",
+          "imageModern": "assets/generated/x/mine-post-2093273407785980294-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2093140816474824778",
+      "text": "new Siri voice in iOS 27 betas seems to switch from the English voice to the Japanese one when an incoming iMessage starts in English and switches to 日本語😍 https://t.co/BserYy1IRn",
+      "createdAt": "2026-08-28T00:57:13.000Z",
+      "url": "https://x.com/_bobertdowney/status/2093140816474824778",
+      "urls": [
+        {
+          "url": "https://t.co/BserYy1IRn",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2093140816474824778/photo/1",
+          "displayUrl": "pic.x.com/BserYy1IRn",
+          "start": 155,
+          "end": 178
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2093140816474824778-0.png",
+          "imageModern": "assets/generated/x/mine-post-2093140816474824778-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2093137525363917201",
+      "text": "designed by machine elves in California https://t.co/oedOnvbAZa",
+      "createdAt": "2026-08-28T00:44:09.000Z",
+      "url": "https://x.com/_bobertdowney/status/2093137525363917201",
+      "urls": [
+        {
+          "url": "https://t.co/oedOnvbAZa",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2093137525363917201/photo/1",
+          "displayUrl": "pic.x.com/oedOnvbAZa",
+          "start": 40,
+          "end": 63
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2093137525363917201-0.png",
+          "imageModern": "assets/generated/x/mine-post-2093137525363917201-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2093117262572228855",
       "text": "知らぬが仏🤡 https://t.co/Ps7PvxKdfq",
@@ -130,160 +245,6 @@
           "imageModern": "assets/generated/x/mine-post-2091489592289734990-0-modern.png"
         }
       ]
-    },
-    {
-      "id": "2091485853378080896",
-      "text": "started talking to an older Japanese guy at a tech event here in Tokyo recently. he told me the only American engineers that come here to work are the second rate / washed up ones.\n\nhe also said Japan doesn’t need AI for reasons I won’t go into here. https://t.co/oN7t6i1Lx9",
-      "createdAt": "2026-08-23T11:21:00.000Z",
-      "url": "https://x.com/_bobertdowney/status/2091485853378080896",
-      "urls": [
-        {
-          "url": "https://t.co/oN7t6i1Lx9",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2091485853378080896/photo/1",
-          "displayUrl": "pic.x.com/oN7t6i1Lx9",
-          "start": 251,
-          "end": 274
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2091485853378080896-0.png",
-          "imageModern": "assets/generated/x/mine-post-2091485853378080896-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2091479371152609347",
-      "text": "日本人に「なんで日本に来たの？」って聞かれるたびに、「ひらがながかっこいいから」って答えて 🤡 https://t.co/doJG9xbjYk",
-      "createdAt": "2026-08-23T10:55:14.000Z",
-      "url": "https://x.com/_bobertdowney/status/2091479371152609347",
-      "urls": [
-        {
-          "url": "https://t.co/doJG9xbjYk",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2091479371152609347/photo/1",
-          "displayUrl": "pic.x.com/doJG9xbjYk",
-          "start": 48,
-          "end": 71
-        },
-        {
-          "url": "https://t.co/doJG9xbjYk",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2091479371152609347/photo/1",
-          "displayUrl": "pic.x.com/doJG9xbjYk",
-          "start": 48,
-          "end": 71
-        },
-        {
-          "url": "https://t.co/doJG9xbjYk",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2091479371152609347/photo/1",
-          "displayUrl": "pic.x.com/doJG9xbjYk",
-          "start": 48,
-          "end": 71
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2091479371152609347-0.png",
-          "imageModern": "assets/generated/x/mine-post-2091479371152609347-0-modern.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2091479371152609347-1.png",
-          "imageModern": "assets/generated/x/mine-post-2091479371152609347-1-modern.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2091479371152609347-2.png",
-          "imageModern": "assets/generated/x/mine-post-2091479371152609347-2-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2091472862414778381",
-      "text": "smiling despite having just been curb stomped in Scrabble https://t.co/WRgTjiB2Y8",
-      "createdAt": "2026-08-23T10:29:22.000Z",
-      "url": "https://x.com/_bobertdowney/status/2091472862414778381",
-      "urls": [
-        {
-          "url": "https://t.co/WRgTjiB2Y8",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2091472862414778381/photo/1",
-          "displayUrl": "pic.x.com/WRgTjiB2Y8",
-          "start": 58,
-          "end": 81
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2091472862414778381-0.png",
-          "imageModern": "assets/generated/x/mine-post-2091472862414778381-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2091471138853642399",
-      "text": "I have defined my agent swarm personas hbu https://t.co/PsTUZ79ssP",
-      "createdAt": "2026-08-23T10:22:31.000Z",
-      "url": "https://x.com/_bobertdowney/status/2091471138853642399",
-      "urls": [
-        {
-          "url": "https://t.co/PsTUZ79ssP",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2091471138853642399/photo/1",
-          "displayUrl": "pic.x.com/PsTUZ79ssP",
-          "start": 43,
-          "end": 66
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2091471138853642399-0.png",
-          "imageModern": "assets/generated/x/mine-post-2091471138853642399-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2091470216786239517",
-      "text": "finally learned how to cut a pineapple (from Line Yahoo cafeteria staff) 🤡\n\nhttps://t.co/kQLvBsZLtq",
-      "createdAt": "2026-08-23T10:18:51.000Z",
-      "url": "https://x.com/_bobertdowney/status/2091470216786239517",
-      "urls": [
-        {
-          "url": "https://t.co/kQLvBsZLtq",
-          "expandedUrl": "https://youtu.be/uCR9SgCXROE?si=RlcihXPAVM8Fa7F5&t=289",
-          "displayUrl": "youtu.be/uCR9SgCXROE?si…",
-          "start": 76,
-          "end": 99
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 }

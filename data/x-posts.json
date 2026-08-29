@@ -1,8 +1,102 @@
 {
-  "updatedAt": "2026-08-29T00:01:44.364Z",
+  "updatedAt": "2026-08-29T18:36:27.808Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2093689964877979972",
+      "text": "firing up Xcode again after 12 months…to make a TestFlight for an app that only my mom uses🤡 https://t.co/uzioARZ9cD",
+      "createdAt": "2026-08-29T13:19:21.000Z",
+      "url": "https://x.com/_bobertdowney/status/2093689964877979972",
+      "urls": [
+        {
+          "url": "https://t.co/uzioARZ9cD",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2093689964877979972/photo/1",
+          "displayUrl": "pic.x.com/uzioARZ9cD",
+          "start": 93,
+          "end": 116
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2093689964877979972-0.png",
+          "imageModern": "assets/generated/x/mine-post-2093689964877979972-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2093595076849193198",
+      "text": "英語を使うと10代のボランティアの子たちが嫌がるから、地元のコミュニティセンターでの練習はいいんだよ https://t.co/lKZQLzTHk1",
+      "createdAt": "2026-08-29T07:02:18.000Z",
+      "url": "https://x.com/_bobertdowney/status/2093595076849193198",
+      "urls": [
+        {
+          "url": "https://t.co/lKZQLzTHk1",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2093595076849193198/photo/1",
+          "displayUrl": "pic.x.com/lKZQLzTHk1",
+          "start": 51,
+          "end": 74
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2093595076849193198-0.png",
+          "imageModern": "assets/generated/x/mine-post-2093595076849193198-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2093587799605952923",
+      "text": "macOS should have UI customization but instead of prompting an AI you ask for and pay for human created themes. \"desktop wallpaper by Hunter Biden\", or \"system sounds by Tom Hank’s son, please\" https://t.co/quiKQDefWV",
+      "createdAt": "2026-08-29T06:33:23.000Z",
+      "url": "https://x.com/_bobertdowney/status/2093587799605952923",
+      "urls": [
+        {
+          "url": "https://t.co/quiKQDefWV",
+          "expandedUrl": "https://twitter.com/dhh/status/2088304854603047019",
+          "displayUrl": "x.com/dhh/status/208…",
+          "start": 194,
+          "end": 217
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2093516417278824789",
+      "text": "this is worse than The Beatles breaking up https://t.co/fH0e0grKWO",
+      "createdAt": "2026-08-29T01:49:44.000Z",
+      "url": "https://x.com/_bobertdowney/status/2093516417278824789",
+      "urls": [
+        {
+          "url": "https://t.co/fH0e0grKWO",
+          "expandedUrl": "https://twitter.com/OpenAI/status/2093515564786540695",
+          "displayUrl": "x.com/OpenAI/status/…",
+          "start": 43,
+          "end": 66
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2093325248578134219",
       "text": "designed in Japan and (maybe soon) made by Grok in space https://t.co/hhVCz0Xkk6",
@@ -27,40 +121,6 @@
           "type": "photo",
           "image": "assets/generated/x/mine-post-2093325248578134219-0.png",
           "imageModern": "assets/generated/x/mine-post-2093325248578134219-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2093273407785980294",
-      "text": "Kotoba音声翻訳に、リアルタイム音声クローニング機能が加わりました\nhttps://t.co/MCcX7dNGmC https://t.co/L35dXVyKKV",
-      "createdAt": "2026-08-28T09:44:06.000Z",
-      "url": "https://x.com/_bobertdowney/status/2093273407785980294",
-      "urls": [
-        {
-          "url": "https://t.co/MCcX7dNGmC",
-          "expandedUrl": "https://site.kotoba.tech/#playground",
-          "displayUrl": "site.kotoba.tech/#playground",
-          "start": 36,
-          "end": 59
-        },
-        {
-          "url": "https://t.co/L35dXVyKKV",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2093273407785980294/video/1",
-          "displayUrl": "pic.x.com/L35dXVyKKV",
-          "start": 60,
-          "end": 83
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2093273407785980294-0.png",
-          "imageModern": "assets/generated/x/mine-post-2093273407785980294-0-modern.png"
         }
       ]
     },
@@ -169,80 +229,6 @@
           "type": "photo",
           "image": "assets/generated/x/mine-post-2092976744399798505-0.png",
           "imageModern": "assets/generated/x/mine-post-2092976744399798505-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2092744567565287816",
-      "text": "konnichiwoof https://t.co/F0Uli6eXSo",
-      "createdAt": "2026-08-26T22:42:40.000Z",
-      "url": "https://x.com/_bobertdowney/status/2092744567565287816",
-      "urls": [
-        {
-          "url": "https://t.co/F0Uli6eXSo",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2092744567565287816/photo/1",
-          "displayUrl": "pic.x.com/F0Uli6eXSo",
-          "start": 13,
-          "end": 36
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2092744567565287816-0.png",
-          "imageModern": "assets/generated/x/mine-post-2092744567565287816-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2092741753363390762",
-      "text": "Kotobus when? @kotoba_tech https://t.co/gU4bOmUXdU",
-      "createdAt": "2026-08-26T22:31:29.000Z",
-      "url": "https://x.com/_bobertdowney/status/2092741753363390762",
-      "urls": [
-        {
-          "url": "https://t.co/gU4bOmUXdU",
-          "expandedUrl": "https://twitter.com/madsf88/status/2079716016548958364",
-          "displayUrl": "x.com/madsf88/status…",
-          "start": 27,
-          "end": 50
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2091489592289734990",
-      "text": "おじさんのとんかつ定食がTLに流れてきただけで “hell yeah brother” って声出た。日本好きすぎだろ俺 https://t.co/Mb1yI5k9wy",
-      "createdAt": "2026-08-23T11:35:51.000Z",
-      "url": "https://x.com/_bobertdowney/status/2091489592289734990",
-      "urls": [
-        {
-          "url": "https://t.co/Mb1yI5k9wy",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2091489592289734990/photo/1",
-          "displayUrl": "pic.x.com/Mb1yI5k9wy",
-          "start": 60,
-          "end": 83
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2091489592289734990-0.png",
-          "imageModern": "assets/generated/x/mine-post-2091489592289734990-0-modern.png"
         }
       ]
     }

@@ -1094,6 +1094,8 @@ html[lang="ja"] .stack-card .x-post-text {
   text-align: left;
   text-shadow: 1px 1px 0 #fff;
   -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .stack-index-button:active {
@@ -1101,6 +1103,7 @@ html[lang="ja"] .stack-card .x-post-text {
     inset 2px 2px 0 #777,
     inset -1px -1px 0 #fff;
   transform: translate(2px, 2px);
+  text-shadow: none;
 }
 
 .stack-index-button:focus-visible {
@@ -1705,6 +1708,8 @@ button.puzzle-tile:focus-visible {
   line-height: 1;
   text-shadow: 1px 1px 0 #fff;
   -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .puzzle-alert-button:active {
@@ -1712,6 +1717,7 @@ button.puzzle-tile:focus-visible {
     inset 2px 2px 0 #777,
     inset -1px -1px 0 #fff;
   transform: translate(2px, 2px);
+  text-shadow: none;
 }
 
 .puzzle-alert-button:focus-visible {
@@ -1747,6 +1753,8 @@ button.puzzle-tile:focus-visible {
   text-decoration: none;
   text-shadow: 1px 1px 0 #fff;
   -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .stack-actions a:active {
@@ -1756,6 +1764,7 @@ button.puzzle-tile:focus-visible {
     inset 2px 2px 0 #777,
     inset -1px -1px 0 #fff;
   transform: translate(2px, 2px);
+  text-shadow: none;
 }
 
 .stack-controls {
@@ -1791,6 +1800,8 @@ button.puzzle-tile:focus-visible {
   line-height: 1;
   text-shadow: 1px 1px 0 #fff;
   -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
 }
 
 .stack-button-secondary {
@@ -1807,6 +1818,7 @@ button.puzzle-tile:focus-visible {
     inset 2px 2px 0 #777,
     inset -1px -1px 0 #fff;
   transform: translate(2px, 2px);
+  text-shadow: none;
 }
 
 .stack-button:focus-visible,
@@ -2632,7 +2644,7 @@ div.patents {
   }
 
   .stack-index-grid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 6px;
   }
 

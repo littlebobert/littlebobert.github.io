@@ -15,16 +15,28 @@ const JSON_HEADERS = {
   'X-Content-Type-Options': 'nosniff',
 };
 
-function allowedOrigins(env) {
-  return new Set(String(env.ALLOWED_ORIGINS || '')
+function splitList(value) {
+  return String(value || '')
     .split(',')
-    .map((origin) => origin.trim())
-    .filter(Boolean));
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+}
+
+function allowedOrigins(env) {
+  return new Set(splitList(env.ALLOWED_ORIGINS));
+}
+
+// Suffixes must start with a dot so that "evilexample.com" cannot match ".example.com".
+function isOriginAllowed(origin, env) {
+  if (!origin) return false;
+  if (allowedOrigins(env).has(origin)) return true;
+  return splitList(env.ALLOWED_ORIGIN_SUFFIXES)
+    .some((suffix) => suffix.startsWith('.') && origin.startsWith('https://') && origin.endsWith(suffix));
 }
 
 function corsHeaders(request, env) {
   const origin = request.headers.get('Origin');
-  if (!origin || !allowedOrigins(env).has(origin)) return {};
+  if (!isOriginAllowed(origin, env)) return {};
   return {
     'Access-Control-Allow-Headers': 'Content-Type',
     'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
@@ -45,8 +57,7 @@ function json(request, env, data, status = 200) {
 }
 
 function requireAllowedOrigin(request, env) {
-  const origin = request.headers.get('Origin');
-  if (!origin || !allowedOrigins(env).has(origin)) {
+  if (!isOriginAllowed(request.headers.get('Origin'), env)) {
     throw new Response('Origin not allowed.', { status: 403 });
   }
 }

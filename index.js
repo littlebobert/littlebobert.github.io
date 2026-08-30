@@ -47,6 +47,7 @@ const STACK_CARD_STORAGE_KEY = 'about-stack-card-index';
 const CLOCK_MODE_STORAGE_KEY = 'clock-display-mode';
 const WEATHER_UNIT_STORAGE_KEY = 'weather-unit';
 const VISITOR_COUNTED_STORAGE_KEY = 'page-views-counter-counted';
+const VISITOR_COUNT_CACHE_KEY = 'page-views-counter-last';
 const PORTFOLIO_API_BASE_URL = 'https://portfolio-backend.justin-garcia.workers.dev';
 const TURNSTILE_SITE_KEY = '0x4AAAAAADzny1gQWxbt_9AA';
 const VISITOR_COUNTER_BASE_URL = PORTFOLIO_API_BASE_URL
@@ -247,6 +248,20 @@ function markVisitorCountedThisSession() {
   } catch {}
 }
 
+function readCachedVisitorCount() {
+  try {
+    return localStorage.getItem(VISITOR_COUNT_CACHE_KEY) || '';
+  } catch {
+    return '';
+  }
+}
+
+function cacheVisitorCount(value) {
+  try {
+    localStorage.setItem(VISITOR_COUNT_CACHE_KEY, value);
+  } catch {}
+}
+
 function formatVisitorCount(value) {
   const count = Number(value);
   if (!Number.isFinite(count)) {
@@ -263,39 +278,52 @@ function visitorCounterUrl(endpoint) {
   return `${VISITOR_COUNTER_BASE_URL}/${endpoint}?${params}`;
 }
 
+async function fetchVisitorCounter(endpoint) {
+  const controller = new AbortController();
+  const timeout = window.setTimeout(() => controller.abort(), 4000);
+  try {
+    return await fetch(visitorCounterUrl(endpoint), {
+      cache: 'no-store',
+      signal: controller.signal,
+    });
+  } finally {
+    window.clearTimeout(timeout);
+  }
+}
+
 async function fetchVisitorCount() {
   if (!visitorCountElement) {
     return;
   }
 
-  const controller = new AbortController();
-  const timeout = window.setTimeout(() => controller.abort(), 4000);
+  const cached = readCachedVisitorCount();
+  if (cached) {
+    visitorCountElement.textContent = cached;
+  }
+
+  // A failed increment must not hide the count: the read below is independent.
+  if (!hasCountedVisitorThisSession()) {
+    try {
+      const trackResponse = await fetchVisitorCounter('track');
+      if (trackResponse.ok) {
+        markVisitorCountedThisSession();
+      }
+    } catch {}
+  }
 
   try {
-    if (!hasCountedVisitorThisSession()) {
-      const trackResponse = await fetch(visitorCounterUrl('track'), {
-        cache: 'no-store',
-        signal: controller.signal,
-      });
-      if (!trackResponse.ok) {
-        throw new Error(`Visitor counter tracking failed: ${trackResponse.status}`);
-      }
-      markVisitorCountedThisSession();
-    }
-
-    const response = await fetch(visitorCounterUrl('views'), {
-      cache: 'no-store',
-      signal: controller.signal,
-    });
+    const response = await fetchVisitorCounter('views');
     if (!response.ok) {
       throw new Error(`Visitor counter request failed: ${response.status}`);
     }
     const data = await response.json();
-    visitorCountElement.textContent = formatVisitorCount(data.views);
+    const formatted = formatVisitorCount(data.views);
+    visitorCountElement.textContent = formatted;
+    if (formatted !== '-') {
+      cacheVisitorCount(formatted);
+    }
   } catch (error) {
-    visitorCountElement.textContent = '-';
-  } finally {
-    window.clearTimeout(timeout);
+    visitorCountElement.textContent = cached || '-';
   }
 }
 

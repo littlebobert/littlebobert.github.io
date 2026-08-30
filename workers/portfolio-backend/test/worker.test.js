@@ -11,6 +11,7 @@ function createEnvironment() {
     database,
     env: {
       ALLOWED_ORIGINS: ORIGIN,
+      ALLOWED_ORIGIN_SUFFIXES: '.justin-garcia.pages.dev',
       TURNSTILE_HOSTNAMES: 'justin-garcia.pages.dev',
       TURNSTILE_SECRET: 'test-secret',
       VISITOR_HASH_SALT: 'test-salt',
@@ -149,6 +150,42 @@ test('visitor counting is atomic and deduplicated by daily visitor hash', async 
 
   const count = await handleRequest(request('/api/v1/views?site=justin-garcia.pages.dev&path=%2F'), env);
   assert.equal((await count.json()).views, 2);
+});
+
+test('preview deployment origins are allowed but lookalike domains are not', async () => {
+  const { env } = createEnvironment();
+  const path = '/api/v1/track?site=justin-garcia.pages.dev&path=%2F';
+
+  const preview = await handleRequest(new Request(`https://portfolio-backend.example${path}`, {
+    headers: {
+      Origin: 'https://a1b2c3d4.justin-garcia.pages.dev',
+      'CF-Connecting-IP': '203.0.113.12',
+      'User-Agent': 'portfolio-test',
+    },
+  }), env);
+  assert.equal(preview.status, 200);
+  assert.equal(
+    preview.headers.get('Access-Control-Allow-Origin'),
+    'https://a1b2c3d4.justin-garcia.pages.dev',
+  );
+
+  const lookalike = await handleRequest(new Request(`https://portfolio-backend.example${path}`, {
+    headers: {
+      Origin: 'https://eviljustin-garcia.pages.dev',
+      'CF-Connecting-IP': '203.0.113.13',
+      'User-Agent': 'portfolio-test',
+    },
+  }), env);
+  assert.equal(lookalike.status, 403);
+
+  const insecure = await handleRequest(new Request(`https://portfolio-backend.example${path}`, {
+    headers: {
+      Origin: 'http://a1b2c3d4.justin-garcia.pages.dev',
+      'CF-Connecting-IP': '203.0.113.14',
+      'User-Agent': 'portfolio-test',
+    },
+  }), env);
+  assert.equal(insecure.status, 403);
 });
 
 test('admin routes require a verified Cloudflare Access identity', async () => {

@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.4.9</title>
+            <pubDate>Sun, 30 Aug 2026 21:32:55 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>67</sparkle:version>
+            <sparkle:shortVersionString>0.4.9</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Tried to fix a bug where some already closed windows would still appear in Kehai.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.4.9/Kehai-0.4.9-mac.zip" length="5741485" type="application/octet-stream" sparkle:edSignature="i0e/21M5RZ9bU9j6itsn3SUNoHbmFCi5iW3JEMhU1EUyXWaaxf9PNX5kOqrqUGVnnBYA9mn9JsBKI864d+DgCg=="/>
+        </item>
+        <item>
             <title>0.4.8</title>
             <pubDate>Sat, 29 Aug 2026 07:36:28 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Switched to kehai.jp.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.4.7/Kehai-0.4.7-mac.zip" length="5740822" type="application/octet-stream" sparkle:edSignature="HF4kcua4gtMvBt30pI7Rvey1pItH+8xP/hMgsoVTsdHgC8EnNwxoHA8csimcOKrVvM+GSFAvXjx/6Ea32ghYBA=="/>
-        </item>
-        <item>
-            <title>0.4.6</title>
-            <pubDate>Tue, 25 Aug 2026 18:52:13 +0900</pubDate>
-            <link>https://littlebobert.github.io/kehai.html</link>
-            <sparkle:version>64</sparkle:version>
-            <sparkle:shortVersionString>0.4.6</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed bugs with using arrows to move through windows and GitHub repositories.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.4.6/Kehai-0.4.6-mac.zip" length="5741000" type="application/octet-stream" sparkle:edSignature="eSXD35xaoJURPr3pphttOrHKjKGToJqoPRC2E4OeaI7PeTd5rmBXTHnlX1taKQS8p2RBn8u/tPHeoHMQU6IFAA=="/>
         </item>
     </channel>
 </rss>

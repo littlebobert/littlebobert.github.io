@@ -7,9 +7,9 @@
 		"enabled": true
 	},
 	"vars": {
-		"ALLOWED_ORIGINS": "https://justin-garcia.pages.dev,https://littlebobert.github.io",
+		"ALLOWED_ORIGINS": "https://onemorething.tokyo,https://justin-garcia.pages.dev,https://littlebobert.github.io",
 		"ALLOWED_ORIGIN_SUFFIXES": ".justin-garcia.pages.dev",
-		"TURNSTILE_HOSTNAMES": "justin-garcia.pages.dev,littlebobert.github.io",
+		"TURNSTILE_HOSTNAMES": "onemorething.tokyo,justin-garcia.pages.dev,littlebobert.github.io",
 		"TEAM_DOMAIN": "https://solitary-term-564f.cloudflareaccess.com",
 		"POLICY_AUD": "7c67895eaafce2e790b5f9cf03414cbfb89e253cb1fb553812b3e0240e449648"
 	},

@@ -1,8 +1,69 @@
 {
-  "updatedAt": "2026-08-29T18:36:27.808Z",
+  "updatedAt": "2026-08-30T18:38:54.933Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2093814057514205629",
+      "text": "a fast way to jump to the GitHub repo you want, now in my free/open source macOS utility\n\nhttps://t.co/8V920dyUTC https://t.co/xosPZyVX14",
+      "createdAt": "2026-08-29T21:32:27.000Z",
+      "url": "https://x.com/_bobertdowney/status/2093814057514205629",
+      "urls": [
+        {
+          "url": "https://t.co/8V920dyUTC",
+          "expandedUrl": "https://kehai.jp",
+          "displayUrl": "kehai.jp",
+          "start": 90,
+          "end": 113
+        },
+        {
+          "url": "https://t.co/xosPZyVX14",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2093814057514205629/photo/1",
+          "displayUrl": "pic.x.com/xosPZyVX14",
+          "start": 114,
+          "end": 137
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2093814057514205629-0.png",
+          "imageModern": "assets/generated/x/mine-post-2093814057514205629-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2093811855361982896",
+      "text": "macOS 27 beta 7: FB24569664 Safari keeps playing audio from YouTube after tab has already closed😰 https://t.co/kJx5RVsYdH",
+      "createdAt": "2026-08-29T21:23:42.000Z",
+      "url": "https://x.com/_bobertdowney/status/2093811855361982896",
+      "urls": [
+        {
+          "url": "https://t.co/kJx5RVsYdH",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2093811855361982896/photo/1",
+          "displayUrl": "pic.x.com/kJx5RVsYdH",
+          "start": 98,
+          "end": 121
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2093811855361982896-0.png",
+          "imageModern": "assets/generated/x/mine-post-2093811855361982896-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2093689964877979972",
       "text": "firing up Xcode again after 12 months…to make a TestFlight for an app that only my mom uses🤡 https://t.co/uzioARZ9cD",
@@ -175,60 +236,6 @@
           "type": "photo",
           "image": "assets/generated/x/mine-post-2093137525363917201-0.png",
           "imageModern": "assets/generated/x/mine-post-2093137525363917201-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2093117262572228855",
-      "text": "知らぬが仏🤡 https://t.co/Ps7PvxKdfq",
-      "createdAt": "2026-08-27T23:23:38.000Z",
-      "url": "https://x.com/_bobertdowney/status/2093117262572228855",
-      "urls": [
-        {
-          "url": "https://t.co/Ps7PvxKdfq",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2093117262572228855/photo/1",
-          "displayUrl": "pic.x.com/Ps7PvxKdfq",
-          "start": 7,
-          "end": 30
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2093117262572228855-0.png",
-          "imageModern": "assets/generated/x/mine-post-2093117262572228855-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2092976744399798505",
-      "text": "even Apple fanboys laughed when I asked if there were any September event watch parties in Tokyo 😔 https://t.co/f2KAIf7GOv",
-      "createdAt": "2026-08-27T14:05:16.000Z",
-      "url": "https://x.com/_bobertdowney/status/2092976744399798505",
-      "urls": [
-        {
-          "url": "https://t.co/f2KAIf7GOv",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2092976744399798505/photo/1",
-          "displayUrl": "pic.x.com/f2KAIf7GOv",
-          "start": 99,
-          "end": 122
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2092976744399798505-0.png",
-          "imageModern": "assets/generated/x/mine-post-2092976744399798505-0-modern.png"
         }
       ]
     }

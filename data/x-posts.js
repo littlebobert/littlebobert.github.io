@@ -1,8 +1,35 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-08-30T18:38:54.933Z",
+  "updatedAt": "2026-08-31T20:52:14.659Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2094409583796330520",
+      "text": "もう年なので、昔の音楽を聴くのが好きです https://t.co/qSewo8o8HX",
+      "createdAt": "2026-08-31T12:58:51.000Z",
+      "url": "https://x.com/_bobertdowney/status/2094409583796330520",
+      "urls": [
+        {
+          "url": "https://t.co/qSewo8o8HX",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2094409583796330520/video/1",
+          "displayUrl": "pic.x.com/qSewo8o8HX",
+          "start": 21,
+          "end": 44
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2094409583796330520-0.png",
+          "imageModern": "assets/generated/x/mine-post-2094409583796330520-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2093814057514205629",
       "text": "a fast way to jump to the GitHub repo you want, now in my free/open source macOS utility\n\nhttps://t.co/8V920dyUTC https://t.co/xosPZyVX14",
@@ -209,33 +236,6 @@ window.X_POSTS_SNAPSHOT = {
           "type": "photo",
           "image": "assets/generated/x/mine-post-2093140816474824778-0.png",
           "imageModern": "assets/generated/x/mine-post-2093140816474824778-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2093137525363917201",
-      "text": "designed by machine elves in California https://t.co/oedOnvbAZa",
-      "createdAt": "2026-08-28T00:44:09.000Z",
-      "url": "https://x.com/_bobertdowney/status/2093137525363917201",
-      "urls": [
-        {
-          "url": "https://t.co/oedOnvbAZa",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2093137525363917201/photo/1",
-          "displayUrl": "pic.x.com/oedOnvbAZa",
-          "start": 40,
-          "end": 63
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2093137525363917201-0.png",
-          "imageModern": "assets/generated/x/mine-post-2093137525363917201-0-modern.png"
         }
       ]
     }

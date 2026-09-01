@@ -1,8 +1,81 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-08-31T20:52:14.659Z",
+  "updatedAt": "2026-09-01T18:36:28.242Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2094593893958668487",
+      "text": "I wonder if I’ll say よいしょ when I get older. my step dad is 75 and when he gets up he says \"OK lemonade\"",
+      "createdAt": "2026-09-01T01:11:14.000Z",
+      "url": "https://x.com/_bobertdowney/status/2094593893958668487",
+      "urls": [],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2094565871331205321",
+      "text": "macOS 27 has smart filtering in context menus😍 https://t.co/ysyCEGz3ut",
+      "createdAt": "2026-08-31T23:19:53.000Z",
+      "url": "https://x.com/_bobertdowney/status/2094565871331205321",
+      "urls": [
+        {
+          "url": "https://t.co/ysyCEGz3ut",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2094565871331205321/photo/1",
+          "displayUrl": "pic.x.com/ysyCEGz3ut",
+          "start": 47,
+          "end": 70
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2094565871331205321-0.png",
+          "imageModern": "assets/generated/x/mine-post-2094565871331205321-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2094562513363112427",
+      "text": "Tim’s office was in my building, and when there was some construction going on, I bought this on Amazon hoping he’d walk by my desk and see it. I thought it was so cool that he got to the office at 6am or whatever. Hard hat off to you sir. War Eagle https://t.co/yS74vxHVyr https://t.co/sO8GeGbSgp",
+      "createdAt": "2026-08-31T23:06:32.000Z",
+      "url": "https://x.com/_bobertdowney/status/2094562513363112427",
+      "urls": [
+        {
+          "url": "https://t.co/yS74vxHVyr",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2094562513363112427/photo/1",
+          "displayUrl": "pic.x.com/yS74vxHVyr",
+          "start": 250,
+          "end": 273
+        },
+        {
+          "url": "https://t.co/sO8GeGbSgp",
+          "expandedUrl": "https://twitter.com/tim_cook/status/2094448088199078236",
+          "displayUrl": "x.com/tim_cook/statu…",
+          "start": 274,
+          "end": 297
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2094562513363112427-0.png",
+          "imageModern": "assets/generated/x/mine-post-2094562513363112427-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2094409583796330520",
       "text": "もう年なので、昔の音楽を聴くのが好きです https://t.co/qSewo8o8HX",
@@ -92,33 +165,6 @@ window.X_POSTS_SNAPSHOT = {
       ]
     },
     {
-      "id": "2093689964877979972",
-      "text": "firing up Xcode again after 12 months…to make a TestFlight for an app that only my mom uses🤡 https://t.co/uzioARZ9cD",
-      "createdAt": "2026-08-29T13:19:21.000Z",
-      "url": "https://x.com/_bobertdowney/status/2093689964877979972",
-      "urls": [
-        {
-          "url": "https://t.co/uzioARZ9cD",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2093689964877979972/photo/1",
-          "displayUrl": "pic.x.com/uzioARZ9cD",
-          "start": 93,
-          "end": 116
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2093689964877979972-0.png",
-          "imageModern": "assets/generated/x/mine-post-2093689964877979972-0-modern.png"
-        }
-      ]
-    },
-    {
       "id": "2093595076849193198",
       "text": "英語を使うと10代のボランティアの子たちが嫌がるから、地元のコミュニティセンターでの練習はいいんだよ https://t.co/lKZQLzTHk1",
       "createdAt": "2026-08-29T07:02:18.000Z",
@@ -144,26 +190,6 @@ window.X_POSTS_SNAPSHOT = {
           "imageModern": "assets/generated/x/mine-post-2093595076849193198-0-modern.png"
         }
       ]
-    },
-    {
-      "id": "2093587799605952923",
-      "text": "macOS should have UI customization but instead of prompting an AI you ask for and pay for human created themes. \"desktop wallpaper by Hunter Biden\", or \"system sounds by Tom Hank’s son, please\" https://t.co/quiKQDefWV",
-      "createdAt": "2026-08-29T06:33:23.000Z",
-      "url": "https://x.com/_bobertdowney/status/2093587799605952923",
-      "urls": [
-        {
-          "url": "https://t.co/quiKQDefWV",
-          "expandedUrl": "https://twitter.com/dhh/status/2088304854603047019",
-          "displayUrl": "x.com/dhh/status/208…",
-          "start": 194,
-          "end": 217
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     },
     {
       "id": "2093516417278824789",
@@ -209,33 +235,6 @@ window.X_POSTS_SNAPSHOT = {
           "type": "photo",
           "image": "assets/generated/x/mine-post-2093325248578134219-0.png",
           "imageModern": "assets/generated/x/mine-post-2093325248578134219-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2093140816474824778",
-      "text": "new Siri voice in iOS 27 betas seems to switch from the English voice to the Japanese one when an incoming iMessage starts in English and switches to 日本語😍 https://t.co/BserYy1IRn",
-      "createdAt": "2026-08-28T00:57:13.000Z",
-      "url": "https://x.com/_bobertdowney/status/2093140816474824778",
-      "urls": [
-        {
-          "url": "https://t.co/BserYy1IRn",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2093140816474824778/photo/1",
-          "displayUrl": "pic.x.com/BserYy1IRn",
-          "start": 155,
-          "end": 178
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2093140816474824778-0.png",
-          "imageModern": "assets/generated/x/mine-post-2093140816474824778-0-modern.png"
         }
       ]
     }

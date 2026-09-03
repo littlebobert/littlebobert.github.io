@@ -749,6 +749,7 @@ html[lang="ja"] .stack-card p .latin {
 .stack-card a:hover {
   background: #000;
   color: #fff;
+  text-shadow: none;
 }
 
 .stack-card-gallery {
@@ -1747,6 +1748,7 @@ button.puzzle-tile:focus-visible {
     inset -2px -2px 0 #9b9b9b;
   background: #fff;
   color: #000;
+  cursor: pointer;
   font-size: 18px;
   line-height: 1;
   text-align: center;
@@ -1755,6 +1757,13 @@ button.puzzle-tile:focus-visible {
   -webkit-tap-highlight-color: transparent;
   -webkit-user-select: none;
   user-select: none;
+}
+
+/* Card-link hover inverts to white text; keep button chrome instead. */
+.stack-actions a:hover {
+  background: #fff;
+  color: #000;
+  text-shadow: 1px 1px 0 #fff;
 }
 
 .stack-actions a:active {
@@ -1853,6 +1862,7 @@ button.puzzle-tile:focus-visible {
       inset 2px 2px 0 #777,
       inset -1px -1px 0 #fff;
     transform: translate(2px, 2px);
+    text-shadow: none;
   }
 
   .map-control-button:not(:disabled):hover,
@@ -2987,6 +2997,7 @@ html[data-theme="classic"] .info-value a:hover,
 html[data-theme="classic"] .weather-attribution a:hover {
   background: var(--classic-accent);
   color: #fff;
+  text-shadow: none;
 }
 
 html[data-theme="classic"] .logo-section,
@@ -3069,6 +3080,12 @@ html[data-theme="classic"] .stack-button-secondary {
   background: #dedede;
 }
 
+html[data-theme="classic"] .stack-actions a:hover {
+  background: #eeeeee;
+  color: var(--classic-ink);
+  text-shadow: 1px 1px 0 var(--classic-highlight);
+}
+
 html[data-theme="classic"] .stack-actions a:active,
 html[data-theme="classic"] .stack-button:active,
 html[data-theme="classic"] .stack-index-button:active,
@@ -3079,10 +3096,12 @@ html[data-theme="classic"] .map-control-button:not(:disabled):active,
 html[data-theme="classic"] .puzzle-alert-button:active,
 html[data-theme="classic"] .web-browser-open-external:active {
   background: #c9c9c9;
+  color: var(--classic-ink);
   box-shadow:
     inset 2px 2px 0 var(--classic-shadow),
     inset -1px -1px 0 var(--classic-highlight);
   transform: translate(1px, 1px);
+  text-shadow: none;
 }
 
 html[data-theme="classic"] .language-segment:focus-visible,
@@ -3264,6 +3283,24 @@ html[data-theme="classic"] .feed-panel.has-scroll-overflow::after {
       inset -1px -1px 0 var(--classic-shadow),
       1px 1px 0 rgba(0, 0, 0, 0.45);
     transform: none;
+  }
+
+  html[data-theme="classic"] .stack-actions a:hover:active,
+  html[data-theme="classic"] .stack-button:hover:active,
+  html[data-theme="classic"] .stack-index-button:hover:active,
+  html[data-theme="classic"] .stack-index-shortcut:hover:active,
+  html[data-theme="classic"] .qr-code-button:hover:active,
+  html[data-theme="classic"] .mud-command-button:hover:active,
+  html[data-theme="classic"] .map-control-button:not(:disabled):hover:active,
+  html[data-theme="classic"] .puzzle-alert-button:hover:active,
+  html[data-theme="classic"] .web-browser-open-external:hover:active {
+    background: #c9c9c9;
+    color: var(--classic-ink);
+    box-shadow:
+      inset 2px 2px 0 var(--classic-shadow),
+      inset -1px -1px 0 var(--classic-highlight);
+    transform: translate(1px, 1px);
+    text-shadow: none;
   }
 }
 
@@ -3709,6 +3746,7 @@ html[data-theme="modern"] .stack-card a:hover {
   background: transparent;
   color: #004499;
   text-decoration: underline;
+  text-shadow: none;
 }
 
 html[data-theme="modern"] .x-post {
@@ -4070,6 +4108,11 @@ html[data-theme="modern"] .qr-code-button {
 html[data-theme="modern"] .stack-button-secondary {
   background: rgba(0, 0, 0, 0.06);
   color: rgba(0, 0, 0, 0.72);
+}
+
+html[data-theme="modern"] .stack-actions a:hover {
+  background: rgba(0, 122, 255, 0.12);
+  color: #0066cc;
 }
 
 html[data-theme="modern"] .stack-actions a:active,

@@ -1760,12 +1760,14 @@ button.puzzle-tile:focus-visible {
 }
 
 /* Card-link hover inverts to white text; keep button chrome instead. */
+.stack-card .stack-actions a:hover,
 .stack-actions a:hover {
   background: #fff;
   color: #000;
   text-shadow: 1px 1px 0 #fff;
 }
 
+.stack-card .stack-actions a:active,
 .stack-actions a:active {
   background: #fff;
   color: #000;
@@ -3080,12 +3082,14 @@ html[data-theme="classic"] .stack-button-secondary {
   background: #dedede;
 }
 
+html[data-theme="classic"] .stack-card .stack-actions a:hover,
 html[data-theme="classic"] .stack-actions a:hover {
   background: #eeeeee;
   color: var(--classic-ink);
   text-shadow: 1px 1px 0 var(--classic-highlight);
 }
 
+html[data-theme="classic"] .stack-card .stack-actions a:active,
 html[data-theme="classic"] .stack-actions a:active,
 html[data-theme="classic"] .stack-button:active,
 html[data-theme="classic"] .stack-index-button:active,
@@ -3285,6 +3289,7 @@ html[data-theme="classic"] .feed-panel.has-scroll-overflow::after {
     transform: none;
   }
 
+  html[data-theme="classic"] .stack-card .stack-actions a:hover:active,
   html[data-theme="classic"] .stack-actions a:hover:active,
   html[data-theme="classic"] .stack-button:hover:active,
   html[data-theme="classic"] .stack-index-button:hover:active,
@@ -4110,6 +4115,7 @@ html[data-theme="modern"] .stack-button-secondary {
   color: rgba(0, 0, 0, 0.72);
 }
 
+html[data-theme="modern"] .stack-card .stack-actions a:hover,
 html[data-theme="modern"] .stack-actions a:hover {
   background: rgba(0, 122, 255, 0.12);
   color: #0066cc;

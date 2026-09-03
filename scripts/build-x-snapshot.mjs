@@ -60,6 +60,24 @@ function withLargeProfileImage(profileImageUrl) {
   return profileImageUrl?.replace('_normal.', '_400x400.');
 }
 
+async function fileExists(filePath) {
+  try {
+    await fs.access(filePath);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+async function readPreviousSnapshot() {
+  try {
+    const raw = await fs.readFile(OUTPUT_JSON, 'utf8');
+    return JSON.parse(raw);
+  } catch {
+    return null;
+  }
+}
+
 function publicAssetPath(fileName) {
   return `assets/generated/x/${fileName}`;
 }
@@ -125,11 +143,19 @@ async function ditherToPng(sourceBuffer, outputPath, options = {}) {
     .toFile(outputPath);
 }
 
-async function processRemoteImage(url, fileName, options) {
-  const sourceBuffer = await fetchBuffer(url);
+async function processRemoteImage(url, fileName, options, reuseIfExists = false) {
   const classicOutputPath = path.join(GENERATED_DIR, fileName);
   const modernName = modernFileName(fileName);
   const modernOutputPath = path.join(GENERATED_DIR, modernName);
+
+  if (reuseIfExists && await fileExists(classicOutputPath) && await fileExists(modernOutputPath)) {
+    return {
+      image: publicAssetPath(fileName),
+      imageModern: publicAssetPath(modernName),
+    };
+  }
+
+  const sourceBuffer = await fetchBuffer(url);
 
   await Promise.all([
     ditherToPng(sourceBuffer, classicOutputPath, options),
@@ -191,7 +217,7 @@ async function fetchTweetsForUser(xUser, count) {
   return fetchJson(`${X_API_BASE_URL}/users/${xUser.id}/tweets?${tweetParams(count)}`);
 }
 
-async function processAvatar(xUser, fileName) {
+async function processAvatar(xUser, fileName, reuseIfExists = true) {
   let avatar = '';
   let avatarModern = '';
   if (xUser.profile_image_url) {
@@ -199,7 +225,7 @@ async function processAvatar(xUser, fileName) {
       const processedAvatar = await processRemoteImage(withLargeProfileImage(xUser.profile_image_url), fileName, {
         maxWidth: 96,
         maxHeight: 96,
-      });
+      }, reuseIfExists);
       avatar = processedAvatar.image;
       avatarModern = processedAvatar.imageModern;
     } catch (error) {
@@ -209,10 +235,18 @@ async function processAvatar(xUser, fileName) {
   return { avatar, avatarModern };
 }
 
-async function buildPostsForUser(xUser, options) {
+function previousPostHasSameMedia(previousPost, mediaKeys) {
+  if (!previousPost) {
+    return false;
+  }
+  const previousCount = Array.isArray(previousPost.media) ? previousPost.media.length : 0;
+  return previousCount === mediaKeys.length;
+}
+
+async function buildPostsForUser(xUser, options, previousPostsById = new Map()) {
   const tweets = await fetchTweetsForUser(xUser, options.count);
   const mediaByKey = new Map((tweets.includes?.media || []).map((media) => [media.media_key, media]));
-  const { avatar, avatarModern } = await processAvatar(xUser, `${safeFilePart(options.mediaPrefix)}-avatar.png`);
+  const { avatar, avatarModern } = await processAvatar(xUser, `${safeFilePart(options.mediaPrefix)}-avatar.png`, false);
 
   const posts = [];
 
@@ -230,10 +264,11 @@ async function buildPostsForUser(xUser, options) {
 
       try {
         const fileName = `${safeFilePart(options.mediaPrefix)}-post-${tweet.id}-${index}.png`;
+        const reuseIfExists = previousPostHasSameMedia(previousPostsById.get(tweet.id), mediaKeys);
         const processedMedia = await processRemoteImage(sourceUrl, fileName, {
           maxWidth: 640,
           maxHeight: 420,
-        });
+        }, reuseIfExists);
         media.push({
           alt: mediaItem.alt_text || '',
           type: mediaItem.type,
@@ -268,17 +303,51 @@ async function buildPostsForUser(xUser, options) {
   return posts;
 }
 
+async function pruneStaleAssets(posts) {
+  const expectedFiles = new Set();
+  for (const post of posts) {
+    if (post.avatar) {
+      expectedFiles.add(path.basename(post.avatar));
+    }
+    if (post.avatarModern) {
+      expectedFiles.add(path.basename(post.avatarModern));
+    }
+    for (const media of post.media || []) {
+      if (media.image) {
+        expectedFiles.add(path.basename(media.image));
+      }
+      if (media.imageModern) {
+        expectedFiles.add(path.basename(media.imageModern));
+      }
+    }
+  }
+
+  let existingFiles = [];
+  try {
+    existingFiles = await fs.readdir(GENERATED_DIR);
+  } catch {
+    return;
+  }
+
+  await Promise.all(existingFiles
+    .filter((fileName) => !expectedFiles.has(fileName))
+    .map((fileName) => fs.rm(path.join(GENERATED_DIR, fileName), { force: true })));
+}
+
 async function main() {
+  const previousSnapshot = await readPreviousSnapshot();
   const xUser = await fetchUserByUsername(username);
 
-  await fs.rm(GENERATED_DIR, { recursive: true, force: true });
   await fs.mkdir(GENERATED_DIR, { recursive: true });
   await fs.mkdir(DATA_DIR, { recursive: true });
 
+  const previousPostsById = new Map((previousSnapshot?.posts || []).map((post) => [post.id, post]));
   const posts = await buildPostsForUser(xUser, {
     count: postCount,
     mediaPrefix: 'mine',
-  });
+  }, previousPostsById);
+
+  await pruneStaleAssets(posts);
 
   const snapshot = {
     updatedAt: new Date().toISOString(),

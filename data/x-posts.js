@@ -1,8 +1,62 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-09-02T18:46:23.075Z",
+  "updatedAt": "2026-09-03T18:43:37.374Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2095463146425331959",
+      "text": "my building in Otemachi has a nice roof top and it’s free to access, just download this app https://t.co/zsnbeuIvyk https://t.co/N8Ixy7Juok",
+      "createdAt": "2026-09-03T10:45:20.000Z",
+      "url": "https://x.com/_bobertdowney/status/2095463146425331959",
+      "urls": [
+        {
+          "url": "https://t.co/zsnbeuIvyk",
+          "expandedUrl": "https://apps.apple.com/jp/app/id1557386074",
+          "displayUrl": "apps.apple.com/jp/app/id15573…",
+          "start": 92,
+          "end": 115
+        },
+        {
+          "url": "https://t.co/N8Ixy7Juok",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2095463146425331959/photo/1",
+          "displayUrl": "pic.x.com/N8Ixy7Juok",
+          "start": 116,
+          "end": 139
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2095463146425331959-0.png",
+          "imageModern": "assets/generated/x/mine-post-2095463146425331959-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2095460894126014575",
+      "text": "staying up until 2am here in Tokyo for this one. Nocternus 🤡 https://t.co/57svG8AMgq",
+      "createdAt": "2026-09-03T10:36:23.000Z",
+      "url": "https://x.com/_bobertdowney/status/2095460894126014575",
+      "urls": [
+        {
+          "url": "https://t.co/57svG8AMgq",
+          "expandedUrl": "https://twitter.com/gregjoz/status/2094831063994646967",
+          "displayUrl": "x.com/gregjoz/status…",
+          "start": 61,
+          "end": 84
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2094925113095528899",
       "text": "got the only meme coin that matters https://t.co/pVqzl7Rmrf",
@@ -230,26 +284,6 @@ window.X_POSTS_SNAPSHOT = {
           "imageModern": "assets/generated/x/mine-post-2093595076849193198-0-modern.png"
         }
       ]
-    },
-    {
-      "id": "2093516417278824789",
-      "text": "this is worse than The Beatles breaking up https://t.co/fH0e0grKWO",
-      "createdAt": "2026-08-29T01:49:44.000Z",
-      "url": "https://x.com/_bobertdowney/status/2093516417278824789",
-      "urls": [
-        {
-          "url": "https://t.co/fH0e0grKWO",
-          "expandedUrl": "https://twitter.com/OpenAI/status/2093515564786540695",
-          "displayUrl": "x.com/OpenAI/status/…",
-          "start": 43,
-          "end": 66
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 };

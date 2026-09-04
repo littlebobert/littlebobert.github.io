@@ -1,8 +1,67 @@
 {
-  "updatedAt": "2026-09-03T18:43:37.374Z",
+  "updatedAt": "2026-09-04T18:28:25.059Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2095605779877519717",
+      "text": "今朝からAGIが来たことを店員さんに報告して回ってるんだけど、誰もいない https://t.co/p2Dk9KeLAl",
+      "createdAt": "2026-09-03T20:12:07.000Z",
+      "url": "https://x.com/_bobertdowney/status/2095605779877519717",
+      "urls": [
+        {
+          "url": "https://t.co/p2Dk9KeLAl",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2095605779877519717/photo/1",
+          "displayUrl": "pic.x.com/p2Dk9KeLAl",
+          "start": 37,
+          "end": 60
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2095605779877519717-0.png",
+          "imageModern": "assets/generated/x/mine-post-2095605779877519717-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2095595661555347905",
+      "text": "おはようございます\nhttps://t.co/Dfbg8CoOhq",
+      "createdAt": "2026-09-03T19:31:54.000Z",
+      "url": "https://x.com/_bobertdowney/status/2095595661555347905",
+      "urls": [
+        {
+          "url": "https://t.co/Dfbg8CoOhq",
+          "expandedUrl": "https://openai.com/index/gpt-6-astra/",
+          "displayUrl": "openai.com/index/gpt-6-as…",
+          "start": 10,
+          "end": 33
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2095590546354168282",
+      "text": "staying up to post AGI in the chat 🤡",
+      "createdAt": "2026-09-03T19:11:35.000Z",
+      "url": "https://x.com/_bobertdowney/status/2095590546354168282",
+      "urls": [],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2095463146425331959",
       "text": "my building in Otemachi has a nice roof top and it’s free to access, just download this app https://t.co/zsnbeuIvyk https://t.co/N8Ixy7Juok",
@@ -194,94 +253,6 @@
           "type": "video",
           "image": "assets/generated/x/mine-post-2094409583796330520-0.png",
           "imageModern": "assets/generated/x/mine-post-2094409583796330520-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2093814057514205629",
-      "text": "a fast way to jump to the GitHub repo you want, now in my free/open source macOS utility\n\nhttps://t.co/8V920dyUTC https://t.co/xosPZyVX14",
-      "createdAt": "2026-08-29T21:32:27.000Z",
-      "url": "https://x.com/_bobertdowney/status/2093814057514205629",
-      "urls": [
-        {
-          "url": "https://t.co/8V920dyUTC",
-          "expandedUrl": "https://kehai.jp",
-          "displayUrl": "kehai.jp",
-          "start": 90,
-          "end": 113
-        },
-        {
-          "url": "https://t.co/xosPZyVX14",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2093814057514205629/photo/1",
-          "displayUrl": "pic.x.com/xosPZyVX14",
-          "start": 114,
-          "end": 137
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2093814057514205629-0.png",
-          "imageModern": "assets/generated/x/mine-post-2093814057514205629-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2093811855361982896",
-      "text": "macOS 27 beta 7: FB24569664 Safari keeps playing audio from YouTube after tab has already closed😰 https://t.co/kJx5RVsYdH",
-      "createdAt": "2026-08-29T21:23:42.000Z",
-      "url": "https://x.com/_bobertdowney/status/2093811855361982896",
-      "urls": [
-        {
-          "url": "https://t.co/kJx5RVsYdH",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2093811855361982896/photo/1",
-          "displayUrl": "pic.x.com/kJx5RVsYdH",
-          "start": 98,
-          "end": 121
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2093811855361982896-0.png",
-          "imageModern": "assets/generated/x/mine-post-2093811855361982896-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2093595076849193198",
-      "text": "英語を使うと10代のボランティアの子たちが嫌がるから、地元のコミュニティセンターでの練習はいいんだよ https://t.co/lKZQLzTHk1",
-      "createdAt": "2026-08-29T07:02:18.000Z",
-      "url": "https://x.com/_bobertdowney/status/2093595076849193198",
-      "urls": [
-        {
-          "url": "https://t.co/lKZQLzTHk1",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2093595076849193198/photo/1",
-          "displayUrl": "pic.x.com/lKZQLzTHk1",
-          "start": 51,
-          "end": 74
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2093595076849193198-0.png",
-          "imageModern": "assets/generated/x/mine-post-2093595076849193198-0-modern.png"
         }
       ]
     }

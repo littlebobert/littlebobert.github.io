@@ -1,8 +1,96 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-09-04T18:28:25.059Z",
+  "updatedAt": "2026-09-05T17:22:59.868Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2096257854261117163",
+      "text": "I asked Fable why https://t.co/r438zyumxj frequently does not explain the meme, and gave it an example. Fable did not explain the meme either.\n\nvery human-like",
+      "createdAt": "2026-09-05T15:23:13.000Z",
+      "url": "https://x.com/_bobertdowney/status/2096257854261117163",
+      "urls": [
+        {
+          "url": "https://t.co/r438zyumxj",
+          "expandedUrl": "https://knowyourmeme.com",
+          "displayUrl": "knowyourmeme.com",
+          "start": 18,
+          "end": 41
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2096229900739027260",
+      "text": "trying to get my app to launch faster. I still have a long way to go to. its window first starts to appear 3-4 frames after the Dock icon’s highest point, but it’s not really ready to use until later, when the Dock icon lands.\n\nhttps://t.co/8V920dyUTC https://t.co/BnMTRKWjPv https://t.co/cV85Z7k4o6",
+      "createdAt": "2026-09-05T13:32:09.000Z",
+      "url": "https://x.com/_bobertdowney/status/2096229900739027260",
+      "urls": [
+        {
+          "url": "https://t.co/8V920dyUTC",
+          "expandedUrl": "https://kehai.jp",
+          "displayUrl": "kehai.jp",
+          "start": 228,
+          "end": 251
+        },
+        {
+          "url": "https://t.co/BnMTRKWjPv",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2096229900739027260/video/1",
+          "displayUrl": "pic.x.com/BnMTRKWjPv",
+          "start": 252,
+          "end": 275
+        },
+        {
+          "url": "https://t.co/cV85Z7k4o6",
+          "expandedUrl": "https://twitter.com/mitchellh/status/2093700021166485893",
+          "displayUrl": "x.com/mitchellh/stat…",
+          "start": 276,
+          "end": 299
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2096229900739027260-0.png",
+          "imageModern": "assets/generated/x/mine-post-2096229900739027260-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2096196322399498583",
+      "text": "同僚がわざわざ歩いてきて、これを私のデスクの近くに置いていった。私、何か間違ってる…？ https://t.co/fPNeinZoqV",
+      "createdAt": "2026-09-05T11:18:43.000Z",
+      "url": "https://x.com/_bobertdowney/status/2096196322399498583",
+      "urls": [
+        {
+          "url": "https://t.co/fPNeinZoqV",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2096196322399498583/photo/1",
+          "displayUrl": "pic.x.com/fPNeinZoqV",
+          "start": 44,
+          "end": 67
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2096196322399498583-0.png",
+          "imageModern": "assets/generated/x/mine-post-2096196322399498583-0-modern.png"
+        }
+      ]
+    },
     {
       "id": "2095605779877519717",
       "text": "今朝からAGIが来たことを店員さんに報告して回ってるんだけど、誰もいない https://t.co/p2Dk9KeLAl",
@@ -167,94 +255,6 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2094565871331205321",
-      "text": "macOS 27 has smart filtering in context menus😍 https://t.co/ysyCEGz3ut",
-      "createdAt": "2026-08-31T23:19:53.000Z",
-      "url": "https://x.com/_bobertdowney/status/2094565871331205321",
-      "urls": [
-        {
-          "url": "https://t.co/ysyCEGz3ut",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2094565871331205321/photo/1",
-          "displayUrl": "pic.x.com/ysyCEGz3ut",
-          "start": 47,
-          "end": 70
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2094565871331205321-0.png",
-          "imageModern": "assets/generated/x/mine-post-2094565871331205321-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2094562513363112427",
-      "text": "Tim’s office was in my building, and when there was some construction going on, I bought this on Amazon hoping he’d walk by my desk and see it. I thought it was so cool that he got to the office at 6am or whatever. Hard hat off to you sir. War Eagle https://t.co/yS74vxHVyr https://t.co/sO8GeGbSgp",
-      "createdAt": "2026-08-31T23:06:32.000Z",
-      "url": "https://x.com/_bobertdowney/status/2094562513363112427",
-      "urls": [
-        {
-          "url": "https://t.co/yS74vxHVyr",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2094562513363112427/photo/1",
-          "displayUrl": "pic.x.com/yS74vxHVyr",
-          "start": 250,
-          "end": 273
-        },
-        {
-          "url": "https://t.co/sO8GeGbSgp",
-          "expandedUrl": "https://twitter.com/tim_cook/status/2094448088199078236",
-          "displayUrl": "x.com/tim_cook/statu…",
-          "start": 274,
-          "end": 297
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2094562513363112427-0.png",
-          "imageModern": "assets/generated/x/mine-post-2094562513363112427-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2094409583796330520",
-      "text": "もう年なので、昔の音楽を聴くのが好きです https://t.co/qSewo8o8HX",
-      "createdAt": "2026-08-31T12:58:51.000Z",
-      "url": "https://x.com/_bobertdowney/status/2094409583796330520",
-      "urls": [
-        {
-          "url": "https://t.co/qSewo8o8HX",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2094409583796330520/video/1",
-          "displayUrl": "pic.x.com/qSewo8o8HX",
-          "start": 21,
-          "end": 44
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2094409583796330520-0.png",
-          "imageModern": "assets/generated/x/mine-post-2094409583796330520-0-modern.png"
-        }
-      ]
     }
   ]
 };

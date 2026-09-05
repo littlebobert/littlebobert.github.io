@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.1</title>
+            <pubDate>Sat, 05 Sep 2026 22:13:25 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>76</sparkle:version>
+            <sparkle:shortVersionString>0.5.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Made some app launch visual improvements.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.1/Kehai-0.5.1-mac.zip" length="5772424" type="application/octet-stream" sparkle:edSignature="T3xQDlf4KImTwoBrqE8kHNzAZ7FLS5Sa2JkUSgz1nJCZ6Ep6pRLUxdrC0zLOTExejAI+XvJafHkNEyAVJ+3zBA=="/>
+        </item>
+        <item>
             <title>0.5.0</title>
             <pubDate>Sat, 05 Sep 2026 21:52:15 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Speed up app launch.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.4.16/Kehai-0.4.16-mac.zip" length="5772450" type="application/octet-stream" sparkle:edSignature="kOADDKYG3bjLylQGL2GZa+suS/KJB2InjidW9qZsi7LeWzJho1vcDgskvS7aBNy5m7lhNOQOLsxvIe0nZJDiBA=="/>
-        </item>
-        <item>
-            <title>0.4.15</title>
-            <pubDate>Sat, 05 Sep 2026 21:13:18 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>73</sparkle:version>
-            <sparkle:shortVersionString>0.4.15</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Just truncate the app icon section at the least recent app if you shrink the full browser's width.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.4.15/Kehai-0.4.15-mac.zip" length="5760434" type="application/octet-stream" sparkle:edSignature="MvvVYdRmpwxbFCcvxSo1SuupSbfaPspMHNwfewxZ0c3Xfa84PNrQ/oWKx9o5fH7i53oqbmSFFcL/1lhMrMdXBw=="/>
         </item>
     </channel>
 </rss>

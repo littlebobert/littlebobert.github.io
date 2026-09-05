@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.0</title>
+            <pubDate>Sat, 05 Sep 2026 21:52:15 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>75</sparkle:version>
+            <sparkle:shortVersionString>0.5.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Made more app launch performance improvements.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.0/Kehai-0.5.0-mac.zip" length="5775875" type="application/octet-stream" sparkle:edSignature="AIVqcjQbSXrLnc33zQKOI9/YaaVqFPvGbovCdhlApXn1L+sfZkamQL5xv86EJD/oSzVr9rbShEkEEGek6NTmAQ=="/>
+        </item>
+        <item>
             <title>0.4.16</title>
             <pubDate>Sat, 05 Sep 2026 21:35:09 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Just truncate the app icon section at the least recent app if you shrink the full browser's width.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.4.15/Kehai-0.4.15-mac.zip" length="5760434" type="application/octet-stream" sparkle:edSignature="MvvVYdRmpwxbFCcvxSo1SuupSbfaPspMHNwfewxZ0c3Xfa84PNrQ/oWKx9o5fH7i53oqbmSFFcL/1lhMrMdXBw=="/>
-        </item>
-        <item>
-            <title>0.4.14</title>
-            <pubDate>Sat, 05 Sep 2026 14:37:55 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>72</sparkle:version>
-            <sparkle:shortVersionString>0.4.14</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed a bug where when you bring an app to the foreground only its most recent window would come to the foreground.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.4.14/Kehai-0.4.14-mac.zip" length="5750582" type="application/octet-stream" sparkle:edSignature="zNV6vbO3ZEN1lws/cyoyMjC3o6s73tEK22XjPjgY17ewNIzU1HX45XYkR9DPZI6dTfpDNEenA98jWNNmavE0AQ=="/>
         </item>
     </channel>
 </rss>

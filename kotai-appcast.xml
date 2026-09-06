@@ -3,6 +3,18 @@
     <channel>
         <title>Kotai</title>
         <item>
+            <title>0.1.5</title>
+            <pubDate>Mon, 07 Sep 2026 07:38:22 +0900</pubDate>
+            <link>https://kotai.jp/</link>
+            <sparkle:version>6</sparkle:version>
+            <sparkle:shortVersionString>0.1.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Made UX improvements in Kotai settings.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.1.5/Kotai-0.1.5-mac.zip" length="12193449" type="application/octet-stream" sparkle:edSignature="xF4lluZEiInqguVXCLe/NpKlhtJQCJfMmgEu19dNzk9bBY/urdJJF9u/ZXIzt983zb5HlHhdlVAyLIDJybMtDQ=="/>
+        </item>
+        <item>
             <title>0.1.4</title>
             <pubDate>Sun, 06 Sep 2026 22:06:59 +0900</pubDate>
             <link>https://kotai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed some bugs in the setup wizard.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.1.3/Kotai-0.1.3-mac.zip" length="12129706" type="application/octet-stream" sparkle:edSignature="ADKzKPSEVU6Rh5f8rd9hdU54/jgukSUHArQ1CCYkOBCiDHYbWImc/CVv2q9b4WbAgxy3t1hZ6wDolRydZOSTDg=="/>
-        </item>
-        <item>
-            <title>0.1.1</title>
-            <pubDate>Sun, 06 Sep 2026 18:25:24 +0900</pubDate>
-            <link>https://kotai.jp/</link>
-            <sparkle:version>2</sparkle:version>
-            <sparkle:shortVersionString>0.1.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Moved the website and update feed to kotai.jp.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.1.1/Kotai-0.1.1-mac.zip" length="10311774" type="application/octet-stream" sparkle:edSignature="7N2iK75Cl89I6VaAj1BTrkDVsXVd7gOM5Ky1p39qlSwhLFkXHt1vTxO0UexwMXqG2FV/YRm+M909Jz7PfjdEAg=="/>
         </item>
     </channel>
 </rss>

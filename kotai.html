@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Kotai (交代)</title>
+  <link href="sasu-common.css?v=4" rel="stylesheet">
+  <link rel="icon" href="assets/kotai-icon.png?v=5" type="image/png">
+  <link rel="apple-touch-icon" href="assets/kotai-icon.png?v=5">
+  <link rel="canonical" href="https://littlebobert.github.io/kotai.html">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Route Cursor models to personal and work OpenRouter accounts simultaneously." data-label-en="Route Cursor models to personal and work OpenRouter accounts simultaneously." data-label-ja="Cursorのモデルを個人用と仕事用のOpenRouterアカウントへ同時に振り分けます。">
+  <meta property="og:title" content="Kotai: Route OpenRouter accounts by model" data-label-en="Kotai: Route OpenRouter accounts by model" data-label-ja="Kotai：モデルごとにOpenRouterアカウントを振り分ける">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://littlebobert.github.io/kotai.html">
+  <meta property="og:site_name" content="Kotai (交代)">
+  <meta property="og:description" content="Route Cursor models to personal and work OpenRouter accounts simultaneously." data-label-en="Route Cursor models to personal and work OpenRouter accounts simultaneously." data-label-ja="Cursorのモデルを個人用と仕事用のOpenRouterアカウントへ同時に振り分けます。">
+  <meta property="og:image" content="https://littlebobert.github.io/assets/kotai-icon.png?v=5">
+  <meta property="og:image:alt" content="Kotai wooden signpost icon" data-label-en="Kotai wooden signpost icon" data-label-ja="Kotaiの木製道標アイコン">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Kotai: Route OpenRouter accounts by model" data-label-en="Kotai: Route OpenRouter accounts by model" data-label-ja="Kotai：モデルごとにOpenRouterアカウントを振り分ける">
+  <meta name="twitter:description" content="Route Cursor models to personal and work OpenRouter accounts simultaneously." data-label-en="Route Cursor models to personal and work OpenRouter accounts simultaneously." data-label-ja="Cursorのモデルを個人用と仕事用のOpenRouterアカウントへ同時に振り分けます。">
+  <meta name="twitter:image" content="https://littlebobert.github.io/assets/kotai-icon.png?v=5">
+  <style>
+    :root {
+      --kotai-ink: #17202a;
+      --kotai-muted: #596574;
+      --kotai-blue: #2469d8;
+      --kotai-blue-soft: #eaf2ff;
+      --kotai-line: rgba(23, 32, 42, 0.14);
+      --kotai-paper: #f7f8fa;
+    }
+
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .sasu-hero .small-note { padding-bottom: 12pt; }
+    .kotai-detail { padding: 10pt 0 8pt; }
+    .kotai-detail p { margin: 0; }
+    .kotai-detail p + p { margin-top: 7pt; }
+    .source-link { padding-top: 7pt; }
+    .release-notes summary { cursor: pointer; font-weight: bold; font-size: 10pt; margin: 0; padding-bottom: 5pt; }
+    .release-notes h2 { display: inline-block; padding-top: 2pt; padding-bottom: 2pt; }
+    .release-date { padding-left: 4pt; font-size: 10pt; color: #555; }
+    .kotai-footer { padding: 16pt 0 8pt; color: #555; text-align: center; }
+    .kotai-footer p { margin: 4pt 0; }
+
+    .route-demo { max-width: 620px; margin: 7pt auto 18pt; }
+    .route-demo-label { margin: 0 0 9px; color: #555; font-size: 11pt; font-weight: bold; text-align: center; }
+    .route-panel { overflow: hidden; border: 1px solid var(--kotai-line); border-radius: 14px; background: var(--kotai-paper); box-shadow: 0 12px 32px rgba(23, 32, 42, 0.12); }
+    .route-titlebar { display: flex; align-items: center; min-height: 40px; padding: 10px 13px; border-bottom: 1px solid var(--kotai-line); background: linear-gradient(#f4f5f6, #e8eaed); }
+    .traffic { display: flex; gap: 6px; }
+    .traffic span { width: 9px; height: 9px; border-radius: 50%; }
+    .traffic span:nth-child(1) { background: #ff5f57; }
+    .traffic span:nth-child(2) { background: #febc2e; }
+    .traffic span:nth-child(3) { background: #28c840; }
+    .menu-bar-title { flex: 1; margin-right: 41px; color: #434b56; font: 600 10pt/1 -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; }
+    .route-content { padding: 18px; }
+    .route-flow { display: grid; grid-template-columns: minmax(74px, 0.8fr) 28px minmax(74px, 0.9fr) 28px minmax(84px, 1fr) 28px minmax(132px, 1.2fr); align-items: center; gap: 6px; }
+    .route-node { display: grid; min-height: 78px; padding: 10px 7px; place-items: center; align-content: center; gap: 5px; border: 1px solid var(--kotai-line); border-radius: 11px; background: #fff; color: var(--kotai-ink); text-align: center; box-shadow: 0 3px 9px rgba(23, 32, 42, 0.07); }
+    .route-node strong { font: 700 10pt/1.2 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .route-node small { color: var(--kotai-muted); font: 8pt/1.25 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .node-symbol { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 8px; background: #edf0f4; color: #364150; font: 700 14px/1 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .route-arrow { position: relative; height: 2px; background: #96a1ad; }
+    .route-arrow::after { position: absolute; top: 50%; right: -1px; width: 7px; height: 7px; content: ''; transform: translateY(-50%) rotate(45deg); border-top: 2px solid #96a1ad; border-right: 2px solid #96a1ad; }
+    .kotai-node { border-color: rgba(36, 105, 216, 0.35); }
+    .kotai-node .node-symbol { background: var(--kotai-blue-soft); color: var(--kotai-blue); }
+    .account-stack { display: grid; gap: 7px; }
+    .account-card { display: flex; align-items: center; justify-content: center; padding: 7px 6px; border: 1px solid transparent; border-radius: 8px; background: #f0f2f5; color: #687382; font: 600 7.5pt/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; text-align: center; white-space: nowrap; }
+    .account-card.is-routed { color: var(--kotai-blue); border-color: rgba(36, 105, 216, 0.28); background: var(--kotai-blue-soft); }
+    .route-caption { margin: 0; padding: 10pt 8pt 0; color: #444; font-size: 10pt; text-align: center; }
+
+    @media (max-width: 590px) {
+      .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
+      .route-content { padding: 14px 12px; }
+      .route-flow { grid-template-columns: 1fr; gap: 6px; }
+      .route-node { min-height: 64px; }
+      .route-arrow { width: 2px; height: 20px; margin: 0 auto; }
+      .route-arrow::after { top: auto; right: 50%; bottom: -1px; transform: translateX(50%) rotate(135deg); }
+    }
+
+  </style>
+</head>
+
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher">
+      <button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button>
+    </div>
+
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <img class="sasu-icon" src="assets/kotai-icon.png?v=5" alt="Kotai wooden signpost icon" data-alt-en="Kotai wooden signpost icon" data-alt-ja="Kotaiの木製道標アイコン">
+        <div>
+          <h1>Kotai (交代)</h1>
+          <div class="sasu-subtitle" data-label-en="Keep personal and work usage separate in Cursor, etc." data-label-ja="Cursorなどで個人用と仕事用の利用を分ける。">Keep personal and work usage separate in Cursor, etc.</div>
+        </div>
+      </div>
+      <div class="sasu-tagline" data-label-en="Route personal and work projects simultaneously in Cursor and OpenAI-compatible clients through one stable URL." data-label-ja="CursorやOpenAI互換クライアントで、個人用と仕事用のプロジェクトを1つの固定URLから同時に振り分けられます。">Route personal and work projects simultaneously in Cursor and OpenAI-compatible clients through one stable URL.</div>
+      <!-- kotai-download:start -->
+      <a class="download-link" href="https://github.com/littlebobert/kotai/releases/download/0.1.0/Kotai-0.1.0-mac.zip" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
+      <span class="download-version" data-label-en="(version 0.1.0)" data-label-ja="（バージョン 0.1.0）">(version 0.1.0)</span>
+      <!-- kotai-download:end -->
+      <div class="small-note" data-label-en="Free and no in-app purchases." data-label-ja="無料で、アプリ内課金はありません。">Free and no in-app purchases.</div>
+    </section>
+
+    <section class="sasu-section">
+      <figure class="route-demo">
+        <div class="route-demo-label" data-label-en="One IDE, two OpenRouter accounts" data-label-ja="1つのIDE、2つのOpenRouterアカウント">One IDE, two OpenRouter accounts</div>
+        <div class="route-panel" aria-label="Diagram showing Cursor model prefixes routed through ngrok and Kotai to Personal and Work OpenRouter accounts simultaneously" data-aria-label-en="Diagram showing Cursor model prefixes routed through ngrok and Kotai to Personal and Work OpenRouter accounts simultaneously" data-aria-label-ja="Cursorのモデル接頭辞がngrokとKotaiを経由し、個人用と仕事用のOpenRouterアカウントへ同時に振り分けられる構成図">
+          <div class="route-titlebar">
+            <span class="traffic" aria-hidden="true"><span></span><span></span><span></span></span>
+            <span class="menu-bar-title" data-label-en="Kotai routing" data-label-ja="Kotaiルーティング">Kotai routing</span>
+          </div>
+          <div class="route-content">
+            <div class="route-flow" aria-hidden="true">
+              <div class="route-node">
+                <span class="node-symbol">C</span>
+                <strong>Cursor</strong>
+              </div>
+              <span class="route-arrow"></span>
+              <div class="route-node">
+                <span class="node-symbol">↗</span>
+                <strong data-label-en="ngrok" data-label-ja="ngrok">ngrok</strong>
+              </div>
+              <span class="route-arrow"></span>
+              <div class="route-node kotai-node">
+                <img src="assets/kotai-icon.png?v=5" width="28" height="28" alt="">
+                <strong>Kotai</strong>
+                <small>127.0.0.1:18742</small>
+              </div>
+              <span class="route-arrow"></span>
+              <div class="route-node">
+                <strong>OpenRouter</strong>
+                <div class="account-stack">
+                  <span class="account-card is-routed">kotai/personal/…</span>
+                  <span class="account-card is-routed">kotai/work/…</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <figcaption class="route-caption" data-label-en="The model prefix selects the account for each request, so personal and work projects can run at the same time." data-label-ja="モデルの接頭辞がリクエストごとのアカウントを指定するため、個人用と仕事用のプロジェクトを同時に実行できます。">The model prefix selects the account for each request, so personal and work projects can run at the same time.</figcaption>
+      </figure>
+    </section>
+
+    <section class="kotai-detail">
+      <h2 data-label-en="What it does:" data-label-ja="できること：">What it does:</h2>
+      <p data-label-en="Kotai is a macOS menu bar app that routes each Cursor or OpenAI-compatible client request by model prefix. Use kotai/personal/… or kotai/work/… to select an account; Kotai strips the prefix before sending the real model ID to OpenRouter, so both accounts can be used at once." data-label-ja="Kotaiは、CursorやOpenAI互換クライアントの各リクエストをモデルの接頭辞で振り分けるmacOSメニューバーアプリです。kotai/personal/…またはkotai/work/…でアカウントを指定すると、Kotaiが接頭辞を取り除いて実際のモデルIDをOpenRouterへ送り、両方のアカウントを同時に利用できます。">Kotai is a macOS menu bar app that routes each Cursor or OpenAI-compatible client request by model prefix. Use kotai/personal/… or kotai/work/… to select an account; Kotai strips the prefix before sending the real model ID to OpenRouter, so both accounts can be used at once.</p>
+    </section>
+
+    <section class="kotai-detail">
+      <h2 data-label-en="Data path and privacy:" data-label-ja="データ経路とプライバシー：">Data path and privacy:</h2>
+      <p data-label-en="Prompt data travels through ngrok, then on to OpenRouter." data-label-ja="プロンプトデータはngrokを経由し、その後OpenRouterへ送られます。">Prompt data travels through ngrok, then on to OpenRouter.</p>
+      <p class="source-link"><a href="https://github.com/littlebobert/kotai" data-label-en="View the source code on GitHub." data-label-ja="ソースコードをGitHubで見る。">View the source code on GitHub.</a></p>
+    </section>
+
+    <section class="kotai-detail">
+      <h2 data-label-en="Why &quot;Kotai&quot;?" data-label-ja="なぜ「Kotai」？">Why "Kotai"?</h2>
+      <p data-label-en="Kotai (交代) is the Japanese word for alternation or changeover." data-label-ja="Kotai（交代）は、入れ替わりや交替を意味する日本語です。">Kotai (交代) is the Japanese word for alternation or changeover.</p>
+    </section>
+
+    <section class="kotai-detail">
+      <h2 data-label-en="Requirements:" data-label-ja="動作要件：">Requirements:</h2>
+      <p data-label-en="The download requires an Apple Silicon Mac with macOS 14 or newer, a free ngrok account with ngrok installed, and two OpenRouter API keys—one personal and one for work." data-label-ja="ダウンロード版には、macOS 14以降を搭載したApple Silicon Mac、ngrokをインストールした無料ngrokアカウント、個人用と仕事用の2つのOpenRouter APIキーが必要です。">The download requires an Apple Silicon Mac with macOS 14 or newer, a free ngrok account with ngrok installed, and two OpenRouter API keys—one personal and one for work.</p>
+    </section>
+
+    <section class="kotai-detail">
+      <h2 data-label-en="Limitations:" data-label-ja="制限事項：">Limitations:</h2>
+      <p data-label-en="Kotai, ngrok, and your Mac must remain running. ngrok free-plan request and bandwidth limits apply. Anthropic-native clients are not supported. OpenRouter’s Cursor integration is beta, and some Cursor features may bypass custom API keys or base URLs." data-label-ja="Kotai、ngrok、Macを起動したままにする必要があります。ngrok無料プランのリクエスト数と帯域幅の制限が適用されます。Anthropicネイティブのクライアントには対応していません。OpenRouterのCursor連携はベータ版で、一部のCursor機能はカスタムAPIキーやベースURLを経由しない場合があります。">Kotai, ngrok, and your Mac must remain running. ngrok free-plan request and bandwidth limits apply. Anthropic-native clients are not supported. OpenRouter’s Cursor integration is beta, and some Cursor features may bypass custom API keys or base URLs.</p>
+    </section>
+
+    <section class="kotai-detail">
+      <details class="release-notes">
+        <summary data-label-en="Changelog" data-label-ja="変更履歴">Changelog</summary>
+        <!-- kotai-changelog:start -->
+        <h2>0.1.0</h2>
+        <span class="release-date" data-label-en="September 6, 2026" data-label-ja="2026年9月6日">September 6, 2026</span>
+        <ul>
+          <li data-label-en="Added simultaneous prefix-based routing to personal and work OpenRouter accounts." data-label-ja="接頭辞に基づいて、個人用と仕事用のOpenRouterアカウントへ同時に振り分ける機能を追加しました。">Added simultaneous prefix-based routing to personal and work OpenRouter accounts.</li>
+          <li data-label-en="Added support for Cursor and other OpenAI-compatible clients through a stable ngrok URL." data-label-ja="固定ngrok URLを通じて、Cursorやその他のOpenAI互換クライアントに対応しました。">Added support for Cursor and other OpenAI-compatible clients through a stable ngrok URL.</li>
+          <li data-label-en="Stored service credentials in Keychain and protected the proxy with a separate token." data-label-ja="サービスの認証情報をキーチェーンに保存し、専用トークンでプロキシを保護しました。">Stored service credentials in Keychain and protected the proxy with a separate token.</li>
+        </ul>
+        <!-- kotai-changelog:end -->
+      </details>
+    </section>
+
+    <footer class="kotai-footer">
+      <p><span data-label-en="Made by" data-label-ja="日本の">Made by</span> <a href="https://littlebobert.github.io">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja=" が制作。"> in Japan.</span></p>
+    </footer>
+  </main>
+
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('kotai-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => {
+      setLanguage(currentLanguage === 'ja' ? 'en' : 'ja');
+    });
+    setLanguage(localStorage.getItem('kotai-language') || preferredLanguage(), false);
+  </script>
+</body>
+
+</html>

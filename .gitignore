@@ -2,6 +2,7 @@
 node_modules/
 dist-sasu/
 dist-kehai/
+dist-kotai/
 .env.local
 .npm-cache/
 

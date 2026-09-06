@@ -40,7 +40,7 @@
     .kotai-detail { padding: 10pt 0 8pt; }
     .kotai-detail p { margin: 0; }
     .kotai-detail p + p { margin-top: 7pt; }
-    .source-link { padding-top: 7pt; }
+    .source-link { padding-top: 2pt; }
     .release-notes summary { cursor: pointer; font-weight: bold; font-size: 10pt; margin: 0; padding-bottom: 5pt; }
     .release-notes h2 { display: inline-block; padding-top: 2pt; padding-bottom: 2pt; }
     .release-date { padding-left: 4pt; font-size: 10pt; color: #555; }
@@ -142,7 +142,7 @@
             </div>
           </div>
         </div>
-        <figcaption class="route-caption" data-label-en="Personal and work requests go through one proxy, but use separate model identifiers." data-label-ja="個人用と仕事用のリクエストは1つのプロキシを通りますが、別々のモデル識別子を使用します。">Personal and work requests go through one proxy, but use separate model identifiers.</figcaption>
+        <figcaption class="route-caption" data-label-en="Every request uses either a work or a personal model prefix, then Kotai routes the request to the corresponding OpenRouter setup. Work and personal projects can both run simultaneously." data-label-ja="各リクエストは仕事用または個人用のモデル接頭辞を使用し、Kotaiが対応するOpenRouter設定へ振り分けます。仕事用と個人用のプロジェクトを同時に実行できます。">Every request uses either a work or a personal model prefix, then Kotai routes the request to the corresponding OpenRouter setup. Work and personal projects can both run simultaneously.</figcaption>
       </figure>
     </section>
 
@@ -164,12 +164,12 @@
 
     <section class="kotai-detail">
       <h2 data-label-en="Requirements:" data-label-ja="動作要件：">Requirements:</h2>
-      <p data-label-en="The download requires an Apple Silicon Mac with macOS 14 or newer, a free ngrok account with ngrok installed, its authtoken, one assigned static dev URL from the ngrok Domains dashboard, and two OpenRouter API keys—one personal and one for work." data-label-ja="ダウンロード版には、macOS 14以降を搭載したApple Silicon Mac、ngrokをインストールした無料ngrokアカウント、その認証トークン、ngrokのドメイン管理画面で割り当てられた静的開発用URL 1つ、個人用と仕事用のOpenRouter APIキー各1つが必要です。">The download requires an Apple Silicon Mac with macOS 14 or newer, a free ngrok account with ngrok installed, its authtoken, one assigned static dev URL from the ngrok Domains dashboard, and two OpenRouter API keys—one personal and one for work.</p>
+      <p data-label-en="The download requires an Apple Silicon Mac with macOS 14 or newer, a free ngrok account with ngrok set up, and two OpenRouter API keys: one personal and one for work." data-label-ja="ダウンロード版には、macOS 14以降を搭載したApple Silicon Mac、ngrokを設定済みの無料ngrokアカウント、そして個人用と仕事用の2つのOpenRouter APIキーが必要です。">The download requires an Apple Silicon Mac with macOS 14 or newer, a free ngrok account with ngrok set up, and two OpenRouter API keys: one personal and one for work.</p>
     </section>
 
     <section class="kotai-detail">
       <h2 data-label-en="Limitations:" data-label-ja="制限事項：">Limitations:</h2>
-      <p data-label-en="Kotai, ngrok, and your Mac must remain running, and the configured assigned static ngrok URL must remain available to your account. ngrok free-plan request and bandwidth limits apply. Anthropic-native clients are not supported. OpenRouter’s Cursor integration is beta, and some Cursor features may bypass custom API keys or base URLs." data-label-ja="Kotai、ngrok、Macを起動したままにし、設定した割り当て済みの静的ngrok URLがアカウントで利用可能な状態を保つ必要があります。ngrok無料プランのリクエスト数と帯域幅の制限が適用されます。Anthropicネイティブのクライアントには対応していません。OpenRouterのCursor連携はベータ版で、一部のCursor機能はカスタムAPIキーやベースURLを経由しない場合があります。">Kotai, ngrok, and your Mac must remain running, and the configured assigned static ngrok URL must remain available to your account. ngrok free-plan request and bandwidth limits apply. Anthropic-native clients are not supported. OpenRouter’s Cursor integration is beta, and some Cursor features may bypass custom API keys or base URLs.</p>
+      <p data-label-en="Kotai and ngrok must remain running. The ngrok free-plan request and bandwidth limits apply. Anthropic-native clients are not supported." data-label-ja="Kotaiとngrokを起動したままにする必要があります。ngrok無料プランのリクエスト数と帯域幅の制限が適用されます。Anthropicネイティブのクライアントには対応していません。">Kotai and ngrok must remain running. The ngrok free-plan request and bandwidth limits apply. Anthropic-native clients are not supported.</p>
     </section>
 
     <section class="kotai-detail">

@@ -96,10 +96,10 @@
           <div class="sasu-subtitle" data-label-en="Keep personal and work usage separate in Cursor, etc." data-label-ja="Cursorなどで個人用と仕事用の利用を分ける。">Keep personal and work usage separate in Cursor, etc.</div>
         </div>
       </div>
-      <div class="sasu-tagline" data-label-en="Route personal and work projects simultaneously in Cursor and OpenAI-compatible clients through one stable URL." data-label-ja="CursorやOpenAI互換クライアントで、個人用と仕事用のプロジェクトを1つの固定URLから同時に振り分けられます。">Route personal and work projects simultaneously in Cursor and OpenAI-compatible clients through one stable URL.</div>
+      <div class="sasu-tagline" data-label-en="Configure one assigned static ngrok URL once, then route personal and work projects through that same URL on every launch." data-label-ja="割り当てられた静的ngrok URLを一度設定すれば、起動するたびに同じURLから個人用と仕事用のプロジェクトを振り分けられます。">Configure one assigned static ngrok URL once, then route personal and work projects through that same URL on every launch.</div>
       <!-- kotai-download:start -->
-<a class="download-link" href="https://github.com/littlebobert/kotai/releases/download/0.1.1/Kotai-0.1.1-mac.zip" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
-<span class="download-version" data-label-en="(version 0.1.1)" data-label-ja="（バージョン 0.1.1）">(version 0.1.1)</span>
+<a class="download-link" href="https://github.com/littlebobert/kotai/releases/download/0.1.2/Kotai-0.1.2-mac.zip" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
+<span class="download-version" data-label-en="(version 0.1.2)" data-label-ja="（バージョン 0.1.2）">(version 0.1.2)</span>
 <!-- kotai-download:end -->
       <div class="small-note" data-label-en="Free and no in-app purchases." data-label-ja="無料で、アプリ内課金はありません。">Free and no in-app purchases.</div>
     </section>
@@ -146,7 +146,7 @@
 
     <section class="kotai-detail">
       <h2 data-label-en="What it does:" data-label-ja="できること：">What it does:</h2>
-      <p data-label-en="Kotai is a macOS menu bar app that routes each Cursor or OpenAI-compatible client request by model prefix. Use kotai/personal/… or kotai/work/… to select an account; Kotai strips the prefix before sending the real model ID to OpenRouter, so both accounts can be used at once." data-label-ja="Kotaiは、CursorやOpenAI互換クライアントの各リクエストをモデルの接頭辞で振り分けるmacOSメニューバーアプリです。kotai/personal/…またはkotai/work/…でアカウントを指定すると、Kotaiが接頭辞を取り除いて実際のモデルIDをOpenRouterへ送り、両方のアカウントを同時に利用できます。">Kotai is a macOS menu bar app that routes each Cursor or OpenAI-compatible client request by model prefix. Use kotai/personal/… or kotai/work/… to select an account; Kotai strips the prefix before sending the real model ID to OpenRouter, so both accounts can be used at once.</p>
+      <p data-label-en="Kotai is a macOS menu bar app that routes each Cursor or OpenAI-compatible client request by model prefix through one assigned static ngrok URL. Configure the URL once; Kotai reuses it on every launch. Use kotai/personal/… or kotai/work/… to select an account; Kotai strips the prefix before sending the real model ID to OpenRouter, so both accounts can be used at once." data-label-ja="Kotaiは、割り当てられた1つの静的ngrok URLを通じて、CursorやOpenAI互換クライアントの各リクエストをモデルの接頭辞で振り分けるmacOSメニューバーアプリです。URLは一度設定すれば、起動するたびに再利用されます。kotai/personal/…またはkotai/work/…でアカウントを指定すると、Kotaiが接頭辞を取り除いて実際のモデルIDをOpenRouterへ送り、両方のアカウントを同時に利用できます。">Kotai is a macOS menu bar app that routes each Cursor or OpenAI-compatible client request by model prefix through one assigned static ngrok URL. Configure the URL once; Kotai reuses it on every launch. Use kotai/personal/… or kotai/work/… to select an account; Kotai strips the prefix before sending the real model ID to OpenRouter, so both accounts can be used at once.</p>
     </section>
 
     <section class="kotai-detail">
@@ -162,18 +162,24 @@
 
     <section class="kotai-detail">
       <h2 data-label-en="Requirements:" data-label-ja="動作要件：">Requirements:</h2>
-      <p data-label-en="The download requires an Apple Silicon Mac with macOS 14 or newer, a free ngrok account with ngrok installed, and two OpenRouter API keys—one personal and one for work." data-label-ja="ダウンロード版には、macOS 14以降を搭載したApple Silicon Mac、ngrokをインストールした無料ngrokアカウント、個人用と仕事用の2つのOpenRouter APIキーが必要です。">The download requires an Apple Silicon Mac with macOS 14 or newer, a free ngrok account with ngrok installed, and two OpenRouter API keys—one personal and one for work.</p>
+      <p data-label-en="The download requires an Apple Silicon Mac with macOS 14 or newer, a free ngrok account with ngrok installed, its authtoken, one assigned static dev URL from the ngrok Domains dashboard, and two OpenRouter API keys—one personal and one for work." data-label-ja="ダウンロード版には、macOS 14以降を搭載したApple Silicon Mac、ngrokをインストールした無料ngrokアカウント、その認証トークン、ngrokのドメイン管理画面で割り当てられた静的開発用URL 1つ、個人用と仕事用のOpenRouter APIキー各1つが必要です。">The download requires an Apple Silicon Mac with macOS 14 or newer, a free ngrok account with ngrok installed, its authtoken, one assigned static dev URL from the ngrok Domains dashboard, and two OpenRouter API keys—one personal and one for work.</p>
     </section>
 
     <section class="kotai-detail">
       <h2 data-label-en="Limitations:" data-label-ja="制限事項：">Limitations:</h2>
-      <p data-label-en="Kotai, ngrok, and your Mac must remain running. ngrok free-plan request and bandwidth limits apply. Anthropic-native clients are not supported. OpenRouter’s Cursor integration is beta, and some Cursor features may bypass custom API keys or base URLs." data-label-ja="Kotai、ngrok、Macを起動したままにする必要があります。ngrok無料プランのリクエスト数と帯域幅の制限が適用されます。Anthropicネイティブのクライアントには対応していません。OpenRouterのCursor連携はベータ版で、一部のCursor機能はカスタムAPIキーやベースURLを経由しない場合があります。">Kotai, ngrok, and your Mac must remain running. ngrok free-plan request and bandwidth limits apply. Anthropic-native clients are not supported. OpenRouter’s Cursor integration is beta, and some Cursor features may bypass custom API keys or base URLs.</p>
+      <p data-label-en="Kotai, ngrok, and your Mac must remain running, and the configured assigned static ngrok URL must remain available to your account. ngrok free-plan request and bandwidth limits apply. Anthropic-native clients are not supported. OpenRouter’s Cursor integration is beta, and some Cursor features may bypass custom API keys or base URLs." data-label-ja="Kotai、ngrok、Macを起動したままにし、設定した割り当て済みの静的ngrok URLがアカウントで利用可能な状態を保つ必要があります。ngrok無料プランのリクエスト数と帯域幅の制限が適用されます。Anthropicネイティブのクライアントには対応していません。OpenRouterのCursor連携はベータ版で、一部のCursor機能はカスタムAPIキーやベースURLを経由しない場合があります。">Kotai, ngrok, and your Mac must remain running, and the configured assigned static ngrok URL must remain available to your account. ngrok free-plan request and bandwidth limits apply. Anthropic-native clients are not supported. OpenRouter’s Cursor integration is beta, and some Cursor features may bypass custom API keys or base URLs.</p>
     </section>
 
     <section class="kotai-detail">
       <details class="release-notes">
         <summary data-label-en="Changelog" data-label-ja="変更履歴">Changelog</summary>
         <!-- kotai-changelog:start -->
+<h2>0.1.2</h2>
+<span class="release-date" data-label-en="September 6, 2026" data-label-ja="2026年9月6日">September 6, 2026</span>
+<ul>
+  <li data-label-en="Use a static ngrok URL." data-label-ja="静的なngrok URLを使用するようにしました。">Use a static ngrok URL.</li>
+</ul>
+
 <h2>0.1.1</h2>
 <span class="release-date" data-label-en="September 6, 2026" data-label-ja="2026年9月6日">September 6, 2026</span>
 <ul>

@@ -2015,6 +2015,10 @@ html[lang="en"] .memory-label strong {
   align-items: flex-start;
 }
 
+.bottom-row.is-boot-pending {
+  visibility: hidden;
+}
+
 .clock-row {
   display: flex;
   flex: 0 0 auto;

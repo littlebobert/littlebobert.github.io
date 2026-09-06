@@ -957,6 +957,7 @@ const aboutSlot = document.getElementById('about-slot');
 const aboutDialog = document.getElementById('about-dialog');
 const aboutDesktopIcon = document.getElementById('about-desktop-icon');
 const aboutCloseButton = aboutDialog?.querySelector('.close-box--close');
+const bottomRow = document.querySelector('.bottom-row');
 const webBrowserSlot = document.getElementById('web-browser-slot');
 const webBrowserDialog = document.getElementById('web-browser-dialog');
 const webBrowserCloseButton = document.getElementById('web-browser-close');
@@ -2548,6 +2549,7 @@ aboutDesktopIcon?.addEventListener('click', () => {
 function bootAboutWindow() {
   expandedAboutHeight = measureExpandedAboutSlotHeight();
   aboutSlot.style.minHeight = `${expandedAboutHeight}px`;
+  bottomRow?.classList.remove('is-boot-pending');
 
   if (prefersReducedMotion()) {
     openAboutWindow();

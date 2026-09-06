@@ -1,28 +1,8 @@
 {
-  "updatedAt": "2026-09-05T17:22:59.868Z",
+  "updatedAt": "2026-09-06T17:36:52.672Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
-    {
-      "id": "2096257854261117163",
-      "text": "I asked Fable why https://t.co/r438zyumxj frequently does not explain the meme, and gave it an example. Fable did not explain the meme either.\n\nvery human-like",
-      "createdAt": "2026-09-05T15:23:13.000Z",
-      "url": "https://x.com/_bobertdowney/status/2096257854261117163",
-      "urls": [
-        {
-          "url": "https://t.co/r438zyumxj",
-          "expandedUrl": "https://knowyourmeme.com",
-          "displayUrl": "knowyourmeme.com",
-          "start": 18,
-          "end": 41
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
     {
       "id": "2096229900739027260",
       "text": "trying to get my app to launch faster. I still have a long way to go to. its window first starts to appear 3-4 frames after the Dock icon’s highest point, but it’s not really ready to use until later, when the Dock icon lands.\n\nhttps://t.co/8V920dyUTC https://t.co/BnMTRKWjPv https://t.co/cV85Z7k4o6",
@@ -255,6 +235,33 @@
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
+    },
+    {
+      "id": "2094565871331205321",
+      "text": "macOS 27 has smart filtering in context menus😍 https://t.co/ysyCEGz3ut",
+      "createdAt": "2026-08-31T23:19:53.000Z",
+      "url": "https://x.com/_bobertdowney/status/2094565871331205321",
+      "urls": [
+        {
+          "url": "https://t.co/ysyCEGz3ut",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2094565871331205321/photo/1",
+          "displayUrl": "pic.x.com/ysyCEGz3ut",
+          "start": 47,
+          "end": 70
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2094565871331205321-0.png",
+          "imageModern": "assets/generated/x/mine-post-2094565871331205321-0-modern.png"
+        }
+      ]
     }
   ]
 }

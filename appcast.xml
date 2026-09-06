@@ -3,6 +3,18 @@
     <channel>
         <title>Sasu</title>
         <item>
+            <title>0.2.11</title>
+            <pubDate>Sun, 06 Sep 2026 16:27:40 +0900</pubDate>
+            <link>https://sasu.jp</link>
+            <sparkle:version>36</sparkle:version>
+            <sparkle:shortVersionString>0.2.11</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[Improved performance while answers are streaming in.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.11/Sasu-0.2.11-mac.zip" length="4446719" type="application/octet-stream" sparkle:edSignature="NCNIA2Z0EfkUq7blOg30Qod1K2dYPnvxvom1B452rGPHst25cYTjOUAcqGa9xZQJCa+AKEKw4znajVJfLRh6CA=="/>
+        </item>
+        <item>
             <title>0.2.10</title>
             <pubDate>Fri, 14 Aug 2026 13:42:30 -0400</pubDate>
             <link>https://sasu.jp</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[Added a Find feature.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.9/Sasu-0.2.9-mac.zip" length="4439156" type="application/octet-stream" sparkle:edSignature="hhKIX9x3Jx15LhpCCY0ko3Ma9f7VHptLCukNo1o1RevibqZ0yiv+0rqVswmKlsX1UKHYnLa54oi80DzFgBOmDg=="/>
-        </item>
-        <item>
-            <title>0.2.8</title>
-            <pubDate>Wed, 29 Jul 2026 18:03:53 +0900</pubDate>
-            <link>https://sasu.jp</link>
-            <sparkle:version>33</sparkle:version>
-            <sparkle:shortVersionString>0.2.8</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[Added an option for Anthropic and added drag and drop support.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.8/Sasu-0.2.8-mac.zip" length="4404078" type="application/octet-stream" sparkle:edSignature="wdxdGIfhFopsLpt+8VdBeT6b5Qm5bU1LpF0i4SSDKFaD4+JaMIQD1iC+Pbu7IxOsv5ZzznefZkA5PNxQD15HDg=="/>
         </item>
     </channel>
 </rss>

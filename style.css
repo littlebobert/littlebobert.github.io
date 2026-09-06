@@ -4604,7 +4604,13 @@ html[data-theme="modern"] .submission-form textarea {
 }
 
 .recent-updates-content .x-feed {
-  max-height: 190px;
+  max-height: none;
+  overflow: visible;
+  padding-right: 0;
+}
+
+.recent-updates-content .feed-panel.has-scroll-overflow::after {
+  display: none;
 }
 
 @media (max-width: 480px) {

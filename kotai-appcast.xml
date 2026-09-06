@@ -3,6 +3,18 @@
     <channel>
         <title>Kotai</title>
         <item>
+            <title>0.1.1</title>
+            <pubDate>Sun, 06 Sep 2026 18:25:24 +0900</pubDate>
+            <link>https://kotai.jp/</link>
+            <sparkle:version>2</sparkle:version>
+            <sparkle:shortVersionString>0.1.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Moved the website and update feed to kotai.jp.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.1.1/Kotai-0.1.1-mac.zip" length="10311774" type="application/octet-stream" sparkle:edSignature="7N2iK75Cl89I6VaAj1BTrkDVsXVd7gOM5Ky1p39qlSwhLFkXHt1vTxO0UexwMXqG2FV/YRm+M909Jz7PfjdEAg=="/>
+        </item>
+        <item>
             <title>0.1.0</title>
             <pubDate>Sun, 06 Sep 2026 16:48:56 +0900</pubDate>
             <link>https://kotai.jp/</link>

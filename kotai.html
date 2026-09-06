@@ -27,6 +27,8 @@
       --kotai-muted: #596574;
       --kotai-blue: #2469d8;
       --kotai-blue-soft: #eaf2ff;
+      --kotai-green: #258753;
+      --kotai-green-soft: #e9f7ef;
       --kotai-line: rgba(23, 32, 42, 0.14);
       --kotai-paper: #f7f8fa;
     }
@@ -55,28 +57,25 @@
     .traffic span:nth-child(2) { background: #febc2e; }
     .traffic span:nth-child(3) { background: #28c840; }
     .menu-bar-title { flex: 1; margin-right: 41px; color: #434b56; font: 600 10pt/1 -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; }
-    .route-content { padding: 18px; }
-    .route-flow { display: grid; grid-template-columns: minmax(74px, 0.8fr) 28px minmax(74px, 0.9fr) 28px minmax(84px, 1fr) 28px minmax(132px, 1.2fr); align-items: center; gap: 6px; }
-    .route-node { display: grid; min-height: 78px; padding: 10px 7px; place-items: center; align-content: center; gap: 5px; border: 1px solid var(--kotai-line); border-radius: 11px; background: #fff; color: var(--kotai-ink); text-align: center; box-shadow: 0 3px 9px rgba(23, 32, 42, 0.07); }
-    .route-node strong { font: 700 10pt/1.2 -apple-system, BlinkMacSystemFont, sans-serif; }
-    .route-node small { color: var(--kotai-muted); font: 8pt/1.25 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .route-content { padding: 18px; overflow-x: auto; }
+    .route-flow { display: grid; grid-template-columns: minmax(90px, 1fr) 22px minmax(64px, 0.72fr) 22px minmax(72px, 0.78fr) 22px minmax(96px, 1.05fr); align-items: center; gap: 6px; min-width: 0; }
+    .route-node { display: grid; min-height: 92px; padding: 9px 7px; place-items: center; align-content: center; gap: 5px; border: 1px solid var(--kotai-line); border-radius: 11px; background: #fff; color: var(--kotai-ink); text-align: center; box-shadow: 0 3px 9px rgba(23, 32, 42, 0.07); }
+    .route-node strong { font: 700 9pt/1.2 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .route-node small { color: var(--kotai-muted); font: 7.5pt/1.25 -apple-system, BlinkMacSystemFont, sans-serif; }
     .node-symbol { display: grid; width: 28px; height: 28px; place-items: center; border-radius: 8px; background: #edf0f4; color: #364150; font: 700 14px/1 -apple-system, BlinkMacSystemFont, sans-serif; }
-    .route-arrow { position: relative; height: 2px; background: #96a1ad; }
-    .route-arrow::after { position: absolute; top: 50%; right: -1px; width: 7px; height: 7px; content: ''; transform: translateY(-50%) rotate(45deg); border-top: 2px solid #96a1ad; border-right: 2px solid #96a1ad; }
-    .kotai-node { border-color: rgba(36, 105, 216, 0.35); }
-    .kotai-node .node-symbol { background: var(--kotai-blue-soft); color: var(--kotai-blue); }
-    .account-stack { display: grid; gap: 7px; }
-    .account-card { display: flex; align-items: center; justify-content: center; padding: 7px 6px; border: 1px solid transparent; border-radius: 8px; background: #f0f2f5; color: #687382; font: 600 7.5pt/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; text-align: center; white-space: nowrap; }
-    .account-card.is-routed { color: var(--kotai-blue); border-color: rgba(36, 105, 216, 0.28); background: var(--kotai-blue-soft); }
+    .route-arrow { position: relative; height: 3px; border-radius: 999px; background: #7c8794; color: #7c8794; }
+    .route-arrow::after { position: absolute; top: 50%; right: -1px; width: 7px; height: 7px; content: ''; transform: translateY(-50%) rotate(45deg); border-top: 3px solid currentColor; border-right: 3px solid currentColor; }
+    .kotai-node { border-color: rgba(36, 105, 216, 0.35); background: linear-gradient(135deg, var(--kotai-blue-soft), var(--kotai-green-soft)); }
+    .account-stack { display: grid; gap: 5px; width: min(100%, 88px); justify-self: center; }
+    .account-card { display: flex; align-items: center; justify-content: center; padding: 5px 4px; border: 1px solid transparent; border-radius: 8px; font: 600 7.5pt/1.2 ui-monospace, SFMono-Regular, Menlo, monospace; text-align: center; white-space: nowrap; }
+    .account-card-personal { color: var(--kotai-blue); border-color: rgba(36, 105, 216, 0.3); background: var(--kotai-blue-soft); }
+    .account-card-work { color: var(--kotai-green); border-color: rgba(37, 135, 83, 0.32); background: var(--kotai-green-soft); }
     .route-caption { margin: 0; padding: 10pt 8pt 0; color: #444; font-size: 10pt; text-align: center; }
 
     @media (max-width: 590px) {
       .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
       .route-content { padding: 14px 12px; }
-      .route-flow { grid-template-columns: 1fr; gap: 6px; }
-      .route-node { min-height: 64px; }
-      .route-arrow { width: 2px; height: 20px; margin: 0 auto; }
-      .route-arrow::after { top: auto; right: 50%; bottom: -1px; transform: translateX(50%) rotate(135deg); }
+      .route-flow { min-width: 0; grid-template-columns: minmax(82px, 1fr) 18px minmax(58px, 0.72fr) 18px minmax(66px, 0.78fr) 18px minmax(88px, 1fr); gap: 4px; }
     }
 
   </style>
@@ -96,7 +95,7 @@
           <div class="sasu-subtitle" data-label-en="Route personal and work projects through separate OpenRouter accounts or keys." data-label-ja="Cursorなどで個人用と仕事用の利用を分ける。">Route personal and work projects through separate OpenRouter accounts or keys.</div>
         </div>
       </div>
-      <div class="sasu-tagline" data-label-en="Configure one assigned static ngrok URL once, then route personal and work projects through that same URL on every launch." data-label-ja="割り当てられた静的ngrok URLを一度設定すれば、起動するたびに同じURLから個人用と仕事用のプロジェクトを振り分けられます。">Configure one assigned static ngrok URL once, then route personal and work projects through that same URL on every launch.</div>
+      <div class="sasu-tagline" data-label-en="Separate work and personal coding." data-label-ja="割り当てられた静的ngrok URLを一度設定すれば、起動するたびに同じURLから個人用と仕事用のプロジェクトを振り分けられます。">Separate work and personal coding.</div>
       <!-- kotai-download:start -->
 <a class="download-link" href="https://github.com/littlebobert/kotai/releases/download/0.1.2/Kotai-0.1.2-mac.zip" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
 <span class="download-version" data-label-en="(version 0.1.2)" data-label-ja="（バージョン 0.1.2）">(version 0.1.2)</span>
@@ -106,47 +105,50 @@
 
     <section class="sasu-section">
       <figure class="route-demo">
-        <div class="route-demo-label" data-label-en="One IDE, two OpenRouter accounts" data-label-ja="1つのIDE、2つのOpenRouterアカウント">One IDE, two OpenRouter accounts</div>
-        <div class="route-panel" aria-label="Diagram showing Cursor model prefixes routed through ngrok and Kotai to Personal and Work OpenRouter accounts simultaneously" data-aria-label-en="Diagram showing Cursor model prefixes routed through ngrok and Kotai to Personal and Work OpenRouter accounts simultaneously" data-aria-label-ja="Cursorのモデル接頭辞がngrokとKotaiを経由し、個人用と仕事用のOpenRouterアカウントへ同時に振り分けられる構成図">
+        <div class="route-demo-label" data-label-en="One IDE, two OpenRouter setups" data-label-ja="1つのIDE、2つのOpenRouter設定">One IDE, two OpenRouter setups</div>
+        <div class="route-panel" aria-label="Diagram showing personal and work requests moving together from Cursor through ngrok and Kotai to separate Personal and Work destinations in OpenRouter" data-aria-label-en="Diagram showing personal and work requests moving together from Cursor through ngrok and Kotai to separate Personal and Work destinations in OpenRouter" data-aria-label-ja="個人用と仕事用のリクエストがCursorからngrokとKotaiを共通して通り、OpenRouterの個人用と仕事用へ届く構成図">
           <div class="route-titlebar">
             <span class="traffic" aria-hidden="true"><span></span><span></span><span></span></span>
             <span class="menu-bar-title" data-label-en="Kotai routing" data-label-ja="Kotaiルーティング">Kotai routing</span>
           </div>
           <div class="route-content">
             <div class="route-flow" aria-hidden="true">
-              <div class="route-node">
+              <div class="route-node cursor-node">
                 <span class="node-symbol">C</span>
                 <strong>Cursor</strong>
+                <div class="account-stack">
+                  <span class="account-card account-card-personal" data-label-en="Personal" data-label-ja="個人用">Personal</span>
+                  <span class="account-card account-card-work" data-label-en="Work" data-label-ja="仕事用">Work</span>
+                </div>
               </div>
               <span class="route-arrow"></span>
               <div class="route-node">
                 <span class="node-symbol">↗</span>
-                <strong data-label-en="ngrok" data-label-ja="ngrok">ngrok</strong>
+                <strong>ngrok</strong>
               </div>
               <span class="route-arrow"></span>
               <div class="route-node kotai-node">
                 <img src="assets/kotai-icon.png?v=6" width="28" height="28" alt="">
                 <strong>Kotai</strong>
-                <small>127.0.0.1:18742</small>
               </div>
               <span class="route-arrow"></span>
-              <div class="route-node">
+              <div class="route-node openrouter-node">
                 <strong>OpenRouter</strong>
                 <div class="account-stack">
-                  <span class="account-card is-routed">kotai/personal/…</span>
-                  <span class="account-card is-routed">kotai/work/…</span>
+                  <span class="account-card account-card-personal" data-label-en="Personal" data-label-ja="個人用">Personal</span>
+                  <span class="account-card account-card-work" data-label-en="Work" data-label-ja="仕事用">Work</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <figcaption class="route-caption" data-label-en="The model prefix selects the account for each request, so personal and work projects can run at the same time." data-label-ja="モデルの接頭辞がリクエストごとのアカウントを指定するため、個人用と仕事用のプロジェクトを同時に実行できます。">The model prefix selects the account for each request, so personal and work projects can run at the same time.</figcaption>
+        <figcaption class="route-caption" data-label-en="Personal and work requests follow the same route, then use their matching OpenRouter setup." data-label-ja="個人用と仕事用のリクエストは同じ経路を通り、それぞれに対応するOpenRouter設定を使用します。">Personal and work requests follow the same route, then use their matching OpenRouter setup.</figcaption>
       </figure>
     </section>
 
     <section class="kotai-detail">
       <h2 data-label-en="What it does:" data-label-ja="できること：">What it does:</h2>
-      <p data-label-en="Kotai is a macOS menu bar app that routes each Cursor or OpenAI-compatible client request through work or personal OpenRouter accounts or keys." data-label-ja="Kotaiは、割り当てられた1つの静的ngrok URLを通じて、CursorやOpenAI互換クライアントの各リクエストをモデルの接頭辞で振り分けるmacOSメニューバーアプリです。URLは一度設定すれば、起動するたびに再利用されます。kotai/personal/…またはkotai/work/…でアカウントを指定すると、Kotaiが接頭辞を取り除いて実際のモデルIDをOpenRouterへ送り、両方のアカウントを同時に利用できます。">Kotai is a macOS menu bar app that routes each Cursor or OpenAI-compatible client request through work or personal OpenRouter accounts or keys.</p>
+      <p data-label-en="Every model-bearing request must use kotai/personal/… or kotai/work/…. Kotai strips the prefix and routes the request to the corresponding OpenRouter key, and both can run simultaneously." data-label-ja="モデルを含むすべてのリクエストには、kotai/personal/…またはkotai/work/…を指定する必要があります。Kotaiが接頭辞を取り除き、対応するOpenRouterキーへ振り分け、両方を同時に利用できます。">Every model-bearing request must use kotai/personal/… or kotai/work/…. Kotai strips the prefix and routes the request to the corresponding OpenRouter key, and both can run simultaneously.</p>
     </section>
 
     <section class="kotai-detail">

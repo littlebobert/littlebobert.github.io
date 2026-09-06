@@ -66,7 +66,8 @@
     body.home-page .tokyo-recommendations-entries li {
       margin-bottom: 8px;
     }
-    body.home-page .stack-card .x-post-text {
+    body.home-page .stack-card .x-post-text,
+    body.home-page .recent-updates-content .x-post-text {
       line-height: 1.45 !important;
     }
     body.home-page .stack-card,
@@ -128,7 +129,7 @@
     <div class="dialog-content stack-content">
       <div class="stack-top-row">
         <div class="stack-position-controls">
-          <span class="stack-counter" id="stack-counter">2 / 11</span>
+          <span class="stack-counter" id="stack-counter">2 / 5</span>
           <button
             type="button"
             class="stack-index-shortcut"
@@ -157,27 +158,17 @@
       <div class="hypercard-stack" id="hypercard-stack" aria-live="polite">
         <section class="stack-card stack-card-index" data-stack-card hidden>
           <div class="stack-card-kicker" data-label-en="Index" data-label-ja="<span class='ja-text'>目次</span>">Index</div>
-          <h2
-            data-label-en="Pick a card"
-            data-label-ja="<span class='ja-text'>カードを選ぶ</span>"
-          >Pick a card</h2>
+          <h2 data-label-en="Pick a card" data-label-ja="<span class='ja-text'>カードを選ぶ</span>">Pick a card</h2>
           <div class="stack-index-grid" aria-label="Card index">
-            <button type="button" class="stack-index-button" data-stack-jump="1" data-label-en="Intro" data-label-ja="イントロ">Intro</button>
-            <button type="button" class="stack-index-button" data-stack-jump="2" data-label-en="Work" data-label-ja="仕事">Work</button>
-            <button type="button" class="stack-index-button" data-stack-jump="3" data-label-en="My Apps" data-label-ja="自作アプリ">My Apps</button>
-            <button type="button" class="stack-index-button" data-stack-jump="4" data-label-en="Tell me" data-label-ja="聞かせて">Tell me</button>
-            <button type="button" class="stack-index-button" data-stack-jump="5" data-label-en="Running" data-label-ja="ランニング">Running</button>
-            <button type="button" class="stack-index-button" data-stack-jump="6" data-label-en="Gallery" data-label-ja="ギャラリー">Gallery</button>
-            <button type="button" class="stack-index-button" data-stack-jump="7" data-label-en="Elsewhere" data-label-ja="リンク">Elsewhere</button>
-            <button type="button" class="stack-index-button" data-stack-jump="8" data-label-en="Doom scroll" data-label-ja="<span class='latin'>Doom scroll</span>">Doom scroll</button>
-            <button type="button" class="stack-index-button" data-stack-jump="9" data-label-en="Guestbook" data-label-ja="ゲストブック">Guestbook</button>
-            <button type="button" class="stack-index-button" data-stack-jump="10" data-label-en="Play MUD" data-label-ja="<span class='latin'>Play MUD</span>">Play MUD</button>
-            <button type="button" class="stack-index-button" data-stack-jump="11" data-label-en="One more thing" data-label-ja="<span class='latin'>One more thing</span>">One more thing</button>
+            <button type="button" class="stack-index-button" data-stack-jump="1" data-label-en="About" data-label-ja="について">About</button>
+            <button type="button" class="stack-index-button" data-stack-jump="2" data-label-en="Self-published products" data-label-ja="自作アプリ">Self-published products</button>
+            <button type="button" class="stack-index-button" data-stack-jump="3" data-label-en="My Life" data-label-ja="私の生活">My Life</button>
+            <button type="button" class="stack-index-button" data-stack-jump="4" data-label-en="Playground" data-label-ja="遊び場">Playground</button>
           </div>
         </section>
 
         <section class="stack-card is-active" data-stack-card>
-          <div class="stack-card-kicker" data-label-en="Intro" data-label-ja="イントロ">Intro</div>
+          <div class="stack-card-kicker" data-label-en="About" data-label-ja="について">About</div>
           <div class="stack-card-profile">
             <span class="stack-card-avatar">
               <img src="assets/img-dithered.jpg" alt="Justin Garcia" class="headshot-classic">
@@ -196,6 +187,11 @@
             <a href="https://www.instagram.com/bobertdowney/">Instagram</a>
             <a href="https://www.linkedin.com/in/garciajustin/">LinkedIn</a>
             <a
+              href="mailto:justin.garcia@gmail.com"
+              data-label-en="Email"
+              data-label-ja="メール"
+            >Email</a>
+            <a
               href="resume.html"
               data-label-en="Resume"
               data-label-ja="<span class='ja-text'>履歴書</span>"
@@ -203,72 +199,278 @@
               data-browser-title-ja="履歴書"
             >Resume</a>
           </div>
-        </section>
-
-        <section class="stack-card" data-stack-card hidden>
-          <div class="stack-card-kicker" data-label-en="What I do" data-label-ja="仕事">What I do</div>
-          <p
-            data-label-en="I work on shipping <a href='https://site.kotoba.tech'>speech AI</a> products at Kotoba."
-            data-label-ja="<span class='latin'>Kotoba</span><span class='ja-text'>で</span><a href='https://site.kotoba.tech'><span class='ja-text'>音声</span><span class='latin'>AI</span></a><span class='ja-text'>プロダクトをリリースする仕事をしています。</span>"
-          >I work on shipping <a href="https://site.kotoba.tech">speech AI</a> products at Kotoba.</p>
-          <p
-            data-label-en="Ask me about our <a href='https://kotoba.onelink.me/wkA2/28x5ctzi'>mobile app</a>!"
-            data-label-ja="<span class='ja-text'>私たちの</span><a href='https://kotoba.onelink.me/wkA2/28x5ctzi'><span class='ja-text'>モバイルアプリ</span></a><span class='ja-text'>について聞いてください！</span>"
-          >Ask me about our <a href="https://kotoba.onelink.me/wkA2/28x5ctzi">mobile app</a>!</p>
+          <div class="stack-card-summary">
+            <p data-label-en="I work on shipping <a href='https://site.kotoba.tech'>speech AI</a> products at Kotoba. Ask me about our <a href='https://kotoba.onelink.me/wkA2/28x5ctzi'>mobile app</a>." data-label-ja="<span class='latin'>Kotoba</span><span class='ja-text'>で</span><a href='https://site.kotoba.tech'><span class='ja-text'>音声</span><span class='latin'>AI</span></a><span class='ja-text'>プロダクトをリリースしています。私たちの</span><a href='https://kotoba.onelink.me/wkA2/28x5ctzi'><span class='ja-text'>モバイルアプリ</span></a><span class='ja-text'>について聞いてください。</span>">I work on shipping <a href="https://site.kotoba.tech">speech AI</a> products at Kotoba. Ask me about our <a href="https://kotoba.onelink.me/wkA2/28x5ctzi">mobile app</a>.</p>
+          </div>
         </section>
 
         <section class="stack-card stack-card-apps" data-stack-card hidden>
-          <div class="stack-card-kicker" data-label-en="My Apps" data-label-ja="自作アプリ">My Apps</div>
-          <div class="stack-app-entry">
-            <div class="stack-actions">
+          <div class="stack-card-kicker" data-label-en="Self-published products" data-label-ja="自作アプリ">Self-published products</div>
+          <div class="stack-product-list">
+            <div class="stack-product-row">
               <a
-                href="kehai.html"
-                data-no-mini-browser
-                data-label-en="<strong>Kehai</strong>: tame your windows"
-                data-label-ja="<span class='latin'><strong>Kehai</strong></span><span class='ja-text'>：ウインドウをすっきり整理</span>"
+                class="stack-product-button"
+                href="kehai.html" data-no-mini-browser
                 data-browser-title-en="Kehai"
                 data-browser-title-ja="Kehai"
-              ><strong>Kehai</strong>: tame your windows</a>
+                aria-label="Open Kehai"
+              >
+                <img src="assets/kehai-icon.png?v=1" alt="Kehai app icon">
+                <strong>Kehai</strong>
+              </a>
+              <span
+                class="stack-product-tagline"
+                data-label-en="Tame your windows and switch apps faster."
+                data-label-ja="ウインドウをすっきり整理し、アプリ切り替えをもっと速く。"
+              >Tame your windows and switch apps faster.</span>
             </div>
-          </div>
-          <div class="stack-app-entry">
-            <div class="stack-actions">
+            <div class="stack-product-row">
               <a
+                class="stack-product-button"
                 href="https://sasu.jp"
-                data-label-en="<strong>Sasu</strong>: on-screen guidance"
-                data-label-ja="<span class='latin'><strong>Sasu</strong></span><span class='ja-text'>：画面上ガイダンス</span>"
                 data-browser-title-en="Sasu"
                 data-browser-title-ja="Sasu"
-              ><strong>Sasu</strong>: on-screen guidance</a>
+                aria-label="Open Sasu"
+              >
+                <img src="assets/sasu-icon.png?v=4" alt="Sasu app icon">
+                <strong>Sasu</strong>
+              </a>
+              <span
+                class="stack-product-tagline"
+                data-label-en="On-screen guidance for living abroad."
+                data-label-ja="海外での生活を支える画面上ガイダンス。"
+              >On-screen guidance for living abroad.</span>
             </div>
-          </div>
-          <div class="stack-app-entry">
-            <div class="stack-actions">
+            <div class="stack-product-row">
               <a
-                href="ume.html"
-                data-no-mini-browser
-                data-label-en="<strong>Ume</strong>: autofill everything, privately"
-                data-label-ja="<span class='latin'><strong>Ume</strong></span><span class='ja-text'>：あらゆるフォームに、プライバシーを守って自動入力</span>"
+                class="stack-product-button"
+                href="ume.html" data-no-mini-browser
                 data-browser-title-en="Ume"
                 data-browser-title-ja="Ume"
-              ><strong>Ume</strong>: autofill everything, privately</a>
+                aria-label="Open Ume"
+              >
+                <img src="assets/ume-icon.png?v=1" alt="Ume app icon">
+                <strong>Ume</strong>
+              </a>
+              <span
+                class="stack-product-tagline"
+                data-label-en="Autofill everything, privately."
+                data-label-ja="あらゆるフォームに、プライバシーを守って自動入力。"
+              >Autofill everything, privately.</span>
             </div>
-          </div>
-          <div class="stack-app-entry">
-            <div class="stack-actions">
+            <div class="stack-product-row">
               <a
-                href="yubi.html"
-                data-no-mini-browser
-                data-label-en="<strong>Yubi</strong>: translate what’s on screen"
-                data-label-ja="<span class='latin'><strong>Yubi</strong></span><span class='ja-text'>：画面上の内容を翻訳</span>"
+                class="stack-product-button"
+                href="yubi.html" data-no-mini-browser
                 data-browser-title-en="Yubi"
                 data-browser-title-ja="Yubi"
-              ><strong>Yubi</strong>: translate what’s on screen</a>
+                aria-label="Open Yubi"
+              >
+                <img src="assets/yubi-icon.png?v=1" alt="Yubi app icon">
+                <strong>Yubi</strong>
+              </a>
+              <span
+                class="stack-product-tagline"
+                data-label-en="Translate screens. Type in Japanese."
+                data-label-ja="画面を翻訳。日本語で入力。"
+              >Translate screens. Type in Japanese.</span>
+            </div>
+            <div class="stack-product-row">
+              <a
+                class="stack-product-button"
+                href="kotai.html" data-no-mini-browser
+                data-browser-title-en="Kotai"
+                data-browser-title-ja="Kotai"
+                aria-label="Open Kotai"
+              >
+                <img src="assets/kotai-icon.png?v=5" alt="Kotai app icon">
+                <strong>Kotai</strong>
+              </a>
+              <span
+                class="stack-product-tagline"
+                data-label-en="Separate work and personal coding."
+                data-label-ja="Cursorなどで個人用と仕事用の利用を分ける。"
+              >Separate work and personal coding.</span>
             </div>
           </div>
         </section>
 
-        <section class="stack-card" data-stack-card hidden>
+        <section class="stack-card stack-card-launchers" data-stack-card hidden>
+          <div class="stack-card-kicker" data-label-en="My Life" data-label-ja="私の生活">My Life</div>
+          <h2 data-label-en="Outside the terminal" data-label-ja="ターミナルの外">Outside the terminal</h2>
+          <p data-label-en="Running, family photos, Tokyo recommendations, and a guestbook for visitors." data-label-ja="<span class='ja-text'>ランニング、家族の写真、東京のおすすめ、そして訪問者のためのゲストブック。</span>">Running, family photos, Tokyo recommendations, and a guestbook for visitors.</p>
+          <div class="stack-launcher-grid">
+            <button type="button" class="stack-index-button" data-feature-window="running-window" data-label-en="Running" data-label-ja="ランニング">Running</button>
+            <button type="button" class="stack-index-button" data-feature-window="gallery-window" data-label-en="Photos" data-label-ja="写真">Photos</button>
+            <button type="button" class="stack-index-button" data-feature-window="recommendations-window" data-label-en="Tell me" data-label-ja="聞かせて">Tell me</button>
+            <button type="button" class="stack-index-button" data-feature-window="guestbook-window" data-label-en="Guestbook" data-label-ja="ゲストブック">Guestbook</button>
+          </div>
+        </section>
+
+        <section class="stack-card stack-card-launchers" data-stack-card hidden>
+          <div class="stack-card-kicker" data-label-en="Playground" data-label-ja="遊び場">Playground</div>
+          <h2 data-label-en="Things to poke at" data-label-ja="触って遊ぶもの">Things to poke at</h2>
+          <p data-label-en="A Tokyo text adventure and one more thing." data-label-ja="<span class='ja-text'>東京のテキストアドベンチャー、そしてもう一つ。</span>">A Tokyo text adventure and one more thing.</p>
+          <div class="stack-launcher-grid">
+            <button type="button" class="stack-index-button" data-feature-window="mud-window" data-label-en="Ueno quest" data-label-ja="<span class='latin'>Ueno quest</span>">Ueno quest</button>
+            <button type="button" class="stack-index-button" data-feature-window="puzzle-window" data-label-en="One more thing" data-label-ja="<span class='latin'>One more thing</span>">One more thing</button>
+          </div>
+        </section>
+      </div>
+
+      <div class="stack-controls" aria-label="Card navigation">
+        <button
+          type="button"
+          class="stack-button stack-button-secondary"
+          id="stack-prev"
+          data-label-en="Back"
+          data-label-ja="戻る"
+        >Back</button>
+        <button
+          type="button"
+          class="stack-button"
+          id="stack-next"
+          data-label-en="More"
+          data-label-ja="もっと見る"
+        >More</button>
+      </div>
+
+      <div class="stack-window-footer">
+        <span
+          class="made-in-japan-badge"
+          data-label-en="Made in Japan"
+          data-label-ja="<span class='ja-text'>日本製</span>"
+        >Made in Japan</span>
+      </div>
+    </div>
+    </div>
+    </div>
+
+    <div class="feature-window-slot is-closed" data-feature-window-slot="running-window">
+      <div class="mac-dialog feature-window-dialog is-closed" id="running-window" aria-label="Running">
+        <div class="title-bar">
+          <button type="button" class="close-box close-box--close" data-feature-window-close aria-label="Close"></button>
+          <div class="title-bar-stripes-full"></div>
+          <span class="title-text" data-label-en="Running" data-label-ja="ランニング">Running</span>
+        </div>
+        <div class="dialog-content feature-window-content">
+          <section class="stack-card">
+          <div class="stack-card-kicker" data-label-en="Hobbies" data-label-ja="趣味">Hobbies</div>
+          <h2
+            data-label-en="Running in Tokyo"
+            data-label-ja="<span class='ja-text'>東京でランニング</span>"
+          >Running in Tokyo</h2>
+          <div class="memory-bar-section">
+            <div class="memory-label">
+              <span><strong data-label-en="Current running goal:" data-label-ja="今のランニング目標:">Current running goal:</strong></span>
+              <span class="memory-amount">21.1km / 25km</span>
+            </div>
+            <div class="memory-bar">
+              <div class="memory-bar-fill" style="width: 84.4%;"></div>
+            </div>
+          </div>
+          <div class="stack-actions">
+            <a
+              href="https://www.strava.com/athletes/148307110"
+              data-label-en="Open Strava"
+              data-label-ja="<span class='latin'>Strava</span><span class='ja-text'>を見る</span>"
+            >Open Strava</a>
+          </div>
+        </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-window-slot is-closed" data-feature-window-slot="gallery-window">
+      <div class="mac-dialog feature-window-dialog is-closed" id="gallery-window" aria-label="Photos">
+        <div class="title-bar">
+          <button type="button" class="close-box close-box--close" data-feature-window-close aria-label="Close"></button>
+          <div class="title-bar-stripes-full"></div>
+          <span class="title-text" data-label-en="Photos" data-label-ja="写真">Photos</span>
+        </div>
+        <div class="dialog-content feature-window-content">
+          <section class="stack-card stack-card-gallery">
+          <div class="stack-card-kicker" data-label-en="Photos" data-label-ja="写真">Photos</div>
+          <h2
+            data-label-en="Gallery of my family and me in Tampa in the 80's"
+            data-label-ja="80年代のタンパでの家族と私のギャラリー"
+          >Gallery of my family and me in Tampa in the 80's</h2>
+          <div class="gallery-grid">
+            <figure class="gallery-item">
+              <button
+                type="button"
+                class="gallery-photo-frame"
+                data-gallery-image="assets/gallery-my-brother-and-me.png"
+                data-gallery-dithered-image="assets/gallery-my-brother-and-me-dithered.png"
+                data-gallery-caption-en="My brother and me"
+                data-gallery-caption-ja="兄と私"
+                aria-label="Open photo: My brother and me"
+              >
+                <img src="assets/gallery-my-brother-and-me-thumb-dithered.png" alt="My brother and me" class="gallery-photo gallery-photo-dithered" loading="lazy">
+                <img src="assets/gallery-my-brother-and-me.png" alt="My brother and me" class="gallery-photo gallery-photo-color" loading="lazy">
+              </button>
+              <figcaption data-label-en="My brother and me" data-label-ja="兄と私">My brother and me</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button
+                type="button"
+                class="gallery-photo-frame"
+                data-gallery-image="assets/gallery-my-mom-my-brother-and-me.png"
+                data-gallery-dithered-image="assets/gallery-my-mom-my-brother-and-me-dithered.png"
+                data-gallery-caption-en="My mom, my brother and me"
+                data-gallery-caption-ja="母と兄と私"
+                aria-label="Open photo: My mom, my brother and me"
+              >
+                <img src="assets/gallery-my-mom-my-brother-and-me-thumb-dithered.png" alt="My mom, my brother and me" class="gallery-photo gallery-photo-dithered gallery-photo-focus-top" loading="lazy">
+                <img src="assets/gallery-my-mom-my-brother-and-me.png" alt="My mom, my brother and me" class="gallery-photo gallery-photo-color gallery-photo-focus-top" loading="lazy">
+              </button>
+              <figcaption data-label-en="My mom, my brother and me" data-label-ja="母と兄と私">My mom, my brother and me</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button
+                type="button"
+                class="gallery-photo-frame"
+                data-gallery-image="assets/gallery-my-dad.png"
+                data-gallery-dithered-image="assets/gallery-my-dad-dithered.png"
+                data-gallery-caption-en="My dad pretending to dunk"
+                data-gallery-caption-ja="ダンクするふりをする父"
+                aria-label="Open photo: My dad pretending to dunk"
+              >
+                <img src="assets/gallery-my-dad-thumb-dithered.png" alt="My dad pretending to dunk" class="gallery-photo gallery-photo-dithered" loading="lazy">
+                <img src="assets/gallery-my-dad.png" alt="My dad pretending to dunk" class="gallery-photo gallery-photo-color" loading="lazy">
+              </button>
+              <figcaption data-label-en="My dad pretending to dunk" data-label-ja="ダンクするふりをする父">My dad pretending to dunk</figcaption>
+            </figure>
+            <figure class="gallery-item">
+              <button
+                type="button"
+                class="gallery-photo-frame"
+                data-gallery-image="assets/gallery-my-dad-and-me.png"
+                data-gallery-dithered-image="assets/gallery-my-dad-and-me-dithered.png"
+                data-gallery-caption-en="My dad and me"
+                data-gallery-caption-ja="父と私"
+                aria-label="Open photo: My dad and me"
+              >
+                <img src="assets/gallery-my-dad-and-me-thumb-dithered.png" alt="My dad and me" class="gallery-photo gallery-photo-dithered" loading="lazy">
+                <img src="assets/gallery-my-dad-and-me.png" alt="My dad and me" class="gallery-photo gallery-photo-color" loading="lazy">
+              </button>
+              <figcaption data-label-en="My dad and me" data-label-ja="父と私">My dad and me</figcaption>
+            </figure>
+          </div>
+        </section>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-window-slot is-closed" data-feature-window-slot="recommendations-window">
+      <div class="mac-dialog feature-window-dialog is-closed" id="recommendations-window" aria-label="Tell me">
+        <div class="title-bar">
+          <button type="button" class="close-box close-box--close" data-feature-window-close aria-label="Close"></button>
+          <div class="title-bar-stripes-full"></div>
+          <span class="title-text" data-label-en="Tell me" data-label-ja="聞かせて">Tell me</span>
+        </div>
+        <div class="dialog-content feature-window-content">
+          <section class="stack-card">
           <div class="stack-card-kicker" data-label-en="Tell me" data-label-ja="聞かせて">Tell me</div>
           <ul class="stack-topic-list">
             <li>
@@ -309,136 +511,19 @@
             <div class="tokyo-recommendations-list" id="tokyo-recommendations-list" aria-live="polite"></div>
           </div>
         </section>
+        </div>
+      </div>
+    </div>
 
-        <section class="stack-card" data-stack-card hidden>
-          <div class="stack-card-kicker" data-label-en="Hobbies" data-label-ja="趣味">Hobbies</div>
-          <h2
-            data-label-en="Running in Tokyo"
-            data-label-ja="<span class='ja-text'>東京でランニング</span>"
-          >Running in Tokyo</h2>
-          <div class="memory-bar-section">
-            <div class="memory-label">
-              <span><strong data-label-en="Current running goal:" data-label-ja="今のランニング目標:">Current running goal:</strong></span>
-              <span class="memory-amount">21.1km / 25km</span>
-            </div>
-            <div class="memory-bar">
-              <div class="memory-bar-fill" style="width: 84.4%;"></div>
-            </div>
-          </div>
-          <div class="stack-actions">
-            <a
-              href="https://www.strava.com/athletes/148307110"
-              data-label-en="Open Strava"
-              data-label-ja="<span class='latin'>Strava</span><span class='ja-text'>を見る</span>"
-            >Open Strava</a>
-          </div>
-        </section>
-
-        <section class="stack-card stack-card-gallery" data-stack-card hidden>
-          <div class="stack-card-kicker" data-label-en="Photos" data-label-ja="写真">Photos</div>
-          <h2 data-label-en="Gallery" data-label-ja="ギャラリー">Gallery</h2>
-          <div class="gallery-grid">
-            <figure class="gallery-item">
-              <button
-                type="button"
-                class="gallery-photo-frame"
-                data-gallery-image="assets/gallery-my-brother-and-me.png"
-                data-gallery-dithered-image="assets/gallery-my-brother-and-me-dithered.png"
-                data-gallery-caption-en="My brother and me"
-                data-gallery-caption-ja="兄と私"
-                aria-label="Open photo: My brother and me"
-              >
-                <img src="assets/gallery-my-brother-and-me-thumb-dithered.png" alt="My brother and me" class="gallery-photo gallery-photo-dithered" loading="lazy">
-                <img src="assets/gallery-my-brother-and-me.png" alt="My brother and me" class="gallery-photo gallery-photo-color" loading="lazy">
-              </button>
-              <figcaption data-label-en="My brother and me" data-label-ja="兄と私">My brother and me</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <button
-                type="button"
-                class="gallery-photo-frame"
-                data-gallery-image="assets/gallery-my-mom-my-brother-and-me.png"
-                data-gallery-dithered-image="assets/gallery-my-mom-my-brother-and-me-dithered.png"
-                data-gallery-caption-en="My mom, my brother and me"
-                data-gallery-caption-ja="母と兄と私"
-                aria-label="Open photo: My mom, my brother and me"
-              >
-                <img src="assets/gallery-my-mom-my-brother-and-me-thumb-dithered.png" alt="My mom, my brother and me" class="gallery-photo gallery-photo-dithered gallery-photo-focus-top" loading="lazy">
-                <img src="assets/gallery-my-mom-my-brother-and-me.png" alt="My mom, my brother and me" class="gallery-photo gallery-photo-color gallery-photo-focus-top" loading="lazy">
-              </button>
-              <figcaption data-label-en="My mom, my brother and me" data-label-ja="母と兄と私">My mom, my brother and me</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <button
-                type="button"
-                class="gallery-photo-frame"
-                data-gallery-image="assets/gallery-my-dad.png"
-                data-gallery-dithered-image="assets/gallery-my-dad-dithered.png"
-                data-gallery-caption-en="My dad"
-                data-gallery-caption-ja="父"
-                aria-label="Open photo: My dad"
-              >
-                <img src="assets/gallery-my-dad-thumb-dithered.png" alt="My dad" class="gallery-photo gallery-photo-dithered" loading="lazy">
-                <img src="assets/gallery-my-dad.png" alt="My dad" class="gallery-photo gallery-photo-color" loading="lazy">
-              </button>
-              <figcaption data-label-en="My dad" data-label-ja="父">My dad</figcaption>
-            </figure>
-            <figure class="gallery-item">
-              <button
-                type="button"
-                class="gallery-photo-frame"
-                data-gallery-image="assets/gallery-my-dad-and-me.png"
-                data-gallery-dithered-image="assets/gallery-my-dad-and-me-dithered.png"
-                data-gallery-caption-en="My dad and me"
-                data-gallery-caption-ja="父と私"
-                aria-label="Open photo: My dad and me"
-              >
-                <img src="assets/gallery-my-dad-and-me-thumb-dithered.png" alt="My dad and me" class="gallery-photo gallery-photo-dithered" loading="lazy">
-                <img src="assets/gallery-my-dad-and-me.png" alt="My dad and me" class="gallery-photo gallery-photo-color" loading="lazy">
-              </button>
-              <figcaption data-label-en="My dad and me" data-label-ja="父と私">My dad and me</figcaption>
-            </figure>
-          </div>
-        </section>
-
-        <section class="stack-card" data-stack-card hidden>
-          <div class="stack-card-kicker" data-label-en="Elsewhere" data-label-ja="リンク">Elsewhere</div>
-          <p
-            data-label-en="Are you active on any of these platforms?"
-            data-label-ja="<span class='ja-text'>この中でよく使っているものはありますか？</span>"
-          >Are you active on any of these platforms?</p>
-          <div class="stack-actions">
-            <a href="https://x.com/_bobertdowney">X</a>
-            <a href="https://www.instagram.com/bobertdowney/">Instagram</a>
-            <a href="https://www.linkedin.com/in/garciajustin/">LinkedIn</a>
-          </div>
-        </section>
-
-        <section class="stack-card stack-card-x-feed" data-stack-card hidden>
-          <div class="stack-card-kicker" data-label-en="Doom scroll" data-label-ja="<span class='latin'>Doom scroll</span>">Doom scroll</div>
-          <h2
-            data-label-en="X posts"
-            data-label-ja="<span class='latin'>X</span><span class='ja-text'>の投稿</span>"
-          >X posts</h2>
-          <div class="feed-panel" id="x-feed-panel">
-            <div class="x-feed" id="x-feed" aria-live="polite">
-              <p
-                class="x-feed-status"
-                data-label-en="Loading daily snapshot..."
-                data-label-ja="<span class='ja-text'>毎日のスナップショットを読み込み中...</span>"
-              >Loading daily snapshot...</p>
-            </div>
-          </div>
-          <div class="stack-actions">
-            <a
-              href="https://x.com/_bobertdowney"
-              data-label-en="Open X"
-              data-label-ja="<span class='latin'>X</span><span class='ja-text'>を見る</span>"
-            >Open X</a>
-          </div>
-        </section>
-
-        <section class="stack-card stack-card-map" data-stack-card hidden>
+    <div class="feature-window-slot is-closed" data-feature-window-slot="guestbook-window">
+      <div class="mac-dialog feature-window-dialog is-closed" id="guestbook-window" aria-label="Guestbook">
+        <div class="title-bar">
+          <button type="button" class="close-box close-box--close" data-feature-window-close aria-label="Close"></button>
+          <div class="title-bar-stripes-full"></div>
+          <span class="title-text" data-label-en="Guestbook" data-label-ja="ゲストブック">Guestbook</span>
+        </div>
+        <div class="dialog-content feature-window-content">
+          <section class="stack-card stack-card-map">
           <div class="stack-card-kicker" data-label-en="Guestbook" data-label-ja="<span class='ja-text'>ゲストブック</span>">Guestbook</div>
           <h2
             data-label-en="Where are you from?"
@@ -482,8 +567,47 @@
           <p class="map-location-status" id="map-location-status" aria-live="polite"></p>
           <div class="guestbook-list" id="guestbook-list" aria-live="polite"></div>
         </section>
+        </div>
+      </div>
+    </div>
 
-        <section class="stack-card stack-card-mud" data-stack-card hidden>
+    <div class="recent-updates-slot">
+      <div class="mac-dialog recent-updates-dialog" id="recent-updates-window" aria-label="Recent Updates">
+        <div class="title-bar">
+          <div class="close-box" aria-hidden="true"></div>
+          <div class="title-bar-stripes-full"></div>
+          <span class="title-text" data-label-en="Recent Updates" data-label-ja="最近の更新">Recent Updates</span>
+        </div>
+        <div class="dialog-content recent-updates-content">
+          <div class="feed-panel" id="x-feed-panel">
+            <div class="x-feed" id="x-feed" aria-live="polite">
+              <p
+                class="x-feed-status"
+                data-label-en="Loading daily snapshot..."
+                data-label-ja="<span class='ja-text'>毎日のスナップショットを読み込み中...</span>"
+              >Loading daily snapshot...</p>
+            </div>
+          </div>
+          <div class="stack-actions">
+            <a
+              href="https://x.com/_bobertdowney"
+              data-label-en="Open X"
+              data-label-ja="<span class='latin'>X</span><span class='ja-text'>を見る</span>"
+            >Open X</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="feature-window-slot is-closed" data-feature-window-slot="mud-window">
+      <div class="mac-dialog feature-window-dialog is-closed" id="mud-window" aria-label="Ueno quest">
+        <div class="title-bar">
+          <button type="button" class="close-box close-box--close" data-feature-window-close aria-label="Close"></button>
+          <div class="title-bar-stripes-full"></div>
+          <span class="title-text" data-label-en="Ueno quest" data-label-ja="Ueno quest">Ueno quest</span>
+        </div>
+        <div class="dialog-content feature-window-content">
+          <section class="stack-card stack-card-mud">
           <div class="stack-card-kicker" data-label-en="Play MUD" data-label-ja="<span class='latin'>Play MUD</span>">Play MUD</div>
           <h2
             data-label-en="Ueno quest"
@@ -520,8 +644,19 @@
           </div>
           <div class="mud-leaderboard" id="mud-leaderboard" aria-live="polite"></div>
         </section>
+        </div>
+      </div>
+    </div>
 
-        <section class="stack-card stack-card-puzzle" data-stack-card hidden>
+    <div class="feature-window-slot is-closed" data-feature-window-slot="puzzle-window">
+      <div class="mac-dialog feature-window-dialog is-closed" id="puzzle-window" aria-label="One more thing">
+        <div class="title-bar">
+          <button type="button" class="close-box close-box--close" data-feature-window-close aria-label="Close"></button>
+          <div class="title-bar-stripes-full"></div>
+          <span class="title-text" data-label-en="One more thing" data-label-ja="One more thing">One more thing</span>
+        </div>
+        <div class="dialog-content feature-window-content">
+          <section class="stack-card stack-card-puzzle">
           <div class="stack-card-kicker" data-label-en="One more thing" data-label-ja="<span class='latin'>One more thing</span>">One more thing</div>
           <p
             class="puzzle-note"
@@ -576,34 +711,8 @@
             </div>
           </div>
         </section>
+        </div>
       </div>
-
-      <div class="stack-controls" aria-label="Card navigation">
-        <button
-          type="button"
-          class="stack-button stack-button-secondary"
-          id="stack-prev"
-          data-label-en="Back"
-          data-label-ja="戻る"
-        >Back</button>
-        <button
-          type="button"
-          class="stack-button"
-          id="stack-next"
-          data-label-en="More"
-          data-label-ja="もっと見る"
-        >More</button>
-      </div>
-
-      <div class="stack-window-footer">
-        <span
-          class="made-in-japan-badge"
-          data-label-en="Made in Japan"
-          data-label-ja="<span class='ja-text'>日本製</span>"
-        >Made in Japan</span>
-      </div>
-    </div>
-    </div>
     </div>
 
     <div class="web-browser-slot is-closed" id="web-browser-slot">

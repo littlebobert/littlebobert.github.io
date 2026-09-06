@@ -977,6 +977,8 @@ const qrCodeDialog = document.getElementById('qr-code-dialog');
 const qrCodeCloseButton = document.getElementById('qr-code-close');
 const windowZoomRect = document.getElementById('window-zoom-rect');
 const hypercardStack = document.getElementById('hypercard-stack');
+const featureWindowLaunchers = document.querySelectorAll('[data-feature-window]');
+const featureWindowSlots = document.querySelectorAll('[data-feature-window-slot]');
 const stackCards = Array.from(document.querySelectorAll('[data-stack-card]'));
 const stackCounter = document.getElementById('stack-counter');
 const stackPrevButton = document.getElementById('stack-prev');
@@ -1011,6 +1013,7 @@ let stackTransitionTimeout = null;
 let currentWebBrowserUrl = '';
 let currentWebBrowserTitle = null;
 let currentGalleryPhoto = null;
+const secondaryWindowLaunchers = new WeakMap();
 
 const ZOOM_OPEN_MS = 220;
 const ZOOM_CLOSE_MS = 200;
@@ -1019,6 +1022,97 @@ const BOOT_ICON_PAUSE_MS = 500;
 const MAP_DOUBLE_TAP_MS = 320;
 const MAP_DOUBLE_TAP_DISTANCE = 28;
 const STACK_WIPE_MS = 220;
+
+function applyClosedSecondaryWindowState(windowSlot, windowElement) {
+  windowElement.classList.remove('window-shaded', 'is-zoom-hidden');
+  windowElement.classList.add('is-closed');
+  windowSlot.classList.add('is-closed');
+}
+
+function openSecondaryWindow(windowSlot, windowElement, launcher, onOpened) {
+  if (!windowSlot || !windowElement || isWindowAnimating) {
+    return;
+  }
+
+  secondaryWindowLaunchers.set(windowElement, launcher);
+  const from = getRect(launcher);
+  windowSlot.classList.remove('is-closed');
+  windowElement.classList.remove('is-closed', 'window-shaded');
+
+  if (prefersReducedMotion()) {
+    onOpened?.();
+    return;
+  }
+
+  windowElement.classList.add('is-zoom-hidden');
+  const to = getRect(windowElement);
+  runZoomAnimation(from, to, ZOOM_OPEN_MS, () => {
+    windowElement.classList.remove('is-zoom-hidden');
+    onOpened?.();
+  });
+}
+
+function closeSecondaryWindow(windowSlot, windowElement, { animate = true, onClosed } = {}) {
+  if (!windowSlot || !windowElement || windowElement.classList.contains('is-closed')) {
+    onClosed?.();
+    return;
+  }
+
+  const launcher = secondaryWindowLaunchers.get(windowElement);
+  const canAnimate = animate
+    && !isWindowAnimating
+    && !prefersReducedMotion()
+    && launcher?.isConnected;
+
+  if (!canAnimate) {
+    applyClosedSecondaryWindowState(windowSlot, windowElement);
+    onClosed?.();
+    return;
+  }
+
+  const from = getRect(windowElement);
+  const to = getRect(launcher);
+  windowElement.classList.add('is-zoom-hidden');
+  runZoomAnimation(from, to, ZOOM_CLOSE_MS, () => {
+    applyClosedSecondaryWindowState(windowSlot, windowElement);
+    onClosed?.();
+  });
+}
+
+function closeFeatureWindow(featureWindow, options = {}) {
+  if (!featureWindow) {
+    return;
+  }
+
+  const featureWindowSlot = featureWindow.closest('[data-feature-window-slot]');
+  closeSecondaryWindow(featureWindowSlot, featureWindow, options);
+}
+
+function closeAllFeatureWindows({ animate = false } = {}) {
+  featureWindowSlots.forEach((featureWindowSlot) => {
+    closeFeatureWindow(
+      featureWindowSlot.querySelector('.feature-window-dialog'),
+      { animate },
+    );
+  });
+}
+
+function openFeatureWindow(featureWindowId, launcher) {
+  const featureWindow = document.getElementById(featureWindowId);
+  const featureWindowSlot = featureWindow?.closest('[data-feature-window-slot]');
+  if (!featureWindow || !featureWindowSlot || !launcher) {
+    return;
+  }
+
+  closeAllFeatureWindows();
+  openSecondaryWindow(featureWindowSlot, featureWindow, launcher, () => {
+    featureWindow.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+    refreshFeedScrollFades();
+    if (featureWindow.contains(worldMapFrame)) {
+      updateMapTransform();
+    }
+  });
+}
 
 function clearStackTransition() {
   if (stackTransitionTimeout) {
@@ -1030,6 +1124,7 @@ function clearStackTransition() {
 }
 
 function updateStackCard(direction = 0) {
+  closeAllFeatureWindows();
   const shouldAnimate = direction !== 0 && hypercardStack && !prefersReducedMotion();
   if (shouldAnimate) {
     clearStackTransition();
@@ -1225,7 +1320,7 @@ function updateDesktopBrowserTitle() {
   }
 }
 
-function openDesktopBrowser(url, title = fallbackTitleFromUrl(url)) {
+function openDesktopBrowser(url, title = fallbackTitleFromUrl(url), launcher = null) {
   if (!webBrowserSlot || !webBrowserDialog || !webBrowserFrame) {
     window.location.href = url;
     return;
@@ -1239,28 +1334,36 @@ function openDesktopBrowser(url, title = fallbackTitleFromUrl(url)) {
   }
   updateDesktopBrowserTitle();
 
+  if (launcher) {
+    openSecondaryWindow(webBrowserSlot, webBrowserDialog, launcher, () => {
+      webBrowserDialog.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+    });
+    return;
+  }
+
   webBrowserSlot.classList.remove('is-closed');
   webBrowserDialog.classList.remove('is-closed', 'window-shaded');
-  webBrowserDialog.scrollIntoView({ block: 'nearest', behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
 }
 
-function closeDesktopBrowser() {
+function closeDesktopBrowser({ animate = true } = {}) {
   if (!webBrowserSlot || !webBrowserDialog || !webBrowserFrame) {
     return;
   }
 
-  webBrowserSlot.classList.add('is-closed');
-  webBrowserDialog.classList.remove('window-shaded');
-  webBrowserDialog.classList.add('is-closed');
-  webBrowserFrame.src = 'about:blank';
-  currentWebBrowserUrl = '';
-  currentWebBrowserTitle = null;
-  if (webBrowserAddress) {
-    webBrowserAddress.textContent = 'about:blank';
-  }
-  if (webBrowserTitle) {
-    webBrowserTitle.textContent = localizedText('Desktop Browser', 'デスクトップブラウザ');
-  }
+  closeSecondaryWindow(webBrowserSlot, webBrowserDialog, {
+    animate,
+    onClosed: () => {
+      webBrowserFrame.src = 'about:blank';
+      currentWebBrowserUrl = '';
+      currentWebBrowserTitle = null;
+      if (webBrowserAddress) {
+        webBrowserAddress.textContent = 'about:blank';
+      }
+      if (webBrowserTitle) {
+        webBrowserTitle.textContent = localizedText('Desktop Browser', 'デスクトップブラウザ');
+      }
+    },
+  });
 }
 
 function getGalleryPhotoSource(photo) {
@@ -1304,47 +1407,47 @@ function openGalleryViewer(button) {
     captionJa: button.dataset.galleryCaptionJa,
   };
   updateGalleryViewerPhoto();
-  galleryViewerSlot.classList.remove('is-closed');
-  galleryViewerDialog.classList.remove('is-closed', 'window-shaded');
-  galleryViewerDialog.scrollIntoView({ block: 'nearest', behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
+  openSecondaryWindow(galleryViewerSlot, galleryViewerDialog, button, () => {
+    galleryViewerDialog.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+  });
 }
 
-function closeGalleryViewer() {
+function closeGalleryViewer({ animate = true } = {}) {
   if (!galleryViewerSlot || !galleryViewerDialog || !galleryViewerImage || !galleryViewerCaption) {
     return;
   }
 
-  galleryViewerSlot.classList.add('is-closed');
-  galleryViewerDialog.classList.remove('window-shaded');
-  galleryViewerDialog.classList.add('is-closed');
-  galleryViewerImage.removeAttribute('src');
-  galleryViewerImage.alt = '';
-  galleryViewerImage.classList.remove('is-dithered');
-  galleryViewerCaption.textContent = '';
-  if (galleryViewerTitle) {
-    galleryViewerTitle.textContent = localizedText('Photo Viewer', '写真ビューア');
-  }
-  currentGalleryPhoto = null;
+  closeSecondaryWindow(galleryViewerSlot, galleryViewerDialog, {
+    animate,
+    onClosed: () => {
+      galleryViewerImage.removeAttribute('src');
+      galleryViewerImage.alt = '';
+      galleryViewerImage.classList.remove('is-dithered');
+      galleryViewerCaption.textContent = '';
+      if (galleryViewerTitle) {
+        galleryViewerTitle.textContent = localizedText('Photo Viewer', '写真ビューア');
+      }
+      currentGalleryPhoto = null;
+    },
+  });
 }
 
-function openQrCodeWindow() {
+function openQrCodeWindow(launcher) {
+  if (!qrCodeSlot || !qrCodeDialog || !launcher) {
+    return;
+  }
+
+  openSecondaryWindow(qrCodeSlot, qrCodeDialog, launcher, () => {
+    qrCodeDialog.scrollIntoView({ block: 'nearest', behavior: 'auto' });
+  });
+}
+
+function closeQrCodeWindow({ animate = true } = {}) {
   if (!qrCodeSlot || !qrCodeDialog) {
     return;
   }
 
-  qrCodeSlot.classList.remove('is-closed');
-  qrCodeDialog.classList.remove('is-closed', 'window-shaded');
-  qrCodeDialog.scrollIntoView({ block: 'nearest', behavior: prefersReducedMotion() ? 'auto' : 'smooth' });
-}
-
-function closeQrCodeWindow() {
-  if (!qrCodeSlot || !qrCodeDialog) {
-    return;
-  }
-
-  qrCodeSlot.classList.add('is-closed');
-  qrCodeDialog.classList.remove('window-shaded');
-  qrCodeDialog.classList.add('is-closed');
+  closeSecondaryWindow(qrCodeSlot, qrCodeDialog, { animate });
 }
 
 function preventPageDoubleTapZoom(event) {
@@ -2116,6 +2219,22 @@ stackNextButton?.addEventListener('click', () => {
   stackNextButton.blur();
 });
 
+featureWindowLaunchers.forEach((button) => {
+  button.addEventListener('click', () => {
+    openFeatureWindow(button.dataset.featureWindow, button);
+    button.blur();
+  });
+});
+
+featureWindowSlots.forEach((featureWindowSlot) => {
+  const featureWindow = featureWindowSlot.querySelector('.feature-window-dialog');
+  const closeButton = featureWindowSlot.querySelector('[data-feature-window-close]');
+  closeButton?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    closeFeatureWindow(featureWindow);
+  });
+});
+
 document.querySelectorAll('[data-stack-jump]').forEach((button) => {
   button.addEventListener('click', () => {
     showStackCard(Number(button.dataset.stackJump));
@@ -2331,9 +2450,10 @@ function applyOpenAboutState({ retainMinHeight = false } = {}) {
 }
 
 function applyCloseAboutState(slotHeight) {
-  closeDesktopBrowser();
-  closeGalleryViewer();
-  closeQrCodeWindow();
+  closeDesktopBrowser({ animate: false });
+  closeGalleryViewer({ animate: false });
+  closeQrCodeWindow({ animate: false });
+  closeAllFeatureWindows();
   aboutDialog.classList.remove('window-shaded', 'is-zoom-hidden');
   aboutSlot.classList.remove('is-shaded');
   aboutDialog.classList.add('is-closed');
@@ -2502,7 +2622,7 @@ qrCodeCloseButton?.addEventListener('click', (event) => {
 });
 
 qrCodeButton?.addEventListener('click', () => {
-  openQrCodeWindow();
+  openQrCodeWindow(qrCodeButton);
   qrCodeButton.blur();
 });
 
@@ -2535,7 +2655,7 @@ document.addEventListener('click', (event) => {
   }
 
   event.preventDefault();
-  openDesktopBrowser(link.href, titleFromLink(link.href, link));
+  openDesktopBrowser(link.href, titleFromLink(link.href, link), link);
 });
 
 aboutDesktopIcon?.addEventListener('click', () => {

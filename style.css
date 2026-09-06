@@ -721,6 +721,99 @@ html[lang="ja"] .stack-card h2 .latin {
   padding-top: 0;
 }
 
+.stack-product-list {
+  display: grid;
+  gap: 8px;
+}
+
+.stack-product-row {
+  display: grid;
+  grid-template-columns: 74px minmax(0, 1fr);
+  gap: 12px;
+  align-items: center;
+}
+
+.stack-product-button {
+  display: grid;
+  justify-items: center;
+  gap: 3px;
+  min-height: 72px;
+  padding: 7px;
+  border: 2px solid #000;
+  border-radius: 4px;
+  box-shadow:
+    2px 2px 0 #000,
+    inset 1px 1px 0 #fff,
+    inset -2px -2px 0 #9b9b9b;
+  background: #fff;
+  color: #000;
+  text-decoration: none;
+}
+
+.stack-product-button:active {
+  box-shadow:
+    inset 2px 2px 0 #777,
+    inset -1px -1px 0 #fff;
+  transform: translate(2px, 2px);
+}
+
+.stack-product-button:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.stack-product-button img {
+  display: block;
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.stack-product-button strong {
+  max-width: 100%;
+  font-size: 13px;
+  line-height: 1;
+  text-align: center;
+}
+
+.stack-product-tagline {
+  color: #000;
+  font-size: 13px;
+  line-height: 1.3;
+  text-align: left;
+}
+
+html[lang="ja"] .stack-product-tagline {
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .stack-product-button:hover {
+    background: #000;
+    color: #fff;
+  }
+}
+
+html[data-theme="bw"] .stack-product-button {
+  min-height: 62px;
+  padding: 4px 6px;
+  border-radius: 0;
+  box-shadow: 1px 1px 0 #000;
+}
+
+html[data-theme="bw"] .stack-product-button:active {
+  box-shadow: inset 1px 1px 0 #000;
+  transform: translate(1px, 1px);
+}
+
+html[data-theme="bw"] .stack-product-button img {
+  width: 42px;
+  height: 42px;
+  border-radius: 6px;
+}
+
 .stack-app-entry p {
   margin-bottom: 6px;
 }
@@ -959,13 +1052,16 @@ html[data-theme="modern"] .gallery-photo-color {
 }
 
 .stack-card .x-feed-status,
-.stack-card .x-feed-updated {
+.stack-card .x-feed-updated,
+.recent-updates-content .x-feed-status,
+.recent-updates-content .x-feed-updated {
   margin: 0;
   font-size: 18px;
   line-height: 1.15;
 }
 
-.stack-card .x-feed-updated {
+.stack-card .x-feed-updated,
+.recent-updates-content .x-feed-updated {
   margin-bottom: 8px;
 }
 
@@ -1015,7 +1111,8 @@ html[data-theme="modern"] .gallery-photo-color {
   font-size: 15px;
 }
 
-.stack-card .x-post-text {
+.stack-card .x-post-text,
+.recent-updates-content .x-post-text {
   grid-column: 2;
   margin-bottom: 6px;
   display: -webkit-box;
@@ -1029,7 +1126,8 @@ html[data-theme="modern"] .gallery-photo-color {
   white-space: normal;
 }
 
-html[lang="ja"] .stack-card .x-post-text {
+html[lang="ja"] .stack-card .x-post-text,
+html[lang="ja"] .recent-updates-content .x-post-text {
   font-size: 18px;
   font-weight: normal;
   line-height: 1.2;
@@ -3086,6 +3184,75 @@ html[data-theme="classic"] .stack-button-secondary {
   background: #dedede;
 }
 
+html[data-theme="classic"] .stack-product-button,
+html[data-theme="classic"] .stack-card .stack-product-button {
+  min-height: 66px;
+  padding: 5px;
+  border: 1px solid var(--classic-ink);
+  border-radius: 2px;
+  background: #eeeeee;
+  color: var(--classic-ink);
+  box-shadow:
+    inset 1px 1px 0 var(--classic-highlight),
+    inset -2px -2px 0 var(--classic-shadow),
+    1px 1px 0 rgba(0, 0, 0, 0.45);
+  text-decoration: none;
+  text-shadow: 1px 1px 0 var(--classic-highlight);
+}
+
+html[data-theme="classic"] .stack-product-button strong {
+  color: inherit;
+  text-decoration: none;
+}
+
+html[data-theme="classic"] .stack-product-button img {
+  width: 44px;
+  height: 44px;
+  border-radius: 7px;
+}
+
+html[data-theme="classic"] .stack-card .stack-product-button:active,
+html[data-theme="classic"] .stack-product-button:active {
+  background: #c9c9c9;
+  color: var(--classic-ink);
+  box-shadow:
+    inset 2px 2px 0 var(--classic-shadow),
+    inset -1px -1px 0 var(--classic-highlight);
+  transform: translate(1px, 1px);
+  text-decoration: none;
+  text-shadow: none;
+}
+
+html[data-theme="classic"] .stack-product-button:focus-visible {
+  outline: 2px solid var(--classic-accent);
+  outline-offset: 2px;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html[data-theme="classic"] .stack-card .stack-product-button:hover,
+  html[data-theme="classic"] .stack-product-button:hover {
+    background: #f8f8f8;
+    color: var(--classic-ink);
+    box-shadow:
+      inset 1px 1px 0 var(--classic-highlight),
+      inset -1px -1px 0 var(--classic-shadow),
+      1px 1px 0 rgba(0, 0, 0, 0.45);
+    transform: none;
+    text-decoration: none;
+    text-shadow: 1px 1px 0 var(--classic-highlight);
+  }
+
+  html[data-theme="classic"] .stack-card .stack-product-button:hover:active,
+  html[data-theme="classic"] .stack-product-button:hover:active {
+    background: #c9c9c9;
+    box-shadow:
+      inset 2px 2px 0 var(--classic-shadow),
+      inset -1px -1px 0 var(--classic-highlight);
+    transform: translate(1px, 1px);
+    text-shadow: none;
+  }
+}
+
 html[data-theme="classic"] .stack-card .stack-actions a:hover,
 html[data-theme="classic"] .stack-actions a:hover {
   background: #eeeeee;
@@ -4348,4 +4515,166 @@ html[data-theme="modern"] .submission-form textarea {
   border-color: rgba(0, 0, 0, 0.22);
   border-radius: 6px;
   font-family: inherit;
+}
+
+
+.stack-card-summary {
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 2px solid #000;
+}
+
+.stack-card-summary p:last-child {
+  margin-bottom: 0;
+  line-height: 1.35 !important;
+}
+
+.stack-card-launchers {
+  justify-content: center;
+}
+
+.stack-launcher-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.feature-window-slot {
+  width: min(100%, 700px);
+  margin: 18px auto 0;
+}
+
+.feature-window-slot[data-feature-window-slot="running-window"],
+.feature-window-slot[data-feature-window-slot="gallery-window"],
+.feature-window-slot[data-feature-window-slot="recommendations-window"],
+.feature-window-slot[data-feature-window-slot="guestbook-window"],
+.feature-window-slot[data-feature-window-slot="mud-window"],
+.feature-window-slot[data-feature-window-slot="puzzle-window"] {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  z-index: 11;
+  width: min(480px, 100%);
+  margin: 0;
+  transform: translateX(-50%);
+}
+
+.feature-window-slot.is-closed,
+.feature-window-dialog.is-closed {
+  display: none;
+}
+
+.feature-window-dialog {
+  width: 100%;
+}
+
+.feature-window-content {
+  max-height: min(70vh, 620px);
+  padding: 10px;
+  overflow: auto;
+}
+
+.feature-window-content > .stack-card {
+  min-height: 0;
+}
+
+.feature-window-content .x-feed {
+  max-height: min(42vh, 360px);
+}
+
+.recent-updates-slot {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.recent-updates-dialog {
+  max-width: 480px;
+}
+
+.recent-updates-content {
+  padding: 10px 14px 12px;
+}
+
+.recent-updates-content .x-feed {
+  max-height: 190px;
+}
+
+@media (max-width: 480px) {
+  .stack-launcher-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .feature-window-slot {
+    margin-top: 12px;
+  }
+
+  .feature-window-content {
+    max-height: 72svh;
+    padding: 8px;
+  }
+}
+
+
+@media (min-width: 860px) {
+  body.home-page {
+    align-items: stretch;
+  }
+
+  body.home-page .desktop {
+    display: grid;
+    grid-template-columns: minmax(150px, 1fr) minmax(420px, 480px) minmax(162px, 1fr);
+    grid-template-areas:
+      "clocks about settings"
+      ". recent ."
+      ". browser ."
+      ". gallery-viewer ."
+      ". qr-code .";
+    column-gap: clamp(10px, 1.5vw, 24px);
+    row-gap: 0;
+    align-items: start;
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+  }
+
+  body.home-page .about-slot {
+    grid-area: about;
+  }
+
+  body.home-page .bottom-row {
+    display: contents;
+  }
+
+  body.home-page .clock-row {
+    grid-area: clocks;
+    flex-direction: column;
+    justify-self: end;
+    gap: 12px;
+    margin-top: 36px;
+  }
+
+  body.home-page .appearance-panel {
+    grid-area: settings;
+    justify-self: start;
+    margin-top: 36px;
+  }
+
+  body.home-page .feature-window-slot {
+    grid-area: about;
+  }
+
+  body.home-page .recent-updates-slot {
+    grid-area: recent;
+  }
+
+  body.home-page .web-browser-slot,
+  body.home-page .gallery-viewer-slot,
+  body.home-page .qr-code-slot {
+    left: 50%;
+    right: auto;
+    width: min(480px, 100%);
+    transform: translateX(-50%);
+  }
 }

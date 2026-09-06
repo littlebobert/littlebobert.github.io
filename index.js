@@ -63,6 +63,10 @@ const languageButtons = document.querySelectorAll('.language-segment');
 const labelElements = document.querySelectorAll('[data-label-en][data-label-ja]');
 const visitorCountElement = document.getElementById('visitor-count');
 const qrCodeButton = document.getElementById('qr-code-button');
+const recentUpdatesButton = document.getElementById('recent-updates-button');
+const recentUpdatesSlot = document.querySelector('.recent-updates-slot');
+const recentUpdatesDialog = document.getElementById('recent-updates-window');
+const recentUpdatesCloseButton = document.getElementById('recent-updates-close');
 const tokyoRecommendationButton = document.getElementById('tokyo-recommendation-button');
 const tokyoRecommendationsListElement = document.getElementById('tokyo-recommendations-list');
 const xFeedElement = document.getElementById('x-feed');
@@ -1076,6 +1080,43 @@ function closeSecondaryWindow(windowSlot, windowElement, { animate = true, onClo
   runZoomAnimation(from, to, ZOOM_CLOSE_MS, () => {
     applyClosedSecondaryWindowState(windowSlot, windowElement);
     onClosed?.();
+  });
+}
+
+function setRecentUpdatesOpenState(isOpen) {
+  recentUpdatesButton?.setAttribute('aria-pressed', String(isOpen));
+  recentUpdatesButton?.setAttribute(
+    'aria-label',
+    localizedText(
+      isOpen ? 'Recent Updates open' : 'Restore Recent Updates',
+      isOpen ? '最近の更新を表示中' : '最近の更新を復元',
+    ),
+  );
+}
+
+function openRecentUpdatesWindow() {
+  if (!recentUpdatesButton || !recentUpdatesSlot || !recentUpdatesDialog) {
+    return;
+  }
+
+  openSecondaryWindow(
+    recentUpdatesSlot,
+    recentUpdatesDialog,
+    recentUpdatesButton,
+    () => {
+      setRecentUpdatesOpenState(true);
+      refreshFeedScrollFades();
+    },
+  );
+}
+
+function closeRecentUpdatesWindow() {
+  if (!recentUpdatesSlot || !recentUpdatesDialog) {
+    return;
+  }
+
+  closeSecondaryWindow(recentUpdatesSlot, recentUpdatesDialog, {
+    onClosed: () => setRecentUpdatesOpenState(false),
   });
 }
 
@@ -2626,6 +2667,18 @@ qrCodeButton?.addEventListener('click', () => {
   qrCodeButton.blur();
 });
 
+recentUpdatesButton?.addEventListener('click', () => {
+  if (recentUpdatesDialog?.classList.contains('is-closed')) {
+    openRecentUpdatesWindow();
+  }
+  recentUpdatesButton.blur();
+});
+
+recentUpdatesCloseButton?.addEventListener('click', (event) => {
+  event.stopPropagation();
+  closeRecentUpdatesWindow();
+});
+
 galleryPhotoButtons.forEach((button) => {
   button.addEventListener('click', () => {
     openGalleryViewer(button);
@@ -2646,6 +2699,7 @@ document.addEventListener('site-theme-change', () => {
 document.addEventListener('site-language-change', () => {
   updateDesktopBrowserTitle();
   updateGalleryViewerPhoto();
+  setRecentUpdatesOpenState(!recentUpdatesDialog?.classList.contains('is-closed'));
 });
 
 document.addEventListener('click', (event) => {
@@ -2683,6 +2737,11 @@ function bootAboutWindow() {
       }, BOOT_ICON_PAUSE_MS);
     });
   });
+}
+
+if (recentUpdatesButton && recentUpdatesDialog) {
+  secondaryWindowLaunchers.set(recentUpdatesDialog, recentUpdatesButton);
+  setRecentUpdatesOpenState(!recentUpdatesDialog.classList.contains('is-closed'));
 }
 
 const savedLanguage = localStorage.getItem('site-language');

@@ -145,6 +145,16 @@
             data-label-en="QR"
             data-label-ja="QR"
           >QR</button>
+          <button
+            type="button"
+            class="qr-code-button recent-updates-button"
+            id="recent-updates-button"
+            aria-label="Recent Updates"
+            aria-controls="recent-updates-window"
+            aria-pressed="true"
+            data-label-en="Recent Updates"
+            data-label-ja="最近の更新"
+          >Recent Updates</button>
         </div>
         <div class="stack-visitor-counter">
           <span
@@ -216,13 +226,15 @@
                 aria-label="Open Kehai"
               >
                 <img src="assets/kehai-icon.png?v=1" alt="Kehai app icon">
-                <strong>Kehai</strong>
               </a>
-              <span
-                class="stack-product-tagline"
+              <div class="stack-product-copy">
+                <strong class="stack-product-name">Kehai:</strong>
+                <span
+                  class="stack-product-tagline"
                 data-label-en="Tame your windows and switch apps faster."
                 data-label-ja="ウインドウをすっきり整理し、アプリ切り替えをもっと速く。"
               >Tame your windows and switch apps faster.</span>
+              </div>
             </div>
             <div class="stack-product-row">
               <a
@@ -233,13 +245,15 @@
                 aria-label="Open Sasu"
               >
                 <img src="assets/sasu-icon.png?v=4" alt="Sasu app icon">
-                <strong>Sasu</strong>
               </a>
-              <span
-                class="stack-product-tagline"
+              <div class="stack-product-copy">
+                <strong class="stack-product-name">Sasu:</strong>
+                <span
+                  class="stack-product-tagline"
                 data-label-en="On-screen guidance for living abroad."
                 data-label-ja="海外での生活を支える画面上ガイダンス。"
               >On-screen guidance for living abroad.</span>
+              </div>
             </div>
             <div class="stack-product-row">
               <a
@@ -250,13 +264,15 @@
                 aria-label="Open Ume"
               >
                 <img src="assets/ume-icon.png?v=1" alt="Ume app icon">
-                <strong>Ume</strong>
               </a>
-              <span
-                class="stack-product-tagline"
+              <div class="stack-product-copy">
+                <strong class="stack-product-name">Ume:</strong>
+                <span
+                  class="stack-product-tagline"
                 data-label-en="Autofill everything, privately."
                 data-label-ja="あらゆるフォームに、プライバシーを守って自動入力。"
               >Autofill everything, privately.</span>
+              </div>
             </div>
             <div class="stack-product-row">
               <a
@@ -266,14 +282,16 @@
                 data-browser-title-ja="Yubi"
                 aria-label="Open Yubi"
               >
-                <img src="assets/yubi-icon.png?v=1" alt="Yubi app icon">
-                <strong>Yubi</strong>
+                <img class="stack-product-icon-compact" src="assets/yubi-icon.png?v=1" alt="Yubi app icon">
               </a>
-              <span
-                class="stack-product-tagline"
+              <div class="stack-product-copy">
+                <strong class="stack-product-name">Yubi:</strong>
+                <span
+                  class="stack-product-tagline"
                 data-label-en="Translate screens. Type in Japanese."
                 data-label-ja="画面を翻訳。日本語で入力。"
               >Translate screens. Type in Japanese.</span>
+              </div>
             </div>
             <div class="stack-product-row">
               <a
@@ -283,14 +301,16 @@
                 data-browser-title-ja="Kotai"
                 aria-label="Open Kotai"
               >
-                <img src="assets/kotai-icon.png?v=5" alt="Kotai app icon">
-                <strong>Kotai</strong>
+                <img class="stack-product-icon-compact" src="assets/kotai-icon.png?v=5" alt="Kotai app icon">
               </a>
-              <span
-                class="stack-product-tagline"
+              <div class="stack-product-copy">
+                <strong class="stack-product-name">Kotai:</strong>
+                <span
+                  class="stack-product-tagline"
                 data-label-en="Separate work and personal coding."
                 data-label-ja="Cursorなどで個人用と仕事用の利用を分ける。"
               >Separate work and personal coding.</span>
+              </div>
             </div>
           </div>
         </section>
@@ -574,7 +594,7 @@
     <div class="recent-updates-slot">
       <div class="mac-dialog recent-updates-dialog" id="recent-updates-window" aria-label="Recent Updates">
         <div class="title-bar">
-          <div class="close-box" aria-hidden="true"></div>
+          <button type="button" class="close-box close-box--close" id="recent-updates-close" aria-label="Close"></button>
           <div class="title-bar-stripes-full"></div>
           <span class="title-text" data-label-en="Recent Updates" data-label-ja="最近の更新">Recent Updates</span>
         </div>

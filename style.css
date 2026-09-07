@@ -4627,6 +4627,14 @@ html[data-theme="modern"] .submission-form textarea {
     max-height: 72svh;
     padding: 8px;
   }
+
+  body.home-page .bottom-row {
+    order: 1;
+  }
+
+  body.home-page .recent-updates-slot {
+    order: 2;
+  }
 }
 
 

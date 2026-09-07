@@ -1218,20 +1218,6 @@ html[lang="ja"] .recent-updates-content .x-post-text {
   outline-offset: 2px;
 }
 
-.stack-index-product-label-mobile {
-  display: none;
-}
-
-@media (max-width: 480px) {
-  .stack-index-product-label-full {
-    display: none;
-  }
-
-  .stack-index-product-label-mobile {
-    display: inline;
-  }
-}
-
 .stack-card-profile {
   display: grid;
   grid-template-columns: auto 1fr;

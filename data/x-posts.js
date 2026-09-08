@@ -1,8 +1,67 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-09-07T19:13:18.155Z",
+  "updatedAt": "2026-09-08T18:46:16.211Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2097292048210743394",
+      "text": "ダンクするふりをしている父。昔からこういう人だった。 https://t.co/WigvkQtfUp",
+      "createdAt": "2026-09-08T11:52:44.000Z",
+      "url": "https://x.com/_bobertdowney/status/2097292048210743394",
+      "urls": [
+        {
+          "url": "https://t.co/WigvkQtfUp",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2097292048210743394/photo/1",
+          "displayUrl": "pic.x.com/WigvkQtfUp",
+          "start": 27,
+          "end": 50
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2097292048210743394-0.png",
+          "imageModern": "assets/generated/x/mine-post-2097292048210743394-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2097213486594220137",
+      "text": "loved this https://t.co/5VZeBXbTEB",
+      "createdAt": "2026-09-08T06:40:34.000Z",
+      "url": "https://x.com/_bobertdowney/status/2097213486594220137",
+      "urls": [
+        {
+          "url": "https://t.co/5VZeBXbTEB",
+          "expandedUrl": "https://twitter.com/gunma_rekihaku/status/2092401645875257761",
+          "displayUrl": "x.com/gunma_rekihaku…",
+          "start": 11,
+          "end": 34
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2097114252133756939",
+      "text": "大変残念なご報告ですが、高崎のセブンのベジカップ、明らかに劣ります。",
+      "createdAt": "2026-09-08T00:06:14.000Z",
+      "url": "https://x.com/_bobertdowney/status/2097114252133756939",
+      "urls": [],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2096768835143770606",
       "text": "use Cursor but need to separate work vs. personal projects? I made a free macOS utility to help\n\nhttps://t.co/D5GJK3bf6V",
@@ -183,78 +242,6 @@ window.X_POSTS_SNAPSHOT = {
           "imageModern": "assets/generated/x/mine-post-2095463146425331959-0-modern.png"
         }
       ]
-    },
-    {
-      "id": "2095460894126014575",
-      "text": "staying up until 2am here in Tokyo for this one. Nocternus 🤡 https://t.co/57svG8AMgq",
-      "createdAt": "2026-09-03T10:36:23.000Z",
-      "url": "https://x.com/_bobertdowney/status/2095460894126014575",
-      "urls": [
-        {
-          "url": "https://t.co/57svG8AMgq",
-          "expandedUrl": "https://twitter.com/gregjoz/status/2094831063994646967",
-          "displayUrl": "x.com/gregjoz/status…",
-          "start": 61,
-          "end": 84
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2094925113095528899",
-      "text": "got the only meme coin that matters https://t.co/pVqzl7Rmrf",
-      "createdAt": "2026-09-01T23:07:23.000Z",
-      "url": "https://x.com/_bobertdowney/status/2094925113095528899",
-      "urls": [
-        {
-          "url": "https://t.co/pVqzl7Rmrf",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2094925113095528899/photo/1",
-          "displayUrl": "pic.x.com/pVqzl7Rmrf",
-          "start": 36,
-          "end": 59
-        },
-        {
-          "url": "https://t.co/pVqzl7Rmrf",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2094925113095528899/photo/1",
-          "displayUrl": "pic.x.com/pVqzl7Rmrf",
-          "start": 36,
-          "end": 59
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2094925113095528899-0.png",
-          "imageModern": "assets/generated/x/mine-post-2094925113095528899-0-modern.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2094925113095528899-1.png",
-          "imageModern": "assets/generated/x/mine-post-2094925113095528899-1-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2094593893958668487",
-      "text": "I wonder if I’ll say よいしょ when I get older. my step dad is 75 and when he gets up he says \"OK lemonade\"",
-      "createdAt": "2026-09-01T01:11:14.000Z",
-      "url": "https://x.com/_bobertdowney/status/2094593893958668487",
-      "urls": [],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 };

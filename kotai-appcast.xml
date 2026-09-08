@@ -3,6 +3,18 @@
     <channel>
         <title>Kotai</title>
         <item>
+            <title>0.1.16</title>
+            <pubDate>Tue, 08 Sep 2026 19:31:16 +0900</pubDate>
+            <link>https://kotai.jp/</link>
+            <sparkle:version>17</sparkle:version>
+            <sparkle:shortVersionString>0.1.16</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Made Kotai more Mac-like.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.1.16/Kotai-0.1.16-mac.zip" length="12255062" type="application/octet-stream" sparkle:edSignature="/bbdXPCQx6jlpWysH6n31vePz2jFiITEAIcAW4XOUb7QsdXYpNKZ30If/i3eEAfIv/C8BG/7Bg/CLzb6uzwyCA=="/>
+        </item>
+        <item>
             <title>0.1.15</title>
             <pubDate>Tue, 08 Sep 2026 09:30:19 +0900</pubDate>
             <link>https://kotai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed the size of the icon in the Dock.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.1.14/Kotai-0.1.14-mac.zip" length="12223157" type="application/octet-stream" sparkle:edSignature="TlgX/s7Kx18QIUXWpEaUJLXt4E89cm+x/tYtxciGrUfx+tQoV4FLTGZCjs78JvPQv3wYdr47q21apAdfY6lvDQ=="/>
-        </item>
-        <item>
-            <title>0.1.13</title>
-            <pubDate>Mon, 07 Sep 2026 13:57:39 +0900</pubDate>
-            <link>https://kotai.jp/</link>
-            <sparkle:version>14</sparkle:version>
-            <sparkle:shortVersionString>0.1.13</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Improve the Diagnostics window and gave Kotai a dedicated Dock icon.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.1.13/Kotai-0.1.13-mac.zip" length="12222485" type="application/octet-stream" sparkle:edSignature="X+1p7IVmfT6rE/logVWmSCmR66E0B7zS46NdMFaoDRhSkoIUjwB/6x1r75lkd28NcNlrPqOBRW4CVI9BTPgRAA=="/>
         </item>
     </channel>
 </rss>

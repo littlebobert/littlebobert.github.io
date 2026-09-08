@@ -3,6 +3,18 @@
     <channel>
         <title>Kotai</title>
         <item>
+            <title>0.2.5</title>
+            <pubDate>Wed, 09 Sep 2026 03:56:51 +0900</pubDate>
+            <link>https://kotai.jp/</link>
+            <sparkle:version>23</sparkle:version>
+            <sparkle:shortVersionString>0.2.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed more bugs with usage stats and diagnostics.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.2.5/Kotai-0.2.5-mac.zip" length="12478794" type="application/octet-stream" sparkle:edSignature="H8dFTcP3Sy7XZyuETH3Odzol6ClvQMwXsZejaetqZP8xuTAskKg+Hilvk3R+hg7uXP2fHgL/oaN1DWS1nCVVBw=="/>
+        </item>
+        <item>
             <title>0.2.4</title>
             <pubDate>Wed, 09 Sep 2026 03:41:47 +0900</pubDate>
             <link>https://kotai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed an upgrade bug and some user interface glitches.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.2.3/Kotai-0.2.3-mac.zip" length="12472094" type="application/octet-stream" sparkle:edSignature="D2CBFM3p7PMt+KoFwk5id1JaF6GA5xYnthU9FrNkoCmar4oe3QTXMdppjQSbspcuoepINexbiJBH3d+AWOVuBw=="/>
-        </item>
-        <item>
-            <title>0.2.2</title>
-            <pubDate>Wed, 09 Sep 2026 02:48:47 +0900</pubDate>
-            <link>https://kotai.jp/</link>
-            <sparkle:version>20</sparkle:version>
-            <sparkle:shortVersionString>0.2.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed a bug where upgrading from older builds would clear API keys.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.2.2/Kotai-0.2.2-mac.zip" length="12459426" type="application/octet-stream" sparkle:edSignature="qksRKQ23EhI5sLiSsWcC3TqWpvWU+G6G5YfZMxpHGWnkCnmo/2G0wcP4C6S3MMamGiZ7J0BFhBjNJURvHkb6Cw=="/>
         </item>
     </channel>
 </rss>

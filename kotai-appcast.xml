@@ -3,6 +3,18 @@
     <channel>
         <title>Kotai</title>
         <item>
+            <title>0.2.4</title>
+            <pubDate>Wed, 09 Sep 2026 03:41:47 +0900</pubDate>
+            <link>https://kotai.jp/</link>
+            <sparkle:version>22</sparkle:version>
+            <sparkle:shortVersionString>0.2.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed bugs in the usage stats window.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.2.4/Kotai-0.2.4-mac.zip" length="12474911" type="application/octet-stream" sparkle:edSignature="gyF27S6hB+/GmLDqZHKbyy4iJSoN3gyEIXW+Qf37OjfQfoi+ZO9gf+o7X08X+f6XXFjBcYhBKWhHoy/NSPWjBQ=="/>
+        </item>
+        <item>
             <title>0.2.3</title>
             <pubDate>Wed, 09 Sep 2026 03:19:58 +0900</pubDate>
             <link>https://kotai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed a bug where upgrading from older builds would clear API keys.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.2.2/Kotai-0.2.2-mac.zip" length="12459426" type="application/octet-stream" sparkle:edSignature="qksRKQ23EhI5sLiSsWcC3TqWpvWU+G6G5YfZMxpHGWnkCnmo/2G0wcP4C6S3MMamGiZ7J0BFhBjNJURvHkb6Cw=="/>
-        </item>
-        <item>
-            <title>0.2.1</title>
-            <pubDate>Tue, 08 Sep 2026 23:37:52 +0900</pubDate>
-            <link>https://kotai.jp/</link>
-            <sparkle:version>19</sparkle:version>
-            <sparkle:shortVersionString>0.2.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed a bug in the Settings window.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.2.1/Kotai-0.2.1-mac.zip" length="12459183" type="application/octet-stream" sparkle:edSignature="mHNqiswsbHkH6SRtUBRFowaZ+JxSPDGT95XRKWP/x+X4+kDVZQzmjWqHueGifGnuxUCgLWbQFjFAN+YAtdPwAw=="/>
         </item>
     </channel>
 </rss>

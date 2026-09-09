@@ -2619,6 +2619,14 @@ div.section-title {
   color: #000;
 }
 
+.projects > .section-title {
+  padding-bottom: 3pt;
+}
+
+.projects-intro {
+  padding-bottom: 5pt;
+}
+
 div.jobs {
   padding-bottom: 2pt;
 }

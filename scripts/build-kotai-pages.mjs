@@ -9,6 +9,7 @@ const siteFiles = [
   '_headers',
   'kotai-appcast.xml',
   'kotai.html',
+  'favicon.ico',
   'sasu-common.css',
 ];
 

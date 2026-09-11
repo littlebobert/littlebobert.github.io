@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.6</title>
+            <pubDate>Fri, 11 Sep 2026 18:27:34 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>81</sparkle:version>
+            <sparkle:shortVersionString>0.5.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed flakiness for quick switch key combo.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.6/Kehai-0.5.6-mac.zip" length="5784213" type="application/octet-stream" sparkle:edSignature="8gZYj/K+T1v0EI3NXPRdI4A+HKN16iSIgUhS9iU2Mywqq9cQrUctM2vbeoLm9aAMtyKklrvMLHhVtbmuzEKYDQ=="/>
+        </item>
+        <item>
             <title>0.5.5</title>
             <pubDate>Fri, 11 Sep 2026 17:55:47 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Mimic the macOS Command + Tab switcher wrt switching to the previous app.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.4/Kehai-0.5.4-mac.zip" length="5780231" type="application/octet-stream" sparkle:edSignature="50ZOGNEcCKgZ4zMLWWdMWibGRMgcyu7tnH/HPcHbrjgZlBoaPdg8ujIVv8Yz0t17aePDn3vKzWyUR1qoCmS4DA=="/>
-        </item>
-        <item>
-            <title>0.5.3</title>
-            <pubDate>Mon, 07 Sep 2026 07:26:38 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>78</sparkle:version>
-            <sparkle:shortVersionString>0.5.3</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed a bug where quitting an app from Kehai was not very responsive.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.3/Kehai-0.5.3-mac.zip" length="5779280" type="application/octet-stream" sparkle:edSignature="cP4osskDVmDOO55qeiFlO8UXm+7mrRoPaEwD09b2RAkySBpr1bLAbYNwSnOgsHIdK6ZXbCzJpn/8gOwWu2R4CQ=="/>
         </item>
     </channel>
 </rss>

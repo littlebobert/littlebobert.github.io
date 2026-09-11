@@ -3,6 +3,18 @@
     <channel>
         <title>Kotai</title>
         <item>
+            <title>0.2.11</title>
+            <pubDate>Fri, 11 Sep 2026 17:53:30 +0900</pubDate>
+            <link>https://kotai.jp/</link>
+            <sparkle:version>29</sparkle:version>
+            <sparkle:shortVersionString>0.2.11</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Use the same date range for work and personal.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.2.11/Kotai-0.2.11-mac.zip" length="12168512" type="application/octet-stream" sparkle:edSignature="T6wE6esXVRfCfIEiIUnKdt7RS4PcICG0/bzo+ccJnbT3t3m4S18+7/pv5PkEOQdBxOe4dWGPzFFKqvmz5QHRAw=="/>
+        </item>
+        <item>
             <title>0.2.10</title>
             <pubDate>Fri, 11 Sep 2026 09:20:28 +0900</pubDate>
             <link>https://kotai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed a few display issues with the menu bar item.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.2.9/Kotai-0.2.9-mac.zip" length="12165862" type="application/octet-stream" sparkle:edSignature="muQbgR7OU7sjiXo11J/538YZZxumpcA1QVwHRfiFNoWgMdjNUB40GAld9KBQO0oEGaxabs5L5qO0zelaid6jDw=="/>
-        </item>
-        <item>
-            <title>0.2.8</title>
-            <pubDate>Wed, 09 Sep 2026 04:40:51 +0900</pubDate>
-            <link>https://kotai.jp/</link>
-            <sparkle:version>26</sparkle:version>
-            <sparkle:shortVersionString>0.2.8</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed a Dock display issue.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.2.8/Kotai-0.2.8-mac.zip" length="12166021" type="application/octet-stream" sparkle:edSignature="eMr0UewqKArPoohwO98oqYcOiFNaefJ5buIW6Y83fvI4vHL+11QwPAhEmtehphEa0R2XR1/T94iOF0DwXFFjDg=="/>
         </item>
     </channel>
 </rss>

@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.11</title>
+            <pubDate>Sat, 12 Sep 2026 07:35:23 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>86</sparkle:version>
+            <sparkle:shortVersionString>0.5.11</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Made further launch time improvements.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.11/Kehai-0.5.11-mac.zip" length="5793198" type="application/octet-stream" sparkle:edSignature="Kw0S8F4IgCBPApWRH2jRLSHNWbihlu3mhgRXZsp8+sS1XmukmdEN4ZlNaZukqrV2WpZTBVkDTkFiIo0qZQACDw=="/>
+        </item>
+        <item>
             <title>0.5.10</title>
             <pubDate>Sat, 12 Sep 2026 07:29:44 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Changed mouse movement to transition to the mini UI immediately.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.9/Kehai-0.5.9-mac.zip" length="5787123" type="application/octet-stream" sparkle:edSignature="/yUQsq8uWGnGOb9jl1giNIptRszLAb9PAsK+4VSUTLNvZ2Jqi41GtFNgU76n8Nw+symPumYc4uv4JZhJLR63BQ=="/>
-        </item>
-        <item>
-            <title>0.5.8</title>
-            <pubDate>Fri, 11 Sep 2026 19:33:36 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>83</sparkle:version>
-            <sparkle:shortVersionString>0.5.8</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Made the transition from quick switch to the mini browser easier.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.8/Kehai-0.5.8-mac.zip" length="5786452" type="application/octet-stream" sparkle:edSignature="G4LwWdKkOV1ELiTbio5RhTLvQ36+YLhbGHOQSH0r+ktx///jWpPslbXudOqHK8YtwW6dU/XUBIJEdXHzy+JFBw=="/>
         </item>
     </channel>
 </rss>

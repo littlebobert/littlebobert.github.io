@@ -1,8 +1,122 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-09-10T18:31:48.351Z",
+  "updatedAt": "2026-09-11T18:38:10.943Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2098403067108732983",
+      "text": "the best place to be an Ameriboo besides America is Tokyo https://t.co/6r96aPIZXm",
+      "createdAt": "2026-09-11T13:27:32.000Z",
+      "url": "https://x.com/_bobertdowney/status/2098403067108732983",
+      "urls": [
+        {
+          "url": "https://t.co/6r96aPIZXm",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2098403067108732983/photo/1",
+          "displayUrl": "pic.x.com/6r96aPIZXm",
+          "start": 58,
+          "end": 81
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2098403067108732983-0.png",
+          "imageModern": "assets/generated/x/mine-post-2098403067108732983-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2098368175704555817",
+      "text": "私の彼女にデジタルデトックスしなきゃって言われた。交渉して、Duoを買わないだけで済むことになった 🤡 https://t.co/PmSGaQE2SW",
+      "createdAt": "2026-09-11T11:08:53.000Z",
+      "url": "https://x.com/_bobertdowney/status/2098368175704555817",
+      "urls": [
+        {
+          "url": "https://t.co/PmSGaQE2SW",
+          "expandedUrl": "https://twitter.com/planetofgori/status/2097753428328112297",
+          "displayUrl": "x.com/planetofgori/s…",
+          "start": 52,
+          "end": 75
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2098356828224512216",
+      "text": "the closest thing I could find to a photo of my dad and an American flag was this one of his gun holster https://t.co/9NFMBUqXEX",
+      "createdAt": "2026-09-11T10:23:48.000Z",
+      "url": "https://x.com/_bobertdowney/status/2098356828224512216",
+      "urls": [
+        {
+          "url": "https://t.co/9NFMBUqXEX",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2098356828224512216/photo/1",
+          "displayUrl": "pic.x.com/9NFMBUqXEX",
+          "start": 105,
+          "end": 128
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2098356828224512216-0.png",
+          "imageModern": "assets/generated/x/mine-post-2098356828224512216-0-modern.png"
+        }
+      ]
+    },
+    {
+      "id": "2098194198818386017",
+      "text": "#AstraCommons 運営のみなさん、イベントとごはん、そしてかなり太っ腹なOpenAIクレジットの提供、ありがとうございました！運営もしっかりしてて、東京で面白いことやってる人たちにいろいろ会えて楽しかったです。 https://t.co/OUTuP1OZ82",
+      "createdAt": "2026-09-10T23:37:34.000Z",
+      "url": "https://x.com/_bobertdowney/status/2098194198818386017",
+      "urls": [
+        {
+          "url": "https://t.co/OUTuP1OZ82",
+          "expandedUrl": "https://twitter.com/Fumiya_Kume/status/2098193065957785909",
+          "displayUrl": "x.com/Fumiya_Kume/st…",
+          "start": 111,
+          "end": 134
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2098189069100646622",
+      "text": "一周回って\nhttps://t.co/tprReFAqDw",
+      "createdAt": "2026-09-10T23:17:11.000Z",
+      "url": "https://x.com/_bobertdowney/status/2098189069100646622",
+      "urls": [
+        {
+          "url": "https://t.co/tprReFAqDw",
+          "expandedUrl": "https://shopify.engineering/back-to-native",
+          "displayUrl": "shopify.engineering/back-to-native",
+          "start": 6,
+          "end": 29
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2098048489586557225",
       "text": "ミームカードは手に入れたけど、日本在住になった今は使えない 😔 https://t.co/DgU3GHTmAC",
@@ -56,173 +170,6 @@ window.X_POSTS_SNAPSHOT = {
           "imageModern": "assets/generated/x/mine-post-2098008253602902504-0-modern.png"
         }
       ]
-    },
-    {
-      "id": "2097996995659026665",
-      "text": "ここにいた #AstraCommons https://t.co/1gVZL6bHrL",
-      "createdAt": "2026-09-10T10:33:57.000Z",
-      "url": "https://x.com/_bobertdowney/status/2097996995659026665",
-      "urls": [
-        {
-          "url": "https://t.co/1gVZL6bHrL",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2097996995659026665/photo/1",
-          "displayUrl": "pic.x.com/1gVZL6bHrL",
-          "start": 20,
-          "end": 43
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2097996995659026665-0.png",
-          "imageModern": "assets/generated/x/mine-post-2097996995659026665-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2097825882652234135",
-      "text": "just submitted an update with a Siri AI integration https://t.co/T6aHJkhwFl",
-      "createdAt": "2026-09-09T23:14:00.000Z",
-      "url": "https://x.com/_bobertdowney/status/2097825882652234135",
-      "urls": [
-        {
-          "url": "https://t.co/T6aHJkhwFl",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2097825882652234135/video/1",
-          "displayUrl": "pic.x.com/T6aHJkhwFl",
-          "start": 52,
-          "end": 75
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2097825882652234135-0.png",
-          "imageModern": "assets/generated/x/mine-post-2097825882652234135-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2097757594744176813",
-      "text": "cool but what’s with the barking? 👴🏻 https://t.co/KcUvnQfFVG",
-      "createdAt": "2026-09-09T18:42:39.000Z",
-      "url": "https://x.com/_bobertdowney/status/2097757594744176813",
-      "urls": [
-        {
-          "url": "https://t.co/KcUvnQfFVG",
-          "expandedUrl": "https://twitter.com/neilcybart/status/2097756193280463227",
-          "displayUrl": "x.com/neilcybart/sta…",
-          "start": 37,
-          "end": 60
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2097756519886737889",
-      "text": "Siri Recapsって、独り言をぼそぼそ言ってるのも拾うのかな 🤡 https://t.co/0LWZlcoP1s",
-      "createdAt": "2026-09-09T18:38:23.000Z",
-      "url": "https://x.com/_bobertdowney/status/2097756519886737889",
-      "urls": [
-        {
-          "url": "https://t.co/0LWZlcoP1s",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2097756519886737889/photo/1",
-          "displayUrl": "pic.x.com/0LWZlcoP1s",
-          "start": 36,
-          "end": 59
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2097756519886737889-0.png",
-          "imageModern": "assets/generated/x/mine-post-2097756519886737889-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2097748198941196440",
-      "text": "Return of the King #AppleEvent https://t.co/5RTIYCmuC0",
-      "createdAt": "2026-09-09T18:05:19.000Z",
-      "url": "https://x.com/_bobertdowney/status/2097748198941196440",
-      "urls": [
-        {
-          "url": "https://t.co/5RTIYCmuC0",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2097748198941196440/photo/1",
-          "displayUrl": "pic.x.com/5RTIYCmuC0",
-          "start": 31,
-          "end": 54
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2097748198941196440-0.png",
-          "imageModern": "assets/generated/x/mine-post-2097748198941196440-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2097743872722116899",
-      "text": "Siri Recapには常時リスニングモードがあるの？#AppleEvent https://t.co/KLSdYtkCWU",
-      "createdAt": "2026-09-09T17:48:08.000Z",
-      "url": "https://x.com/_bobertdowney/status/2097743872722116899",
-      "urls": [
-        {
-          "url": "https://t.co/KLSdYtkCWU",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2097743872722116899/photo/1",
-          "displayUrl": "pic.x.com/KLSdYtkCWU",
-          "start": 39,
-          "end": 62
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2097743872722116899-0.png",
-          "imageModern": "assets/generated/x/mine-post-2097743872722116899-0-modern.png"
-        }
-      ]
-    },
-    {
-      "id": "2097740540544750066",
-      "text": "AirPods Live Translation 😍 #AppleEvent",
-      "createdAt": "2026-09-09T17:34:53.000Z",
-      "url": "https://x.com/_bobertdowney/status/2097740540544750066",
-      "urls": [],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 };

@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.10</title>
+            <pubDate>Sat, 12 Sep 2026 07:29:44 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>85</sparkle:version>
+            <sparkle:shortVersionString>0.5.10</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Made some launch time improvements.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.10/Kehai-0.5.10-mac.zip" length="5793902" type="application/octet-stream" sparkle:edSignature="vsw/n+f9ek8Qmh/CORox4rxRgNaya5roY+8hmlK/NbUakjmr0XchFfLkHrR1UK7E3YERMo0LJ2XP8CtLC/UKAg=="/>
+        </item>
+        <item>
             <title>0.5.9</title>
             <pubDate>Sat, 12 Sep 2026 06:41:37 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Made the transition from quick switch to the mini browser easier.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.8/Kehai-0.5.8-mac.zip" length="5786452" type="application/octet-stream" sparkle:edSignature="G4LwWdKkOV1ELiTbio5RhTLvQ36+YLhbGHOQSH0r+ktx///jWpPslbXudOqHK8YtwW6dU/XUBIJEdXHzy+JFBw=="/>
-        </item>
-        <item>
-            <title>0.5.7</title>
-            <pubDate>Fri, 11 Sep 2026 18:54:51 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>82</sparkle:version>
-            <sparkle:shortVersionString>0.5.7</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed an app activation bug.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.7/Kehai-0.5.7-mac.zip" length="5786260" type="application/octet-stream" sparkle:edSignature="Ufre35a9vdvuCO6iIdL7AlttOlhYAi3OiRn/0XhXapCXH5LKi7jSL99sNjSGHe5G11uUMG4oUKnZx5L0/ZLKBw=="/>
         </item>
     </channel>
 </rss>

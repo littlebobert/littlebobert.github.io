@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.9</title>
+            <pubDate>Sat, 12 Sep 2026 06:41:37 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>84</sparkle:version>
+            <sparkle:shortVersionString>0.5.9</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Changed mouse movement to transition to the mini UI immediately.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.9/Kehai-0.5.9-mac.zip" length="5787123" type="application/octet-stream" sparkle:edSignature="/yUQsq8uWGnGOb9jl1giNIptRszLAb9PAsK+4VSUTLNvZ2Jqi41GtFNgU76n8Nw+symPumYc4uv4JZhJLR63BQ=="/>
+        </item>
+        <item>
             <title>0.5.8</title>
             <pubDate>Fri, 11 Sep 2026 19:33:36 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed an app activation bug.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.7/Kehai-0.5.7-mac.zip" length="5786260" type="application/octet-stream" sparkle:edSignature="Ufre35a9vdvuCO6iIdL7AlttOlhYAi3OiRn/0XhXapCXH5LKi7jSL99sNjSGHe5G11uUMG4oUKnZx5L0/ZLKBw=="/>
-        </item>
-        <item>
-            <title>0.5.6</title>
-            <pubDate>Fri, 11 Sep 2026 18:27:34 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>81</sparkle:version>
-            <sparkle:shortVersionString>0.5.6</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed flakiness for quick switch key combo.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.6/Kehai-0.5.6-mac.zip" length="5784213" type="application/octet-stream" sparkle:edSignature="8gZYj/K+T1v0EI3NXPRdI4A+HKN16iSIgUhS9iU2Mywqq9cQrUctM2vbeoLm9aAMtyKklrvMLHhVtbmuzEKYDQ=="/>
         </item>
     </channel>
 </rss>

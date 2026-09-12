@@ -3,6 +3,18 @@
     <channel>
         <title>Kotai</title>
         <item>
+            <title>0.2.13</title>
+            <pubDate>Sat, 12 Sep 2026 16:53:51 +0900</pubDate>
+            <link>https://kotai.jp/</link>
+            <sparkle:version>31</sparkle:version>
+            <sparkle:shortVersionString>0.2.13</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed another small UI issue.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.2.13/Kotai-0.2.13-mac.zip" length="12169516" type="application/octet-stream" sparkle:edSignature="yysxvKfWz+ZIKMjLPDra1e7GuQ2uRCpZAJCaKKSDKfW1VuGh9zQmEQdS3vSOAFKfLvTGA3jd+w7Q+BQrJOqNCg=="/>
+        </item>
+        <item>
             <title>0.2.12</title>
             <pubDate>Sat, 12 Sep 2026 16:45:17 +0900</pubDate>
             <link>https://kotai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Use the same date range for work and personal.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.2.11/Kotai-0.2.11-mac.zip" length="12168512" type="application/octet-stream" sparkle:edSignature="T6wE6esXVRfCfIEiIUnKdt7RS4PcICG0/bzo+ccJnbT3t3m4S18+7/pv5PkEOQdBxOe4dWGPzFFKqvmz5QHRAw=="/>
-        </item>
-        <item>
-            <title>0.2.10</title>
-            <pubDate>Fri, 11 Sep 2026 09:20:28 +0900</pubDate>
-            <link>https://kotai.jp/</link>
-            <sparkle:version>28</sparkle:version>
-            <sparkle:shortVersionString>0.2.10</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Made the usage statistics window the default.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kotai/releases/download/0.2.10/Kotai-0.2.10-mac.zip" length="12165846" type="application/octet-stream" sparkle:edSignature="1YlvklKOWFUZHzp3KSpHNXsw6sK0ew/AUFszJlZMfxMtrs+tg5lVCsm76SSI+tAGAiFGOFBceamvsl77ui2+AA=="/>
         </item>
     </channel>
 </rss>

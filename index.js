@@ -2193,7 +2193,6 @@ function prepareMapSvg() {
     return;
   }
 
-  const isModern = document.documentElement.dataset.theme === 'modern';
   let style = svgDocument.getElementById('world-map-interaction-style');
   if (!style) {
     style = svgDocument.createElementNS('http://www.w3.org/2000/svg', 'style');
@@ -2204,7 +2203,7 @@ function prepareMapSvg() {
   style.textContent = `
     #World, #Ocean { fill: transparent; stroke: none; }
     g[id] { cursor: pointer; }
-    g[id] path { fill: ${isModern ? '#1d1d1f' : '#000'}; stroke: ${isModern ? 'rgba(255, 255, 255, 0.45)' : '#333'}; stroke-width: ${isModern ? '0.35' : '0.5'}; }
+    g[id] path { fill: #000; stroke: #333; stroke-width: 0.5; }
     g[id].is-selected path { stroke: #fff; stroke-width: 1.2; }
     text { display: none; }
   `;
@@ -2666,10 +2665,6 @@ webBrowserOpenExternalButton?.addEventListener('click', () => {
   }
 });
 
-document.addEventListener('site-theme-change', () => {
-  updateGalleryViewerPhoto();
-});
-
 document.addEventListener('site-language-change', () => {
   updateDesktopBrowserTitle();
   updateGalleryViewerPhoto();
@@ -2726,11 +2721,6 @@ setLanguage(initialLanguage);
 updateStackCard();
 setClockMode(getSavedClockMode());
 setWeatherUnit(getSavedWeatherUnit());
-initSiteTheme();
-document.addEventListener('site-theme-change', () => {
-  storeExpandedAboutHeight();
-  prepareMapSvg();
-});
 window.addEventListener('resize', setMapTransform);
 setMapTransform();
 prepareMapSvg();

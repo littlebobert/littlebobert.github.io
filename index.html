@@ -1,9 +1,8 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="classic">
 
 <head>
   <meta charset="utf-8">
-  <script src="theme.js?v=2"></script>
   <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
   <title>About Justin Garcia</title>
   <link href='style.css?v=140' rel='stylesheet'>
@@ -37,10 +36,8 @@
       font-weight: inherit !important;
     }
     body.home-page .language-segment,
-    body.home-page .appearance-segment,
     body.home-page .clock-mode-segment,
-    body.home-page .weather-unit-segment,
-    body.home-page .appearance-option {
+    body.home-page .weather-unit-segment {
       font-weight: inherit !important;
     }
     body.home-page .stack-app-entry .stack-actions a {
@@ -873,29 +870,6 @@
             <button type="button" class="language-segment" data-language-value="en" aria-pressed="false">English</button>
             <button type="button" class="language-segment" data-language-value="ja" aria-pressed="false">日本語</button>
           </div>
-        </div>
-        <div class="appearance-radios" role="radiogroup" aria-label="Theme">
-          <label class="appearance-option">
-            <input type="radio" name="site-theme" value="classic" checked>
-            <span
-              data-label-en="Classic"
-              data-label-ja="クラシック"
-            >Classic</span>
-          </label>
-        </div>
-        <div class="appearance-segmented" role="radiogroup" aria-label="Theme">
-          <button type="button" class="appearance-segment" data-theme-value="classic" aria-pressed="false">
-            <span
-              data-label-en="Classic"
-              data-label-ja="クラシック"
-            >Classic</span>
-          </button>
-          <button type="button" class="appearance-segment" data-theme-value="modern" aria-pressed="false">
-            <span
-              data-label-en="Modern"
-              data-label-ja="モダン"
-            >Modern</span>
-          </button>
         </div>
         <div class="clock-mode-segmented" role="radiogroup" aria-label="Clock display">
           <button type="button" class="clock-mode-segment" data-clock-mode-value="analog" aria-pressed="false">

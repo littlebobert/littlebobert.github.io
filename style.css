@@ -462,19 +462,6 @@ html[lang="ja"] .role-label .latin {
   height: auto;
 }
 
-.headshot-modern {
-  display: none;
-}
-
-html[data-theme="modern"] .headshot-classic {
-  display: none;
-}
-
-html[data-theme="modern"] .headshot-modern {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 .language-switcher {
   display: flex;
@@ -1902,8 +1889,6 @@ button.puzzle-tile:focus-visible {
 @media (hover: hover) and (pointer: fine) {
   .language-segment:hover,
   .language-segment:active,
-  .appearance-segment:hover,
-  .appearance-segment:active,
   .clock-mode-segment:hover,
   .clock-mode-segment:active,
   .weather-unit-segment:hover,
@@ -2129,7 +2114,7 @@ html[lang="en"] .memory-label strong {
   margin-left: 6px;
 }
 
-html[lang="ja"]:not([data-theme="modern"]) .appearance-panel .clock-title {
+html[lang="ja"] .appearance-panel .clock-title {
   font-size: 12px;
   line-height: 12px;
 }
@@ -2240,12 +2225,8 @@ html[data-clock-mode="analog"] .analog-clock {
   margin: 0 0 2px;
 }
 
-.appearance-radios {
-  display: none;
-}
 
 .language-segmented,
-.appearance-segmented,
 .clock-mode-segmented,
 .weather-unit-segmented {
   display: grid;
@@ -2258,12 +2239,8 @@ html[data-clock-mode="analog"] .analog-clock {
   overflow: hidden;
 }
 
-.appearance-segmented {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-}
 
 .language-segment,
-.appearance-segment,
 .clock-mode-segment,
 .weather-unit-segment {
   appearance: none;
@@ -2288,14 +2265,12 @@ html[data-clock-mode="analog"] .analog-clock {
 }
 
 .language-segment:first-child,
-.appearance-segment:first-child,
 .clock-mode-segment:first-child,
 .weather-unit-segment:first-child {
   border-left: none;
 }
 
 .language-segment[aria-pressed="true"],
-.appearance-segment[aria-pressed="true"],
 .clock-mode-segment[aria-pressed="true"],
 .weather-unit-segment[aria-pressed="true"] {
   background:
@@ -2315,20 +2290,18 @@ html[data-clock-mode="analog"] .analog-clock {
 }
 
 html[lang="ja"] .language-segment,
-html[lang="ja"] .appearance-segment,
 html[lang="ja"] .clock-mode-segment,
 html[lang="ja"] .weather-unit-segment {
   font-size: 12px;
   font-weight: bold;
 }
 
-html[lang="ja"]:not([data-theme="modern"]) .language-segment[data-language-value="en"] {
+html[lang="ja"] .language-segment[data-language-value="en"] {
   font-size: 14px;
   font-weight: normal;
 }
 
 .language-segment:focus-visible,
-.appearance-segment:focus-visible,
 .clock-mode-segment:focus-visible,
 .weather-unit-segment:focus-visible {
   outline: 2px solid #000;
@@ -2369,58 +2342,6 @@ html[lang="ja"]:not([data-theme="modern"]) .language-segment[data-language-value
   color: #fff;
 }
 
-.appearance-option {
-  display: flex;
-  align-items: center;
-  gap: 5px;
-  padding: 0;
-  cursor: pointer;
-  font-size: 13px;
-  line-height: 1;
-  white-space: nowrap;
-}
-
-html[lang="en"] .appearance-option {
-  font-size: 14px;
-}
-
-html[lang="ja"] .appearance-option {
-  font-weight: bold;
-  font-size: 12px;
-}
-
-.appearance-option input[type="radio"] {
-  appearance: none;
-  -webkit-appearance: none;
-  width: 11px;
-  height: 11px;
-  margin: 0;
-  flex-shrink: 0;
-  border: 2px solid #000;
-  border-radius: 50%;
-  background: #fff;
-  display: grid;
-  place-content: center;
-  cursor: pointer;
-}
-
-.appearance-option input[type="radio"]::before {
-  content: '';
-  width: 5px;
-  height: 5px;
-  border-radius: 50%;
-  background: #000;
-  transform: scale(0);
-}
-
-.appearance-option input[type="radio"]:checked::before {
-  transform: scale(1);
-}
-
-.appearance-option input[type="radio"]:focus-visible {
-  outline: 1px solid #000;
-  outline-offset: 1px;
-}
 
 /* Resume page styles */
 body.resume-page {
@@ -2810,99 +2731,7 @@ div.patents {
     gap: 4px;
   }
 
-  .appearance-radios {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    gap: 8px;
-  }
 
-  .appearance-option {
-    font-size: 13px;
-    gap: 5px;
-  }
-
-  html[lang="en"] .appearance-option {
-    font-size: 14px;
-  }
-
-  html[lang="ja"] .appearance-option {
-    font-size: 12px;
-  }
-
-  .appearance-option input[type="radio"] {
-    width: 11px;
-    height: 11px;
-  }
-
-  .appearance-option input[type="radio"]::before {
-    width: 5px;
-    height: 5px;
-  }
-
-  html[data-theme="modern"] .clock-widget:not(.appearance-panel) .clock-content {
-    font-size: 12px;
-    padding: 6px 4px;
-  }
-
-  html[data-theme="modern"] .clock-title-bar {
-    height: 22px;
-    padding: 0 2px 0 36px;
-  }
-
-  html[data-theme="modern"] .clock-title-bar .close-box {
-    left: 6px;
-    width: 8px;
-    height: 8px;
-  }
-
-  html[data-theme="modern"] .clock-title-bar::before {
-    left: 20px;
-    width: 8px;
-    height: 8px;
-  }
-
-  html[data-theme="modern"] .clock-title-bar::after {
-    left: 30px;
-    width: 8px;
-    height: 8px;
-  }
-
-  html[data-theme="modern"] .clock-title {
-    font-size: 10px;
-  }
-
-  html[data-theme="modern"] .language-segmented,
-  html[data-theme="modern"] .appearance-segmented,
-  html[data-theme="modern"] .clock-mode-segmented,
-  html[data-theme="modern"] .weather-unit-segmented {
-    flex-direction: row;
-    flex-wrap: nowrap;
-    width: auto;
-    justify-content: flex-start;
-  }
-
-  html[data-theme="modern"] .language-segment,
-  html[data-theme="modern"] .appearance-segment,
-  html[data-theme="modern"] .clock-mode-segment,
-  html[data-theme="modern"] .weather-unit-segment {
-    font-size: 10px;
-    padding: 3px 7px;
-    white-space: nowrap;
-  }
-
-  html[lang="ja"][data-theme="modern"] .language-segment,
-  html[lang="ja"][data-theme="modern"] .appearance-segment,
-  html[lang="ja"][data-theme="modern"] .clock-mode-segment,
-  html[lang="ja"][data-theme="modern"] .weather-unit-segment {
-    font-size: 11px;
-    padding: 3px 5px;
-  }
-
-  html[data-theme="modern"] .appearance-panel .clock-content {
-    align-items: flex-start;
-    justify-content: flex-start;
-  }
 }
 
 /* Classic Mac OS 9-inspired theme */
@@ -2931,15 +2760,6 @@ html[data-theme="classic"] body {
   color: var(--classic-ink);
 }
 
-html[data-theme="classic"] .headshot-classic {
-  display: none;
-}
-
-html[data-theme="classic"] .headshot-modern {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
 
 html[data-theme="classic"] .mac-dialog,
 html[data-theme="classic"] .clock-widget {
@@ -3072,7 +2892,6 @@ html[data-theme="classic"] .info-divider {
 }
 
 html[data-theme="classic"] .language-segmented,
-html[data-theme="classic"] .appearance-segmented,
 html[data-theme="classic"] .clock-mode-segmented,
 html[data-theme="classic"] .weather-unit-segmented {
   border: 1px solid var(--classic-ink);
@@ -3083,7 +2902,6 @@ html[data-theme="classic"] .weather-unit-segmented {
 }
 
 html[data-theme="classic"] .language-segment,
-html[data-theme="classic"] .appearance-segment,
 html[data-theme="classic"] .clock-mode-segment,
 html[data-theme="classic"] .weather-unit-segment {
   border-left: 1px solid var(--classic-shadow);
@@ -3096,14 +2914,12 @@ html[data-theme="classic"] .weather-unit-segment {
 }
 
 html[data-theme="classic"] .language-segment:first-child,
-html[data-theme="classic"] .appearance-segment:first-child,
 html[data-theme="classic"] .clock-mode-segment:first-child,
 html[data-theme="classic"] .weather-unit-segment:first-child {
   border-left: none;
 }
 
 html[data-theme="classic"] .language-segment[aria-pressed="true"],
-html[data-theme="classic"] .appearance-segment[aria-pressed="true"],
 html[data-theme="classic"] .clock-mode-segment[aria-pressed="true"],
 html[data-theme="classic"] .weather-unit-segment[aria-pressed="true"] {
   background: #c9c9c9;
@@ -3230,7 +3046,6 @@ html[data-theme="classic"] .web-browser-open-external:active {
 }
 
 html[data-theme="classic"] .language-segment:focus-visible,
-html[data-theme="classic"] .appearance-segment:focus-visible,
 html[data-theme="classic"] .clock-mode-segment:focus-visible,
 html[data-theme="classic"] .weather-unit-segment:focus-visible,
 html[data-theme="classic"] .stack-button:focus-visible,
@@ -3355,7 +3170,6 @@ html[data-theme="classic"] .feed-panel.has-scroll-overflow::after {
 
 @media (hover: hover) and (pointer: fine) {
   html[data-theme="classic"] .language-segment:hover,
-  html[data-theme="classic"] .appearance-segment:hover,
   html[data-theme="classic"] .clock-mode-segment:hover,
   html[data-theme="classic"] .weather-unit-segment:hover {
     background: #f8f8f8;
@@ -3367,7 +3181,6 @@ html[data-theme="classic"] .feed-panel.has-scroll-overflow::after {
   }
 
   html[data-theme="classic"] .language-segment[aria-pressed="true"]:hover,
-  html[data-theme="classic"] .appearance-segment[aria-pressed="true"]:hover,
   html[data-theme="classic"] .clock-mode-segment[aria-pressed="true"]:hover,
   html[data-theme="classic"] .weather-unit-segment[aria-pressed="true"]:hover {
     background: #d2d2d2;
@@ -3419,944 +3232,20 @@ html[data-theme="classic"] .feed-panel.has-scroll-overflow::after {
   }
 }
 
-/* Modern macOS theme */
-html[data-theme="modern"] body {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-  font-size: 13px;
-  background: #1a1a2e;
-  background-image:
-    radial-gradient(ellipse at 20% 10%, rgba(120, 180, 255, 0.55) 0%, transparent 50%),
-    radial-gradient(ellipse at 80% 20%, rgba(200, 140, 255, 0.45) 0%, transparent 45%),
-    radial-gradient(ellipse at 50% 80%, rgba(255, 160, 200, 0.35) 0%, transparent 50%),
-    linear-gradient(180deg, #5b8fd9 0%, #9b7fd4 35%, #d4a5c9 70%, #e8c4a0 100%);
-  background-attachment: fixed;
-}
-
-html[data-theme="modern"] .mac-dialog,
-html[data-theme="modern"] .clock-widget {
-  border: none;
-  border-radius: 10px;
-  box-shadow:
-    0 0 0 0.5px rgba(0, 0, 0, 0.08),
-    0 8px 28px rgba(0, 0, 0, 0.18);
-  overflow: hidden;
-}
-
-html[data-theme="modern"] .window-zoom-rect {
-  border: 0.5px solid rgba(0, 0, 0, 0.12);
-  border-radius: 10px;
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.18);
-}
-
-html[data-theme="modern"] .title-bar,
-html[data-theme="modern"] .clock-title-bar {
-  height: 28px;
-  background: rgba(246, 246, 246, 0.82);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 0.5px solid rgba(0, 0, 0, 0.1);
-}
-
-html[data-theme="modern"] .title-bar-stripes-full {
-  display: none;
-}
-
-html[data-theme="modern"] button.close-box--close,
-html[data-theme="modern"] .title-bar .close-box:not(.close-box--close),
-html[data-theme="modern"] .clock-title-bar .close-box {
-  width: 11px;
-  height: 11px;
-  border: none;
-  border-radius: 50%;
-  background: #ff5f57;
-  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.12);
-}
-
-html[data-theme="modern"] button.close-box--close {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-html[data-theme="modern"] button.close-box--close:hover {
-  background: #ff4136;
-}
-
-html[data-theme="modern"] .title-bar::before,
-html[data-theme="modern"] .title-bar::after,
-html[data-theme="modern"] .clock-title-bar::before,
-html[data-theme="modern"] .clock-title-bar::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 11px;
-  height: 11px;
-  border-radius: 50%;
-  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.12);
-}
-
-html[data-theme="modern"] .title-bar::before,
-html[data-theme="modern"] .clock-title-bar::before {
-  left: 26px;
-  background: #febc2e;
-}
-
-html[data-theme="modern"] .title-bar::after,
-html[data-theme="modern"] .clock-title-bar::after {
-  left: 42px;
-  background: #28c840;
-}
-
-html[data-theme="modern"] .clock-title-bar {
-  position: relative;
-  padding: 0 10px 0 58px;
-}
-
-html[data-theme="modern"] .clock-title-bar .close-box {
-  position: absolute;
-  left: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-html[data-theme="modern"] .title-text {
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  background: transparent;
-  color: rgba(0, 0, 0, 0.85);
-}
-
-html[lang="ja"][data-theme="modern"] .title-text {
-  font-size: 14px;
-  font-weight: 600;
-  height: auto;
-  line-height: 1;
-}
-
-html[data-theme="modern"] .clock-title {
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  margin-left: 0;
-  color: rgba(0, 0, 0, 0.85);
-}
-
-html[lang="ja"][data-theme="modern"] .clock-title {
-  font-size: 14px;
-}
-
-html[data-theme="modern"] .clock-widget:not(.appearance-panel) .clock-content {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-  font-size: 13px;
-  font-variant-numeric: tabular-nums;
-  padding: 8px 10px;
-  text-align: right;
-}
-
-html[data-theme="modern"] .weather-attribution {
-  color: rgba(0, 0, 0, 0.55);
-}
-
-html[data-theme="modern"] .weather-attribution a {
-  color: #0066cc;
-}
-
-html[data-theme="modern"] .weather-attribution a:hover {
-  background: transparent;
-  color: #004499;
-  text-decoration: underline;
-}
-
-html[data-theme="modern"] .web-browser-content,
-html[data-theme="modern"] .gallery-viewer-content {
-  background: rgba(255, 255, 255, 0.88);
-}
-
-html[data-theme="modern"] .web-browser-address {
-  border: none;
-  border-radius: 7px;
-  background: rgba(0, 0, 0, 0.06);
-  color: rgba(0, 0, 0, 0.72);
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-  font-size: 12px;
-  line-height: 1.2;
-  box-shadow: none;
-}
-
-html[data-theme="modern"] .web-browser-frame {
-  border: none;
-  border-radius: 10px;
-  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.12);
-  overflow: hidden;
-}
-
-html[data-theme="modern"] .gallery-viewer-image-frame {
-  border: none;
-  border-radius: 10px;
-  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.12);
-}
-
-html[data-theme="modern"] .analog-clock {
-  width: 54px;
-  height: 54px;
-  border: none;
-  background: rgba(255, 255, 255, 0.7);
-  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.18);
-}
-
-html[data-theme="modern"] .analog-hand {
-  background: rgba(0, 0, 0, 0.82);
-}
-
-html[data-theme="modern"] .analog-pin {
-  border: none;
-  border-radius: 50%;
-  width: 4px;
-  height: 4px;
-  background: rgba(0, 0, 0, 0.82);
-}
-
-html[data-theme="modern"] .appearance-panel .clock-content {
-  align-items: flex-end;
-  justify-content: flex-start;
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-}
-
-html[data-theme="modern"] .appearance-radios {
-  display: none;
-}
-
-html[data-theme="modern"] .language-segmented,
-html[data-theme="modern"] .appearance-segmented,
-html[data-theme="modern"] .clock-mode-segmented,
-html[data-theme="modern"] .weather-unit-segmented {
-  display: grid;
-  background: rgba(0, 0, 0, 0.08);
-  border: none;
-  border-radius: 6px;
-  padding: 2px;
-  gap: 1px;
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-}
-
-html[data-theme="modern"] .language-segment,
-html[data-theme="modern"] .appearance-segment,
-html[data-theme="modern"] .clock-mode-segment,
-html[data-theme="modern"] .weather-unit-segment {
-  display: inline-flex;
-  border: none;
-  background: transparent;
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-  font-size: 12px;
-  font-weight: 500;
-  line-height: 1.2;
-  min-height: 0;
-  padding: 3px 10px;
-  border-radius: 5px;
-  color: rgba(0, 0, 0, 0.55);
-  cursor: pointer;
-  box-shadow: none;
-  transform: none;
-  -webkit-tap-highlight-color: transparent;
-}
-
-html[lang="ja"][data-theme="modern"] .language-segment,
-html[lang="ja"][data-theme="modern"] .appearance-segment,
-html[lang="ja"][data-theme="modern"] .clock-mode-segment,
-html[lang="ja"][data-theme="modern"] .weather-unit-segment {
-  font-size: 13px;
-  font-weight: 600;
-}
-
-html[data-theme="modern"] .language-segment[aria-pressed="true"],
-html[data-theme="modern"] .appearance-segment[aria-pressed="true"],
-html[data-theme="modern"] .clock-mode-segment[aria-pressed="true"],
-html[data-theme="modern"] .weather-unit-segment[aria-pressed="true"] {
-  background: #fff;
-  color: rgba(0, 0, 0, 0.88);
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.12);
-}
-
-html[data-theme="modern"] .language-segment:focus-visible,
-html[data-theme="modern"] .appearance-segment:focus-visible,
-html[data-theme="modern"] .clock-mode-segment:focus-visible,
-html[data-theme="modern"] .weather-unit-segment:focus-visible {
-  outline: 2px solid #007aff;
-  outline-offset: 1px;
-}
-
-html[data-theme="modern"] .desktop-icon-image {
-  border: none;
-  border-radius: 14px;
-  box-shadow:
-    0 0 0 0.5px rgba(0, 0, 0, 0.08),
-    0 4px 12px rgba(0, 0, 0, 0.25);
-}
-
-html[data-theme="modern"] .desktop-icon-label {
-  background: transparent;
-  color: #fff;
-  font-size: 12px;
-  font-weight: 600;
-  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.7);
-}
-
-html[lang="ja"][data-theme="modern"] .desktop-icon-label {
-  font-size: 13px;
-  font-weight: 600;
-}
-
-html[data-theme="modern"] .desktop-icon:focus-visible {
-  outline: 2px solid #007aff;
-  outline-offset: 2px;
-  border-radius: 14px;
-}
-
-html[data-theme="modern"] .logo-section {
-  border-bottom-color: rgba(0, 0, 0, 0.1);
-}
-
-html[data-theme="modern"] .logo-section .tagline {
-  font-size: 13px;
-  line-height: 1.25;
-}
-
-html[lang="ja"][data-theme="modern"] .logo-section .tagline {
-  font-size: 14px;
-  line-height: 1.3;
-}
-
-html[data-theme="modern"] .info-grid {
-  border-bottom-color: rgba(0, 0, 0, 0.1);
-}
-
-html[data-theme="modern"] .info-divider {
-  border-bottom-color: rgba(0, 0, 0, 0.08);
-}
-
-html[data-theme="modern"] .info-label {
-  color: rgba(0, 0, 0, 0.55);
-  font-size: 12px;
-  font-weight: 600;
-}
-
-html[lang="en"][data-theme="modern"] .info-label {
-  font-size: 12px;
-  font-weight: 600;
-}
-
-html[lang="ja"][data-theme="modern"] .info-label {
-  font-size: 14px;
-}
-
-html[data-theme="modern"] .info-value {
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.88);
-}
-
-html[lang="ja"][data-theme="modern"] .info-value .ja-text,
-html[lang="ja"][data-theme="modern"] .role-label .ja-text {
-  font-size: 14px;
-  font-weight: 600;
-}
-
-html[lang="ja"][data-theme="modern"] .info-value .latin,
-html[lang="ja"][data-theme="modern"] .info-value .latin a,
-html[lang="ja"][data-theme="modern"] .role-label .latin,
-html[lang="ja"][data-theme="modern"] .info-value.latin-value,
-html[lang="ja"][data-theme="modern"] .info-value.latin-value a {
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.25;
-}
-
-html[data-theme="modern"] .info-value a {
-  color: #0066cc;
-  text-decoration: none;
-}
-
-html[data-theme="modern"] .info-value a:hover {
-  background: transparent;
-  color: #004499;
-  text-decoration: underline;
-}
-
-html[lang="ja"][data-theme="modern"] .memory-label {
-  font-size: 14px;
-}
-
-html[data-theme="modern"] .stack-counter {
-  color: rgba(0, 0, 0, 0.45);
-  font-size: 12px;
-  font-weight: 500;
-}
-
-html[data-theme="modern"] .hypercard-stack::before,
-html[data-theme="modern"] .hypercard-stack::after {
-  border: none;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.72);
-  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.08);
-}
-
-html[data-theme="modern"] .stack-card {
-  border: none;
-  border-radius: 12px;
-  min-height: 0;
-  background: rgba(255, 255, 255, 0.88);
-  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.08);
-  color: rgba(0, 0, 0, 0.88);
-}
-
-html[data-theme="modern"] .stack-card-kicker {
-  border: none;
-  border-radius: 999px;
-  background: rgba(0, 0, 0, 0.07);
-  color: rgba(0, 0, 0, 0.55);
-  font-family: inherit;
-  font-size: 11px;
-  font-weight: 600;
-  padding: 4px 8px;
-}
-
-html[data-theme="modern"] .stack-card h2 {
-  font-family: inherit;
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.05;
-}
-
-html[lang="ja"][data-theme="modern"] .stack-card h2,
-html[lang="ja"][data-theme="modern"] .stack-card h2 .latin {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1.15;
-}
-
-html[data-theme="modern"] .stack-card p,
-html[data-theme="modern"] .stack-topic-list {
-  font-family: inherit;
-  font-size: 15px;
-  line-height: 1.35;
-  color: rgba(0, 0, 0, 0.78);
-}
-
-html[lang="ja"][data-theme="modern"] .stack-card p,
-html[lang="ja"][data-theme="modern"] .stack-card p .latin,
-html[lang="ja"][data-theme="modern"] .stack-topic-list,
-html[lang="ja"][data-theme="modern"] .stack-topic-list .latin {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.45;
-}
-
-html[data-theme="modern"] .stack-card a {
-  color: #0066cc;
-}
-
-html[data-theme="modern"] .stack-card a:hover {
-  background: transparent;
-  color: #004499;
-  text-decoration: underline;
-  text-shadow: none;
-}
-
-html[data-theme="modern"] .x-post {
-  border: none;
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.04);
-}
-
-html[data-theme="modern"] .mud-terminal {
-  border: none;
-  border-radius: 10px;
-  background: #111;
-  color: #f5f5f7;
-  font-family: 'SF Mono', 'Menlo', monospace;
-  font-size: 13px;
-  line-height: 1.35;
-}
-
-html[data-theme="modern"] .mud-terminal p,
-html[data-theme="modern"] .mud-terminal .mud-line-player {
-  color: #f5f5f7;
-}
-
-html[data-theme="modern"] .mud-terminal .mud-line-system {
-  color: rgba(245, 245, 247, 0.82);
-}
-
-html[data-theme="modern"] .mud-command-button {
-  min-height: 30px;
-  border: none;
-  border-radius: 8px;
-  background: rgba(0, 122, 255, 0.12);
-  box-shadow: none;
-  color: #0066cc;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
-}
-
-html[data-theme="modern"] .mud-command-button:active {
-  background: rgba(0, 122, 255, 0.18);
-  color: #004499;
-  transform: none;
-}
-
-html[data-theme="modern"] .mud-command-button:focus-visible {
-  outline: 2px solid #007aff;
-}
-
-html[data-theme="modern"] .mud-form input {
-  min-height: 36px;
-  border: none;
-  border-radius: 9px;
-  background: rgba(0, 0, 0, 0.06);
-  box-shadow: none;
-  font-family: inherit;
-  font-size: 14px;
-}
-
-html[data-theme="modern"] .mud-form input:disabled {
-  background: rgba(0, 0, 0, 0.04);
-  color: rgba(0, 0, 0, 0.35);
-}
-
-html[data-theme="modern"] .mud-status {
-  font-family: inherit;
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-html[data-theme="modern"] .mud-leaderboard {
-  border-top-color: rgba(0, 0, 0, 0.1);
-  font-family: inherit;
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-html[data-theme="modern"] .tokyo-recommendations {
-  border-top-color: rgba(0, 0, 0, 0.1);
-}
-
-html[data-theme="modern"] .tokyo-recommendations-list {
-  font-family: inherit;
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-html[data-theme="modern"] .news-item {
-  border: none;
-  border-radius: 10px;
-  background: rgba(0, 0, 0, 0.04);
-}
-
-html[data-theme="modern"] .news-item-title {
-  font-family: inherit;
-  font-size: 15px;
-  font-weight: 700;
-  line-height: 1.2;
-}
-
-html[data-theme="modern"] .news-feed-status,
-html[data-theme="modern"] .news-feed-updated,
-html[data-theme="modern"] .stack-card .news-item-meta {
-  font-family: inherit;
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-html[data-theme="modern"] .feed-panel.has-scroll-overflow::after {
-  height: 28px;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #fff 88%);
-}
-
-html[data-theme="modern"] .stack-card .news-item-description {
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 400;
-  line-height: 1.35;
-  color: rgba(0, 0, 0, 0.72);
-}
-
-html[data-theme="modern"] .x-feed-status,
-html[data-theme="modern"] .x-feed-updated {
-  font-family: inherit;
-  font-size: 13px;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-html[data-theme="modern"] .x-post-avatar {
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.12);
-}
-
-html[data-theme="modern"] .x-post-identity strong {
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 700;
-}
-
-html[data-theme="modern"] .x-post-identity span,
-html[data-theme="modern"] .x-post-link {
-  font-family: inherit;
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-html[data-theme="modern"] .stack-card .x-post-text {
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 400;
-  line-height: 1.35;
-}
-
-html[data-theme="modern"] .x-post-media {
-  border: none;
-  border-radius: 8px;
-  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.12);
-}
-
-html[data-theme="modern"] .gallery-photo-frame {
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.12);
-}
-
-html[data-theme="modern"] .gallery-item figcaption {
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-html[data-theme="modern"] .stack-card-avatar {
-  border: none;
-  border-radius: 18px;
-  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.08);
-}
-
-html[data-theme="modern"] .world-map-frame {
-  border: none;
-  border-radius: 12px;
-  background:
-    radial-gradient(circle at 25% 20%, rgba(0, 122, 255, 0.12), transparent 28%),
-    radial-gradient(circle at 72% 38%, rgba(88, 86, 214, 0.12), transparent 30%),
-    rgba(0, 0, 0, 0.04);
-  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-html[data-theme="modern"] .puzzle-board {
-  gap: 3px;
-  padding: 4px;
-  border: none;
-  border-radius: 12px;
-  background: rgba(0, 0, 0, 0.08);
-  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-}
-
-html[data-theme="modern"] .puzzle-tile {
-  border: none;
-  border-radius: 7px;
-  background-image: url('assets/steve-puzzle.png');
-  image-rendering: auto;
-  box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.12);
-}
-
-html[data-theme="modern"] button.puzzle-tile.is-movable {
-  box-shadow:
-    0 0 0 0.5px rgba(0, 0, 0, 0.12),
-    inset 0 -1px 0 rgba(0, 0, 0, 0.22);
-}
-
-html[data-theme="modern"] .puzzle-tile.is-empty {
-  background:
-    linear-gradient(45deg, rgba(0, 0, 0, 0.08) 25%, transparent 25%),
-    linear-gradient(-45deg, rgba(0, 0, 0, 0.08) 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, rgba(0, 0, 0, 0.08) 75%),
-    linear-gradient(-45deg, transparent 75%, rgba(0, 0, 0, 0.08) 75%);
-  background-size: 8px 8px;
-  background-position: 0 0, 0 4px, 4px -4px, -4px 0;
-}
-
-html[data-theme="modern"] button.puzzle-tile:focus-visible {
-  outline: 2px solid #007aff;
-}
-
-html[data-theme="modern"] .puzzle-alert {
-  border: none;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.96);
-  box-shadow:
-    0 0 0 0.5px rgba(0, 0, 0, 0.1),
-    0 12px 26px rgba(0, 0, 0, 0.2);
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-}
-
-html[data-theme="modern"] .puzzle-alert-video {
-  border: none;
-  border-radius: 8px;
-  background: rgba(0, 0, 0, 0.08);
-  box-shadow: inset 0 0 0 0.5px rgba(0, 0, 0, 0.1);
-}
-
-html[data-theme="modern"] .puzzle-alert p {
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.3;
-}
-
-html[data-theme="modern"] .puzzle-alert-button {
-  min-height: 0;
-  border: none;
-  border-radius: 7px;
-  background: rgba(0, 122, 255, 0.12);
-  box-shadow: none;
-  color: #0066cc;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  text-shadow: none;
-}
-
-html[data-theme="modern"] .puzzle-alert-button:active {
-  background: rgba(0, 122, 255, 0.18);
-  color: #004499;
-  transform: none;
-}
-
-html[data-theme="modern"] .puzzle-alert-button:focus-visible {
-  outline: 2px solid #007aff;
-}
-
-html[data-theme="modern"] .puzzle-controls .stack-button:disabled {
-  background: rgba(0, 0, 0, 0.06);
-  color: rgba(0, 0, 0, 0.35);
-  box-shadow: none;
-}
-
-html[data-theme="modern"] .world-map-img {
-  filter: none;
-  opacity: 0.68;
-}
-
-html[data-theme="modern"] .map-pin {
-  background: #007aff;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.22), 0 0 0 2px #fff;
-}
-
-html[data-theme="modern"] .map-control-button {
-  border: none;
-  border-radius: 8px;
-  box-shadow: none;
-  font-family: inherit;
-  font-size: 13px;
-  font-weight: 600;
-  background: rgba(0, 122, 255, 0.12);
-  color: #0066cc;
-}
-
-html[data-theme="modern"] .map-control-button:disabled {
-  background: rgba(0, 0, 0, 0.06);
-  color: rgba(0, 0, 0, 0.35);
-}
-
-html[data-theme="modern"] .map-location-status {
-  font-family: inherit;
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-html[data-theme="modern"] .guestbook-list {
-  border-top-color: rgba(0, 0, 0, 0.1);
-  font-family: inherit;
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-html[data-theme="modern"] .stack-actions a,
-html[data-theme="modern"] .stack-button,
-html[data-theme="modern"] .stack-index-button,
-html[data-theme="modern"] .web-browser-open-external {
-  border: none;
-  border-radius: 8px;
-  box-shadow: none;
-  font-family: inherit;
-  font-size: 14px;
-  font-weight: 600;
-  background: rgba(0, 122, 255, 0.12);
-  color: #0066cc;
-}
-
-html[data-theme="modern"] .stack-index-shortcut,
-html[data-theme="modern"] .qr-code-button {
-  border: none;
-  border-radius: 6px;
-  box-shadow: none;
-  background: rgba(0, 122, 255, 0.12);
-  color: #0066cc;
-  font-family: inherit;
-  font-size: 12px;
-  font-weight: 600;
-  padding: 3px 8px;
-}
-
-html[data-theme="modern"] .stack-button-secondary {
-  background: rgba(0, 0, 0, 0.06);
-  color: rgba(0, 0, 0, 0.72);
-}
-
-html[data-theme="modern"] .stack-card .stack-actions a:hover,
-html[data-theme="modern"] .stack-actions a:hover {
-  background: rgba(0, 122, 255, 0.12);
-  color: #0066cc;
-}
-
-html[data-theme="modern"] .stack-actions a:active,
-html[data-theme="modern"] .stack-button:active,
-html[data-theme="modern"] .stack-index-button:active,
-html[data-theme="modern"] .stack-index-shortcut:active,
-html[data-theme="modern"] .qr-code-button:active,
-html[data-theme="modern"] .web-browser-open-external:active {
-  background: rgba(0, 122, 255, 0.18);
-  color: #004499;
-  transform: none;
-}
-
-html[data-theme="modern"] .stack-button-secondary:active {
-  background: rgba(0, 0, 0, 0.1);
-  color: rgba(0, 0, 0, 0.85);
-}
-
-@media (hover: hover) and (pointer: fine) {
-  html[data-theme="modern"] .stack-actions a:hover,
-  html[data-theme="modern"] .stack-button:hover,
-  html[data-theme="modern"] .stack-index-button:hover,
-  html[data-theme="modern"] .stack-index-shortcut:hover,
-  html[data-theme="modern"] .qr-code-button:hover,
-  html[data-theme="modern"] .web-browser-open-external:hover {
-    background: rgba(0, 122, 255, 0.18);
-    color: #004499;
-    transform: none;
-  }
-
-  html[data-theme="modern"] .stack-button-secondary:hover {
-    background: rgba(0, 0, 0, 0.1);
-    color: rgba(0, 0, 0, 0.85);
-  }
-}
-
-html[data-theme="modern"] .stack-button:focus-visible,
-html[data-theme="modern"] .stack-actions a:focus-visible,
-html[data-theme="modern"] .stack-index-button:focus-visible,
-html[data-theme="modern"] .stack-index-shortcut:focus-visible,
-html[data-theme="modern"] .qr-code-button:focus-visible,
-html[data-theme="modern"] .web-browser-open-external:focus-visible {
-  outline: 2px solid #007aff;
-  outline-offset: 2px;
-}
-
-html[data-theme="modern"] .memory-label {
-  font-size: 12px;
-  color: rgba(0, 0, 0, 0.55);
-}
-
-html[lang="en"][data-theme="modern"] .memory-label strong {
-  font-size: 12px;
-  font-weight: 600;
-}
-
-html[data-theme="modern"] .memory-amount {
-  font-size: 12px;
-  font-family: ui-monospace, 'SF Mono', Menlo, monospace;
-}
-
-html[data-theme="modern"] .memory-bar {
-  height: 8px;
-  border: none;
-  border-radius: 4px;
-  background: rgba(0, 0, 0, 0.08);
-}
-
-html[data-theme="modern"] .memory-bar-fill {
-  border-right: none;
-  border-radius: 4px;
-  background: linear-gradient(
-    90deg,
-    #007aff 0%,
-    #007aff 38%,
-    #3d94ff 50%,
-    #007aff 62%,
-    #007aff 100%
-  );
-  background-size: 220% 100%;
-  animation: modern-progress-shimmer 1.3s ease-in-out infinite;
-}
-
-@keyframes modern-progress-shimmer {
-  0% { background-position: 100% 0; }
-  100% { background-position: -100% 0; }
-}
 
 @media (prefers-reduced-motion: reduce) {
   .hypercard-stack.is-card-wiping .stack-card.is-active {
     animation: none;
   }
 
-  html[data-theme="modern"] .memory-bar-fill {
-    animation: none;
-    background: #007aff;
-  }
 }
 
-html[data-theme="modern"] body.resume-page {
-  background: #f5f5f7;
-  background-image: none;
-}
 
-html[data-theme="modern"] body.resume-page .language-switcher button {
-  font-family: inherit;
-  border: 1px solid #aaa;
-  border-radius: 4px;
-  background: white;
-  box-shadow: none;
-  font-size: inherit;
-  font-weight: normal;
-}
-
-html[data-theme="modern"] body.resume-page .language-switcher button:hover,
-html[data-theme="modern"] body.resume-page .language-switcher button:active {
-  background: white;
-  color: inherit;
-}
-
-html[data-theme="modern"] body.resume-page .resume {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Text', 'Helvetica Neue', sans-serif;
-}
-
-html[data-theme="modern"] body.resume-page .info-value a,
-html[data-theme="modern"] body.resume-page a {
-  color: #0066cc;
-}
-
-html[data-theme="classic"] body.resume-page,
-html[data-theme="modern"] body.resume-page {
+html[data-theme="classic"] body.resume-page {
   background: #fff;
   background-image: none;
 }
 
-html[data-theme="modern"] .mac-dialog.window-shaded .title-bar,
-html[data-theme="modern"] .clock-widget.window-shaded .clock-title-bar {
-  border-bottom-color: transparent;
-}
 
 .submission-overlay {
   align-items: center;
@@ -4434,16 +3323,6 @@ html[data-theme="modern"] .clock-widget.window-shaded .clock-title-bar {
   padding: 6px 12px;
 }
 
-html[data-theme="modern"] .submission-dialog {
-  background: rgba(248, 248, 250, 0.98);
-}
-
-html[data-theme="modern"] .submission-form input,
-html[data-theme="modern"] .submission-form textarea {
-  border-color: rgba(0, 0, 0, 0.22);
-  border-radius: 6px;
-  font-family: inherit;
-}
 
 
 .stack-card-summary {
@@ -4657,13 +3536,6 @@ html[data-theme="classic"] .recent-updates-button[aria-pressed="true"]:hover {
   text-shadow: none;
 }
 
-html[data-theme="modern"] .recent-updates-button[aria-pressed="true"],
-html[data-theme="modern"] .recent-updates-button[aria-pressed="true"]:hover {
-  background: rgba(0, 122, 255, 0.22);
-  color: #004499;
-  box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.18);
-  transform: none;
-}
 
 
 html body.home-page .stack-product-button img.stack-product-icon-compact {

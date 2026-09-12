@@ -248,7 +248,7 @@ body:not(.resume-page) {
   display: block;
   width: min(100%, 280px);
   height: auto;
-  image-rendering: pixelated;
+  image-rendering: auto;
   border: 2px solid #000;
   background: #fff;
 }
@@ -804,24 +804,6 @@ html[lang="ja"] .stack-product-tagline {
   }
 }
 
-html[data-theme="bw"] .stack-product-button {
-  min-height: 54px;
-  padding: 4px;
-  border-radius: 0;
-  box-shadow: 1px 1px 0 #000;
-}
-
-html[data-theme="bw"] .stack-product-button:active {
-  box-shadow: inset 1px 1px 0 #000;
-  transform: translate(1px, 1px);
-}
-
-html[data-theme="bw"] .stack-product-button img {
-  width: 44px;
-  height: 44px;
-  border-radius: 6px;
-}
-
 .stack-app-entry p {
   margin-bottom: 6px;
 }
@@ -898,29 +880,11 @@ html[lang="ja"] .stack-card p .latin {
   object-position: center 28%;
 }
 
-.gallery-photo-dithered {
-  image-rendering: auto;
-}
-
-.gallery-photo-color {
-  display: none;
-}
-
 .gallery-item figcaption {
   margin-top: 3px;
   font-size: 15px;
   line-height: 1;
   text-align: center;
-}
-
-html[data-theme="classic"] .gallery-photo-dithered,
-html[data-theme="modern"] .gallery-photo-dithered {
-  display: none;
-}
-
-html[data-theme="classic"] .gallery-photo-color,
-html[data-theme="modern"] .gallery-photo-color {
-  display: block;
 }
 
 .gallery-viewer-figure {
@@ -943,10 +907,6 @@ html[data-theme="modern"] .gallery-photo-color {
   max-width: 100%;
   max-height: min(58vh, 500px);
   object-fit: contain;
-}
-
-.gallery-viewer-image.is-dithered {
-  image-rendering: pixelated;
 }
 
 .gallery-viewer-figure figcaption {
@@ -1158,11 +1118,6 @@ html[lang="ja"] .recent-updates-content .x-post-text {
   border: 2px solid #000;
   object-fit: contain;
   image-rendering: pixelated;
-}
-
-.x-post-avatar-modern,
-.x-post-media-modern {
-  display: none;
 }
 
 .x-post-link {
@@ -2951,22 +2906,6 @@ div.patents {
 }
 
 /* Classic Mac OS 9-inspired theme */
-html[data-theme="bw"] .stack-actions a,
-html[data-theme="bw"] .stack-button,
-html[data-theme="bw"] .stack-index-button,
-html[data-theme="bw"] .stack-index-shortcut,
-html[data-theme="bw"] .qr-code-button,
-html[data-theme="bw"] .mud-command-button,
-html[data-theme="bw"] .map-control-button,
-html[data-theme="bw"] .puzzle-alert-button,
-html[data-theme="bw"] .web-browser-open-external,
-html[data-theme="bw"] .language-segmented,
-html[data-theme="bw"] .appearance-segmented,
-html[data-theme="bw"] .clock-mode-segmented,
-html[data-theme="bw"] .weather-unit-segmented {
-  border-radius: 2px;
-}
-
 html[data-theme="classic"] {
   --classic-ink: #111;
   --classic-shadow: #777;
@@ -3390,17 +3329,6 @@ html[data-theme="classic"] .world-map-img {
 html[data-theme="classic"] .map-pin {
   background: var(--classic-accent);
   box-shadow: 0 0 0 1.5px #fff, 1px 1px 0 rgba(0, 0, 0, 0.45);
-}
-
-html[data-theme="classic"] .x-post-avatar.has-modern-alternate,
-html[data-theme="classic"] .x-post-media.has-modern-alternate {
-  display: none;
-}
-
-html[data-theme="classic"] .x-post-avatar-modern,
-html[data-theme="classic"] .x-post-media-modern {
-  display: block;
-  image-rendering: auto;
 }
 
 html[data-theme="classic"] .puzzle-tile {
@@ -4066,17 +3994,6 @@ html[data-theme="modern"] .x-post-avatar {
   border: none;
   border-radius: 8px;
   box-shadow: 0 0 0 0.5px rgba(0, 0, 0, 0.12);
-}
-
-html[data-theme="modern"] .x-post-avatar.has-modern-alternate,
-html[data-theme="modern"] .x-post-media.has-modern-alternate {
-  display: none;
-}
-
-html[data-theme="modern"] .x-post-avatar-modern,
-html[data-theme="modern"] .x-post-media-modern {
-  display: block;
-  image-rendering: auto;
 }
 
 html[data-theme="modern"] .x-post-identity strong {

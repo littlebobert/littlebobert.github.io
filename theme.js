@@ -1,7 +1,7 @@
 (function () {
   const STORAGE_KEY = 'site-theme-v2';
   const LEGACY_STORAGE_KEY = 'site-theme';
-  const THEMES = ['bw', 'classic', 'modern'];
+  const THEMES = ['classic', 'modern'];
 
   function normalizeTheme(theme) {
     return THEMES.includes(theme) ? theme : 'classic';
@@ -16,7 +16,7 @@
 
       const legacyTheme = localStorage.getItem(LEGACY_STORAGE_KEY);
       if (legacyTheme) {
-        return legacyTheme === 'modern' ? 'modern' : 'bw';
+        return legacyTheme === 'modern' ? 'modern' : 'classic';
       }
 
       return 'classic';

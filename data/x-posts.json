@@ -18,15 +18,13 @@
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/mine-post-2098403067108732983-0.png",
-          "imageModern": "assets/generated/x/mine-post-2098403067108732983-0-modern.png"
+          "image": "assets/generated/x/mine-post-2098403067108732983-0.png"
         }
       ]
     },
@@ -45,7 +43,6 @@
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
@@ -65,15 +62,13 @@
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/mine-post-2098356828224512216-0.png",
-          "imageModern": "assets/generated/x/mine-post-2098356828224512216-0-modern.png"
+          "image": "assets/generated/x/mine-post-2098356828224512216-0.png"
         }
       ]
     },
@@ -92,7 +87,6 @@
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
@@ -112,7 +106,6 @@
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
@@ -132,15 +125,13 @@
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/mine-post-2098048489586557225-0.png",
-          "imageModern": "assets/generated/x/mine-post-2098048489586557225-0-modern.png"
+          "image": "assets/generated/x/mine-post-2098048489586557225-0.png"
         }
       ]
     },
@@ -159,15 +150,13 @@
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
-      "avatarModern": "assets/generated/x/mine-avatar-modern.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/mine-post-2098008253602902504-0.png",
-          "imageModern": "assets/generated/x/mine-post-2098008253602902504-0-modern.png"
+          "image": "assets/generated/x/mine-post-2098008253602902504-0.png"
         }
       ]
     }

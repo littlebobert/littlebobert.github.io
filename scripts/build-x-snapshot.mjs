@@ -10,13 +10,6 @@ const OUTPUT_JSON = path.join(DATA_DIR, 'x-posts.json');
 const OUTPUT_JS = path.join(DATA_DIR, 'x-posts.js');
 const X_API_BASE_URL = 'https://api.twitter.com/2';
 const X_WEB_BASE_URL = 'https://x.com';
-const BAYER_4X4 = [
-  [0, 8, 2, 10],
-  [12, 4, 14, 6],
-  [3, 11, 1, 9],
-  [15, 7, 13, 5],
-];
-
 const bearerToken = process.env.X_BEARER_TOKEN;
 const username = (process.env.X_USERNAME || '_bobertdowney').replace(/^@/, '');
 const requestedPostCount = Number(process.env.X_POST_LIMIT || 5);
@@ -82,11 +75,7 @@ function publicAssetPath(fileName) {
   return `assets/generated/x/${fileName}`;
 }
 
-function modernFileName(fileName) {
-  return fileName.replace(/\.png$/i, '-modern.png');
-}
-
-async function saveModernPng(sourceBuffer, outputPath, options = {}) {
+async function savePng(sourceBuffer, outputPath, options = {}) {
   const maxWidth = options.maxWidth || 640;
   const maxHeight = options.maxHeight || 420;
   await sharp(sourceBuffer)
@@ -101,71 +90,17 @@ async function saveModernPng(sourceBuffer, outputPath, options = {}) {
     .toFile(outputPath);
 }
 
-async function ditherToPng(sourceBuffer, outputPath, options = {}) {
-  const maxWidth = options.maxWidth || 640;
-  const maxHeight = options.maxHeight || 420;
-  const { data, info } = await sharp(sourceBuffer)
-    .rotate()
-    .resize({
-      width: maxWidth,
-      height: maxHeight,
-      fit: 'inside',
-      withoutEnlargement: true,
-    })
-    .greyscale()
-    .raw()
-    .toBuffer({ resolveWithObject: true });
-
-  const output = Buffer.alloc(info.width * info.height * 4);
-
-  for (let y = 0; y < info.height; y += 1) {
-    for (let x = 0; x < info.width; x += 1) {
-      const sourceIndex = y * info.width + x;
-      const outputIndex = sourceIndex * 4;
-      const threshold = ((BAYER_4X4[y % 4][x % 4] + 0.5) / 16) * 255;
-      const value = data[sourceIndex] > threshold ? 255 : 0;
-
-      output[outputIndex] = value;
-      output[outputIndex + 1] = value;
-      output[outputIndex + 2] = value;
-      output[outputIndex + 3] = 255;
-    }
-  }
-
-  await sharp(output, {
-    raw: {
-      width: info.width,
-      height: info.height,
-      channels: 4,
-    },
-  })
-    .png({ colors: 2, compressionLevel: 9 })
-    .toFile(outputPath);
-}
-
 async function processRemoteImage(url, fileName, options, reuseIfExists = false) {
-  const classicOutputPath = path.join(GENERATED_DIR, fileName);
-  const modernName = modernFileName(fileName);
-  const modernOutputPath = path.join(GENERATED_DIR, modernName);
+  const outputPath = path.join(GENERATED_DIR, fileName);
 
-  if (reuseIfExists && await fileExists(classicOutputPath) && await fileExists(modernOutputPath)) {
-    return {
-      image: publicAssetPath(fileName),
-      imageModern: publicAssetPath(modernName),
-    };
+  if (reuseIfExists && await fileExists(outputPath)) {
+    return publicAssetPath(fileName);
   }
 
   const sourceBuffer = await fetchBuffer(url);
+  await savePng(sourceBuffer, outputPath, options);
 
-  await Promise.all([
-    ditherToPng(sourceBuffer, classicOutputPath, options),
-    saveModernPng(sourceBuffer, modernOutputPath, options),
-  ]);
-
-  return {
-    image: publicAssetPath(fileName),
-    imageModern: publicAssetPath(modernName),
-  };
+  return publicAssetPath(fileName);
 }
 
 function mediaImageUrl(media) {
@@ -218,21 +153,19 @@ async function fetchTweetsForUser(xUser, count) {
 }
 
 async function processAvatar(xUser, fileName, reuseIfExists = true) {
-  let avatar = '';
-  let avatarModern = '';
-  if (xUser.profile_image_url) {
-    try {
-      const processedAvatar = await processRemoteImage(withLargeProfileImage(xUser.profile_image_url), fileName, {
-        maxWidth: 96,
-        maxHeight: 96,
-      }, reuseIfExists);
-      avatar = processedAvatar.image;
-      avatarModern = processedAvatar.imageModern;
-    } catch (error) {
-      console.warn(`Could not process avatar for ${xUser.username}: ${error.message}`);
-    }
+  if (!xUser.profile_image_url) {
+    return '';
   }
-  return { avatar, avatarModern };
+
+  try {
+    return await processRemoteImage(withLargeProfileImage(xUser.profile_image_url), fileName, {
+      maxWidth: 96,
+      maxHeight: 96,
+    }, reuseIfExists);
+  } catch (error) {
+    console.warn(`Could not process avatar for ${xUser.username}: ${error.message}`);
+    return '';
+  }
 }
 
 function previousPostHasSameMedia(previousPost, mediaKeys) {
@@ -246,7 +179,7 @@ function previousPostHasSameMedia(previousPost, mediaKeys) {
 async function buildPostsForUser(xUser, options, previousPostsById = new Map()) {
   const tweets = await fetchTweetsForUser(xUser, options.count);
   const mediaByKey = new Map((tweets.includes?.media || []).map((media) => [media.media_key, media]));
-  const { avatar, avatarModern } = await processAvatar(xUser, `${safeFilePart(options.mediaPrefix)}-avatar.png`, false);
+  const avatar = await processAvatar(xUser, `${safeFilePart(options.mediaPrefix)}-avatar.png`, false);
 
   const posts = [];
 
@@ -265,15 +198,14 @@ async function buildPostsForUser(xUser, options, previousPostsById = new Map()) 
       try {
         const fileName = `${safeFilePart(options.mediaPrefix)}-post-${tweet.id}-${index}.png`;
         const reuseIfExists = previousPostHasSameMedia(previousPostsById.get(tweet.id), mediaKeys);
-        const processedMedia = await processRemoteImage(sourceUrl, fileName, {
+        const image = await processRemoteImage(sourceUrl, fileName, {
           maxWidth: 640,
           maxHeight: 420,
         }, reuseIfExists);
         media.push({
           alt: mediaItem.alt_text || '',
           type: mediaItem.type,
-          image: processedMedia.image,
-          imageModern: processedMedia.imageModern,
+          image,
         });
       } catch (error) {
         console.warn(`Could not process media for post ${tweet.id}: ${error.message}`);
@@ -293,7 +225,6 @@ async function buildPostsForUser(xUser, options, previousPostsById = new Map()) 
         end: url.end,
       })),
       avatar,
-      avatarModern,
       authorName: xUser.name,
       username: xUser.username,
       media,
@@ -309,15 +240,9 @@ async function pruneStaleAssets(posts) {
     if (post.avatar) {
       expectedFiles.add(path.basename(post.avatar));
     }
-    if (post.avatarModern) {
-      expectedFiles.add(path.basename(post.avatarModern));
-    }
     for (const media of post.media || []) {
       if (media.image) {
         expectedFiles.add(path.basename(media.image));
-      }
-      if (media.imageModern) {
-        expectedFiles.add(path.basename(media.imageModern));
       }
     }
   }

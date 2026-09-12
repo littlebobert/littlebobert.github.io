@@ -730,31 +730,17 @@ function emptyXFeedMessage() {
   );
 }
 
-function appendThemeImage(parent, options) {
+function appendImage(parent, options) {
   if (!options.src) {
     return;
   }
 
   const image = document.createElement('img');
   image.className = options.className;
-  if (options.modernSrc) {
-    image.classList.add('has-modern-alternate');
-  }
   image.src = options.src;
   image.alt = options.alt || '';
   image.loading = 'lazy';
   parent.append(image);
-
-  if (!options.modernSrc) {
-    return;
-  }
-
-  const modernImage = document.createElement('img');
-  modernImage.className = `${options.className} ${options.className}-modern`;
-  modernImage.src = options.modernSrc;
-  modernImage.alt = options.alt || '';
-  modernImage.loading = 'lazy';
-  parent.append(modernImage);
 }
 
 function createXPostElement(post) {
@@ -765,10 +751,9 @@ function createXPostElement(post) {
   header.className = 'x-post-header';
 
   if (post.avatar) {
-    appendThemeImage(header, {
+    appendImage(header, {
       className: 'x-post-avatar',
       src: post.avatar,
-      modernSrc: post.avatarModern,
     });
   } else {
     article.classList.add('x-post-no-avatar');
@@ -805,10 +790,9 @@ function createXPostElement(post) {
 
   const firstImage = Array.isArray(post.media) ? post.media.find((item) => item.image) : null;
   if (firstImage) {
-    appendThemeImage(article, {
+    appendImage(article, {
       className: 'x-post-media',
       src: firstImage.image,
-      modernSrc: firstImage.imageModern,
       alt: firstImage.alt,
     });
   }
@@ -1408,13 +1392,7 @@ function closeDesktopBrowser({ animate = true } = {}) {
 }
 
 function getGalleryPhotoSource(photo) {
-  if (!photo) {
-    return '';
-  }
-
-  return document.documentElement.dataset.theme === 'bw'
-    ? photo.ditheredImage
-    : photo.image;
+  return photo?.image || '';
 }
 
 function updateGalleryViewerPhoto() {
@@ -1422,14 +1400,12 @@ function updateGalleryViewerPhoto() {
     return;
   }
 
-  const isDithered = document.documentElement.dataset.theme === 'bw';
   const title = localizedWindowTitle({
     en: currentGalleryPhoto.captionEn,
     ja: currentGalleryPhoto.captionJa,
   });
   galleryViewerImage.src = getGalleryPhotoSource(currentGalleryPhoto);
   galleryViewerImage.alt = currentGalleryPhoto.captionEn;
-  galleryViewerImage.classList.toggle('is-dithered', isDithered);
   galleryViewerCaption.textContent = title;
   if (galleryViewerTitle) {
     galleryViewerTitle.textContent = title;
@@ -1443,7 +1419,6 @@ function openGalleryViewer(button) {
 
   currentGalleryPhoto = {
     image: button.dataset.galleryImage,
-    ditheredImage: button.dataset.galleryDitheredImage,
     captionEn: button.dataset.galleryCaptionEn,
     captionJa: button.dataset.galleryCaptionJa,
   };
@@ -1463,7 +1438,6 @@ function closeGalleryViewer({ animate = true } = {}) {
     onClosed: () => {
       galleryViewerImage.removeAttribute('src');
       galleryViewerImage.alt = '';
-      galleryViewerImage.classList.remove('is-dithered');
       galleryViewerCaption.textContent = '';
       if (galleryViewerTitle) {
         galleryViewerTitle.textContent = localizedText('Photo Viewer', '写真ビューア');

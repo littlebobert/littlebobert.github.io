@@ -111,8 +111,7 @@
       aria-label="Open About"
     >
       <span class="desktop-icon-image">
-        <img src="assets/img-dithered.jpg" alt="" class="headshot-classic">
-        <img src="assets/img-color.jpg" alt="" class="headshot-modern">
+        <img src="assets/img-color.jpg" alt="">
       </span>
       <span
         class="desktop-icon-label"
@@ -186,8 +185,7 @@
           <div class="stack-card-kicker" data-label-en="About" data-label-ja="について">About</div>
           <div class="stack-card-profile">
             <span class="stack-card-avatar">
-              <img src="assets/img-dithered.jpg" alt="Justin Garcia" class="headshot-classic">
-              <img src="assets/img-color.jpg" alt="Justin Garcia" class="headshot-modern">
+              <img src="assets/img-color.jpg" alt="Justin Garcia">
             </span>
             <div>
               <h2>Justin Garcia</h2>
@@ -421,13 +419,11 @@
                 type="button"
                 class="gallery-photo-frame"
                 data-gallery-image="assets/gallery-my-brother-and-me.png"
-                data-gallery-dithered-image="assets/gallery-my-brother-and-me-dithered.png"
                 data-gallery-caption-en="My brother and me"
                 data-gallery-caption-ja="兄と私"
                 aria-label="Open photo: My brother and me"
               >
-                <img src="assets/gallery-my-brother-and-me-thumb-dithered.png" alt="My brother and me" class="gallery-photo gallery-photo-dithered" loading="lazy">
-                <img src="assets/gallery-my-brother-and-me.png" alt="My brother and me" class="gallery-photo gallery-photo-color" loading="lazy">
+                <img src="assets/gallery-my-brother-and-me.png" alt="My brother and me" class="gallery-photo" loading="lazy">
               </button>
               <figcaption data-label-en="My brother and me" data-label-ja="兄と私">My brother and me</figcaption>
             </figure>
@@ -436,13 +432,11 @@
                 type="button"
                 class="gallery-photo-frame"
                 data-gallery-image="assets/gallery-my-mom-my-brother-and-me.png"
-                data-gallery-dithered-image="assets/gallery-my-mom-my-brother-and-me-dithered.png"
                 data-gallery-caption-en="My mom, my brother and me"
                 data-gallery-caption-ja="母と兄と私"
                 aria-label="Open photo: My mom, my brother and me"
               >
-                <img src="assets/gallery-my-mom-my-brother-and-me-thumb-dithered.png" alt="My mom, my brother and me" class="gallery-photo gallery-photo-dithered gallery-photo-focus-top" loading="lazy">
-                <img src="assets/gallery-my-mom-my-brother-and-me.png" alt="My mom, my brother and me" class="gallery-photo gallery-photo-color gallery-photo-focus-top" loading="lazy">
+                <img src="assets/gallery-my-mom-my-brother-and-me.png" alt="My mom, my brother and me" class="gallery-photo gallery-photo-focus-top" loading="lazy">
               </button>
               <figcaption data-label-en="My mom, my brother and me" data-label-ja="母と兄と私">My mom, my brother and me</figcaption>
             </figure>
@@ -451,13 +445,11 @@
                 type="button"
                 class="gallery-photo-frame"
                 data-gallery-image="assets/gallery-my-dad.png"
-                data-gallery-dithered-image="assets/gallery-my-dad-dithered.png"
                 data-gallery-caption-en="My dad pretending to dunk"
                 data-gallery-caption-ja="ダンクするふりをする父"
                 aria-label="Open photo: My dad pretending to dunk"
               >
-                <img src="assets/gallery-my-dad-thumb-dithered.png" alt="My dad pretending to dunk" class="gallery-photo gallery-photo-dithered" loading="lazy">
-                <img src="assets/gallery-my-dad.png" alt="My dad pretending to dunk" class="gallery-photo gallery-photo-color" loading="lazy">
+                <img src="assets/gallery-my-dad.png" alt="My dad pretending to dunk" class="gallery-photo" loading="lazy">
               </button>
               <figcaption data-label-en="My dad pretending to dunk" data-label-ja="ダンクするふりをする父">My dad pretending to dunk</figcaption>
             </figure>
@@ -466,13 +458,11 @@
                 type="button"
                 class="gallery-photo-frame"
                 data-gallery-image="assets/gallery-my-dad-and-me.png"
-                data-gallery-dithered-image="assets/gallery-my-dad-and-me-dithered.png"
                 data-gallery-caption-en="My dad and me"
                 data-gallery-caption-ja="父と私"
                 aria-label="Open photo: My dad and me"
               >
-                <img src="assets/gallery-my-dad-and-me-thumb-dithered.png" alt="My dad and me" class="gallery-photo gallery-photo-dithered" loading="lazy">
-                <img src="assets/gallery-my-dad-and-me.png" alt="My dad and me" class="gallery-photo gallery-photo-color" loading="lazy">
+                <img src="assets/gallery-my-dad-and-me.png" alt="My dad and me" class="gallery-photo" loading="lazy">
               </button>
               <figcaption data-label-en="My dad and me" data-label-ja="父と私">My dad and me</figcaption>
             </figure>
@@ -886,13 +876,6 @@
         </div>
         <div class="appearance-radios" role="radiogroup" aria-label="Theme">
           <label class="appearance-option">
-            <input type="radio" name="site-theme" value="bw">
-            <span
-              data-label-en="B/W"
-              data-label-ja="白黒"
-            >B/W</span>
-          </label>
-          <label class="appearance-option">
             <input type="radio" name="site-theme" value="classic" checked>
             <span
               data-label-en="Classic"
@@ -901,17 +884,17 @@
           </label>
         </div>
         <div class="appearance-segmented" role="radiogroup" aria-label="Theme">
-          <button type="button" class="appearance-segment" data-theme-value="bw" aria-pressed="false">
-            <span
-              data-label-en="B/W"
-              data-label-ja="白黒"
-            >B/W</span>
-          </button>
           <button type="button" class="appearance-segment" data-theme-value="classic" aria-pressed="false">
             <span
               data-label-en="Classic"
               data-label-ja="クラシック"
             >Classic</span>
+          </button>
+          <button type="button" class="appearance-segment" data-theme-value="modern" aria-pressed="false">
+            <span
+              data-label-en="Modern"
+              data-label-ja="モダン"
+            >Modern</span>
           </button>
         </div>
         <div class="clock-mode-segmented" role="radiogroup" aria-label="Clock display">

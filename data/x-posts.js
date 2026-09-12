@@ -1,8 +1,52 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-09-11T18:38:10.943Z",
+  "updatedAt": "2026-09-12T17:45:40.900Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2098799879527227518",
+      "text": "I guess a bot net would have to steal API keys to replicate right? I mean to run frontier models undetected\n\nmaybe he’s saying the cheaper models will be dangerous in 6 month too https://t.co/eiMrrrypSu",
+      "createdAt": "2026-09-12T15:44:19.000Z",
+      "url": "https://x.com/_bobertdowney/status/2098799879527227518",
+      "urls": [
+        {
+          "url": "https://t.co/eiMrrrypSu",
+          "expandedUrl": "https://twitter.com/DarioAmodei/status/2098773920774074715",
+          "displayUrl": "x.com/DarioAmodei/st…",
+          "start": 179,
+          "end": 202
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2098586833324315042",
+      "text": "越えてはならない一線が引かれた 😰 https://t.co/CzaNTEYVd3",
+      "createdAt": "2026-09-12T01:37:45.000Z",
+      "url": "https://x.com/_bobertdowney/status/2098586833324315042",
+      "urls": [
+        {
+          "url": "https://t.co/CzaNTEYVd3",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2098586833324315042/photo/1",
+          "displayUrl": "pic.x.com/CzaNTEYVd3",
+          "start": 18,
+          "end": 41
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2098586833324315042-0.png"
+        }
+      ]
+    },
     {
       "id": "2098403067108732983",
       "text": "the best place to be an Ameriboo besides America is Tokyo https://t.co/6r96aPIZXm",
@@ -109,56 +153,6 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2098048489586557225",
-      "text": "ミームカードは手に入れたけど、日本在住になった今は使えない 😔 https://t.co/DgU3GHTmAC",
-      "createdAt": "2026-09-10T13:58:34.000Z",
-      "url": "https://x.com/_bobertdowney/status/2098048489586557225",
-      "urls": [
-        {
-          "url": "https://t.co/DgU3GHTmAC",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2098048489586557225/photo/1",
-          "displayUrl": "pic.x.com/DgU3GHTmAC",
-          "start": 32,
-          "end": 55
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2098048489586557225-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2098008253602902504",
-      "text": "食べよう！#AstraCommons https://t.co/8iHrgsMLjw",
-      "createdAt": "2026-09-10T11:18:41.000Z",
-      "url": "https://x.com/_bobertdowney/status/2098008253602902504",
-      "urls": [
-        {
-          "url": "https://t.co/8iHrgsMLjw",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2098008253602902504/photo/1",
-          "displayUrl": "pic.x.com/8iHrgsMLjw",
-          "start": 19,
-          "end": 42
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2098008253602902504-0.png"
-        }
-      ]
     }
   ]
 };

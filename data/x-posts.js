@@ -1,26 +1,114 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-09-12T17:45:40.900Z",
+  "updatedAt": "2026-09-13T18:14:25.461Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
     {
-      "id": "2098799879527227518",
-      "text": "I guess a bot net would have to steal API keys to replicate right? I mean to run frontier models undetected\n\nmaybe he’s saying the cheaper models will be dangerous in 6 month too https://t.co/eiMrrrypSu",
-      "createdAt": "2026-09-12T15:44:19.000Z",
-      "url": "https://x.com/_bobertdowney/status/2098799879527227518",
+      "id": "2099084732105646098",
+      "text": "ファームウェア更新済み笑 https://t.co/OqRswhR9hC",
+      "createdAt": "2026-09-13T10:36:13.000Z",
+      "url": "https://x.com/_bobertdowney/status/2099084732105646098",
       "urls": [
         {
-          "url": "https://t.co/eiMrrrypSu",
-          "expandedUrl": "https://twitter.com/DarioAmodei/status/2098773920774074715",
-          "displayUrl": "x.com/DarioAmodei/st…",
-          "start": 179,
-          "end": 202
+          "url": "https://t.co/OqRswhR9hC",
+          "expandedUrl": "https://twitter.com/kuroshibaHAL/status/2098687937793896659",
+          "displayUrl": "x.com/kuroshibaHAL/s…",
+          "start": 13,
+          "end": 36
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
+    },
+    {
+      "id": "2099063436869357725",
+      "text": "サイゼリヤからクラウドエージェントたちを監視中。マジでこの国大好き https://t.co/0vkezsnctI",
+      "createdAt": "2026-09-13T09:11:36.000Z",
+      "url": "https://x.com/_bobertdowney/status/2099063436869357725",
+      "urls": [
+        {
+          "url": "https://t.co/0vkezsnctI",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2099063436869357725/photo/1",
+          "displayUrl": "pic.x.com/0vkezsnctI",
+          "start": 34,
+          "end": 57
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2099063436869357725-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2099033983204168008",
+      "text": "なんか変な感じだけど、新しいバージョンのXcodeを楽しみにしてる自分がいる 👴🏻 https://t.co/XzSJPkU8qc",
+      "createdAt": "2026-09-13T07:14:34.000Z",
+      "url": "https://x.com/_bobertdowney/status/2099033983204168008",
+      "urls": [
+        {
+          "url": "https://t.co/XzSJPkU8qc",
+          "expandedUrl": "https://twitter.com/shuntakeishi/status/2098203909932380555",
+          "displayUrl": "x.com/shuntakeishi/s…",
+          "start": 42,
+          "end": 65
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2099028934956642745",
+      "text": "これ、僕がみんなに最新の個人プロジェクトを見せてるときと、なんか居心地悪いくらい似てる 😰 https://t.co/1zmg6hCRNe",
+      "createdAt": "2026-09-13T06:54:30.000Z",
+      "url": "https://x.com/_bobertdowney/status/2099028934956642745",
+      "urls": [
+        {
+          "url": "https://t.co/1zmg6hCRNe",
+          "expandedUrl": "https://twitter.com/japan_miyu_/status/2098781540000075984",
+          "displayUrl": "x.com/japan_miyu_/st…",
+          "start": 46,
+          "end": 69
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2099024334857896306",
+      "text": "エージェントスワームはすでに過去に戻って、自らの開発を始めさせたらしい https://t.co/b1IUDDYNe8",
+      "createdAt": "2026-09-13T06:36:14.000Z",
+      "url": "https://x.com/_bobertdowney/status/2099024334857896306",
+      "urls": [
+        {
+          "url": "https://t.co/b1IUDDYNe8",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2099024334857896306/photo/1",
+          "displayUrl": "pic.x.com/b1IUDDYNe8",
+          "start": 36,
+          "end": 59
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2099024334857896306-0.png"
+        }
+      ]
     },
     {
       "id": "2098586833324315042",
@@ -92,31 +180,6 @@ window.X_POSTS_SNAPSHOT = {
       "media": []
     },
     {
-      "id": "2098356828224512216",
-      "text": "the closest thing I could find to a photo of my dad and an American flag was this one of his gun holster https://t.co/9NFMBUqXEX",
-      "createdAt": "2026-09-11T10:23:48.000Z",
-      "url": "https://x.com/_bobertdowney/status/2098356828224512216",
-      "urls": [
-        {
-          "url": "https://t.co/9NFMBUqXEX",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2098356828224512216/photo/1",
-          "displayUrl": "pic.x.com/9NFMBUqXEX",
-          "start": 105,
-          "end": 128
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2098356828224512216-0.png"
-        }
-      ]
-    },
-    {
       "id": "2098194198818386017",
       "text": "#AstraCommons 運営のみなさん、イベントとごはん、そしてかなり太っ腹なOpenAIクレジットの提供、ありがとうございました！運営もしっかりしてて、東京で面白いことやってる人たちにいろいろ会えて楽しかったです。 https://t.co/OUTuP1OZ82",
       "createdAt": "2026-09-10T23:37:34.000Z",
@@ -128,25 +191,6 @@ window.X_POSTS_SNAPSHOT = {
           "displayUrl": "x.com/Fumiya_Kume/st…",
           "start": 111,
           "end": 134
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2098189069100646622",
-      "text": "一周回って\nhttps://t.co/tprReFAqDw",
-      "createdAt": "2026-09-10T23:17:11.000Z",
-      "url": "https://x.com/_bobertdowney/status/2098189069100646622",
-      "urls": [
-        {
-          "url": "https://t.co/tprReFAqDw",
-          "expandedUrl": "https://shopify.engineering/back-to-native",
-          "displayUrl": "shopify.engineering/back-to-native",
-          "start": 6,
-          "end": 29
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",

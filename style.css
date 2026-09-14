@@ -2417,6 +2417,18 @@ html[lang="ja"] body.resume-page .language-switcher > button {
   padding-bottom: 8pt;
 }
 
+.resume .contact-info h1 {
+  margin: 0;
+  font: inherit;
+  font-weight: bold;
+}
+
+.resume .section-title {
+  margin: 0;
+  font-size: inherit;
+  line-height: inherit;
+}
+
 div.hero {
   text-align: center;
   padding-bottom: 12pt;

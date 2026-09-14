@@ -1,20 +1,20 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-09-13T18:14:25.461Z",
+  "updatedAt": "2026-09-14T19:51:54.955Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
     {
-      "id": "2099084732105646098",
-      "text": "ファームウェア更新済み笑 https://t.co/OqRswhR9hC",
-      "createdAt": "2026-09-13T10:36:13.000Z",
-      "url": "https://x.com/_bobertdowney/status/2099084732105646098",
+      "id": "2099477184956269029",
+      "text": "OpenAI「重みが重すぎたのでヘリで運びます」 https://t.co/yIPBX1Y518",
+      "createdAt": "2026-09-14T12:35:41.000Z",
+      "url": "https://x.com/_bobertdowney/status/2099477184956269029",
       "urls": [
         {
-          "url": "https://t.co/OqRswhR9hC",
-          "expandedUrl": "https://twitter.com/kuroshibaHAL/status/2098687937793896659",
-          "displayUrl": "x.com/kuroshibaHAL/s…",
-          "start": 13,
-          "end": 36
+          "url": "https://t.co/yIPBX1Y518",
+          "expandedUrl": "https://twitter.com/nhk_bknews/status/2099414535837028386",
+          "displayUrl": "x.com/nhk_bknews/sta…",
+          "start": 25,
+          "end": 48
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",
@@ -46,25 +46,6 @@ window.X_POSTS_SNAPSHOT = {
           "image": "assets/generated/x/mine-post-2099063436869357725-0.png"
         }
       ]
-    },
-    {
-      "id": "2099033983204168008",
-      "text": "なんか変な感じだけど、新しいバージョンのXcodeを楽しみにしてる自分がいる 👴🏻 https://t.co/XzSJPkU8qc",
-      "createdAt": "2026-09-13T07:14:34.000Z",
-      "url": "https://x.com/_bobertdowney/status/2099033983204168008",
-      "urls": [
-        {
-          "url": "https://t.co/XzSJPkU8qc",
-          "expandedUrl": "https://twitter.com/shuntakeishi/status/2098203909932380555",
-          "displayUrl": "x.com/shuntakeishi/s…",
-          "start": 42,
-          "end": 65
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     },
     {
       "id": "2099028934956642745",
@@ -197,6 +178,31 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
+    },
+    {
+      "id": "2098048489586557225",
+      "text": "ミームカードは手に入れたけど、日本在住になった今は使えない 😔 https://t.co/DgU3GHTmAC",
+      "createdAt": "2026-09-10T13:58:34.000Z",
+      "url": "https://x.com/_bobertdowney/status/2098048489586557225",
+      "urls": [
+        {
+          "url": "https://t.co/DgU3GHTmAC",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2098048489586557225/photo/1",
+          "displayUrl": "pic.x.com/DgU3GHTmAC",
+          "start": 32,
+          "end": 55
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2098048489586557225-0.png"
+        }
+      ]
     }
   ]
 };

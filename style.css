@@ -666,6 +666,8 @@ html[lang="ja"] .stack-card-kicker {
   font-weight: bold;
 }
 
+.stack-card h1,
+
 .stack-card h2 {
   margin: 0 0 10px;
   font-size: 30px;
@@ -673,12 +675,14 @@ html[lang="ja"] .stack-card-kicker {
   line-height: 1;
 }
 
+html[lang="ja"] .stack-card h1,
 html[lang="ja"] .stack-card h2 {
   font-size: 22px;
   font-weight: bold;
   line-height: 1.2;
 }
 
+html[lang="ja"] .stack-card h1 .latin,
 html[lang="ja"] .stack-card h2 .latin {
   font-size: 30px;
   font-weight: normal;
@@ -2409,7 +2413,7 @@ html[lang="ja"] body.resume-page .language-switcher > button {
   }
 }
 
-div.contact-info {
+.contact-info {
   padding-bottom: 8pt;
 }
 
@@ -2433,7 +2437,7 @@ div.intro {
   padding-bottom: 6pt;
 }
 
-div.contact-info > em {
+.contact-info > em {
   font-weight: bold;
   font-style: normal;
 }
@@ -2446,7 +2450,7 @@ span.company, span.school-name {
   font-weight: bold;
 }
 
-div.job {
+.job {
   padding-bottom: 8pt;
 }
 
@@ -2489,7 +2493,7 @@ ul {
   margin: 0 8pt 0 8pt;
 }
 
-div.section-title {
+.section-title {
   font-weight: bold;
   padding-bottom: 5pt;
   color: #000;
@@ -2557,6 +2561,8 @@ div.patents {
     width: 74px;
     height: 74px;
   }
+
+  .stack-card h1,
 
   .stack-card h2 {
     font-size: 28px;

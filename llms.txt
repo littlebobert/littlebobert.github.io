@@ -1,0 +1,25 @@
+# Justin Garcia
+
+> Justin Garcia is a Tokyo-based software engineer building iOS and real-time speech AI products at Kotoba. He previously worked at Apple, Procore, and iHeartMedia.
+
+## Primary pages
+
+- [Portfolio](https://onemorething.tokyo/): About Justin, independently published products, and contact links.
+- [Resume](https://onemorething.tokyo/resume.html): Work history, accomplishments, independent products, education, and patents.
+
+## Independent products
+
+- [Sasu](https://sasu.jp/): On-screen guidance for foreigners living abroad.
+- [Kehai](https://kehai.jp/): Window organization and faster app switching.
+- [Kotai](https://kotai.jp/): Separate work and personal coding configurations in Cursor.
+- [Ume](https://onemorething.tokyo/ume.html): Private autofill for forms.
+- [Yubi](https://onemorething.tokyo/yubi.html): Translate on-screen content and Japanese text input.
+- [Tsugu](https://onemorething.tokyo/tsugu.html): Translate and forward Slack notifications to a phone.
+
+## Identity
+
+- [GitHub](https://github.com/littlebobert)
+- [LinkedIn](https://www.linkedin.com/in/garciajustin/)
+- [X](https://x.com/_bobertdowney)
+
+The portfolio and resume contain complete English content in static HTML. Japanese translations are available through each page's language control.

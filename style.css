@@ -2375,12 +2375,13 @@ body.resume-page .language-switcher {
 }
 
 html[data-pdf-mode="true"] body.resume-page {
-  padding-right: 6pt;
-  padding-left: 6pt;
+  padding-right: 12pt;
+  padding-left: 12pt;
 }
 
 html[data-pdf-mode="true"] .resume {
-  max-width: 720px;
+  width: auto;
+  max-width: none;
 }
 
 html[data-pdf-mode="true"] body.resume-page .language-switcher {

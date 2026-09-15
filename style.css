@@ -2519,7 +2519,7 @@ ul {
   padding-bottom: 5pt;
 }
 
-div.jobs {
+.jobs {
   padding-bottom: 2pt;
 }
 
@@ -2527,15 +2527,15 @@ div.school {
   padding-bottom: 2pt;
 }
 
-div.education {
-  padding-bottom: 10pt;
+.education {
+  padding-bottom: 6pt;
 }
 
-div.projects {
-  padding-bottom: 10pt;
+.projects {
+  padding-bottom: 6pt;
 }
 
-div.patents {
+.patents {
   padding-bottom: 20pt;
 }
 

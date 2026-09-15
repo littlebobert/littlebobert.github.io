@@ -13,7 +13,6 @@ const siteFiles = [
   'sasu-invite.html',
   'sasu.html',
   'style.css',
-  'theme.js',
 ];
 
 await rm(outputDirectory, { force: true, recursive: true });

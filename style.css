@@ -2374,6 +2374,15 @@ body.resume-page .language-switcher {
   font-size: 9pt;
 }
 
+html[data-pdf-mode="true"] body.resume-page {
+  padding-right: 6pt;
+  padding-left: 6pt;
+}
+
+html[data-pdf-mode="true"] .resume {
+  max-width: 720px;
+}
+
 html[data-pdf-mode="true"] body.resume-page .language-switcher {
   display: none;
 }
@@ -2412,6 +2421,16 @@ html[lang="ja"] body.resume-page .language-switcher > button {
 }
 
 @media print {
+  body.resume-page {
+    padding: 0;
+  }
+
+  body.resume-page .resume {
+    width: 100%;
+    max-width: none;
+    margin: 0;
+  }
+
   body.resume-page .language-switcher {
     display: none;
   }

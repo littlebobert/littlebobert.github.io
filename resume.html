@@ -2,6 +2,11 @@
 
 <head>
   <meta charset="utf-8">
+  <script>
+    if (new URLSearchParams(window.location.search).get('pdf') === '1') {
+      document.documentElement.dataset.pdfMode = 'true';
+    }
+  </script>
   <title>Justin Garcia — iOS and Speech AI Engineer | Resume</title>
   <link href='style.css?v=132' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">

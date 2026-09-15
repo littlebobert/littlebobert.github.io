@@ -2374,6 +2374,10 @@ body.resume-page .language-switcher {
   font-size: 9pt;
 }
 
+html[data-pdf-mode="true"] body.resume-page .language-switcher {
+  display: none;
+}
+
 body.resume-page .language-switcher > button,
 html[lang="en"] body.resume-page .language-switcher > button,
 html[lang="ja"] body.resume-page .language-switcher > button {

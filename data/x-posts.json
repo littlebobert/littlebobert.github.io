@@ -1,8 +1,97 @@
 {
-  "updatedAt": "2026-09-14T19:51:54.955Z",
+  "updatedAt": "2026-09-15T19:03:53.796Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2099879386745053383",
+      "text": "iOS 27で「Reduce Interruptions」集中モードは、ずっとオンにしておいてもよさそう。うっとうしい通知はほぼ全部除外しつつ、仕事のDMや友達、家族からのメッセージは通してくれる。 https://t.co/3bc0p9XagV",
+      "createdAt": "2026-09-15T15:13:54.000Z",
+      "url": "https://x.com/_bobertdowney/status/2099879386745053383",
+      "urls": [
+        {
+          "url": "https://t.co/3bc0p9XagV",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2099879386745053383/photo/1",
+          "displayUrl": "pic.x.com/3bc0p9XagV",
+          "start": 100,
+          "end": 123
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2099879386745053383-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2099861184728256759",
+      "text": "Are you a foreigner working abroad? Translate your iPhone’s screen in one tap (the Action Button) and type in your target language with this free app. https://t.co/Qnw7d1VEgr https://t.co/SiFufBfZfz",
+      "createdAt": "2026-09-15T14:01:34.000Z",
+      "url": "https://x.com/_bobertdowney/status/2099861184728256759",
+      "urls": [
+        {
+          "url": "https://t.co/Qnw7d1VEgr",
+          "expandedUrl": "https://onemorething.tokyo/yubi",
+          "displayUrl": "onemorething.tokyo/yubi",
+          "start": 151,
+          "end": 174
+        },
+        {
+          "url": "https://t.co/SiFufBfZfz",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2099861184728256759/video/1",
+          "displayUrl": "pic.x.com/SiFufBfZfz",
+          "start": 175,
+          "end": 198
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2099861184728256759-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2099591889263677687",
+      "text": "Siri AI in iOS 27, out today, can intelligently surface notes in the @kotoba_tech app. English only for now, coming soon for Japanese.\nhttps://t.co/Vf1qi4I8qx https://t.co/eBJh0BsLmL",
+      "createdAt": "2026-09-14T20:11:29.000Z",
+      "url": "https://x.com/_bobertdowney/status/2099591889263677687",
+      "urls": [
+        {
+          "url": "https://t.co/Vf1qi4I8qx",
+          "expandedUrl": "https://apps.apple.com/us/app/kotoba-voice-interpreter-memos/id6740851285",
+          "displayUrl": "apps.apple.com/us/app/kotoba-…",
+          "start": 135,
+          "end": 158
+        },
+        {
+          "url": "https://t.co/eBJh0BsLmL",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2099591889263677687/photo/1",
+          "displayUrl": "pic.x.com/eBJh0BsLmL",
+          "start": 159,
+          "end": 182
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2099591889263677687-0.png"
+        }
+      ]
+    },
     {
       "id": "2099477184956269029",
       "text": "OpenAI「重みが重すぎたのでヘリで運びます」 https://t.co/yIPBX1Y518",
@@ -88,119 +177,6 @@
           "alt": "",
           "type": "photo",
           "image": "assets/generated/x/mine-post-2099024334857896306-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2098586833324315042",
-      "text": "越えてはならない一線が引かれた 😰 https://t.co/CzaNTEYVd3",
-      "createdAt": "2026-09-12T01:37:45.000Z",
-      "url": "https://x.com/_bobertdowney/status/2098586833324315042",
-      "urls": [
-        {
-          "url": "https://t.co/CzaNTEYVd3",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2098586833324315042/photo/1",
-          "displayUrl": "pic.x.com/CzaNTEYVd3",
-          "start": 18,
-          "end": 41
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2098586833324315042-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2098403067108732983",
-      "text": "the best place to be an Ameriboo besides America is Tokyo https://t.co/6r96aPIZXm",
-      "createdAt": "2026-09-11T13:27:32.000Z",
-      "url": "https://x.com/_bobertdowney/status/2098403067108732983",
-      "urls": [
-        {
-          "url": "https://t.co/6r96aPIZXm",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2098403067108732983/photo/1",
-          "displayUrl": "pic.x.com/6r96aPIZXm",
-          "start": 58,
-          "end": 81
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2098403067108732983-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2098368175704555817",
-      "text": "私の彼女にデジタルデトックスしなきゃって言われた。交渉して、Duoを買わないだけで済むことになった 🤡 https://t.co/PmSGaQE2SW",
-      "createdAt": "2026-09-11T11:08:53.000Z",
-      "url": "https://x.com/_bobertdowney/status/2098368175704555817",
-      "urls": [
-        {
-          "url": "https://t.co/PmSGaQE2SW",
-          "expandedUrl": "https://twitter.com/planetofgori/status/2097753428328112297",
-          "displayUrl": "x.com/planetofgori/s…",
-          "start": 52,
-          "end": 75
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2098194198818386017",
-      "text": "#AstraCommons 運営のみなさん、イベントとごはん、そしてかなり太っ腹なOpenAIクレジットの提供、ありがとうございました！運営もしっかりしてて、東京で面白いことやってる人たちにいろいろ会えて楽しかったです。 https://t.co/OUTuP1OZ82",
-      "createdAt": "2026-09-10T23:37:34.000Z",
-      "url": "https://x.com/_bobertdowney/status/2098194198818386017",
-      "urls": [
-        {
-          "url": "https://t.co/OUTuP1OZ82",
-          "expandedUrl": "https://twitter.com/Fumiya_Kume/status/2098193065957785909",
-          "displayUrl": "x.com/Fumiya_Kume/st…",
-          "start": 111,
-          "end": 134
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2098048489586557225",
-      "text": "ミームカードは手に入れたけど、日本在住になった今は使えない 😔 https://t.co/DgU3GHTmAC",
-      "createdAt": "2026-09-10T13:58:34.000Z",
-      "url": "https://x.com/_bobertdowney/status/2098048489586557225",
-      "urls": [
-        {
-          "url": "https://t.co/DgU3GHTmAC",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2098048489586557225/photo/1",
-          "displayUrl": "pic.x.com/DgU3GHTmAC",
-          "start": 32,
-          "end": 55
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2098048489586557225-0.png"
         }
       ]
     }

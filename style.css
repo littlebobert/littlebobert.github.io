@@ -2374,20 +2374,6 @@ body.resume-page .language-switcher {
   font-size: 9pt;
 }
 
-html[data-pdf-mode="true"] body.resume-page {
-  padding-right: 12pt;
-  padding-left: 12pt;
-}
-
-html[data-pdf-mode="true"] .resume {
-  width: auto;
-  max-width: none;
-}
-
-html[data-pdf-mode="true"] body.resume-page .language-switcher {
-  display: none;
-}
-
 body.resume-page .language-switcher > button,
 html[lang="en"] body.resume-page .language-switcher > button,
 html[lang="ja"] body.resume-page .language-switcher > button {

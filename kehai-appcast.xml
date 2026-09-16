@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.16</title>
+            <pubDate>Wed, 16 Sep 2026 15:56:45 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>91</sparkle:version>
+            <sparkle:shortVersionString>0.5.16</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed another issue with hot corner activation.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.16/Kehai-0.5.16-mac.zip" length="5821441" type="application/octet-stream" sparkle:edSignature="0nJxWWlyj1sjLJgfyzVx1Dhnzb/EZ5RYO1pM7vZKEPyS5ttfx3TqBs97xQU2LyKOeh0emaIitwBViMYJooHMCg=="/>
+        </item>
+        <item>
             <title>0.5.15</title>
             <pubDate>Wed, 16 Sep 2026 15:21:29 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed an issue with the hot corner trigger.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.14/Kehai-0.5.14-mac.zip" length="5813015" type="application/octet-stream" sparkle:edSignature="THlukbpU/ykHMHrfHhI57UPqna2sWtA1Anps633boEvuBMPS6nzWc9T/UvsUO32L6dRhaQDVQJlMNnTJ5A9NCw=="/>
-        </item>
-        <item>
-            <title>0.5.13</title>
-            <pubDate>Wed, 16 Sep 2026 15:00:06 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>88</sparkle:version>
-            <sparkle:shortVersionString>0.5.13</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Add support for hot corners.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.13/Kehai-0.5.13-mac.zip" length="5812703" type="application/octet-stream" sparkle:edSignature="XeM/iRzyOog23yuRB9dMR0s0IC0J9XAwE8Ny55t3SDsPOn0a0LF9GbQ3xfZ0uyztApqb4p2Qs30gbz1+55VwDg=="/>
         </item>
     </channel>
 </rss>

@@ -65,9 +65,10 @@
       left: -4px;
       z-index: 2;
       display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 4px;
+      flex-direction: column;
+      align-items: flex-end;
+      justify-content: center;
+      gap: 2px;
       width: 100px;
       height: 36px;
       color: #555;
@@ -81,12 +82,11 @@
       font-size: 11pt;
       line-height: 1;
       animation: point-to-action-button 900ms ease-in-out infinite alternate;
-      padding-right: 6px;
     }
 
     @keyframes point-to-action-button {
-      from { transform: translateX(0); }
-      to { transform: translateX(8px); }
+      from { transform: translateX(-20px); }
+      to { transform: translateX(0px); }
     }
 
     @media (prefers-reduced-motion: reduce) {

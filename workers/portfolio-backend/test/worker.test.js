@@ -152,6 +152,66 @@ test('visitor counting is atomic and deduplicated by daily visitor hash', async 
   assert.equal((await count.json()).views, 2);
 });
 
+test('product download clicks increment aggregate totals and appear in admin analytics', async () => {
+  const { database, env } = createEnvironment();
+  const endpoint = '/api/v1/product-click';
+  const options = {
+    method: 'POST',
+    headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+    body: JSON.stringify({ product: 'yubi', action: 'join-testflight' }),
+  };
+
+  assert.equal((await handleRequest(request(endpoint, options), env)).status, 200);
+  assert.equal((await handleRequest(request(endpoint, options), env)).status, 200);
+
+  const row = database.prepare(`
+    SELECT product, action, clicks, first_clicked_at AS firstClickedAt,
+           last_clicked_at AS lastClickedAt
+    FROM product_clicks
+  `).get();
+  assert.equal(row.product, 'yubi');
+  assert.equal(row.action, 'join-testflight');
+  assert.equal(row.clicks, 2);
+  assert.ok(Date.parse(row.firstClickedAt));
+  assert.ok(Date.parse(row.lastClickedAt));
+  assert.deepEqual(Object.keys(row).sort(), [
+    'action',
+    'clicks',
+    'firstClickedAt',
+    'lastClickedAt',
+    'product',
+  ]);
+
+  const queue = await handleRequest(request('/admin/api/queue'), env, {
+    verifyAccess: async () => ({ email: 'owner@example.com' }),
+  });
+  const analytics = (await queue.json()).productClicks;
+  assert.equal(analytics.length, 1);
+  assert.equal(analytics[0].clicks, 2);
+});
+
+test('product click tracking rejects untrusted origins and unknown actions', async () => {
+  const { env } = createEnvironment();
+  const invalidAction = await handleRequest(request('/api/v1/product-click', {
+    method: 'POST',
+    body: JSON.stringify({ product: 'yubi', action: 'download-macos' }),
+  }), env);
+  assert.equal(invalidAction.status, 400);
+
+  const untrustedOrigin = await handleRequest(new Request(
+    'https://portfolio-backend.example/api/v1/product-click',
+    {
+      method: 'POST',
+      headers: {
+        Origin: 'https://attacker.example',
+        'Content-Type': 'text/plain;charset=UTF-8',
+      },
+      body: JSON.stringify({ product: 'yubi', action: 'join-testflight' }),
+    },
+  ), env);
+  assert.equal(untrustedOrigin.status, 403);
+});
+
 test('preview deployment origins are allowed but lookalike domains are not', async () => {
   const { env } = createEnvironment();
   const path = '/api/v1/track?site=justin-garcia.pages.dev&path=%2F';

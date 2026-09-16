@@ -6,6 +6,7 @@ import {
   validateContactMessage,
   validateGuestbook,
   validateMudScore,
+  validateProductClick,
   validateTokyoRecommendation,
 } from '../src/validation.js';
 
@@ -61,6 +62,22 @@ test('contact validation accepts only known categories and valid reply emails', 
   assert.equal(value.email, 'runner@example.com');
   assert.throws(
     () => validateContactMessage({ category: 'other', message: 'Hi' }),
+    ValidationError,
+  );
+});
+
+
+test('product click validation accepts only configured product actions', () => {
+  assert.deepEqual(
+    validateProductClick({ product: 'YUBI', action: 'JOIN-TESTFLIGHT' }),
+    { product: 'yubi', action: 'join-testflight' },
+  );
+  assert.throws(
+    () => validateProductClick({ product: 'yubi', action: 'download-macos' }),
+    ValidationError,
+  );
+  assert.throws(
+    () => validateProductClick({ product: 'unknown', action: 'download-macos' }),
     ValidationError,
   );
 });

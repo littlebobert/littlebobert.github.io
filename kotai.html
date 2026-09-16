@@ -106,7 +106,7 @@
       </div>
       <div class="sasu-tagline" data-label-en="Route personal and work projects through separate OpenRouter setups." data-label-ja="個人用と仕事用のプロジェクトを、それぞれ別のOpenRouter設定へ振り分けます。">Route personal and work projects through separate OpenRouter setups.</div>
       <!-- kotai-download:start -->
-<a class="download-link" href="https://github.com/littlebobert/kotai/releases/download/0.2.13/Kotai-0.2.13-mac.zip" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
+<a class="download-link" data-product="kotai" data-product-action="download-macos" href="https://github.com/littlebobert/kotai/releases/download/0.2.13/Kotai-0.2.13-mac.zip" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
 <span class="download-version" data-label-en="(version 0.2.13)" data-label-ja="（バージョン 0.2.13）">(version 0.2.13)</span>
 <!-- kotai-download:end -->
       <div class="small-note" data-label-en="Free and no in-app purchases." data-label-ja="無料で、アプリ内課金はありません。">Free and no in-app purchases.</div>
@@ -413,6 +413,7 @@
     });
     setLanguage(localStorage.getItem('kotai-language') || preferredLanguage(), false);
   </script>
+  <script src="product-click-tracking.js"></script>
 </body>
 
 </html>

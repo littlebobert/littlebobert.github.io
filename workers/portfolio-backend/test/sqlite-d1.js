@@ -1,8 +1,8 @@
 import { DatabaseSync } from 'node:sqlite';
-import { readFileSync } from 'node:fs';
+import { readdirSync, readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 
-const migrationPath = fileURLToPath(new URL('../migrations/0001_initial.sql', import.meta.url));
+const migrationsDirectory = fileURLToPath(new URL('../migrations/', import.meta.url));
 
 function statementAdapter(database, sql, bindings = []) {
   return {
@@ -29,7 +29,12 @@ function statementAdapter(database, sql, bindings = []) {
 
 export function createTestDatabase() {
   const database = new DatabaseSync(':memory:');
-  database.exec(readFileSync(migrationPath, 'utf8'));
+  readdirSync(migrationsDirectory)
+    .filter((fileName) => fileName.endsWith('.sql'))
+    .sort()
+    .forEach((fileName) => {
+      database.exec(readFileSync(`${migrationsDirectory}/${fileName}`, 'utf8'));
+    });
   return {
     database,
     d1: {

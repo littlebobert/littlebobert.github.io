@@ -36,6 +36,17 @@ For automatic deploys, connect `littlebobert/littlebobert.github.io` under the W
 - Deploy command: `npx wrangler deploy`
 - Watch paths: `workers/portfolio-backend/**`
 
+## Product click analytics
+
+Product landing pages send an anonymous aggregate event to `POST /api/v1/product-click`
+when a primary download or TestFlight link is clicked. D1 stores only the product,
+action, total click count, and first/last click timestamps. Raw IP addresses and user
+agents are not stored. The existing rate limiter uses the request IP transiently to
+limit abuse.
+
+Totals are visible in the Access-protected `/admin` dashboard under **Product download clicks**.
+Apply D1 migrations before deploying Worker code that uses a new schema.
+
 ## Admin access
 
 Create a Cloudflare Access self-hosted application for:

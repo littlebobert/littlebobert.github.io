@@ -7,6 +7,7 @@ const outputDirectory = path.join(rootDirectory, 'dist-kehai');
 
 const siteFiles = [
   '_headers',
+  'product-click-tracking.js',
   'kehai-appcast.xml',
   'kehai.html',
   'sasu-common.css',

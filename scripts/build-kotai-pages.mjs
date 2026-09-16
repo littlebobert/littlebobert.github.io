@@ -7,6 +7,7 @@ const outputDirectory = path.join(rootDirectory, 'dist-kotai');
 
 const siteFiles = [
   '_headers',
+  'product-click-tracking.js',
   'kotai-appcast.xml',
   'kotai.html',
   'favicon.ico',

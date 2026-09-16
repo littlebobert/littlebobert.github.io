@@ -6,6 +6,13 @@ export class ValidationError extends Error {
 }
 
 const CONTACT_CATEGORIES = new Set(['app-idea', 'tokyo', 'running']);
+const PRODUCT_CLICK_ACTIONS = new Map([
+  ['kehai', new Set(['download-macos'])],
+  ['kotai', new Set(['download-macos'])],
+  ['sasu', new Set(['download-macos'])],
+  ['ume', new Set(['download-macos'])],
+  ['yubi', new Set(['join-testflight'])],
+]);
 const MUD_SIDE_QUESTS = new Set([
   'Watered balcony plant',
   'Visited Ueno Park',
@@ -126,6 +133,15 @@ export function validateContactMessage(body) {
     message: cleanText(body.message, 2000, { required: true }),
     submittedAt: new Date().toISOString(),
   };
+}
+
+export function validateProductClick(body) {
+  const product = cleanText(body.product, 30, { required: true }).toLowerCase();
+  const action = cleanText(body.action, 40, { required: true }).toLowerCase();
+  if (!PRODUCT_CLICK_ACTIONS.get(product)?.has(action)) {
+    throw new ValidationError('The product click is invalid.');
+  }
+  return { product, action };
 }
 
 export function validateCounterKey(siteValue, pathValue) {

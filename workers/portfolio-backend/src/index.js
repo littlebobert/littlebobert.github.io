@@ -6,6 +6,7 @@ import {
   validateCounterKey,
   validateGuestbook,
   validateMudScore,
+  validateProductClick,
   validateTokyoRecommendation,
 } from './validation.js';
 
@@ -295,6 +296,23 @@ async function readVisitorCount(request, env) {
   return json(request, env, { views: Number(row?.views) || 0 });
 }
 
+async function trackProductClick(request, env) {
+  requireAllowedOrigin(request, env);
+  const value = validateProductClick(await parseJsonBody(request));
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+  await enforceRateLimit(env.COUNTER_RATE_LIMITER, `${ip}:product-click:${value.product}:${value.action}`);
+  const now = new Date().toISOString();
+  await env.DB.prepare(`
+    INSERT INTO product_clicks
+      (product, action, clicks, first_clicked_at, last_clicked_at)
+    VALUES (?, ?, 1, ?, ?)
+    ON CONFLICT(product, action) DO UPDATE SET
+      clicks = product_clicks.clicks + 1,
+      last_clicked_at = excluded.last_clicked_at
+  `).bind(value.product, value.action, now, now).run();
+  return json(request, env, { success: true });
+}
+
 export async function handleRequest(request, env, customDeps = {}) {
   const deps = {
     fetch: globalThis.fetch.bind(globalThis),
@@ -328,6 +346,9 @@ export async function handleRequest(request, env, customDeps = {}) {
     }
     if (request.method === 'GET' && url.pathname === '/api/v1/views') {
       return await readVisitorCount(request, env);
+    }
+    if (request.method === 'POST' && url.pathname === '/api/v1/product-click') {
+      return await trackProductClick(request, env);
     }
     return json(request, env, { error: 'Not found.' }, 404);
   } catch (error) {

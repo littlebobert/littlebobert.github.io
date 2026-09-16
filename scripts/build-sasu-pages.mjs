@@ -7,6 +7,7 @@ const outputDirectory = path.join(rootDirectory, 'dist-sasu');
 
 const siteFiles = [
   '_headers',
+  'product-click-tracking.js',
   'appcast.xml',
   'sasu-common.css',
   'sasu-common.js',

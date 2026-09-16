@@ -48,7 +48,7 @@ function adminPage(email) {
     const queue = document.getElementById('queue');
     const status = document.getElementById('status');
 
-    function renderSection(title, kind, entries, contact = false) {
+    function renderSection(title, kind, entries, contact = false, readOnly = false) {
       const section = document.createElement('section');
       const heading = document.createElement('h2');
       heading.textContent = title + ' (' + entries.length + ')';
@@ -65,11 +65,13 @@ function adminPage(email) {
         const pre = document.createElement('pre');
         pre.textContent = JSON.stringify(entry, null, 2);
         article.append(pre);
-        const actions = contact
-          ? entry.status === 'unread'
-            ? [['read', 'Mark read'], ['archive', 'Archive']]
-            : [['archive', 'Archive']]
-          : [['approve', 'Approve'], ['reject', 'Reject']];
+        const actions = readOnly
+          ? []
+          : contact
+            ? entry.status === 'unread'
+              ? [['read', 'Mark read'], ['archive', 'Archive']]
+              : [['archive', 'Archive']]
+            : [['approve', 'Approve'], ['reject', 'Reject']];
         actions.forEach(([action, label]) => {
           const button = document.createElement('button');
           button.type = 'button';
@@ -110,6 +112,7 @@ function adminPage(email) {
         renderSection('Tokyo recommendations', 'tokyo', data.tokyo),
         renderSection('MUD scores', 'mud', data.mud),
         renderSection('Contact inbox', 'contact', data.contacts, true),
+        renderSection('Product download clicks', 'product-click', data.productClicks, true, true),
       );
       status.textContent = 'Updated ' + new Date().toLocaleString();
     }
@@ -121,7 +124,7 @@ function adminPage(email) {
 }
 
 async function fetchQueue(db) {
-  const [guestbook, tokyo, mud, contacts] = await Promise.all([
+  const [guestbook, tokyo, mud, contacts, productClicks] = await Promise.all([
     db.prepare(`
       SELECT id, name, country_code AS countryCode, country_name AS countryName,
              comment, signed_at AS signedAt, submitted_at AS submittedAt
@@ -144,6 +147,12 @@ async function fetchQueue(db) {
       FROM contact_messages WHERE status IN ('unread', 'read')
       ORDER BY submitted_at DESC
     `).all(),
+    db.prepare(`
+      SELECT product, action, clicks, first_clicked_at AS firstClickedAt,
+             last_clicked_at AS lastClickedAt
+      FROM product_clicks
+      ORDER BY clicks DESC, product ASC, action ASC
+    `).all(),
   ]);
   return {
     guestbook: guestbook.results || [],
@@ -153,6 +162,7 @@ async function fetchQueue(db) {
       sideQuests: JSON.parse(entry.sideQuests || '[]'),
     })),
     contacts: contacts.results || [],
+    productClicks: productClicks.results || [],
   };
 }
 

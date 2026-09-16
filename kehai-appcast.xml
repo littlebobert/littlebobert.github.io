@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.13</title>
+            <pubDate>Wed, 16 Sep 2026 15:00:06 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>88</sparkle:version>
+            <sparkle:shortVersionString>0.5.13</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Add support for hot corners.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.13/Kehai-0.5.13-mac.zip" length="5812703" type="application/octet-stream" sparkle:edSignature="XeM/iRzyOog23yuRB9dMR0s0IC0J9XAwE8Ny55t3SDsPOn0a0LF9GbQ3xfZ0uyztApqb4p2Qs30gbz1+55VwDg=="/>
+        </item>
+        <item>
             <title>0.5.12</title>
             <pubDate>Tue, 15 Sep 2026 18:30:40 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Made further launch time improvements.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.11/Kehai-0.5.11-mac.zip" length="5793198" type="application/octet-stream" sparkle:edSignature="Kw0S8F4IgCBPApWRH2jRLSHNWbihlu3mhgRXZsp8+sS1XmukmdEN4ZlNaZukqrV2WpZTBVkDTkFiIo0qZQACDw=="/>
-        </item>
-        <item>
-            <title>0.5.10</title>
-            <pubDate>Sat, 12 Sep 2026 07:29:44 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>85</sparkle:version>
-            <sparkle:shortVersionString>0.5.10</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Made some launch time improvements.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.10/Kehai-0.5.10-mac.zip" length="5793902" type="application/octet-stream" sparkle:edSignature="vsw/n+f9ek8Qmh/CORox4rxRgNaya5roY+8hmlK/NbUakjmr0XchFfLkHrR1UK7E3YERMo0LJ2XP8CtLC/UKAg=="/>
         </item>
     </channel>
 </rss>

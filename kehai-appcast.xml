@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.18</title>
+            <pubDate>Wed, 16 Sep 2026 18:26:56 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>93</sparkle:version>
+            <sparkle:shortVersionString>0.5.18</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Added more hot zones.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.18/Kehai-0.5.18-mac.zip" length="5821661" type="application/octet-stream" sparkle:edSignature="Ao2AlbXbbmZoOqqOazHBxrw1VrH5FgbjsBmUcqD8SNXZYBicArK7BuTwXNNwNrzPi9jpteQbgicWDCwXaIetAQ=="/>
+        </item>
+        <item>
             <title>0.5.17</title>
             <pubDate>Wed, 16 Sep 2026 18:10:51 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed another issue with hot corner activation.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.16/Kehai-0.5.16-mac.zip" length="5821441" type="application/octet-stream" sparkle:edSignature="0nJxWWlyj1sjLJgfyzVx1Dhnzb/EZ5RYO1pM7vZKEPyS5ttfx3TqBs97xQU2LyKOeh0emaIitwBViMYJooHMCg=="/>
-        </item>
-        <item>
-            <title>0.5.15</title>
-            <pubDate>Wed, 16 Sep 2026 15:21:29 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>90</sparkle:version>
-            <sparkle:shortVersionString>0.5.15</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed another issue with hot corner activation.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.15/Kehai-0.5.15-mac.zip" length="5812883" type="application/octet-stream" sparkle:edSignature="MdrMibsgG2iQnUCkSSRe5g8J6JnqvqYqUxQGCRUAlsrlJwquntWsPCBlS30sVSNpAuxcjxrE+ER0y1ubT8OsAw=="/>
         </item>
     </channel>
 </rss>

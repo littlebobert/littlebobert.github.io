@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.21</title>
+            <pubDate>Wed, 16 Sep 2026 22:34:20 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>96</sparkle:version>
+            <sparkle:shortVersionString>0.5.21</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- After using a hot zone, hide Kehai if you click into another app.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.21/Kehai-0.5.21-mac.zip" length="5824133" type="application/octet-stream" sparkle:edSignature="xy/GkxDO4qmUOM/aqzeBqnUldvz+cjQGfXphRXs6/RH9h8RB6dWPSdyBXIJygugJvaqUryLpcbVHlnoRJeUSCw=="/>
+        </item>
+        <item>
             <title>0.5.20</title>
             <pubDate>Wed, 16 Sep 2026 18:58:25 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Change hot zones to use static positioning.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.19/Kehai-0.5.19-mac.zip" length="5822557" type="application/octet-stream" sparkle:edSignature="Z49nRlRntehgYCRRy0SYXeq8IKj45hQxNkiUWWS3EL8DNvD7ZNuR6dm+xVjQ484/cpVYSf7rn5RU61l9bV1UCA=="/>
-        </item>
-        <item>
-            <title>0.5.18</title>
-            <pubDate>Wed, 16 Sep 2026 18:26:56 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>93</sparkle:version>
-            <sparkle:shortVersionString>0.5.18</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Added more hot zones.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.18/Kehai-0.5.18-mac.zip" length="5821661" type="application/octet-stream" sparkle:edSignature="Ao2AlbXbbmZoOqqOazHBxrw1VrH5FgbjsBmUcqD8SNXZYBicArK7BuTwXNNwNrzPi9jpteQbgicWDCwXaIetAQ=="/>
         </item>
     </channel>
 </rss>

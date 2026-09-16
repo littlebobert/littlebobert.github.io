@@ -1,33 +1,8 @@
 {
-  "updatedAt": "2026-09-15T19:03:53.796Z",
+  "updatedAt": "2026-09-16T18:55:41.783Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
-    {
-      "id": "2099879386745053383",
-      "text": "iOS 27で「Reduce Interruptions」集中モードは、ずっとオンにしておいてもよさそう。うっとうしい通知はほぼ全部除外しつつ、仕事のDMや友達、家族からのメッセージは通してくれる。 https://t.co/3bc0p9XagV",
-      "createdAt": "2026-09-15T15:13:54.000Z",
-      "url": "https://x.com/_bobertdowney/status/2099879386745053383",
-      "urls": [
-        {
-          "url": "https://t.co/3bc0p9XagV",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2099879386745053383/photo/1",
-          "displayUrl": "pic.x.com/3bc0p9XagV",
-          "start": 100,
-          "end": 123
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2099879386745053383-0.png"
-        }
-      ]
-    },
     {
       "id": "2099861184728256759",
       "text": "Are you a foreigner working abroad? Translate your iPhone’s screen in one tap (the Action Button) and type in your target language with this free app. https://t.co/Qnw7d1VEgr https://t.co/SiFufBfZfz",
@@ -179,6 +154,75 @@
           "image": "assets/generated/x/mine-post-2099024334857896306-0.png"
         }
       ]
+    },
+    {
+      "id": "2098586833324315042",
+      "text": "越えてはならない一線が引かれた 😰 https://t.co/CzaNTEYVd3",
+      "createdAt": "2026-09-12T01:37:45.000Z",
+      "url": "https://x.com/_bobertdowney/status/2098586833324315042",
+      "urls": [
+        {
+          "url": "https://t.co/CzaNTEYVd3",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2098586833324315042/photo/1",
+          "displayUrl": "pic.x.com/CzaNTEYVd3",
+          "start": 18,
+          "end": 41
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2098586833324315042-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2098403067108732983",
+      "text": "the best place to be an Ameriboo besides America is Tokyo https://t.co/6r96aPIZXm",
+      "createdAt": "2026-09-11T13:27:32.000Z",
+      "url": "https://x.com/_bobertdowney/status/2098403067108732983",
+      "urls": [
+        {
+          "url": "https://t.co/6r96aPIZXm",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2098403067108732983/photo/1",
+          "displayUrl": "pic.x.com/6r96aPIZXm",
+          "start": 58,
+          "end": 81
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2098403067108732983-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2098368175704555817",
+      "text": "私の彼女にデジタルデトックスしなきゃって言われた。交渉して、Duoを買わないだけで済むことになった 🤡 https://t.co/PmSGaQE2SW",
+      "createdAt": "2026-09-11T11:08:53.000Z",
+      "url": "https://x.com/_bobertdowney/status/2098368175704555817",
+      "urls": [
+        {
+          "url": "https://t.co/PmSGaQE2SW",
+          "expandedUrl": "https://twitter.com/planetofgori/status/2097753428328112297",
+          "displayUrl": "x.com/planetofgori/s…",
+          "start": 52,
+          "end": 75
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
     }
   ]
 }

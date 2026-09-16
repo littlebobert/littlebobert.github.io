@@ -62,11 +62,13 @@
     .action-label {
       position: absolute;
       top: 52px;
-      left: 0;
+      left: -4px;
       z-index: 2;
       display: flex;
       align-items: center;
+      justify-content: flex-end;
       gap: 4px;
+      width: 100px;
       height: 36px;
       color: #555;
       cursor: pointer;
@@ -75,8 +77,20 @@
     }
 
     .action-label-arrow {
+      display: inline-block;
       font-size: 11pt;
       line-height: 1;
+      animation: point-to-action-button 900ms ease-in-out infinite alternate;
+      padding-right: 6px;
+    }
+
+    @keyframes point-to-action-button {
+      from { transform: translateX(0); }
+      to { transform: translateX(8px); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .action-label-arrow { animation: none; }
     }
 
     .action-button {

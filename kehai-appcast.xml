@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.22</title>
+            <pubDate>Thu, 17 Sep 2026 10:48:48 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>97</sparkle:version>
+            <sparkle:shortVersionString>0.5.22</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- After entering a hot zone, hide Kehai mini once you mouse out of the window.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.22/Kehai-0.5.22-mac.zip" length="5825569" type="application/octet-stream" sparkle:edSignature="x2dhFNqJTb85vco7qp5er3/bKAmjzmDRha6PQtBUCX5vfbv9MmZ4VX3k0bp1u2Io2iOyRXote2FuD9nwCUrQDw=="/>
+        </item>
+        <item>
             <title>0.5.21</title>
             <pubDate>Wed, 16 Sep 2026 22:34:20 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed an issue with arrow key navigation when the mini browser is near the bottom of the screen.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.20/Kehai-0.5.20-mac.zip" length="5823606" type="application/octet-stream" sparkle:edSignature="SOuCBAnArxA6lGp2E45O1h7+eGduqOFClPFU7iKRgvdEALybmD7PSYv9ALP+jTInOiaeRrbGMVh0hjwD7WY5BQ=="/>
-        </item>
-        <item>
-            <title>0.5.19</title>
-            <pubDate>Wed, 16 Sep 2026 18:44:33 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>94</sparkle:version>
-            <sparkle:shortVersionString>0.5.19</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Change hot zones to use static positioning.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.19/Kehai-0.5.19-mac.zip" length="5822557" type="application/octet-stream" sparkle:edSignature="Z49nRlRntehgYCRRy0SYXeq8IKj45hQxNkiUWWS3EL8DNvD7ZNuR6dm+xVjQ484/cpVYSf7rn5RU61l9bV1UCA=="/>
         </item>
     </channel>
 </rss>

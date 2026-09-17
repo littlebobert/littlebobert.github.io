@@ -35,6 +35,23 @@ function adminPage(email) {
     button { font: inherit; margin: 4px 8px 4px 0; padding: 6px 10px; }
     .empty { opacity: .7; }
     .error { color: #b42318; }
+    .analytics-summary { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 16px 0; }
+    .analytics-metric { border: 1px solid currentColor; padding: 12px; }
+    .analytics-metric strong { display: block; font-size: 1.6rem; margin-top: 6px; }
+    .analytics-table-wrap { overflow-x: auto; }
+    .analytics-table { border-collapse: collapse; width: 100%; }
+    .analytics-table th, .analytics-table td { border-top: 1px dotted currentColor; padding: 12px 10px; text-align: left; vertical-align: top; }
+    .analytics-table th { opacity: .72; white-space: nowrap; }
+    .analytics-table td:nth-child(3), .analytics-table th:nth-child(3) { text-align: right; }
+    .analytics-table tbody tr:last-child td { border-bottom: 1px dotted currentColor; }
+    .analytics-product { font-weight: bold; text-transform: capitalize; }
+    .analytics-action { opacity: .72; }
+    .analytics-clicks { font-size: 1.35rem; font-weight: bold; }
+    .analytics-date { white-space: nowrap; }
+    @media (max-width: 700px) {
+      .analytics-summary { grid-template-columns: 1fr; }
+      .analytics-table th, .analytics-table td { padding: 10px 8px; }
+    }
   </style>
 </head>
 <body>
@@ -48,7 +65,7 @@ function adminPage(email) {
     const queue = document.getElementById('queue');
     const status = document.getElementById('status');
 
-    function renderSection(title, kind, entries, contact = false, readOnly = false) {
+    function renderSection(title, kind, entries, contact = false) {
       const section = document.createElement('section');
       const heading = document.createElement('h2');
       heading.textContent = title + ' (' + entries.length + ')';
@@ -65,13 +82,11 @@ function adminPage(email) {
         const pre = document.createElement('pre');
         pre.textContent = JSON.stringify(entry, null, 2);
         article.append(pre);
-        const actions = readOnly
-          ? []
-          : contact
-            ? entry.status === 'unread'
-              ? [['read', 'Mark read'], ['archive', 'Archive']]
-              : [['archive', 'Archive']]
-            : [['approve', 'Approve'], ['reject', 'Reject']];
+        const actions = contact
+          ? entry.status === 'unread'
+            ? [['read', 'Mark read'], ['archive', 'Archive']]
+            : [['archive', 'Archive']]
+          : [['approve', 'Approve'], ['reject', 'Reject']];
         actions.forEach(([action, label]) => {
           const button = document.createElement('button');
           button.type = 'button';
@@ -96,6 +111,101 @@ function adminPage(email) {
       return section;
     }
 
+    function formatAnalyticsDate(value) {
+      const date = new Date(value);
+      if (!Number.isFinite(date.getTime())) return '—';
+      return new Intl.DateTimeFormat(undefined, {
+        dateStyle: 'medium',
+        timeStyle: 'short',
+      }).format(date);
+    }
+
+    function analyticsMetric(label, value) {
+      const metric = document.createElement('div');
+      metric.className = 'analytics-metric';
+      const labelElement = document.createElement('span');
+      labelElement.textContent = label;
+      const valueElement = document.createElement('strong');
+      valueElement.textContent = value;
+      metric.append(labelElement, valueElement);
+      return metric;
+    }
+
+    function renderProductClickAnalytics(entries) {
+      const section = document.createElement('section');
+      const heading = document.createElement('h2');
+      heading.textContent = 'Product download clicks';
+      section.append(heading);
+
+      if (!entries.length) {
+        const empty = document.createElement('p');
+        empty.className = 'empty';
+        empty.textContent = 'No download clicks yet.';
+        section.append(empty);
+        return section;
+      }
+
+      const totalClicks = entries.reduce((total, entry) => total + Number(entry.clicks || 0), 0);
+      const activeProducts = new Set(entries.map((entry) => entry.product)).size;
+      const latestClick = entries.reduce((latest, entry) => {
+        const timestamp = Date.parse(entry.lastClickedAt);
+        return Number.isFinite(timestamp) && timestamp > latest ? timestamp : latest;
+      }, 0);
+      const summary = document.createElement('div');
+      summary.className = 'analytics-summary';
+      summary.append(
+        analyticsMetric('Total clicks', totalClicks.toLocaleString()),
+        analyticsMetric('Active products', activeProducts.toLocaleString()),
+        analyticsMetric('Latest click', latestClick ? formatAnalyticsDate(latestClick) : '—'),
+      );
+      section.append(summary);
+
+      const actionLabels = {
+        'download-macos': 'Download for macOS',
+        'join-testflight': 'Join TestFlight',
+      };
+      const tableWrapper = document.createElement('div');
+      tableWrapper.className = 'analytics-table-wrap';
+      const table = document.createElement('table');
+      table.className = 'analytics-table';
+      const tableHead = document.createElement('thead');
+      const headingRow = document.createElement('tr');
+      ['Product', 'Destination', 'Clicks', 'First click', 'Last click'].forEach((label) => {
+        const cell = document.createElement('th');
+        cell.scope = 'col';
+        cell.textContent = label;
+        headingRow.append(cell);
+      });
+      tableHead.append(headingRow);
+      const tableBody = document.createElement('tbody');
+      entries.forEach((entry) => {
+        const row = document.createElement('tr');
+        const productCell = document.createElement('td');
+        productCell.className = 'analytics-product';
+        productCell.textContent = entry.product;
+        const actionCell = document.createElement('td');
+        actionCell.className = 'analytics-action';
+        actionCell.textContent = actionLabels[entry.action] || entry.action;
+        const clicksCell = document.createElement('td');
+        clicksCell.className = 'analytics-clicks';
+        clicksCell.textContent = Number(entry.clicks || 0).toLocaleString();
+        const firstClickCell = document.createElement('td');
+        firstClickCell.className = 'analytics-date';
+        firstClickCell.textContent = formatAnalyticsDate(entry.firstClickedAt);
+        firstClickCell.title = entry.firstClickedAt || '';
+        const lastClickCell = document.createElement('td');
+        lastClickCell.className = 'analytics-date';
+        lastClickCell.textContent = formatAnalyticsDate(entry.lastClickedAt);
+        lastClickCell.title = entry.lastClickedAt || '';
+        row.append(productCell, actionCell, clicksCell, firstClickCell, lastClickCell);
+        tableBody.append(row);
+      });
+      table.append(tableHead, tableBody);
+      tableWrapper.append(table);
+      section.append(tableWrapper);
+      return section;
+    }
+
     async function loadQueue() {
       status.className = '';
       status.textContent = 'Loading…';
@@ -112,7 +222,7 @@ function adminPage(email) {
         renderSection('Tokyo recommendations', 'tokyo', data.tokyo),
         renderSection('MUD scores', 'mud', data.mud),
         renderSection('Contact inbox', 'contact', data.contacts, true),
-        renderSection('Product download clicks', 'product-click', data.productClicks, true, true),
+        renderProductClickAnalytics(data.productClicks),
       );
       status.textContent = 'Updated ' + new Date().toLocaleString();
     }

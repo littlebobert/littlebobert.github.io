@@ -248,6 +248,22 @@ test('preview deployment origins are allowed but lookalike domains are not', asy
   assert.equal(insecure.status, 403);
 });
 
+test('admin dashboard renders product click summaries and a responsive table', async () => {
+  const { env } = createEnvironment();
+  const response = await handleRequest(request('/admin'), env, {
+    verifyAccess: async () => ({ email: 'owner@example.com' }),
+  });
+  assert.equal(response.status, 200);
+  const html = await response.text();
+  assert.match(html, /Product download clicks/);
+  assert.match(html, /Total clicks/);
+  assert.match(html, /Active products/);
+  assert.match(html, /Latest click/);
+  assert.match(html, /analytics-table-wrap/);
+  assert.match(html, /Download for macOS/);
+  assert.match(html, /Join TestFlight/);
+});
+
 test('admin routes require a verified Cloudflare Access identity', async () => {
   const { env } = createEnvironment();
   const response = await handleRequest(request('/admin'), env, {

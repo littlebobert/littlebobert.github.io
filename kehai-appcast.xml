@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.23</title>
+            <pubDate>Thu, 17 Sep 2026 13:31:14 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>98</sparkle:version>
+            <sparkle:shortVersionString>0.5.23</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Shrink hot zones a bit.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.23/Kehai-0.5.23-mac.zip" length="5827570" type="application/octet-stream" sparkle:edSignature="Z5HM1L4OxKTVl1d1wSE91aXZ0u4U3A7+CVX1KyvnJeE/E/BHcJduLzPuBMK2QvkLIWHmcrFSw17h/544cbNkBQ=="/>
+        </item>
+        <item>
             <title>0.5.22</title>
             <pubDate>Thu, 17 Sep 2026 10:48:48 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- After using a hot zone, hide Kehai if you click into another app.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.21/Kehai-0.5.21-mac.zip" length="5824133" type="application/octet-stream" sparkle:edSignature="xy/GkxDO4qmUOM/aqzeBqnUldvz+cjQGfXphRXs6/RH9h8RB6dWPSdyBXIJygugJvaqUryLpcbVHlnoRJeUSCw=="/>
-        </item>
-        <item>
-            <title>0.5.20</title>
-            <pubDate>Wed, 16 Sep 2026 18:58:25 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>95</sparkle:version>
-            <sparkle:shortVersionString>0.5.20</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed an issue with arrow key navigation when the mini browser is near the bottom of the screen.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.20/Kehai-0.5.20-mac.zip" length="5823606" type="application/octet-stream" sparkle:edSignature="SOuCBAnArxA6lGp2E45O1h7+eGduqOFClPFU7iKRgvdEALybmD7PSYv9ALP+jTInOiaeRrbGMVh0hjwD7WY5BQ=="/>
         </item>
     </channel>
 </rss>

@@ -1,8 +1,88 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-09-16T18:55:41.783Z",
+  "updatedAt": "2026-09-18T18:32:18.417Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2100581231226425369",
+      "text": "I used Japanese to stop someone looking for the event venue and help them find it 🥹 https://t.co/7UCgSCtmhm",
+      "createdAt": "2026-09-17T13:42:47.000Z",
+      "url": "https://x.com/_bobertdowney/status/2100581231226425369",
+      "urls": [
+        {
+          "url": "https://t.co/7UCgSCtmhm",
+          "expandedUrl": "https://twitter.com/kotoba_tech/status/2099349203650789855",
+          "displayUrl": "x.com/kotoba_tech/st…",
+          "start": 84,
+          "end": 107
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2100580644841816429",
+      "text": "私のオフィスが入っているビルの屋上には、コミュニティガーデンがあります。 https://t.co/WASyZ33vXG",
+      "createdAt": "2026-09-17T13:40:27.000Z",
+      "url": "https://x.com/_bobertdowney/status/2100580644841816429",
+      "urls": [
+        {
+          "url": "https://t.co/WASyZ33vXG",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2100580644841816429/photo/1",
+          "displayUrl": "pic.x.com/WASyZ33vXG",
+          "start": 37,
+          "end": 60
+        },
+        {
+          "url": "https://t.co/WASyZ33vXG",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2100580644841816429/photo/1",
+          "displayUrl": "pic.x.com/WASyZ33vXG",
+          "start": 37,
+          "end": 60
+        },
+        {
+          "url": "https://t.co/WASyZ33vXG",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2100580644841816429/photo/1",
+          "displayUrl": "pic.x.com/WASyZ33vXG",
+          "start": 37,
+          "end": 60
+        },
+        {
+          "url": "https://t.co/WASyZ33vXG",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2100580644841816429/photo/1",
+          "displayUrl": "pic.x.com/WASyZ33vXG",
+          "start": 37,
+          "end": 60
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2100580644841816429-0.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2100580644841816429-1.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2100580644841816429-2.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2100580644841816429-3.png"
+        }
+      ]
+    },
     {
       "id": "2099861184728256759",
       "text": "Are you a foreigner working abroad? Translate your iPhone’s screen in one tap (the Action Button) and type in your target language with this free app. https://t.co/Qnw7d1VEgr https://t.co/SiFufBfZfz",
@@ -154,75 +234,6 @@ window.X_POSTS_SNAPSHOT = {
           "image": "assets/generated/x/mine-post-2099024334857896306-0.png"
         }
       ]
-    },
-    {
-      "id": "2098586833324315042",
-      "text": "越えてはならない一線が引かれた 😰 https://t.co/CzaNTEYVd3",
-      "createdAt": "2026-09-12T01:37:45.000Z",
-      "url": "https://x.com/_bobertdowney/status/2098586833324315042",
-      "urls": [
-        {
-          "url": "https://t.co/CzaNTEYVd3",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2098586833324315042/photo/1",
-          "displayUrl": "pic.x.com/CzaNTEYVd3",
-          "start": 18,
-          "end": 41
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2098586833324315042-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2098403067108732983",
-      "text": "the best place to be an Ameriboo besides America is Tokyo https://t.co/6r96aPIZXm",
-      "createdAt": "2026-09-11T13:27:32.000Z",
-      "url": "https://x.com/_bobertdowney/status/2098403067108732983",
-      "urls": [
-        {
-          "url": "https://t.co/6r96aPIZXm",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2098403067108732983/photo/1",
-          "displayUrl": "pic.x.com/6r96aPIZXm",
-          "start": 58,
-          "end": 81
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2098403067108732983-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2098368175704555817",
-      "text": "私の彼女にデジタルデトックスしなきゃって言われた。交渉して、Duoを買わないだけで済むことになった 🤡 https://t.co/PmSGaQE2SW",
-      "createdAt": "2026-09-11T11:08:53.000Z",
-      "url": "https://x.com/_bobertdowney/status/2098368175704555817",
-      "urls": [
-        {
-          "url": "https://t.co/PmSGaQE2SW",
-          "expandedUrl": "https://twitter.com/planetofgori/status/2097753428328112297",
-          "displayUrl": "x.com/planetofgori/s…",
-          "start": 52,
-          "end": 75
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 };

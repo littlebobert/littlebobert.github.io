@@ -13,6 +13,7 @@ const siteFiles = [
 ];
 
 const assetFiles = [
+  'karui-favicon.png',
   'karui-icon.png',
   'karui-social.png',
 ];

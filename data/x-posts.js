@@ -1,8 +1,113 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-09-19T18:05:35.856Z",
+  "updatedAt": "2026-09-20T18:12:53.834Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2101727736259805191",
+      "text": "滝の裏の神社とコストコ。最高すぎる https://t.co/vtDkfJD1Lw",
+      "createdAt": "2026-09-20T17:38:35.000Z",
+      "url": "https://x.com/_bobertdowney/status/2101727736259805191",
+      "urls": [
+        {
+          "url": "https://t.co/vtDkfJD1Lw",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2101727736259805191/video/1",
+          "displayUrl": "pic.x.com/vtDkfJD1Lw",
+          "start": 18,
+          "end": 41
+        },
+        {
+          "url": "https://t.co/vtDkfJD1Lw",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2101727736259805191/video/1",
+          "displayUrl": "pic.x.com/vtDkfJD1Lw",
+          "start": 18,
+          "end": 41
+        },
+        {
+          "url": "https://t.co/vtDkfJD1Lw",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2101727736259805191/video/1",
+          "displayUrl": "pic.x.com/vtDkfJD1Lw",
+          "start": 18,
+          "end": 41
+        },
+        {
+          "url": "https://t.co/vtDkfJD1Lw",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2101727736259805191/video/1",
+          "displayUrl": "pic.x.com/vtDkfJD1Lw",
+          "start": 18,
+          "end": 41
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2101727736259805191-0.png"
+        },
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2101727736259805191-1.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2101727736259805191-2.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2101727736259805191-3.png"
+        }
+      ]
+    },
+    {
+      "id": "2101428161024311485",
+      "text": "伊香保沸いてた! https://t.co/1EAFJmCZYD https://t.co/i89xlQHu8i",
+      "createdAt": "2026-09-19T21:48:10.000Z",
+      "url": "https://x.com/_bobertdowney/status/2101428161024311485",
+      "urls": [
+        {
+          "url": "https://t.co/1EAFJmCZYD",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2101428161024311485/photo/1",
+          "displayUrl": "pic.x.com/1EAFJmCZYD",
+          "start": 9,
+          "end": 32
+        },
+        {
+          "url": "https://t.co/1EAFJmCZYD",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2101428161024311485/photo/1",
+          "displayUrl": "pic.x.com/1EAFJmCZYD",
+          "start": 9,
+          "end": 32
+        },
+        {
+          "url": "https://t.co/i89xlQHu8i",
+          "expandedUrl": "https://twitter.com/yokotekan/status/2101300327983259765",
+          "displayUrl": "x.com/yokotekan/stat…",
+          "start": 33,
+          "end": 56
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2101428161024311485-0.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2101428161024311485-1.png"
+        }
+      ]
+    },
     {
       "id": "2100581231226425369",
       "text": "I used Japanese to stop someone looking for the event venue and help them find it 🥹 https://t.co/7UCgSCtmhm",
@@ -165,75 +270,6 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2099063436869357725",
-      "text": "サイゼリヤからクラウドエージェントたちを監視中。マジでこの国大好き https://t.co/0vkezsnctI",
-      "createdAt": "2026-09-13T09:11:36.000Z",
-      "url": "https://x.com/_bobertdowney/status/2099063436869357725",
-      "urls": [
-        {
-          "url": "https://t.co/0vkezsnctI",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2099063436869357725/photo/1",
-          "displayUrl": "pic.x.com/0vkezsnctI",
-          "start": 34,
-          "end": 57
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2099063436869357725-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2099028934956642745",
-      "text": "これ、僕がみんなに最新の個人プロジェクトを見せてるときと、なんか居心地悪いくらい似てる 😰 https://t.co/1zmg6hCRNe",
-      "createdAt": "2026-09-13T06:54:30.000Z",
-      "url": "https://x.com/_bobertdowney/status/2099028934956642745",
-      "urls": [
-        {
-          "url": "https://t.co/1zmg6hCRNe",
-          "expandedUrl": "https://twitter.com/japan_miyu_/status/2098781540000075984",
-          "displayUrl": "x.com/japan_miyu_/st…",
-          "start": 46,
-          "end": 69
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2099024334857896306",
-      "text": "エージェントスワームはすでに過去に戻って、自らの開発を始めさせたらしい https://t.co/b1IUDDYNe8",
-      "createdAt": "2026-09-13T06:36:14.000Z",
-      "url": "https://x.com/_bobertdowney/status/2099024334857896306",
-      "urls": [
-        {
-          "url": "https://t.co/b1IUDDYNe8",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2099024334857896306/photo/1",
-          "displayUrl": "pic.x.com/b1IUDDYNe8",
-          "start": 36,
-          "end": 59
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2099024334857896306-0.png"
-        }
-      ]
     }
   ]
 };

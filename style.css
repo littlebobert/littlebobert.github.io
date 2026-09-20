@@ -3570,3 +3570,8 @@ html body.home-page .stack-product-button img.stack-product-icon-compact {
   width: 38px;
   height: 38px;
 }
+
+html body.home-page .stack-product-button img.stack-product-icon-bordered {
+  box-sizing: border-box;
+  border: 1px solid #000;
+}

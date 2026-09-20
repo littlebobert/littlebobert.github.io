@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.24</title>
+            <pubDate>Sun, 20 Sep 2026 21:36:46 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>99</sparkle:version>
+            <sparkle:shortVersionString>0.5.24</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Added a new app icon.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.24/Kehai-0.5.24-mac.zip" length="3242333" type="application/octet-stream" sparkle:edSignature="+1ZExBquK7sa4DePwMkelcFLSYlKAYBW1lpoxgH0jP5BQBtlto34vOalRaqYDoSW8NqmEjrJHl77L9Zp66x9Dw=="/>
+        </item>
+        <item>
             <title>0.5.23</title>
             <pubDate>Thu, 17 Sep 2026 13:31:14 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- After entering a hot zone, hide Kehai mini once you mouse out of the window.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.22/Kehai-0.5.22-mac.zip" length="5825569" type="application/octet-stream" sparkle:edSignature="x2dhFNqJTb85vco7qp5er3/bKAmjzmDRha6PQtBUCX5vfbv9MmZ4VX3k0bp1u2Io2iOyRXote2FuD9nwCUrQDw=="/>
-        </item>
-        <item>
-            <title>0.5.21</title>
-            <pubDate>Wed, 16 Sep 2026 22:34:20 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>96</sparkle:version>
-            <sparkle:shortVersionString>0.5.21</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- After using a hot zone, hide Kehai if you click into another app.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.21/Kehai-0.5.21-mac.zip" length="5824133" type="application/octet-stream" sparkle:edSignature="xy/GkxDO4qmUOM/aqzeBqnUldvz+cjQGfXphRXs6/RH9h8RB6dWPSdyBXIJygugJvaqUryLpcbVHlnoRJeUSCw=="/>
         </item>
     </channel>
 </rss>

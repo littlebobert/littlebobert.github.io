@@ -7,6 +7,7 @@ export class ValidationError extends Error {
 
 const CONTACT_CATEGORIES = new Set(['app-idea', 'tokyo', 'running']);
 const PRODUCT_CLICK_ACTIONS = new Map([
+  ['karui', new Set(['join-testflight'])],
   ['kehai', new Set(['download-macos'])],
   ['kotai', new Set(['download-macos'])],
   ['sasu', new Set(['download-macos'])],

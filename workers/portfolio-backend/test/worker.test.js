@@ -212,6 +212,35 @@ test('product click tracking rejects untrusted origins and unknown actions', asy
   assert.equal(untrustedOrigin.status, 403);
 });
 
+test('Karui production and preview origins can record TestFlight clicks', async () => {
+  for (const origin of ['https://karui.jp', 'https://abc123.karui-9yt.pages.dev']) {
+    const { database, env } = createEnvironment();
+    env.ALLOWED_ORIGINS = `${env.ALLOWED_ORIGINS},https://karui.jp`;
+    env.ALLOWED_ORIGIN_SUFFIXES = `${env.ALLOWED_ORIGIN_SUFFIXES},.karui-9yt.pages.dev`;
+
+    const response = await handleRequest(new Request(
+      'https://portfolio-backend.example/api/v1/product-click',
+      {
+        method: 'POST',
+        headers: {
+          Origin: origin,
+          'Content-Type': 'text/plain;charset=UTF-8',
+        },
+        body: JSON.stringify({ product: 'karui', action: 'join-testflight' }),
+      },
+    ), env);
+
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('Access-Control-Allow-Origin'), origin);
+    const row = database.prepare(`
+      SELECT product, action, clicks FROM product_clicks
+    `).get();
+    assert.equal(row.product, 'karui');
+    assert.equal(row.action, 'join-testflight');
+    assert.equal(row.clicks, 1);
+  }
+});
+
 test('preview deployment origins are allowed but lookalike domains are not', async () => {
   const { env } = createEnvironment();
   const path = '/api/v1/track?site=justin-garcia.pages.dev&path=%2F';

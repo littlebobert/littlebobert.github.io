@@ -72,6 +72,10 @@ test('product click validation accepts only configured product actions', () => {
     validateProductClick({ product: 'YUBI', action: 'JOIN-TESTFLIGHT' }),
     { product: 'yubi', action: 'join-testflight' },
   );
+  assert.deepEqual(
+    validateProductClick({ product: 'KARUI', action: 'JOIN-TESTFLIGHT' }),
+    { product: 'karui', action: 'join-testflight' },
+  );
   assert.throws(
     () => validateProductClick({ product: 'yubi', action: 'download-macos' }),
     ValidationError,

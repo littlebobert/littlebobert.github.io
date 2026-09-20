@@ -1,0 +1,264 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Karui</title>
+  <link href="sasu-common.css?v=4" rel="stylesheet">
+  <link rel="icon" href="assets/karui-icon.png?v=2" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://onemorething.tokyo/karui.html">
+  <meta name="description" content="Private notification triage on your iPhone, powered entirely on-device by Apple Intelligence." data-label-en="Private notification triage on your iPhone, powered entirely on-device by Apple Intelligence." data-label-ja="Apple Intelligenceを使い、iPhone上だけで通知をプライベートに振り分けます。">
+  <meta property="og:title" content="Karui: Quiet unwanted notifications" data-label-en="Karui: Quiet unwanted notifications" data-label-ja="Karui：不要な通知を静かに整理">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://onemorething.tokyo/karui.html">
+  <meta property="og:site_name" content="Karui">
+  <meta property="og:description" content="Your private notifications never leave your iPhone. No server, account, or analytics." data-label-en="Your private notifications never leave your iPhone. No server, account, or analytics." data-label-ja="プライベートな通知がiPhoneの外に出ることはありません。サーバー、アカウント、分析機能は一切ありません。">
+  <meta property="og:image" content="https://onemorething.tokyo/assets/karui-social.png?v=2">
+  <meta property="og:image:secure_url" content="https://onemorething.tokyo/assets/karui-social.png?v=2">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Karui with the message Silence unwanted notifications. Reveal unsent messages." data-label-en="Karui with the message Silence unwanted notifications. Reveal unsent messages." data-label-ja="「不要な通知を消音。送信されなかったメッセージを確認。」というメッセージを添えたKaruiのプレビュー">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Karui: Quiet unwanted notifications" data-label-en="Karui: Quiet unwanted notifications" data-label-ja="Karui：不要な通知を静かに整理">
+  <meta name="twitter:description" content="Your private notifications never leave your iPhone. No server, account, or analytics." data-label-en="Your private notifications never leave your iPhone. No server, account, or analytics." data-label-ja="プライベートな通知がiPhoneの外に出ることはありません。サーバー、アカウント、分析機能は一切ありません。">
+  <meta name="twitter:image" content="https://onemorething.tokyo/assets/karui-social.png?v=2">
+  <meta name="twitter:image:alt" content="Karui with the message Silence unwanted notifications. Reveal unsent messages." data-label-en="Karui with the message Silence unwanted notifications. Reveal unsent messages." data-label-ja="「不要な通知を消音。送信されなかったメッセージを確認。」というメッセージを添えたKaruiのプレビュー">
+  <style>
+    :root {
+      --karui-ink: #1a211e;
+      --karui-muted: #666b62;
+      --karui-moss: #385f49;
+      --karui-clay: #b85137;
+      --karui-amber: #bf8932;
+      --karui-paper: #f4f1e8;
+      --karui-card: #fffdf8;
+      --karui-line: rgba(26, 33, 30, 0.14);
+    }
+
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .karui-icon { border-radius: 12px; }
+    .sasu-hero .download-link { margin-top: 9pt; }
+    .karui-detail { padding: 6pt 0 5pt; }
+    .karui-detail p { margin: 0; }
+    .karui-detail p + p { margin-top: 7pt; }
+    .release-notes summary { cursor: pointer; font-weight: bold; font-size: 10pt; margin: 0; padding-bottom: 5pt; }
+    .release-notes h2 { display: inline-block; padding-top: 2pt; padding-bottom: 2pt; }
+    .release-date { padding-left: 4pt; font-size: 10pt; color: #555; }
+    .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .karui-footer p { margin: 4pt 0; }
+
+    .triage-demo { max-width: 410px; margin: 7pt auto 12pt; }
+    .triage-demo-label { margin: 0 0 9px; color: #555; font-size: 11pt; font-weight: bold; text-align: center; }
+    .phone-panel { overflow: hidden; border: 1px solid var(--karui-line); border-radius: 18px; background: var(--karui-paper); box-shadow: 0 10px 28px rgba(26, 33, 30, 0.12); }
+    .phone-titlebar { display: flex; align-items: center; padding: 10px 13px; border-bottom: 1px solid var(--karui-line); background: var(--karui-card); }
+    .phone-titlebar strong { color: var(--karui-ink); font: 700 10pt/1 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .phone-titlebar span { color: var(--karui-muted); font: 8pt/1 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .notification-card { position: relative; margin: 13px; padding: 13px; border: 1px solid var(--karui-line); border-radius: 13px; background: var(--karui-card); box-shadow: 0 3px 9px rgba(26, 33, 30, 0.06); transform-origin: center; transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease; }
+    .notification-source { display: flex; justify-content: space-between; margin-bottom: 7px; color: var(--karui-muted); font: 8pt/1.2 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .notification-card strong { display: block; color: var(--karui-ink); font: 700 10pt/1.3 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .notification-sender { margin-top: 3px; color: var(--karui-moss); font: 700 8pt/1.3 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .notification-sender[hidden] { display: none; }
+    .notification-card p { margin: 4px 0 0; color: var(--karui-muted); font: 9pt/1.4 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .notification-card p[hidden] { display: none; }
+    .notification-card.is-allowed { border-color: #3d8b5d; background: #effaf2; box-shadow: 0 0 0 3px rgba(61, 139, 93, 0.16), 0 5px 14px rgba(26, 33, 30, 0.08); }
+    .notification-card.is-poofing { animation: notification-poof 620ms ease-in forwards; }
+    .notification-card.is-arriving { animation: notification-arrive 260ms ease-out both; }
+    .notification-card.is-poofing::before,
+    .notification-card.is-poofing::after { position: absolute; top: 50%; left: 50%; width: 7px; height: 7px; content: ''; border-radius: 50%; background: #555; pointer-events: none; }
+    .notification-card.is-poofing::before { box-shadow: -35px -22px 0 -1px #111, 31px -25px 0 -2px #777, 40px 13px 0 -1px #fff, -38px 18px 0 -2px #aaa; animation: poof-particles 620ms ease-out forwards; }
+    .notification-card.is-poofing::after { box-shadow: -14px -34px 0 -2px #ddd, 16px 35px 0 -1px #333, 46px -5px 0 -2px #888, -46px -3px 0 -1px #fff; animation: poof-particles 620ms 40ms ease-out forwards; }
+    .try-button-wrap { padding: 0 13px; text-align: center; }
+    .try-button { min-width: 96px; padding: 7px 15px; border: 1px solid var(--karui-moss); border-radius: 7px; background: var(--karui-moss); color: #fff; cursor: pointer; font: 700 9pt/1 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .try-button:disabled { cursor: default; opacity: 0.65; }
+    .triage-feedback { min-height: 29px; margin: 8px 13px 0; color: var(--karui-moss); font: 700 8.5pt/1.35 -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; }
+    @keyframes notification-poof { 0% { opacity: 1; transform: scale(1); filter: blur(0); } 45% { opacity: .65; transform: scale(1.05); } 100% { opacity: 0; transform: scale(.55) rotate(4deg); filter: blur(5px); } }
+    @keyframes poof-particles { 0% { opacity: 0; transform: translate(-50%, -50%) scale(.4); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -50%) scale(2); } }
+    @keyframes notification-arrive { from { opacity: 0; transform: translateY(7px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .triage-caption { margin: 0; padding: 9pt 8pt 0; color: #444; font-size: 10pt; text-align: center; }
+
+    @media (max-width: 560px) {
+      .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
+    }
+  </style>
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher">
+      <button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button>
+    </div>
+
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <img class="sasu-icon karui-icon" src="assets/karui-icon.png?v=2" alt="Karui app icon with a tray and red badge" data-alt-en="Karui app icon with a tray and red badge" data-alt-ja="トレイと赤いバッジのKaruiアプリアイコン">
+        <div>
+          <h1>Karui</h1>
+          <div class="sasu-subtitle" data-label-en="Silence unwanted notifications. Reveal unsent messages." data-label-ja="不要な通知を消音。送信されなかったメッセージを確認。">Silence unwanted notifications. Reveal unsent messages.</div>
+        </div>
+      </div>
+      <a class="download-link" href="#changelog" data-label-en="TestFlight coming soon" data-label-ja="TestFlight近日公開">TestFlight coming soon</a>
+      <div class="small-note" data-label-en="Free during beta. No sign up needed. Runs privately, entirely on your device using Apple Intelligence." data-label-ja="ベータ期間中は無料。登録は不要です。Apple Intelligenceを使い、すべてiPhone上でプライベートに動作します。">Free during beta. No sign up needed. Runs privately, entirely on your device using Apple Intelligence.</div>
+    </section>
+
+    <section class="sasu-section">
+      <figure class="triage-demo">
+        <div class="triage-demo-label" data-label-en="Try it now" data-label-ja="今すぐ試す">Try it now</div>
+        <div class="phone-panel" id="triage-demo">
+          <div class="phone-titlebar">
+            <strong>Karui</strong>
+          </div>
+          <div class="notification-card" id="notification-card">
+            <div class="notification-source"><span id="demo-source">Uber</span><span data-label-en="now" data-label-ja="たった今">now</span></div>
+            <strong id="demo-title">Save 25% on your next ride</strong>
+            <div class="notification-sender" id="demo-sender" hidden></div>
+            <p id="demo-body">Ride this weekend and save up to ¥1,000.</p>
+          </div>
+          <div class="try-button-wrap">
+            <button class="try-button" id="try-button" type="button" data-label-en="Try It" data-label-ja="試す">Try It</button>
+          </div>
+          <div class="triage-feedback" id="triage-feedback" aria-live="polite"></div>
+        </div>
+        <figcaption class="triage-caption" data-label-en="Important messages alert you. Everything else stays quiet in Karui’s local history." data-label-ja="重要なメッセージだけを通知し、それ以外はKaruiのローカル履歴に静かに保存します。">Important messages alert you. Everything else stays quiet in Karui’s local history.</figcaption>
+      </figure>
+    </section>
+
+    <section class="karui-detail">
+      <h2 data-label-en="What it does:" data-label-ja="できること：">What it does:</h2>
+      <p data-label-en="Karui evaluates the notification content privately using your important contacts and calendar info, and decides whether to show it or hide it." data-label-ja="Karuiは、重要な連絡先とカレンダー情報を使って通知内容をプライベートに評価し、表示するか非表示にするかを判断します。">Karui evaluates the notification content privately using your important contacts and calendar info, and decides whether to show it or hide it.</p>
+    </section>
+
+    <section class="karui-detail">
+      <h2 data-label-en="Privacy:" data-label-ja="プライバシー：">Privacy:</h2>
+      <p data-label-en="Karui runs privately on your iPhone with Apple Intelligence. It uses an on-device model from Apple, so your private notifications never leave your device. Karui has no server, does not require an account, and sends zero analytics." data-label-ja="KaruiはApple Intelligenceを使い、iPhone上でプライベートに動作します。Appleのオンデバイスモデルを使用するため、プライベートな通知がデバイスの外に出ることはありません。Karuiにはサーバーがなく、アカウントも不要で、分析データを一切送信しません。">Karui runs privately on your iPhone with Apple Intelligence. It uses an on-device model from Apple, so your private notifications never leave your device. Karui has no server, does not require an account, and sends zero analytics.</p>
+    </section>
+
+    <section class="karui-detail">
+      <h2 data-label-en="Requirements:" data-label-ja="動作要件：">Requirements:</h2>
+      <p data-label-en="Requires an iPhone running iOS 26 or newer and Apple Intelligence enabled." data-label-ja="iOS 26以降を搭載し、Apple Intelligenceが有効になっているiPhoneが必要です。">Requires an iPhone running iOS 26 or newer and Apple Intelligence enabled.</p>
+    </section>
+
+    <section class="karui-detail">
+      <h2 data-label-en="Limitations:" data-label-ja="制限事項：">Limitations:</h2>
+      <p data-label-en="Tapping a Karui notification opens the original app, but does not jump directly to the message. Just open the original notification for that." data-label-ja="Karuiの通知をタップすると元のアプリが開きますが、該当するメッセージには直接移動しません。その場合は元の通知を開いてください。">Tapping a Karui notification opens the original app, but does not jump directly to the message. Just open the original notification for that.</p>
+    </section>
+
+    <section class="karui-detail" id="changelog">
+      <details class="release-notes">
+        <summary data-label-en="Changelog" data-label-ja="変更履歴">Changelog</summary>
+        <!-- karui-changelog:start -->
+        <h2>0.1.0</h2>
+        <span class="release-date" data-label-en="September 20, 2026" data-label-ja="2026年9月20日">September 20, 2026</span>
+        <ul>
+          <li data-label-en="Initial release." data-label-ja="初回リリース。">Initial release.</li>
+        </ul>
+        <!-- karui-changelog:end -->
+      </details>
+    </section>
+
+    <footer class="karui-footer">
+      <p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="mailto:justin@onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p>
+    </footer>
+  </main>
+
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    const changelog = document.querySelector('#changelog details');
+    let currentLanguage = 'en';
+
+    const demoItems = [
+      {
+        source: { en: 'Uber', ja: 'Uber' },
+        title: { en: 'Save 25% on your next ride', ja: '次回の乗車が25%オフ' },
+        sender: null,
+        body: { en: 'Ride this weekend and save up to ¥1,000.', ja: '今週末の乗車で最大1,000円割引。' },
+        outcome: 'silenced',
+        feedback: { en: 'Promotion: silenced.', ja: 'プロモーション：消音しました。' }
+      },
+      {
+        source: { en: 'Messages', ja: 'メッセージ' },
+        title: { en: 'Hey, can we meet an hour later tonight?', ja: '今夜、1時間遅く会える？' },
+        sender: { en: 'From Maya', ja: 'Mayaから' },
+        body: null,
+        outcome: 'allowed',
+        feedback: { en: 'Important — this notification stays visible.', ja: '重要 — この通知は表示されたままです。' }
+      }
+    ];
+    const notificationCard = document.querySelector('#notification-card');
+    const tryButton = document.querySelector('#try-button');
+    const triageFeedback = document.querySelector('#triage-feedback');
+    let selectedDemo = 0;
+    let isAnimating = false;
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function renderDemo() {
+      const item = demoItems[selectedDemo];
+      document.querySelector('#demo-source').textContent = item.source[currentLanguage];
+      document.querySelector('#demo-title').textContent = item.title[currentLanguage];
+      const senderElement = document.querySelector('#demo-sender');
+      senderElement.hidden = item.sender === null;
+      senderElement.textContent = item.sender ? item.sender[currentLanguage] : '';
+      const bodyElement = document.querySelector('#demo-body');
+      bodyElement.hidden = item.body === null;
+      bodyElement.textContent = item.body ? item.body[currentLanguage] : '';
+      notificationCard.classList.remove('is-allowed', 'is-poofing', 'is-arriving');
+      triageFeedback.textContent = '';
+    }
+
+    function loadNextDemo() {
+      selectedDemo = (selectedDemo + 1) % demoItems.length;
+      renderDemo();
+      notificationCard.classList.add('is-arriving');
+      window.setTimeout(() => notificationCard.classList.remove('is-arriving'), 280);
+      tryButton.disabled = false;
+      isAnimating = false;
+    }
+
+    function tryCurrentNotification() {
+      if (isAnimating) return;
+      isAnimating = true;
+      tryButton.disabled = true;
+      const item = demoItems[selectedDemo];
+      triageFeedback.textContent = item.feedback[currentLanguage];
+      if (item.outcome === 'allowed') {
+        notificationCard.classList.add('is-allowed');
+        window.setTimeout(loadNextDemo, 2200);
+        return;
+      }
+      notificationCard.classList.add('is-poofing');
+      window.setTimeout(loadNextDemo, 2200);
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      renderDemo();
+      if (persist) localStorage.setItem('karui-language', selected);
+    }
+
+    tryButton.addEventListener('click', tryCurrentNotification);
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    if (window.location.hash === '#changelog') changelog.open = true;
+    window.addEventListener('hashchange', () => { if (window.location.hash === '#changelog') changelog.open = true; });
+    setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
+  </script>
+  <script src="product-click-tracking.js"></script>
+</body>
+</html>

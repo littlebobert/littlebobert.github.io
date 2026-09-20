@@ -6,8 +6,16 @@ import sharp from 'sharp';
 const rootDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const iconPath = path.join(rootDirectory, 'assets', 'karui-icon.png');
 const outputPath = path.join(rootDirectory, 'assets', 'karui-social.png');
+const iconSize = 340;
+const iconCornerRadius = 76;
+const roundedCornerMask = Buffer.from(`
+<svg width="${iconSize}" height="${iconSize}" viewBox="0 0 ${iconSize} ${iconSize}" xmlns="http://www.w3.org/2000/svg">
+  <rect width="${iconSize}" height="${iconSize}" rx="${iconCornerRadius}" fill="#ffffff"/>
+</svg>
+`);
 const icon = await sharp(await readFile(iconPath))
-  .resize(340, 340, { fit: 'cover' })
+  .resize(iconSize, iconSize, { fit: 'cover' })
+  .composite([{ input: roundedCornerMask, blend: 'dest-in' }])
   .png()
   .toBuffer();
 

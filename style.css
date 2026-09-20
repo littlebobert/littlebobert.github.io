@@ -3566,12 +3566,9 @@ html[data-theme="classic"] .recent-updates-button[aria-pressed="true"]:hover {
 
 
 
-html body.home-page .stack-product-button img.stack-product-icon-compact {
-  width: 38px;
-  height: 38px;
-}
-
 html body.home-page .stack-product-button img.stack-product-icon-bordered {
   box-sizing: border-box;
+  width: 44px;
+  height: 44px;
   border: 1px solid #000;
 }

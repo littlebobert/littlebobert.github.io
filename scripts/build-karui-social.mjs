@@ -8,6 +8,7 @@ const iconPath = path.join(rootDirectory, 'assets', 'karui-icon.png');
 const outputPath = path.join(rootDirectory, 'assets', 'karui-social.png');
 const iconSize = 340;
 const iconCornerRadius = 76;
+const iconBorderWidth = 8;
 const roundedCornerMask = Buffer.from(`
 <svg width="${iconSize}" height="${iconSize}" viewBox="0 0 ${iconSize} ${iconSize}" xmlns="http://www.w3.org/2000/svg">
   <rect width="${iconSize}" height="${iconSize}" rx="${iconCornerRadius}" fill="#ffffff"/>
@@ -19,6 +20,21 @@ const icon = await sharp(await readFile(iconPath))
   .png()
   .toBuffer();
 
+const iconBorder = Buffer.from(`
+<svg width="${iconSize}" height="${iconSize}" viewBox="0 0 ${iconSize} ${iconSize}" xmlns="http://www.w3.org/2000/svg">
+  <rect
+    x="${iconBorderWidth / 2}"
+    y="${iconBorderWidth / 2}"
+    width="${iconSize - iconBorderWidth}"
+    height="${iconSize - iconBorderWidth}"
+    rx="${iconCornerRadius - iconBorderWidth / 2}"
+    fill="none"
+    stroke="#1a211e"
+    stroke-width="${iconBorderWidth}"
+  />
+</svg>
+`);
+
 const background = Buffer.from(`
 <svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="630" fill="#ffffff"/>
@@ -26,7 +42,10 @@ const background = Buffer.from(`
 `);
 
 await sharp(background)
-  .composite([{ input: icon, left: 430, top: 145 }])
+  .composite([
+    { input: icon, left: 430, top: 145 },
+    { input: iconBorder, left: 430, top: 145 },
+  ])
   .png({ compressionLevel: 9 })
   .toFile(outputPath);
 

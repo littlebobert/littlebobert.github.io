@@ -1,8 +1,40 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-09-20T18:12:53.834Z",
+  "updatedAt": "2026-09-21T20:00:40.015Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2101750396356346303",
+      "text": "送信取り消しされたメッセージを見たいと思ったことある？これでもう見られるよ https://t.co/l3MGAVR6YB https://t.co/HExQer08fd",
+      "createdAt": "2026-09-20T19:08:37.000Z",
+      "url": "https://x.com/_bobertdowney/status/2101750396356346303",
+      "urls": [
+        {
+          "url": "https://t.co/l3MGAVR6YB",
+          "expandedUrl": "https://karui.jp/",
+          "displayUrl": "karui.jp",
+          "start": 38,
+          "end": 61
+        },
+        {
+          "url": "https://t.co/HExQer08fd",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2101750396356346303/video/1",
+          "displayUrl": "pic.x.com/HExQer08fd",
+          "start": 62,
+          "end": 85
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2101750396356346303-0.png"
+        }
+      ]
+    },
     {
       "id": "2101727736259805191",
       "text": "滝の裏の神社とコストコ。最高すぎる https://t.co/vtDkfJD1Lw",
@@ -251,25 +283,6 @@ window.X_POSTS_SNAPSHOT = {
           "image": "assets/generated/x/mine-post-2099591889263677687-0.png"
         }
       ]
-    },
-    {
-      "id": "2099477184956269029",
-      "text": "OpenAI「重みが重すぎたのでヘリで運びます」 https://t.co/yIPBX1Y518",
-      "createdAt": "2026-09-14T12:35:41.000Z",
-      "url": "https://x.com/_bobertdowney/status/2099477184956269029",
-      "urls": [
-        {
-          "url": "https://t.co/yIPBX1Y518",
-          "expandedUrl": "https://twitter.com/nhk_bknews/status/2099414535837028386",
-          "displayUrl": "x.com/nhk_bknews/sta…",
-          "start": 25,
-          "end": 48
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 };

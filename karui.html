@@ -8,8 +8,8 @@
   <link rel="apple-touch-icon" href="assets/karui-icon.png?v=2">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://karui.jp/">
-  <meta name="description" content="Private notification triage on your iPhone, powered entirely on-device by Apple Intelligence." data-label-en="Private notification triage on your iPhone, powered entirely on-device by Apple Intelligence." data-label-ja="Apple Intelligenceを使い、iPhone上だけで通知をプライベートに振り分けます。">
-  <meta property="og:title" content="Silence unwanted notifications. Reveal unsent messages." data-label-en="Silence unwanted notifications. Reveal unsent messages." data-label-ja="不要な通知を消音。送信されなかったメッセージを確認。">
+  <meta name="description" content="Silence spam notifications and reveal unsent messages with private, on-device notification triage powered by Apple Intelligence." data-label-en="Silence spam notifications and reveal unsent messages with private, on-device notification triage powered by Apple Intelligence." data-label-ja="Apple Intelligenceによるプライベートなオンデバイス通知振り分けで、迷惑通知を消音し、送信取り消しされたメッセージも確認できます。">
+  <meta property="og:title" content="Silence spam notifications. Reveal unsent messages." data-label-en="Silence spam notifications. Reveal unsent messages." data-label-ja="迷惑通知を消音。送信取り消しされたメッセージを確認。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://karui.jp/">
   <meta property="og:site_name" content="Karui">
@@ -19,12 +19,12 @@
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Karui with the message Silence unwanted notifications. Reveal unsent messages." data-label-en="Karui with the message Silence unwanted notifications. Reveal unsent messages." data-label-ja="「不要な通知を消音。送信されなかったメッセージを確認。」というメッセージを添えたKaruiのプレビュー">
+  <meta property="og:image:alt" content="Karui with the message Silence spam notifications. Reveal unsent messages." data-label-en="Karui with the message Silence spam notifications. Reveal unsent messages." data-label-ja="「迷惑通知を消音。送信取り消しされたメッセージを確認。」というメッセージを添えたKaruiのプレビュー">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Silence unwanted notifications. Reveal unsent messages." data-label-en="Silence unwanted notifications. Reveal unsent messages." data-label-ja="不要な通知を消音。送信されなかったメッセージを確認。">
+  <meta name="twitter:title" content="Silence spam notifications. Reveal unsent messages." data-label-en="Silence spam notifications. Reveal unsent messages." data-label-ja="迷惑通知を消音。送信取り消しされたメッセージを確認。">
   <meta name="twitter:description" content="Runs privately and entirely on your device using Apple Intelligence." data-label-en="Runs privately and entirely on your device using Apple Intelligence." data-label-ja="Apple Intelligenceを使い、完全にデバイス上でプライベートに動作します。">
   <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=5">
-  <meta name="twitter:image:alt" content="Karui with the message Silence unwanted notifications. Reveal unsent messages." data-label-en="Karui with the message Silence unwanted notifications. Reveal unsent messages." data-label-ja="「不要な通知を消音。送信されなかったメッセージを確認。」というメッセージを添えたKaruiのプレビュー">
+  <meta name="twitter:image:alt" content="Karui with the message Silence spam notifications. Reveal unsent messages." data-label-en="Karui with the message Silence spam notifications. Reveal unsent messages." data-label-ja="「迷惑通知を消音。送信取り消しされたメッセージを確認。」というメッセージを添えたKaruiのプレビュー">
   <style>
     :root {
       --karui-ink: #1a211e;
@@ -41,6 +41,7 @@
     .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
     .karui-icon { box-sizing: border-box; border: 1px solid var(--karui-ink); border-radius: 12px; }
     .sasu-hero .download-link { margin-top: 9pt; }
+    .hero-proposition { max-width: 540px; margin: 9pt 0 0; color: var(--karui-muted); font-size: 10pt; line-height: 1.45; }
     .karui-detail { padding: 6pt 0 5pt; }
     .karui-detail p { margin: 0; }
     .karui-detail p + p { margin-top: 7pt; }
@@ -49,6 +50,7 @@
     .release-date { padding-left: 4pt; font-size: 10pt; color: #555; }
     .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
     .karui-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
 
     .triage-demo { max-width: 410px; margin: 7pt auto 12pt; }
     .triage-demo-label { margin: 0 0 9px; color: #555; font-size: 11pt; font-weight: bold; text-align: center; }
@@ -74,6 +76,14 @@
     .try-button { min-width: 96px; padding: 7px 15px; border: 1px solid var(--karui-moss); border-radius: 7px; background: var(--karui-moss); color: #fff; cursor: pointer; font: 700 9pt/1 -apple-system, BlinkMacSystemFont, sans-serif; }
     .try-button:disabled { cursor: default; opacity: 0.65; }
     .triage-feedback { box-sizing: border-box; min-height: 54px; margin: 10px 18px 0; padding: 0 4px 12px; color: var(--karui-moss); font: 700 8.5pt/1.35 -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; }
+    .kept-region { margin: 0 13px 13px; padding: 11px; border: 1px solid var(--karui-line); border-radius: 12px; background: rgba(255, 253, 248, 0.72); }
+    .kept-heading { margin: 0 0 11px; color: var(--karui-moss); font: 700 8.5pt/1.2 -apple-system, BlinkMacSystemFont, sans-serif; letter-spacing: normal; }
+    .kept-empty { margin: 0; color: var(--karui-muted); font: 8pt/1.35 -apple-system, BlinkMacSystemFont, sans-serif; text-align: center; }
+    .kept-list { display: grid; gap: 6px; }
+    .kept-card { padding: 8px 9px; border: 1px solid rgba(56, 95, 73, 0.18); border-radius: 9px; background: var(--karui-card); }
+    .kept-card-source { margin-bottom: 3px; color: var(--karui-moss); font: 700 7.5pt/1.2 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .kept-card-title { color: var(--karui-ink); font: 700 8.5pt/1.3 -apple-system, BlinkMacSystemFont, sans-serif; }
+    .kept-card-context { margin-top: 2px; color: var(--karui-muted); font: 7.5pt/1.35 -apple-system, BlinkMacSystemFont, sans-serif; }
     @keyframes notification-poof { 0% { opacity: 1; transform: scale(1); filter: blur(0); } 45% { opacity: .65; transform: scale(1.05); } 100% { opacity: 0; transform: scale(.55) rotate(4deg); filter: blur(5px); } }
     @keyframes poof-particles { 0% { opacity: 0; transform: translate(-50%, -50%) scale(.4); } 30% { opacity: 1; } 100% { opacity: 0; transform: translate(-50%, -50%) scale(2); } }
     @keyframes notification-arrive { from { opacity: 0; transform: translateY(7px) scale(.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
@@ -95,9 +105,10 @@
         <img class="sasu-icon karui-icon" src="assets/karui-icon.png?v=2" alt="Karui app icon with a tray and red badge" data-alt-en="Karui app icon with a tray and red badge" data-alt-ja="トレイと赤いバッジのKaruiアプリアイコン">
         <div>
           <h1>Karui</h1>
-          <div class="sasu-subtitle" data-label-en="Silence unwanted notifications. Reveal unsent messages." data-label-ja="不要な通知を消音。送信されなかったメッセージを確認。">Silence unwanted notifications. Reveal unsent messages.</div>
+          <div class="sasu-subtitle" data-label-en="Silence spam notifications. Reveal unsent messages." data-label-ja="迷惑通知を消音。送信取り消しされたメッセージを確認。">Silence spam notifications. Reveal unsent messages.</div>
         </div>
       </div>
+      <p class="hero-proposition" data-label-en="More powerful than Apple’s Focus modes. Works with apps like LINE and Facebook. A unified message inbox across every app." data-label-ja="Appleの集中モードを超える機能。LINEやFacebookなどのアプリにも対応。すべてのアプリのメッセージを一つの受信箱にまとめます。">More powerful than Apple’s Focus modes. Works with apps like LINE and Facebook. A unified message inbox across every app.</p>
       <a class="download-link" data-product="karui" data-product-action="join-testflight" href="https://testflight.apple.com/join/ZQ1MgMMb" data-label-en="Join the Beta" data-label-ja="ベータに参加">Join the Beta</a>
       <span
         class="download-version"
@@ -124,8 +135,13 @@
             <button class="try-button" id="try-button" type="button" data-label-en="Try It" data-label-ja="試す">Try It</button>
           </div>
           <div class="triage-feedback" id="triage-feedback" aria-live="polite"></div>
+          <section class="kept-region" id="kept-region" aria-labelledby="kept-heading">
+            <h3 class="kept-heading" id="kept-heading" data-label-en="Saved" data-label-ja="保存済み">Saved</h3>
+            <p class="kept-empty" id="kept-empty" data-label-en="Important notifications you try will appear here." data-label-ja="試した重要な通知がここに保存されます。">Important notifications you try will appear here.</p>
+            <div class="kept-list" id="kept-list"></div>
+          </section>
         </div>
-        <figcaption class="triage-caption" data-label-en="Important messages alert you. Everything else stays quiet in Karui’s local history." data-label-ja="重要なメッセージだけを通知し、それ以外はKaruiのローカル履歴に静かに保存します。">Important messages alert you. Everything else stays quiet in Karui’s local history.</figcaption>
+        <figcaption class="triage-caption" data-label-en="Karui filters out spam notifications and lets you view everything later, even unsent messages." data-label-ja="Karuiは迷惑通知を除外し、送信取り消しされたメッセージも含め、すべてを後から確認できます。">Karui filters out spam notifications and lets you view everything later, even unsent messages.</figcaption>
       </figure>
     </section>
 
@@ -175,6 +191,7 @@
     </section>
 
     <footer class="karui-footer">
+      <p class="footer-links"><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a></p>
       <p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="mailto:justin@onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p>
     </footer>
   </main>
@@ -187,6 +204,7 @@
 
     const demoItems = [
       {
+        id: 'uber-weekend-promotion',
         source: { en: 'Uber', ja: 'Uber' },
         title: { en: 'Save 25% on your next ride', ja: '次回の乗車が25%オフ' },
         sender: null,
@@ -195,23 +213,100 @@
         feedback: { en: 'Promotion: silenced.', ja: 'プロモーション：消音しました。' }
       },
       {
+        id: 'messages-maya-later',
         source: { en: 'Messages', ja: 'メッセージ' },
         title: { en: 'Hey, can we meet an hour later tonight?', ja: '今夜、1時間遅く会える？' },
         sender: { en: 'From Maya', ja: 'Mayaから' },
         body: null,
         outcome: 'allowed',
-        feedback: { en: 'Important: this notification gets shown and is saved for later viewing too.', ja: '重要：この通知は表示され、後で確認できるようにも保存されます。' }
+        feedback: { en: 'Important: shown now and kept for later.', ja: '重要：今すぐ表示し、後で確認できるよう保存しました。' }
+      },
+      {
+        id: 'amazon-reorder-promotion',
+        source: { en: 'Amazon', ja: 'Amazon' },
+        title: { en: 'Time to reorder your favorites?', ja: 'お気に入りの商品を再注文しませんか？' },
+        sender: null,
+        body: { en: 'Save 15% when you restock household essentials today.', ja: '日用品を本日まとめて再購入すると15%オフ。' },
+        outcome: 'silenced',
+        feedback: { en: 'Shopping promotion: silenced.', ja: 'ショッピングプロモーション：消音しました。' }
+      },
+      {
+        id: 'line-mom-station',
+        source: { en: 'LINE', ja: 'LINE' },
+        title: { en: 'I’m at the station—can you pick me up?', ja: '駅に着いたよ。迎えに来られる？' },
+        sender: { en: 'From Mom', ja: '母から' },
+        body: { en: 'My phone battery is at 3%. I’ll wait by the north exit.', ja: '充電があと3％。北口で待ってるね。' },
+        outcome: 'allowed',
+        feedback: { en: 'VIP message: shown now and kept for later.', ja: '大切な人からのメッセージ：今すぐ表示し、後で確認できるよう保存しました。' }
+      },
+      {
+        id: 'instagram-recommendation',
+        source: { en: 'Instagram', ja: 'Instagram' },
+        title: { en: 'Creators you might like', ja: 'おすすめのクリエイター' },
+        sender: null,
+        body: { en: 'See new reels picked for you based on accounts you follow.', ja: 'フォロー中のアカウントをもとに選ばれた新しいリールをチェック。' },
+        outcome: 'silenced',
+        feedback: { en: 'Recommendation: silenced.', ja: 'おすすめ通知：消音しました。' }
+      },
+      {
+        id: 'calendar-design-review',
+        source: { en: 'Google Calendar', ja: 'Google カレンダー' },
+        title: { en: 'Design review in 10 minutes', ja: '10分後にデザインレビュー' },
+        sender: { en: 'Work calendar', ja: '仕事用カレンダー' },
+        body: { en: 'Conference Room B · 2:30 PM', ja: '会議室B・午後2:30' },
+        outcome: 'allowed',
+        feedback: { en: 'Upcoming event: shown now and kept for later.', ja: '予定のリマインダー：今すぐ表示し、後で確認できるよう保存しました。' }
       }
     ];
     const notificationCard = document.querySelector('#notification-card');
     const tryButton = document.querySelector('#try-button');
     const triageFeedback = document.querySelector('#triage-feedback');
+    const keptEmpty = document.querySelector('#kept-empty');
+    const keptList = document.querySelector('#kept-list');
+    const keptItemIds = new Set();
     let selectedDemo = 0;
     let isAnimating = false;
 
     function preferredLanguage() {
       const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
       return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function renderKeptItems() {
+      keptList.replaceChildren();
+      const keptItems = demoItems.filter((item) => keptItemIds.has(item.id));
+      keptEmpty.hidden = keptItems.length > 0;
+
+      keptItems.forEach((item) => {
+        const card = document.createElement('article');
+        card.className = 'kept-card';
+
+        const source = document.createElement('div');
+        source.className = 'kept-card-source';
+        source.textContent = item.source[currentLanguage];
+
+        const title = document.createElement('div');
+        title.className = 'kept-card-title';
+        title.textContent = item.title[currentLanguage];
+
+        card.append(source, title);
+        const contextParts = [item.sender, item.body]
+          .filter((value) => value !== null)
+          .map((value) => value[currentLanguage]);
+        if (contextParts.length > 0) {
+          const context = document.createElement('div');
+          context.className = 'kept-card-context';
+          context.textContent = contextParts.join(' · ');
+          card.append(context);
+        }
+        keptList.append(card);
+      });
+    }
+
+    function keepNotification(item) {
+      if (keptItemIds.has(item.id)) return;
+      keptItemIds.add(item.id);
+      renderKeptItems();
     }
 
     function renderDemo() {
@@ -244,6 +339,7 @@
       const item = demoItems[selectedDemo];
       triageFeedback.textContent = item.feedback[currentLanguage];
       if (item.outcome === 'allowed') {
+        keepNotification(item);
         notificationCard.classList.add('is-allowed');
         window.setTimeout(loadNextDemo, 2200);
         return;
@@ -267,6 +363,7 @@
       languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
       languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
       renderDemo();
+      renderKeptItems();
       if (persist) localStorage.setItem('karui-language', selected);
     }
 

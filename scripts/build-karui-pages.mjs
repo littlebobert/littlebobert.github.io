@@ -7,6 +7,7 @@ const outputDirectory = path.join(rootDirectory, 'dist-karui');
 const assetsDirectory = path.join(outputDirectory, 'assets');
 const privacyDirectory = path.join(outputDirectory, 'privacy');
 const supportDirectory = path.join(outputDirectory, 'support');
+const acknowledgementsDirectory = path.join(outputDirectory, 'acknowledgements');
 
 const siteFiles = [
   '_headers',
@@ -25,6 +26,7 @@ await Promise.all([
   mkdir(assetsDirectory, { recursive: true }),
   mkdir(privacyDirectory, { recursive: true }),
   mkdir(supportDirectory, { recursive: true }),
+  mkdir(acknowledgementsDirectory, { recursive: true }),
 ]);
 
 await Promise.all(
@@ -46,17 +48,24 @@ function createDeployedPage(source) {
     .replaceAll('src="assets/', 'src="/assets/')
     .replaceAll('href="karui.html"', 'href="/"')
     .replaceAll('href="karui-privacy.html"', 'href="/privacy"')
-    .replaceAll('href="karui-support.html"', 'href="/support"');
+    .replaceAll('href="karui-support.html"', 'href="/support"')
+    .replaceAll(
+      'href="karui-acknowledgements.html"',
+      'href="/acknowledgements"',
+    );
 }
 
-const [homeSource, privacySource, supportSource] = await Promise.all([
-  readFile(path.join(rootDirectory, 'karui.html'), 'utf8'),
-  readFile(path.join(rootDirectory, 'karui-privacy.html'), 'utf8'),
-  readFile(path.join(rootDirectory, 'karui-support.html'), 'utf8'),
-]);
+const [homeSource, privacySource, supportSource, acknowledgementsSource] =
+  await Promise.all([
+    readFile(path.join(rootDirectory, 'karui.html'), 'utf8'),
+    readFile(path.join(rootDirectory, 'karui-privacy.html'), 'utf8'),
+    readFile(path.join(rootDirectory, 'karui-support.html'), 'utf8'),
+    readFile(path.join(rootDirectory, 'karui-acknowledgements.html'), 'utf8'),
+  ]);
 const homePage = createDeployedPage(homeSource);
 const privacyPage = createDeployedPage(privacySource);
 const supportPage = createDeployedPage(supportSource);
+const acknowledgementsPage = createDeployedPage(acknowledgementsSource);
 
 await Promise.all([
   writeFile(path.join(outputDirectory, 'index.html'), homePage),
@@ -65,6 +74,14 @@ await Promise.all([
   writeFile(path.join(privacyDirectory, 'index.html'), privacyPage),
   writeFile(path.join(outputDirectory, 'support.html'), supportPage),
   writeFile(path.join(supportDirectory, 'index.html'), supportPage),
+  writeFile(
+    path.join(outputDirectory, 'acknowledgements.html'),
+    acknowledgementsPage,
+  ),
+  writeFile(
+    path.join(acknowledgementsDirectory, 'index.html'),
+    acknowledgementsPage,
+  ),
 ]);
 
 console.log(`Built Karui Pages site in ${outputDirectory}`);

@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Karui Acknowledgements</title>
+  <link href="sasu-common.css?v=4" rel="stylesheet">
+  <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .karui-icon { box-sizing: border-box; border: 1px solid #1a211e; border-radius: 12px; }
+    .karui-section { padding: 6pt 0 5pt; }
+    .karui-section p { margin: 0; }
+    .karui-section p + p, .karui-section ul + p, .karui-section ol + p { margin-top: 7pt; }
+    .karui-section ul, .karui-section ol { padding-left: 20pt; }
+    .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .karui-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+  </style>
+  <link rel="canonical" href="https://karui.jp/acknowledgements">
+  <meta name="description" content="Acknowledgements for the Karui iPhone app." data-label-en="Acknowledgements for the Karui iPhone app." data-label-ja="iPhoneアプリKaruiの謝辞。">
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="karui.html"><img class="sasu-icon karui-icon" src="assets/karui-icon.png?v=2" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン"></a>
+        <div><h1 data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</h1><div class="sasu-subtitle">Karui</div></div>
+      </div>
+    </section>
+    <section class="karui-section">
+      <p data-label-en="I would like to thank my mom for her initial feedback during Karui’s development." data-label-ja="Karuiの開発初期にフィードバックをくれた母に感謝します。">I would like to thank my mom for her initial feedback during Karui’s development.</p>
+    </section>
+    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
+  </main>
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('karui-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
+  </script>
+</body>
+</html>

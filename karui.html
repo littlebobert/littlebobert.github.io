@@ -45,6 +45,8 @@
     .karui-detail { padding: 6pt 0 5pt; }
     .karui-detail p { margin: 0; }
     .karui-detail p + p { margin-top: 7pt; }
+    .feature-list { margin: 3pt 0 0; padding-left: 20pt; }
+    .feature-list li + li { margin-top: 3pt; }
     .release-notes summary { cursor: pointer; font-weight: bold; font-size: 10pt; margin: 0; padding-bottom: 5pt; }
     .release-notes h2 { display: inline-block; padding-top: 2pt; padding-bottom: 2pt; }
     .release-date { padding-left: 4pt; font-size: 10pt; color: #555; }
@@ -142,8 +144,17 @@
     </section>
 
     <section class="karui-detail">
-      <h2 data-label-en="What it does:" data-label-ja="できること：">What it does:</h2>
-      <p data-label-en="Karui evaluates the notification content privately using your important contacts and calendar info, and decides whether to show it or hide it." data-label-ja="Karuiは、重要な連絡先とカレンダー情報を使って通知内容をプライベートに評価し、表示するか非表示にするかを判断します。">Karui evaluates the notification content privately using your important contacts and calendar info, and decides whether to show it or hide it.</p>
+      <h2 data-label-en="Features:" data-label-ja="機能：">Features:</h2>
+      <ul class="feature-list">
+        <li data-label-en="Better spam filtering than Focus modes" data-label-ja="集中モードよりも優れた迷惑通知フィルタリング">Better spam filtering than Focus modes</li>
+        <li data-label-en="View unsent messages" data-label-ja="送信取り消しされたメッセージを確認">View unsent messages</li>
+        <li data-label-en="Automatically translate notifications into your native language" data-label-ja="通知をあなたの母国語に自動翻訳">Automatically translate notifications into your native language</li>
+      </ul>
+    </section>
+
+    <section class="karui-detail">
+      <h2 data-label-en="How it works:" data-label-ja="仕組み：">How it works:</h2>
+      <p data-label-en="Karui evaluates notifications privately, entirely on device, using your important contacts and calendar info, and decides whether to show them or hide them." data-label-ja="Karuiは、重要な連絡先とカレンダー情報を使って、通知を完全にデバイス上でプライベートに評価し、表示するか非表示にするかを判断します。">Karui evaluates notifications privately, entirely on device, using your important contacts and calendar info, and decides whether to show them or hide them.</p>
     </section>
 
     <section class="karui-detail">

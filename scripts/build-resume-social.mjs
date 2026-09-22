@@ -13,11 +13,11 @@ const size = 960;
 // Padding, type and spacing are laid out for a 1200px square and scaled to `size`;
 // the headshot keeps its absolute size.
 const scale = size / 1200;
-const padding = Math.round(90 * scale);
+const padding = Math.round(90 * scale); // left
 // The right and bottom edges are tighter so the headshot and text sit closer to them.
-const edgePadding = Math.round(70 * scale);
+const edgePadding = Math.round(120 * scale); // top, right and bottom
 const accentBarWidth = Math.round(8 * scale);
-const headshotSize = 440;
+const headshotSize = 400;
 const headshotGap = Math.round(48 * scale);
 const headshotCornerRadius = Math.round(headshotSize * 0.16);
 const headshotBorderWidth = 8;
@@ -25,29 +25,31 @@ const contentRight = size - edgePadding;
 // The headshot sits in the bottom-right corner, inset by the padding.
 const headshotLeft = contentRight - headshotSize;
 const headshotTop = contentRight - headshotSize;
-const svgFontFamily = "'Helvetica Neue', Helvetica, Arial, sans-serif";
+// Verdana, the same face as the resume page itself.
+const fontFamily = 'Verdana';
+const svgFontFamily = "Verdana, Geneva, sans-serif";
 
 const textBlocks = [
   { text: 'Justin Garcia', size: 116, weight: 'bold', pangoWeight: 'Bold', color: '#1a1f26', lineHeight: 1.1, spaceAfter: 36 },
-  { text: 'Product engineer, iOS and real-time speech AI. Previously at Apple', size: 90, weight: '500', pangoWeight: 'Medium', color: '#1a1f26', lineHeight: 1.25, spaceAfter: 30 },
-  { text: 'Tokyo, Japan', size: 72, weight: 'normal', pangoWeight: '', color: '#6b7480', lineHeight: 1.25, spaceAfter: 0, pinBottom: true },
+  { text: 'Product engineer, iOS and real-time speech AI. Previously at Apple', size: 80, weight: 'normal', pangoWeight: '', color: '#1a1f26', lineHeight: 1.25, spaceAfter: 30 },
+  { text: 'Tokyo, Japan', size: 68, weight: 'normal', pangoWeight: '', color: '#6b7480', lineHeight: 1.25, spaceAfter: 0, pinBottom: true },
 ].map((block) => ({ ...block, size: Math.round(block.size * scale), spaceAfter: Math.round(block.spaceAfter * scale) }));
 
 const measureCache = new Map();
 async function measure(text, block) {
   const key = `${block.pangoWeight}|${block.size}|${text}`;
   if (!measureCache.has(key)) {
-    const font = ['Helvetica Neue', block.pangoWeight, block.size].filter(Boolean).join(' ');
+    const font = [fontFamily, block.pangoWeight, block.size].filter(Boolean).join(' ');
     const { info } = await sharp({ text: { text, font, dpi: 72 } }).png().toBuffer({ resolveWithObject: true });
     measureCache.set(key, info.width);
   }
   return measureCache.get(key);
 }
 
-// Lay text out like a float: lines that overlap the headshot's vertical band
-// stop short of it (with a gap); lines above it use the full content width.
+// Lay text out like a float: lines that would reach into the headshot or the
+// gap above it stop short of it with a gap; lines above use the full width.
 function lineBox(top, lineHeight) {
-  const besideHeadshot = top + lineHeight > headshotTop;
+  const besideHeadshot = top + lineHeight > headshotTop - headshotGap;
   const width = besideHeadshot ? headshotLeft - headshotGap - padding : contentRight - padding;
   return { top, left: padding, width };
 }
@@ -87,7 +89,7 @@ async function wrapBlock(block, top) {
 }
 
 const lines = [];
-let cursorY = padding;
+let cursorY = edgePadding;
 for (const block of textBlocks) {
   const lineHeight = Math.round(block.size * block.lineHeight);
   let top = cursorY;
@@ -158,7 +160,7 @@ const background = Buffer.from(`
     </linearGradient>
   </defs>
   <rect width="${size}" height="${size}" fill="url(#bg)"/>
-  <rect x="${padding - Math.round(50 * scale)}" y="${padding}" width="${accentBarWidth}" height="${contentRight - padding}" rx="${accentBarWidth / 2}" fill="#3b82f6"/>
+  <rect x="${padding - Math.round(50 * scale)}" y="${edgePadding}" width="${accentBarWidth}" height="${contentRight - edgePadding}" rx="${accentBarWidth / 2}" fill="#3b82f6"/>
   ${textElements}
 </svg>
 `);

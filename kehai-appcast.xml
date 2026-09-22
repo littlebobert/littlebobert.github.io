@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.25</title>
+            <pubDate>Tue, 22 Sep 2026 21:53:09 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>100</sparkle:version>
+            <sparkle:shortVersionString>0.5.25</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Refined the app icon.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.25/Kehai-0.5.25-mac.zip" length="3120298" type="application/octet-stream" sparkle:edSignature="VpQHcNJPkk9ozJX/3btFrI6mWSOGX0l7X98OghLpzonjH9tEF1fWIwvUelWIyo+1B3ejF/LUpt44to4ObVgOAw=="/>
+        </item>
+        <item>
             <title>0.5.24</title>
             <pubDate>Sun, 20 Sep 2026 21:36:46 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Shrink hot zones a bit.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.23/Kehai-0.5.23-mac.zip" length="5827570" type="application/octet-stream" sparkle:edSignature="Z5HM1L4OxKTVl1d1wSE91aXZ0u4U3A7+CVX1KyvnJeE/E/BHcJduLzPuBMK2QvkLIWHmcrFSw17h/544cbNkBQ=="/>
-        </item>
-        <item>
-            <title>0.5.22</title>
-            <pubDate>Thu, 17 Sep 2026 10:48:48 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>97</sparkle:version>
-            <sparkle:shortVersionString>0.5.22</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- After entering a hot zone, hide Kehai mini once you mouse out of the window.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.22/Kehai-0.5.22-mac.zip" length="5825569" type="application/octet-stream" sparkle:edSignature="x2dhFNqJTb85vco7qp5er3/bKAmjzmDRha6PQtBUCX5vfbv9MmZ4VX3k0bp1u2Io2iOyRXote2FuD9nwCUrQDw=="/>
         </item>
     </channel>
 </rss>

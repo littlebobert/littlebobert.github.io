@@ -9,6 +9,7 @@
     "build:karui-social": "node scripts/build-karui-social.mjs",
     "build:kehai-social": "node scripts/build-kehai-social.mjs",
     "build:resume-social": "node scripts/build-resume-social.mjs",
+    "build:about-social": "node scripts/build-about-social.mjs",
     "build:japan-news": "node scripts/build-japan-news.mjs",
     "build:japan-news:local": "node scripts/build-japan-news-local.mjs",
     "build:x-snapshot": "node scripts/build-x-snapshot.mjs",

@@ -19,6 +19,10 @@ const assetFiles = [
   'karui-favicon.png',
   'karui-icon.png',
   'karui-social.png',
+  ...['01-spam-filtering', '02-unsent-messages', '03-wake-me'].flatMap((shot) => [
+    `karui-shot-${shot}-en.jpg`,
+    `karui-shot-${shot}-ja.jpg`,
+  ]),
 ];
 
 await rm(outputDirectory, { force: true, recursive: true });
@@ -46,6 +50,8 @@ function createDeployedPage(source) {
     .replaceAll('href="sasu-common.css?v=4"', 'href="/sasu-common.css?v=4"')
     .replaceAll('href="assets/', 'href="/assets/')
     .replaceAll('src="assets/', 'src="/assets/')
+    .replaceAll('data-src-en="assets/', 'data-src-en="/assets/')
+    .replaceAll('data-src-ja="assets/', 'data-src-ja="/assets/')
     .replaceAll('href="karui.html"', 'href="/"')
     .replaceAll('href="karui-privacy.html"', 'href="/privacy"')
     .replaceAll('href="karui-support.html"', 'href="/support"')

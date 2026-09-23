@@ -39,6 +39,9 @@ await Promise.all(
   ),
 );
 
+// Served at karui.jp/llms.txt for AI agents; the portfolio has its own llms.txt.
+await cp(path.join(rootDirectory, 'karui-llms.txt'), path.join(outputDirectory, 'llms.txt'));
+
 await Promise.all(
   assetFiles.map((file) =>
     cp(path.join(rootDirectory, 'assets', file), path.join(assetsDirectory, file)),

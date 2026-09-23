@@ -40,3 +40,14 @@ test('builds every Karui clean route', async () => {
   assert.match(acknowledgementsPage, /href="\/privacy"/);
   assert.match(acknowledgementsPage, /href="\/support"/);
 });
+
+test('publishes llms.txt with links to pages that exist', async () => {
+  const llms = await readOutputFile('llms.txt');
+  assert.match(llms, /^# Karui\n\n> /);
+  const routes = [...llms.matchAll(/\]\(https:\/\/karui\.jp\/([a-z]*)\)/g)].map((match) => match[1]);
+  assert.deepEqual(routes, ['', 'support', 'privacy', 'acknowledgements']);
+  for (const route of routes) {
+    await readOutputFile(route ? `${route}/index.html` : 'index.html');
+  }
+  assert.match(await readOutputFile('_headers'), /\/llms\.txt\n\s+Content-Type: text\/plain; charset=utf-8/);
+});

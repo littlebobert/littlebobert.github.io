@@ -1,0 +1,40 @@
+# Karui
+
+> Karui is an iPhone app that silences spam notifications and reveals unsent messages. It uses Apple Intelligence to decide, privately and entirely on the device, which notifications from any app should interrupt you, which can wait for a summary, and which are spam.
+
+## Features
+
+- Spam filtering for every app's notifications: spam and promotions are judged by the message itself, not the app it came from.
+- See messages people unsend: every app's notifications are kept in one searchable history, including messages the sender later unsent.
+- Wake Me: people you choose can ring an alarm in an emergency, even when your iPhone is silenced or in a Focus.
+- Your VIP contacts always get through your Focus, from any app.
+- Recognizes one-time codes and lets them through.
+- Several quick messages from one person arrive as one notification.
+- Translates notifications into your language, on device.
+
+## How it works
+
+Karui works alongside Apple's Focus modes. A Shortcuts automation passes each notification from the apps you choose to Karui, which classifies it as Important, Neutral, or Spam using your VIPs, your terms, and upcoming calendar events. Important notifications are delivered through your Focus; the rest are kept in Karui's history and an optional daily summary.
+
+## Privacy
+
+Classification runs on the iPhone with Apple's on-device model. Notifications, contacts, and calendar events never leave the device. Karui has no server, requires no account, and sends no analytics.
+
+## Requirements and limitations
+
+- Requires an iPhone running iOS 26 or later with Apple Intelligence enabled, and the Shortcuts app.
+- Tapping a Karui notification opens the original app, not the specific message.
+
+## Availability
+
+- [Join the beta on TestFlight](https://testflight.apple.com/join/ZQ1MgMMb): free during the beta; no sign-up needed.
+
+## Pages
+
+- [Karui](https://karui.jp/): Overview, screenshots, and changelog.
+- [Changelog](https://karui.jp/#changelog): Release notes for each beta build.
+- [Support](https://karui.jp/support): Setup, troubleshooting, and known limitations.
+- [Privacy](https://karui.jp/privacy): Privacy policy.
+- [Acknowledgements](https://karui.jp/acknowledgements): Third-party credits.
+
+Karui is made by [Justin Garcia](https://onemorething.tokyo/) in Japan. Pages contain complete English content in static HTML, with Japanese available through each page's language control.

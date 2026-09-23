@@ -61,7 +61,7 @@
     .shot-open:focus-visible { outline: 2px solid var(--karui-moss); outline-offset: 3px; }
 
     /* Full-screen viewer: swipe or use the arrows; the arrows fade after 2 s idle. */
-    .shot-viewer { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; background: rgb(20 24 22 / var(--shot-dim, 1)); color: #fff; overflow: hidden; }
+    .shot-viewer { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; overscroll-behavior: none; background: rgb(20 24 22 / var(--shot-dim, 1)); color: #fff; overflow: hidden; }
     .shot-viewer::backdrop { background: transparent; }
     /* pan-x: the browser handles sideways swipes; downward drags dismiss (see script). */
     .shot-track { display: flex; width: 100%; height: 100%; overflow-x: auto; touch-action: pan-x; overscroll-behavior: contain; scroll-snap-type: x mandatory; scrollbar-width: none; }
@@ -129,9 +129,9 @@
       <ul class="feature-list">
         <li data-label-en="Your VIP contacts always get through your Focus, from any app" data-label-ja="集中モード中でも、どのアプリでもVIPの連絡先からの通知は必ず届きます">Your VIP contacts always get through your Focus, from any app</li>
         <li data-label-en="Wake Me: people you choose can ring an alarm in an emergency, even when your iPhone is silenced" data-label-ja="緊急アラーム：選んだ人からの緊急の連絡は、消音中でもアラームでお知らせ">Wake Me: people you choose can ring an alarm in an emergency, even when your iPhone is silenced</li>
-        <li data-label-en="View unsent messages" data-label-ja="送信取り消しされたメッセージを確認">View unsent messages</li>
+        <li data-label-en="See messages people unsend" data-label-ja="送信取り消しされたメッセージを確認">See messages people unsend</li>
         <li data-label-en="Spam and promotions are silenced, judged by the actual message, not the app" data-label-ja="アプリではなくメッセージの内容で判断し、迷惑通知や宣伝を消音">Spam and promotions are silenced, judged by the actual message, not the app</li>
-        <li data-label-en="One-time codes are never silenced" data-label-ja="ワンタイムコードは必ず届きます">One-time codes are never silenced</li>
+        <li data-label-en="Recognizes one-time codes and lets them through" data-label-ja="ワンタイムコードを認識して通知します">Recognizes one-time codes and lets them through</li>
         <li data-label-en="Several quick messages from one person arrive as one notification" data-label-ja="同じ人からの連続メッセージは、1件の通知にまとめて届きます">Several quick messages from one person arrive as one notification</li>
         <li data-label-en="Every app’s notifications in one searchable history" data-label-ja="すべてのアプリの通知を、検索できる一つの履歴に">Every app’s notifications in one searchable history</li>
         <li data-label-en="Automatically translate notifications into your language" data-label-ja="通知をあなたの言語に自動翻訳">Automatically translate notifications into your language</li>
@@ -415,21 +415,36 @@
       shotViewer.style.setProperty('--shot-dim', String(1 - Math.min(offset / (window.innerHeight * 0.6), 1)));
     }
 
-    shotTrack.addEventListener('pointerdown', (event) => {
-      if (event.pointerType === 'mouse' || !event.isPrimary) return;
-      dismissDrag = { id: event.pointerId, startX: event.clientX, startY: event.clientY, dismissing: false };
-    });
+    // Touch events rather than pointer events: iOS Safari can take a vertical drag over
+    // for scrolling and cancel it mid-gesture (the screenshot snapped back). Calling
+    // preventDefault on touchmove as soon as the drag heads downward keeps it ours.
+    function trackedTouch(event) {
+      return dismissDrag && [...event.changedTouches].find((touch) => touch.identifier === dismissDrag.id);
+    }
 
-    shotTrack.addEventListener('pointermove', (event) => {
-      if (!dismissDrag || event.pointerId !== dismissDrag.id) return;
-      const dx = event.clientX - dismissDrag.startX;
-      const dy = event.clientY - dismissDrag.startY;
+    shotTrack.addEventListener('touchstart', (event) => {
+      if (event.touches.length !== 1) {
+        dismissDrag = null;
+        return;
+      }
+      const touch = event.touches[0];
+      dismissDrag = { id: touch.identifier, startX: touch.clientX, startY: touch.clientY, dismissing: false };
+    }, { passive: true });
+
+    shotTrack.addEventListener('touchmove', (event) => {
+      const touch = trackedTouch(event);
+      if (!touch) return;
+      const dx = touch.clientX - dismissDrag.startX;
+      const dy = touch.clientY - dismissDrag.startY;
       if (!dismissDrag.dismissing) {
-        if (Math.hypot(dx, dy) < 8) return;
-        if (dy <= 0 || Math.abs(dy) < Math.abs(dx)) {
-          dismissDrag = null;
+        // Sideways first: leave it to the browser's paging.
+        if (Math.abs(dx) > Math.abs(dy)) {
+          if (Math.abs(dx) > 4) dismissDrag = null;
           return;
         }
+        // Heading down: claim the gesture now, before Safari starts a scroll.
+        if (event.cancelable) event.preventDefault();
+        if (dy < 8) return;
         dismissDrag.dismissing = true;
         dismissDrag.image = shotTrack.children[currentShot()]?.querySelector('img');
         if (!dismissDrag.image) {
@@ -438,22 +453,25 @@
         }
         shotViewer.classList.add('is-dragging');
       }
+      if (event.cancelable) event.preventDefault();
       const offset = Math.max(0, dy);
-      dismissDrag.velocity = (offset - (dismissDrag.offset ?? 0)) / Math.max(event.timeStamp - (dismissDrag.time ?? event.timeStamp), 1);
+      const time = event.timeStamp;
+      dismissDrag.velocity = (offset - (dismissDrag.offset ?? 0)) / Math.max(time - (dismissDrag.time ?? time), 1);
       dismissDrag.offset = offset;
-      dismissDrag.time = event.timeStamp;
+      dismissDrag.time = time;
       setDismissOffset(dismissDrag.image, offset, false);
-    });
+    }, { passive: false });
 
     function endDismissDrag(event) {
-      if (!dismissDrag || event.pointerId !== dismissDrag.id) return;
+      if (!trackedTouch(event)) return;
       const drag = dismissDrag;
       dismissDrag = null;
       if (!drag.dismissing) return;
       didDismissDrag = true;
       window.setTimeout(() => { didDismissDrag = false; }, 0);
       const offset = drag.offset ?? 0;
-      if (event.type === 'pointerup' && (offset > 120 || (offset > 30 && drag.velocity > 0.5))) {
+      // A cancel still closes when the drag was already past the threshold.
+      if (offset > 120 || (event.type === 'touchend' && offset > 30 && drag.velocity > 0.5)) {
         setDismissOffset(drag.image, window.innerHeight, true);
         window.setTimeout(() => shotViewer.close(), reducedMotion.matches ? 0 : dismissDuration);
         return;
@@ -462,8 +480,8 @@
       shotViewer.classList.remove('is-dragging');
       wakeShotControls();
     }
-    shotTrack.addEventListener('pointerup', endDismissDrag);
-    shotTrack.addEventListener('pointercancel', endDismissDrag);
+    shotTrack.addEventListener('touchend', endDismissDrag);
+    shotTrack.addEventListener('touchcancel', endDismissDrag);
 
     // A tap on the dark area around the screenshot closes the viewer.
     shotTrack.addEventListener('click', (event) => {

@@ -3,6 +3,18 @@
     <channel>
         <title>Sasu</title>
         <item>
+            <title>0.2.16</title>
+            <pubDate>Wed, 23 Sep 2026 18:18:10 +0900</pubDate>
+            <link>https://sasu.jp</link>
+            <sparkle:version>41</sparkle:version>
+            <sparkle:shortVersionString>0.2.16</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[Fixed poor performance when typing while the transcript is full.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.16/Sasu-0.2.16-mac.zip" length="4458905" type="application/octet-stream" sparkle:edSignature="Fg7yYmwVzSwOFUdiJP5mZ6lYcS5MXAosLfKBlZtze3IX/wjP9IXYFNUrQxU/Y/RX1z3pPEucFyQ2ePw/NGI9Aw=="/>
+        </item>
+        <item>
             <title>0.2.15</title>
             <pubDate>Wed, 16 Sep 2026 15:38:51 +0900</pubDate>
             <link>https://sasu.jp</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[Fixed a bug where Japanese text inside English responses was not rendered properly.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.14/Sasu-0.2.14-mac.zip" length="4455412" type="application/octet-stream" sparkle:edSignature="FD7fEiQ2sPaq9kJnQzXoV32nEma4i9HF1EFwW0nn5HerGt0uxHgArdSQogmoZCaT+FS7/SlXbbPVoawHK6boCw=="/>
-        </item>
-        <item>
-            <title>0.2.13</title>
-            <pubDate>Fri, 11 Sep 2026 09:05:48 +0900</pubDate>
-            <link>https://sasu.jp</link>
-            <sparkle:version>38</sparkle:version>
-            <sparkle:shortVersionString>0.2.13</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[Added an option to include the original text during Translate and Replace.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.13/Sasu-0.2.13-mac.zip" length="4448722" type="application/octet-stream" sparkle:edSignature="91v+UjNd4JVRWquZ24z24SGa4SCYUO+OKCXWwkNMhe3EOEZP+mT34rztjyfThzRgqS5lCsumOFxHixxdOLCuAw=="/>
         </item>
     </channel>
 </rss>

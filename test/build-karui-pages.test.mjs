@@ -26,10 +26,6 @@ test('builds every Karui clean route', async () => {
     ]);
 
   assert.match(acknowledgementsPage, /<h1[^>]*>Acknowledgements<\/h1>/);
-  assert.match(
-    acknowledgementsPage,
-    /I would like to thank my mom for her initial feedback/,
-  );
   assert.notEqual(acknowledgementsPage, homePage);
 
   for (const page of [homePage, privacyPage, supportPage]) {

@@ -61,9 +61,10 @@
     .shot-open:focus-visible { outline: 2px solid var(--karui-moss); outline-offset: 3px; }
 
     /* Full-screen viewer: swipe or use the arrows; the arrows fade after 2 s idle. */
-    .shot-viewer { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; background: #141816; color: #fff; overflow: hidden; }
+    .shot-viewer { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; background: rgb(20 24 22 / var(--shot-dim, 1)); color: #fff; overflow: hidden; }
     .shot-viewer::backdrop { background: transparent; }
-    .shot-track { display: flex; width: 100%; height: 100%; overflow-x: auto; overscroll-behavior: contain; scroll-snap-type: x mandatory; scrollbar-width: none; }
+    /* pan-x: the browser handles sideways swipes; downward drags dismiss (see script). */
+    .shot-track { display: flex; width: 100%; height: 100%; overflow-x: auto; touch-action: pan-x; overscroll-behavior: contain; scroll-snap-type: x mandatory; scrollbar-width: none; }
     .shot-track::-webkit-scrollbar { display: none; }
     .shot-slide { display: flex; flex: 0 0 100%; align-items: center; justify-content: center; box-sizing: border-box; padding: max(12px, env(safe-area-inset-top)) 12px max(12px, env(safe-area-inset-bottom)); scroll-snap-align: center; scroll-snap-stop: always; }
     .shot-slide img { display: block; width: min(100%, calc((100dvh - 24px) * 660 / 1434)); height: auto; aspect-ratio: 660 / 1434; border-radius: 14px; }
@@ -74,7 +75,8 @@
     .shot-arrow[hidden] { display: none; }
     .shot-prev { left: 12px; }
     .shot-next { right: 12px; }
-    .shot-viewer.is-idle .shot-arrow { opacity: 0; }
+    .shot-viewer.is-idle .shot-arrow,
+    .shot-viewer.is-dragging .shot-viewer-button { opacity: 0; }
     @media (prefers-reduced-motion: reduce) {
       .shot-viewer-button { transition: none; }
     }
@@ -397,12 +399,83 @@
         behavior: reducedMotion.matches ? 'instant' : 'smooth',
       });
     });
+    // Swipe down to dismiss, like Photos: the screenshot follows the finger and the
+    // backdrop fades to show the page; far enough or fast enough closes, otherwise it
+    // springs back. The first few pixels of movement decide between this and paging.
+    const dismissDuration = 220;
+    let dismissDrag = null;
+    let didDismissDrag = false;
+
+    function setDismissOffset(image, offset, animated) {
+      const transition = animated && !reducedMotion.matches;
+      const progress = Math.min(offset / window.innerHeight, 1);
+      image.style.transition = transition ? `transform ${dismissDuration}ms ease` : 'none';
+      image.style.transform = offset ? `translateY(${offset}px) scale(${1 - progress * 0.2})` : '';
+      shotViewer.style.transition = transition ? `background-color ${dismissDuration}ms ease` : 'none';
+      shotViewer.style.setProperty('--shot-dim', String(1 - Math.min(offset / (window.innerHeight * 0.6), 1)));
+    }
+
+    shotTrack.addEventListener('pointerdown', (event) => {
+      if (event.pointerType === 'mouse' || !event.isPrimary) return;
+      dismissDrag = { id: event.pointerId, startX: event.clientX, startY: event.clientY, dismissing: false };
+    });
+
+    shotTrack.addEventListener('pointermove', (event) => {
+      if (!dismissDrag || event.pointerId !== dismissDrag.id) return;
+      const dx = event.clientX - dismissDrag.startX;
+      const dy = event.clientY - dismissDrag.startY;
+      if (!dismissDrag.dismissing) {
+        if (Math.hypot(dx, dy) < 8) return;
+        if (dy <= 0 || Math.abs(dy) < Math.abs(dx)) {
+          dismissDrag = null;
+          return;
+        }
+        dismissDrag.dismissing = true;
+        dismissDrag.image = shotTrack.children[currentShot()]?.querySelector('img');
+        if (!dismissDrag.image) {
+          dismissDrag = null;
+          return;
+        }
+        shotViewer.classList.add('is-dragging');
+      }
+      const offset = Math.max(0, dy);
+      dismissDrag.velocity = (offset - (dismissDrag.offset ?? 0)) / Math.max(event.timeStamp - (dismissDrag.time ?? event.timeStamp), 1);
+      dismissDrag.offset = offset;
+      dismissDrag.time = event.timeStamp;
+      setDismissOffset(dismissDrag.image, offset, false);
+    });
+
+    function endDismissDrag(event) {
+      if (!dismissDrag || event.pointerId !== dismissDrag.id) return;
+      const drag = dismissDrag;
+      dismissDrag = null;
+      if (!drag.dismissing) return;
+      didDismissDrag = true;
+      window.setTimeout(() => { didDismissDrag = false; }, 0);
+      const offset = drag.offset ?? 0;
+      if (event.type === 'pointerup' && (offset > 120 || (offset > 30 && drag.velocity > 0.5))) {
+        setDismissOffset(drag.image, window.innerHeight, true);
+        window.setTimeout(() => shotViewer.close(), reducedMotion.matches ? 0 : dismissDuration);
+        return;
+      }
+      setDismissOffset(drag.image, 0, true);
+      shotViewer.classList.remove('is-dragging');
+      wakeShotControls();
+    }
+    shotTrack.addEventListener('pointerup', endDismissDrag);
+    shotTrack.addEventListener('pointercancel', endDismissDrag);
+
     // A tap on the dark area around the screenshot closes the viewer.
     shotTrack.addEventListener('click', (event) => {
+      if (didDismissDrag) return;
       if (event.target.classList.contains('shot-slide')) shotViewer.close();
     });
     shotViewer.addEventListener('close', () => {
       window.clearTimeout(shotIdleTimer);
+      dismissDrag = null;
+      shotViewer.classList.remove('is-dragging');
+      shotViewer.style.removeProperty('--shot-dim');
+      shotViewer.style.transition = '';
       document.documentElement.style.overflow = '';
     });
     window.addEventListener('resize', () => {

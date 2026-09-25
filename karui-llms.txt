@@ -27,7 +27,7 @@ Classification runs on the iPhone with Apple's on-device model. Notifications, c
 
 ## Availability
 
-- [Join the beta on TestFlight](https://testflight.apple.com/join/ZQ1MgMMb): free during the beta; no sign-up needed.
+- [Join the beta on TestFlight](https://testflight.apple.com/join/ZQ1MgMMb): free, with no in-app purchases or subscription; no sign-up needed.
 
 ## Pages
 

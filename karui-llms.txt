@@ -22,7 +22,7 @@ Classification runs on the iPhone with Apple's on-device model. Notifications, c
 
 ## Requirements and limitations
 
-- Requires an iPhone running iOS 26 or later with Apple Intelligence enabled, and the Shortcuts app.
+- Requires an iPhone running iOS 27 or later with Apple Intelligence enabled, and the Shortcuts app.
 - Tapping a Karui notification opens the original app, not the specific message.
 
 ## Availability

@@ -31,8 +31,8 @@ Classification runs on the iPhone with Apple's on-device model. Notifications, c
 
 ## Pages
 
-- [Karui](https://karui.jp/): Overview, screenshots, and changelog.
-- [Changelog](https://karui.jp/#changelog): Release notes for each beta build.
+- [Karui](https://karui.jp/): Overview and screenshots.
+- [Changelog](https://karui.jp/changelog): Release notes for each beta build.
 - [Support](https://karui.jp/support): Setup, troubleshooting, and known limitations.
 - [Privacy](https://karui.jp/privacy): Privacy policy.
 - [Acknowledgements](https://karui.jp/acknowledgements): Third-party credits.

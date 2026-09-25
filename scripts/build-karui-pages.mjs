@@ -8,6 +8,7 @@ const assetsDirectory = path.join(outputDirectory, 'assets');
 const privacyDirectory = path.join(outputDirectory, 'privacy');
 const supportDirectory = path.join(outputDirectory, 'support');
 const acknowledgementsDirectory = path.join(outputDirectory, 'acknowledgements');
+const changelogDirectory = path.join(outputDirectory, 'changelog');
 
 const siteFiles = [
   '_headers',
@@ -31,6 +32,7 @@ await Promise.all([
   mkdir(privacyDirectory, { recursive: true }),
   mkdir(supportDirectory, { recursive: true }),
   mkdir(acknowledgementsDirectory, { recursive: true }),
+  mkdir(changelogDirectory, { recursive: true }),
 ]);
 
 await Promise.all(
@@ -61,20 +63,23 @@ function createDeployedPage(source) {
     .replaceAll(
       'href="karui-acknowledgements.html"',
       'href="/acknowledgements"',
-    );
+    )
+    .replaceAll('href="karui-changelog.html"', 'href="/changelog"');
 }
 
-const [homeSource, privacySource, supportSource, acknowledgementsSource] =
+const [homeSource, privacySource, supportSource, acknowledgementsSource, changelogSource] =
   await Promise.all([
     readFile(path.join(rootDirectory, 'karui.html'), 'utf8'),
     readFile(path.join(rootDirectory, 'karui-privacy.html'), 'utf8'),
     readFile(path.join(rootDirectory, 'karui-support.html'), 'utf8'),
     readFile(path.join(rootDirectory, 'karui-acknowledgements.html'), 'utf8'),
+    readFile(path.join(rootDirectory, 'karui-changelog.html'), 'utf8'),
   ]);
 const homePage = createDeployedPage(homeSource);
 const privacyPage = createDeployedPage(privacySource);
 const supportPage = createDeployedPage(supportSource);
 const acknowledgementsPage = createDeployedPage(acknowledgementsSource);
+const changelogPage = createDeployedPage(changelogSource);
 
 await Promise.all([
   writeFile(path.join(outputDirectory, 'index.html'), homePage),
@@ -91,6 +96,8 @@ await Promise.all([
     path.join(acknowledgementsDirectory, 'index.html'),
     acknowledgementsPage,
   ),
+  writeFile(path.join(outputDirectory, 'changelog.html'), changelogPage),
+  writeFile(path.join(changelogDirectory, 'index.html'), changelogPage),
 ]);
 
 console.log(`Built Karui Pages site in ${outputDirectory}`);

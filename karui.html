@@ -47,9 +47,6 @@
     .karui-detail p + p { margin-top: 7pt; }
     .feature-list { margin: 3pt 0 0; padding-left: 20pt; }
     .feature-list li + li { margin-top: 3pt; }
-    .release-notes summary { cursor: pointer; font-weight: bold; font-size: 10pt; margin: 0; padding-bottom: 5pt; }
-    .release-notes h2 { display: inline-block; padding-top: 2pt; padding-bottom: 2pt; }
-    .release-date { padding-left: 4pt; font-size: 10pt; color: #555; }
     .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
     .karui-footer p { margin: 4pt 0; }
     .footer-links .footer-separator { margin: 0 6pt; color: #777; }
@@ -146,147 +143,9 @@
       <p data-label-en="Requires an iPhone with iOS 26 or later and Apple Intelligence. Tapping a Karui notification opens the app, not the specific message." data-label-ja="iOS 26以降とApple Intelligenceに対応したiPhoneが必要です。Karuiの通知をタップすると、該当メッセージではなくアプリが開きます。">Requires an iPhone with iOS 26 or later and Apple Intelligence. Tapping a Karui notification opens the app, not the specific message.</p>
     </section>
 
-    <section class="karui-detail" id="changelog">
-      <details class="release-notes">
-        <summary data-label-en="Changelog" data-label-ja="変更履歴">Changelog</summary>
-        <!-- karui-changelog:start -->
-<h2 data-karui-build="24">0.1.0 (24)</h2>
-<span class="release-date" data-label-en="September 25, 2026" data-label-ja="2026年9月25日">September 25, 2026</span>
-<ul>
-  <li data-label-en="Fixed a bug where some email receipts would appear as one-time codes." data-label-ja="一部のメール受信内容がワンタイムコードとして表示される不具合を修正しました。">Fixed a bug where some email receipts would appear as one-time codes.</li>
-  <li data-label-en="Fixed a bug where going backward in the setup wizard would make it impossible to continue." data-label-ja="セットアップウィザードで前の画面に戻ると、先に進めなくなる不具合を修正しました。">Fixed a bug where going backward in the setup wizard would make it impossible to continue.</li>
-</ul>
-
-<h2 data-karui-build="23">0.1.0 (23)</h2>
-<span class="release-date" data-label-en="September 25, 2026" data-label-ja="2026年9月25日">September 25, 2026</span>
-<ul>
-  <li data-label-en="Added a cooldown for busy conversations. After Karui alerts you about a conversation, it waits 10 minutes before alerting you about it again." data-label-ja="活発な会話にクールダウンを追加しました。Karuiが会話を通知した後、同じ会話を再度通知するまで10分間待機します。">Added a cooldown for busy conversations. After Karui alerts you about a conversation, it waits 10 minutes before alerting you about it again.</li>
-  <li data-label-en="Important apps can be marked as work apps, which only count as important during your work hours (Mon–Fri, 9 AM to 6 PM by default)." data-label-ja="重要なアプリを「仕事用アプリ」に設定できるようになりました。仕事用アプリが重要として扱われるのは勤務時間内のみです（デフォルトは月〜金の午前9時〜午後6時）。">Important apps can be marked as work apps, which only count as important during your work hours (Mon–Fri, 9 AM to 6 PM by default).</li>
-  <li data-label-en="Arriving rides and deliveries, and notifications an app marks as time sensitive, are now more likely to be Important." data-label-ja="配車や配達の到着通知、およびアプリが緊急性が高いと指定した通知が、「重要」と判定されやすくなりました。">Arriving rides and deliveries, and notifications an app marks as time sensitive, are now more likely to be Important.</li>
-  <li data-label-en="Added a Copy Code button for one-time codes in History." data-label-ja="履歴のワンタイムコードに「コードをコピー」ボタンを追加しました。">Added a Copy Code button for one-time codes in History.</li>
-</ul>
-
-<h2 data-karui-build="22">0.1.0 (22)</h2>
-<span class="release-date" data-label-en="September 25, 2026" data-label-ja="2026年9月25日">September 25, 2026</span>
-<ul>
-  <li data-label-en="Added sleep hours to Wake Me. Alarms now only ring between bedtime and wake-up, 10 PM to 6 AM by default." data-label-ja="「起こして」に睡眠時間帯を追加しました。アラームは就寝時刻から起床時刻までの間だけ鳴ります。デフォルトは午後10時〜午前6時です。">Added sleep hours to Wake Me. Alarms now only ring between bedtime and wake-up, 10 PM to 6 AM by default.</li>
-  <li data-label-en="History now shows your latest daily summary, so you can reopen it after the notification is gone." data-label-ja="履歴に最新の日次サマリーが表示され、通知が消えた後でも開き直せるようになりました。">History now shows your latest daily summary, so you can reopen it after the notification is gone.</li>
-  <li data-label-en="The daily summary&#x27;s Worth a Look now includes more notifications." data-label-ja="日次サマリーの「要チェック」に、より多くの通知が含まれるようになりました。">The daily summary&#x27;s Worth a Look now includes more notifications.</li>
-  <li data-label-en="Promote this Sender now lets you pick the person from your contacts." data-label-ja="「この送信者を優先」で、連絡先から相手を選べるようになりました。">Promote this Sender now lets you pick the person from your contacts.</li>
-  <li data-label-en="Karui now recognizes VIPs by their contact nickname." data-label-ja="Karuiが連絡先のニックネームでもVIPを認識するようになりました。">Karui now recognizes VIPs by their contact nickname.</li>
-</ul>
-
-<h2 data-karui-build="21">0.1.0 (21)</h2>
-<span class="release-date" data-label-en="September 23, 2026" data-label-ja="2026年9月23日">September 23, 2026</span>
-<ul>
-  <li data-label-en="Improved on-device categorization." data-label-ja="デバイス上での分類を改善しました。">Improved on-device categorization.</li>
-</ul>
-
-<h2 data-karui-build="20">0.1.0 (20)</h2>
-<span class="release-date" data-label-en="September 23, 2026" data-label-ja="2026年9月23日">September 23, 2026</span>
-<ul>
-  <li data-label-en="Added a &quot;Missed calls ring immediately&quot; setting for Wake Me." data-label-ja="Wake Meに「不在着信ですぐ鳴らす」設定を追加しました。">Added a &quot;Missed calls ring immediately&quot; setting for Wake Me.</li>
-  <li data-label-en="A second missed call from a Wake Me contact now rings an alarm." data-label-ja="Wake Meの連絡先から2回目の不在着信があると、アラームが鳴るようになりました。">A second missed call from a Wake Me contact now rings an alarm.</li>
-  <li data-label-en="Added a &quot;Check My Shortcut&quot; diagnostic. It needs the updated Karui Shortcut, which you can add again from Settings → Help &amp; Troubleshooting or the Support Guide." data-label-ja="「ショートカットを確認」診断を追加しました。更新版のKaruiショートカットが必要です。設定 → ヘルプとトラブルシューティング、またはサポートガイドから再追加できます。">Added a &quot;Check My Shortcut&quot; diagnostic. It needs the updated Karui Shortcut, which you can add again from Settings → Help &amp; Troubleshooting or the Support Guide.</li>
-  <li data-label-en="Fixed taps firing while scrolling on Test It." data-label-ja="「試してみる」でスクロール中にタップが反応する問題を修正しました。">Fixed taps firing while scrolling on Test It.</li>
-</ul>
-
-<h2 data-karui-build="19">0.1.0 (19)</h2>
-<span class="release-date" data-label-en="September 23, 2026" data-label-ja="2026年9月23日">September 23, 2026</span>
-<ul>
-  <li data-label-en="Added Wake Me: people you choose can ring an alarm in an emergency, even when your iPhone is silenced or in a Focus." data-label-ja="「Wake Me」を追加：選んだ相手は、iPhoneが消音中や集中モード中でも、緊急時にアラームを鳴らせます。">Added Wake Me: people you choose can ring an alarm in an emergency, even when your iPhone is silenced or in a Focus.</li>
-  <li data-label-en="Added Combine Rapid Messages: several messages in a row from the same sender now arrive as one notification." data-label-ja="「連続メッセージをまとめる」を追加：同じ送信者から続けて届く複数のメッセージが、1件の通知にまとまるようになりました。">Added Combine Rapid Messages: several messages in a row from the same sender now arrive as one notification.</li>
-  <li data-label-en="Improved the daily summary: it now highlights the notifications worth a look." data-label-ja="デイリーサマリーを改善：確認する価値のある通知が強調表示されるようになりました。">Improved the daily summary: it now highlights the notifications worth a look.</li>
-</ul>
-
-<h2 data-karui-build="18">0.1.0 (18)</h2>
-<span class="release-date" data-label-en="September 22, 2026" data-label-ja="2026年9月22日">September 22, 2026</span>
-<ul>
-  <li data-label-en="Karui now rechecks notifications that Apple Intelligence was too busy to evaluate, and tells you if any were Important." data-label-ja="Apple Intelligenceがビジー状態で判定できなかった通知を再チェックし、重要なものがあればお知らせするようになりました。">Karui now rechecks notifications that Apple Intelligence was too busy to evaluate, and tells you if any were Important.</li>
-  <li data-label-en="Added filtering in the history." data-label-ja="履歴にフィルタリング機能を追加しました。">Added filtering in the history.</li>
-</ul>
-
-<h2 data-karui-build="17">0.1.0 (17)</h2>
-<span class="release-date" data-label-en="September 22, 2026" data-label-ja="2026年9月22日">September 22, 2026</span>
-<ul>
-  <li data-label-en="Added support for more apps." data-label-ja="対応アプリを追加しました。">Added support for more apps.</li>
-</ul>
-
-<h2 data-karui-build="16">0.1.0 (16)</h2>
-<span class="release-date" data-label-en="September 22, 2026" data-label-ja="2026年9月22日">September 22, 2026</span>
-<ul>
-  <li data-label-en="Added repeat sender breakthroughs." data-label-ja="同じ送信者からの繰り返し通知を許可する機能を追加しました。">Added repeat sender breakthroughs.</li>
-  <li data-label-en="Added a daily digest for neutral notifications." data-label-ja="通常の通知をまとめるデイリーダイジェストを追加しました。">Added a daily digest for neutral notifications.</li>
-  <li data-label-en="Added contact avatars for VIPs." data-label-ja="VIP連絡先のアバターを追加しました。">Added contact avatars for VIPs.</li>
-  <li data-label-en="Added one-time code detection." data-label-ja="ワンタイムコードの検出機能を追加しました。">Added one-time code detection.</li>
-  <li data-label-en="Added high performance filtering and grouping for list views." data-label-ja="リスト表示に高速なフィルタリングとグループ化を追加しました。">Added high performance filtering and grouping for list views.</li>
-</ul>
-
-<h2 data-karui-build="14">0.1.0 (14)</h2>
-<span class="release-date" data-label-en="September 22, 2026" data-label-ja="2026年9月22日">September 22, 2026</span>
-<ul>
-  <li data-label-en="Added a notification translation feature." data-label-ja="通知の翻訳機能を追加しました。">Added a notification translation feature.</li>
-</ul>
-
-<h2 data-karui-build="12">0.1.0 (12)</h2>
-<span class="release-date" data-label-en="September 22, 2026" data-label-ja="2026年9月22日">September 22, 2026</span>
-<ul>
-  <li data-label-en="Improved the Japanese UI." data-label-ja="日本語UIを改善しました。">Improved the Japanese UI.</li>
-</ul>
-
-<h2 data-karui-build="11">0.1.0 (11)</h2>
-<span class="release-date" data-label-en="September 22, 2026" data-label-ja="2026年9月22日">September 22, 2026</span>
-<ul>
-  <li data-label-en="Added a way to enter important apps and your own name." data-label-ja="重要なアプリと自分の名前を入力できるようになりました。">Added a way to enter important apps and your own name.</li>
-</ul>
-
-<h2 data-karui-build="10">0.1.0 (10)</h2>
-<span class="release-date" data-label-en="September 21, 2026" data-label-ja="2026年9月21日">September 21, 2026</span>
-<ul>
-  <li data-label-en="Added a manual reclassification option." data-label-ja="手動で再分類するオプションを追加しました。">Added a manual reclassification option.</li>
-</ul>
-
-<h2 data-karui-build="9">0.1.0 (9)</h2>
-<span class="release-date" data-label-en="September 21, 2026" data-label-ja="2026年9月21日">September 21, 2026</span>
-<ul>
-  <li data-label-en="Fixed a fuzzy matching bug in the classifier." data-label-ja="分類器のあいまい一致に関するバグを修正しました。">Fixed a fuzzy matching bug in the classifier.</li>
-</ul>
-
-<h2 data-karui-build="8">0.1.0 (8)</h2>
-<span class="release-date" data-label-en="September 21, 2026" data-label-ja="2026年9月21日">September 21, 2026</span>
-<ul>
-  <li data-label-en="Improved classifcation when an email body includes your own name." data-label-ja="メール本文に自分の名前が含まれる場合の分類精度を改善しました。">Improved classifcation when an email body includes your own name.</li>
-</ul>
-
-<h2 data-karui-build="6">0.1.0 (6)</h2>
-<span class="release-date" data-label-en="September 21, 2026" data-label-ja="2026年9月21日">September 21, 2026</span>
-<ul>
-  <li data-label-en="Added support for Japanese." data-label-ja="日本語に対応しました。">Added support for Japanese.</li>
-</ul>
-
-<h2 data-karui-build="5">0.1.0 (5)</h2>
-<span class="release-date" data-label-en="September 21, 2026" data-label-ja="2026年9月21日">September 21, 2026</span>
-<ul>
-  <li data-label-en="Improved VIP matching." data-label-ja="VIPの照合精度を向上しました。">Improved VIP matching.</li>
-</ul>
-
-<h2 data-karui-build="4">0.1.0 (4)</h2>
-<span class="release-date" data-label-en="September 20, 2026" data-label-ja="2026年9月20日">September 20, 2026</span>
-<ul>
-  <li data-label-en="Made various improvements and fixed some bugs." data-label-ja="各種改善を行い、いくつかの不具合を修正しました。">Made various improvements and fixed some bugs.</li>
-</ul>
-
-        <h2 data-karui-build="3">0.1.0 (3)</h2>
-        <span class="release-date" data-label-en="September 20, 2026" data-label-ja="2026年9月20日">September 20, 2026</span>
-        <ul>
-          <li data-label-en="Initial release." data-label-ja="初回リリース。">Initial release.</li>
-        </ul>
-        <!-- karui-changelog:end -->
-      </details>
-    </section>
 
     <footer class="karui-footer">
-      <p class="footer-links"><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p>
+      <p class="footer-links"><a href="karui-changelog.html" data-changelog-link data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p>
       <p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p>
     </footer>
   </main>
@@ -294,7 +153,10 @@
   <script>
     const supportedLanguages = ['en', 'ja'];
     const languageSwitch = document.querySelector('.language-switch');
-    const changelog = document.querySelector('#changelog details');
+    // The changelog moved to its own page; send old karui.jp/#changelog links there.
+    if (window.location.hash === '#changelog') {
+      window.location.replace(document.querySelector('[data-changelog-link]').href);
+    }
     let currentLanguage = 'en';
 
     function preferredLanguage() {
@@ -513,8 +375,6 @@
     window.addEventListener('resize', () => {
       if (shotViewer.open) showShot(currentShot(), false);
     });
-    if (window.location.hash === '#changelog') changelog.open = true;
-    window.addEventListener('hashchange', () => { if (window.location.hash === '#changelog') changelog.open = true; });
     setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
   </script>
   <script src="product-click-tracking.js"></script>

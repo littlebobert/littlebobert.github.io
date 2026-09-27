@@ -1,8 +1,40 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-09-26T18:37:54.355Z",
+  "updatedAt": "2026-09-27T19:01:39.691Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2104126960146448534",
+      "text": "not a-Muse-d: I made a Safari extension for Mac that hides the memes you're tired of seeing, look-alikes too, even in video previews. everything runs on your Mac. https://t.co/24shCxZG6m https://t.co/gHkqeMwm65",
+      "createdAt": "2026-09-27T08:32:14.000Z",
+      "url": "https://x.com/_bobertdowney/status/2104126960146448534",
+      "urls": [
+        {
+          "url": "https://t.co/24shCxZG6m",
+          "expandedUrl": "https://shadan.jp",
+          "displayUrl": "shadan.jp",
+          "start": 163,
+          "end": 186
+        },
+        {
+          "url": "https://t.co/gHkqeMwm65",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2104126960146448534/video/1",
+          "displayUrl": "pic.x.com/gHkqeMwm65",
+          "start": 187,
+          "end": 210
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2104126960146448534-0.png"
+        }
+      ]
+    },
     {
       "id": "2103515714648990168",
       "text": "Jev Safari extension that can filter images of that Muse mascot out of my X feed https://t.co/AyViOfTKyH",

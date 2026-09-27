@@ -4,6 +4,23 @@
         <title>Shadan</title>
         <link>https://shadan.jp/</link>
         <item>
+            <title>0.1.2</title>
+            <pubDate>Sun, 27 Sep 2026 17:23:13 +0900</pubDate>
+            <link>https://shadan.jp/</link>
+            <sparkle:version>3</sparkle:version>
+            <sparkle:shortVersionString>0.1.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Use smaller deltas for updates.
+- Added Japanese UI.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.2/Shadan-0.1.2-mac.zip" length="212449339" type="application/octet-stream" sparkle:edSignature="fV4WGGvGKMFhuLBoL/cuPMVid0hHomXbp37Vy+UmvbsX0rKFTEuJgwwV91wbKinXt7HR8DASFrypyLRigN+BBw=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.2/Shadan3-2.delta" sparkle:deltaFrom="2" length="51226" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="HtI6aLIfiF8FE6rRGqECbn8suTqPCmdFWHoDUBpUDaMkxTQQUIXpgUct487fdQXAqlo5y7lYLt/F6qd4B5J8Bg=="/>
+                <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.2/Shadan3-1.delta" sparkle:deltaFrom="1" length="56730" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="g68GCZIOSwtrLPYoi25S+Ze55tmm305bJ9CXA5dIKEwL5sMFGMoR+qmM1qamczC0x2PqXSvhK5gPt+GCGRzgDg=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.1.1</title>
             <pubDate>Sun, 27 Sep 2026 16:32:34 +0900</pubDate>
             <link>https://shadan.jp/</link>

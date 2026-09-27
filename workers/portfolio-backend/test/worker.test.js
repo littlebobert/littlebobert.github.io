@@ -241,11 +241,11 @@ test('Karui production and preview origins can record TestFlight clicks', async 
   }
 });
 
-test('Shadan production origins can record macOS download clicks', async () => {
-  // TODO: also cover Shadan's *.pages.dev preview suffix once the Pages project exists.
-  for (const origin of ['https://shadan.jp', 'https://www.shadan.jp']) {
+test('Shadan production and preview origins can record macOS download clicks', async () => {
+  for (const origin of ['https://shadan.jp', 'https://www.shadan.jp', 'https://abc123.shadan-7rm.pages.dev']) {
     const { database, env } = createEnvironment();
     env.ALLOWED_ORIGINS = `${env.ALLOWED_ORIGINS},https://shadan.jp,https://www.shadan.jp`;
+    env.ALLOWED_ORIGIN_SUFFIXES = `${env.ALLOWED_ORIGIN_SUFFIXES},.shadan-7rm.pages.dev`;
 
     const response = await handleRequest(new Request(
       'https://portfolio-backend.example/api/v1/product-click',

@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.29</title>
+            <pubDate>Mon, 28 Sep 2026 08:49:03 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>104</sparkle:version>
+            <sparkle:shortVersionString>0.5.29</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Allowed faster drags onto app icons in the mini browser.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.29/Kehai-0.5.29-mac.zip" length="3137802" type="application/octet-stream" sparkle:edSignature="gtp+Mh6YfEgZbOLFNq+GNKD9rUyOzkPtjlaFBfs5Ep5QLsIdKuyS8XfgZjJsAL/qOQSbOsnhO2CRQZ6tCtUTBQ=="/>
+        </item>
+        <item>
             <title>0.5.28</title>
             <pubDate>Sun, 27 Sep 2026 09:44:27 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fix a bug where mouse movement in the mini browser wouldn’t change the focused app.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.27/Kehai-0.5.27-mac.zip" length="3127028" type="application/octet-stream" sparkle:edSignature="ygszl3eazzQeGta2adl4o78XBZq2gaAIyibfs+YBsm96MJVNunPu63aD0NlVu6PAwf5FTKnMLCScApFtDwGhAw=="/>
-        </item>
-        <item>
-            <title>0.5.26</title>
-            <pubDate>Fri, 25 Sep 2026 08:47:12 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>101</sparkle:version>
-            <sparkle:shortVersionString>0.5.26</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Added some more logging to bug reports.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.26/Kehai-0.5.26-mac.zip" length="3127199" type="application/octet-stream" sparkle:edSignature="+AWq92IM5xj+XmjBkJBWX1duS4lxSjQbxzE8EPbs4GtILnNzohEiohVgKOcKbwHKpp1F3oJTt8G7ceKzO0rJBw=="/>
         </item>
     </channel>
 </rss>

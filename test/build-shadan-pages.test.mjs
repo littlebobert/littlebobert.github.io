@@ -83,7 +83,7 @@ test('landing page has a demo section and a coming-soon button or a tracked down
   const download = withoutComments.match(/<a class="download-link" data-product="shadan"[^>]*>/);
   if (download) {
     assert.match(download[0], /data-product-action="download-macos"/);
-    assert.match(download[0], /href="https:\/\/github\.com\/littlebobert\/shadan\/releases\/download\/([^/"]+)\/Shadan-\1-mac\.zip"/);
+    assert.match(download[0], /href="https:\/\/github\.com\/littlebobert\/shadan-releases\/releases\/download\/([^/"]+)\/Shadan-\1-mac\.zip"/);
     assert.doesNotMatch(withoutComments, /is-coming-soon"/);
   } else {
     assert.match(withoutComments, /<span class="download-link is-coming-soon"/);

@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.28</title>
+            <pubDate>Sun, 27 Sep 2026 09:44:27 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>103</sparkle:version>
+            <sparkle:shortVersionString>0.5.28</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed a bug where some apps would not show in the correct position.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.28/Kehai-0.5.28-mac.zip" length="3132334" type="application/octet-stream" sparkle:edSignature="179ZL1jFm2kU65wlIAdZfmn9zQTt56MksYPe7ZjGbr8VBrfHf+NFiwqdTHvyA8q8/WmSyLQx09u/EsFCfM+QAA=="/>
+        </item>
+        <item>
             <title>0.5.27</title>
             <pubDate>Fri, 25 Sep 2026 15:08:31 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Added some more logging to bug reports.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.26/Kehai-0.5.26-mac.zip" length="3127199" type="application/octet-stream" sparkle:edSignature="+AWq92IM5xj+XmjBkJBWX1duS4lxSjQbxzE8EPbs4GtILnNzohEiohVgKOcKbwHKpp1F3oJTt8G7ceKzO0rJBw=="/>
-        </item>
-        <item>
-            <title>0.5.25</title>
-            <pubDate>Tue, 22 Sep 2026 21:53:09 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>100</sparkle:version>
-            <sparkle:shortVersionString>0.5.25</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Refined the app icon.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.25/Kehai-0.5.25-mac.zip" length="3120298" type="application/octet-stream" sparkle:edSignature="VpQHcNJPkk9ozJX/3btFrI6mWSOGX0l7X98OghLpzonjH9tEF1fWIwvUelWIyo+1B3ejF/LUpt44to4ObVgOAw=="/>
         </item>
     </channel>
 </rss>

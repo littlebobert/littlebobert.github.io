@@ -36,7 +36,7 @@
     .hero-proposition { max-width: 540px; margin: 9pt 0 0; font-size: 10pt; line-height: 1.45; }
     .shadan-demo[hidden] { display: none; }
     .shadan-demo { margin: 10pt 0 12pt; }
-    .shadan-demo video { display: block; width: 100%; height: auto; border-radius: 12px; }
+    .shadan-demo video { display: block; width: 100%; height: auto; border-radius: 12px; background: #000; }
     .shadan-detail { padding: 6pt 0 5pt; }
     .shadan-detail p { margin: 0; }
     .shadan-detail p + p { margin-top: 7pt; }
@@ -70,9 +70,11 @@
       <div class="small-note" data-label-en="For Safari on Mac. No account needed." data-label-ja="Mac版Safari用。アカウント不要。">For Safari on Mac. No account needed.</div>
     </section>
 
-    <!-- Short demo video: add the embed below and remove the hidden attribute. -->
-    <section class="shadan-demo" hidden>
-      <!-- shadan-demo-video: embed goes here -->
+    <!-- Demo: shows its first frame until played; plays with sound. -->
+    <section class="shadan-demo">
+      <video src="assets/shadan-demo.mp4?v=1" poster="assets/shadan-demo-poster.jpg?v=1" controls playsinline preload="metadata"
+        width="1440" height="1288" data-aria-label-en="Demo: Shadan hiding Muse mascot memes on X" data-aria-label-ja="デモ：ShadanがX上のMuseマスコットのミームを非表示にする様子"
+        aria-label="Demo: Shadan hiding Muse mascot memes on X"></video>
     </section>
 
     <section class="shadan-detail">

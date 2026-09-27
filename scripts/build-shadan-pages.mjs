@@ -23,6 +23,8 @@ const assetFiles = [
   'shadan-favicon.png',
   'shadan-icon.png',
   'shadan-social.png',
+  'shadan-demo.mp4',
+  'shadan-demo-poster.jpg',
 ];
 
 await rm(outputDirectory, { force: true, recursive: true });
@@ -55,6 +57,7 @@ function createDeployedPage(source) {
     .replaceAll('href="sasu-common.css?v=4"', 'href="/sasu-common.css?v=4"')
     .replaceAll('href="assets/', 'href="/assets/')
     .replaceAll('src="assets/', 'src="/assets/')
+    .replaceAll('poster="assets/', 'poster="/assets/')
     .replaceAll('data-src-en="assets/', 'data-src-en="/assets/')
     .replaceAll('data-src-ja="assets/', 'data-src-ja="/assets/')
     .replaceAll('href="shadan.html"', 'href="/"')

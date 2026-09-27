@@ -77,6 +77,9 @@ test('builds the changelog page and links to it from every page', async () => {
 test('landing page has a demo section and a coming-soon button or a tracked download link', async () => {
   const homePage = await readOutputFile('index.html');
   assert.match(homePage, /<section class="shadan-demo"/);
+  assert.match(homePage, /<video src="\/assets\/shadan-demo\.mp4\?v=1" poster="\/assets\/shadan-demo-poster\.jpg\?v=1" controls/);
+  await readOutputFile('assets/shadan-demo.mp4');
+  await readOutputFile('assets/shadan-demo-poster.jpg');
   // Before the first release: a grey "Coming soon" button and no tracked link.
   // After scripts/update-site.py in the Shadan repo: a tracked GitHub download.
   const withoutComments = homePage.replace(/<!--[\s\S]*?-->/g, '');

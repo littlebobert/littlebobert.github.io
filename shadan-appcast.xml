@@ -4,6 +4,25 @@
         <title>Shadan</title>
         <link>https://shadan.jp/</link>
         <item>
+            <title>0.1.6</title>
+            <pubDate>Sun, 27 Sep 2026 20:46:17 +0900</pubDate>
+            <link>https://shadan.jp/</link>
+            <sparkle:version>7</sparkle:version>
+            <sparkle:shortVersionString>0.1.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fewer images hidden by mistake. When Shadan is less sure an image matches, it now blurs it instead of hiding it, and “not this” answers now also count for similar-looking images.
+- In the review grid, you can now view the full image before ticking it.
+- Bug reports include more detail about why images were hidden, still with no images, URLs or topic names.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.6/Shadan-0.1.6-mac.zip" length="212470696" type="application/octet-stream" sparkle:edSignature="lv7hf3foQ5jZxz2l7DMDnsa3SJwJSaSJ06Jc3LuB4s192ZuX8wOx7kHQjy5zyMsj9UYr2YDn4MOohar1i+KRDg=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.6/Shadan7-6.delta" sparkle:deltaFrom="6" length="46034" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="vdWw5HxVOJOmEMXJlNvYMeZKKlZMr3kE5wUDWCmOdzY5wXNI7w7VaItSA6XSbijzQQA0EWc7X16t3OM+Wc3DDQ=="/>
+                <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.6/Shadan7-5.delta" sparkle:deltaFrom="5" length="59190" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="aibCcfSJYzwboiyO7yWJaXMcSmTmw3MbPK4LDcjngon6Jm/vJjK9igrufxKdcmdMlnZbFBDy9xne4zC6vDLlAQ=="/>
+                <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.6/Shadan7-4.delta" sparkle:deltaFrom="4" length="59626" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="C0akoklaaPq/IN56wctwF9ew2IVi63XvwFJY3tIQ1IECqfQ8/g78HrQgIYcCtVdWn44vEgeqF58hDtTnL4xfBA=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.1.5</title>
             <pubDate>Sun, 27 Sep 2026 19:38:06 +0900</pubDate>
             <link>https://shadan.jp/</link>

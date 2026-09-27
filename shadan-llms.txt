@@ -1,6 +1,6 @@
 # Shadan
 
-> Shadan is a Mac app with a Safari extension that hides the meme images you're tired of seeing. Right-click an image in Safari and choose Hide with Shadan, and Shadan hides that meme and its look-alikes on X and the other sites you allow. Recognition runs entirely on the Mac.
+> Shadan is a Mac app with a Safari extension that hides the memes you're tired of seeing. Right-click an image in Safari and choose Hide with Shadan, and Shadan hides that meme and its look-alikes on X and the other sites you allow. Recognition runs entirely on the Mac.
 
 ## Features
 

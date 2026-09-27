@@ -4,6 +4,18 @@
         <title>Shadan</title>
         <link>https://shadan.jp/</link>
         <item>
+            <title>0.1.1</title>
+            <pubDate>Sun, 27 Sep 2026 16:32:34 +0900</pubDate>
+            <link>https://shadan.jp/</link>
+            <sparkle:version>2</sparkle:version>
+            <sparkle:shortVersionString>0.1.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed a bug where the macOS app showed a spurious warning about the Safari extension installation.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.1/Shadan-0.1.1-mac.zip" length="212438517" type="application/octet-stream" sparkle:edSignature="xuP6g4gbuOmfUrbsVEnWo7bIZQAOiIUNHL16c5YhDYhw8Itg/aTpLAUfLS8i9b1vzO3EI8CT63Mgdjsjq+dOBw=="/>
+        </item>
+        <item>
             <title>0.1.0</title>
             <pubDate>Sun, 27 Sep 2026 16:14:15 +0900</pubDate>
             <link>https://shadan.jp/</link>

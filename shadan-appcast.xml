@@ -3,5 +3,17 @@
     <channel>
         <title>Shadan</title>
         <link>https://shadan.jp/</link>
+        <item>
+            <title>0.1.0</title>
+            <pubDate>Sun, 27 Sep 2026 16:14:15 +0900</pubDate>
+            <link>https://shadan.jp/</link>
+            <sparkle:version>1</sparkle:version>
+            <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Initial release.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.0/Shadan-0.1.0-mac.zip" length="212439673" type="application/octet-stream" sparkle:edSignature="qbTEb43G5aOiL9Ou1+TNyTQ2PrU4j7SwlNDiFO7OvxlogQ4ghsnHnb++nG50+SnMKHXe74o/dn0uhrtyZnstCA=="/>
+        </item>
     </channel>
 </rss>

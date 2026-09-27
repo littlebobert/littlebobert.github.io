@@ -1,0 +1,39 @@
+# Shadan
+
+> Shadan is a Mac app with a Safari extension that hides the meme images you're tired of seeing. Right-click an image in Safari and choose Hide with Shadan, and Shadan hides that meme and its look-alikes on X and the other sites you allow. Recognition runs entirely on the Mac.
+
+## Features
+
+- Hides exact copies and reposts of an image you hide, even with new captions, crops or screenshots.
+- Learns a topic (a character, a person, a meme format) from images you confirm or reject, and recognizes it in new poses, outfits or scenes.
+- Hides confident matches and blurs uncertain ones so you can check them with one click; each answer to "Hide images like this?" makes it more accurate.
+- Works on X and any other site you allow in Safari.
+
+## How it works
+
+When you hide an image, Shadan immediately hides exact copies and reposts of it, then shows you similar images from your recent browsing to confirm or reject. To spot look-alikes it keeps a compact numeric fingerprint of each image you scroll past on the sites you allow, plus its web address for the review screen, for up to 30 days. Recognition uses DINOv2-small (Meta) and SigLIP 2 ViT-B/16 (Google) with Apple's Core ML, about 7 ms per image on Apple M5, plus a small per-topic classifier trained on your answers.
+
+## Privacy
+
+Images are recognized on the Mac. To check an image, the app downloads it directly from the site that serves it, without browser cookies. Images, browsing and choices are never sent to the developer or any other server. Shadan has no account, no ads and no analytics. Fingerprints can't be turned back into images and are deleted after 30 days.
+
+## Requirements and limitations
+
+- Requires macOS 15 or later, Safari, and a Mac with Apple silicon.
+- Videos are checked by their poster frame only; very small images such as icons and avatars are skipped.
+- Some images on sites where you're logged in can't be checked, because Shadan downloads images without browser cookies; they are shown normally.
+
+## Availability
+
+- Coming soon for macOS. Shadan hasn't been released yet.
+
+## Pages
+
+- [Shadan](https://shadan.jp/): Overview.
+- [Tech Specs](https://shadan.jp/specs): How it works, accuracy, speed and requirements.
+- [Changelog](https://shadan.jp/changelog): Release notes for each build.
+- [Support](https://shadan.jp/support): Setup, troubleshooting, and known limitations.
+- [Privacy](https://shadan.jp/privacy): Privacy policy.
+- [Acknowledgements](https://shadan.jp/acknowledgements): Third-party credits.
+
+Shadan is made by [Justin Garcia](https://onemorething.tokyo/) in Japan. Pages contain complete English content in static HTML, with Japanese available through each page's language control.

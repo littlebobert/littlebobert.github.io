@@ -4,6 +4,7 @@ dist-sasu/
 dist-kehai/
 dist-kotai/
 dist-karui/
+dist-shadan/
 .env.local
 .npm-cache/
 

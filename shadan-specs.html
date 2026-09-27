@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Shadan Tech Specs</title>
+  <link href="sasu-common.css?v=4" rel="stylesheet">
+  <link rel="icon" href="assets/shadan-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/shadan-icon.png?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    /* The macOS icon carries its own transparent margin; enlarge it so the tile reads at 56px. */
+    .sasu-icon.shadan-icon { flex-basis: 68px; width: 68px; height: 68px; margin: -6px; }
+    .shadan-section { padding: 6pt 0 5pt; }
+    .shadan-section p { margin: 0; }
+    .shadan-section p + p, .shadan-section ul + p, .shadan-section ol + p { margin-top: 7pt; }
+    .shadan-section ul, .shadan-section ol { padding-left: 20pt; }
+    .shadan-section h2 + ul { margin-top: 6pt; }
+    .shadan-section li + li { margin-top: 6pt; }
+    .shadan-section .small-note { margin-top: 8pt; color: #666; font-size: 9pt; }
+    .shadan-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .shadan-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+  </style>
+  <link rel="canonical" href="https://shadan.jp/specs">
+  <meta name="description" content="How Shadan works, how accurate and fast it is, and what it needs." data-label-en="How Shadan works, how accurate and fast it is, and what it needs." data-label-ja="Shadanの仕組み、精度と速度、動作環境について。">
+  <meta property="og:title" content="Shadan Tech Specs" data-label-en="Shadan Tech Specs" data-label-ja="Shadan技術仕様">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shadan.jp/specs">
+  <meta property="og:site_name" content="Shadan">
+  <meta property="og:description" content="How Shadan works, how accurate and fast it is, and what it needs." data-label-en="How Shadan works, how accurate and fast it is, and what it needs." data-label-ja="Shadanの仕組み、精度と速度、動作環境について。">
+  <meta property="og:image" content="https://shadan.jp/assets/shadan-social.png?v=1">
+  <meta property="og:image:secure_url" content="https://shadan.jp/assets/shadan-social.png?v=1">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Shadan app icon: a picture crossed out with a red line" data-label-en="The Shadan app icon: a picture crossed out with a red line" data-label-ja="赤い斜線で消された画像を描いたShadanのアプリアイコン">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shadan Tech Specs" data-label-en="Shadan Tech Specs" data-label-ja="Shadan技術仕様">
+  <meta name="twitter:description" content="How Shadan works, how accurate and fast it is, and what it needs." data-label-en="How Shadan works, how accurate and fast it is, and what it needs." data-label-ja="Shadanの仕組み、精度と速度、動作環境について。">
+  <meta name="twitter:image" content="https://shadan.jp/assets/shadan-social.png?v=1">
+  <meta name="twitter:image:alt" content="The Shadan app icon: a picture crossed out with a red line" data-label-en="The Shadan app icon: a picture crossed out with a red line" data-label-ja="赤い斜線で消された画像を描いたShadanのアプリアイコン">
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="shadan.html"><img class="sasu-icon shadan-icon" src="assets/shadan-icon.png?v=1" alt="Shadan app icon" data-alt-en="Shadan app icon" data-alt-ja="Shadanアプリアイコン"></a>
+        <div><h1 data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</h1><div class="sasu-subtitle">Shadan</div></div>
+      </div>
+    </section>
+    <section class="shadan-section">
+      <h2 data-label-en="How it works" data-label-ja="仕組み">How it works</h2>
+      <ul>
+        <li><strong data-label-en="It learns what you hide." data-label-ja="非表示にしたものを学習します。">It learns what you hide.</strong> <span data-label-en="When you hide an image, Shadan immediately hides exact copies and reposts of it. It then shows you similar images from your recent browsing; each one you confirm or reject teaches it what that topic looks like, even in new poses, outfits or scenes." data-label-ja="画像を非表示にすると、Shadanはまったく同じ画像や転載をすぐに非表示にします。続いて、最近閲覧したページから似た画像を提示します。一枚ずつ「はい」「いいえ」で答えるたびにそのトピックの特徴を学び、ポーズや服装、場面が変わっても見分けられるようになります。">When you hide an image, Shadan immediately hides exact copies and reposts of it. It then shows you similar images from your recent browsing; each one you confirm or reject teaches it what that topic looks like, even in new poses, outfits or scenes.</span></li>
+        <li><strong data-label-en="It’s careful when unsure." data-label-ja="迷ったときは慎重に。">It’s careful when unsure.</strong> <span data-label-en="Confident matches are hidden; uncertain ones are blurred so you can check with one click, and your answer to “Hide images like this?” makes it more accurate." data-label-ja="確信を持てる画像は非表示にし、判断に迷う画像はぼかして表示するので、ワンクリックで確認できます。「Hide images like this?（このような画像を非表示にしますか？）」への回答で、精度がさらに上がります。">Confident matches are hidden; uncertain ones are blurred so you can check with one click, and your answer to “Hide images like this?” makes it more accurate.</span></li>
+        <li><strong data-label-en="It remembers numbers, not pictures." data-label-ja="覚えるのは画像ではなく数値です。">It remembers numbers, not pictures.</strong> <span data-label-en="To spot look-alikes, it keeps a compact numeric fingerprint of each image you scroll past on the sites you allow, plus its web address for the review screen, for up to 30 days. Fingerprints can’t be turned back into images." data-label-ja="似た画像を見つけるため、許可したサイトで表示された画像ごとに、コンパクトな数値の「指紋」（フィンガープリント）と、確認画面で使うWebアドレスを最大30日間保存します。フィンガープリントから画像を復元することはできません。">To spot look-alikes, it keeps a compact numeric fingerprint of each image you scroll past on the sites you allow, plus its web address for the review screen, for up to 30 days. Fingerprints can’t be turned back into images.</span></li>
+        <li><strong data-label-en="It all happens on your Mac." data-label-ja="すべてMac上で完結します。">It all happens on your Mac.</strong> <span data-label-en="Recognition runs on your Mac with Apple’s Core ML; your images, browsing and choices never go to any server, including ours." data-label-ja="画像の認識は、AppleのCore MLを使ってMac上で行われます。画像や閲覧内容、あなたの選択が、当方を含むどのサーバーにも送信されることはありません。">Recognition runs on your Mac with Apple’s Core ML; your images, browsing and choices never go to any server, including ours.</span></li>
+      </ul>
+    </section>
+
+    <section class="shadan-section">
+      <h2 data-label-en="Accuracy and speed" data-label-ja="精度と速度">Accuracy and speed</h2>
+      <ul>
+        <li><strong data-label-en="Copies and reposts:" data-label-ja="コピーと転載：">Copies and reposts:</strong> <span data-label-en="about 97% caught, even with new captions, crops or screenshots; about 1 in 800 other images wrongly hidden." data-label-ja="キャプションの差し替え、トリミング、スクリーンショットでも約97%を検出。無関係な画像を誤って非表示にするのは約800枚に1枚。">about 97% caught, even with new captions, crops or screenshots; about 1 in 800 other images wrongly hidden.</span></li>
+        <li><strong data-label-en="Characters and topics:" data-label-ja="キャラクターとトピック：">Characters and topics:</strong> <span data-label-en="about 88% caught in new poses, outfits or scenes after 5 confirmed examples, with 1 in 100 other images blurred for a check." data-label-ja="例を5枚確認すると、新しいポーズ・服装・場面でも約88%を検出。無関係な画像が確認のためにぼかされるのは100枚に1枚。">about 88% caught in new poses, outfits or scenes after 5 confirmed examples, with 1 in 100 other images blurred for a check.</span></li>
+        <li><strong data-label-en="Recognition:" data-label-ja="認識速度：">Recognition:</strong> <span data-label-en="about 7 ms per image on Apple M5 (2.8 ms DINOv2, 4.2 ms SigLIP 2), using Core ML. Images seen before are answered instantly; new images are usually limited by downloading, not recognition." data-label-ja="Core MLを使用し、Apple M5で1枚あたり約7ミリ秒（DINOv2が2.8ミリ秒、SigLIP 2が4.2ミリ秒）。一度見た画像は即座に判定します。新しい画像では、たいてい認識よりもダウンロードのほうが時間がかかります。">about 7 ms per image on Apple M5 (2.8 ms DINOv2, 4.2 ms SigLIP 2), using Core ML. Images seen before are answered instantly; new images are usually limited by downloading, not recognition.</span></li>
+        <li><strong data-label-en="Models:" data-label-ja="モデル：">Models:</strong> <span data-label-en="DINOv2-small by Meta (43 MB); SigLIP 2 ViT-B/16 by Google (185 MB); plus a small per-topic classifier trained on your answers." data-label-ja="MetaのDINOv2-small（43 MB）、GoogleのSigLIP 2 ViT-B/16（185 MB）、そしてあなたの回答から学習する、トピックごとの小さな分類器。">DINOv2-small by Meta (43 MB); SigLIP 2 ViT-B/16 by Google (185 MB); plus a small per-topic classifier trained on your answers.</span></li>
+        <li><strong data-label-en="Storage:" data-label-ja="ストレージ：">Storage:</strong> <span data-label-en="about 2.3 KB of fingerprints per image seen, kept up to 30 days (46 MB at most)." data-label-ja="表示された画像1枚につき約2.3 KBのフィンガープリントを最大30日間保存（最大46 MB）。">about 2.3 KB of fingerprints per image seen, kept up to 30 days (46 MB at most).</span></li>
+      </ul>
+      <p class="small-note" data-label-en="Measured on small test sets of popular memes and one AI mascot; results on your own browsing will vary." data-label-ja="人気のミームと1体のAIマスコットからなる小規模なテストセットで測定した値です。実際の閲覧内容での結果は異なる場合があります。">Measured on small test sets of popular memes and one AI mascot; results on your own browsing will vary.</p>
+    </section>
+
+    <section class="shadan-section">
+      <h2 data-label-en="Requirements" data-label-ja="動作環境">Requirements</h2>
+      <p data-label-en="macOS 15 or later, Safari, and a Mac with Apple silicon." data-label-ja="macOS 15以降、Safari、Appleシリコン搭載のMac。">macOS 15 or later, Safari, and a Mac with Apple silicon.</p>
+    </section>
+    <footer class="shadan-footer"><p class="footer-links"><a href="shadan.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><a href="shadan-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><a href="shadan-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><a href="shadan-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><a href="shadan-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
+  </main>
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('shadan-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('shadan-language') || preferredLanguage(), false);
+  </script>
+</body>
+</html>

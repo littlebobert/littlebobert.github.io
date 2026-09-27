@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Shadan</title>
+  <link href="sasu-common.css?v=4" rel="stylesheet">
+  <link rel="icon" href="assets/shadan-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/shadan-icon.png?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://shadan.jp/">
+  <meta name="description" content="A Mac app with a Safari extension that hides the meme images you’re tired of seeing, and their look-alikes, on X and the other sites you allow. Everything runs on your Mac." data-label-en="A Mac app with a Safari extension that hides the meme images you’re tired of seeing, and their look-alikes, on X and the other sites you allow. Everything runs on your Mac." data-label-ja="見飽きたミーム画像とそれに似た画像を、Xや許可したほかのサイトで非表示にする、Safari機能拡張付きのMacアプリ。処理はすべてMac上で行われます。">
+  <meta property="og:title" content="Shadan: Hide the meme images you’re tired of seeing." data-label-en="Shadan: Hide the meme images you’re tired of seeing." data-label-ja="Shadan：見飽きたミーム画像を、非表示に。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://shadan.jp/">
+  <meta property="og:site_name" content="Shadan">
+  <meta property="og:description" content="A Mac app with a Safari extension that hides the meme images you’re tired of seeing, and their look-alikes, on X and the other sites you allow. Everything runs on your Mac." data-label-en="A Mac app with a Safari extension that hides the meme images you’re tired of seeing, and their look-alikes, on X and the other sites you allow. Everything runs on your Mac." data-label-ja="見飽きたミーム画像とそれに似た画像を、Xや許可したほかのサイトで非表示にする、Safari機能拡張付きのMacアプリ。処理はすべてMac上で行われます。">
+  <meta property="og:image" content="https://shadan.jp/assets/shadan-social.png?v=1">
+  <meta property="og:image:secure_url" content="https://shadan.jp/assets/shadan-social.png?v=1">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="The Shadan app icon: a picture crossed out with a red line" data-label-en="The Shadan app icon: a picture crossed out with a red line" data-label-ja="赤い斜線で消された画像を描いたShadanのアプリアイコン">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Shadan: Hide the meme images you’re tired of seeing." data-label-en="Shadan: Hide the meme images you’re tired of seeing." data-label-ja="Shadan：見飽きたミーム画像を、非表示に。">
+  <meta name="twitter:description" content="A Mac app with a Safari extension that hides the meme images you’re tired of seeing, and their look-alikes, on X and the other sites you allow. Everything runs on your Mac." data-label-en="A Mac app with a Safari extension that hides the meme images you’re tired of seeing, and their look-alikes, on X and the other sites you allow. Everything runs on your Mac." data-label-ja="見飽きたミーム画像とそれに似た画像を、Xや許可したほかのサイトで非表示にする、Safari機能拡張付きのMacアプリ。処理はすべてMac上で行われます。">
+  <meta name="twitter:image" content="https://shadan.jp/assets/shadan-social.png?v=1">
+  <meta name="twitter:image:alt" content="The Shadan app icon: a picture crossed out with a red line" data-label-en="The Shadan app icon: a picture crossed out with a red line" data-label-ja="赤い斜線で消された画像を描いたShadanのアプリアイコン">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    /* The macOS icon carries its own transparent margin; enlarge it so the tile reads at 56px. */
+    .sasu-icon.shadan-icon { flex-basis: 68px; width: 68px; height: 68px; margin: -6px; }
+    .sasu-hero .download-link { margin-top: 9pt; }
+    .download-link.is-coming-soon,
+    .download-link.is-coming-soon:hover { border-color: #999; background: #999; box-shadow: none; color: #fff; cursor: default; }
+    .hero-proposition { max-width: 540px; margin: 9pt 0 0; font-size: 10pt; line-height: 1.45; }
+    .shadan-demo[hidden] { display: none; }
+    .shadan-demo { margin: 10pt 0 12pt; }
+    .shadan-demo video { display: block; width: 100%; height: auto; border-radius: 12px; }
+    .shadan-detail { padding: 6pt 0 5pt; }
+    .shadan-detail p { margin: 0; }
+    .shadan-detail p + p { margin-top: 7pt; }
+    .feature-list { margin: 3pt 0 0; padding-left: 20pt; }
+    .feature-list li + li { margin-top: 5pt; }
+    .section-link { margin: 7pt 0 0; }
+    .shadan-detail .small-note { margin-top: 5pt; color: #555; }
+    .shadan-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .shadan-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+  </style>
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher">
+      <button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button>
+    </div>
+
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <img class="sasu-icon shadan-icon" src="assets/shadan-icon.png?v=1" alt="Shadan app icon: a picture crossed out with a red line" data-alt-en="Shadan app icon: a picture crossed out with a red line" data-alt-ja="赤い斜線で消された画像を描いたShadanのアプリアイコン">
+        <div>
+          <h1>Shadan</h1>
+          <div class="sasu-subtitle" data-label-en="Hide the meme images you’re tired of seeing." data-label-ja="見飽きたミーム画像を、非表示に。">Hide the meme images you’re tired of seeing.</div>
+        </div>
+      </div>
+      <p class="hero-proposition" data-label-en="Right-click a meme you’re done with. Shadan hides it, along with every repost and look-alike, as you browse." data-label-ja="もう見たくないミームを右クリック。その画像も、転載や似た画像も、ブラウズ中にShadanが非表示にします。">Right-click a meme you’re done with. Shadan hides it, along with every repost and look-alike, as you browse.</p>
+      <!--
+        Not released yet. The release script replaces this span with:
+        <a class="download-link" data-product="shadan" data-product-action="download-macos" href="https://github.com/littlebobert/shadan/releases/download/VERSION/Shadan-VERSION-mac.zip" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
+        and updates the data-shadan-current-version label below with the released version.
+      -->
+      <span class="download-link is-coming-soon" aria-disabled="true" data-label-en="Coming soon for macOS" data-label-ja="macOS版 近日公開">Coming soon for macOS</span>
+      <span class="download-version" data-shadan-current-version data-label-en="Requires macOS 15 or later on a Mac with Apple silicon" data-label-ja="macOS 15以降、Appleシリコン搭載のMacが必要です">Requires macOS 15 or later on a Mac with Apple silicon</span>
+      <div class="small-note" data-label-en="For Safari on Mac. No account needed." data-label-ja="Mac版Safari用。アカウント不要。">For Safari on Mac. No account needed.</div>
+    </section>
+
+    <!-- Short demo video: add the embed below and remove the hidden attribute. -->
+    <section class="shadan-demo" hidden>
+      <!-- shadan-demo-video: embed goes here -->
+    </section>
+
+    <section class="shadan-detail">
+      <h2 data-label-en="Why Shadan:" data-label-ja="特長：">Why Shadan:</h2>
+      <ul class="feature-list">
+        <li><strong data-label-en="One right-click." data-label-ja="右クリックひとつで。">One right-click.</strong> <span data-label-en="Hide a meme once and Shadan catches its reposts, crops and screenshots too." data-label-ja="一度非表示にすれば、転載や切り抜き、スクリーンショットもまとめて見つけます。">Hide a meme once and Shadan catches its reposts, crops and screenshots too.</span></li>
+        <li><strong data-label-en="Learns what you mean." data-label-ja="意図をくみ取る。">Learns what you mean.</strong> <span data-label-en="Confirm a few look-alikes and it will, for example, recognize the same character in new outfits and scenes." data-label-ja="似た画像をいくつか確認するだけで、たとえば服装や場面が変わった同じキャラクターも見分けられるようになります。">Confirm a few look-alikes and it will, for example, recognize the same character in new outfits and scenes.</span></li>
+        <li><strong data-label-en="Blurs when unsure." data-label-ja="迷ったらぼかす。">Blurs when unsure.</strong> <span data-label-en="Borderline images are blurred, not hidden, and one click tells Shadan if it got it right." data-label-ja="微妙な画像は隠さずにぼかします。ワンクリックで正解を教えられます。">Borderline images are blurred, not hidden, and one click tells Shadan if it got it right.</span></li>
+        <li><strong data-label-en="Works wherever you browse." data-label-ja="どこでも使える。">Works wherever you browse.</strong> <span data-label-en="X or any other site you allow in Safari." data-label-ja="Xはもちろん、Safariで許可したどのサイトでも。">X or any other site you allow in Safari.</span></li>
+      </ul>
+      <p class="section-link"><a href="shadan-specs.html" data-label-en="How it works and tech specs →" data-label-ja="仕組みと技術仕様 →">How it works and tech specs →</a></p>
+    </section>
+
+    <section class="shadan-detail">
+      <h2 data-label-en="Private by design:" data-label-ja="プライバシー：">Private by design:</h2>
+      <p><span data-label-en="Everything runs on your Mac. No account, no tracking, and nothing is ever sent to us. " data-label-ja="処理はすべてMac上で完結します。アカウントもトラッキングもなく、私たちに何かが送られることはありません。">Everything runs on your Mac. No account, no tracking, and nothing is ever sent to us. </span><a href="shadan-privacy.html" data-label-en="Privacy policy" data-label-ja="プライバシーポリシー">Privacy policy</a></p>
+    </section>
+
+    <footer class="shadan-footer">
+      <p class="footer-links"><a href="shadan-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><a href="shadan-changelog.html" data-changelog-link data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><a href="shadan-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><a href="shadan-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><a href="shadan-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p>
+      <p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p>
+    </footer>
+  </main>
+
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.querySelectorAll('[data-src-en][data-src-ja]').forEach((element) => {
+        element.src = selected === 'ja' ? element.dataset.srcJa : element.dataset.srcEn;
+      });
+      document.querySelectorAll('[data-aria-label-en][data-aria-label-ja]').forEach((element) => {
+        element.setAttribute('aria-label', selected === 'ja' ? element.dataset.ariaLabelJa : element.dataset.ariaLabelEn);
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('shadan-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('shadan-language') || preferredLanguage(), false);
+  </script>
+  <script src="product-click-tracking.js"></script>
+</body>
+</html>

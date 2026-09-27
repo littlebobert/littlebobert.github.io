@@ -241,6 +241,35 @@ test('Karui production and preview origins can record TestFlight clicks', async 
   }
 });
 
+test('Shadan production origins can record macOS download clicks', async () => {
+  // TODO: also cover Shadan's *.pages.dev preview suffix once the Pages project exists.
+  for (const origin of ['https://shadan.jp', 'https://www.shadan.jp']) {
+    const { database, env } = createEnvironment();
+    env.ALLOWED_ORIGINS = `${env.ALLOWED_ORIGINS},https://shadan.jp,https://www.shadan.jp`;
+
+    const response = await handleRequest(new Request(
+      'https://portfolio-backend.example/api/v1/product-click',
+      {
+        method: 'POST',
+        headers: {
+          Origin: origin,
+          'Content-Type': 'text/plain;charset=UTF-8',
+        },
+        body: JSON.stringify({ product: 'shadan', action: 'download-macos' }),
+      },
+    ), env);
+
+    assert.equal(response.status, 200);
+    assert.equal(response.headers.get('Access-Control-Allow-Origin'), origin);
+    const row = database.prepare(`
+      SELECT product, action, clicks FROM product_clicks
+    `).get();
+    assert.equal(row.product, 'shadan');
+    assert.equal(row.action, 'download-macos');
+    assert.equal(row.clicks, 1);
+  }
+});
+
 test('preview deployment origins are allowed but lookalike domains are not', async () => {
   const { env } = createEnvironment();
   const path = '/api/v1/track?site=justin-garcia.pages.dev&path=%2F';

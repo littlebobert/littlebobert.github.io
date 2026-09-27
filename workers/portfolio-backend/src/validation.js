@@ -11,6 +11,7 @@ const PRODUCT_CLICK_ACTIONS = new Map([
   ['kehai', new Set(['download-macos'])],
   ['kotai', new Set(['download-macos'])],
   ['sasu', new Set(['download-macos'])],
+  ['shadan', new Set(['download-macos'])],
   ['ume', new Set(['download-macos'])],
   ['yubi', new Set(['join-testflight'])],
 ]);

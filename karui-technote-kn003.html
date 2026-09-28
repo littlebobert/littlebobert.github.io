@@ -1,0 +1,178 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>KN003: Getting Reliable Answers from the On-Device Apple Foundation Model</title>
+  <link href="sasu-common.css?v=4" rel="stylesheet">
+  <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .karui-icon { box-sizing: border-box; border: 1px solid #1a211e; border-radius: 12px; }
+    .karui-section { padding: 6pt 0 5pt; }
+    .karui-section p { margin: 0; }
+    .karui-section p + p, .karui-section ul + p, .karui-section ol + p { margin-top: 7pt; }
+    .karui-section ul, .karui-section ol { padding-left: 20pt; }
+    .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .karui-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+    .karui-section h2 { margin: 6pt 0 4pt; }
+    .karui-section h3 { margin: 8pt 0 3pt; }
+    .karui-section h2 + h3 { margin-top: 0; }
+    .karui-section li + li { margin-top: 3pt; }
+    .karui-section p + ul, .karui-section p + ol { margin-top: 6pt; }
+    .karui-section h2 + ul, .karui-section h2 + ol { margin-top: 0; }
+    .karui-section > ul:last-child, .karui-section > ol:last-child { margin-bottom: 0; }
+    .karui-code { background: #f4f3ee; border-radius: 8px; padding: 8pt 10pt; overflow-x: auto; font-size: calc(0.85em + 1pt); line-height: 1.4; }
+    .karui-table { border-collapse: collapse; width: 100%; margin: 4pt 0; }
+    .karui-table th, .karui-table td { border-bottom: 1px solid #e3e1da; padding: 5pt 6pt 5pt 0; text-align: left; vertical-align: top; }
+    .karui-table th { color: #555; font-weight: 600; }
+    .karui-table td:first-child, .karui-table th:first-child { white-space: nowrap; padding-right: 14pt; }
+    .karui-table-note { color: #555; font-size: 0.85em; margin-top: 3pt !important; }
+    .karui-quote { margin: 6pt 0 6pt 0; padding: 2pt 0 2pt 10pt; border-left: 3px solid #d8d6ce; color: #333; }
+    .karui-revision-date { font-weight: 600; }
+    .swift-string { color: #c41a16; }
+    .swift-keyword { color: #9b2393; font-weight: 600; }
+    .swift-type { color: #3900a0; }
+    .swift-function { color: #326d74; }
+    .karui-note-list li + li { margin-top: 8pt; }
+    .karui-note-meta { color: #555; font-size: 0.9em; }
+    .karui-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
+    .karui-breadcrumbs a { color: #666; }
+    .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
+  </style>
+  <link rel="canonical" href="https://karui.jp/technotes/kn003">
+  <meta name="description" content="Prompt and schema choices that made Apple’s on-device model sort notifications more reliably: reason before answer, option order, stated facts, and rules that check the model." data-label-en="Prompt and schema choices that made Apple’s on-device model sort notifications more reliably: reason before answer, option order, stated facts, and rules that check the model." data-label-ja="Appleのオンデバイスモデルで通知をより確実に分類するための、プロンプトとスキーマの工夫。答えの前の理由、選択肢の順番、事実の明記、モデルを確かめるルール。">
+  <meta property="og:title" content="KN003: Getting Reliable Answers from the On-Device Apple Foundation Model" data-label-en="KN003: Getting Reliable Answers from the On-Device Apple Foundation Model" data-label-ja="KN003：AppleのオンデバイスFoundation Modelから確実な答えを得る">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2026-09-28">
+  <meta property="og:url" content="https://karui.jp/technotes/kn003">
+  <meta property="og:site_name" content="Karui">
+  <meta property="og:description" content="Prompt and schema choices that made Apple’s on-device model sort notifications more reliably: reason before answer, option order, stated facts, and rules that check the model." data-label-en="Prompt and schema choices that made Apple’s on-device model sort notifications more reliably: reason before answer, option order, stated facts, and rules that check the model." data-label-ja="Appleのオンデバイスモデルで通知をより確実に分類するための、プロンプトとスキーマの工夫。答えの前の理由、選択肢の順番、事実の明記、モデルを確かめるルール。">
+  <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KN003: Getting Reliable Answers from the On-Device Apple Foundation Model" data-label-en="KN003: Getting Reliable Answers from the On-Device Apple Foundation Model" data-label-ja="KN003：AppleのオンデバイスFoundation Modelから確実な答えを得る">
+  <meta name="twitter:description" content="Prompt and schema choices that made Apple’s on-device model sort notifications more reliably: reason before answer, option order, stated facts, and rules that check the model." data-label-en="Prompt and schema choices that made Apple’s on-device model sort notifications more reliably: reason before answer, option order, stated facts, and rules that check the model." data-label-ja="Appleのオンデバイスモデルで通知をより確実に分類するための、プロンプトとスキーマの工夫。答えの前の理由、選択肢の順番、事実の明記、モデルを確かめるルール。">
+  <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta name="twitter:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <nav class="karui-breadcrumbs" aria-label="Breadcrumb"><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><a href="karui-technotes.html" data-label-en="Technical Notes" data-label-ja="技術ノート">Technical Notes</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="KN003" data-label-ja="KN003">KN003</span></nav>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="karui.html"><img class="sasu-icon karui-icon" src="assets/karui-icon.png?v=2" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン"></a>
+        <div><h1 data-label-en="KN003: Getting Reliable Answers from the On-Device Apple Foundation Model" data-label-ja="KN003：AppleのオンデバイスFoundation Modelから確実な答えを得る">KN003: Getting Reliable Answers from the On-Device Apple Foundation Model</h1><div class="sasu-subtitle">Karui</div></div>
+      </div>
+    </section>
+    <section class="karui-section">
+      <p data-label-en="Prompt and schema choices that made Apple’s on-device model categorize Karui’s notifications more reliably, and where hard-coded deterministic rules do better than the model." data-label-ja="AppleのオンデバイスモデルでKaruiの通知をより確実に分類できるようにした、プロンプトとスキーマの工夫。そして、あらかじめ組み込んだ決定論的なルールのほうがモデルより向いている場面。">Prompt and schema choices that made Apple’s on-device model categorize Karui’s notifications more reliably, and where hard-coded deterministic rules do better than the model.</p>
+      <p class="karui-note-meta" data-label-en="September 28, 2026 · iOS 27.0 · Tested on iPhone 17 Pro" data-label-ja="2026年9月28日 · iOS 27.0 · iPhone 17 Proで検証">September 28, 2026 · iOS 27.0 · Tested on iPhone 17 Pro</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Overview" data-label-ja="概要">Overview</h2>
+      <p><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span data-label-en=" is an on-device iPhone notification filter built on iOS 27’s new notification trigger. For each notification, Apple’s on-device model decides whether it’s Important, Neutral, or Spam, with a short reason. Each change below fixed a specific wrong answer seen in my Karui History." data-label-ja="は、iOS 27の新しい通知トリガーを使った、オンデバイスで動作するiPhone向けの通知フィルターです。通知ごとに、Appleのオンデバイスモデルが「重要」「中立」「スパム」のどれかと短い理由を判断します。以下の変更は、どれも私のKaruiの履歴で見つかった具体的な誤判定を直したものです。"> is an on-device iPhone notification filter built on iOS 27’s new notification trigger. For each notification, Apple’s on-device model decides whether it’s Important, Neutral, or Spam, with a short reason. Each change below fixed a specific wrong answer seen in my Karui History.</span></p>
+      <p><span data-label-en="There is some overlap with Apple’s " data-label-ja="本ノートの内容は、Appleの">There is some overlap with Apple’s </span><a href="https://developer.apple.com/documentation/technotes/tn3193-managing-the-on-device-foundation-model-s-context-window" data-label-en="TN3193" data-label-ja="TN3193">TN3193</a><span data-label-en=" here, which covers keeping your prompts small." data-label-ja="と一部重なります。TN3193では、プロンプトを短く保つ方法を解説しています。"> here, which covers keeping your prompts small.</span></p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Put the reason before the answer" data-label-ja="答えの前に理由を置く">Put the reason before the answer</h2>
+      <p><span data-label-en="A " data-label-ja="">A </span><a href="https://developer.apple.com/documentation/foundationmodels/generable" data-label-en="Generable" data-label-ja="Generable">Generable</a><span data-label-en=" type’s properties are generated in the order they’re declared. With the category first, the model picked a category and then wrote a reason to justify it. With the reason first, the category follows from what the model just wrote:" data-label-ja="型のプロパティは、宣言した順に生成されます。分類を先にすると、モデルは分類を選んでから、それを正当化する理由を書きました。理由を先にすると、分類は直前に書いた内容から導かれます。"> type’s properties are generated in the order they’re declared. With the category first, the model picked a category and then wrote a reason to justify it. With the reason first, the category follows from what the model just wrote:</span></p>
+      <pre class="karui-code"><code><span class="swift-keyword">@Generable</span>
+<span class="swift-keyword">struct</span> <span class="swift-type">TriageDecision</span> {
+    <span class="swift-keyword">@Guide</span>(description: <span class="swift-string">&quot;What the notification is and what, if anything, it asks of the user and by when&quot;</span>)
+    <span class="swift-keyword">let</span> reason: <span class="swift-type">String</span>
+
+    <span class="swift-keyword">@Guide</span>(description: <span class="swift-string">&quot;The notification handling decision that follows from the reason&quot;</span>)
+    <span class="swift-keyword">let</span> category: <span class="swift-type">TriageCategory</span>
+}</code></pre>
+      <p data-label-en="The reason’s guide also tells the model what to look for: what the notification asks of the user, and by when." data-label-ja="理由のガイドでは、何を見るべきかも伝えています。通知がユーザーに何を求めているか、そしていつまでか、です。">The reason’s guide also tells the model what to look for: what the notification asks of the user, and by when.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Name and order the options on purpose" data-label-ja="選択肢の名前と順番を意識する">Name and order the options on purpose</h2>
+      <p data-label-en="Neutral comes first: an unsure model tends to take the first option, and it had been taking an urgent-sounding one." data-label-ja="「Neutral」を先頭にしています。迷ったモデルは最初の選択肢を選びがちで、以前は緊急そうな名前の選択肢を選んでいたためです。">Neutral comes first: an unsure model tends to take the first option, and it had been taking an urgent-sounding one.</p>
+      <pre class="karui-code"><code><span class="swift-keyword">@Generable</span>
+<span class="swift-keyword">enum</span> <span class="swift-type">TriageCategory</span> {
+    <span class="swift-keyword">case</span> neutral
+    <span class="swift-keyword">case</span> important
+    <span class="swift-keyword">case</span> spam
+}</code></pre>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Give the model what it can’t know" data-label-ja="モデルが知りえない情報を渡す">Give the model what it can’t know</h2>
+      <p data-label-en="The model has no clock, so without the time a notification arrived, “tomorrow” in any message read as urgent. Each prompt now starts with it." data-label-ja="モデルには時計がないため、通知の受信時刻がないと、どのメッセージの「明日」も緊急に見えていました。今はプロンプトの最初に受信時刻を入れています。">The model has no clock, so without the time a notification arrived, “tomorrow” in any message read as urgent. Each prompt now starts with it.</p>
+      <pre class="karui-code"><code>Received: Monday, September 28, 2026 at 12:59
+Source: Slack
+Source is an important app: no
+Sender: Kensuke Sada
+Title: Reply from Kensuke Sada
+Subtitle (often a chat or thread name): #internal-kotoba-app-sales
+Body: @Yuta SASAKI When does this look like it will happen?
+Addressed to: @Yuta, not the user</code></pre>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Only say what’s true" data-label-ja="当てはまることだけを書く">Only say what’s true</h2>
+      <p data-label-en="Most apps never mark notifications time sensitive, and the model read “Time sensitive: false” as “not urgent.” The prompt now mentions it only when it’s true. Similarly, an empty list of terms read as a dangling label, so an empty field now says “none.”" data-label-ja="ほとんどのアプリは通知を「時間確認が必要」に設定しません。モデルは「時間確認が必要：いいえ」を「緊急ではない」と解釈していました。今は当てはまるときだけ書いています。同様に、語句の空のリストは中途半端なラベルに見えたため、空の項目には「none」と書いています。">Most apps never mark notifications time sensitive, and the model read “Time sensitive: false” as “not urgent.” The prompt now mentions it only when it’s true. Similarly, an empty list of terms read as a dangling label, so an empty field now says “none.”</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="State facts instead of hoping for inferences" data-label-ja="推論に頼らず、事実を書く">State facts instead of hoping for inferences</h2>
+      <p data-label-en="The model treated “@Yuta, can you send me that report?” in a Slack channel as a request to the user. Karui now finds the @names in a message, and if none is the user, adds a line saying so, as in the example above. The instructions also name the case: a message addressed to someone else is Neutral." data-label-ja="モデルは、Slackのチャンネルでの「@Yuta、あのレポートを送ってもらえますか？」を、ユーザーへの依頼として扱っていました。今はメッセージ内の@の名前を見つけ、どれもユーザーでなければ、上の例のようにその旨の行を加えています。指示文でも、ほかの人宛てのメッセージは「中立」だと明記しています。">The model treated “@Yuta, can you send me that report?” in a Slack channel as a request to the user. Karui now finds the @names in a message, and if none is the user, adds a line saying so, as in the example above. The instructions also name the case: a message addressed to someone else is Neutral.</p>
+      <p data-label-en="The same applies to what the model shouldn’t guess. It linked messages to the user’s calendar events that had nothing to do with them, so the instructions now say to connect a notification to an event only when it names that event or matches its place or time." data-label-ja="モデルに推測させたくないことについても同じです。関係のないカレンダーの予定にメッセージを結び付けていたため、今は、通知がその予定の名前を挙げているか、場所や時刻が一致する場合だけ結び付けるよう指示しています。">The same applies to what the model shouldn’t guess. It linked messages to the user’s calendar events that had nothing to do with them, so the instructions now say to connect a notification to an event only when it names that event or matches its place or time.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Check the answer with rules" data-label-ja="答えをルールで確かめる">Check the answer with rules</h2>
+      <p data-label-en="Even with “Addressed to: @Yuta, not the user” in the prompt, the model kept marking that Slack message Important. So after the model answers, a rule checks it: if the model says Important but the message is addressed only to other people, the result drops to Neutral with the reason “Addressed to @Yuta, not you,” unless the message matches the user’s urgent terms or is marked time sensitive. For reference, Private Cloud Compute got the same message right without the check." data-label-ja="プロンプトに「宛先：@Yuta（ユーザーではない）」とあっても、モデルはそのSlackのメッセージを「重要」と判定し続けました。そこで、モデルの回答後にルールで確認しています。モデルが「重要」と判断しても、メッセージがほかの人だけに宛てたものであれば、「@Yutaさん宛てで、あなた宛てではありません」という理由で「中立」に下げます。ただし、ユーザーの緊急の語句に一致する場合や、時間確認が必要な通知は除きます。参考までに、Private Cloud Computeは、この確認なしでも同じメッセージを正しく判定しました。">Even with “Addressed to: @Yuta, not the user” in the prompt, the model kept marking that Slack message Important. So after the model answers, a rule checks it: if the model says Important but the message is addressed only to other people, the result drops to Neutral with the reason “Addressed to @Yuta, not you,” unless the message matches the user’s urgent terms or is marked time sensitive. For reference, Private Cloud Compute got the same message right without the check.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Decide with rules first where the answer is certain" data-label-ja="答えが明らかなときは、先にルールで決める">Decide with rules first where the answer is certain</h2>
+      <p><span data-label-en="Messages from the user’s important contacts, mentions of the user, one-time codes, and matches for the user’s urgent terms never reach the model. Rules decide them instantly and can’t get them wrong, and every call they save is one more in the small background budget that " data-label-ja="重要な連絡先からのメッセージ、ユーザーへのメンション、確認コード、緊急の語句に一致するメッセージは、モデルに渡しません。ルールなら即座に、間違いなく判定できます。また、節約した呼び出しの分だけ、">Messages from the user’s important contacts, mentions of the user, one-time codes, and matches for the user’s urgent terms never reach the model. Rules decide them instantly and can’t get them wrong, and every call they save is one more in the small background budget that </span><a href="karui-technote-kn001.html" data-label-en="KN001" data-label-ja="KN001">KN001</a><span data-label-en=" describes." data-label-ja="で説明した、バックグラウンドのわずかな枠に余裕ができます。"> describes.</span></p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Revision History" data-label-ja="改訂履歴">Revision History</h2>
+      <ul><li><span class="karui-revision-date" data-label-en="2026-09-28" data-label-ja="2026-09-28">2026-09-28</span><span data-label-en=" First published." data-label-ja=" 初版公開。"> First published.</span></li></ul>
+    </section>
+    <section class="karui-section">
+      <p><a href="karui-technotes.html" data-label-en="← All Technical Notes" data-label-ja="← 技術ノート一覧">← All Technical Notes</a></p>
+    </section>
+    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
+  </main>
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('karui-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
+  </script>
+</body>
+</html>

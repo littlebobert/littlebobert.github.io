@@ -34,17 +34,17 @@
     .karui-table th { color: #555; font-weight: 600; }
     .karui-note-list li + li { margin-top: 8pt; }
     .karui-note-meta { color: #555; font-size: 0.9em; }
-    .karui-breadcrumbs { color: #666; margin: 2pt 0 6pt; }
+    .karui-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
     .karui-breadcrumbs a { color: #666; }
     .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
   </style>
   <link rel="canonical" href="https://karui.jp/technotes">
-  <meta name="description" content="Technical Notes on how Karui works and what I learned from creating it." data-label-en="Technical Notes on how Karui works and what I learned from creating it." data-label-ja="Karuiの仕組みと開発を通じて学んだことをまとめた技術ノート。">
+  <meta name="description" content="Technical Notes on how Karui works and what I learned while working on it." data-label-en="Technical Notes on how Karui works and what I learned while working on it." data-label-ja="Karuiの仕組みと開発中に学んだことをまとめた技術ノート。">
   <meta property="og:title" content="Karui Technical Notes" data-label-en="Karui Technical Notes" data-label-ja="Karui技術ノート">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://karui.jp/technotes">
   <meta property="og:site_name" content="Karui">
-  <meta property="og:description" content="Technical Notes on how Karui works and what I learned from creating it." data-label-en="Technical Notes on how Karui works and what I learned from creating it." data-label-ja="Karuiの仕組みと開発を通じて学んだことをまとめた技術ノート。">
+  <meta property="og:description" content="Technical Notes on how Karui works and what I learned while working on it." data-label-en="Technical Notes on how Karui works and what I learned while working on it." data-label-ja="Karuiの仕組みと開発中に学んだことをまとめた技術ノート。">
   <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=5">
   <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=5">
   <meta property="og:image:type" content="image/png">
@@ -53,7 +53,7 @@
   <meta property="og:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Karui Technical Notes" data-label-en="Karui Technical Notes" data-label-ja="Karui技術ノート">
-  <meta name="twitter:description" content="Technical Notes on how Karui works and what I learned from creating it." data-label-en="Technical Notes on how Karui works and what I learned from creating it." data-label-ja="Karuiの仕組みと開発を通じて学んだことをまとめた技術ノート。">
+  <meta name="twitter:description" content="Technical Notes on how Karui works and what I learned while working on it." data-label-en="Technical Notes on how Karui works and what I learned while working on it." data-label-ja="Karuiの仕組みと開発中に学んだことをまとめた技術ノート。">
   <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=5">
   <meta name="twitter:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
 </head>
@@ -68,11 +68,13 @@
       </div>
     </section>
     <section class="karui-section">
-      <p data-label-en="Notes on how Karui works and what I learned from creating it." data-label-ja="Karuiの仕組みと、開発を通じて学んだことをまとめたノートです。">Notes on how Karui works and what I learned from creating it.</p>
+      <p data-label-en="Notes on how Karui works and what I learned while working on it." data-label-ja="Karuiの仕組みと、開発中に学んだことをまとめたノートです。">Notes on how Karui works and what I learned while working on it.</p>
     </section>
     <section class="karui-section">
       <ul class="karui-note-list">
         <li><a href="karui-technote-kn001.html" data-label-en="KN001: Foundation Models in the Background" data-label-ja="KN001：バックグラウンドでのFoundation Models">KN001: Foundation Models in the Background</a><br><span class="karui-note-meta" data-label-en="September 28, 2026" data-label-ja="2026年9月28日">September 28, 2026</span><br><span data-label-en="The rate limiting Karui meets when it runs Apple’s on-device model from a Shortcuts automation in the background, and how it copes, including asking Private Cloud Compute instead." data-label-ja="Karuiがショートカットのオートメーションからバックグラウンドでオンデバイスモデルを使うときに受けるレート制限と、Private Cloud Computeに問い合わせる方法を含む対処法。">The rate limiting Karui meets when it runs Apple’s on-device model from a Shortcuts automation in the background, and how it copes, including asking Private Cloud Compute instead.</span></li>
+        <li><a href="karui-technote-kn002.html" data-label-en="KN002: Accessing Private Cloud Compute in an App Through Shortcuts" data-label-ja="KN002：ショートカット経由のPrivate Cloud Compute">KN002: Accessing Private Cloud Compute in an App Through Shortcuts</a><br><span class="karui-note-meta" data-label-en="September 28, 2026" data-label-ja="2026年9月28日">September 28, 2026</span><br><span data-label-en="How Karui asks Apple’s Private Cloud Compute for a second opinion through the user’s shortcut, and the alerting modes built on it." data-label-ja="Karuiがユーザーのショートカット経由でAppleのPrivate Cloud Computeにセカンドオピニオンを求める仕組みと、それを使った通知のモード。">How Karui asks Apple’s Private Cloud Compute for a second opinion through the user’s shortcut, and the alerting modes built on it.</span></li>
+        <li><a href="karui-technote-kn003.html" data-label-en="KN003: Getting Reliable Answers from the On-Device Apple Foundation Model" data-label-ja="KN003：AppleのオンデバイスFoundation Modelから確実な答えを得る">KN003: Getting Reliable Answers from the On-Device Apple Foundation Model</a><br><span class="karui-note-meta" data-label-en="September 28, 2026" data-label-ja="2026年9月28日">September 28, 2026</span><br><span data-label-en="Prompt and schema choices that made Apple’s on-device model categorize Karui’s notifications more reliably, and where hard-coded deterministic rules do better than the model." data-label-ja="AppleのオンデバイスモデルでKaruiの通知をより確実に分類できるようにした、プロンプトとスキーマの工夫。そして、あらかじめ組み込んだ決定論的なルールのほうがモデルより向いている場面。">Prompt and schema choices that made Apple’s on-device model categorize Karui’s notifications more reliably, and where hard-coded deterministic rules do better than the model.</span></li>
       </ul>
     </section>
     <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>

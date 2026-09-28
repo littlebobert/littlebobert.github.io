@@ -28,13 +28,13 @@
     .karui-note-header { border: 1px solid #d8d6ce; border-radius: 10px; padding: 9pt 11pt; margin: 4pt 0 6pt; }
     .karui-note-header p + p { margin-top: 4pt; }
     .karui-note-label { color: #555; }
-    .karui-code { background: #f4f3ee; border-radius: 8px; padding: 8pt 10pt; overflow-x: auto; font-size: 0.85em; line-height: 1.4; }
+    .karui-code { background: #f4f3ee; border-radius: 8px; padding: 8pt 10pt; overflow-x: auto; font-size: calc(0.85em + 1pt); line-height: 1.4; }
     .karui-table { border-collapse: collapse; width: 100%; font-size: 0.92em; margin: 4pt 0; }
     .karui-table th, .karui-table td { border-bottom: 1px solid #e3e1da; padding: 5pt 6pt 5pt 0; text-align: left; vertical-align: top; }
     .karui-table th { color: #555; font-weight: 600; }
     .karui-note-list li + li { margin-top: 8pt; }
     .karui-note-meta { color: #555; }
-    .karui-breadcrumbs { color: #666; margin: 2pt 0 6pt; }
+    .karui-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
     .karui-breadcrumbs a { color: #666; }
     .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
   </style>
@@ -82,7 +82,7 @@
         <li data-label-en="Rules on your iPhone decide first. Messages from your important contacts, messages that mention one of your names, one-time codes, and messages matching your urgent terms are always Important." data-label-ja="まずiPhone上のルールで判定します。重要な連絡先からのメッセージ、あなたの名前へのメンション、確認コード、緊急の語句に一致するメッセージは常に「重要」です。">Rules on your iPhone decide first. Messages from your important contacts, messages that mention one of your names, one-time codes, and messages matching your urgent terms are always Important.</li>
         <li data-label-en="Everything else goes to Apple’s on-device Foundation Models, with your names, terms, important apps, and upcoming calendar events as private context. The model returns a category, a confidence, a short reason, and an interest score from 1 to 5 that ranks the daily summary." data-label-ja="それ以外はAppleのオンデバイスFoundation Modelsが判定します。あなたの名前、語句、重要なアプリ、今後のカレンダーの予定を非公開のコンテキストとして使います。モデルは分類、確信度、短い理由、毎日のまとめの並び順に使う1〜5の関心度を返します。">Everything else goes to Apple’s on-device Foundation Models, with your names, terms, important apps, and upcoming calendar events as private context. The model returns a category, a confidence, a short reason, and an interest score from 1 to 5 that ranks the daily summary.</li>
         <li><span data-label-en="When the on-device model isn’t available, for example when iOS limits it while Karui runs in the background, transparent rules decide instead, and Karui rechecks those notifications later. See " data-label-ja="iOSがバックグラウンド実行中のKaruiにオンデバイスモデルの利用を制限したときなど、モデルが使えない場合は透明性のあるルールで判定し、あとでKaruiがその通知を再確認します。詳しくは">When the on-device model isn’t available, for example when iOS limits it while Karui runs in the background, transparent rules decide instead, and Karui rechecks those notifications later. See </span><a href="karui-technote-kn001.html" data-label-en="Technical Note KN001" data-label-ja="技術ノートKN001">Technical Note KN001</a><span data-label-en="." data-label-ja="をご覧ください。">.</span></li>
-        <li data-label-en="Second Opinion, off by default, has your Shortcut ask Apple’s Private Cloud Compute with the Use Model action: only when the on-device model couldn’t sort a notification, or, with When to Ask set to Always, after every on-device answer." data-label-ja="初期設定でオフのセカンドオピニオンでは、ショートカットの「モデルを使用」アクションでAppleのPrivate Cloud Computeに問い合わせます。オンデバイスモデルが分類できなかったときだけ、または「問い合わせのタイミング」を「常に」にするとデバイス上の判断のたびに問い合わせます。">Second Opinion, off by default, has your Shortcut ask Apple’s Private Cloud Compute with the Use Model action: only when the on-device model couldn’t sort a notification, or, with When to Ask set to Always, after every on-device answer.</li>
+        <li><span data-label-en="Second Opinion, off by default, has your Shortcut ask Apple’s Private Cloud Compute with the Use Model action: only when the on-device model couldn’t sort a notification, or, with When to Ask set to Always, after every on-device answer. See " data-label-ja="初期設定でオフのセカンドオピニオンでは、ショートカットの「モデルを使用」アクションでAppleのPrivate Cloud Computeに問い合わせます。オンデバイスモデルが分類できなかったときだけ、または「問い合わせのタイミング」を「常に」にするとデバイス上の判断のたびに問い合わせます。詳しくは">Second Opinion, off by default, has your Shortcut ask Apple’s Private Cloud Compute with the Use Model action: only when the on-device model couldn’t sort a notification, or, with When to Ask set to Always, after every on-device answer. See </span><a href="karui-technote-kn002.html" data-label-en="Technical Note KN002" data-label-ja="技術ノートKN002">Technical Note KN002</a><span data-label-en="." data-label-ja="をご覧ください。">.</span></li>
       </ul>
     </section>
     <section class="karui-section">

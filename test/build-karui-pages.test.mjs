@@ -79,6 +79,8 @@ test('builds Tech Specs and the Technical Notes, linked from every page', async 
   const specsPage = await readOutputFile('specs/index.html');
   const technotesPage = await readOutputFile('technotes/index.html');
   const kn001Page = await readOutputFile('technotes/kn001/index.html');
+  const kn002Page = await readOutputFile('technotes/kn002/index.html');
+  const kn003Page = await readOutputFile('technotes/kn003/index.html');
 
   assert.match(specsPage, /<h1[^>]*>Tech Specs<\/h1>/);
   assert.match(technotesPage, /<h1[^>]*>Technical Notes<\/h1>/);
@@ -86,6 +88,13 @@ test('builds Tech Specs and the Technical Notes, linked from every page', async 
   assert.match(kn001Page, /<link rel="canonical" href="https:\/\/karui\.jp\/technotes\/kn001">/);
   assert.match(kn001Page, /src="\/assets\/karui-icon\.png\?v=2"/);
   assert.match(technotesPage, /href="\/technotes\/kn001"/);
+  assert.match(technotesPage, /href="\/technotes\/kn002"/);
+  assert.match(kn002Page, /<h1[^>]*>KN002: Accessing Private Cloud Compute in an App Through Shortcuts<\/h1>/);
+  assert.match(kn002Page, /<link rel="canonical" href="https:\/\/karui\.jp\/technotes\/kn002">/);
+  assert.match(kn001Page, /href="\/technotes\/kn002"/);
+  assert.match(technotesPage, /href="\/technotes\/kn003"/);
+  assert.match(kn003Page, /<h1[^>]*>KN003: Getting Reliable Answers from the On-Device Apple Foundation Model<\/h1>/);
+  assert.match(kn003Page, /<link rel="canonical" href="https:\/\/karui\.jp\/technotes\/kn003">/);
   assert.match(specsPage, /href="\/technotes\/kn001"/);
 
   const pages = await Promise.all(
@@ -96,7 +105,7 @@ test('builds Tech Specs and the Technical Notes, linked from every page', async 
     assert.match(page, /href="\/technotes"/);
     assert.doesNotMatch(page, /href="karui-(specs|technotes|technote-kn001)\.html"/);
   }
-  for (const page of [specsPage, technotesPage, kn001Page]) {
+  for (const page of [specsPage, technotesPage, kn001Page, kn002Page, kn003Page]) {
     assert.doesNotMatch(page, /href="karui-[a-z0-9-]+\.html"/);
   }
 });

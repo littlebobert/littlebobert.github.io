@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>KN002: Accessing Private Cloud Compute in an App Through Shortcuts</title>
+  <link href="sasu-common.css?v=4" rel="stylesheet">
+  <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .karui-icon { box-sizing: border-box; border: 1px solid #1a211e; border-radius: 12px; }
+    .karui-section { padding: 6pt 0 5pt; }
+    .karui-section p { margin: 0; }
+    .karui-section p + p, .karui-section ul + p, .karui-section ol + p { margin-top: 7pt; }
+    .karui-section ul, .karui-section ol { padding-left: 20pt; }
+    .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .karui-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+    .karui-section h2 { margin: 6pt 0 4pt; }
+    .karui-section h3 { margin: 8pt 0 3pt; }
+    .karui-section h2 + h3 { margin-top: 0; }
+    .karui-section li + li { margin-top: 3pt; }
+    .karui-section p + ul, .karui-section p + ol { margin-top: 6pt; }
+    .karui-section h2 + ul, .karui-section h2 + ol { margin-top: 0; }
+    .karui-section > ul:last-child, .karui-section > ol:last-child { margin-bottom: 0; }
+    .karui-code { background: #f4f3ee; border-radius: 8px; padding: 8pt 10pt; overflow-x: auto; font-size: calc(0.85em + 1pt); line-height: 1.4; }
+    .karui-table { border-collapse: collapse; width: 100%; margin: 4pt 0; }
+    .karui-table th, .karui-table td { border-bottom: 1px solid #e3e1da; padding: 5pt 6pt 5pt 0; text-align: left; vertical-align: top; }
+    .karui-table th { color: #555; font-weight: 600; }
+    .karui-table td:first-child, .karui-table th:first-child { white-space: nowrap; padding-right: 14pt; }
+    .karui-table-note { color: #555; font-size: 0.85em; margin-top: 3pt !important; }
+    .karui-quote { margin: 6pt 0 6pt 0; padding: 2pt 0 2pt 10pt; border-left: 3px solid #d8d6ce; color: #333; }
+    .karui-revision-date { font-weight: 600; }
+    .karui-mode-name { font-weight: 600; }
+    .swift-keyword { color: #9b2393; font-weight: 600; }
+    .swift-type { color: #3900a0; }
+    .swift-function { color: #326d74; }
+    .karui-note-list li + li { margin-top: 8pt; }
+    .karui-note-meta { color: #555; font-size: 0.9em; }
+    .karui-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
+    .karui-breadcrumbs a { color: #666; }
+    .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
+  </style>
+  <link rel="canonical" href="https://karui.jp/technotes/kn002">
+  <meta name="description" content="Karui hands a prompt to the user’s shortcut, whose Use Model action asks Apple’s Private Cloud Compute in 2 to 3 seconds. How the round trip works, and the alerting modes built on it." data-label-en="Karui hands a prompt to the user’s shortcut, whose Use Model action asks Apple’s Private Cloud Compute in 2 to 3 seconds. How the round trip works, and the alerting modes built on it." data-label-ja="Karuiがユーザーのショートカットにプロンプトを渡し、「モデルを使用」アクションが2〜3秒でAppleのPrivate Cloud Computeに問い合わせます。往復の仕組みと、それを使った通知のモード。">
+  <meta property="og:title" content="KN002: Accessing Private Cloud Compute in an App Through Shortcuts" data-label-en="KN002: Accessing Private Cloud Compute in an App Through Shortcuts" data-label-ja="KN002：ショートカット経由でアプリからPrivate Cloud Computeを利用する">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2026-09-28">
+  <meta property="og:url" content="https://karui.jp/technotes/kn002">
+  <meta property="og:site_name" content="Karui">
+  <meta property="og:description" content="Karui hands a prompt to the user’s shortcut, whose Use Model action asks Apple’s Private Cloud Compute in 2 to 3 seconds. How the round trip works, and the alerting modes built on it." data-label-en="Karui hands a prompt to the user’s shortcut, whose Use Model action asks Apple’s Private Cloud Compute in 2 to 3 seconds. How the round trip works, and the alerting modes built on it." data-label-ja="Karuiがユーザーのショートカットにプロンプトを渡し、「モデルを使用」アクションが2〜3秒でAppleのPrivate Cloud Computeに問い合わせます。往復の仕組みと、それを使った通知のモード。">
+  <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KN002: Accessing Private Cloud Compute in an App Through Shortcuts" data-label-en="KN002: Accessing Private Cloud Compute in an App Through Shortcuts" data-label-ja="KN002：ショートカット経由でアプリからPrivate Cloud Computeを利用する">
+  <meta name="twitter:description" content="Karui hands a prompt to the user’s shortcut, whose Use Model action asks Apple’s Private Cloud Compute in 2 to 3 seconds. How the round trip works, and the alerting modes built on it." data-label-en="Karui hands a prompt to the user’s shortcut, whose Use Model action asks Apple’s Private Cloud Compute in 2 to 3 seconds. How the round trip works, and the alerting modes built on it." data-label-ja="Karuiがユーザーのショートカットにプロンプトを渡し、「モデルを使用」アクションが2〜3秒でAppleのPrivate Cloud Computeに問い合わせます。往復の仕組みと、それを使った通知のモード。">
+  <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta name="twitter:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <nav class="karui-breadcrumbs" aria-label="Breadcrumb"><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><a href="karui-technotes.html" data-label-en="Technical Notes" data-label-ja="技術ノート">Technical Notes</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="KN002" data-label-ja="KN002">KN002</span></nav>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="karui.html"><img class="sasu-icon karui-icon" src="assets/karui-icon.png?v=2" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン"></a>
+        <div><h1 data-label-en="KN002: Accessing Private Cloud Compute in an App Through Shortcuts" data-label-ja="KN002：ショートカット経由でアプリからPrivate Cloud Computeを利用する">KN002: Accessing Private Cloud Compute in an App Through Shortcuts</h1><div class="sasu-subtitle">Karui</div></div>
+      </div>
+    </section>
+    <section class="karui-section">
+      <p data-label-en="How Karui asks Apple’s Private Cloud Compute for a second opinion through the user’s shortcut, and the alerting modes built on it." data-label-ja="Karuiがユーザーのショートカット経由でAppleのPrivate Cloud Computeにセカンドオピニオンを求める仕組みと、それを使った通知のモード。">How Karui asks Apple’s Private Cloud Compute for a second opinion through the user’s shortcut, and the alerting modes built on it.</p>
+      <p class="karui-note-meta" data-label-en="September 28, 2026 · iOS 27.0 · Measured on iPhone 17 Pro" data-label-ja="2026年9月28日 · iOS 27.0 · iPhone 17 Proで計測">September 28, 2026 · iOS 27.0 · Measured on iPhone 17 Pro</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Overview" data-label-ja="概要">Overview</h2>
+      <p><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span data-label-en=" is an on-device iPhone notification filter built on iOS 27’s new notification trigger. Its on-device model is rate limited while Karui runs in the background, as " data-label-ja="は、iOS 27の新しい通知トリガーを使った、オンデバイスで動作するiPhone向けの通知フィルターです。バックグラウンドで動作している間は、オンデバイスモデルにレート制限がかかります（"> is an on-device iPhone notification filter built on iOS 27’s new notification trigger. Its on-device model is rate limited while Karui runs in the background, as </span><a href="karui-technote-kn001.html" data-label-en="Technical Note KN001" data-label-ja="技術ノートKN001">Technical Note KN001</a><span data-label-en=" describes. When that happens, Karui can ask " data-label-ja="を参照）。そのような場合、Karuiは"> describes. When that happens, Karui can ask </span><a href="https://security.apple.com/blog/private-cloud-compute/" data-label-en="Private Cloud Compute" data-label-ja="Private Cloud Compute">Private Cloud Compute</a><span data-label-en=" instead. The request doesn’t come from Karui: the user’s shortcut makes it with the Use Model action, and Karui prepares the prompt and applies the answer." data-label-ja="に問い合わせることができます。リクエストを送るのはKaruiではなく、ユーザーのショートカットの「モデルを使用」アクションです。Karuiはプロンプトを用意し、回答を反映します。"> instead. The request doesn’t come from Karui: the user’s shortcut makes it with the Use Model action, and Karui prepares the prompt and applies the answer.</span></p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="The round trip" data-label-ja="往復の流れ">The round trip</h2>
+      <ol>
+        <li data-label-en="The Shortcuts automation runs Karui’s triage intent, an App Intent, for each notification." data-label-ja="ショートカットのオートメーションが、通知ごとにKaruiの分類用App Intentを実行します。">The Shortcuts automation runs Karui’s triage intent, an App Intent, for each notification.</li>
+        <li data-label-en="The intent classifies the notification and returns an entity with the History item’s ID, a flag asking for a second opinion, and a ready-made prompt." data-label-ja="インテントが通知を分類し、履歴の項目ID、セカンドオピニオンを求めるフラグ、作成済みのプロンプトを含むエンティティを返します。">The intent classifies the notification and returns an entity with the History item’s ID, a flag asking for a second opinion, and a ready-made prompt.</li>
+        <li data-label-en="If the flag is set, the shortcut runs Use Model with Private Cloud Compute and that prompt." data-label-ja="フラグが立っていれば、ショートカットがそのプロンプトでPrivate Cloud Computeの「モデルを使用」を実行します。">If the flag is set, the shortcut runs Use Model with Private Cloud Compute and that prompt.</li>
+        <li data-label-en="The shortcut passes the ID and the model’s answer to a second intent, which updates the classification and alerts the user if the answer is Important." data-label-ja="ショートカットがIDとモデルの回答を2つ目のインテントに渡し、分類を更新します。回答が「重要」ならユーザーに通知します。">The shortcut passes the ID and the model’s answer to a second intent, which updates the classification and alerts the user if the answer is Important.</li>
+      </ol>
+      <p data-label-en="The entity’s properties are what the shortcut reads:" data-label-ja="ショートカットが読み取るのは、エンティティの次のプロパティです。">The entity’s properties are what the shortcut reads:</p>
+      <pre class="karui-code"><code><span class="swift-keyword">struct</span> <span class="swift-type">TriageOutcomeEntity</span>: <span class="swift-type">TransientAppEntity</span> {
+    <span class="swift-keyword">@Property</span>(title: "Record ID")
+    <span class="swift-keyword">var</span> recordID: <span class="swift-type">String</span>?
+
+    <span class="swift-keyword">@Property</span>(title: "Wants Second Opinion")
+    <span class="swift-keyword">var</span> wantsSecondOpinion: <span class="swift-type">Bool</span>
+
+    <span class="swift-keyword">@Property</span>(title: "Second Opinion Prompt")
+    <span class="swift-keyword">var</span> secondOpinionPrompt: <span class="swift-type">String</span>?
+}</code></pre>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Reading the answer" data-label-ja="回答の読み取り">Reading the answer</h2>
+      <p data-label-en="Use Model returns plain text, so the prompt asks for exactly three lines:" data-label-ja="「モデルを使用」はプレーンテキストを返すため、プロンプトでは次の3行だけを求めます。">Use Model returns plain text, so the prompt asks for exactly three lines:</p>
+      <pre class="karui-code"><code>Category: Important, Neutral, or Spam
+Confidence: a number from 0.0 through 1.0
+Reason: the reason, in at most 20 words</code></pre>
+      <p data-label-en="The parser still forgives extra words, missing lines, and labels written in Japanese. If no line is labeled, the first category word in the answer decides." data-label-ja="それでもパーサーは、余分な言葉、欠けた行、日本語で書かれたラベルを許容します。ラベル付きの行がなければ、回答の中で最初に現れる分類の語で判定します。">The parser still forgives extra words, missing lines, and labels written in Japanese. If no line is labeled, the first category word in the answer decides.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Three modes" data-label-ja="3つのモード">Three modes</h2>
+      <p data-label-en="The whole trip through the shortcut usually takes 2 to 3 seconds, so Karui offers three modes:" data-label-ja="ショートカットを経由した問い合わせ全体は通常2〜3秒で終わるため、Karuiには3つのモードがあります。">The whole trip through the shortcut usually takes 2 to 3 seconds, so Karui offers three modes:</p>
+      <ul>
+        <li><span class="karui-mode-name" data-label-en="When Needed" data-label-ja="必要なときだけ">When Needed</span><span data-label-en=": asks only after an on-device failure." data-label-ja="：オンデバイスで失敗したときだけ問い合わせます。">: asks only after an on-device failure.</span></li>
+        <li><span class="karui-mode-name" data-label-en="Always" data-label-ja="常に">Always</span><span data-label-en=": asks after every on-device answer, alerting right away and correcting afterward. If the cloud says an alert wasn’t needed, Karui removes it." data-label-ja="：デバイス上の判断のたびに問い合わせ、すぐに通知してからあとで修正します。クラウドが不要だったと判断した通知は、Karuiが削除します。">: asks after every on-device answer, alerting right away and correcting afterward. If the cloud says an alert wasn’t needed, Karui removes it.</span></li>
+        <li><span class="karui-mode-name" data-label-en="First" data-label-ja="先に">First</span><span data-label-en=" (experimental): holds an alert the on-device model marked Important for up to 20 seconds while the cloud answers." data-label-ja="（試験的）：オンデバイスモデルが「重要」とした通知を、クラウドが回答するまで最大20秒保留します。"> (experimental): holds an alert the on-device model marked Important for up to 20 seconds while the cloud answers.</span></li>
+      </ul>
+      <p data-label-en="In First mode, the held alert is a local notification scheduled 20 seconds out with a known identifier. When the answer arrives, the second intent cancels it if it hasn’t fired, then sends the alert only if the cloud agrees. If the shortcut fails partway, nothing cancels the held alert, so iOS delivers it anyway. If it already fired and the cloud disagrees, Karui removes it." data-label-ja="「先に」では、保留中の通知は、既知の識別子を付けて20秒後に予約したローカル通知です。回答が届くと、2つ目のインテントはまだ配信されていなければそれを取り消し、クラウドが同意した場合だけ通知します。ショートカットが途中で失敗しても、保留中の通知を取り消すものがないため、iOSがそのまま配信します。すでに配信されていてクラウドが同意しなければ、Karuiが削除します。">In First mode, the held alert is a local notification scheduled 20 seconds out with a known identifier. When the answer arrives, the second intent cancels it if it hasn’t fired, then sends the alert only if the cloud agrees. If the shortcut fails partway, nothing cancels the held alert, so iOS delivers it anyway. If it already fired and the cloud disagrees, Karui removes it.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Asking from inside the app" data-label-ja="アプリ内からの問い合わせ">Asking from inside the app</h2>
+      <p data-label-en="Karui can’t run a shortcut in the background, but it doesn’t need to. When someone reruns a classification in Karui, the app posts a quiet notification carrying the item’s ID. The notification trigger fires for Karui’s own notifications too, so the user’s automation runs, the triage intent recognizes the marker and returns that item’s prompt, and the shortcut’s usual steps do the rest." data-label-ja="Karuiはバックグラウンドでショートカットを実行できませんが、その必要もありません。Karuiで分類をやり直すと、アプリは項目IDを含む静かな通知を送ります。通知トリガーはKarui自身の通知でも作動するため、ユーザーのオートメーションが実行され、分類のインテントが目印を認識してその項目のプロンプトを返し、あとはショートカットのいつもの手順で処理されます。">Karui can’t run a shortcut in the background, but it doesn’t need to. When someone reruns a classification in Karui, the app posts a quiet notification carrying the item’s ID. The notification trigger fires for Karui’s own notifications too, so the user’s automation runs, the triage intent recognizes the marker and returns that item’s prompt, and the shortcut’s usual steps do the rest.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="What’s sent" data-label-ja="送信される内容">What’s sent</h2>
+      <p data-label-en="The prompt contains only the notification’s text and app, whether it’s one of the user’s important apps, the user’s name, handles and any nickname, and their sorting terms. Notifications decided by rules, contact details, and calendar events never leave the iPhone." data-label-ja="プロンプトに含まれるのは、通知の本文とアプリ、それがユーザーの重要なアプリかどうか、ユーザーの名前、ハンドル、ニックネーム、分類用の語句だけです。ルールで判定された通知、連絡先の情報、カレンダーの予定がiPhoneの外に出ることはありません。">The prompt contains only the notification’s text and app, whether it’s one of the user’s important apps, the user’s name, handles and any nickname, and their sorting terms. Notifications decided by rules, contact details, and calendar events never leave the iPhone.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Revision History" data-label-ja="改訂履歴">Revision History</h2>
+      <ul><li><span class="karui-revision-date" data-label-en="2026-09-28" data-label-ja="2026-09-28">2026-09-28</span><span data-label-en=" First published." data-label-ja=" 初版公開。"> First published.</span></li></ul>
+    </section>
+    <section class="karui-section">
+      <p><a href="karui-technotes.html" data-label-en="← All Technical Notes" data-label-ja="← 技術ノート一覧">← All Technical Notes</a></p>
+    </section>
+    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
+  </main>
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('karui-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
+  </script>
+</body>
+</html>

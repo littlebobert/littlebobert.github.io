@@ -59,9 +59,9 @@ test('builds the changelog page and links to it from every page', async () => {
     assert.match(page, /href="\/changelog"/);
     assert.doesNotMatch(page, /href="karui-changelog\.html"/);
   }
-  // The landing page keeps only the current-version label; entries live on /changelog.
+  // The landing page shows no version (the App Store does); entries live on /changelog.
   assert.doesNotMatch(pages[0], /karui-changelog:start/);
-  assert.match(pages[0], /data-karui-current-version/);
+  assert.doesNotMatch(pages[0], /data-karui-current-version/);
 });
 
 test('publishes llms.txt with links to pages that exist', async () => {

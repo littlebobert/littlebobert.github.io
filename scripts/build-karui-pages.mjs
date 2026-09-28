@@ -18,7 +18,6 @@ const kn004Directory = path.join(technotesDirectory, 'kn004');
 
 const siteFiles = [
   '_headers',
-  'product-click-tracking.js',
   'sasu-common.css',
 ];
 

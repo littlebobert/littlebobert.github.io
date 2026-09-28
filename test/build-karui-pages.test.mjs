@@ -62,6 +62,8 @@ test('builds the changelog page and links to it from every page', async () => {
   // The landing page shows no version (the App Store does); entries live on /changelog.
   assert.doesNotMatch(pages[0], /karui-changelog:start/);
   assert.doesNotMatch(pages[0], /data-karui-current-version/);
+  // Downloads are counted by App Store Connect, so the site doesn't track clicks.
+  assert.doesNotMatch(pages[0], /product-click-tracking|data-product=/);
 });
 
 test('publishes llms.txt with links to pages that exist', async () => {

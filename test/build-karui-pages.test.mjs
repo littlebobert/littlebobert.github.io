@@ -87,7 +87,7 @@ test('builds Tech Specs and the Technical Notes, linked from every page', async 
 
   assert.match(specsPage, /<h1[^>]*>Tech Specs<\/h1>/);
   assert.match(technotesPage, /<h1[^>]*>Technical Notes<\/h1>/);
-  assert.match(kn001Page, /<h1[^>]*>KN001: Foundation Models in the Background<\/h1>/);
+  assert.match(kn001Page, /<h1[^>]*>KN001: Apple’s On-Device Foundation Model Is Rate Limited in the Background<\/h1>/);
   assert.match(kn001Page, /<link rel="canonical" href="https:\/\/karui\.jp\/technotes\/kn001">/);
   assert.match(kn001Page, /src="\/assets\/karui-icon\.png\?v=2"/);
   assert.match(technotesPage, /href="\/technotes\/kn001"/);

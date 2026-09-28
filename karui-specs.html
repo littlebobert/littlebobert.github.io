@@ -37,6 +37,48 @@
     .karui-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
     .karui-breadcrumbs a { color: #666; }
     .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
+    .karui-flow { margin: 10pt 0 2pt; font-size: 0.92em; line-height: 1.4; }
+    .kf-step, .kf-result { background: #f4f3ee; border: 1px solid #d8d6ce; border-radius: 8px; padding: 6pt 9pt; }
+    .kf-source-col { margin-right: 174px; }
+    .kf-apns { border: 1.5px solid #777; border-radius: 12px; padding: 6pt 9pt; text-align: center; }
+    .kf-apns span { display: block; color: #555; font-size: 0.95em; }
+    .kf-step small, .kf-result span, .kf-cloud span { display: block; color: #555; font-size: 0.95em; }
+    .kf-arrow { position: relative; width: 0; height: 16px; margin: 0 auto; border-left: 1.5px solid #1a211e; }
+    .kf-arrow::after { content: ""; position: absolute; left: -5px; bottom: -1px; border: 4.5px solid transparent; border-top: 6px solid #1a211e; border-bottom: 0; }
+    .kf-main { display: grid; grid-template-columns: 1fr 150px; gap: 24px; align-items: start; }
+    .kf-phone { position: relative; border: 2px solid #1a211e; border-radius: 14px; padding: 13pt 9pt; }
+    .kf-phone-label { position: absolute; top: -9pt; left: 10pt; background: #fff; padding: 0 5pt; font-weight: bold; }
+    .kf-order { margin: 3pt 0 0; padding-left: 16pt !important; }
+    .kf-order li + li { margin-top: 2pt !important; }
+    .kf-results { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
+    .kf-results::before { content: ""; position: absolute; top: 0; left: calc((100% - 8px) / 4); right: calc((100% - 8px) / 4 + 1.5px); border-top: 1.5px solid #1a211e; }
+    .kf-karui { position: relative; }
+    .kf-karui::after { content: ""; position: absolute; top: 100%; left: 50%; height: 10px; border-left: 1.5px solid #1a211e; }
+    .kf-branch { display: flex; flex-direction: column; }
+    .kf-branch .kf-result { flex: 1; }
+    .kf-labeled-arrow { position: relative; padding: 16px 0 22px; text-align: center; color: #555; font-size: 0.9em; line-height: 1.3; }
+    .kf-labeled-arrow::before { content: ""; position: absolute; top: 0; bottom: 1px; left: 50%; border-left: 1.5px solid #1a211e; }
+    .kf-labeled-arrow::after { content: ""; position: absolute; bottom: -1px; left: calc(50% - 4px); border: 4.5px solid transparent; border-top: 6px solid #1a211e; border-bottom: 0; }
+    .kf-labeled-arrow span { position: relative; background: #fff; padding: 3px 5px; }
+    .kf-result strong { display: block; }
+    .kf-important { border-color: #1a211e; background: #fff; }
+    .kf-model-row { display: grid; grid-template-columns: 1fr 18px 118px; align-items: center; }
+    .kf-model { border: 1.5px solid #777; border-radius: 12px; padding: 6pt 8pt; }
+    .kf-link { position: relative; border-top: 1.5px solid #1a211e; }
+    .kf-link::before, .kf-link::after { content: ""; position: absolute; top: -5.25px; border: 4.5px solid transparent; }
+    .kf-link::before { left: -1px; border-right: 6px solid #1a211e; border-left: 0; }
+    .kf-link::after { right: -1px; border-left: 6px solid #1a211e; border-right: 0; }
+    .kf-cloud { position: relative; margin-top: 18pt; border: 1.5px dashed #777; border-radius: 12px; padding: 6pt 8pt; }
+    .kf-cloud::before { content: ""; position: absolute; top: 18px; left: -41px; width: 39px; border-top: 1.5px dashed #777; }
+    .kf-cloud-tag { color: #555; font-size: 0.9em; margin-bottom: 2pt; }
+    @media (max-width: 560px) {
+      .kf-main { grid-template-columns: 1fr; gap: 16px; }
+      .kf-source-col { margin-right: 0; }
+      .kf-model-row { grid-template-columns: 1fr 14px 108px; }
+      .kf-model { padding: 6pt 7pt; }
+      .kf-cloud { margin-top: 0; }
+      .kf-cloud::before { top: -18px; left: 50%; width: 0; height: 16px; border-top: 0; border-left: 1.5px dashed #777; }
+    }
   </style>
   <link rel="canonical" href="https://karui.jp/specs">
   <meta name="description" content="How Karui works: classification, speed, privacy, and requirements." data-label-en="How Karui works: classification, speed, privacy, and requirements." data-label-ja="Karuiの仕組み：分類、速度、プライバシー、動作環境。">
@@ -73,8 +115,37 @@
         <li data-label-en="A Focus silences the apps you choose and allows only Karui." data-label-ja="集中モードで選んだアプリを消音し、Karuiだけを許可します。">A Focus silences the apps you choose and allows only Karui.</li>
         <li data-label-en="For each notification from those apps, iOS 27’s Shortcuts trigger “When I receive a notification” runs the Karui Shortcut, which passes the notification’s app, title, text, and sender to Karui." data-label-ja="それらのアプリから通知が届くたびに、iOS 27のショートカットのトリガー「通知を受信したとき」がKaruiショートカットを実行し、通知のアプリ、タイトル、本文、送信者をKaruiに渡します。">For each notification from those apps, iOS 27’s Shortcuts trigger “When I receive a notification” runs the Karui Shortcut, which passes the notification’s app, title, text, and sender to Karui.</li>
         <li data-label-en="Karui classifies the notification as Important, Neutral, or Spam." data-label-ja="Karuiが通知を「重要」「中立」「スパム」に分類します。">Karui classifies the notification as Important, Neutral, or Spam.</li>
-        <li data-label-en="Karui posts Important notifications again, and your Focus lets them through. Neutral and Spam notifications stay quiet and are kept in History; Neutral ones can also appear in a daily summary." data-label-ja="重要な通知はKaruiがあらためて通知し、集中モードを通過します。中立とスパムの通知は静かなまま履歴に保存され、中立の通知は毎日のまとめにも含められます。">Karui posts Important notifications again, and your Focus lets them through. Neutral and Spam notifications stay quiet and are kept in History; Neutral ones can also appear in a daily summary.</li>
+        <li data-label-en="Karui posts Important notifications again, and your Focus lets them through. Neutral and Spam notifications stay quiet. Every notification is kept in History, and Neutral ones can also appear in a daily summary." data-label-ja="重要な通知はKaruiがあらためて通知し、集中モードを通過します。中立とスパムの通知は静かなままです。すべての通知は履歴に保存され、中立の通知は毎日のまとめにも含められます。">Karui posts Important notifications again, and your Focus lets them through. Neutral and Spam notifications stay quiet. Every notification is kept in History, and Neutral ones can also appear in a daily summary.</li>
       </ol>
+      <figure class="karui-flow" aria-labelledby="karui-flow-title">
+        <div class="kf-source-col">
+          <div class="kf-apns"><strong data-label-en="Apple Push Notification service" data-label-ja="Appleプッシュ通知サービス">Apple Push Notification service</strong><span data-label-en="Delivers notifications from other apps’ servers" data-label-ja="ほかのアプリのサーバーからの通知を届ける">Delivers notifications from other apps’ servers</span></div>
+          <div class="kf-labeled-arrow"><span data-label-en="A notification from an app your Focus silences" data-label-ja="集中モードで消音したアプリの通知">A notification from an app your Focus silences</span></div>
+        </div>
+        <div class="kf-main">
+          <div class="kf-phone">
+            <div class="kf-phone-label" id="karui-flow-title" data-label-en="Your iPhone" data-label-ja="あなたのiPhone">Your iPhone</div>
+            <div class="kf-step"><strong data-label-en="Karui Shortcut" data-label-ja="Karuiショートカット">Karui Shortcut</strong><small data-label-en="Runs on “When I receive a notification” and passes the app, title, text, and sender to Karui" data-label-ja="「通知を受信したとき」に実行され、アプリ、タイトル、本文、送信者をKaruiに渡す">Runs on “When I receive a notification” and passes the app, title, text, and sender to Karui</small></div>
+            <div class="kf-arrow" aria-hidden="true"></div>
+            <div class="kf-model-row">
+              <div class="kf-step kf-karui"><strong data-label-en="Karui" data-label-ja="Karui">Karui</strong>
+                <ol class="kf-order">
+                  <li data-label-en="Uses hard-coded rules for important contacts, one-time codes, urgent terms, and mentions of your name, handles, or nicknames" data-label-ja="重要な連絡先、確認コード、緊急の語句、あなたの名前・ハンドル名・ニックネームへのメンションを、あらかじめ組み込んだルールで判定">Uses hard-coded rules for important contacts, one-time codes, urgent terms, and mentions of your name, handles, or nicknames</li>
+                  <li data-label-en="If no hard-coded rule is triggered, Karui asks Apple’s on-device model, with your names, terms, and calendar as private context" data-label-ja="どのルールにも当てはまらないときは、あなたの名前、語句、カレンダーを非公開のコンテキストとして、Appleのオンデバイスモデルに問い合わせる">If no hard-coded rule is triggered, Karui asks Apple’s on-device model, with your names, terms, and calendar as private context</li>
+                  <li><span data-label-en="If Apple’s on-device model " data-label-ja="Appleのオンデバイスモデルが">If Apple’s on-device model </span><a href="karui-technote-kn001.html" data-label-en="isn’t available" data-label-ja="使えない">isn’t available</a><span data-label-en=", rules decide and Karui rechecks later" data-label-ja="ときはルールで判定し、あとで再確認">, rules decide and Karui rechecks later</span></li>
+                </ol>
+              </div>
+              <div class="kf-link" aria-hidden="true"></div>
+              <div class="kf-model"><strong data-label-en="Apple’s on-device Foundation Model" data-label-ja="AppleのオンデバイスFoundation Model">Apple’s on-device Foundation Model</strong></div>
+            </div>
+            <div class="kf-results">
+              <div class="kf-branch"><div class="kf-labeled-arrow"><span data-label-en="Every result" data-label-ja="すべての結果">Every result</span></div><div class="kf-result"><strong data-label-en="History" data-label-ja="履歴">History</strong><span data-label-en="Saved on your iPhone with its reason." data-label-ja="理由とともにiPhoneに保存。">Saved on your iPhone with its reason.</span></div></div>
+              <div class="kf-branch"><div class="kf-labeled-arrow"><span data-label-en="Important only" data-label-ja="重要な通知だけ">Important only</span></div><div class="kf-result kf-important"><strong data-label-en="Karui’s alert" data-label-ja="Karuiの通知">Karui’s alert</strong><span data-label-en="Posted again; your Focus lets it through." data-label-ja="あらためて通知され、集中モードを通過する。">Posted again; your Focus lets it through.</span></div></div>
+            </div>
+          </div>
+          <div class="kf-cloud"><div class="kf-cloud-tag" data-label-en="Second Opinion · off by default" data-label-ja="セカンドオピニオン・初期設定でオフ">Second Opinion · off by default</div><strong data-label-en="Apple’s Private Cloud Compute" data-label-ja="AppleのPrivate Cloud Compute">Apple’s Private Cloud Compute</strong><span data-label-en="Your Shortcut asks with Use Model and hands the answer back to Karui" data-label-ja="ショートカットが「モデルを使用」で問い合わせ、答えをKaruiに返す">Your Shortcut asks with Use Model and hands the answer back to Karui</span></div>
+        </div>
+      </figure>
     </section>
     <section class="karui-section">
       <h2 data-label-en="Classification" data-label-ja="分類">Classification</h2>

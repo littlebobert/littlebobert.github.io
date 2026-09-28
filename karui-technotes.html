@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Karui Technical Notes</title>
+  <link href="sasu-common.css?v=4" rel="stylesheet">
+  <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .karui-icon { box-sizing: border-box; border: 1px solid #1a211e; border-radius: 12px; }
+    .karui-section { padding: 6pt 0 5pt; }
+    .karui-section p { margin: 0; }
+    .karui-section p + p, .karui-section ul + p, .karui-section ol + p { margin-top: 7pt; }
+    .karui-section ul, .karui-section ol { padding-left: 20pt; }
+    .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .karui-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+    .karui-section h2 { margin: 6pt 0 4pt; }
+    .karui-section h3 { margin: 8pt 0 3pt; }
+    .karui-section li + li { margin-top: 3pt; }
+    .karui-section p + ul, .karui-section p + ol { margin-top: 6pt; }
+    .karui-section h2 + ul, .karui-section h2 + ol { margin-top: 0; }
+    .karui-section > ul:last-child, .karui-section > ol:last-child { margin-bottom: 0; }
+    .karui-note-header { border: 1px solid #d8d6ce; border-radius: 10px; padding: 9pt 11pt; margin: 4pt 0 6pt; }
+    .karui-note-header p + p { margin-top: 4pt; }
+    .karui-note-label { color: #555; }
+    .karui-code { background: #f4f3ee; border-radius: 8px; padding: 8pt 10pt; overflow-x: auto; font-size: 0.85em; line-height: 1.4; }
+    .karui-table { border-collapse: collapse; width: 100%; font-size: 0.92em; margin: 4pt 0; }
+    .karui-table th, .karui-table td { border-bottom: 1px solid #e3e1da; padding: 5pt 6pt 5pt 0; text-align: left; vertical-align: top; }
+    .karui-table th { color: #555; font-weight: 600; }
+    .karui-note-list li + li { margin-top: 8pt; }
+    .karui-note-meta { color: #555; font-size: 0.9em; }
+    .karui-breadcrumbs { font-size: 0.85em; color: #666; margin: 2pt 0 6pt; }
+    .karui-breadcrumbs a { color: #666; }
+    .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
+  </style>
+  <link rel="canonical" href="https://karui.jp/technotes">
+  <meta name="description" content="Technical Notes on how Karui works and what I learned from creating it." data-label-en="Technical Notes on how Karui works and what I learned from creating it." data-label-ja="Karuiの仕組みと開発を通じて学んだことをまとめた技術ノート。">
+  <meta property="og:title" content="Karui Technical Notes" data-label-en="Karui Technical Notes" data-label-ja="Karui技術ノート">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://karui.jp/technotes">
+  <meta property="og:site_name" content="Karui">
+  <meta property="og:description" content="Technical Notes on how Karui works and what I learned from creating it." data-label-en="Technical Notes on how Karui works and what I learned from creating it." data-label-ja="Karuiの仕組みと開発を通じて学んだことをまとめた技術ノート。">
+  <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Karui Technical Notes" data-label-en="Karui Technical Notes" data-label-ja="Karui技術ノート">
+  <meta name="twitter:description" content="Technical Notes on how Karui works and what I learned from creating it." data-label-en="Technical Notes on how Karui works and what I learned from creating it." data-label-ja="Karuiの仕組みと開発を通じて学んだことをまとめた技術ノート。">
+  <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta name="twitter:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <nav class="karui-breadcrumbs" aria-label="Breadcrumb"><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="Technical Notes" data-label-ja="技術ノート">Technical Notes</span></nav>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="karui.html"><img class="sasu-icon karui-icon" src="assets/karui-icon.png?v=2" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン"></a>
+        <div><h1 data-label-en="Technical Notes" data-label-ja="技術ノート">Technical Notes</h1><div class="sasu-subtitle">Karui</div></div>
+      </div>
+    </section>
+    <section class="karui-section">
+      <p data-label-en="Notes on how Karui works and what I learned from creating it." data-label-ja="Karuiの仕組みと、開発を通じて学んだことをまとめたノートです。">Notes on how Karui works and what I learned from creating it.</p>
+    </section>
+    <section class="karui-section">
+      <ul class="karui-note-list">
+        <li><a href="karui-technote-kn001.html" data-label-en="KN001: Foundation Models in the Background" data-label-ja="KN001：バックグラウンドでのFoundation Models">KN001: Foundation Models in the Background</a><br><span class="karui-note-meta" data-label-en="September 28, 2026" data-label-ja="2026年9月28日">September 28, 2026</span><br><span data-label-en="The rate limiting Karui meets when it runs Apple’s on-device model from a Shortcuts automation in the background, and how it copes, including asking Private Cloud Compute instead." data-label-ja="Karuiがショートカットのオートメーションからバックグラウンドでオンデバイスモデルを使うときに受けるレート制限と、Private Cloud Computeに問い合わせる方法を含む対処法。">The rate limiting Karui meets when it runs Apple’s on-device model from a Shortcuts automation in the background, and how it copes, including asking Private Cloud Compute instead.</span></li>
+      </ul>
+    </section>
+    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
+  </main>
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('karui-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
+  </script>
+</body>
+</html>

@@ -67,10 +67,36 @@ test('builds the changelog page and links to it from every page', async () => {
 test('publishes llms.txt with links to pages that exist', async () => {
   const llms = await readOutputFile('llms.txt');
   assert.match(llms, /^# Karui\n\n> /);
-  const routes = [...llms.matchAll(/\]\(https:\/\/karui\.jp\/([a-z]*)\)/g)].map((match) => match[1]);
-  assert.deepEqual(routes, ['', 'changelog', 'support', 'privacy', 'acknowledgements']);
+  const routes = [...llms.matchAll(/\]\(https:\/\/karui\.jp\/([a-z0-9/]*)\)/g)].map((match) => match[1]);
+  assert.deepEqual(routes, ['specs', 'technotes/kn001', '', 'changelog', 'support', 'privacy', 'acknowledgements']);
   for (const route of routes) {
     await readOutputFile(route ? `${route}/index.html` : 'index.html');
   }
   assert.match(await readOutputFile('_headers'), /\/llms\.txt\n\s+Content-Type: text\/plain; charset=utf-8/);
+});
+
+test('builds Tech Specs and the Technical Notes, linked from every page', async () => {
+  const specsPage = await readOutputFile('specs/index.html');
+  const technotesPage = await readOutputFile('technotes/index.html');
+  const kn001Page = await readOutputFile('technotes/kn001/index.html');
+
+  assert.match(specsPage, /<h1[^>]*>Tech Specs<\/h1>/);
+  assert.match(technotesPage, /<h1[^>]*>Technical Notes<\/h1>/);
+  assert.match(kn001Page, /<h1[^>]*>KN001: Foundation Models in the Background<\/h1>/);
+  assert.match(kn001Page, /<link rel="canonical" href="https:\/\/karui\.jp\/technotes\/kn001">/);
+  assert.match(kn001Page, /src="\/assets\/karui-icon\.png\?v=2"/);
+  assert.match(technotesPage, /href="\/technotes\/kn001"/);
+  assert.match(specsPage, /href="\/technotes\/kn001"/);
+
+  const pages = await Promise.all(
+    ['index.html', 'privacy/index.html', 'support/index.html', 'acknowledgements/index.html', 'changelog/index.html'].map(readOutputFile),
+  );
+  for (const page of pages) {
+    assert.match(page, /href="\/specs"/);
+    assert.match(page, /href="\/technotes"/);
+    assert.doesNotMatch(page, /href="karui-(specs|technotes|technote-kn001)\.html"/);
+  }
+  for (const page of [specsPage, technotesPage, kn001Page]) {
+    assert.doesNotMatch(page, /href="karui-[a-z0-9-]+\.html"/);
+  }
 });

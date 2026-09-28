@@ -9,6 +9,9 @@ const privacyDirectory = path.join(outputDirectory, 'privacy');
 const supportDirectory = path.join(outputDirectory, 'support');
 const acknowledgementsDirectory = path.join(outputDirectory, 'acknowledgements');
 const changelogDirectory = path.join(outputDirectory, 'changelog');
+const specsDirectory = path.join(outputDirectory, 'specs');
+const technotesDirectory = path.join(outputDirectory, 'technotes');
+const kn001Directory = path.join(technotesDirectory, 'kn001');
 
 const siteFiles = [
   '_headers',
@@ -33,6 +36,8 @@ await Promise.all([
   mkdir(supportDirectory, { recursive: true }),
   mkdir(acknowledgementsDirectory, { recursive: true }),
   mkdir(changelogDirectory, { recursive: true }),
+  mkdir(specsDirectory, { recursive: true }),
+  mkdir(kn001Directory, { recursive: true }),
 ]);
 
 await Promise.all(
@@ -64,7 +69,10 @@ function createDeployedPage(source) {
       'href="karui-acknowledgements.html"',
       'href="/acknowledgements"',
     )
-    .replaceAll('href="karui-changelog.html"', 'href="/changelog"');
+    .replaceAll('href="karui-changelog.html"', 'href="/changelog"')
+    .replaceAll('href="karui-specs.html"', 'href="/specs"')
+    .replaceAll('href="karui-technotes.html"', 'href="/technotes"')
+    .replaceAll('href="karui-technote-kn001.html"', 'href="/technotes/kn001"');
 }
 
 const [homeSource, privacySource, supportSource, acknowledgementsSource, changelogSource] =
@@ -99,5 +107,18 @@ await Promise.all([
   writeFile(path.join(outputDirectory, 'changelog.html'), changelogPage),
   writeFile(path.join(changelogDirectory, 'index.html'), changelogPage),
 ]);
+
+// Tech Specs and the Technical Notes, each at a clean route.
+const technicalPages = [
+  ['karui-specs.html', ['specs.html', 'specs/index.html']],
+  ['karui-technotes.html', ['technotes.html', 'technotes/index.html']],
+  ['karui-technote-kn001.html', ['technotes/kn001.html', 'technotes/kn001/index.html']],
+];
+await Promise.all(
+  technicalPages.map(async ([source, outputs]) => {
+    const page = createDeployedPage(await readFile(path.join(rootDirectory, source), 'utf8'));
+    await Promise.all(outputs.map((output) => writeFile(path.join(outputDirectory, output), page)));
+  }),
+);
 
 console.log(`Built Karui Pages site in ${outputDirectory}`);

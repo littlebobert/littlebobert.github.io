@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Karui Tech Specs</title>
+  <link href="sasu-common.css?v=4" rel="stylesheet">
+  <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .karui-icon { box-sizing: border-box; border: 1px solid #1a211e; border-radius: 12px; }
+    .karui-section { padding: 6pt 0 5pt; }
+    .karui-section p { margin: 0; }
+    .karui-section p + p, .karui-section ul + p, .karui-section ol + p { margin-top: 7pt; }
+    .karui-section ul, .karui-section ol { padding-left: 20pt; }
+    .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .karui-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+    .karui-section h2 { margin: 6pt 0 4pt; }
+    .karui-section h3 { margin: 8pt 0 3pt; }
+    .karui-section li + li { margin-top: 3pt; }
+    .karui-section p + ul, .karui-section p + ol { margin-top: 6pt; }
+    .karui-section h2 + ul, .karui-section h2 + ol { margin-top: 0; }
+    .karui-section > ul:last-child, .karui-section > ol:last-child { margin-bottom: 0; }
+    .karui-note-header { border: 1px solid #d8d6ce; border-radius: 10px; padding: 9pt 11pt; margin: 4pt 0 6pt; }
+    .karui-note-header p + p { margin-top: 4pt; }
+    .karui-note-label { color: #555; }
+    .karui-code { background: #f4f3ee; border-radius: 8px; padding: 8pt 10pt; overflow-x: auto; font-size: 0.85em; line-height: 1.4; }
+    .karui-table { border-collapse: collapse; width: 100%; font-size: 0.92em; margin: 4pt 0; }
+    .karui-table th, .karui-table td { border-bottom: 1px solid #e3e1da; padding: 5pt 6pt 5pt 0; text-align: left; vertical-align: top; }
+    .karui-table th { color: #555; font-weight: 600; }
+    .karui-note-list li + li { margin-top: 8pt; }
+    .karui-note-meta { color: #555; }
+    .karui-breadcrumbs { font-size: 0.85em; color: #666; margin: 2pt 0 6pt; }
+    .karui-breadcrumbs a { color: #666; }
+    .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
+  </style>
+  <link rel="canonical" href="https://karui.jp/specs">
+  <meta name="description" content="How Karui works: classification, speed, privacy, and requirements." data-label-en="How Karui works: classification, speed, privacy, and requirements." data-label-ja="Karuiの仕組み：分類、速度、プライバシー、動作環境。">
+  <meta property="og:title" content="Karui Tech Specs" data-label-en="Karui Tech Specs" data-label-ja="Karui技術仕様">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://karui.jp/specs">
+  <meta property="og:site_name" content="Karui">
+  <meta property="og:description" content="How Karui works: classification, speed, privacy, and requirements." data-label-en="How Karui works: classification, speed, privacy, and requirements." data-label-ja="Karuiの仕組み：分類、速度、プライバシー、動作環境。">
+  <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Karui Tech Specs" data-label-en="Karui Tech Specs" data-label-ja="Karui技術仕様">
+  <meta name="twitter:description" content="How Karui works: classification, speed, privacy, and requirements." data-label-en="How Karui works: classification, speed, privacy, and requirements." data-label-ja="Karuiの仕組み：分類、速度、プライバシー、動作環境。">
+  <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta name="twitter:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <nav class="karui-breadcrumbs" aria-label="Breadcrumb"><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</span></nav>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="karui.html"><img class="sasu-icon karui-icon" src="assets/karui-icon.png?v=2" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン"></a>
+        <div><h1 data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</h1><div class="sasu-subtitle">Karui</div></div>
+      </div>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="How it works" data-label-ja="仕組み">How it works</h2>
+      <ol>
+        <li data-label-en="A Focus silences the apps you choose and allows only Karui." data-label-ja="集中モードで選んだアプリを消音し、Karuiだけを許可します。">A Focus silences the apps you choose and allows only Karui.</li>
+        <li data-label-en="For each notification from those apps, iOS 27’s Shortcuts trigger “When I receive a notification” runs the Karui Shortcut, which passes the notification’s app, title, text, and sender to Karui." data-label-ja="それらのアプリから通知が届くたびに、iOS 27のショートカットのトリガー「通知を受信したとき」がKaruiショートカットを実行し、通知のアプリ、タイトル、本文、送信者をKaruiに渡します。">For each notification from those apps, iOS 27’s Shortcuts trigger “When I receive a notification” runs the Karui Shortcut, which passes the notification’s app, title, text, and sender to Karui.</li>
+        <li data-label-en="Karui classifies the notification as Important, Neutral, or Spam." data-label-ja="Karuiが通知を「重要」「中立」「スパム」に分類します。">Karui classifies the notification as Important, Neutral, or Spam.</li>
+        <li data-label-en="Karui posts Important notifications again, and your Focus lets them through. Neutral and Spam notifications stay quiet and are kept in History; Neutral ones can also appear in a daily summary." data-label-ja="重要な通知はKaruiがあらためて通知し、集中モードを通過します。中立とスパムの通知は静かなまま履歴に保存され、中立の通知は毎日のまとめにも含められます。">Karui posts Important notifications again, and your Focus lets them through. Neutral and Spam notifications stay quiet and are kept in History; Neutral ones can also appear in a daily summary.</li>
+      </ol>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Classification" data-label-ja="分類">Classification</h2>
+      <ul>
+        <li data-label-en="Rules on your iPhone decide first. Messages from your important contacts, messages that mention one of your names, one-time codes, and messages matching your urgent terms are always Important." data-label-ja="まずiPhone上のルールで判定します。重要な連絡先からのメッセージ、あなたの名前へのメンション、確認コード、緊急の語句に一致するメッセージは常に「重要」です。">Rules on your iPhone decide first. Messages from your important contacts, messages that mention one of your names, one-time codes, and messages matching your urgent terms are always Important.</li>
+        <li data-label-en="Everything else goes to Apple’s on-device Foundation Models, with your names, terms, important apps, and upcoming calendar events as private context. The model returns a category, a confidence, a short reason, and an interest score from 1 to 5 that ranks the daily summary." data-label-ja="それ以外はAppleのオンデバイスFoundation Modelsが判定します。あなたの名前、語句、重要なアプリ、今後のカレンダーの予定を非公開のコンテキストとして使います。モデルは分類、確信度、短い理由、毎日のまとめの並び順に使う1〜5の関心度を返します。">Everything else goes to Apple’s on-device Foundation Models, with your names, terms, important apps, and upcoming calendar events as private context. The model returns a category, a confidence, a short reason, and an interest score from 1 to 5 that ranks the daily summary.</li>
+        <li><span data-label-en="When the on-device model isn’t available, for example when iOS limits it while Karui runs in the background, transparent rules decide instead, and Karui rechecks those notifications later. See " data-label-ja="iOSがバックグラウンド実行中のKaruiにオンデバイスモデルの利用を制限したときなど、モデルが使えない場合は透明性のあるルールで判定し、あとでKaruiがその通知を再確認します。詳しくは">When the on-device model isn’t available, for example when iOS limits it while Karui runs in the background, transparent rules decide instead, and Karui rechecks those notifications later. See </span><a href="karui-technote-kn001.html" data-label-en="Technical Note KN001" data-label-ja="技術ノートKN001">Technical Note KN001</a><span data-label-en="." data-label-ja="をご覧ください。">.</span></li>
+        <li data-label-en="Second Opinion, off by default, has your Shortcut ask Apple’s Private Cloud Compute with the Use Model action: only when the on-device model couldn’t sort a notification, or, with When to Ask set to Always, after every on-device answer." data-label-ja="初期設定でオフのセカンドオピニオンでは、ショートカットの「モデルを使用」アクションでAppleのPrivate Cloud Computeに問い合わせます。オンデバイスモデルが分類できなかったときだけ、または「問い合わせのタイミング」を「常に」にするとデバイス上の判断のたびに問い合わせます。">Second Opinion, off by default, has your Shortcut ask Apple’s Private Cloud Compute with the Use Model action: only when the on-device model couldn’t sort a notification, or, with When to Ask set to Always, after every on-device answer.</li>
+      </ul>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Accuracy and speed" data-label-ja="精度と速度">Accuracy and speed</h2>
+      <ul>
+        <li data-label-en="On-device classification usually takes about 4 seconds on iPhone 17 Pro. A Second Opinion round trip through Shortcuts usually adds 2 to 3 seconds." data-label-ja="iPhone 17 Proでのオンデバイス分類は通常約4秒です。ショートカット経由のセカンドオピニオンは、通常さらに2〜3秒かかります。">On-device classification usually takes about 4 seconds on iPhone 17 Pro. A Second Opinion round trip through Shortcuts usually adds 2 to 3 seconds.</li>
+        <li><span data-label-en="iOS gives apps in the background a small share of the on-device model. After a burst of notifications, Karui may sort some with rules for a while, then rechecks them when you open Karui, or right away with Second Opinion on. " data-label-ja="iOSはバックグラウンドのアプリにオンデバイスモデルをわずかしか使わせません。通知が続けて届いたあとは、しばらくルールで分類されることがあり、Karuiを開いたとき、またはセカンドオピニオンがオンならすぐに再確認されます。">iOS gives apps in the background a small share of the on-device model. After a burst of notifications, Karui may sort some with rules for a while, then rechecks them when you open Karui, or right away with Second Opinion on. </span><a href="karui-technote-kn001.html" data-label-en="Why this happens" data-label-ja="その理由">Why this happens</a><span data-label-en="." data-label-ja="。">.</span></li>
+        <li data-label-en="Classification is assistance, not a guarantee. Check Notification Center and Karui’s History when something may have been missed." data-label-ja="分類は補助機能であり、結果を保証するものではありません。見落としの可能性がある場合は、通知センターとKaruiの履歴を確認してください。">Classification is assistance, not a guarantee. Check Notification Center and Karui’s History when something may have been missed.</li>
+      </ul>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Privacy" data-label-ja="プライバシー">Privacy</h2>
+      <ul>
+        <li data-label-en="Karui has no server and no account, and sends no analytics. Your VIPs, settings, and History stay on your iPhone." data-label-ja="Karuiにはサーバーもアカウントもなく、分析データも送信しません。VIP、設定、履歴はiPhoneの中に保存されます。">Karui has no server and no account, and sends no analytics. Your VIPs, settings, and History stay on your iPhone.</li>
+        <li><span data-label-en="Second Opinion sends a notification’s text and app, your names, and your sorting terms to Apple’s Private Cloud Compute. Anything the rules decide, contact details, and calendar events are never sent. See the " data-label-ja="セカンドオピニオンは、通知の本文とアプリ、あなたの名前、分類用の語句をAppleのPrivate Cloud Computeに送信します。ルールで判定された通知、連絡先の情報、カレンダーの予定が送信されることはありません。詳しくは">Second Opinion sends a notification’s text and app, your names, and your sorting terms to Apple’s Private Cloud Compute. Anything the rules decide, contact details, and calendar events are never sent. See the </span><a href="karui-privacy.html" data-label-en="privacy policy" data-label-ja="プライバシーポリシー">privacy policy</a><span data-label-en="." data-label-ja="をご覧ください。">.</span></li>
+      </ul>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Requirements" data-label-ja="動作環境">Requirements</h2>
+      <ul>
+        <li data-label-en="iOS 27 or later with Apple Intelligence on: iPhone 15 Pro, iPhone 15 Pro Max, iPhone Air, any iPhone 16 model, or later. iPhone 17 Pro, iPhone 17 Pro Max, and iPhone Air run Apple’s more capable on-device model." data-label-ja="Apple IntelligenceをオンにしたiOS 27以降：iPhone 15 Pro、iPhone 15 Pro Max、iPhone Air、すべてのiPhone 16モデル、またはそれ以降のモデル。iPhone 17 Pro、iPhone 17 Pro Max、iPhone Airでは、より高性能なAppleのオンデバイスモデルが動作します。">iOS 27 or later with Apple Intelligence on: iPhone 15 Pro, iPhone 15 Pro Max, iPhone Air, any iPhone 16 model, or later. iPhone 17 Pro, iPhone 17 Pro Max, and iPhone Air run Apple’s more capable on-device model.</li>
+        <li data-label-en="The Shortcuts app with the standard Karui Shortcut, and a Focus that allows Karui." data-label-ja="標準のKaruiショートカットを追加したショートカットApp、およびKaruiを許可した集中モード。">The Shortcuts app with the standard Karui Shortcut, and a Focus that allows Karui.</li>
+      </ul>
+    </section>
+    <section class="karui-section">
+      <p><a href="karui-technotes.html" data-label-en="Technical Notes →" data-label-ja="技術ノート →">Technical Notes →</a></p>
+    </section>
+    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
+  </main>
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('karui-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
+  </script>
+</body>
+</html>

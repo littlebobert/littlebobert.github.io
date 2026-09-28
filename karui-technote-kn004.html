@@ -1,0 +1,163 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>KN004: Verifying That Karui Makes No Network Connections</title>
+  <link href="sasu-common.css?v=4" rel="stylesheet">
+  <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .karui-icon { box-sizing: border-box; border: 1px solid #1a211e; border-radius: 12px; }
+    .karui-section { padding: 6pt 0 5pt; }
+    .karui-section p { margin: 0; }
+    .karui-section p + p, .karui-section ul + p, .karui-section ol + p { margin-top: 7pt; }
+    .karui-section ul, .karui-section ol { padding-left: 20pt; }
+    .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .karui-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+    .karui-section h2 { margin: 6pt 0 4pt; }
+    .karui-section h3 { margin: 8pt 0 3pt; }
+    .karui-section h2 + h3 { margin-top: 0; }
+    .karui-section li + li { margin-top: 3pt; }
+    .karui-section p + ul, .karui-section p + ol { margin-top: 6pt; }
+    .karui-section h2 + ul, .karui-section h2 + ol { margin-top: 0; }
+    .karui-section > ul:last-child, .karui-section > ol:last-child { margin-bottom: 0; }
+    .karui-code { background: #f4f3ee; border-radius: 8px; padding: 8pt 10pt; overflow-x: auto; font-size: calc(0.85em + 1pt); line-height: 1.4; }
+    .karui-table { border-collapse: collapse; width: 100%; margin: 4pt 0; }
+    .karui-table th, .karui-table td { border-bottom: 1px solid #e3e1da; padding: 5pt 6pt 5pt 0; text-align: left; vertical-align: top; }
+    .karui-table th { color: #555; font-weight: 600; }
+    .karui-table td:first-child, .karui-table th:first-child { white-space: nowrap; padding-right: 14pt; }
+    .karui-table-note { color: #555; font-size: 0.85em; margin-top: 3pt !important; }
+    .karui-quote { margin: 6pt 0 6pt 0; padding: 2pt 0 2pt 10pt; border-left: 3px solid #d8d6ce; color: #333; }
+    .karui-revision-date { font-weight: 600; }
+    .swift-string { color: #c41a16; }
+    .swift-keyword { color: #9b2393; font-weight: 600; }
+    .swift-type { color: #3900a0; }
+    .swift-function { color: #326d74; }
+    .karui-note-list li + li { margin-top: 8pt; }
+    .karui-note-meta { color: #555; font-size: 0.9em; }
+    .karui-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
+    .karui-breadcrumbs a { color: #666; }
+    .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
+  </style>
+  <link rel="canonical" href="https://karui.jp/technotes/kn004">
+  <meta name="description" content="How to check for yourself that Karui sends nothing off your iPhone, using App Privacy Report, and what the optional Second Opinion sends to Private Cloud Compute." data-label-en="How to check for yourself that Karui sends nothing off your iPhone, using App Privacy Report, and what the optional Second Opinion sends to Private Cloud Compute." data-label-ja="KaruiがiPhoneの外にデータを送らないことを、Appアクティビティレポートで自分で確かめる方法。オプションのセカンドオピニオンがPrivate Cloud Computeに送る内容も説明します。">
+  <meta property="og:title" content="KN004: Verifying That Karui Makes No Network Connections" data-label-en="KN004: Verifying That Karui Makes No Network Connections" data-label-ja="KN004：Karuiがネットワークに接続しないことを確かめる">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2026-09-28">
+  <meta property="og:url" content="https://karui.jp/technotes/kn004">
+  <meta property="og:site_name" content="Karui">
+  <meta property="og:description" content="How to check for yourself that Karui sends nothing off your iPhone, using App Privacy Report, and what the optional Second Opinion sends to Private Cloud Compute." data-label-en="How to check for yourself that Karui sends nothing off your iPhone, using App Privacy Report, and what the optional Second Opinion sends to Private Cloud Compute." data-label-ja="KaruiがiPhoneの外にデータを送らないことを、Appアクティビティレポートで自分で確かめる方法。オプションのセカンドオピニオンがPrivate Cloud Computeに送る内容も説明します。">
+  <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KN004: Verifying That Karui Makes No Network Connections" data-label-en="KN004: Verifying That Karui Makes No Network Connections" data-label-ja="KN004：Karuiがネットワークに接続しないことを確かめる">
+  <meta name="twitter:description" content="How to check for yourself that Karui sends nothing off your iPhone, using App Privacy Report, and what the optional Second Opinion sends to Private Cloud Compute." data-label-en="How to check for yourself that Karui sends nothing off your iPhone, using App Privacy Report, and what the optional Second Opinion sends to Private Cloud Compute." data-label-ja="KaruiがiPhoneの外にデータを送らないことを、Appアクティビティレポートで自分で確かめる方法。オプションのセカンドオピニオンがPrivate Cloud Computeに送る内容も説明します。">
+  <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta name="twitter:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <nav class="karui-breadcrumbs" aria-label="Breadcrumb"><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><a href="karui-technotes.html" data-label-en="Technical Notes" data-label-ja="技術ノート">Technical Notes</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="KN004" data-label-ja="KN004">KN004</span></nav>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="karui.html"><img class="sasu-icon karui-icon" src="assets/karui-icon.png?v=2" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン"></a>
+        <div><h1 data-label-en="KN004: Verifying That Karui Makes No Network Connections" data-label-ja="KN004：Karuiがネットワークに接続しないことを確かめる">KN004: Verifying That Karui Makes No Network Connections</h1><div class="sasu-subtitle">Karui</div></div>
+      </div>
+    </section>
+    <section class="karui-section">
+      <p data-label-en="How to check for yourself that Karui sends nothing off your iPhone, and what changes when you turn on Second Opinion." data-label-ja="KaruiがiPhoneの外にデータを送らないことを自分で確かめる方法と、セカンドオピニオンをオンにしたときに変わること。">How to check for yourself that Karui sends nothing off your iPhone, and what changes when you turn on Second Opinion.</p>
+      <p class="karui-note-meta" data-label-en="September 28, 2026 · iOS 27.0 · Tested on iPhone 17 Pro" data-label-ja="2026年9月28日 · iOS 27.0 · iPhone 17 Proで検証">September 28, 2026 · iOS 27.0 · Tested on iPhone 17 Pro</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Overview" data-label-ja="概要">Overview</h2>
+      <p><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span data-label-en=" is an on-device iPhone notification filter. It has no account and no server, and it sends no analytics. The app isn’t open source, and even if it were, nobody could confirm that the build from the App Store matches the published code. So instead of asking you to trust the source, this note shows how to test the app you actually installed." data-label-ja=" はオンデバイスで動作するiPhone向けの通知フィルターです。アカウントもサーバーもなく、分析データも送りません。アプリはオープンソースではありません。仮にオープンソースだったとしても、App Storeから入手したビルドが公開されたコードと一致するかは誰にも確かめられません。そこで本ノートでは、ソースコードを信じてもらう代わりに、実際にインストールしたアプリを確かめる方法を紹介します。"> is an on-device iPhone notification filter. It has no account and no server, and it sends no analytics. The app isn’t open source, and even if it were, nobody could confirm that the build from the App Store matches the published code. So instead of asking you to trust the source, this note shows how to test the app you actually installed.</span></p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="What’s in the app" data-label-ja="アプリの中身">What’s in the app</h2>
+      <ul>
+        <li data-label-en="No networking code. Karui never makes a network request itself." data-label-ja="ネットワーク処理のコードはありません。Karui自身がネットワークにリクエストを送ることはありません。">No networking code. Karui never makes a network request itself.</li>
+        <li data-label-en="No third-party SDKs: no analytics, advertising, or crash reporting. Karui uses only Apple’s frameworks." data-label-ja="サードパーティのSDKは使っていません。分析、広告、クラッシュレポートのSDKもありません。使っているのはAppleのフレームワークだけです。">No third-party SDKs: no analytics, advertising, or crash reporting. Karui uses only Apple’s frameworks.</li>
+        <li data-label-en="No iCloud sync. History, settings, and VIPs stay in the app’s own storage on your iPhone." data-label-ja="iCloudとの同期はありません。履歴、設定、VIPはiPhone上のアプリ専用の領域に保存されます。">No iCloud sync. History, settings, and VIPs stay in the app’s own storage on your iPhone.</li>
+        <li data-label-en="Diagnostic logs record timings, counts, and categories, never notification text. They stay in your iPhone’s system log and leave the device only if you share a diagnostics report yourself." data-label-ja="診断用のログに記録されるのは、処理時間、件数、分類だけで、通知の本文は記録しません。ログはiPhoneのシステムログに保存され、iPhoneの外に出るのは、自分で診断レポートを共有したときだけです。">Diagnostic logs record timings, counts, and categories, never notification text. They stay in your iPhone’s system log and leave the device only if you share a diagnostics report yourself.</li>
+        <li data-label-en="Crash reports reach me only if you’ve turned on Share iPhone Analytics and Share with App Developers in iOS Settings. Apple collects and anonymizes them, not Karui." data-label-ja="クラッシュレポートが私に届くのは、iOSの設定で「iPhone解析を共有」と「App デベロッパと共有」をオンにしている場合だけです。レポートを収集して匿名化するのはKaruiではなくAppleです。">Crash reports reach me only if you’ve turned on Share iPhone Analytics and Share with App Developers in iOS Settings. Apple collects and anonymizes them, not Karui.</li>
+      </ul>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Check with App Privacy Report" data-label-ja="Appアクティビティレポートで確かめる">Check with App Privacy Report</h2>
+      <p data-label-en="iOS can record which domains each app contacts. Karui can’t hide from it or turn it off." data-label-ja="iOSは、各アプリがどのドメインに接続したかを記録できます。Karuiがこの記録を避けたり、オフにしたりすることはできません。">iOS can record which domains each app contacts. Karui can’t hide from it or turn it off.</p>
+      <ol>
+        <li data-label-en="Open Settings › Privacy &amp; Security › App Privacy Report, and turn it on." data-label-ja="「設定」›「プライバシーとセキュリティ」›「Appアクティビティレポート」を開き、オンにします。">Open Settings › Privacy &amp; Security › App Privacy Report, and turn it on.</li>
+        <li data-label-en="Use your iPhone normally for a day or more, so Karui sorts notifications in the background too." data-label-ja="1日以上、普段どおりiPhoneを使います。Karuiがバックグラウンドで通知を分類する時間も含めるためです。">Use your iPhone normally for a day or more, so Karui sorts notifications in the background too.</li>
+        <li data-label-en="Come back and look for Karui under App Network Activity." data-label-ja="レポートに戻り、「Appのネットワークアクティビティ」でKaruiを探します。">Come back and look for Karui under App Network Activity.</li>
+      </ol>
+      <p data-label-en="Karui shouldn’t appear there. Language downloads for translation are made by iOS, not by Karui, and Second Opinion requests are made by Shortcuts, as described below." data-label-ja="Karuiは表示されないはずです。翻訳用の言語のダウンロードはKaruiではなくiOSが行い、セカンドオピニオンのリクエストは後述のとおりショートカットが行います。">Karui shouldn’t appear there. Language downloads for translation are made by iOS, not by Karui, and Second Opinion requests are made by Shortcuts, as described below.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Calendar and contacts access" data-label-ja="カレンダーと連絡先へのアクセス">Calendar and contacts access</h2>
+      <p data-label-en="App Privacy Report also lists which data each app reads, under Data &amp; Sensor Access. Karui may appear there. That’s reading on your iPhone, not sending anything:" data-label-ja="Appアクティビティレポートには、各アプリが読み取ったデータも「データとセンサーへのアクセス」に表示されます。Karuiが表示されることもありますが、これはiPhone上での読み取りで、何かを送信しているわけではありません。">App Privacy Report also lists which data each app reads, under Data &amp; Sensor Access. Karui may appear there. That’s reading on your iPhone, not sending anything:</p>
+      <ul>
+        <li data-label-en="Calendars: if you allow calendar access, Karui reads your upcoming events each time it sorts a notification, and for Auto Reply during meetings." data-label-ja="カレンダー：カレンダーへのアクセスを許可している場合、Karuiは通知を分類するたびに、また会議中の自動返信のために、今後の予定を読み取ります。">Calendars: if you allow calendar access, Karui reads your upcoming events each time it sorts a notification, and for Auto Reply during meetings.</li>
+        <li data-label-en="Contacts: Karui never reads your whole address book. When you add VIPs, in setup or in Settings, iOS’s contact picker gives Karui only the contacts you choose." data-label-ja="連絡先：Karuiが連絡先全体を読み取ることはありません。初期設定や設定画面でVIPを追加するとき、iOSの連絡先ピッカーがKaruiに渡すのは、あなたが選んだ連絡先だけです。">Contacts: Karui never reads your whole address book. When you add VIPs, in setup or in Settings, iOS’s contact picker gives Karui only the contacts you choose.</li>
+      </ul>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="What Second Opinion sends" data-label-ja="セカンドオピニオンが送るもの">What Second Opinion sends</h2>
+      <p><span data-label-en="Second Opinion is off by default. When it’s on, Karui still doesn’t make the request: your Karui shortcut does, with the Use Model action set to Private Cloud Compute. Open the shortcut in the Shortcuts app to see the step for yourself. " data-label-ja="セカンドオピニオンは初期設定ではオフです。オンにしても、リクエストを送るのはKaruiではありません。Karuiのショートカットが、「モデルを使用」アクションでPrivate Cloud Computeを指定して送ります。ショートカットアプリでショートカットを開けば、そのステップを自分で確認できます。">Second Opinion is off by default. When it’s on, Karui still doesn’t make the request: your Karui shortcut does, with the Use Model action set to Private Cloud Compute. Open the shortcut in the Shortcuts app to see the step for yourself. </span><a href="karui-technote-kn002.html" data-label-en="KN002" data-label-ja="KN002">KN002</a><span data-label-en=" describes the round trip." data-label-ja=" で、この往復の流れを説明しています。"> describes the round trip.</span></p>
+      <p data-label-en="The request contains the notification’s text and app name, whether the app is one of your important apps, your name, handles, and any nickname, and your sorting terms. Notifications Karui decides by its own rules, your VIP contact details, and your calendar events are never sent. If you delete that step or turn Second Opinion off, nothing leaves your iPhone." data-label-ja="リクエストに含まれるのは、通知の本文とアプリ名、そのアプリが重要なアプリかどうか、あなたの名前、ハンドル名、ニックネーム、分類用の語句です。Karuiが独自のルールで判定した通知、VIPの連絡先情報、カレンダーの予定は送信しません。そのステップを削除するか、セカンドオピニオンをオフにすれば、iPhoneの外には何も送られません。">The request contains the notification’s text and app name, whether the app is one of your important apps, your name, handles, and any nickname, and your sorting terms. Notifications Karui decides by its own rules, your VIP contact details, and your calendar events are never sent. If you delete that step or turn Second Opinion off, nothing leaves your iPhone.</p>
+      <p><span data-label-en="Apple describes the protections in " data-label-ja="Private Cloud Computeの保護の仕組みについては、Appleが">Apple describes the protections in </span><a href="https://security.apple.com/blog/private-cloud-compute/" data-label-en="Private Cloud Compute" data-label-ja="Private Cloud Compute">Private Cloud Compute</a><span data-label-en=" on its security blog." data-label-ja=" というセキュリティブログの記事で説明しています。"> on its security blog.</span></p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Watching traffic with a proxy" data-label-ja="プロキシで通信を見る">Watching traffic with a proxy</h2>
+      <p data-label-en="You can also route your iPhone through a proxy such as Charles or Proxyman. Keep two limits in mind. A proxy shows only what happened while you watched, so App Privacy Report’s longer record is the better test. And Private Cloud Compute requests and translation pack downloads come from iOS itself rather than from Karui, and some of it won’t decrypt through a proxy." data-label-ja="CharlesやProxymanなどのプロキシを経由させて確かめることもできます。ただし、限界が2つあります。プロキシでわかるのは見ていた間のことだけなので、より長い期間を記録するAppアクティビティレポートのほうが確かめる方法として優れています。また、Private Cloud Computeへのリクエストや翻訳用の言語のダウンロードはKaruiではなくiOS自身によるもので、一部はプロキシでは復号できません。">You can also route your iPhone through a proxy such as Charles or Proxyman. Keep two limits in mind. A proxy shows only what happened while you watched, so App Privacy Report’s longer record is the better test. And Private Cloud Compute requests and translation pack downloads come from iOS itself rather than from Karui, and some of it won’t decrypt through a proxy.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Revision History" data-label-ja="改訂履歴">Revision History</h2>
+      <ul><li><span class="karui-revision-date" data-label-en="2026-09-28" data-label-ja="2026-09-28">2026-09-28</span><span data-label-en=" First published." data-label-ja=" 初版公開。"> First published.</span></li></ul>
+    </section>
+    <section class="karui-section">
+      <p><a href="karui-technotes.html" data-label-en="← All Technical Notes" data-label-ja="← 技術ノート一覧">← All Technical Notes</a></p>
+    </section>
+    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
+  </main>
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('karui-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
+  </script>
+</body>
+</html>

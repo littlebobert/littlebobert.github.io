@@ -23,7 +23,7 @@ Classification runs on the iPhone with Apple's on-device model. Notifications, c
 ## Technical details
 
 - [Tech Specs](https://karui.jp/specs): how Karui works, classification, speed, privacy, and requirements.
-- [Technical Note KN001: Apple’s On-Device Foundation Model Is Rate Limited in the Background](https://karui.jp/technotes/kn001): rate limiting of Apple's on-device model in the background, and how Karui copes.
+- [Technical Note KN001: Measuring the Background Rate Limit of Apple’s On-Device Foundation Model](https://karui.jp/technotes/kn001): rate limiting of Apple's on-device model in the background, and how Karui copes.
 
 ## Requirements and limitations
 

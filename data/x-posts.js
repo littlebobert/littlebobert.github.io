@@ -1,8 +1,97 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-09-27T19:01:39.691Z",
+  "updatedAt": "2026-09-28T21:16:17.871Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2104631400867811549",
+      "text": "やっと自分のアプリをApp Storeでリリースできた🥹 https://t.co/jz770YqXYc https://t.co/2NpdtqOZcr",
+      "createdAt": "2026-09-28T17:56:42.000Z",
+      "url": "https://x.com/_bobertdowney/status/2104631400867811549",
+      "urls": [
+        {
+          "url": "https://t.co/jz770YqXYc",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2104631400867811549/photo/1",
+          "displayUrl": "pic.x.com/jz770YqXYc",
+          "start": 29,
+          "end": 52
+        },
+        {
+          "url": "https://t.co/2NpdtqOZcr",
+          "expandedUrl": "https://twitter.com/_bobertdowney/status/2104526758783627420",
+          "displayUrl": "x.com/_bobertdowney/…",
+          "start": 53,
+          "end": 76
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2104631400867811549-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2104526758783627420",
+      "text": "it’s been 5 days in Waiting for Review, even with an expedited review request. I guess there’s a flood right now with Shipaton. app ID 6814134614. the app is also a bit unusual I guess: https://t.co/XvhuIJPcHX https://t.co/6fPPsUzhQh",
+      "createdAt": "2026-09-28T11:00:54.000Z",
+      "url": "https://x.com/_bobertdowney/status/2104526758783627420",
+      "urls": [
+        {
+          "url": "https://t.co/XvhuIJPcHX",
+          "expandedUrl": "https://karui.jp",
+          "displayUrl": "karui.jp",
+          "start": 186,
+          "end": 209
+        },
+        {
+          "url": "https://t.co/6fPPsUzhQh",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2104526758783627420/photo/1",
+          "displayUrl": "pic.x.com/6fPPsUzhQh",
+          "start": 210,
+          "end": 233
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2104526758783627420-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2104500151910023355",
+      "text": "無人島0円生活・エンジニア編 200万行のレガシーモノリス。ドキュメントなし、シニアは退職済み、AIツール禁止。 https://t.co/3JjddHVPlA",
+      "createdAt": "2026-09-28T09:15:10.000Z",
+      "url": "https://x.com/_bobertdowney/status/2104500151910023355",
+      "urls": [
+        {
+          "url": "https://t.co/3JjddHVPlA",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2104500151910023355/photo/1",
+          "displayUrl": "pic.x.com/3JjddHVPlA",
+          "start": 57,
+          "end": 80
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2104500151910023355-0.png"
+        }
+      ]
+    },
     {
       "id": "2104126960146448534",
       "text": "not a-Muse-d: I made a Safari extension for Mac that hides the memes you're tired of seeing, look-alikes too, even in video previews. everything runs on your Mac. https://t.co/24shCxZG6m https://t.co/gHkqeMwm65",
@@ -215,99 +304,6 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2100580644841816429",
-      "text": "私のオフィスが入っているビルの屋上には、コミュニティガーデンがあります。 https://t.co/WASyZ33vXG",
-      "createdAt": "2026-09-17T13:40:27.000Z",
-      "url": "https://x.com/_bobertdowney/status/2100580644841816429",
-      "urls": [
-        {
-          "url": "https://t.co/WASyZ33vXG",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2100580644841816429/photo/1",
-          "displayUrl": "pic.x.com/WASyZ33vXG",
-          "start": 37,
-          "end": 60
-        },
-        {
-          "url": "https://t.co/WASyZ33vXG",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2100580644841816429/photo/1",
-          "displayUrl": "pic.x.com/WASyZ33vXG",
-          "start": 37,
-          "end": 60
-        },
-        {
-          "url": "https://t.co/WASyZ33vXG",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2100580644841816429/photo/1",
-          "displayUrl": "pic.x.com/WASyZ33vXG",
-          "start": 37,
-          "end": 60
-        },
-        {
-          "url": "https://t.co/WASyZ33vXG",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2100580644841816429/photo/1",
-          "displayUrl": "pic.x.com/WASyZ33vXG",
-          "start": 37,
-          "end": 60
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2100580644841816429-0.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2100580644841816429-1.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2100580644841816429-2.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2100580644841816429-3.png"
-        }
-      ]
-    },
-    {
-      "id": "2099861184728256759",
-      "text": "Are you a foreigner working abroad? Translate your iPhone’s screen in one tap (the Action Button) and type in your target language with this free app. https://t.co/Qnw7d1VEgr https://t.co/SiFufBfZfz",
-      "createdAt": "2026-09-15T14:01:34.000Z",
-      "url": "https://x.com/_bobertdowney/status/2099861184728256759",
-      "urls": [
-        {
-          "url": "https://t.co/Qnw7d1VEgr",
-          "expandedUrl": "https://onemorething.tokyo/yubi",
-          "displayUrl": "onemorething.tokyo/yubi",
-          "start": 151,
-          "end": 174
-        },
-        {
-          "url": "https://t.co/SiFufBfZfz",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2099861184728256759/video/1",
-          "displayUrl": "pic.x.com/SiFufBfZfz",
-          "start": 175,
-          "end": 198
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2099861184728256759-0.png"
-        }
-      ]
     }
   ]
 };

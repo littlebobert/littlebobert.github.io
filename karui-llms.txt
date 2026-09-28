@@ -18,7 +18,7 @@ Karui works alongside Apple's Focus modes. A Shortcuts automation passes each no
 
 ## Privacy
 
-Classification runs on the iPhone with Apple's on-device model. Notifications, contacts, and calendar events never leave the device. Karui has no server, requires no account, and sends no analytics.
+Classification runs on the iPhone with Apple's on-device model. Notifications, contacts, and calendar events never leave the device, unless you turn on the optional Second Opinion feature, which has your Shortcut ask Apple's Private Cloud Compute about notifications. Contact details and calendar events are never sent. Karui has no server, requires no account, and sends no analytics.
 
 ## Requirements and limitations
 

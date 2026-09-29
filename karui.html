@@ -60,7 +60,10 @@
     /* A full-screen QR code for karui.jp, for showing people in person. Opened by tapping the icon, or at #qr, which can be saved to the Home Screen. */
     .karui-qr, .karui-seal-view { display: none; position: fixed; inset: 0; z-index: 100; background: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 14pt; padding: 16px; text-align: center; }
     .karui-qr:target, .karui-seal-view:target { display: flex; }
-    .karui-qr img { width: min(80vw, 70vh, 360px); height: auto; }
+    /* Swipe sideways between the two codes: the app icon one, then the seal one. */
+    .karui-qr-slides { display: flex; width: min(80vw, 70vh, 360px); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+    .karui-qr-slides::-webkit-scrollbar { display: none; }
+    .karui-qr-slides img { flex: 0 0 100%; width: 100%; height: auto; scroll-snap-align: center; }
     .karui-qr-url, .karui-seal-title { font-size: 14pt; font-weight: bold; }
     /* Tapping the footer seal opens it large at #seal, with what a hanko is. */
     .karui-seal-view { gap: 8pt; }
@@ -165,7 +168,10 @@
       <p class="karui-maker"><img class="karui-maker-photo" src="assets/karui-developer.jpg?v=3" alt="" width="40" height="51"><a href="#seal" class="karui-seal-trigger" aria-label="About the name seal"><img class="karui-maker-seal" src="assets/karui-seal.png?v=8" alt="" width="24" height="51"></a><span class="karui-maker-text"><span data-label-en="An indie app by " data-label-ja="東京の個人開発者 ">An indie app by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo." data-label-ja=" 作"> in Tokyo.</span><br><span data-label-en="Questions? " data-label-ja="ご質問は ">Questions? </span><a href="mailto:justin@onemorething.tokyo">justin@onemorething.tokyo</a></span></p>
     </footer>
     <section class="karui-qr" id="qr" aria-label="QR code for karui.jp">
-      <img src="assets/karui-qr.png?v=1" alt="QR code that opens https://karui.jp/" width="719" height="719">
+      <div class="karui-qr-slides">
+        <img src="assets/karui-qr.png?v=1" alt="QR code that opens https://karui.jp/" width="719" height="719">
+        <img src="assets/karui-qr-hanko.png?v=1" alt="QR code that opens https://karui.jp/, in seal red with 軽 in the middle" width="744" height="744">
+      </div>
       <div class="karui-qr-url">karui.jp</div>
       <a href="#close" data-label-en="Close" data-label-ja="閉じる">Close</a>
     </section>

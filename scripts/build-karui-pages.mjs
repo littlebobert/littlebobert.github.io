@@ -26,6 +26,7 @@ const assetFiles = [
   'karui-developer.jpg',
   'karui-icon.png',
   'karui-qr.png',
+  'karui-qr-hanko.png',
   'karui-seal.png',
   'karui-seal-large.png',
   'karui-social.png',

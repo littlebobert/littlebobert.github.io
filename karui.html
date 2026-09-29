@@ -442,7 +442,7 @@
       const svgNS = 'http://www.w3.org/2000/svg';
       // Milliseconds: hold the name, dissolve it into dots, curve the dots into place,
       // settle the markers, then hand over to the code image.
-      const T = { hold: 800, dissolve: 350, travel: 1500, stagger: 400, markers: 2350, markersFor: 500, final: 2950, finalFor: 300 };
+      const T = { hold: 1200, dissolve: 350, travel: 1500, stagger: 400, markers: 2750, markersFor: 500, final: 3350, finalFor: 300 };
       const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
       let dots = [];
       let markers = [];

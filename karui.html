@@ -60,11 +60,18 @@
     /* A full-screen QR code for karui.jp, for showing people in person. Opened by tapping the icon, or at #qr, which can be saved to the Home Screen. */
     .karui-qr, .karui-seal-view { display: none; position: fixed; inset: 0; z-index: 100; background: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 14pt; padding: 16px; text-align: center; }
     .karui-qr:target, .karui-seal-view:target { display: flex; }
-    /* Swipe sideways between the two codes: the app icon one, then the seal one. */
+    /* Swipe sideways between the two codes: the seal one, then the app icon one. */
     .karui-qr-slides { display: flex; width: min(80vw, 70vh, 360px); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
     .karui-qr-slides::-webkit-scrollbar { display: none; }
     .karui-qr-slides img { flex: 0 0 100%; width: 100%; height: auto; scroll-snap-align: center; }
+    /* The seal that turns into a code: ジャスティン ガルシア dissolves into dots that
+       curve into place, then the real code image takes over. Without JavaScript,
+       or with Reduce Motion, the finished code shows straight away. */
+    .karui-qr-morph { position: relative; flex: 0 0 100%; aspect-ratio: 1; scroll-snap-align: center; }
+    .karui-qr-morph > img, .karui-qr-morph > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .karui-qr-morph-name { opacity: 0; }
     .karui-qr-url, .karui-seal-title { font-size: 14pt; font-weight: bold; }
+    .karui-qr-caption { max-width: 22em; margin: -6pt 0 0; line-height: 1.5; color: black; text-wrap: balance; }
     /* Tapping the footer seal opens it large at #seal, with what a hanko is. */
     .karui-seal-view { gap: 8pt; }
     .karui-seal-view img { width: 96px; height: auto; margin-bottom: 4pt; }
@@ -172,10 +179,15 @@
     </footer>
     <section class="karui-qr" id="qr" aria-label="QR code for karui.jp">
       <div class="karui-qr-slides">
+        <div class="karui-qr-morph">
+          <img class="karui-qr-morph-name" src="assets/karui-qr-seal-name.png?v=1" alt="" width="648" height="648">
+          <svg class="karui-qr-morph-dots" aria-hidden="true"></svg>
+          <img class="karui-qr-morph-final" src="assets/karui-qr-seal.png?v=1" alt="QR code that opens https://karui.jp/, in seal red" width="648" height="648">
+        </div>
         <img src="assets/karui-qr.png?v=1" alt="QR code that opens https://karui.jp/" width="719" height="719">
-        <img src="assets/karui-qr-hanko.png?v=1" alt="QR code that opens https://karui.jp/, in seal red with 軽 in the middle" width="744" height="744">
       </div>
       <div class="karui-qr-url">karui.jp</div>
+      <p class="karui-qr-caption" data-label-en="Karui for iPhone: silence spam notifications and see messages people unsend" data-label-ja="iPhone用のKarui：迷惑通知を消音し、送信取り消しされたメッセージを確認">Karui for iPhone: silence spam notifications and see messages people unsend</p>
       <a href="#close" data-label-en="Close" data-label-ja="閉じる">Close</a>
     </section>
     <section class="karui-seal-view" id="seal" aria-label="About the name seal">
@@ -412,6 +424,117 @@
       if (shotViewer.open) showShot(currentShot(), false);
     });
     setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
+  </script>
+  <script>
+    // The #qr seal: ジャスティン ガルシア dissolves into dots that curve into their
+    // places in the QR code, then the real code image takes over, so what people scan
+    // is the tested image. Tap to skip. Reduce Motion shows the finished code at once.
+    (() => {
+      const view = document.getElementById('qr');
+      const stage = view && view.querySelector('.karui-qr-morph');
+      if (!stage || !stage.animate) return;
+      const name = stage.querySelector('.karui-qr-morph-name');
+      const final = stage.querySelector('.karui-qr-morph-final');
+      const svg = stage.querySelector('svg');
+      const slides = view.querySelector('.karui-qr-slides');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const ink = '#cc2119';
+      const svgNS = 'http://www.w3.org/2000/svg';
+      // Milliseconds: hold the name, dissolve it into dots, curve the dots into place,
+      // settle the markers, then hand over to the code image.
+      const T = { hold: 800, dissolve: 350, travel: 1500, stagger: 400, markers: 2350, markersFor: 500, final: 2950, finalFor: 300 };
+      const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+      let dots = [];
+      let markers = [];
+      let running = [];
+
+      const make = (tag, attributes) => {
+        const element = document.createElementNS(svgNS, tag);
+        Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+        return element;
+      };
+
+      function build(data) {
+        const [inset, width, radius] = data.frame;
+        const p = data.pitch;
+        svg.setAttribute('viewBox', `0 0 ${data.canvas} ${data.canvas}`);
+        // The frame both seals share, so it never moves.
+        svg.append(make('rect', { x: inset, y: inset, width: data.canvas - inset * 2, height: data.canvas - inset * 2, rx: radius, fill: 'none', stroke: ink, 'stroke-width': width }));
+        markers = data.markers.map(([x, y, w]) => {
+          const group = make('g', {});
+          const core = w === 5 * p ? p : 3 * p;
+          group.append(
+            make('rect', { x: x + p / 2, y: y + p / 2, width: w - p, height: w - p, rx: p * 1.3, fill: 'none', stroke: ink, 'stroke-width': p }),
+            make('rect', { x: x + (w - core) / 2, y: y + (w - core) / 2, width: core, height: core, rx: core * 0.25, fill: ink })
+          );
+          group.style.transformBox = 'fill-box';
+          group.style.transformOrigin = 'center';
+          svg.append(group);
+          return group;
+        });
+        dots = data.dots.map(([sx, sy, ex, ey]) => {
+          const dot = make('circle', { cx: ex, cy: ey, r: p * 0.45, fill: ink });
+          dot.style.transformBox = 'fill-box';
+          dot.style.transformOrigin = 'center';
+          svg.append(dot);
+          return { dot, dx: sx - ex, dy: sy - ey };
+        });
+      }
+
+      // Cancelling returns everything to the finished code: the image on top of the
+      // dots and markers in their final places.
+      function skip() {
+        running.forEach((animation) => animation.cancel());
+        running = [];
+      }
+
+      function play() {
+        skip();
+        const timing = (delay, duration, extra = {}) => ({ delay, duration, fill: 'both', easing: 'linear', ...extra });
+        running.push(name.animate([{ opacity: 1 }, { opacity: 0 }], timing(T.hold, T.dissolve)));
+        dots.forEach(({ dot, dx, dy }, i) => {
+          // A quadratic curve bending off to the same side every time, so the dots
+          // sweep in streams rather than sliding straight.
+          const cx = dx / 2 - dy * 0.35, cy = dy / 2 + dx * 0.35;
+          const stagger = (i / dots.length) * T.stagger;
+          const total = T.dissolve + stagger + T.travel;
+          const depart = (T.dissolve + stagger) / total;
+          const start = `translate(${dx}px, ${dy}px) scale(0.55)`;
+          const frames = [
+            { transform: start, opacity: 0, offset: 0 },
+            { transform: start, opacity: 1, offset: T.dissolve / total },
+            { transform: start, opacity: 1, offset: depart },
+          ];
+          for (let k = 1; k <= 16; k += 1) {
+            const u = easeInOut(k / 16);
+            const a = (1 - u) * (1 - u), b = 2 * (1 - u) * u;
+            frames.push({ transform: `translate(${a * dx + b * cx}px, ${a * dy + b * cy}px) scale(${0.55 + 0.45 * u})`, opacity: 1, offset: depart + (1 - depart) * (k / 16) });
+          }
+          running.push(dot.animate(frames, timing(T.hold, total)));
+        });
+        markers.forEach((marker) => running.push(marker.animate(
+          [{ transform: 'scale(0.6)', opacity: 0 }, { transform: 'scale(1)', opacity: 1 }],
+          timing(T.markers, T.markersFor, { easing: 'cubic-bezier(0.34, 1.4, 0.64, 1)' })
+        )));
+        running.push(final.animate([{ opacity: 0 }, { opacity: 1 }], timing(T.final, T.finalFor)));
+      }
+
+      const loaded = fetch(new URL('karui-qr-seal.json', final.src))
+        .then((response) => response.json())
+        .then(build)
+        .then(() => true, () => false);
+
+      async function update() {
+        if (location.hash !== '#qr') { skip(); return; }
+        // Open on the seal, not wherever the last visit swiped to.
+        slides.scrollLeft = 0;
+        if (reduceMotion.matches || !(await loaded)) { skip(); return; }
+        play();
+      }
+      stage.addEventListener('click', skip);
+      window.addEventListener('hashchange', update);
+      update();
+    })();
   </script>
 </body>
 </html>

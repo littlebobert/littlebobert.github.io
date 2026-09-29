@@ -1,8 +1,72 @@
 {
-  "updatedAt": "2026-09-28T21:16:17.871Z",
+  "updatedAt": "2026-09-29T20:01:21.329Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2104947384686100818",
+      "text": "working on the QR code for https://t.co/XvhuIJPcHX https://t.co/qHUvKkRUMB",
+      "createdAt": "2026-09-29T14:52:19.000Z",
+      "url": "https://x.com/_bobertdowney/status/2104947384686100818",
+      "urls": [
+        {
+          "url": "https://t.co/XvhuIJPcHX",
+          "expandedUrl": "https://karui.jp",
+          "displayUrl": "karui.jp",
+          "start": 27,
+          "end": 50
+        },
+        {
+          "url": "https://t.co/qHUvKkRUMB",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2104947384686100818/video/1",
+          "displayUrl": "pic.x.com/qHUvKkRUMB",
+          "start": 51,
+          "end": 74
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2104947384686100818-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2104941829477241244",
+      "text": "name a better cross over, I’ll wait\n\nsee @SaekiSJ20 on Youtube too, with the @kotoba_tech mobile app for translation: https://t.co/9ySpimp1t2 https://t.co/hm1qgtDnfd",
+      "createdAt": "2026-09-29T14:30:14.000Z",
+      "url": "https://x.com/_bobertdowney/status/2104941829477241244",
+      "urls": [
+        {
+          "url": "https://t.co/9ySpimp1t2",
+          "expandedUrl": "https://www.youtube.com/watch?v=p_bsE1_P8GU",
+          "displayUrl": "youtube.com/watch?v=p_bsE1…",
+          "start": 118,
+          "end": 141
+        },
+        {
+          "url": "https://t.co/hm1qgtDnfd",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2104941829477241244/photo/1",
+          "displayUrl": "pic.x.com/hm1qgtDnfd",
+          "start": 142,
+          "end": 165
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2104941829477241244-0.png"
+        }
+      ]
+    },
     {
       "id": "2104631400867811549",
       "text": "やっと自分のアプリをApp Storeでリリースできた🥹 https://t.co/jz770YqXYc https://t.co/2NpdtqOZcr",
@@ -241,69 +305,6 @@
           "image": "assets/generated/x/mine-post-2101727736259805191-3.png"
         }
       ]
-    },
-    {
-      "id": "2101428161024311485",
-      "text": "伊香保沸いてた! https://t.co/1EAFJmCZYD https://t.co/i89xlQHu8i",
-      "createdAt": "2026-09-19T21:48:10.000Z",
-      "url": "https://x.com/_bobertdowney/status/2101428161024311485",
-      "urls": [
-        {
-          "url": "https://t.co/1EAFJmCZYD",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2101428161024311485/photo/1",
-          "displayUrl": "pic.x.com/1EAFJmCZYD",
-          "start": 9,
-          "end": 32
-        },
-        {
-          "url": "https://t.co/1EAFJmCZYD",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2101428161024311485/photo/1",
-          "displayUrl": "pic.x.com/1EAFJmCZYD",
-          "start": 9,
-          "end": 32
-        },
-        {
-          "url": "https://t.co/i89xlQHu8i",
-          "expandedUrl": "https://twitter.com/yokotekan/status/2101300327983259765",
-          "displayUrl": "x.com/yokotekan/stat…",
-          "start": 33,
-          "end": 56
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2101428161024311485-0.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2101428161024311485-1.png"
-        }
-      ]
-    },
-    {
-      "id": "2100581231226425369",
-      "text": "I used Japanese to stop someone looking for the event venue and help them find it 🥹 https://t.co/7UCgSCtmhm",
-      "createdAt": "2026-09-17T13:42:47.000Z",
-      "url": "https://x.com/_bobertdowney/status/2100581231226425369",
-      "urls": [
-        {
-          "url": "https://t.co/7UCgSCtmhm",
-          "expandedUrl": "https://twitter.com/kotoba_tech/status/2099349203650789855",
-          "displayUrl": "x.com/kotoba_tech/st…",
-          "start": 84,
-          "end": 107
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 }

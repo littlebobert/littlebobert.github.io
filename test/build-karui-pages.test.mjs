@@ -69,8 +69,8 @@ test('builds the changelog page and links to it from every page', async () => {
   assert.match(pages[0], /<img src="\/assets\/karui-qr\.png\?v=1"/);
   // #qr opens on the seal that turns into a code, then swipes to the icon code.
   assert.match(pages[0], /<div class="karui-qr-morph">/);
-  assert.match(pages[0], /src="\/assets\/karui-qr-seal-name\.png\?v=1"/);
-  assert.match(pages[0], /src="\/assets\/karui-qr-seal\.png\?v=1"/);
+  assert.match(pages[0], /src="\/assets\/karui-qr-seal-name\.png\?v=2"/);
+  assert.match(pages[0], /src="\/assets\/karui-qr-seal\.png\?v=2"/);
   assert.doesNotMatch(pages[0], /karui-qr-hanko/);
   assert.match(pages[0], /class="karui-maker-seal" src="\/assets\/karui-seal\.png/);
   // Tapping the seal opens it large with an explanation at #seal.

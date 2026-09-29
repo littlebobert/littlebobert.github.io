@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <title>Karui</title>
+  <title>Karui: Spam Filter for iPhone Notifications</title>
   <link href="sasu-common.css?v=4" rel="stylesheet">
   <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
   <link rel="apple-touch-icon" href="assets/karui-icon.png?v=2">
@@ -19,12 +19,12 @@
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Karui with the message Silence spam notifications. Reveal unsent messages." data-label-en="Karui with the message Silence spam notifications. Reveal unsent messages." data-label-ja="「迷惑通知を消音。送信取り消しされたメッセージを確認。」というメッセージを添えたKaruiのプレビュー">
+  <meta property="og:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Karui: Silence spam notifications. See messages people unsend." data-label-en="Karui: Silence spam notifications. See messages people unsend." data-label-ja="Karui：迷惑通知を消音。送信取り消しされたメッセージを確認。">
   <meta name="twitter:description" content="An iPhone app that builds on Apple’s Focus modes, filtering every app’s notifications privately with Apple Intelligence. Spam stays quiet; what matters gets through." data-label-en="An iPhone app that builds on Apple’s Focus modes, filtering every app’s notifications privately with Apple Intelligence. Spam stays quiet; what matters gets through." data-label-ja="Appleの集中モードを拡張し、すべてのアプリの通知をApple Intelligenceでプライベートに振り分けるiPhoneアプリ。迷惑通知は静かに、大切な通知は確実に届きます。">
   <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=5">
-  <meta name="twitter:image:alt" content="Karui with the message Silence spam notifications. Reveal unsent messages." data-label-en="Karui with the message Silence spam notifications. Reveal unsent messages." data-label-ja="「迷惑通知を消音。送信取り消しされたメッセージを確認。」というメッセージを添えたKaruiのプレビュー">
+  <meta name="twitter:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
   <style>
     :root {
       --karui-ink: #1a211e;
@@ -50,6 +50,8 @@
     .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
     .karui-footer p { margin: 4pt 0; }
     .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    /* Keep two-word links like Tech Specs whole when the row wraps on phones. */
+    .footer-links a { white-space: nowrap; }
     .karui-maker { display: flex; align-items: center; justify-content: center; gap: 6pt; margin-top: 8pt !important; }
     .karui-maker-photo { width: 40px; height: 51px; border-radius: 5px; object-fit: cover; flex: none; }
     .karui-maker-text { text-align: left; line-height: 1.6; color: black; }
@@ -113,12 +115,12 @@
         <a href="#qr" class="karui-qr-trigger" aria-label="Show a QR code for karui.jp"><img class="sasu-icon karui-icon" src="assets/karui-icon.png?v=2" alt="Karui app icon with a tray and red badge" data-alt-en="Karui app icon with a tray and red badge" data-alt-ja="トレイと赤いバッジのKaruiアプリアイコン"></a>
         <div>
           <h1>Karui</h1>
-          <div class="sasu-subtitle" data-label-en="Silence spam notifications. Reveal unsent messages." data-label-ja="迷惑通知を消音。送信取り消しされたメッセージを確認。">Silence spam notifications. Reveal unsent messages.</div>
+          <div class="sasu-subtitle" data-label-en="Silence spam notifications. See messages people unsend." data-label-ja="迷惑通知を消音。送信取り消しされたメッセージを確認。">Silence spam notifications. See messages people unsend.</div>
         </div>
       </div>
       <p class="hero-proposition" data-label-en="Apple’s Focus modes, made smarter." data-label-ja="Appleの集中モードを、もっと賢く。">Apple’s Focus modes, made smarter.</p>
       <a class="download-link" href="https://apps.apple.com/app/karui-notifications/id6814134614" data-label-en="Download for iPhone" data-label-ja="iPhone版をダウンロード">Download for iPhone</a>
-      <div class="small-note" data-label-en="Requires iOS 27 and an iPhone that supports Apple Intelligence, which Karui uses to filter notifications privately. Free, with no in-app purchases, subscription, or sign up." data-label-ja="iOS 27と、Apple Intelligenceに対応したiPhoneが必要です。KaruiはApple Intelligenceを使い、通知をプライベートにフィルタリングします。無料で、アプリ内課金、サブスクリプション、登録はありません。">Requires iOS 27 and an iPhone that supports Apple Intelligence, which Karui uses to filter notifications privately. Free, with no in-app purchases, subscription, or sign up.</div>
+      <div class="small-note" data-label-en="Requires iOS 27 or later and an iPhone that supports Apple Intelligence, which Karui uses to filter notifications privately. Free, with no in-app purchases, subscription, or sign up." data-label-ja="iOS 27以降と、Apple Intelligenceに対応したiPhoneが必要です。KaruiはApple Intelligenceを使い、通知をプライベートにフィルタリングします。無料で、アプリ内課金、サブスクリプション、登録はありません。">Requires iOS 27 or later and an iPhone that supports Apple Intelligence, which Karui uses to filter notifications privately. Free, with no in-app purchases, subscription, or sign up.</div>
     </section>
 
     <section class="sasu-section">
@@ -138,24 +140,19 @@
     <section class="karui-detail">
       <h2 data-label-en="Also:" data-label-ja="その他の機能：">Also:</h2>
       <ul class="feature-list">
-        <li data-label-en="Auto Reply answers your VIPs in Messages, WhatsApp, LINE, and Messenger while you’re driving, asleep, or busy" data-label-ja="運転中・就寝中・取り込み中は、VIPにMessages・WhatsApp・LINE・Messengerで自動返信">Auto Reply answers your VIPs in Messages, WhatsApp, LINE, and Messenger while you’re driving, asleep, or busy</li>
-        <li data-label-en="Your VIPs always get through your Focus, from any app" data-label-ja="集中モード中でも、VIPからの通知はどのアプリからでも必ず届きます">Your VIPs always get through your Focus, from any app</li>
-        <li data-label-en="Spam is judged by the message, not the app it came from" data-label-ja="迷惑通知は、アプリではなくメッセージの内容で判断します">Spam is judged by the message, not the app it came from</li>
-        <li data-label-en="Recognizes one-time codes and lets them through" data-label-ja="ワンタイムコードを認識して通知します">Recognizes one-time codes and lets them through</li>
-        <li data-label-en="Several quick messages from one person arrive as one" data-label-ja="同じ人からの連続メッセージは、1件の通知にまとめて届きます">Several quick messages from one person arrive as one</li>
-        <li data-label-en="Every app’s notifications in one searchable history" data-label-ja="すべてのアプリの通知を、検索できる一つの履歴に">Every app’s notifications in one searchable history</li>
-        <li data-label-en="Translates notifications into your language" data-label-ja="通知をあなたの言語に翻訳">Translates notifications into your language</li>
+        <li data-label-en="Auto-replies to your VIPs in Messages, WhatsApp, LINE, and Messenger while you’re driving, asleep, or busy" data-label-ja="運転中・就寝中・取り込み中は、Messages・WhatsApp・LINE・MessengerでVIPに自動返信します">Auto-replies to your VIPs in Messages, WhatsApp, LINE, and Messenger while you’re driving, asleep, or busy</li>
+        <li data-label-en="Lets your VIPs through your Focus, from any app" data-label-ja="VIPからの通知は、どのアプリからでも集中モードを通します">Lets your VIPs through your Focus, from any app</li>
+        <li data-label-en="Judges spam by the message, not the app it came from" data-label-ja="迷惑通知は、アプリではなくメッセージの内容で判断します">Judges spam by the message, not the app it came from</li>
+        <li data-label-en="Lets one-time codes through" data-label-ja="確認コードを認識して通します">Lets one-time codes through</li>
+        <li data-label-en="Combines quick messages from one person into one notification" data-label-ja="同じ人からの連続メッセージを、1件の通知にまとめます">Combines quick messages from one person into one notification</li>
+        <li data-label-en="Keeps every app’s notifications in one searchable history" data-label-ja="すべてのアプリの通知を、検索できる一つの履歴に残します">Keeps every app’s notifications in one searchable history</li>
+        <li data-label-en="Translates notifications into your language" data-label-ja="通知をあなたの言語に翻訳します">Translates notifications into your language</li>
       </ul>
     </section>
 
     <section class="karui-detail">
       <h2 data-label-en="Privacy:" data-label-ja="プライバシー：">Privacy:</h2>
-      <p><span data-label-en="By default, Karui runs entirely on-device. Karui has no server and sends no analytics of its own. If you turn on Second Opinion, the text of notifications the on-device model couldn’t sort (or, with Always, every notification it sorts), your names, your sorting terms, and whether the app is one of your important apps are sent to " data-label-ja="初期設定では、Karuiは完全にデバイス上で動作します。Karuiにはサーバーがなく、独自の分析データも送信しません。セカンドオピニオンをオンにすると、オンデバイスモデルで分類できなかった通知（「常に」の場合はオンデバイスモデルが分類したすべての通知）の本文、あなたの名前、分類用の用語、そのアプリが重要なアプリかどうかが">By default, Karui runs entirely on-device. Karui has no server and sends no analytics of its own. If you turn on Second Opinion, the text of notifications the on-device model couldn’t sort (or, with Always, every notification it sorts), your names, your sorting terms, and whether the app is one of your important apps are sent to </span><a href="https://support.apple.com/guide/iphone/apple-intelligence-and-privacy-iphe3f499e0e/ios" data-label-en="Apple’s Private Cloud Compute" data-label-ja="AppleのPrivate Cloud Compute">Apple’s Private Cloud Compute</a><span data-label-en="." data-label-ja="に送信されます。">.</span></p>
-    </section>
-
-    <section class="karui-detail">
-      <h2 data-label-en="Note:" data-label-ja="注意事項：">Note:</h2>
-      <p data-label-en="Requires an iPhone with iOS 27 or later and Apple Intelligence. Tapping a Karui notification opens the app, not the specific message." data-label-ja="iOS 27以降とApple Intelligenceに対応したiPhoneが必要です。Karuiの通知をタップすると、該当メッセージではなくアプリが開きます。">Requires an iPhone with iOS 27 or later and Apple Intelligence. Tapping a Karui notification opens the app, not the specific message.</p>
+      <p><span data-label-en="By default, Karui runs entirely on your iPhone, with no server and no analytics. If you turn on Second Opinion, some notifications are checked by Apple’s Private Cloud Compute. " data-label-ja="初期設定では、Karuiは完全にiPhone上で動作し、サーバーも分析データもありません。セカンドオピニオンをオンにすると、一部の通知をAppleのPrivate Cloud Computeで確認します。">By default, Karui runs entirely on your iPhone, with no server and no analytics. If you turn on Second Opinion, some notifications are checked by Apple’s Private Cloud Compute. </span><a href="karui-privacy.html" data-label-en="Details" data-label-ja="詳しく">Details</a><span data-label-en="." data-label-ja="">.</span></p>
     </section>
 
     <section class="karui-detail">

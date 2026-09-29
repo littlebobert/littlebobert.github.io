@@ -18,6 +18,8 @@
     .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
     .karui-footer p { margin: 4pt 0; }
     .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    /* Keep two-word links like Tech Specs whole when the row wraps on phones. */
+    .footer-links a { white-space: nowrap; }
     @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
     .karui-section h2 { margin: 6pt 0 4pt; }
     .karui-section h3 { margin: 8pt 0 3pt; }
@@ -115,7 +117,7 @@
         <li data-label-en="A Focus silences the apps you choose and allows only Karui." data-label-ja="集中モードで選んだアプリを消音し、Karuiだけを許可します。">A Focus silences the apps you choose and allows only Karui.</li>
         <li data-label-en="For each notification from those apps, iOS 27’s Shortcuts trigger “When I receive a notification” runs the Karui Shortcut, which passes the notification’s app, title, text, and sender to Karui." data-label-ja="それらのアプリから通知が届くたびに、iOS 27のショートカットのトリガー「通知を受信したとき」がKaruiショートカットを実行し、通知のアプリ、タイトル、本文、送信者をKaruiに渡します。">For each notification from those apps, iOS 27’s Shortcuts trigger “When I receive a notification” runs the Karui Shortcut, which passes the notification’s app, title, text, and sender to Karui.</li>
         <li data-label-en="Karui classifies the notification as Important, Neutral, or Spam." data-label-ja="Karuiが通知を「重要」「中立」「スパム」に分類します。">Karui classifies the notification as Important, Neutral, or Spam.</li>
-        <li data-label-en="Karui posts Important notifications again, and your Focus lets them through. Neutral and Spam notifications stay quiet. Every notification is kept in History, and Neutral ones can also appear in a daily summary." data-label-ja="重要な通知はKaruiがあらためて通知し、集中モードを通過します。中立とスパムの通知は静かなままです。すべての通知は履歴に保存され、中立の通知は毎日のまとめにも含められます。">Karui posts Important notifications again, and your Focus lets them through. Neutral and Spam notifications stay quiet. Every notification is kept in History, and Neutral ones can also appear in a daily summary.</li>
+        <li data-label-en="Karui posts Important notifications again, and your Focus lets them through. Tapping one opens Karui, not the original message. Neutral and Spam notifications stay quiet. Every notification is kept in History, and Neutral ones can also appear in a daily summary." data-label-ja="重要な通知はKaruiがあらためて通知し、集中モードを通過します。タップするとKaruiが開き、元のメッセージは開きません。中立とスパムの通知は静かなままです。すべての通知は履歴に保存され、中立の通知は毎日のまとめにも含められます。">Karui posts Important notifications again, and your Focus lets them through. Tapping one opens Karui, not the original message. Neutral and Spam notifications stay quiet. Every notification is kept in History, and Neutral ones can also appear in a daily summary.</li>
       </ol>
       <figure class="karui-flow" aria-labelledby="karui-flow-title">
         <div class="kf-source-col">

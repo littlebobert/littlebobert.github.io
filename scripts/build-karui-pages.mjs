@@ -24,6 +24,7 @@ const siteFiles = [
 const assetFiles = [
   'karui-favicon.png',
   'karui-icon.png',
+  'karui-qr.png',
   'karui-social.png',
   ...['01-spam-filtering', '02-unsent-messages', '03-wake-me'].flatMap((shot) => [
     `karui-shot-${shot}-en.jpg`,

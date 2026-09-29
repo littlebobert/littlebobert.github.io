@@ -64,6 +64,11 @@ test('builds the changelog page and links to it from every page', async () => {
   assert.doesNotMatch(pages[0], /data-karui-current-version/);
   // Downloads are counted by App Store Connect, so the site doesn't track clicks.
   assert.doesNotMatch(pages[0], /product-click-tracking|data-product=/);
+  // karui.jp/#qr, or tapping the icon, opens a full-screen QR code for showing the site in person.
+  assert.match(pages[0], /<section class="karui-qr" id="qr"/);
+  assert.match(pages[0], /<img src="\/assets\/karui-qr\.png\?v=1"/);
+  assert.match(pages[0], /<a href="#qr" class="karui-qr-trigger"/);
+  assert.doesNotMatch(pages[0], /data-label-en="QR Code"/);
 });
 
 test('publishes llms.txt with links to pages that exist', async () => {

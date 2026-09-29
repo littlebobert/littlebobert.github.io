@@ -50,6 +50,11 @@
     .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
     .karui-footer p { margin: 4pt 0; }
     .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    /* A full-screen QR code for karui.jp, for showing people in person. Opened by tapping the icon, or at #qr, which can be saved to the Home Screen. */
+    .karui-qr { display: none; position: fixed; inset: 0; z-index: 100; background: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 14pt; padding: 16px; text-align: center; }
+    .karui-qr:target { display: flex; }
+    .karui-qr img { width: min(80vw, 70vh, 360px); height: auto; }
+    .karui-qr-url { font-size: 14pt; font-weight: bold; }
 
     .karui-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 10pt 0 12pt; padding: 0; list-style: none; }
     .karui-shots li { margin: 0; }
@@ -95,7 +100,7 @@
 
     <section class="sasu-hero">
       <div class="sasu-hero-header">
-        <img class="sasu-icon karui-icon" src="assets/karui-icon.png?v=2" alt="Karui app icon with a tray and red badge" data-alt-en="Karui app icon with a tray and red badge" data-alt-ja="トレイと赤いバッジのKaruiアプリアイコン">
+        <a href="#qr" class="karui-qr-trigger" aria-label="Show a QR code for karui.jp"><img class="sasu-icon karui-icon" src="assets/karui-icon.png?v=2" alt="Karui app icon with a tray and red badge" data-alt-en="Karui app icon with a tray and red badge" data-alt-ja="トレイと赤いバッジのKaruiアプリアイコン"></a>
         <div>
           <h1>Karui</h1>
           <div class="sasu-subtitle" data-label-en="Silence spam notifications. Reveal unsent messages." data-label-ja="迷惑通知を消音。送信取り消しされたメッセージを確認。">Silence spam notifications. Reveal unsent messages.</div>
@@ -152,6 +157,11 @@
       <p class="footer-links"><a href="karui-changelog.html" data-changelog-link data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p>
       <p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p>
     </footer>
+    <section class="karui-qr" id="qr" aria-label="QR code for karui.jp">
+      <img src="assets/karui-qr.png?v=1" alt="QR code that opens https://karui.jp/" width="719" height="719">
+      <div class="karui-qr-url">karui.jp</div>
+      <a href="#close" data-label-en="Close" data-label-ja="閉じる">Close</a>
+    </section>
   </main>
 
   <script>

@@ -50,11 +50,21 @@
     .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
     .karui-footer p { margin: 4pt 0; }
     .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    .karui-maker { display: flex; align-items: center; justify-content: center; gap: 6pt; margin-top: 8pt !important; }
+    .karui-maker-photo { width: 40px; height: 51px; border-radius: 5px; object-fit: cover; flex: none; }
+    .karui-maker-text { text-align: left; line-height: 1.6; color: black; }
+    /* A surname seal beside the photo, as tall and with the same corners. */
+    .karui-maker-seal { width: 24px; height: 51px; flex: none; margin-left: -2pt; }
     /* A full-screen QR code for karui.jp, for showing people in person. Opened by tapping the icon, or at #qr, which can be saved to the Home Screen. */
-    .karui-qr { display: none; position: fixed; inset: 0; z-index: 100; background: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 14pt; padding: 16px; text-align: center; }
-    .karui-qr:target { display: flex; }
+    .karui-qr, .karui-seal-view { display: none; position: fixed; inset: 0; z-index: 100; background: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 14pt; padding: 16px; text-align: center; }
+    .karui-qr:target, .karui-seal-view:target { display: flex; }
     .karui-qr img { width: min(80vw, 70vh, 360px); height: auto; }
-    .karui-qr-url { font-size: 14pt; font-weight: bold; }
+    .karui-qr-url, .karui-seal-title { font-size: 14pt; font-weight: bold; }
+    /* Tapping the footer seal opens it large at #seal, with what a hanko is. */
+    .karui-seal-view { gap: 8pt; }
+    .karui-seal-view img { width: 96px; height: auto; margin-bottom: 4pt; }
+    .karui-seal-note { max-width: 28em; margin: 0; line-height: 1.6; color: black; text-wrap: pretty; }
+    .karui-seal-trigger { display: flex; flex: none; }
 
     .karui-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 10pt 0 12pt; padding: 0; list-style: none; }
     .karui-shots li { margin: 0; }
@@ -155,11 +165,17 @@
 
     <footer class="karui-footer">
       <p class="footer-links"><a href="karui-changelog.html" data-changelog-link data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p>
-      <p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p>
+      <p class="karui-maker"><img class="karui-maker-photo" src="assets/karui-developer.jpg?v=3" alt="" width="40" height="51"><a href="#seal" class="karui-seal-trigger" aria-label="About the name seal"><img class="karui-maker-seal" src="assets/karui-seal.png?v=8" alt="" width="24" height="51"></a><span class="karui-maker-text"><span data-label-en="An independent app by " data-label-ja="東京の個人開発者 ">An independent app by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo." data-label-ja=" 作"> in Tokyo.</span><br><span data-label-en="Questions? " data-label-ja="ご質問は ">Questions? </span><a href="mailto:justin@onemorething.tokyo">justin@onemorething.tokyo</a></span></p>
     </footer>
     <section class="karui-qr" id="qr" aria-label="QR code for karui.jp">
       <img src="assets/karui-qr.png?v=1" alt="QR code that opens https://karui.jp/" width="719" height="719">
       <div class="karui-qr-url">karui.jp</div>
+      <a href="#close" data-label-en="Close" data-label-ja="閉じる">Close</a>
+    </section>
+    <section class="karui-seal-view" id="seal" aria-label="About the name seal">
+      <img src="assets/karui-seal-large.png?v=3" alt="Name seal reading ガルシア (Garcia)" width="96" height="204">
+      <div class="karui-seal-title" data-label-en="My hanko" data-label-ja="私の判子">My hanko</div>
+      <p class="karui-seal-note" data-label-en="In Japan, people stamp a personal seal like this in red where others would sign on important documents. This one reads ガ⁠ル⁠シ⁠ア, “Garcia” in katakana, the script Japanese uses for foreign names. It’s just for this site, not a registered seal." data-label-ja="「ガルシア」と入った名前の判子です。このサイト用のデザインで、登録した印鑑ではありません。">In Japan, people stamp a personal seal like this in red where others would sign on important documents. This one reads ガ⁠ル⁠シ⁠ア, “Garcia” in katakana, the script Japanese uses for foreign names. It’s just for this site, not a registered seal.</p>
       <a href="#close" data-label-en="Close" data-label-ja="閉じる">Close</a>
     </section>
   </main>

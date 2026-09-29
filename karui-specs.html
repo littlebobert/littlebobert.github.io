@@ -18,7 +18,7 @@
     .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
     .karui-footer p { margin: 4pt 0; }
     .footer-links .footer-separator { margin: 0 6pt; color: #777; }
-    /* Keep two-word links like Tech Specs whole when the row wraps on phones. */
+    /* Keep two-word links like Tech Specs whole; the row wraps at the <wbr> after each separator. */
     .footer-links a { white-space: nowrap; }
     @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
     .karui-section h2 { margin: 6pt 0 4pt; }
@@ -183,7 +183,7 @@
     <section class="karui-section">
       <p><a href="karui-technotes.html" data-label-en="Technical Notes →" data-label-ja="技術ノート →">Technical Notes →</a></p>
     </section>
-    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
+    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
   </main>
   <script>
     const supportedLanguages = ['en', 'ja'];

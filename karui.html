@@ -442,13 +442,16 @@
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
       const ink = '#cc2119';
       const svgNS = 'http://www.w3.org/2000/svg';
-      // Milliseconds: hold the name, dissolve it into dots, curve the dots into place,
-      // settle the markers, then hand over to the code image.
+      // Milliseconds: stamp the seal onto the blank page, hold it, dissolve the name
+      // into dots, curve the dots into place, settle the markers, then hand over to
+      // the code image. Everything after the stamp is timed from when it's done.
+      const stamp = { delay: 250, duration: 600 };
       const T = { hold: 1200, dissolve: 350, travel: 1500, stagger: 400, markers: 2750, markersFor: 500, final: 3350, finalFor: 300 };
       const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
       let dots = [];
       let markers = [];
       let frame = null;
+      let erode = null;
       let running = [];
 
       const make = (tag, attributes) => {
@@ -472,13 +475,17 @@
           return { left: unit(x - width / 2), top: unit(y - width / 2), width: unit(w + width), height: unit(h + width) };
         };
         const square = box([inset, inset, data.canvas - inset * 2, data.canvas - inset * 2]);
-        frame = { element: document.createElement('div'), from: box(data.nameFrame), to: square };
+        frame = { element: document.createElement('div'), from: box(data.nameFrame), to: square, border: `${(width / data.canvas) * 100}cqw` };
         frame.element.className = 'karui-qr-morph-frame';
         Object.assign(frame.element.style, square, {
-          borderWidth: `${(width / data.canvas) * 100}cqw`,
+          borderWidth: frame.border,
           borderRadius: `${((radius + width / 2) / data.canvas) * 100}cqw`,
         });
         stage.insertBefore(frame.element, svg);
+        const filter = make('filter', { id: 'karui-qr-stamp' });
+        erode = make('feMorphology', { operator: 'erode', radius: 0 });
+        filter.append(erode);
+        svg.append(filter);
         markers = data.markers.map(([x, y, w]) => {
           const group = make('g', {});
           const core = w === 5 * p ? p : 3 * p;
@@ -518,11 +525,37 @@
 
       function play() {
         skip();
-        const timing = (delay, duration, extra = {}) => ({ delay, duration, fill: 'both', easing: 'linear', ...extra });
+        const stamped = stamp.delay + stamp.duration;
+        const timing = (delay, duration, extra = {}) => ({ delay: stamped + delay, duration, fill: 'both', easing: 'linear', ...extra });
+        // The stamp inks in: the frame and lettering come up thin and faint and grow
+        // to their full weight, like a seal pressed onto paper. The frame's border
+        // animates directly; the lettering is an image, so an erode filter thins it,
+        // and its radius follows the frame's animation, so skipping stops both.
+        const inkIn = { easing: 'cubic-bezier(0.2, 0.6, 0.3, 1)' };
+        const inking = frame.element.animate([
+          { borderWidth: `calc(${frame.border} * 0.25)`, opacity: 0 },
+          { opacity: 1, offset: 0.25 },
+          { borderWidth: frame.border, opacity: 1 },
+        ], { ...stamp, ...inkIn, fill: 'both' });
+        running.push(inking);
+        running.push(name.animate([{ opacity: 0 }, { opacity: 1, offset: 0.25 }, { opacity: 1 }], { ...stamp, ...inkIn, fill: 'both' }));
+        name.style.filter = `url(#${erode.parentNode.id})`;
+        const thinnest = stage.clientWidth * 0.009;
+        const thin = () => {
+          const progress = inking.effect.getComputedTiming().progress;
+          if (inking.playState === 'idle' || progress === null || progress >= 1) {
+            name.style.filter = '';
+            return;
+          }
+          erode.setAttribute('radius', thinnest * (1 - progress));
+          requestAnimationFrame(thin);
+        };
+        thin();
         // The dots come up over the still-visible lettering, then the lettering fades
         // out from under them, so the name breaks into dots instead of being swapped.
         const lead = 250, appear = 300;
-        running.push(name.animate([{ opacity: 1 }, { opacity: 0 }], timing(T.hold + 100, T.dissolve)));
+        // Filled forwards only, so until it starts the stamp decides the opacity.
+        running.push(name.animate([{ opacity: 1 }, { opacity: 0 }], timing(T.hold + 100, T.dissolve, { fill: 'forwards' })));
         const count = data.dots.length;
         dots.forEach(({ dot, dx, dy, order, fades }) => {
           // A quadratic curve bending off to the same side every time, so the dots

@@ -67,10 +67,14 @@ test('builds the changelog page and links to it from every page', async () => {
   // karui.jp/#qr, or tapping the icon, opens a full-screen QR code for showing the site in person.
   assert.match(pages[0], /<section class="karui-qr" id="qr"/);
   assert.match(pages[0], /<img src="\/assets\/karui-qr\.png\?v=1"/);
-  // #qr opens on the seal that turns into a code, then swipes to the icon code.
-  assert.match(pages[0], /<div class="karui-qr-morph">/);
-  assert.match(pages[0], /src="\/assets\/karui-qr-seal-name\.png\?v=2"/);
-  assert.match(pages[0], /src="\/assets\/karui-qr-seal\.png\?v=2"/);
+  // #qr opens on the 通知を軽く seal that turns into a code, then swipes to the
+  // ガルシア one, then the icon code.
+  assert.equal(pages[0].match(/<div class="karui-qr-morph">/g).length, 2);
+  assert.ok(pages[0].indexOf('karui-qr-seal-tagline-name.png') < pages[0].indexOf('karui-qr-seal-name.png'));
+  assert.ok(pages[0].indexOf('karui-qr-seal-name.png') < pages[0].indexOf('karui-qr.png'));
+  assert.match(pages[0], /src="\/assets\/karui-qr-seal-tagline-name\.png\?v=1"/);
+  assert.match(pages[0], /src="\/assets\/karui-qr-seal-name\.png\?v=3"/);
+  assert.match(pages[0], /src="\/assets\/karui-qr-seal\.png\?v=3"/);
   assert.doesNotMatch(pages[0], /karui-qr-hanko/);
   assert.match(pages[0], /class="karui-maker-seal" src="\/assets\/karui-seal\.png/);
   // Tapping the seal opens it large with an explanation at #seal.

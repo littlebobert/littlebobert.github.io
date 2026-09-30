@@ -60,16 +60,18 @@
     /* A full-screen QR code for karui.jp, for showing people in person. Opened by tapping the icon, or at #qr, which can be saved to the Home Screen. */
     .karui-qr, .karui-seal-view { display: none; position: fixed; inset: 0; z-index: 100; background: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 14pt; padding: 16px; text-align: center; }
     .karui-qr:target, .karui-seal-view:target { display: flex; }
-    /* Swipe sideways between the two codes: the seal one, then the app icon one. */
+    /* Swipe sideways between the codes: the 通知を軽く seal, the ガルシア seal, then
+       the app icon one. */
     .karui-qr-slides { display: flex; width: min(80vw, 70vh, 360px); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
     .karui-qr-slides::-webkit-scrollbar { display: none; }
     .karui-qr-slides img { flex: 0 0 100%; width: 100%; height: auto; scroll-snap-align: center; }
-    /* The seal that turns into a code: ジャスティン ガルシア dissolves into dots that
-       curve into place, then the real code image takes over. Without JavaScript,
-       or with Reduce Motion, the finished code shows straight away. */
+    /* A seal that turns into a code: its lettering dissolves into dots that curve
+       into place, then the real code image takes over. Without JavaScript, or with
+       Reduce Motion, the finished code shows straight away. */
     .karui-qr-morph { position: relative; flex: 0 0 100%; aspect-ratio: 1; scroll-snap-align: center; container-type: inline-size; }
-    .karui-qr-morph-frame { position: absolute; box-sizing: border-box; border: 0 solid #cc2119; }
+    .karui-qr-morph-frame { position: absolute; box-sizing: border-box; border: 0 solid #cc2119; overflow: hidden; }
     .karui-qr-morph > img, .karui-qr-morph > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .karui-qr-morph-frame > svg { position: absolute; width: 100cqw; height: 100cqw; overflow: visible; }
     .karui-qr-morph-name { opacity: 0; }
     .karui-qr-url, .karui-seal-title { font-size: 14pt; font-weight: bold; }
     .karui-qr-caption { max-width: 22em; margin: -6pt 0 0; line-height: 1.5; color: black; text-wrap: balance; }
@@ -181,9 +183,14 @@
     <section class="karui-qr" id="qr" aria-label="QR code for karui.jp">
       <div class="karui-qr-slides">
         <div class="karui-qr-morph">
-          <img class="karui-qr-morph-name" src="assets/karui-qr-seal-name.png?v=2" alt="" width="648" height="648">
+          <img class="karui-qr-morph-name" src="assets/karui-qr-seal-tagline-name.png?v=1" alt="" width="648" height="648">
           <svg class="karui-qr-morph-dots" aria-hidden="true"></svg>
-          <img class="karui-qr-morph-final" src="assets/karui-qr-seal.png?v=2" alt="QR code that opens https://karui.jp/, in seal red" width="648" height="648">
+          <img class="karui-qr-morph-final" src="assets/karui-qr-seal.png?v=3" alt="QR code that opens https://karui.jp/, in seal red" width="648" height="648">
+        </div>
+        <div class="karui-qr-morph">
+          <img class="karui-qr-morph-name" src="assets/karui-qr-seal-name.png?v=3" alt="" width="648" height="648">
+          <svg class="karui-qr-morph-dots" aria-hidden="true"></svg>
+          <img class="karui-qr-morph-final" src="assets/karui-qr-seal.png?v=3" alt="QR code that opens https://karui.jp/, in seal red" width="648" height="648">
         </div>
         <img src="assets/karui-qr.png?v=1" alt="QR code that opens https://karui.jp/" width="719" height="719">
       </div>
@@ -427,32 +434,27 @@
     setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
   </script>
   <script>
-    // The #qr seal: ガルシア, in a narrow frame like the footer seal, dissolves into
-    // dots that curve into their places in the QR code while the frame widens into a
-    // square, then the real code image takes over, so what people scan is the tested
-    // image. Tap to skip. Reduce Motion shows the finished code at once.
+    // The #qr seals: 通知を軽く first, then ガルシア a swipe away. Each is inked onto
+    // the page in a narrow frame like the footer seal, then its lettering dissolves
+    // into dots that curve into their places in the QR code while the frame widens
+    // into a square, and the real code image takes over, so what people scan is the
+    // tested image. Each plays once per visit, when it's swiped into view. Tap to
+    // skip. Reduce Motion shows the finished codes at once.
     (() => {
       const view = document.getElementById('qr');
-      const stage = view && view.querySelector('.karui-qr-morph');
-      if (!stage || !stage.animate) return;
-      const name = stage.querySelector('.karui-qr-morph-name');
-      const final = stage.querySelector('.karui-qr-morph-final');
-      const svg = stage.querySelector('svg');
+      const stages = view ? [...view.querySelectorAll('.karui-qr-morph')] : [];
+      if (!stages.length || !stages[0].animate) return;
       const slides = view.querySelector('.karui-qr-slides');
       const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
       const ink = '#cc2119';
       const svgNS = 'http://www.w3.org/2000/svg';
       // Milliseconds: stamp the seal onto the blank page, hold it, dissolve the name
-      // into dots, curve the dots into place, settle the markers, then hand over to
-      // the code image. Everything after the stamp is timed from when it's done.
-      const stamp = { delay: 250, duration: 600 };
-      const T = { hold: 1200, dissolve: 350, travel: 1500, stagger: 400, markers: 2750, markersFor: 500, final: 3350, finalFor: 300 };
+      // into dots, hold the dotted name still, curve the dots into place, settle the
+      // markers, then hand over to the code image. Everything after the stamp is
+      // timed from when it's done.
+      const stamp = { delay: 220, duration: 525 };
+      const T = { hold: 300, dissolve: 305, dotted: 250, travel: 1000, stagger: 350, markers: 1600, markersFor: 440, final: 2125, finalFor: 265 };
       const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
-      let dots = [];
-      let markers = [];
-      let frame = null;
-      let erode = null;
-      let running = [];
 
       const make = (tag, attributes) => {
         const element = document.createElementNS(svgNS, tag);
@@ -460,147 +462,200 @@
         return element;
       };
 
-      let data = null;
+      function morph(stage, index) {
+        const name = stage.querySelector('.karui-qr-morph-name');
+        const final = stage.querySelector('.karui-qr-morph-final');
+        const svg = stage.querySelector('svg');
+        let dots = [];
+        let markers = [];
+        let frame = null;
+        let erode = null;
+        let running = [];
+        let data = null;
 
-      function build(json) {
-        data = json;
-        const [inset, width, radius] = data.frame;
-        const p = data.pitch;
-        svg.setAttribute('viewBox', `0 0 ${data.canvas} ${data.canvas}`);
-        // The frame is a box under the dots, sized in container units so it scales
-        // with the stage. Its resting place is the code's square frame; play() starts
-        // it at the name's narrow one.
-        const box = ([x, y, w, h]) => {
+        function build(json) {
+          data = json;
+          const [inset, width, radius] = data.frame;
+          const p = data.pitch;
+          svg.setAttribute('viewBox', `0 0 ${data.canvas} ${data.canvas}`);
+          // The frame is a box sized in container units so it scales with the stage. Its
+          // resting place is the code's square frame; play() starts it at the name's
+          // narrow one. The dots live inside it, so they never show outside the border
+          // while it widens, and move opposite to it, so they keep their place on the
+          // stage.
           const unit = (value) => `${(value / data.canvas) * 100}cqw`;
-          return { left: unit(x - width / 2), top: unit(y - width / 2), width: unit(w + width), height: unit(h + width) };
-        };
-        const square = box([inset, inset, data.canvas - inset * 2, data.canvas - inset * 2]);
-        frame = { element: document.createElement('div'), from: box(data.nameFrame), to: square, border: `${(width / data.canvas) * 100}cqw` };
-        frame.element.className = 'karui-qr-morph-frame';
-        Object.assign(frame.element.style, square, {
-          borderWidth: frame.border,
-          borderRadius: `${((radius + width / 2) / data.canvas) * 100}cqw`,
-        });
-        stage.insertBefore(frame.element, svg);
-        const filter = make('filter', { id: 'karui-qr-stamp' });
-        erode = make('feMorphology', { operator: 'erode', radius: 0 });
-        filter.append(erode);
-        svg.append(filter);
-        markers = data.markers.map(([x, y, w]) => {
-          const group = make('g', {});
-          const core = w === 5 * p ? p : 3 * p;
-          group.append(
-            make('rect', { x: x + p / 2, y: y + p / 2, width: w - p, height: w - p, rx: p * 1.3, fill: 'none', stroke: ink, 'stroke-width': p }),
-            make('rect', { x: x + (w - core) / 2, y: y + (w - core) / 2, width: core, height: core, rx: core * 0.25, fill: ink })
-          );
-          group.style.transformBox = 'fill-box';
-          group.style.transformOrigin = 'center';
-          svg.append(group);
-          return group;
-        });
-        const circle = (x, y) => {
-          const dot = make('circle', { cx: x, cy: y, r: p * 0.45, fill: ink });
-          dot.style.transformBox = 'fill-box';
-          dot.style.transformOrigin = 'center';
-          svg.append(dot);
-          return dot;
-        };
-        // Extras fill out the dotted lettering: each starts on the ink between the
-        // real dots, follows one of them to its module, and fades out on the way.
-        const extras = data.extras.map(([sx, sy, index]) => {
-          const [, , ex, ey] = data.dots[index];
-          return { dot: circle(ex, ey), dx: sx - ex, dy: sy - ey, order: index, fades: true };
-        });
-        dots = extras.concat(data.dots.map(([sx, sy, ex, ey], index) => (
-          { dot: circle(ex, ey), dx: sx - ex, dy: sy - ey, order: index, fades: false }
-        )));
+          const box = ([x, y, w, h]) => ({ left: unit(x - width / 2), top: unit(y - width / 2), width: unit(w + width), height: unit(h + width) });
+          const counter = ([x, y]) => ({ left: unit(-x - width / 2), top: unit(-y - width / 2) });
+          const squareFrame = [inset, inset, data.canvas - inset * 2, data.canvas - inset * 2];
+          const square = box(squareFrame);
+          frame = {
+            element: document.createElement('div'), from: box(data.nameFrame), to: square, border: unit(width),
+            dotsFrom: counter(data.nameFrame), dotsTo: counter(squareFrame),
+          };
+          frame.element.className = 'karui-qr-morph-frame';
+          Object.assign(frame.element.style, square, {
+            borderWidth: frame.border,
+            borderRadius: `${((radius + width / 2) / data.canvas) * 100}cqw`,
+          });
+          stage.insertBefore(frame.element, svg);
+          frame.element.append(svg);
+          Object.assign(svg.style, frame.dotsTo);
+          const filter = make('filter', { id: `karui-qr-stamp-${index}` });
+          erode = make('feMorphology', { operator: 'erode', radius: 0 });
+          filter.append(erode);
+          svg.append(filter);
+          markers = data.markers.map(([x, y, w]) => {
+            const group = make('g', {});
+            const core = w === 5 * p ? p : 3 * p;
+            group.append(
+              make('rect', { x: x + p / 2, y: y + p / 2, width: w - p, height: w - p, rx: p * 1.3, fill: 'none', stroke: ink, 'stroke-width': p }),
+              make('rect', { x: x + (w - core) / 2, y: y + (w - core) / 2, width: core, height: core, rx: core * 0.25, fill: ink })
+            );
+            group.style.transformBox = 'fill-box';
+            group.style.transformOrigin = 'center';
+            svg.append(group);
+            return group;
+          });
+          const circle = (x, y) => {
+            const dot = make('circle', { cx: x, cy: y, r: p * 0.45, fill: ink });
+            dot.style.transformBox = 'fill-box';
+            dot.style.transformOrigin = 'center';
+            svg.append(dot);
+            return dot;
+          };
+          // Extras fill out the dotted lettering: each starts on the ink between the
+          // real dots, follows one of them to its module, and fades out on the way.
+          const extras = data.extras.map(([sx, sy, index]) => {
+            const [, , ex, ey] = data.dots[index];
+            return { dot: circle(ex, ey), dx: sx - ex, dy: sy - ey, order: index, fades: true };
+          });
+          dots = extras.concat(data.dots.map(([sx, sy, ex, ey], index) => (
+            { dot: circle(ex, ey), dx: sx - ex, dy: sy - ey, order: index, fades: false }
+          )));
+        }
+
+        // Cancelling returns everything to the finished code: the image on top of the
+        // dots and markers in their final places.
+        function skip() {
+          running.forEach((animation) => animation.cancel());
+          running = [];
+        }
+
+        function play() {
+          skip();
+          const stamped = stamp.delay + stamp.duration;
+          const timing = (delay, duration, extra = {}) => ({ delay: stamped + delay, duration, fill: 'both', easing: 'linear', ...extra });
+          // The stamp inks in: the frame and lettering come up thin and faint and grow
+          // to their full weight, like a seal pressed onto paper. The frame's border
+          // animates directly; the lettering is an image, so an erode filter thins it,
+          // and its radius follows the frame's animation, so skipping stops both.
+          const inkIn = { easing: 'cubic-bezier(0.2, 0.6, 0.3, 1)' };
+          const inking = frame.element.animate([
+            { borderWidth: `calc(${frame.border} * 0.25)`, opacity: 0 },
+            { opacity: 1, offset: 0.25 },
+            { borderWidth: frame.border, opacity: 1 },
+          ], { ...stamp, ...inkIn, fill: 'both' });
+          running.push(inking);
+          running.push(name.animate([{ opacity: 0 }, { opacity: 1, offset: 0.25 }, { opacity: 1 }], { ...stamp, ...inkIn, fill: 'both' }));
+          name.style.filter = `url(#${erode.parentNode.id})`;
+          const thinnest = stage.clientWidth * 0.009;
+          const thin = () => {
+            const progress = inking.effect.getComputedTiming().progress;
+            if (inking.playState === 'idle' || progress === null || progress >= 1) {
+              name.style.filter = '';
+              return;
+            }
+            erode.setAttribute('radius', thinnest * (1 - progress));
+            requestAnimationFrame(thin);
+          };
+          thin();
+          // The dots come up over the still-visible lettering, then the lettering fades
+          // out from under them, so the name breaks into dots instead of being swapped.
+          const lead = 220, appear = 265;
+          // Dots start small, so together they trace even the thin strokes, and grow to
+          // module size on the way. How small depends on the lettering's detail.
+          const small = data.startScale;
+          // Filled forwards only, so until it starts the stamp decides the opacity.
+          running.push(name.animate([{ opacity: 1 }, { opacity: 0 }], timing(T.hold + 90, T.dissolve, { fill: 'forwards' })));
+          const count = data.dots.length;
+          dots.forEach(({ dot, dx, dy, order, fades }) => {
+            // A quadratic curve bending off to the same side every time, so the dots
+            // sweep rather than slide straight.
+            const cx = dx / 2 - dy * 0.35, cy = dy / 2 + dx * 0.35;
+            const stagger = (order / count) * T.stagger;
+            const total = lead + T.dissolve + T.dotted + stagger + T.travel;
+            const depart = (lead + T.dissolve + T.dotted + stagger) / total;
+            const start = `translate(${dx}px, ${dy}px) scale(${small})`;
+            const frames = [
+              { transform: start, opacity: 0, offset: 0 },
+              { transform: start, opacity: 1, offset: appear / total },
+              { transform: start, opacity: 1, offset: depart },
+            ];
+            for (let k = 1; k <= 16; k += 1) {
+              const u = easeInOut(k / 16);
+              const a = (1 - u) * (1 - u), b = 2 * (1 - u) * u;
+              // Extras fade over the last 40% of the trip, merging into their dot.
+              const opacity = fades ? Math.min(1, (1 - k / 16) / 0.4) : 1;
+              frames.push({ transform: `translate(${a * dx + b * cx}px, ${a * dy + b * cy}px) scale(${small + (1 - small) * u})`, opacity, offset: depart + (1 - depart) * (k / 16) });
+            }
+            running.push(dot.animate(frames, timing(T.hold - lead, total)));
+          });
+          const widening = timing(T.hold + T.dissolve + T.dotted, T.travel * 0.8, { easing: 'cubic-bezier(0.65, 0, 0.35, 1)' });
+          running.push(frame.element.animate([frame.from, frame.to], widening));
+          running.push(svg.animate([frame.dotsFrom, frame.dotsTo], widening));
+          markers.forEach((marker) => running.push(marker.animate(
+            [{ transform: 'scale(0.6)', opacity: 0 }, { transform: 'scale(1)', opacity: 1 }],
+            timing(T.markers, T.markersFor, { easing: 'cubic-bezier(0.34, 1.4, 0.64, 1)' })
+          )));
+          running.push(final.animate([{ opacity: 0 }, { opacity: 1 }], timing(T.final, T.finalFor)));
+        }
+
+        // The dots come from the JSON beside the lettering image, with the same version
+        // query, so they update together.
+        const loaded = fetch(name.src.replace('-name.png', '.json'))
+          .then((response) => response.json())
+          .then(build)
+          .then(() => true, () => false);
+        stage.addEventListener('click', skip);
+        // Hold at the start, the blank page, until it's in view.
+        const ready = () => { play(); running.forEach((animation) => animation.pause()); };
+        const resume = () => running.forEach((animation) => animation.play());
+        return { stage, loaded, ready, resume, skip, prepared: null, played: false };
       }
 
-      // Cancelling returns everything to the finished code: the image on top of the
-      // dots and markers in their final places.
-      function skip() {
-        running.forEach((animation) => animation.cancel());
-        running = [];
+      const morphs = stages.map(morph);
+      let open = false;
+
+      // A seal is in view when at least 60% of it shows in the slides.
+      const inView = (item) => {
+        const offset = Math.abs(slides.scrollLeft - (item.stage.offsetLeft - slides.firstElementChild.offsetLeft));
+        return offset <= slides.clientWidth * 0.4;
+      };
+      // Play a seal the first time it's in view on this visit, once it's ready.
+      async function playIfDue(item) {
+        if (!open || item.played || !item.prepared || !inView(item)) return;
+        item.played = true;
+        const prepared = item.prepared;
+        if (await prepared && item.prepared === prepared) item.resume();
       }
 
-      function play() {
-        skip();
-        const stamped = stamp.delay + stamp.duration;
-        const timing = (delay, duration, extra = {}) => ({ delay: stamped + delay, duration, fill: 'both', easing: 'linear', ...extra });
-        // The stamp inks in: the frame and lettering come up thin and faint and grow
-        // to their full weight, like a seal pressed onto paper. The frame's border
-        // animates directly; the lettering is an image, so an erode filter thins it,
-        // and its radius follows the frame's animation, so skipping stops both.
-        const inkIn = { easing: 'cubic-bezier(0.2, 0.6, 0.3, 1)' };
-        const inking = frame.element.animate([
-          { borderWidth: `calc(${frame.border} * 0.25)`, opacity: 0 },
-          { opacity: 1, offset: 0.25 },
-          { borderWidth: frame.border, opacity: 1 },
-        ], { ...stamp, ...inkIn, fill: 'both' });
-        running.push(inking);
-        running.push(name.animate([{ opacity: 0 }, { opacity: 1, offset: 0.25 }, { opacity: 1 }], { ...stamp, ...inkIn, fill: 'both' }));
-        name.style.filter = `url(#${erode.parentNode.id})`;
-        const thinnest = stage.clientWidth * 0.009;
-        const thin = () => {
-          const progress = inking.effect.getComputedTiming().progress;
-          if (inking.playState === 'idle' || progress === null || progress >= 1) {
-            name.style.filter = '';
-            return;
-          }
-          erode.setAttribute('radius', thinnest * (1 - progress));
-          requestAnimationFrame(thin);
-        };
-        thin();
-        // The dots come up over the still-visible lettering, then the lettering fades
-        // out from under them, so the name breaks into dots instead of being swapped.
-        const lead = 250, appear = 300;
-        // Filled forwards only, so until it starts the stamp decides the opacity.
-        running.push(name.animate([{ opacity: 1 }, { opacity: 0 }], timing(T.hold + 100, T.dissolve, { fill: 'forwards' })));
-        const count = data.dots.length;
-        dots.forEach(({ dot, dx, dy, order, fades }) => {
-          // A quadratic curve bending off to the same side every time, so the dots
-          // sweep rather than slide straight.
-          const cx = dx / 2 - dy * 0.35, cy = dy / 2 + dx * 0.35;
-          const stagger = (order / count) * T.stagger;
-          const total = lead + T.dissolve + stagger + T.travel;
-          const depart = (lead + T.dissolve + stagger) / total;
-          const start = `translate(${dx}px, ${dy}px) scale(0.55)`;
-          const frames = [
-            { transform: start, opacity: 0, offset: 0 },
-            { transform: start, opacity: 1, offset: appear / total },
-            { transform: start, opacity: 1, offset: depart },
-          ];
-          for (let k = 1; k <= 16; k += 1) {
-            const u = easeInOut(k / 16);
-            const a = (1 - u) * (1 - u), b = 2 * (1 - u) * u;
-            // Extras fade over the last 40% of the trip, merging into their dot.
-            const opacity = fades ? Math.min(1, (1 - k / 16) / 0.4) : 1;
-            frames.push({ transform: `translate(${a * dx + b * cx}px, ${a * dy + b * cy}px) scale(${0.55 + 0.45 * u})`, opacity, offset: depart + (1 - depart) * (k / 16) });
-          }
-          running.push(dot.animate(frames, timing(T.hold - lead, total)));
-        });
-        running.push(frame.element.animate([frame.from, frame.to], timing(T.hold + T.dissolve, T.travel * 0.8, { easing: 'cubic-bezier(0.65, 0, 0.35, 1)' })));
-        markers.forEach((marker) => running.push(marker.animate(
-          [{ transform: 'scale(0.6)', opacity: 0 }, { transform: 'scale(1)', opacity: 1 }],
-          timing(T.markers, T.markersFor, { easing: 'cubic-bezier(0.34, 1.4, 0.64, 1)' })
-        )));
-        running.push(final.animate([{ opacity: 0 }, { opacity: 1 }], timing(T.final, T.finalFor)));
-      }
-
-      // Same version query as the code image, so they update together.
-      const loaded = fetch(new URL(`karui-qr-seal.json${new URL(final.src).search}`, final.src))
-        .then((response) => response.json())
-        .then(build)
-        .then(() => true, () => false);
-
-      async function update() {
-        if (location.hash !== '#qr') { skip(); return; }
-        // Open on the seal, not wherever the last visit swiped to.
+      function update() {
+        open = location.hash === '#qr';
+        // Closed, or with Reduce Motion, every seal shows its finished code.
+        morphs.forEach((item) => { item.skip(); item.played = false; item.prepared = null; });
+        if (!open || reduceMotion.matches) return;
+        // Open on the first seal, not wherever the last visit swiped to.
         slides.scrollLeft = 0;
-        if (reduceMotion.matches || !(await loaded)) { skip(); return; }
-        play();
+        // Each seal waits on a blank page until it's swiped into view.
+        morphs.forEach((item) => {
+          item.prepared = item.loaded.then((ok) => {
+            if (ok && open) item.ready();
+            return ok && open;
+          });
+          playIfDue(item);
+        });
       }
-      stage.addEventListener('click', skip);
+      slides.addEventListener('scroll', () => morphs.forEach(playIfDue), { passive: true });
       window.addEventListener('hashchange', update);
       update();
     })();

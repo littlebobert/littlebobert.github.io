@@ -29,6 +29,8 @@ const assetFiles = [
   'karui-qr-seal.png',
   'karui-qr-seal-name.png',
   'karui-qr-seal.json',
+  'karui-qr-seal-tagline-name.png',
+  'karui-qr-seal-tagline.json',
   'karui-seal.png',
   'karui-seal-large.png',
   'karui-social.png',

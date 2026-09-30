@@ -1,9 +1,13 @@
-// Generates the animated seal at karui.jp/#qr, where ガルシア, in a narrow frame
-// like the footer seal, turns into a QR code for karui.jp:
-//   assets/karui-qr-seal-name.png  the red lettering alone, on transparent; the page
-//                                  draws the frame so it can widen
-//   assets/karui-qr-seal.png       the plain red QR code in a square frame (the end)
-//   assets/karui-qr-seal.json      each data dot's start (on the lettering) and end
+// Generates the animated seals at karui.jp/#qr, where a seal's lettering, in a
+// narrow frame, turns into a QR code for karui.jp. There are two: 通知を軽く, the
+// App Store name's tagline, and ガルシア, like the footer seal.
+//   assets/karui-qr-seal.png       the plain red QR code in a square frame, where
+//                                  both end
+//   assets/karui-qr-seal-tagline-name.png, assets/karui-qr-seal-name.png
+//                                  each seal's red lettering alone, on transparent;
+//                                  the page draws the frame so it can widen
+//   assets/karui-qr-seal-tagline.json, assets/karui-qr-seal.json
+//                                  each data dot's start (on the lettering) and end
 //                                  (its QR module), extra dots that fill out the
 //                                  lettering, the markers, and both frames
 //
@@ -85,36 +89,6 @@ func write(_ bitmap: NSBitmapImageRep, to path: String) {
     print("Wrote \(path) (\(Int(canvas)) px)")
 }
 
-// The name seal's frame: as tall as the code's square frame and shaped like the
-// 24 × 51-point footer seal, centered. The page widens it into the square one.
-let squareSide = canvas - frameInset * 2
-let nameFrame = CGRect(x: (canvas - squareSide * 24 / 51) / 2, y: frameInset, width: squareSide * 24 / 51, height: squareSide)
-
-// ガルシア in one column, set like the footer seal.
-func drawName(_ context: CGContext, color: NSColor) {
-    let column = Array("ガルシア")
-    let inner = nameFrame.insetBy(dx: frameWidth, dy: frameWidth)
-    let usableWidth = inner.width * 0.72, usableHeight = inner.height * 0.80
-    let step = usableHeight / CGFloat(column.count)
-    let fontSize = min(step * 1.12, usableWidth * 0.95)
-    // Seal lettering is stretched to fill its column; katakana are narrow otherwise.
-    let stretch = min(usableWidth * 0.92 / fontSize, 1.6)
-    for (index, character) in column.enumerated() {
-        let y = canvas / 2 + usableHeight / 2 - step * (CGFloat(index) + 0.5)
-        let line = CTLineCreateWithAttributedString(NSAttributedString(
-            string: String(character),
-            attributes: [.font: NSFont(name: fontName, size: fontSize)!, .foregroundColor: color]
-        ))
-        let bounds = CTLineGetBoundsWithOptions(line, .useGlyphPathBounds)
-        context.saveGState()
-        context.translateBy(x: canvas / 2, y: y)
-        context.scaleBy(x: stretch, y: 1)
-        context.textPosition = CGPoint(x: -bounds.midX, y: -bounds.midY)
-        CTLineDraw(line, context)
-        context.restoreGState()
-    }
-}
-
 let qrBitmap = render { $0.draw(code, in: CGRect(x: margin, y: margin, width: size, height: size)) }
 let detector = CIDetector(ofType: CIDetectorTypeQRCode, context: nil, options: [CIDetectorAccuracy: CIDetectorAccuracyHigh])!
 let decoded = detector.features(in: CIImage(cgImage: qrBitmap.cgImage!)).compactMap { ($0 as? CIQRCodeFeature)?.messageString }
@@ -123,7 +97,6 @@ guard decoded == [url] else {
     exit(1)
 }
 write(qrBitmap, to: "assets/karui-qr-seal.png")
-write(render(framed: false) { drawName($0, color: ink) }, to: "assets/karui-qr-seal-name.png")
 
 // The module grid: dark data modules, with the three corner markers and the small
 // alignment marker kept apart, since those are drawn as shapes rather than dots.
@@ -145,43 +118,6 @@ for row in 0..<gridPixels {
 let markers = [(0, 0, 7), (modules - 7, 0, 7), (0, modules - 7, 7), (alignment - 2, alignment - 2, 5)].map { column, row, width in
     [margin + CGFloat(column + quiet) * pitch, margin + CGFloat(row + quiet) * pitch, CGFloat(width) * pitch]
 }
-
-// Sample the lettering: rasterize it, then keep evenly spread points on the ink.
-let maskSize = Int(canvas)
-var mask = [UInt8](repeating: 0, count: maskSize * maskSize)
-let maskContext = CGContext(
-    data: &mask, width: maskSize, height: maskSize, bitsPerComponent: 8, bytesPerRow: maskSize,
-    space: CGColorSpaceCreateDeviceGray(), bitmapInfo: CGImageAlphaInfo.none.rawValue
-)!
-NSGraphicsContext.saveGraphicsState()
-NSGraphicsContext.current = NSGraphicsContext(cgContext: maskContext, flipped: false)
-drawName(maskContext, color: .white)
-NSGraphicsContext.restoreGraphicsState()
-var inkPoints: [CGPoint] = []
-for y in stride(from: 0, to: maskSize, by: 3) {
-    for x in stride(from: 0, to: maskSize, by: 3) where mask[y * maskSize + x] > 128 {
-        // The context's memory starts with the top row, so y is already top-down.
-        inkPoints.append(CGPoint(x: CGFloat(x), y: CGFloat(y)))
-    }
-}
-// A fixed shuffle, so the output is the same every run.
-var seed: UInt64 = 42
-func nextRandom() -> UInt64 { seed = seed &* 6364136223846793005 &+ 1442695040888963407; return seed >> 33 }
-for i in stride(from: inkPoints.count - 1, to: 0, by: -1) { inkPoints.swapAt(i, Int(nextRandom() % UInt64(i + 1))) }
-// Keep points that aren't too close to one already kept, relaxing the spacing until
-// there's one for every data dot.
-var spacing = pitch * 1.2
-var starts: [CGPoint] = []
-while spacing > 1 {
-    starts = []
-    for point in inkPoints where starts.allSatisfy({ hypot($0.x - point.x, $0.y - point.y) >= spacing }) {
-        starts.append(point)
-        if starts.count == ends.count { break }
-    }
-    if starts.count == ends.count { break }
-    spacing *= 0.92
-}
-guard starts.count == ends.count else { fatalError("Couldn't place \(ends.count) points on the lettering") }
 
 // Pair starts with ends so the total distance is as small as possible (the Hungarian
 // algorithm): straight paths paired that way never cross, so the dots spread out
@@ -232,32 +168,114 @@ func minimumDistancePairing(_ a: [CGPoint], _ b: [CGPoint]) -> [Int] {
     for j in 1...n { match[p[j] - 1] = j - 1 }
     return match  // a[i] pairs with b[match[i]]
 }
-starts.sort { hilbert($0) < hilbert($1) }
-let match = minimumDistancePairing(starts, ends)
-
-// Extra dots so the dotted lettering reads like the lettering: more ink points,
-// about a third of a module apart. Each follows its nearest real dot and fades out
-// as it arrives, so the finished code still has exactly its own dots.
-var placed = starts
-var extras: [[Double]] = []
-for point in inkPoints where placed.allSatisfy({ hypot($0.x - point.x, $0.y - point.y) >= pitch * 0.32 }) {
-    placed.append(point)
-    let nearest = starts.indices.min { hypot(starts[$0].x - point.x, starts[$0].y - point.y) < hypot(starts[$1].x - point.x, starts[$1].y - point.y) }!
-    extras.append([Double(point.x), Double(point.y), Double(nearest)])
-}
-
 let rounding = { (value: CGFloat) in (Double(value) * 10).rounded() / 10 }
-let dots = starts.enumerated().map { index, start in
-    [start.x, start.y, ends[match[index]].x, ends[match[index]].y].map(rounding)
+let squareSide = canvas - frameInset * 2
+
+// One seal: its lettering in one column in a frame as tall as the code's square one
+// and `widthRatio` as wide, centered. The page widens that frame into the square.
+//   text           the lettering, top to bottom
+//   name           the lettering image, on transparent: the page draws the frame
+//   json           the dots, markers and frames for the page
+//   sampleStep     how finely to sample the lettering for dot positions, in pixels
+//   extraSpacing   how far apart extra dots are, in modules; smaller traces more detail
+//   startScale     how big the dots start, relative to a module, so they trace thin
+//                  strokes and grow on the way
+func seal(text: String, widthRatio: CGFloat, name: String, json: String, sampleStep: Int, extraSpacing: CGFloat, startScale: Double) {
+    let nameFrame = CGRect(x: (canvas - squareSide * widthRatio) / 2, y: frameInset, width: squareSide * widthRatio, height: squareSide)
+    func drawName(_ context: CGContext, color: NSColor) {
+        let column = Array(text)
+        let inner = nameFrame.insetBy(dx: frameWidth, dy: frameWidth)
+        let usableWidth = inner.width * 0.72, usableHeight = inner.height * 0.80
+        let step = usableHeight / CGFloat(column.count)
+        let fontSize = min(step * 1.12, usableWidth * 0.95)
+        // Seal lettering is stretched to fill its column; katakana are narrow otherwise.
+        let stretch = min(usableWidth * 0.92 / fontSize, 1.6)
+        for (index, character) in column.enumerated() {
+            let y = canvas / 2 + usableHeight / 2 - step * (CGFloat(index) + 0.5)
+            let line = CTLineCreateWithAttributedString(NSAttributedString(
+                string: String(character),
+                attributes: [.font: NSFont(name: fontName, size: fontSize)!, .foregroundColor: color]
+            ))
+            let bounds = CTLineGetBoundsWithOptions(line, .useGlyphPathBounds)
+            context.saveGState()
+            context.translateBy(x: canvas / 2, y: y)
+            context.scaleBy(x: stretch, y: 1)
+            context.textPosition = CGPoint(x: -bounds.midX, y: -bounds.midY)
+            CTLineDraw(line, context)
+            context.restoreGState()
+        }
+    }
+    write(render(framed: false) { drawName($0, color: ink) }, to: name)
+
+    // Sample the lettering: rasterize it, then keep evenly spread points on the ink.
+    let maskSize = Int(canvas)
+    var mask = [UInt8](repeating: 0, count: maskSize * maskSize)
+    let maskContext = CGContext(
+        data: &mask, width: maskSize, height: maskSize, bitsPerComponent: 8, bytesPerRow: maskSize,
+        space: CGColorSpaceCreateDeviceGray(), bitmapInfo: CGImageAlphaInfo.none.rawValue
+    )!
+    NSGraphicsContext.saveGraphicsState()
+    NSGraphicsContext.current = NSGraphicsContext(cgContext: maskContext, flipped: false)
+    drawName(maskContext, color: .white)
+    NSGraphicsContext.restoreGraphicsState()
+    var inkPoints: [CGPoint] = []
+    for y in stride(from: 0, to: maskSize, by: sampleStep) {
+        for x in stride(from: 0, to: maskSize, by: sampleStep) where mask[y * maskSize + x] > 128 {
+            // The context's memory starts with the top row, so y is already top-down.
+            inkPoints.append(CGPoint(x: CGFloat(x), y: CGFloat(y)))
+        }
+    }
+    // A fixed shuffle, so the output is the same every run.
+    var seed: UInt64 = 42
+    func nextRandom() -> UInt64 { seed = seed &* 6364136223846793005 &+ 1442695040888963407; return seed >> 33 }
+    for i in stride(from: inkPoints.count - 1, to: 0, by: -1) { inkPoints.swapAt(i, Int(nextRandom() % UInt64(i + 1))) }
+    // Keep points that aren't too close to one already kept, relaxing the spacing
+    // until there's one for every data dot.
+    var spacing = pitch * 1.2
+    var starts: [CGPoint] = []
+    while spacing > 1 {
+        starts = []
+        for point in inkPoints where starts.allSatisfy({ hypot($0.x - point.x, $0.y - point.y) >= spacing }) {
+            starts.append(point)
+            if starts.count == ends.count { break }
+        }
+        if starts.count == ends.count { break }
+        spacing *= 0.92
+    }
+    guard starts.count == ends.count else { fatalError("Couldn't place \(ends.count) points on \(text)") }
+    starts.sort { hilbert($0) < hilbert($1) }
+    let match = minimumDistancePairing(starts, ends)
+
+    // Extra dots so the dotted lettering reads like the lettering. Each follows its
+    // nearest real dot and fades out as it arrives, so the finished code still has
+    // exactly its own dots.
+    var placed = starts
+    var extras: [[Double]] = []
+    for point in inkPoints where placed.allSatisfy({ hypot($0.x - point.x, $0.y - point.y) >= pitch * extraSpacing }) {
+        placed.append(point)
+        let nearest = starts.indices.min { hypot(starts[$0].x - point.x, starts[$0].y - point.y) < hypot(starts[$1].x - point.x, starts[$1].y - point.y) }!
+        extras.append([Double(point.x), Double(point.y), Double(nearest)])
+    }
+
+    let dots = starts.enumerated().map { index, start in
+        [start.x, start.y, ends[match[index]].x, ends[match[index]].y].map(rounding)
+    }
+    let data: [String: Any] = [
+        "canvas": rounding(canvas),
+        "pitch": rounding(pitch),
+        "frame": [rounding(frameInset), rounding(frameWidth), rounding(frameRadius)],
+        "nameFrame": [nameFrame.minX, nameFrame.minY, nameFrame.width, nameFrame.height].map(rounding),  // x, y, width, height
+        "startScale": startScale,
+        "markers": markers.map { $0.map(rounding) },
+        "dots": dots,  // [startX, startY, endX, endY], in canvas pixels, y down
+        "extras": extras.map { [rounding($0[0]), rounding($0[1]), $0[2]] },  // [startX, startY, index of the dot it follows]
+    ]
+    try! JSONSerialization.data(withJSONObject: data).write(to: root.appendingPathComponent(json))
+    print("Wrote \(json) (\(dots.count) dots, \(extras.count) extras)")
 }
-let data: [String: Any] = [
-    "canvas": rounding(canvas),
-    "pitch": rounding(pitch),
-    "frame": [rounding(frameInset), rounding(frameWidth), rounding(frameRadius)],
-    "nameFrame": [nameFrame.minX, nameFrame.minY, nameFrame.width, nameFrame.height].map(rounding),  // x, y, width, height
-    "markers": markers.map { $0.map(rounding) },
-    "dots": dots,  // [startX, startY, endX, endY], in canvas pixels, y down
-    "extras": extras.map { [rounding($0[0]), rounding($0[1]), $0[2]] },  // [startX, startY, index of the dot it follows]
-]
-try! JSONSerialization.data(withJSONObject: data).write(to: root.appendingPathComponent("assets/karui-qr-seal.json"))
-print("Wrote assets/karui-qr-seal.json (\(dots.count) dots, \(extras.count) extras)")
+
+// 通知を軽く, the App Store name's tagline, first. Its kanji are small and dense, so
+// they're sampled finely with small dots to stay legible.
+seal(text: "通知を軽く", widthRatio: 0.3, name: "assets/karui-qr-seal-tagline-name.png", json: "assets/karui-qr-seal-tagline.json", sampleStep: 2, extraSpacing: 0.19, startScale: 0.3)
+// ガルシア, in the footer seal's 24 × 51-point shape.
+seal(text: "ガルシア", widthRatio: 24 / 51, name: "assets/karui-qr-seal-name.png", json: "assets/karui-qr-seal.json", sampleStep: 3, extraSpacing: 0.22, startScale: 0.4)

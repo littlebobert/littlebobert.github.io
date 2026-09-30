@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.5.32</title>
+            <pubDate>Wed, 30 Sep 2026 18:05:44 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>107</sparkle:version>
+            <sparkle:shortVersionString>0.5.32</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed responsiveness issues when the Mac is under load.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.32/Kehai-0.5.32-mac.zip" length="3160258" type="application/octet-stream" sparkle:edSignature="Ec0IKxecd5b8Czi3e/qhTlumnFs5wYVtQ7zsPBbAfmeNmCe8btM3bj5Eyd6T2uW2DoX9Oex4JDLHbN7UYTasAQ=="/>
+        </item>
+        <item>
             <title>0.5.31</title>
             <pubDate>Mon, 28 Sep 2026 10:51:44 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Added more anonymous diagnostic logging.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.30/Kehai-0.5.30-mac.zip" length="3140111" type="application/octet-stream" sparkle:edSignature="NK+rJh9sjKrStvMYY6k59KWU0PBE9sS4jschDtNwA6L7irKg4/GVbHDkksQ048JGqzw9E/QH1hx9i34XTioMBQ=="/>
-        </item>
-        <item>
-            <title>0.5.29</title>
-            <pubDate>Mon, 28 Sep 2026 08:49:03 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>104</sparkle:version>
-            <sparkle:shortVersionString>0.5.29</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Allowed faster drags onto app icons in the mini browser.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.29/Kehai-0.5.29-mac.zip" length="3137802" type="application/octet-stream" sparkle:edSignature="gtp+Mh6YfEgZbOLFNq+GNKD9rUyOzkPtjlaFBfs5Ep5QLsIdKuyS8XfgZjJsAL/qOQSbOsnhO2CRQZ6tCtUTBQ=="/>
         </item>
     </channel>
 </rss>

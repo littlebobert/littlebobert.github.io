@@ -67,9 +67,10 @@ test('builds the changelog page and links to it from every page', async () => {
   // Tapping the icon opens a full-screen QR code for showing the site in person, on its
   // own page, /qr; old karui.jp/#qr links are sent there.
   assert.match(pages[0], /<a href="\/qr" class="karui-qr-trigger"/);
-  // A muted, looping demo video leads the screenshots, in each language, with a poster.
-  assert.match(pages[0], /<video class="karui-demo" src="\/assets\/karui-demo-en\.mp4\?v=2" data-src-en="\/assets\/karui-demo-en\.mp4\?v=2" data-src-ja="\/assets\/karui-demo-ja\.mp4\?v=1" poster="\/assets\/karui-demo-en\.jpg\?v=2"[^>]* autoplay muted loop playsinline/);
-  assert.doesNotMatch(pages[0], /karui-shot-01-spam-filtering|karui-shot-03-wake-me/);
+  // The demo, recorded on iPhone Duo, under its label, with no App Store screenshots.
+  assert.match(pages[0], /<p class="karui-demo-label" data-label-en="Karui on the new iPhone Duo"/);
+  assert.match(pages[0], /<video class="karui-demo" src="\/assets\/karui-demo-en\.mp4\?v=5" data-src-en="\/assets\/karui-demo-en\.mp4\?v=5" data-src-ja="\/assets\/karui-demo-ja\.mp4\?v=5" poster="\/assets\/karui-demo-en\.jpg\?v=5"[^>]* autoplay muted loop playsinline/);
+  assert.doesNotMatch(pages[0], /karui-shot-|shot-viewer/);
   for (const file of ['karui-demo-en.mp4', 'karui-demo-ja.mp4', 'karui-demo-en.jpg', 'karui-demo-ja.jpg']) {
     await readFile(path.join(outputDirectory, 'assets', file));
   }

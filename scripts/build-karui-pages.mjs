@@ -39,11 +39,6 @@ const assetFiles = [
   'karui-seal-tagline-large.png',
   'karui-social.png',
   ...['en', 'ja'].flatMap((language) => [`karui-demo-${language}.mp4`, `karui-demo-${language}.jpg`]),
-  // The demo video replaced the spam-filtering and Wake Me screenshots on the page.
-  ...['02-unsent-messages'].flatMap((shot) => [
-    `karui-shot-${shot}-en.jpg`,
-    `karui-shot-${shot}-ja.jpg`,
-  ]),
 ];
 
 await rm(outputDirectory, { force: true, recursive: true });

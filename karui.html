@@ -74,44 +74,13 @@
     .karui-seal-trigger { margin-left: -2pt; }
     .karui-seal-trigger img, .karui-maker-photo-link img { cursor: pointer; }
 
-    /* The demo video, then the unsent-messages screenshot: the one thing the video
-       doesn't show. The columns are sized so both come out the same height. */
-    .karui-shots { display: grid; grid-template-columns: 1.53fr 1fr; gap: 10px; margin: 10pt 0 12pt; padding: 0; list-style: none; }
-    .karui-shots li { margin: 0; }
-    .karui-shots img { display: block; width: 100%; height: auto; aspect-ratio: 660 / 1434; border: 1px solid var(--karui-line); border-radius: 12px; background: #f3efe4; }
-    .karui-demo { display: block; width: 100%; height: 100%; aspect-ratio: 660 / 940; object-fit: cover; object-position: top; box-sizing: border-box; border: 1px solid var(--karui-line); border-radius: 12px; background: #f3efe4; }
-    .shot-open { display: block; width: 100%; margin: 0; padding: 0; border: 0; border-radius: 12px; background: none; cursor: zoom-in; }
-    .shot-open:focus-visible { outline: 2px solid var(--karui-moss); outline-offset: 3px; }
-
-    /* Full-screen viewer: swipe or use the arrows; the arrows fade after 2 s idle. */
-    .shot-viewer { width: 100%; max-width: none; height: 100%; max-height: none; margin: 0; padding: 0; border: 0; overscroll-behavior: none; background: rgb(20 24 22 / var(--shot-dim, 1)); color: #fff; overflow: hidden; }
-    .shot-viewer::backdrop { background: transparent; }
-    /* pan-x: the browser handles sideways swipes; downward drags dismiss (see script). */
-    .shot-track { display: flex; width: 100%; height: 100%; overflow-x: auto; touch-action: pan-x; overscroll-behavior: contain; scroll-snap-type: x mandatory; scrollbar-width: none; }
-    .shot-track::-webkit-scrollbar { display: none; }
-    .shot-slide { display: flex; flex: 0 0 100%; align-items: center; justify-content: center; box-sizing: border-box; padding: max(12px, env(safe-area-inset-top)) 12px max(12px, env(safe-area-inset-bottom)); scroll-snap-align: center; scroll-snap-stop: always; }
-    .shot-slide img { display: block; width: min(100%, calc((100dvh - 24px) * 660 / 1434)); height: auto; aspect-ratio: 660 / 1434; border-radius: 14px; }
-    .shot-viewer-button { position: absolute; display: flex; align-items: center; justify-content: center; width: 44px; height: 44px; padding: 0 0 3px; border: 0; border-radius: 50%; background: rgba(255, 253, 248, 0.92); color: var(--karui-ink); box-shadow: 0 2px 10px rgba(0, 0, 0, 0.25); cursor: pointer; font: 400 28px/1 -apple-system, BlinkMacSystemFont, sans-serif; transition: opacity 300ms ease; }
-    .shot-viewer-button:focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
-    .shot-close { top: max(12px, env(safe-area-inset-top)); right: 12px; }
-    .shot-arrow { top: 50%; transform: translateY(-50%); }
-    .shot-arrow[hidden] { display: none; }
-    .shot-prev { left: 12px; }
-    .shot-next { right: 12px; }
-    .shot-viewer.is-idle .shot-arrow,
-    .shot-viewer.is-dragging .shot-viewer-button { opacity: 0; }
-    @media (prefers-reduced-motion: reduce) {
-      .shot-viewer-button { transition: none; }
-    }
+    /* The demo, recorded on iPhone Duo in landscape, in Apple's iPhone Duo bezel (from
+       Apple Design Resources) on the page's white, under its label. */
+    .karui-demo-label { margin: 10pt 0 5pt; font-size: 10pt; font-weight: 600; color: #555; text-align: center; }
+    .karui-demo { display: block; width: 100%; height: auto; aspect-ratio: 1280 / 930; margin: 0 0 12pt; background: #fff; }
 
     @media (max-width: 560px) {
       .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
-      /* Like the App Store on iPhone: swipe sideways, with the next shot peeking in. */
-      .karui-shots { display: flex; gap: 10px; margin-right: -16px; padding-right: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
-      .karui-shots::-webkit-scrollbar { display: none; }
-      .karui-shots li { flex: 0 0 57%; scroll-snap-align: start; }
-      /* As tall as the screenshot beside it, which peeks in from the right. */
-      .karui-shots li:first-child { flex-basis: 87%; }
       .karui-hero-seal { width: 28px; height: 83px; margin-left: 10px; }
     }
   </style>
@@ -153,16 +122,8 @@
     </section>
 
     <section class="sasu-section">
-      <ul class="karui-shots" aria-label="Screenshots" data-aria-label-en="Screenshots" data-aria-label-ja="スクリーンショット">
-        <li><video class="karui-demo" src="assets/karui-demo-en.mp4?v=2" data-src-en="assets/karui-demo-en.mp4?v=2" data-src-ja="assets/karui-demo-ja.mp4?v=1" poster="assets/karui-demo-en.jpg?v=2" data-poster-en="assets/karui-demo-en.jpg?v=2" data-poster-ja="assets/karui-demo-ja.jpg?v=1" width="660" height="940" autoplay muted loop playsinline preload="auto" aria-label="Demo: Karui sorts notifications as they arrive, silences spam and shows why, and wakes you for an emergency." data-aria-label-en="Demo: Karui sorts notifications as they arrive, silences spam and shows why, and wakes you for an emergency." data-aria-label-ja="デモ：Karuiは届いた通知をその場で仕分け、スパムは鳴らさず理由を示し、緊急の連絡ではアラームで知らせます。"></video></li>
-        <li><button class="shot-open" type="button"><img src="assets/karui-shot-02-unsent-messages-en.jpg" data-src-en="assets/karui-shot-02-unsent-messages-en.jpg" data-src-ja="assets/karui-shot-02-unsent-messages-ja.jpg" width="660" height="1434" alt="See unsent messages. Review notifications at a glance, including messages that were unsent." data-alt-en="See unsent messages. Review notifications at a glance, including messages that were unsent." data-alt-ja="送信取り消しされたメッセージを確認。通知をひと目で確認。送信取り消しされたメッセージも見逃しません。"></button></li>
-      </ul>
-      <dialog class="shot-viewer" id="shot-viewer" aria-label="Screenshots" data-aria-label-en="Screenshots" data-aria-label-ja="スクリーンショット">
-        <div class="shot-track" id="shot-track"></div>
-        <button class="shot-viewer-button shot-arrow shot-prev" id="shot-prev" type="button" aria-label="Previous screenshot" data-aria-label-en="Previous screenshot" data-aria-label-ja="前のスクリーンショット">‹</button>
-        <button class="shot-viewer-button shot-arrow shot-next" id="shot-next" type="button" aria-label="Next screenshot" data-aria-label-en="Next screenshot" data-aria-label-ja="次のスクリーンショット">›</button>
-        <button class="shot-viewer-button shot-close" id="shot-close" type="button" aria-label="Close" data-aria-label-en="Close" data-aria-label-ja="閉じる">×</button>
-      </dialog>
+      <p class="karui-demo-label" data-label-en="Karui on the new iPhone Duo" data-label-ja="新しいiPhone Duoで動くKarui">Karui on the new iPhone Duo</p>
+      <video class="karui-demo" src="assets/karui-demo-en.mp4?v=5" data-src-en="assets/karui-demo-en.mp4?v=5" data-src-ja="assets/karui-demo-ja.mp4?v=5" poster="assets/karui-demo-en.jpg?v=5" data-poster-en="assets/karui-demo-en.jpg?v=5" data-poster-ja="assets/karui-demo-ja.jpg?v=5" width="1280" height="930" autoplay muted loop playsinline preload="auto" aria-label="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-en="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-ja="デモ：Karuiは届いた通知をその場で仕分け、スパムは鳴らさず理由を示し、送信取り消しされたメッセージも残し、緊急の連絡ではアラームで知らせます。"></video>
     </section>
 
     <section class="karui-detail">
@@ -257,192 +218,6 @@
     settleDemo();
     reduceMotionQuery.addEventListener('change', settleDemo);
 
-    const shotViewer = document.querySelector('#shot-viewer');
-    const shotTrack = document.querySelector('#shot-track');
-    const shotPrev = document.querySelector('#shot-prev');
-    const shotNext = document.querySelector('#shot-next');
-    const shotImages = [...document.querySelectorAll('.karui-shots img')];
-    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-    let shotIdleTimer;
-
-    function currentShot() {
-      return Math.round(shotTrack.scrollLeft / shotTrack.clientWidth);
-    }
-
-    function updateShotArrows() {
-      const index = currentShot();
-      shotPrev.hidden = index === 0;
-      shotNext.hidden = index === shotImages.length - 1;
-    }
-
-    // Any touch, click, pointer movement, key, or swipe shows the arrows for 2 more seconds.
-    function wakeShotControls() {
-      shotViewer.classList.remove('is-idle');
-      window.clearTimeout(shotIdleTimer);
-      shotIdleTimer = window.setTimeout(() => shotViewer.classList.add('is-idle'), 2000);
-    }
-
-    function showShot(index, smooth = true) {
-      const clamped = Math.max(0, Math.min(shotImages.length - 1, index));
-      shotTrack.scrollTo({
-        left: clamped * shotTrack.clientWidth,
-        behavior: smooth && !reducedMotion.matches ? 'smooth' : 'instant',
-      });
-    }
-
-    function openShotViewer(index) {
-      // Built on open so the slides use the current language's images.
-      shotTrack.replaceChildren(...shotImages.map((image) => {
-        const slide = document.createElement('div');
-        slide.className = 'shot-slide';
-        const copy = document.createElement('img');
-        copy.src = image.src;
-        copy.alt = image.alt;
-        copy.width = image.width;
-        copy.height = image.height;
-        slide.append(copy);
-        return slide;
-      }));
-      document.documentElement.style.overflow = 'hidden';
-      shotViewer.showModal();
-      showShot(index, false);
-      updateShotArrows();
-      wakeShotControls();
-    }
-
-    shotImages.forEach((image, index) => {
-      image.closest('.shot-open').addEventListener('click', () => openShotViewer(index));
-    });
-    shotPrev.addEventListener('click', () => showShot(currentShot() - 1));
-    shotNext.addEventListener('click', () => showShot(currentShot() + 1));
-    document.querySelector('#shot-close').addEventListener('click', () => shotViewer.close());
-    shotTrack.addEventListener('scroll', () => { updateShotArrows(); wakeShotControls(); }, { passive: true });
-    ['pointerdown', 'pointermove', 'touchstart'].forEach((type) => {
-      shotViewer.addEventListener(type, wakeShotControls, { passive: true });
-    });
-    // ← and → step through the screenshots: in the viewer when it's open, otherwise in
-    // the row when it scrolls sideways (narrow screens). Handled on the document so it
-    // works wherever focus is, except while typing or with modifier keys held.
-    const shotRow = document.querySelector('.karui-shots');
-    document.addEventListener('keydown', (event) => {
-      if (shotViewer.open) wakeShotControls();
-      const step = { ArrowLeft: -1, ArrowRight: 1 }[event.key];
-      if (!step || event.altKey || event.ctrlKey || event.metaKey || event.shiftKey) return;
-      if (event.target.closest?.('input, textarea, select, [contenteditable]')) return;
-      if (shotViewer.open) {
-        event.preventDefault();
-        showShot(currentShot() + step);
-        return;
-      }
-      if (shotRow.scrollWidth <= shotRow.clientWidth) return;
-      event.preventDefault();
-      const item = shotRow.querySelector('li');
-      const gap = parseFloat(getComputedStyle(shotRow).columnGap) || 0;
-      shotRow.scrollBy({
-        left: step * (item.getBoundingClientRect().width + gap),
-        behavior: reducedMotion.matches ? 'instant' : 'smooth',
-      });
-    });
-    // Swipe down to dismiss, like Photos: the screenshot follows the finger and the
-    // backdrop fades to show the page; far enough or fast enough closes, otherwise it
-    // springs back. The first few pixels of movement decide between this and paging.
-    const dismissDuration = 220;
-    let dismissDrag = null;
-    let didDismissDrag = false;
-
-    function setDismissOffset(image, offset, animated) {
-      const transition = animated && !reducedMotion.matches;
-      const progress = Math.min(offset / window.innerHeight, 1);
-      image.style.transition = transition ? `transform ${dismissDuration}ms ease` : 'none';
-      image.style.transform = offset ? `translateY(${offset}px) scale(${1 - progress * 0.2})` : '';
-      shotViewer.style.transition = transition ? `background-color ${dismissDuration}ms ease` : 'none';
-      shotViewer.style.setProperty('--shot-dim', String(1 - Math.min(offset / (window.innerHeight * 0.6), 1)));
-    }
-
-    // Touch events rather than pointer events: iOS Safari can take a vertical drag over
-    // for scrolling and cancel it mid-gesture (the screenshot snapped back). Calling
-    // preventDefault on touchmove as soon as the drag heads downward keeps it ours.
-    function trackedTouch(event) {
-      return dismissDrag && [...event.changedTouches].find((touch) => touch.identifier === dismissDrag.id);
-    }
-
-    shotTrack.addEventListener('touchstart', (event) => {
-      if (event.touches.length !== 1) {
-        dismissDrag = null;
-        return;
-      }
-      const touch = event.touches[0];
-      dismissDrag = { id: touch.identifier, startX: touch.clientX, startY: touch.clientY, dismissing: false };
-    }, { passive: true });
-
-    shotTrack.addEventListener('touchmove', (event) => {
-      const touch = trackedTouch(event);
-      if (!touch) return;
-      const dx = touch.clientX - dismissDrag.startX;
-      const dy = touch.clientY - dismissDrag.startY;
-      if (!dismissDrag.dismissing) {
-        // Sideways first: leave it to the browser's paging.
-        if (Math.abs(dx) > Math.abs(dy)) {
-          if (Math.abs(dx) > 4) dismissDrag = null;
-          return;
-        }
-        // Heading down: claim the gesture now, before Safari starts a scroll.
-        if (event.cancelable) event.preventDefault();
-        if (dy < 8) return;
-        dismissDrag.dismissing = true;
-        dismissDrag.image = shotTrack.children[currentShot()]?.querySelector('img');
-        if (!dismissDrag.image) {
-          dismissDrag = null;
-          return;
-        }
-        shotViewer.classList.add('is-dragging');
-      }
-      if (event.cancelable) event.preventDefault();
-      const offset = Math.max(0, dy);
-      const time = event.timeStamp;
-      dismissDrag.velocity = (offset - (dismissDrag.offset ?? 0)) / Math.max(time - (dismissDrag.time ?? time), 1);
-      dismissDrag.offset = offset;
-      dismissDrag.time = time;
-      setDismissOffset(dismissDrag.image, offset, false);
-    }, { passive: false });
-
-    function endDismissDrag(event) {
-      if (!trackedTouch(event)) return;
-      const drag = dismissDrag;
-      dismissDrag = null;
-      if (!drag.dismissing) return;
-      didDismissDrag = true;
-      window.setTimeout(() => { didDismissDrag = false; }, 0);
-      const offset = drag.offset ?? 0;
-      // A cancel still closes when the drag was already past the threshold.
-      if (offset > 120 || (event.type === 'touchend' && offset > 30 && drag.velocity > 0.5)) {
-        setDismissOffset(drag.image, window.innerHeight, true);
-        window.setTimeout(() => shotViewer.close(), reducedMotion.matches ? 0 : dismissDuration);
-        return;
-      }
-      setDismissOffset(drag.image, 0, true);
-      shotViewer.classList.remove('is-dragging');
-      wakeShotControls();
-    }
-    shotTrack.addEventListener('touchend', endDismissDrag);
-    shotTrack.addEventListener('touchcancel', endDismissDrag);
-
-    // A tap on the dark area around the screenshot closes the viewer.
-    shotTrack.addEventListener('click', (event) => {
-      if (didDismissDrag) return;
-      if (event.target.classList.contains('shot-slide')) shotViewer.close();
-    });
-    shotViewer.addEventListener('close', () => {
-      window.clearTimeout(shotIdleTimer);
-      dismissDrag = null;
-      shotViewer.classList.remove('is-dragging');
-      shotViewer.style.removeProperty('--shot-dim');
-      shotViewer.style.transition = '';
-      document.documentElement.style.overflow = '';
-    });
-    window.addEventListener('resize', () => {
-      if (shotViewer.open) showShot(currentShot(), false);
-    });
     setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
   </script>
 </body>

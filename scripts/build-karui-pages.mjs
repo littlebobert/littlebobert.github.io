@@ -38,7 +38,9 @@ const assetFiles = [
   'karui-seal-tagline.png',
   'karui-seal-tagline-large.png',
   'karui-social.png',
-  ...['01-spam-filtering', '02-unsent-messages', '03-wake-me'].flatMap((shot) => [
+  ...['en', 'ja'].flatMap((language) => [`karui-demo-${language}.mp4`, `karui-demo-${language}.jpg`]),
+  // The demo video replaced the spam-filtering and Wake Me screenshots on the page.
+  ...['02-unsent-messages'].flatMap((shot) => [
     `karui-shot-${shot}-en.jpg`,
     `karui-shot-${shot}-ja.jpg`,
   ]),
@@ -85,6 +87,9 @@ function createDeployedPage(source) {
     .replaceAll('src="assets/', 'src="/assets/')
     .replaceAll('data-src-en="assets/', 'data-src-en="/assets/')
     .replaceAll('data-src-ja="assets/', 'data-src-ja="/assets/')
+    .replaceAll('poster="assets/', 'poster="/assets/')
+    .replaceAll('data-poster-en="assets/', 'data-poster-en="/assets/')
+    .replaceAll('data-poster-ja="assets/', 'data-poster-ja="/assets/')
     .replaceAll('href="karui.html"', 'href="/"')
     .replaceAll('href="karui-privacy.html"', 'href="/privacy"')
     .replaceAll('href="karui-support.html"', 'href="/support"')

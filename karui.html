@@ -74,9 +74,12 @@
     .karui-seal-trigger { margin-left: -2pt; }
     .karui-seal-trigger img, .karui-maker-photo-link img { cursor: pointer; }
 
-    .karui-shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 10pt 0 12pt; padding: 0; list-style: none; }
+    /* The demo video, then the unsent-messages screenshot: the one thing the video
+       doesn't show. The columns are sized so both come out the same height. */
+    .karui-shots { display: grid; grid-template-columns: 1.53fr 1fr; gap: 10px; margin: 10pt 0 12pt; padding: 0; list-style: none; }
     .karui-shots li { margin: 0; }
     .karui-shots img { display: block; width: 100%; height: auto; aspect-ratio: 660 / 1434; border: 1px solid var(--karui-line); border-radius: 12px; background: #f3efe4; }
+    .karui-demo { display: block; width: 100%; height: 100%; aspect-ratio: 660 / 940; object-fit: cover; object-position: top; box-sizing: border-box; border: 1px solid var(--karui-line); border-radius: 12px; background: #f3efe4; }
     .shot-open { display: block; width: 100%; margin: 0; padding: 0; border: 0; border-radius: 12px; background: none; cursor: zoom-in; }
     .shot-open:focus-visible { outline: 2px solid var(--karui-moss); outline-offset: 3px; }
 
@@ -106,7 +109,9 @@
       /* Like the App Store on iPhone: swipe sideways, with the next shot peeking in. */
       .karui-shots { display: flex; gap: 10px; margin-right: -16px; padding-right: 16px; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
       .karui-shots::-webkit-scrollbar { display: none; }
-      .karui-shots li { flex: 0 0 72%; scroll-snap-align: start; }
+      .karui-shots li { flex: 0 0 57%; scroll-snap-align: start; }
+      /* As tall as the screenshot beside it, which peeks in from the right. */
+      .karui-shots li:first-child { flex-basis: 87%; }
       .karui-hero-seal { width: 28px; height: 83px; margin-left: 10px; }
     }
   </style>
@@ -149,9 +154,8 @@
 
     <section class="sasu-section">
       <ul class="karui-shots" aria-label="Screenshots" data-aria-label-en="Screenshots" data-aria-label-ja="スクリーンショット">
-        <li><button class="shot-open" type="button"><img src="assets/karui-shot-01-spam-filtering-en.jpg" data-src-en="assets/karui-shot-01-spam-filtering-en.jpg" data-src-ja="assets/karui-shot-01-spam-filtering-ja.jpg" width="660" height="1434" alt="Spam filtering for every app’s notifications. Works with any app on your iPhone and makes Focus modes smarter." data-alt-en="Spam filtering for every app’s notifications. Works with any app on your iPhone and makes Focus modes smarter." data-alt-ja="スパム通知を、どのアプリでもブロック。iPhone上のどんなアプリでも使え、集中モードをさらに賢くします。"></button></li>
+        <li><video class="karui-demo" src="assets/karui-demo-en.mp4?v=2" data-src-en="assets/karui-demo-en.mp4?v=2" data-src-ja="assets/karui-demo-ja.mp4?v=1" poster="assets/karui-demo-en.jpg?v=2" data-poster-en="assets/karui-demo-en.jpg?v=2" data-poster-ja="assets/karui-demo-ja.jpg?v=1" width="660" height="940" autoplay muted loop playsinline preload="auto" aria-label="Demo: Karui sorts notifications as they arrive, silences spam and shows why, and wakes you for an emergency." data-aria-label-en="Demo: Karui sorts notifications as they arrive, silences spam and shows why, and wakes you for an emergency." data-aria-label-ja="デモ：Karuiは届いた通知をその場で仕分け、スパムは鳴らさず理由を示し、緊急の連絡ではアラームで知らせます。"></video></li>
         <li><button class="shot-open" type="button"><img src="assets/karui-shot-02-unsent-messages-en.jpg" data-src-en="assets/karui-shot-02-unsent-messages-en.jpg" data-src-ja="assets/karui-shot-02-unsent-messages-ja.jpg" width="660" height="1434" alt="See unsent messages. Review notifications at a glance, including messages that were unsent." data-alt-en="See unsent messages. Review notifications at a glance, including messages that were unsent." data-alt-ja="送信取り消しされたメッセージを確認。通知をひと目で確認。送信取り消しされたメッセージも見逃しません。"></button></li>
-        <li><button class="shot-open" type="button"><img src="assets/karui-shot-03-wake-me-en.jpg" data-src-en="assets/karui-shot-03-wake-me-en.jpg" data-src-ja="assets/karui-shot-03-wake-me-ja.jpg" width="660" height="1434" alt="Wake Me: sleep through the noise, wake up for emergencies. People you choose can ring an alarm, even when your iPhone is silenced." data-alt-en="Wake Me: sleep through the noise, wake up for emergencies. People you choose can ring an alarm, even when your iPhone is silenced." data-alt-ja="緊急アラーム：ノイズは静かに、緊急時だけ起こします。選んだ人からの緊急の連絡は、消音中でもアラームでお知らせします。"></button></li>
       </ul>
       <dialog class="shot-viewer" id="shot-viewer" aria-label="Screenshots" data-aria-label-en="Screenshots" data-aria-label-ja="スクリーンショット">
         <div class="shot-track" id="shot-track"></div>
@@ -219,8 +223,13 @@
       document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
         element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
       });
+      // Only when it changes: setting a video's src, even to the same address, restarts it.
       document.querySelectorAll('[data-src-en][data-src-ja]').forEach((element) => {
-        element.src = selected === 'ja' ? element.dataset.srcJa : element.dataset.srcEn;
+        const source = selected === 'ja' ? element.dataset.srcJa : element.dataset.srcEn;
+        if (element.getAttribute('src') !== source) element.src = source;
+      });
+      document.querySelectorAll('[data-poster-en][data-poster-ja]').forEach((element) => {
+        element.poster = selected === 'ja' ? element.dataset.posterJa : element.dataset.posterEn;
       });
       document.querySelectorAll('[data-aria-label-en][data-aria-label-ja]').forEach((element) => {
         element.setAttribute('aria-label', selected === 'ja' ? element.dataset.ariaLabelJa : element.dataset.ariaLabelEn);
@@ -233,6 +242,20 @@
     }
 
     languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+
+    // With Reduce Motion, the demo waits on its first frame with controls to play it.
+    // Controls also appear if the browser blocks autoplay (Low Power Mode on iPhone),
+    // until it plays.
+    const demo = document.querySelector('.karui-demo');
+    const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    const settleDemo = () => {
+      demo.controls = reduceMotionQuery.matches;
+      if (reduceMotionQuery.matches) demo.pause();
+      else demo.play().catch(() => { demo.controls = true; });
+    };
+    demo.addEventListener('play', () => { if (!reduceMotionQuery.matches) demo.controls = false; });
+    settleDemo();
+    reduceMotionQuery.addEventListener('change', settleDemo);
 
     const shotViewer = document.querySelector('#shot-viewer');
     const shotTrack = document.querySelector('#shot-track');

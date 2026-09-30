@@ -20,6 +20,7 @@ const kn005Directory = path.join(technotesDirectory, 'kn005');
 const siteFiles = [
   '_headers',
   'sasu-common.css',
+  'karui-seal-ink.js',
 ];
 
 const assetFiles = [
@@ -34,6 +35,8 @@ const assetFiles = [
   'karui-qr-seal-tagline.json',
   'karui-seal.png',
   'karui-seal-large.png',
+  'karui-seal-tagline.png',
+  'karui-seal-tagline-large.png',
   'karui-social.png',
   ...['01-spam-filtering', '02-unsent-messages', '03-wake-me'].flatMap((shot) => [
     `karui-shot-${shot}-en.jpg`,
@@ -48,6 +51,7 @@ await Promise.all([
   mkdir(supportDirectory, { recursive: true }),
   mkdir(acknowledgementsDirectory, { recursive: true }),
   mkdir(changelogDirectory, { recursive: true }),
+  mkdir(path.join(outputDirectory, 'hanko'), { recursive: true }),
   mkdir(specsDirectory, { recursive: true }),
   mkdir(kn001Directory, { recursive: true }),
   mkdir(kn002Directory, { recursive: true }),
@@ -74,6 +78,7 @@ await Promise.all(
 function createDeployedPage(source) {
   return source
     .replaceAll('href="sasu-common.css?v=4"', 'href="/sasu-common.css?v=4"')
+    .replaceAll('src="karui-seal-ink.js', 'src="/karui-seal-ink.js')
     .replaceAll('href="assets/', 'href="/assets/')
     .replaceAll('src="assets/', 'src="/assets/')
     .replaceAll('data-src-en="assets/', 'data-src-en="/assets/')
@@ -86,6 +91,7 @@ function createDeployedPage(source) {
       'href="/acknowledgements"',
     )
     .replaceAll('href="karui-changelog.html"', 'href="/changelog"')
+    .replaceAll('href="karui-hanko.html"', 'href="/hanko"')
     .replaceAll('href="karui-specs.html"', 'href="/specs"')
     .replaceAll('href="karui-technotes.html"', 'href="/technotes"')
     .replaceAll('href="karui-technote-kn001.html"', 'href="/technotes/kn001"')
@@ -128,8 +134,9 @@ await Promise.all([
   writeFile(path.join(changelogDirectory, 'index.html'), changelogPage),
 ]);
 
-// Tech Specs and the Technical Notes, each at a clean route.
+// Tech Specs, the Technical Notes, and the /hanko seal page, each at a clean route.
 const technicalPages = [
+  ['karui-hanko.html', ['hanko.html', 'hanko/index.html']],
   ['karui-specs.html', ['specs.html', 'specs/index.html']],
   ['karui-technotes.html', ['technotes.html', 'technotes/index.html']],
   ['karui-technote-kn001.html', ['technotes/kn001.html', 'technotes/kn001/index.html']],

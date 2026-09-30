@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Karui: 通知を軽く</title>
+  <link href="sasu-common.css?v=4" rel="stylesheet">
+  <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://karui.jp/hanko">
+  <meta name="description" content="The 通知を軽く seal on Karui’s home page: “lighten your notifications,” in the style of a Japanese hanko." data-label-en="The 通知を軽く seal on Karui’s home page: “lighten your notifications,” in the style of a Japanese hanko." data-label-ja="Karuiのホームページにある「通知を軽く」の判子。">
+  <style>
+    body.sasu-site { background: #fff; }
+    /* The seal on its own page, centered like the #seal view on the home page. A
+       separate page rather than an overlay there, so nothing of the home page can show
+       through while the seal inks in. */
+    .sasu-page { min-height: 100svh; box-sizing: border-box; display: flex; flex-direction: column; }
+    .karui-hanko { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8pt; padding-bottom: 8vh; text-align: center; }
+    /* White behind the image's transparent corners and a white ring around it: the
+       ink-in needs paper on every side of the border to thin it evenly. */
+    .karui-hanko img { width: 96px; height: auto; margin-bottom: 4pt; background: #fff; box-shadow: 0 0 0 6px #fff; }
+    .karui-hanko-title { font-size: 14pt; font-weight: bold; }
+    .karui-hanko-note { max-width: 28em; margin: 0; line-height: 1.6; color: black; text-wrap: pretty; }
+  </style>
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <section class="karui-hanko">
+      <img src="assets/karui-seal-tagline-large.png?v=1" alt="Seal reading 通知を軽く (Lighten your notifications)" data-alt-en="Seal reading 通知を軽く (Lighten your notifications)" data-alt-ja="「通知を軽く」と入った判子" width="96" height="283">
+      <script src="karui-seal-ink.js?v=1"></script>
+      <script>karuiInkIn(document.currentScript.previousElementSibling.previousElementSibling, 100);</script>
+      <div class="karui-hanko-title" data-label-en="Lighten your notifications" data-label-ja="通知を軽く">Lighten your notifications</div>
+      <p class="karui-hanko-note" data-label-en="Karui is Japanese for “light,” as in weight. This seal reads 通⁠知⁠を⁠軽⁠く, or “lighten your notifications.” It’s meant to resemble a hanko, the seal people in Japan use to sign important documents." data-label-ja="Karuiという名前は「軽い」から来ています。">Karui is Japanese for “light,” as in weight. This seal reads 通⁠知⁠を⁠軽⁠く, or “lighten your notifications.” It’s meant to resemble a hanko, the seal people in Japan use to sign important documents.</p>
+      <a class="karui-hanko-close" href="karui.html" data-label-en="Close" data-label-ja="閉じる">Close</a>
+    </section>
+  </main>
+  <script>
+    // Coming from the home page, Close goes back to it, where it was left, rather than
+    // loading it again.
+    document.querySelector('.karui-hanko-close').addEventListener('click', (event) => {
+      let fromHome = false;
+      try { fromHome = new URL(document.referrer).origin === location.origin; } catch {}
+      if (!fromHome || history.length < 2) return;
+      event.preventDefault();
+      history.back();
+    });
+
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('karui-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
+  </script>
+</body>
+</html>

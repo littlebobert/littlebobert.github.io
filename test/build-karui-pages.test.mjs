@@ -81,6 +81,16 @@ test('builds the changelog page and links to it from every page', async () => {
   assert.match(pages[0], /<a href="#seal" class="karui-seal-trigger"/);
   assert.match(pages[0], /<section class="karui-seal-view" id="seal"/);
   assert.match(pages[0], /src="\/assets\/karui-seal-large\.png/);
+  // The 通知を軽く seal beside the hero inks in, and tapping it opens it large on its
+  // own page, /hanko, which inks in the same way.
+  assert.match(pages[0], /<a href="\/hanko" class="karui-hero-seal"[^>]*><img src="\/assets\/karui-seal-tagline\.png/);
+  assert.match(pages[0], /<script src="\/karui-seal-ink\.js\?v=1"><\/script>/);
+  const hankoPage = await readOutputFile('hanko/index.html');
+  assert.match(hankoPage, /<link rel="canonical" href="https:\/\/karui\.jp\/hanko">/);
+  assert.match(hankoPage, /src="\/assets\/karui-seal-tagline-large\.png/);
+  assert.match(hankoPage, /<script src="\/karui-seal-ink\.js\?v=1"><\/script>/);
+  assert.match(hankoPage, /<a class="karui-hanko-close" href="\/"/);
+  assert.match(await readOutputFile('karui-seal-ink.js'), /window\.karuiInkIn = /);
   assert.match(pages[0], /<a href="#qr" class="karui-qr-trigger"/);
   assert.doesNotMatch(pages[0], /data-label-en="QR Code"/);
 });

@@ -4,6 +4,23 @@
         <title>Shadan</title>
         <link>https://shadan.jp/</link>
         <item>
+            <title>0.1.10</title>
+            <pubDate>Wed, 30 Sep 2026 18:49:35 +0900</pubDate>
+            <link>https://shadan.jp/</link>
+            <sparkle:version>11</sparkle:version>
+            <sparkle:shortVersionString>0.1.10</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fewer lookalike images blurred or hidden by mistake, such as AI art in a similar style.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.10/Shadan-0.1.10-mac.zip" length="212476991" type="application/octet-stream" sparkle:edSignature="SsE6WVGY0O/1hdnn15N9Tt2G45nujvFT0cBhihrO6V/Ci4ci11YXEL7GUJjNKkHThcusyu5ofFAJROzGjwjrAg=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.10/Shadan11-10.delta" sparkle:deltaFrom="10" length="24430" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="FdgVn5iCTr2O5Lk2D3KVO3TSqWASkqoAIYiyEpeJiiTN91FiGT2ZmhQrUz448orJIh/sTaQoHsebPnk94paGAw=="/>
+                <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.10/Shadan11-9.delta" sparkle:deltaFrom="9" length="47702" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="JhbqxebSBbTWjHRLsZCcpwugBPQ3KpxdXj2KVw25oNl8jCJP6lzAiyMTzaPTpTSdpGRNX+DUvTQ0u6xpuj8qAg=="/>
+                <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.10/Shadan11-8.delta" sparkle:deltaFrom="8" length="53178" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="atZIaQkXeNenSieE0ybGglXfUIvh5qxI9xSYXX7hcovU3gliwKRCVEDKjiP1ckzWdMTGMTXYRDj/m/EUam3oBQ=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.1.9</title>
             <pubDate>Tue, 29 Sep 2026 03:50:42 +0900</pubDate>
             <link>https://shadan.jp/</link>

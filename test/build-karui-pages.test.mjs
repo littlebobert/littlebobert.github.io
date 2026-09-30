@@ -69,8 +69,9 @@ test('builds the changelog page and links to it from every page', async () => {
   assert.match(pages[0], /<a href="\/qr" class="karui-qr-trigger"/);
   // The demo, recorded on iPhone Duo, under its label, with no App Store screenshots.
   assert.match(pages[0], /<p class="karui-demo-label" data-label-en="Karui on the new iPhone Duo"/);
-  assert.match(pages[0], /<video class="karui-demo" src="\/assets\/karui-demo-en\.mp4\?v=10" data-src-en="\/assets\/karui-demo-en\.mp4\?v=10" data-src-ja="\/assets\/karui-demo-ja\.mp4\?v=9" poster="\/assets\/karui-demo-en\.jpg\?v=10"[^>]* autoplay muted loop playsinline/);
+  assert.match(pages[0], /<video class="karui-demo" src="\/assets\/karui-demo-en\.mp4\?v=13" data-src-en="\/assets\/karui-demo-en\.mp4\?v=13" data-src-ja="\/assets\/karui-demo-ja\.mp4\?v=13" poster="\/assets\/karui-demo-en\.jpg\?v=13"[^>]* autoplay muted loop playsinline/);
   assert.doesNotMatch(pages[0], /karui-shot-|shot-viewer/);
+  assert.match(pages[0], /<p class="karui-demo-caption is-hidden" aria-hidden="true"><\/p>/);
   for (const file of ['karui-demo-en.mp4', 'karui-demo-ja.mp4', 'karui-demo-en.jpg', 'karui-demo-ja.jpg']) {
     await readFile(path.join(outputDirectory, 'assets', file));
   }

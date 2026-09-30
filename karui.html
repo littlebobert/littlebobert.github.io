@@ -74,10 +74,15 @@
     .karui-seal-trigger { margin-left: -2pt; }
     .karui-seal-trigger img, .karui-maker-photo-link img { cursor: pointer; }
 
-    /* The demo, recorded on iPhone Duo in landscape, in Apple's iPhone Duo bezel (from
-       Apple Design Resources) on the page's white, under its label. */
+    /* The demo, recorded on iPhone Duo closed, in portrait, in Apple's iPhone Duo bezel
+       (from Apple Design Resources) on the page's white, under its label. */
     .karui-demo-label { margin: 10pt 0 5pt; font-size: 10pt; font-weight: 600; color: #555; text-align: center; }
-    .karui-demo { display: block; width: 100%; height: auto; aspect-ratio: 1280 / 930; margin: 0 0 12pt; background: #fff; }
+    .karui-demo { display: block; width: 100%; max-width: 360px; height: auto; aspect-ratio: 720 / 1004; margin: 0 auto; background: #fff; }
+    /* The demo's captions, timed to the video by the script below. Tall enough for two
+       lines, so the page doesn't jump as they change. */
+    .karui-demo-caption { max-width: 360px; min-height: 2.6em; margin: 6pt auto 12pt; font-family: Verdana, "Hiragino Sans", sans-serif; font-size: 13pt; font-weight: bold; line-height: 1.3; text-align: center; color: var(--karui-ink); text-wrap: balance; transition: opacity 0.2s; }
+    .karui-demo-caption.is-hidden { opacity: 0; }
+    @media (prefers-reduced-motion: reduce) { .karui-demo-caption { transition: none; } }
 
     @media (max-width: 560px) {
       .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
@@ -123,7 +128,8 @@
 
     <section class="sasu-section">
       <p class="karui-demo-label" data-label-en="Karui on the new iPhone Duo" data-label-ja="新しいiPhone Duoで動くKarui">Karui on the new iPhone Duo</p>
-      <video class="karui-demo" src="assets/karui-demo-en.mp4?v=10" data-src-en="assets/karui-demo-en.mp4?v=10" data-src-ja="assets/karui-demo-ja.mp4?v=9" poster="assets/karui-demo-en.jpg?v=10" data-poster-en="assets/karui-demo-en.jpg?v=10" data-poster-ja="assets/karui-demo-ja.jpg?v=9" width="1280" height="930" autoplay muted loop playsinline preload="auto" aria-label="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-en="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-ja="デモ：Karuiは届いた通知をその場で仕分け、スパムは鳴らさず理由を示し、送信取り消しされたメッセージも残し、緊急の連絡ではアラームで知らせます。"></video>
+      <video class="karui-demo" src="assets/karui-demo-en.mp4?v=13" data-src-en="assets/karui-demo-en.mp4?v=13" data-src-ja="assets/karui-demo-ja.mp4?v=13" poster="assets/karui-demo-en.jpg?v=13" data-poster-en="assets/karui-demo-en.jpg?v=13" data-poster-ja="assets/karui-demo-ja.jpg?v=13" width="720" height="1004" autoplay muted loop playsinline preload="auto" aria-label="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-en="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-ja="デモ：Karuiは届いた通知をその場で仕分け、スパムは鳴らさず理由を示し、送信取り消しされたメッセージも残し、緊急の連絡ではアラームで知らせます。"></video>
+      <p class="karui-demo-caption is-hidden" aria-hidden="true"></p>
     </section>
 
     <section class="karui-detail">
@@ -217,6 +223,33 @@
     demo.addEventListener('play', () => { if (!reduceMotionQuery.matches) demo.controls = false; });
     settleDemo();
     reduceMotionQuery.addEventListener('change', settleDemo);
+
+    // The demo's captions, in seconds into each language's video. Each shows until the
+    // next starts; null is a gap between them.
+    const demoCaptions = {
+      en: [[0.3, 'Karui sorts every notification the moment it arrives.'], [4.35, null], [4.6, 'Spam stays silent.'], [6.9, null], [7.3, 'You can even read unsent messages.'], [10.1, null], [10.5, 'Emergencies wake you up, even on silent.']],
+      ja: [[0.3, '届いた通知を、Karuiがその場で仕分け'], [4.45, null], [4.7, 'スパムは鳴らさず。'], [6.1, null], [6.4, '送信取り消しされても、Karuiで読める'], [9.3, null], [9.7, '緊急の連絡は、寝ていてもアラームで知らせる']],
+    };
+    const demoCaption = document.querySelector('.karui-demo-caption');
+    let shownCaption;
+    const updateDemoCaption = () => {
+      const cues = demoCaptions[document.documentElement.lang] || demoCaptions.en;
+      let text = null;
+      for (const [start, cue] of cues) if (demo.currentTime >= start) text = cue;
+      if (text === shownCaption) return;
+      shownCaption = text;
+      if (text) demoCaption.textContent = text;
+      demoCaption.classList.toggle('is-hidden', !text);
+    };
+    // Checked every frame while it plays, so captions change on time; timeupdate alone
+    // fires only about four times a second.
+    const followDemo = () => {
+      updateDemoCaption();
+      if (!demo.paused) requestAnimationFrame(followDemo);
+    };
+    demo.addEventListener('play', () => requestAnimationFrame(followDemo));
+    ['seeked', 'timeupdate', 'loadeddata'].forEach((type) => demo.addEventListener(type, updateDemoCaption));
+    languageSwitch.addEventListener('click', () => { shownCaption = undefined; updateDemoCaption(); });
 
     setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
   </script>

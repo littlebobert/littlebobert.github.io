@@ -52,6 +52,7 @@ await Promise.all([
   mkdir(acknowledgementsDirectory, { recursive: true }),
   mkdir(changelogDirectory, { recursive: true }),
   mkdir(path.join(outputDirectory, 'hanko'), { recursive: true }),
+  mkdir(path.join(outputDirectory, 'seal'), { recursive: true }),
   mkdir(specsDirectory, { recursive: true }),
   mkdir(kn001Directory, { recursive: true }),
   mkdir(kn002Directory, { recursive: true }),
@@ -92,6 +93,7 @@ function createDeployedPage(source) {
     )
     .replaceAll('href="karui-changelog.html"', 'href="/changelog"')
     .replaceAll('href="karui-hanko.html"', 'href="/hanko"')
+    .replaceAll('href="karui-seal.html"', 'href="/seal"')
     .replaceAll('href="karui-specs.html"', 'href="/specs"')
     .replaceAll('href="karui-technotes.html"', 'href="/technotes"')
     .replaceAll('href="karui-technote-kn001.html"', 'href="/technotes/kn001"')
@@ -134,9 +136,10 @@ await Promise.all([
   writeFile(path.join(changelogDirectory, 'index.html'), changelogPage),
 ]);
 
-// Tech Specs, the Technical Notes, and the /hanko seal page, each at a clean route.
+// Tech Specs, the Technical Notes, and the /hanko and /seal pages, each at a clean route.
 const technicalPages = [
   ['karui-hanko.html', ['hanko.html', 'hanko/index.html']],
+  ['karui-seal.html', ['seal.html', 'seal/index.html']],
   ['karui-specs.html', ['specs.html', 'specs/index.html']],
   ['karui-technotes.html', ['technotes.html', 'technotes/index.html']],
   ['karui-technote-kn001.html', ['technotes/kn001.html', 'technotes/kn001/index.html']],

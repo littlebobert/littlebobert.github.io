@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Karui: ガルシア</title>
+  <link href="sasu-common.css?v=4" rel="stylesheet">
+  <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://karui.jp/seal">
+  <meta name="description" content="Justin Garcia’s name seal, ガルシア, from the footer of Karui’s home page." data-label-en="Justin Garcia’s name seal, ガルシア, from the footer of Karui’s home page." data-label-ja="Karuiのホームページのフッターにある、ガルシアの名前の判子。">
+  <style>
+    body.sasu-site { background: #fff; }
+    /* The name seal from the home page's footer, on its own page like /hanko, rather
+       than an overlay there, which Safari sometimes let the home page show through. */
+    .sasu-page { min-height: 100svh; box-sizing: border-box; display: flex; flex-direction: column; }
+    .karui-hanko { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8pt; padding-bottom: 8vh; text-align: center; }
+    .karui-hanko img { width: 96px; height: auto; margin-bottom: 4pt; }
+    .karui-hanko-title { font-size: 14pt; font-weight: bold; }
+    .karui-hanko-note { max-width: 28em; margin: 0; line-height: 1.6; color: black; text-wrap: pretty; }
+  </style>
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <section class="karui-hanko">
+      <img src="assets/karui-seal-large.png?v=3" alt="Name seal reading ガルシア (Garcia)" data-alt-en="Name seal reading ガルシア (Garcia)" data-alt-ja="「ガルシア」と入った名前の判子" width="96" height="204">
+      <div class="karui-hanko-title" data-label-en="My hanko" data-label-ja="私の判子">My hanko</div>
+      <p class="karui-hanko-note" data-label-en="In Japan, people use a personal seal like this to sign important documents. This one reads ガ⁠ル⁠シ⁠ア, “Garcia” in katakana, the script Japanese uses for foreign words and names." data-label-ja="「ガルシア」と入った名前の判子です。">In Japan, people use a personal seal like this to sign important documents. This one reads ガ⁠ル⁠シ⁠ア, “Garcia” in katakana, the script Japanese uses for foreign words and names.</p>
+      <a class="karui-hanko-close" href="karui.html" data-label-en="Close" data-label-ja="閉じる">Close</a>
+    </section>
+  </main>
+  <script>
+    // Coming from the home page, Close goes back to it, where it was left, rather than
+    // loading it again.
+    document.querySelector('.karui-hanko-close').addEventListener('click', (event) => {
+      let fromHome = false;
+      try { fromHome = new URL(document.referrer).origin === location.origin; } catch {}
+      if (!fromHome || history.length < 2) return;
+      event.preventDefault();
+      history.back();
+    });
+
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('karui-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
+  </script>
+</body>
+</html>

@@ -70,8 +70,8 @@
     /* A surname seal beside the photo, as tall and with the same corners. */
     .karui-maker-seal { width: 24px; height: 51px; flex: none; }
     /* A full-screen QR code for karui.jp, for showing people in person. Opened by tapping the icon, or at #qr, which can be saved to the Home Screen. */
-    .karui-qr, .karui-seal-view { display: none; position: fixed; inset: 0; z-index: 100; background: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 14pt; padding: 16px; text-align: center; }
-    .karui-qr:target, .karui-seal-view:target { display: flex; }
+    .karui-qr { display: none; position: fixed; inset: 0; z-index: 100; background: #fff; flex-direction: column; align-items: center; justify-content: center; gap: 14pt; padding: 16px; text-align: center; }
+    .karui-qr:target { display: flex; }
     /* Swipe sideways between the codes: the 通知を軽く seal, the ガルシア seal, then
        the app icon one. */
     .karui-qr-slides { display: flex; width: min(80vw, 70vh, 360px); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
@@ -85,12 +85,9 @@
     .karui-qr-morph > img, .karui-qr-morph > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
     .karui-qr-morph-frame > svg { position: absolute; width: 100cqw; height: 100cqw; overflow: visible; }
     .karui-qr-morph-name { opacity: 0; }
-    .karui-qr-url, .karui-seal-title { font-size: 14pt; font-weight: bold; }
+    .karui-qr-url { font-size: 14pt; font-weight: bold; }
     .karui-qr-caption { max-width: 22em; margin: -6pt 0 0; line-height: 1.5; color: black; text-wrap: balance; }
-    /* Tapping the footer seal opens it large at #seal, with what a hanko is. */
-    .karui-seal-view { gap: 8pt; }
-    .karui-seal-view img { width: 96px; height: auto; margin-bottom: 4pt; }
-    .karui-seal-note { max-width: 28em; margin: 0; line-height: 1.6; color: black; text-wrap: pretty; }
+    /* Tapping the footer seal opens it large at /seal, with what a hanko is. */
     /* The photo and seal are links; the pointer covers all of each, not just the drawn lines. */
     .karui-seal-trigger, .karui-maker-photo-link { display: flex; flex: none; cursor: pointer; }
     .karui-seal-trigger { margin-left: -2pt; }
@@ -208,7 +205,7 @@
 
     <footer class="karui-footer">
       <p class="footer-links"><a href="karui-changelog.html" data-changelog-link data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p>
-      <p class="karui-maker"><a href="https://onemorething.tokyo" class="karui-maker-photo-link" aria-label="Justin Garcia’s website"><img class="karui-maker-photo" src="assets/karui-developer.jpg?v=3" alt="" width="40" height="51"></a><a href="#seal" class="karui-seal-trigger" aria-label="About the name seal"><img class="karui-maker-seal" src="assets/karui-seal.png?v=8" alt="" width="24" height="51"></a><span class="karui-maker-text"><span data-label-en="Designed by " data-label-ja="東京の個人開発者 ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作"> in Tokyo</span><br><span data-label-en="Questions? " data-label-ja="ご質問は ">Questions? </span><a href="mailto:justin@onemorething.tokyo">justin@onemorething.tokyo</a></span></p>
+      <p class="karui-maker"><a href="https://onemorething.tokyo" class="karui-maker-photo-link" aria-label="Justin Garcia’s website"><img class="karui-maker-photo" src="assets/karui-developer.jpg?v=3" alt="" width="40" height="51"></a><a href="karui-seal.html" class="karui-seal-trigger" aria-label="About the name seal"><img class="karui-maker-seal" src="assets/karui-seal.png?v=8" alt="" width="24" height="51"></a><span class="karui-maker-text"><span data-label-en="Designed by " data-label-ja="東京の個人開発者 ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作"> in Tokyo</span><br><span data-label-en="Questions? " data-label-ja="ご質問は ">Questions? </span><a href="mailto:justin@onemorething.tokyo">justin@onemorething.tokyo</a></span></p>
     </footer>
     <section class="karui-qr" id="qr" aria-label="QR code for karui.jp">
       <div class="karui-qr-slides">
@@ -226,12 +223,6 @@
       </div>
       <div class="karui-qr-url">karui.jp</div>
       <p class="karui-qr-caption" data-label-en="Karui for iPhone: silence spam notifications and see messages people unsend" data-label-ja="iPhone用のKarui：迷惑通知を消音し、送信取り消しされたメッセージを確認">Karui for iPhone: silence spam notifications and see messages people unsend</p>
-      <a href="#close" data-label-en="Close" data-label-ja="閉じる">Close</a>
-    </section>
-    <section class="karui-seal-view" id="seal" aria-label="About the name seal">
-      <img src="assets/karui-seal-large.png?v=3" alt="Name seal reading ガルシア (Garcia)" width="96" height="204">
-      <div class="karui-seal-title" data-label-en="My hanko" data-label-ja="私の判子">My hanko</div>
-      <p class="karui-seal-note" data-label-en="In Japan, people use a personal seal like this to sign important documents. This one reads ガ⁠ル⁠シ⁠ア, “Garcia” in katakana, the script Japanese uses for foreign words and names." data-label-ja="「ガルシア」と入った名前の判子です。">In Japan, people use a personal seal like this to sign important documents. This one reads ガ⁠ル⁠シ⁠ア, “Garcia” in katakana, the script Japanese uses for foreign words and names.</p>
       <a href="#close" data-label-en="Close" data-label-ja="閉じる">Close</a>
     </section>
   </main>

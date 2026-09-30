@@ -15,6 +15,7 @@ const kn001Directory = path.join(technotesDirectory, 'kn001');
 const kn002Directory = path.join(technotesDirectory, 'kn002');
 const kn003Directory = path.join(technotesDirectory, 'kn003');
 const kn004Directory = path.join(technotesDirectory, 'kn004');
+const kn005Directory = path.join(technotesDirectory, 'kn005');
 
 const siteFiles = [
   '_headers',
@@ -52,6 +53,7 @@ await Promise.all([
   mkdir(kn002Directory, { recursive: true }),
   mkdir(kn003Directory, { recursive: true }),
   mkdir(kn004Directory, { recursive: true }),
+  mkdir(kn005Directory, { recursive: true }),
 ]);
 
 await Promise.all(
@@ -89,7 +91,8 @@ function createDeployedPage(source) {
     .replaceAll('href="karui-technote-kn001.html"', 'href="/technotes/kn001"')
     .replaceAll('href="karui-technote-kn002.html"', 'href="/technotes/kn002"')
     .replaceAll('href="karui-technote-kn003.html"', 'href="/technotes/kn003"')
-    .replaceAll('href="karui-technote-kn004.html"', 'href="/technotes/kn004"');
+    .replaceAll('href="karui-technote-kn004.html"', 'href="/technotes/kn004"')
+    .replaceAll('href="karui-technote-kn005.html"', 'href="/technotes/kn005"');
 }
 
 const [homeSource, privacySource, supportSource, acknowledgementsSource, changelogSource] =
@@ -133,6 +136,7 @@ const technicalPages = [
   ['karui-technote-kn002.html', ['technotes/kn002.html', 'technotes/kn002/index.html']],
   ['karui-technote-kn003.html', ['technotes/kn003.html', 'technotes/kn003/index.html']],
   ['karui-technote-kn004.html', ['technotes/kn004.html', 'technotes/kn004/index.html']],
+  ['karui-technote-kn005.html', ['technotes/kn005.html', 'technotes/kn005/index.html']],
 ];
 await Promise.all(
   technicalPages.map(async ([source, outputs]) => {

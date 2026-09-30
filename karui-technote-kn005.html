@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>KN005: Translating Notifications Before a Two-Second Deadline</title>
+  <link href="sasu-common.css?v=4" rel="stylesheet">
+  <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .karui-icon { box-sizing: border-box; border: 1px solid #1a211e; border-radius: 12px; }
+    .karui-section { padding: 6pt 0 5pt; }
+    .karui-section p { margin: 0; }
+    .karui-section p + p, .karui-section ul + p, .karui-section ol + p { margin-top: 7pt; }
+    .karui-section ul, .karui-section ol { padding-left: 20pt; }
+    .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .karui-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    /* Keep two-word links like Tech Specs whole; the row wraps at the <wbr> after each separator. */
+    .footer-links a { white-space: nowrap; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+    .karui-section h2 { margin: 6pt 0 4pt; }
+    .karui-section h3 { margin: 8pt 0 3pt; }
+    .karui-section h2 + h3 { margin-top: 0; }
+    .karui-section li + li { margin-top: 3pt; }
+    .karui-section p + ul, .karui-section p + ol { margin-top: 6pt; }
+    .karui-section h2 + ul, .karui-section h2 + ol { margin-top: 0; }
+    .karui-section > ul:last-child, .karui-section > ol:last-child { margin-bottom: 0; }
+    .karui-code { background: #f4f3ee; border-radius: 8px; padding: 8pt 10pt; overflow-x: auto; font-size: calc(0.85em + 1pt); line-height: 1.4; }
+    .karui-table { border-collapse: collapse; width: 100%; margin: 4pt 0; }
+    .karui-table th, .karui-table td { border-bottom: 1px solid #e3e1da; padding: 5pt 6pt 5pt 0; text-align: left; vertical-align: top; }
+    .karui-table th { color: #555; font-weight: 600; }
+    .karui-table td:first-child, .karui-table th:first-child { white-space: nowrap; padding-right: 14pt; }
+    .karui-table-note { color: #555; font-size: 0.85em; margin-top: 3pt !important; }
+    .karui-quote { margin: 6pt 0 6pt 0; padding: 2pt 0 2pt 10pt; border-left: 3px solid #d8d6ce; color: #333; }
+    .karui-revision-date { font-weight: 600; }
+    .swift-string { color: #c41a16; }
+    .swift-keyword { color: #9b2393; font-weight: 600; }
+    .swift-type { color: #3900a0; }
+    .swift-function { color: #326d74; }
+    .karui-note-list li + li { margin-top: 8pt; }
+    .karui-note-meta { color: #555; font-size: 0.9em; }
+    .karui-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
+    .karui-breadcrumbs a { color: #666; }
+    .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
+  </style>
+  <link rel="canonical" href="https://karui.jp/technotes/kn005">
+  <meta name="description" content="How Karui translates notifications with Apple’s Translation framework without holding them up, how long the two translation models took, and why nearly half still missed the deadline." data-label-en="How Karui translates notifications with Apple’s Translation framework without holding them up, how long the two translation models took, and why nearly half still missed the deadline." data-label-ja="KaruiがAppleのTranslationフレームワークで通知を遅らせずに翻訳する仕組み、2つの翻訳モデルにかかった時間、それでも半数近くが期限に間に合わなかった理由。">
+  <meta property="og:title" content="KN005: Translating Notifications Before a Two-Second Deadline" data-label-en="KN005: Translating Notifications Before a Two-Second Deadline" data-label-ja="KN005：2秒の期限内に通知を翻訳する">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2026-09-30">
+  <meta property="og:url" content="https://karui.jp/technotes/kn005">
+  <meta property="og:site_name" content="Karui">
+  <meta property="og:description" content="How Karui translates notifications with Apple’s Translation framework without holding them up, how long the two translation models took, and why nearly half still missed the deadline." data-label-en="How Karui translates notifications with Apple’s Translation framework without holding them up, how long the two translation models took, and why nearly half still missed the deadline." data-label-ja="KaruiがAppleのTranslationフレームワークで通知を遅らせずに翻訳する仕組み、2つの翻訳モデルにかかった時間、それでも半数近くが期限に間に合わなかった理由。">
+  <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KN005: Translating Notifications Before a Two-Second Deadline" data-label-en="KN005: Translating Notifications Before a Two-Second Deadline" data-label-ja="KN005：2秒の期限内に通知を翻訳する">
+  <meta name="twitter:description" content="How Karui translates notifications with Apple’s Translation framework without holding them up, how long the two translation models took, and why nearly half still missed the deadline." data-label-en="How Karui translates notifications with Apple’s Translation framework without holding them up, how long the two translation models took, and why nearly half still missed the deadline." data-label-ja="KaruiがAppleのTranslationフレームワークで通知を遅らせずに翻訳する仕組み、2つの翻訳モデルにかかった時間、それでも半数近くが期限に間に合わなかった理由。">
+  <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta name="twitter:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <nav class="karui-breadcrumbs" aria-label="Breadcrumb"><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><a href="karui-technotes.html" data-label-en="Technical Notes" data-label-ja="技術ノート">Technical Notes</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="KN005" data-label-ja="KN005">KN005</span></nav>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="karui.html"><img class="sasu-icon karui-icon" src="assets/karui-icon.png?v=2" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン"></a>
+        <div><h1 data-label-en="KN005: Translating Notifications Before a Two-Second Deadline" data-label-ja="KN005：2秒の期限内に通知を翻訳する">KN005: Translating Notifications Before a Two-Second Deadline</h1><div class="sasu-subtitle">Karui</div></div>
+      </div>
+    </section>
+    <section class="karui-section">
+      <p data-label-en="How Karui translates notifications without holding them up, how long Apple’s two translation models took, and why nearly half still missed the deadline." data-label-ja="Karuiが通知を遅らせずに翻訳する仕組み、Appleの2つの翻訳モデルにかかった時間、それでも半数近くが期限に間に合わなかった理由。">How Karui translates notifications without holding them up, how long Apple’s two translation models took, and why nearly half still missed the deadline.</p>
+      <p class="karui-note-meta" data-label-en="September 30, 2026 · iOS 27.0 · Measured on iPhone 17 Pro" data-label-ja="2026年9月30日 · iOS 27.0 · iPhone 17 Proで計測">September 30, 2026 · iOS 27.0 · Measured on iPhone 17 Pro</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Overview" data-label-ja="概要">Overview</h2>
+      <p><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span data-label-en=" can translate notifications in languages you don’t read before it passes them on. Translation runs on your iPhone, inside the action your Karui shortcut runs for each notification. Karui never holds a notification to wait for it: translation gets 2 seconds, and past that Karui sends the original and saves the translation to History once it finishes." data-label-ja=" は、読まない言語の通知を、転送する前に翻訳できます。翻訳はiPhone上で、Karuiのショートカットが通知ごとに実行するアクションの中で行われます。Karuiは翻訳を待つために通知を止めることはしません。翻訳に使える時間は2秒で、それを過ぎると元の通知を送り、翻訳が終わってから履歴に保存します。"> can translate notifications in languages you don’t read before it passes them on. Translation runs on your iPhone, inside the action your Karui shortcut runs for each notification. Karui never holds a notification to wait for it: translation gets 2 seconds, and past that Karui sends the original and saves the translation to History once it finishes.</span></p>
+      <p data-label-en="This note covers the two models Apple’s Translation framework offers, how long each took over one morning of notifications, mostly in Japanese, and why 13 of 28 still missed the deadline." data-label-ja="本ノートでは、AppleのTranslationフレームワークが提供する2つのモデル、主に日本語の通知が届いたある朝にそれぞれにかかった時間、そして28件中13件がそれでも期限に間に合わなかった理由を説明します。">This note covers the two models Apple’s Translation framework offers, how long each took over one morning of notifications, mostly in Japanese, and why 13 of 28 still missed the deadline.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Two models" data-label-ja="2つのモデル">Two models</h2>
+      <p><span data-label-en="A " data-label-ja="">A </span><a href="https://developer.apple.com/documentation/translation/translationsession" data-label-en="TranslationSession" data-label-ja="TranslationSession">TranslationSession</a><span data-label-en=" can prefer one of two strategies:" data-label-ja="は、2つの方式のどちらを優先するかを指定できます。"> can prefer one of two strategies:</span></p>
+      <ul><li data-label-en="Low latency uses Apple’s traditional translation models. It’s fast, but needs a language pack downloaded to the iPhone. Karui calls this Fast." data-label-ja="低遅延（lowLatency）は、Appleの従来の翻訳モデルを使います。速い一方で、iPhoneに言語パックをダウンロードしておく必要があります。Karuiでは「高速」と呼んでいます。">Low latency uses Apple’s traditional translation models. It’s fast, but needs a language pack downloaded to the iPhone. Karui calls this Fast.</li><li data-label-en="High fidelity uses Apple Intelligence. It reads more naturally and needs no separate pack, but takes longer. Karui calls this High Quality." data-label-ja="高精度（highFidelity）は、Apple Intelligenceを使います。より自然な訳になり、別の言語パックも不要ですが、時間がかかります。Karuiでは「高品質」と呼んでいます。">High fidelity uses Apple Intelligence. It reads more naturally and needs no separate pack, but takes longer. Karui calls this High Quality.</li></ul>
+      <p data-label-en="In the shortcut, Karui tries Fast first and High Quality only if Fast isn’t available. After the notification is sent, it translates again with High Quality for History, so History always ends up with the better translation." data-label-ja="ショートカットの中では、Karuiはまず高速を試し、高速が使えないときだけ高品質を使います。通知を送ったあと、履歴のために高品質でもう一度翻訳するので、履歴には最終的に質の高いほうの翻訳が残ります。">In the shortcut, Karui tries Fast first and High Quality only if Fast isn’t available. After the notification is sent, it translates again with High Quality for History, so History always ends up with the better translation.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="How long translation took" data-label-ja="翻訳にかかった時間">How long translation took</h2>
+      <p data-label-en="Karui logs how long each translation takes. These are from an iPhone 17 Pro, 7:00 to 10:35 one morning, mostly Japanese to English:" data-label-ja="Karuiは翻訳ごとにかかった時間を記録しています。以下は、iPhone 17 Proでのある朝7:00〜10:35の、主に日本語から英語への翻訳です。">Karui logs how long each translation takes. These are from an iPhone 17 Pro, 7:00 to 10:35 one morning, mostly Japanese to English:</p>
+      <table class="karui-table"><thead><tr><th data-label-en="Model" data-label-ja="モデル">Model</th><th data-label-en="Translations" data-label-ja="翻訳の回数">Translations</th><th data-label-en="Median" data-label-ja="中央値">Median</th><th data-label-en="Slowest" data-label-ja="最も遅かったもの">Slowest</th></tr></thead><tbody><tr><td data-label-en="Fast" data-label-ja="高速">Fast</td><td>21</td><td data-label-en="0.7 seconds" data-label-ja="0.7秒">0.7 seconds</td><td data-label-en="17.7 seconds" data-label-ja="17.7秒">17.7 seconds</td></tr><tr><td data-label-en="High Quality" data-label-ja="高品質">High Quality</td><td>35</td><td data-label-en="2.7 seconds" data-label-ja="2.7秒">2.7 seconds</td><td data-label-en="128 seconds" data-label-ja="128秒">128 seconds</td></tr></tbody></table>
+      <p class="karui-table-note" data-label-en="Times cover the translation itself, not the check for which model is available. One more High Quality translation failed after 10 minutes." data-label-ja="時間は翻訳そのものにかかった時間で、使えるモデルの確認は含みません。このほかに、高品質の翻訳が1件、10分後に失敗しました。">Times cover the translation itself, not the check for which model is available. One more High Quality translation failed after 10 minutes.</p>
+      <p data-label-en="Fast usually fits in 2 seconds with room to spare. High Quality usually doesn’t, which is why it isn’t the first choice in the shortcut." data-label-ja="高速は、たいてい余裕をもって2秒に収まります。高品質はたいてい収まらないため、ショートカットでは第一候補にしていません。">Fast usually fits in 2 seconds with room to spare. High Quality usually doesn’t, which is why it isn’t the first choice in the shortcut.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Why 13 of 28 missed the deadline" data-label-ja="28件中13件が期限に間に合わなかった理由">Why 13 of 28 missed the deadline</h2>
+      <h3 data-label-en="iOS said the language pack wasn’t installed" data-label-ja="言語パックがインストールされていないとiOSが答えた">iOS said the language pack wasn’t installed</h3>
+      <p><span data-label-en="Seven times, " data-label-ja="7回は、">Seven times, </span><a href="https://developer.apple.com/documentation/translation/languageavailability" data-label-en="LanguageAvailability" data-label-ja="LanguageAvailability">LanguageAvailability</a><span data-label-en=" reported Japanese to English as supported rather than installed, so Karui skipped Fast and used High Quality, which took 2 to 6 seconds. Fast translations had worked minutes before and worked again minutes after. I haven’t found why the status changes." data-label-ja="が日本語から英語への翻訳を「インストール済み」ではなく「対応」と答えたため、Karuiは高速を使わずに高品質を使い、2〜6秒かかりました。その数分前にも数分後にも高速の翻訳は成功していました。状態が変わる理由はまだ分かっていません。"> reported Japanese to English as supported rather than installed, so Karui skipped Fast and used High Quality, which took 2 to 6 seconds. Fast translations had worked minutes before and worked again minutes after. I haven’t found why the status changes.</span></p>
+      <h3 data-label-en="Fast translation was slow" data-label-ja="高速の翻訳が遅かった">Fast translation was slow</h3>
+      <p data-label-en="Six times, Fast itself took 1.7 to 2.3 seconds, and once 17.7. Checking which model is available also comes out of the 2 seconds, so a Fast translation slower than about 1.7 seconds misses." data-label-ja="6回は、高速の翻訳自体に1.7〜2.3秒、1回は17.7秒かかりました。どのモデルが使えるかの確認も2秒の中に含まれるため、高速の翻訳が約1.7秒を超えると間に合いません。">Six times, Fast itself took 1.7 to 2.3 seconds, and once 17.7. Checking which model is available also comes out of the 2 seconds, so a Fast translation slower than about 1.7 seconds misses.</p>
+      <h3 data-label-en="Translations compete with each other" data-label-ja="翻訳どうしが競合する">Translations compete with each other</h3>
+      <p data-label-en="The slowest ones came together. From 8:41 to 8:46, while High Quality translations for History were still running for earlier notifications, they slowed from about 2 seconds to between 7 and 128, and the 17.7-second Fast translation in the shortcut happened during that time too." data-label-ja="最も遅かった翻訳は、同じ時間帯に集中していました。8:41〜8:46に、それより前の通知の履歴用の高品質の翻訳がまだ続いているあいだ、高品質の翻訳は約2秒から7〜128秒に遅くなり、ショートカットでの17.7秒かかった高速の翻訳もこの時間帯に起きました。">The slowest ones came together. From 8:41 to 8:46, while High Quality translations for History were still running for earlier notifications, they slowed from about 2 seconds to between 7 and 128, and the 17.7-second Fast translation in the shortcut happened during that time too.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Coping" data-label-ja="対処法">Coping</h2>
+      <ul><li data-label-en="The deadline never moves. A late notification arrives untranslated, on time, and its translation is saved to History a few seconds later. If iOS ends the shortcut’s action first, Karui finishes the translation the next time History opens." data-label-ja="期限は延ばしません。間に合わなかった通知は翻訳されないまま時間どおりに届き、数秒後に翻訳が履歴に保存されます。その前にiOSがショートカットのアクションを終了させた場合は、次に履歴を開いたときにKaruiが翻訳を仕上げます。">The deadline never moves. A late notification arrives untranslated, on time, and its translation is saved to History a few seconds later. If iOS ends the shortcut’s action first, Karui finishes the translation the next time History opens.</li><li data-label-en="Settings shows whether each language’s Fast pack is downloaded, and offers to download it. iOS makes the download, not Karui, as KN004 describes." data-label-ja="設定では、言語ごとに高速用の言語パックがダウンロード済みかどうかを表示し、ダウンロードもできます。KN004で説明しているとおり、ダウンロードするのはKaruiではなくiOSです。">Settings shows whether each language’s Fast pack is downloaded, and offers to download it. iOS makes the download, not Karui, as KN004 describes.</li><li data-label-en="Each regional variant of the language is tried, your region first, because a generic language like English can pass Apple’s check and still fail to translate. The same flickering status shows up here: twice that morning iOS reported only the Japanese to Canadian English pack as installed, so those two notifications came out in Canadian English." data-label-ja="英語のような地域の区別のない言語は、Appleの確認を通っても翻訳に失敗することがあるため、言語の地域ごとの種類をあなたの地域から順に試します。ここにも同じ状態の揺れが現れました。その朝は2回、iOSがインストール済みと答えたのが日本語からカナダ英語へのパックだけだったため、その2件の通知はカナダ英語に翻訳されました。">Each regional variant of the language is tried, your region first, because a generic language like English can pass Apple’s check and still fail to translate. The same flickering status shows up here: twice that morning iOS reported only the Japanese to Canadian English pack as installed, so those two notifications came out in Canadian English.</li></ul>
+      <p><span data-label-en="Translation happens entirely on your iPhone. See " data-label-ja="翻訳はすべてiPhone上で行われます。詳しくは">Translation happens entirely on your iPhone. See </span><a href="karui-technote-kn004.html" data-label-en="KN004" data-label-ja="KN004">KN004</a><span data-label-en="." data-label-ja="をご覧ください。">.</span></p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Revision History" data-label-ja="改訂履歴">Revision History</h2>
+      <ul><li><span class="karui-revision-date" data-label-en="2026-09-30" data-label-ja="2026-09-30">2026-09-30</span><span data-label-en=" First published." data-label-ja=" 初版公開。"> First published.</span></li></ul>
+    </section>
+    <section class="karui-section">
+      <p><a href="karui-technotes.html" data-label-en="← All Technical Notes" data-label-ja="← 技術ノート一覧">← All Technical Notes</a></p>
+    </section>
+    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
+  </main>
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('karui-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
+  </script>
+</body>
+</html>

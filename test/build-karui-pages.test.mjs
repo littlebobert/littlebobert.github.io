@@ -103,6 +103,7 @@ test('builds Tech Specs and the Technical Notes, linked from every page', async 
   const kn002Page = await readOutputFile('technotes/kn002/index.html');
   const kn003Page = await readOutputFile('technotes/kn003/index.html');
   const kn004Page = await readOutputFile('technotes/kn004/index.html');
+  const kn005Page = await readOutputFile('technotes/kn005/index.html');
 
   assert.match(specsPage, /<h1[^>]*>Tech Specs<\/h1>/);
   assert.match(technotesPage, /<h1[^>]*>Technical Notes<\/h1>/);
@@ -118,9 +119,13 @@ test('builds Tech Specs and the Technical Notes, linked from every page', async 
   assert.match(kn003Page, /<h1[^>]*>KN003: Getting Reliable Answers from the On-Device Apple Foundation Model<\/h1>/);
   assert.match(kn003Page, /<link rel="canonical" href="https:\/\/karui\.jp\/technotes\/kn003">/);
   assert.match(technotesPage, /href="\/technotes\/kn004"/);
-  assert.match(kn004Page, /<h1[^>]*>KN004: Verifying That Karui Makes No Network Connections<\/h1>/);
+  assert.match(kn004Page, /<h1[^>]*>KN004: Verifying What Karui Sends Off Your iPhone<\/h1>/);
   assert.match(kn004Page, /<link rel="canonical" href="https:\/\/karui\.jp\/technotes\/kn004">/);
   assert.match(kn004Page, /href="\/technotes\/kn002"/);
+  assert.match(technotesPage, /href="\/technotes\/kn005"/);
+  assert.match(kn005Page, /<h1[^>]*>KN005: Translating Notifications Before a Two-Second Deadline<\/h1>/);
+  assert.match(kn005Page, /<link rel="canonical" href="https:\/\/karui\.jp\/technotes\/kn005">/);
+  assert.match(kn005Page, /href="\/technotes\/kn004"/);
   assert.match(specsPage, /href="\/technotes\/kn001"/);
 
   const pages = await Promise.all(
@@ -131,7 +136,7 @@ test('builds Tech Specs and the Technical Notes, linked from every page', async 
     assert.match(page, /href="\/technotes"/);
     assert.doesNotMatch(page, /href="karui-(specs|technotes|technote-kn001)\.html"/);
   }
-  for (const page of [specsPage, technotesPage, kn001Page, kn002Page, kn003Page, kn004Page]) {
+  for (const page of [specsPage, technotesPage, kn001Page, kn002Page, kn003Page, kn004Page, kn005Page]) {
     assert.doesNotMatch(page, /href="karui-[a-z0-9-]+\.html"/);
   }
 });

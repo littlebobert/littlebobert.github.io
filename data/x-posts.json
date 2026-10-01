@@ -1,8 +1,30 @@
 {
-  "updatedAt": "2026-09-30T20:06:04.456Z",
+  "updatedAt": "2026-10-01T20:22:34.383Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2105469187472998400",
+      "text": "justin@onemorething.tokyo",
+      "createdAt": "2026-10-01T01:25:46.000Z",
+      "url": "https://x.com/_bobertdowney/status/2105469187472998400",
+      "urls": [],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2105468737860354104",
+      "text": "giving away my last 5 Steve Jobs commemorative coins.\n\nemail me feedback on the setup wizard in Karui, my free app for silencing spam notifications and seeing messages people unsend. I'll draw winners October 1st (my dad’s birthday) at 9:41 AM PT.\n\nopen to Japan, US, Canada,",
+      "createdAt": "2026-10-01T01:23:59.000Z",
+      "url": "https://x.com/_bobertdowney/status/2105468737860354104",
+      "urls": [],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2104947384686100818",
       "text": "working on the QR code for https://t.co/XvhuIJPcHX https://t.co/qHUvKkRUMB",
@@ -242,67 +264,6 @@
           "alt": "",
           "type": "video",
           "image": "assets/generated/x/mine-post-2101750396356346303-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2101727736259805191",
-      "text": "滝の裏の神社とコストコ。最高すぎる https://t.co/vtDkfJD1Lw",
-      "createdAt": "2026-09-20T17:38:35.000Z",
-      "url": "https://x.com/_bobertdowney/status/2101727736259805191",
-      "urls": [
-        {
-          "url": "https://t.co/vtDkfJD1Lw",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2101727736259805191/video/1",
-          "displayUrl": "pic.x.com/vtDkfJD1Lw",
-          "start": 18,
-          "end": 41
-        },
-        {
-          "url": "https://t.co/vtDkfJD1Lw",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2101727736259805191/video/1",
-          "displayUrl": "pic.x.com/vtDkfJD1Lw",
-          "start": 18,
-          "end": 41
-        },
-        {
-          "url": "https://t.co/vtDkfJD1Lw",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2101727736259805191/video/1",
-          "displayUrl": "pic.x.com/vtDkfJD1Lw",
-          "start": 18,
-          "end": 41
-        },
-        {
-          "url": "https://t.co/vtDkfJD1Lw",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2101727736259805191/video/1",
-          "displayUrl": "pic.x.com/vtDkfJD1Lw",
-          "start": 18,
-          "end": 41
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2101727736259805191-0.png"
-        },
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2101727736259805191-1.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2101727736259805191-2.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2101727736259805191-3.png"
         }
       ]
     }

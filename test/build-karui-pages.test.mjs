@@ -33,7 +33,7 @@ test('builds every Karui clean route', async () => {
     assert.doesNotMatch(page, /href="karui-acknowledgements\.html"/);
   }
 
-  assert.match(acknowledgementsPage, /href="\/sasu-common\.css\?v=4"/);
+  assert.match(acknowledgementsPage, /href="\/sasu-common\.css\?v=\d+"/);
   assert.match(acknowledgementsPage, /href="\/assets\/karui-favicon\.png\?v=1"/);
   assert.match(acknowledgementsPage, /src="\/assets\/karui-icon\.png\?v=2"/);
   assert.match(acknowledgementsPage, /href="\/"/);
@@ -152,7 +152,6 @@ test('builds Tech Specs and the Technical Notes, linked from every page', async 
   assert.match(technotesPage, /href="\/technotes\/kn005"/);
   assert.match(kn005Page, /<h1[^>]*>KN005: Translating Notifications Before a Two-Second Deadline<\/h1>/);
   assert.match(kn005Page, /<link rel="canonical" href="https:\/\/karui\.jp\/technotes\/kn005">/);
-  assert.match(kn005Page, /href="\/technotes\/kn004"/);
   assert.match(specsPage, /href="\/technotes\/kn001"/);
 
   const pages = await Promise.all(

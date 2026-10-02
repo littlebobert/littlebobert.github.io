@@ -39,7 +39,7 @@ test('builds every Shadan clean route', async () => {
   }
   assert.match(homePage, /<link rel="canonical" href="https:\/\/shadan\.jp\/">/);
 
-  assert.match(acknowledgementsPage, /href="\/sasu-common\.css\?v=4"/);
+  assert.match(acknowledgementsPage, /href="\/sasu-common\.css\?v=\d+"/);
   assert.match(acknowledgementsPage, /href="\/assets\/shadan-favicon\.png\?v=1"/);
   assert.match(acknowledgementsPage, /src="\/assets\/shadan-icon\.png\?v=1"/);
   assert.match(acknowledgementsPage, /href="\/"/);

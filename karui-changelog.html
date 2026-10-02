@@ -11,6 +11,9 @@
     body.sasu-site { background: #fff; }
     .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
     .karui-icon { box-sizing: border-box; border: 1px solid #1a211e; border-radius: 12px; }
+    .karui-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
+    .karui-breadcrumbs a { color: #666; }
+    .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
     .karui-section { padding: 6pt 0 5pt; }
     .karui-section p { margin: 0; }
     .karui-section p + p, .karui-section ul + p, .karui-section ol + p { margin-top: 7pt; }
@@ -48,6 +51,7 @@
 <body class="sasu-site">
   <main class="sasu-page">
     <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <nav class="karui-breadcrumbs" aria-label="Breadcrumb"><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</span></nav>
     <section class="sasu-hero">
       <div class="sasu-hero-header">
         <a href="karui.html"><img class="sasu-icon karui-icon" src="assets/karui-icon.png?v=2" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン"></a>

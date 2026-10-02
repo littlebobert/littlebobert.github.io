@@ -54,7 +54,7 @@ await Promise.all(
 
 function createDeployedPage(source) {
   return source
-    .replaceAll('href="sasu-common.css?v=4"', 'href="/sasu-common.css?v=4"')
+    .replaceAll('href="sasu-common.css', 'href="/sasu-common.css')
     .replaceAll('href="assets/', 'href="/assets/')
     .replaceAll('src="assets/', 'src="/assets/')
     .replaceAll('poster="assets/', 'poster="/assets/')

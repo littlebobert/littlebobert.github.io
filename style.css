@@ -1382,7 +1382,6 @@ html[lang="ja"] .tokyo-recommendations-list {
 
 .world-map-frame {
   --map-zoom: 1;
-  --map-pin-scale: 1;
   --map-pan-x: 0px;
   --map-pan-y: 0px;
   position: relative;
@@ -1430,9 +1429,13 @@ html[lang="ja"] .tokyo-recommendations-list {
 
 .world-map-layer {
   position: absolute;
-  inset: 0;
-  transform: translate(var(--map-pan-x), var(--map-pan-y)) scale(var(--map-zoom));
-  transform-origin: center;
+  /* Zoom by layout size, not scale(): Safari rasterizes a scaled SVG layer
+     at 1x and it flickers between blurry and sharp on unrelated repaints. */
+  left: calc((1 - var(--map-zoom)) * 50%);
+  top: calc((1 - var(--map-zoom)) * 50%);
+  width: calc(var(--map-zoom) * 100%);
+  height: calc(var(--map-zoom) * 100%);
+  transform: translate(var(--map-pan-x), var(--map-pan-y));
 }
 
 .world-map-img {
@@ -1457,7 +1460,7 @@ html[lang="ja"] .tokyo-recommendations-list {
   background: #000;
   border-radius: 50% 50% 50% 0;
   box-shadow: 0 0 0 1.5px #fff;
-  transform: translate(-50%, -100%) rotate(-45deg) scale(var(--map-pin-scale));
+  transform: translate(-50%, -100%) rotate(-45deg);
   transform-origin: 50% 50%;
   pointer-events: none;
 }

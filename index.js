@@ -2006,7 +2006,6 @@ function setMapTransform() {
   mapPanX = clamp(mapPanX, -maxPanX, maxPanX);
   mapPanY = clamp(mapPanY, -maxPanY, maxPanY);
   worldMapFrame.style.setProperty('--map-zoom', mapZoom);
-  worldMapFrame.style.setProperty('--map-pin-scale', 1 / mapZoom);
   worldMapFrame.style.setProperty('--map-pan-x', `${mapPanX}px`);
   worldMapFrame.style.setProperty('--map-pan-y', `${mapPanY}px`);
   worldMapFrame.classList.toggle('is-zoomed', mapZoom > 1);

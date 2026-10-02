@@ -8,6 +8,7 @@
 - See messages people unsend: every app's notifications are kept in one searchable history, including messages the sender later unsent.
 - Wake Me: people you choose can ring an alarm in an emergency, even when your iPhone is silenced or in a Focus.
 - Your VIP contacts always get through your Focus, from any app.
+- Auto-replies to your VIPs in Messages, WhatsApp, LINE, and Messenger while you're driving, asleep, or busy.
 - Recognizes one-time codes and lets them through.
 - Several quick messages from one person arrive as one notification.
 - Translates notifications into your language, on device.
@@ -24,22 +25,27 @@ Classification runs on the iPhone with Apple's on-device model. Notifications, c
 
 - [Tech Specs](https://karui.jp/specs): how Karui works, classification, speed, privacy, and requirements.
 - [Technical Note KN001: Measuring the Background Rate Limit of Apple’s On-Device Foundation Model](https://karui.jp/technotes/kn001): rate limiting of Apple's on-device model in the background, and how Karui copes.
+- [Technical Note KN002: Accessing Private Cloud Compute in an App Through Shortcuts](https://karui.jp/technotes/kn002): how Karui asks Private Cloud Compute for a second opinion through the user's shortcut.
+- [Technical Note KN003: Getting Reliable Answers from the On-Device Apple Foundation Model](https://karui.jp/technotes/kn003): prompt and schema choices that made the on-device model sort notifications more reliably.
+- [Technical Note KN004: Verifying What Karui Sends Off Your iPhone](https://karui.jp/technotes/kn004): how to check that Karui sends none of your data off your iPhone.
+- [Technical Note KN005: Translating Notifications Before a Two-Second Deadline](https://karui.jp/technotes/kn005): how Karui translates notifications without holding them up.
 
 ## Requirements and limitations
 
 - Requires an iPhone running iOS 27 or later with Apple Intelligence enabled, and the Shortcuts app.
-- Tapping a Karui notification opens the original app, not the specific message.
+- Tapping a Karui notification opens the original app, not the specific message. In Messages and WhatsApp it opens the conversation when Karui has the sender's number.
 
 ## Availability
 
-- [Join the beta on TestFlight](https://testflight.apple.com/join/ZQ1MgMMb): free, with no in-app purchases or subscription; no sign-up needed.
+- [Download on the App Store](https://apps.apple.com/app/karui-notifications/id6814134614): free, with no in-app purchases or subscription; no sign-up needed.
 
 ## Pages
 
 - [Karui](https://karui.jp/): Overview and screenshots.
-- [Changelog](https://karui.jp/changelog): Release notes for each beta build.
+- [Changelog](https://karui.jp/changelog): Release notes for each build.
 - [Support](https://karui.jp/support): Setup, troubleshooting, and known limitations.
 - [Privacy](https://karui.jp/privacy): Privacy policy.
-- [Acknowledgements](https://karui.jp/acknowledgements): Third-party credits.
+- [Tech Notes](https://karui.jp/technotes): Technical notes on how Karui works.
+- [Acknowledgements](https://karui.jp/acknowledgements): Thanks to the people who helped.
 
 Karui is made by [Justin Garcia](https://onemorething.tokyo/) in Japan. Pages contain complete English content in static HTML, with Japanese available through each page's language control.

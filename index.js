@@ -2003,8 +2003,8 @@ function setMapTransform() {
   const rect = worldMapFrame.getBoundingClientRect();
   const maxPanX = (rect.width * (mapZoom - 1)) / 2;
   const maxPanY = (rect.height * (mapZoom - 1)) / 2;
-  mapPanX = clamp(mapPanX, -maxPanX, maxPanX);
-  mapPanY = clamp(mapPanY, -maxPanY, maxPanY);
+  mapPanX = Math.round(clamp(mapPanX, -maxPanX, maxPanX));
+  mapPanY = Math.round(clamp(mapPanY, -maxPanY, maxPanY));
   worldMapFrame.style.setProperty('--map-zoom', mapZoom);
   worldMapFrame.style.setProperty('--map-pan-x', `${mapPanX}px`);
   worldMapFrame.style.setProperty('--map-pan-y', `${mapPanY}px`);
@@ -2202,7 +2202,7 @@ function prepareMapSvg() {
   style.textContent = `
     #World, #Ocean { fill: transparent; stroke: none; }
     g[id] { cursor: pointer; }
-    g[id] path { fill: #000; stroke: #333; stroke-width: 0.5; }
+    g[id] path { fill: #000; fill-opacity: 0.82; stroke: #333; stroke-width: 0.5; }
     g[id].is-selected path { stroke: #fff; stroke-width: 1.2; }
     text { display: none; }
   `;

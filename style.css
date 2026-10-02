@@ -1429,13 +1429,12 @@ html[lang="ja"] .tokyo-recommendations-list {
 
 .world-map-layer {
   position: absolute;
-  /* Zoom by layout size, not scale(): Safari rasterizes a scaled SVG layer
-     at 1x and it flickers between blurry and sharp on unrelated repaints. */
-  left: calc((1 - var(--map-zoom)) * 50%);
-  top: calc((1 - var(--map-zoom)) * 50%);
+  /* Zoom and pan by layout, not transform/opacity: Safari flickers the SVG
+     between blurry and sharp when it sits in its own composited layer. */
+  left: calc((1 - var(--map-zoom)) * 50% + var(--map-pan-x));
+  top: calc((1 - var(--map-zoom)) * 50% + var(--map-pan-y));
   width: calc(var(--map-zoom) * 100%);
   height: calc(var(--map-zoom) * 100%);
-  transform: translate(var(--map-pan-x), var(--map-pan-y));
 }
 
 .world-map-img {
@@ -3169,7 +3168,6 @@ html[data-theme="classic"] .puzzle-tile.is-empty {
 
 html[data-theme="classic"] .world-map-img {
   filter: none;
-  opacity: 0.82;
 }
 
 html[data-theme="classic"] .map-pin {

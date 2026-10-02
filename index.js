@@ -2202,7 +2202,7 @@ function prepareMapSvg() {
   style.textContent = `
     #World, #Ocean { fill: transparent; stroke: none; }
     g[id] { cursor: pointer; }
-    g[id] path { fill: #000; fill-opacity: 0.82; stroke: #333; stroke-width: 0.5; }
+    g[id] path { fill: #000; fill-opacity: 0.82; stroke: #666; stroke-width: 0.5; }
     g[id].is-selected path { stroke: #fff; stroke-width: 1.2; }
     text { display: none; }
   `;

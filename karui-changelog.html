@@ -27,6 +27,12 @@
     .karui-changelog .store-badge { display: inline-block; margin-left: 4pt; padding: 0 4pt; border: 1px solid #1a211e; border-radius: 4px; font-size: 8pt; font-weight: normal; line-height: 1.5; vertical-align: 1px; }
     .karui-changelog ul { margin: 3pt 0 3pt; padding-left: 20pt; }
     .release-date { padding-left: 4pt; font-size: 10pt; color: #555; }
+    /* Text links like the footer's: the current view is plain, the other is a link. */
+    .changelog-filter { margin: 0 0 8pt; color: #555; }
+    .changelog-filter button { padding: 0; border: 0; background: none; color: inherit; font: inherit; text-decoration: underline; cursor: pointer; }
+    .changelog-filter button[aria-pressed="true"] { color: #1a211e; font-weight: 600; text-decoration: none; cursor: default; }
+    .changelog-filter .footer-separator { margin: 0 6pt; color: #777; }
+    .karui-changelog [hidden] { display: none; }
     @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
   </style>
   <link rel="canonical" href="https://karui.jp/changelog">
@@ -59,8 +65,13 @@
       </div>
     </section>
     <section class="karui-section karui-changelog">
+      <div class="changelog-filter" role="group" aria-label="Changelog view">
+        <button type="button" data-changelog-view="builds" aria-pressed="true" data-label-en="All builds" data-label-ja="すべてのビルド">All builds</button><span class="footer-separator" aria-hidden="true">|</span>
+        <button type="button" data-changelog-view="store" aria-pressed="false" data-label-en="App Store releases" data-label-ja="App Storeリリース">App Store releases</button>
+      </div>
+      <div class="changelog-builds">
 <!-- karui-changelog:start -->
-<h2 data-karui-build="38">0.1.4 (38)</h2>
+<h2 data-karui-build="38">0.1.4 (38) <span class="store-badge" data-label-en="Pending App Store Release" data-label-ja="App Store公開待ち">Pending App Store Release</span></h2>
 <span class="release-date" data-label-en="October 2, 2026" data-label-ja="2026年10月2日">October 2, 2026</span>
 <ul>
   <li data-label-en="Explained the Apple Intelligence requirement better." data-label-ja="Apple Intelligenceの要件について、より分かりやすく説明しました。">Explained the Apple Intelligence requirement better.</li>
@@ -284,6 +295,8 @@
 <li data-label-en="Initial release." data-label-ja="初回リリース。">Initial release.</li>
 </ul>
 <!-- karui-changelog:end -->
+      </div>
+      <div class="changelog-store" hidden></div>
     </section>
     <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
   </main>
@@ -314,6 +327,41 @@
       if (persist) localStorage.setItem('karui-language', selected);
     }
 
+    // The App Store view: each build with a store badge, with the notes of the builds
+    // since the release before it folded in, newest first. Built from the build list,
+    // so new entries and badges show up without anything else to maintain.
+    function buildStoreView() {
+      const builds = document.querySelector('.changelog-builds');
+      const store = document.querySelector('.changelog-store');
+      let notes = null;
+      for (const heading of builds.querySelectorAll('h2[data-karui-build]')) {
+        const list = heading.nextElementSibling?.nextElementSibling;
+        if (heading.querySelector('.store-badge')) {
+          const title = heading.cloneNode(true);
+          title.removeAttribute('data-karui-build');
+          notes = document.createElement('ul');
+          store.append(title, heading.nextElementSibling.cloneNode(true), notes);
+        }
+        // Builds newer than any release with a badge aren't in a release yet.
+        if (notes && list?.tagName === 'UL') {
+          notes.append(...[...list.children].map((item) => item.cloneNode(true)));
+        }
+      }
+    }
+
+    function setChangelogView(view) {
+      const showsStore = view === 'store';
+      document.querySelector('.changelog-builds').hidden = showsStore;
+      document.querySelector('.changelog-store').hidden = !showsStore;
+      document.querySelectorAll('[data-changelog-view]').forEach((button) => {
+        button.setAttribute('aria-pressed', String(button.dataset.changelogView === view));
+      });
+    }
+
+    buildStoreView();
+    document.querySelectorAll('[data-changelog-view]').forEach((button) => {
+      button.addEventListener('click', () => setChangelogView(button.dataset.changelogView));
+    });
     languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
     setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
   </script>

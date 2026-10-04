@@ -1,8 +1,27 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-10-03T18:42:41.099Z",
+  "updatedAt": "2026-10-04T18:39:48.454Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2106473493248512377",
+      "text": "my free app for fighting spam iPhone notifications and viewing messages people unsend has been updated.\n\nit’s now a lot easier to set up, and will learn and improve its filtering based on your manual corrections.\n\nhttps://t.co/XvhuIJPcHX",
+      "createdAt": "2026-10-03T19:56:31.000Z",
+      "url": "https://x.com/_bobertdowney/status/2106473493248512377",
+      "urls": [
+        {
+          "url": "https://t.co/XvhuIJPcHX",
+          "expandedUrl": "https://karui.jp",
+          "displayUrl": "karui.jp",
+          "start": 214,
+          "end": 237
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2105469187472998400",
       "text": "justin@onemorething.tokyo",
@@ -207,63 +226,6 @@ window.X_POSTS_SNAPSHOT = {
           "alt": "",
           "type": "video",
           "image": "assets/generated/x/mine-post-2104126960146448534-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2103515714648990168",
-      "text": "Jev Safari extension that can filter images of that Muse mascot out of my X feed https://t.co/AyViOfTKyH",
-      "createdAt": "2026-09-25T16:03:22.000Z",
-      "url": "https://x.com/_bobertdowney/status/2103515714648990168",
-      "urls": [
-        {
-          "url": "https://t.co/AyViOfTKyH",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2103515714648990168/photo/1",
-          "displayUrl": "pic.x.com/AyViOfTKyH",
-          "start": 81,
-          "end": 104
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2103515714648990168-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2101750396356346303",
-      "text": "送信取り消しされたメッセージを見たいと思ったことある？これでもう見られるよ https://t.co/l3MGAVR6YB https://t.co/HExQer08fd",
-      "createdAt": "2026-09-20T19:08:37.000Z",
-      "url": "https://x.com/_bobertdowney/status/2101750396356346303",
-      "urls": [
-        {
-          "url": "https://t.co/l3MGAVR6YB",
-          "expandedUrl": "https://karui.jp/",
-          "displayUrl": "karui.jp",
-          "start": 38,
-          "end": 61
-        },
-        {
-          "url": "https://t.co/HExQer08fd",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2101750396356346303/video/1",
-          "displayUrl": "pic.x.com/HExQer08fd",
-          "start": 62,
-          "end": 85
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2101750396356346303-0.png"
         }
       ]
     }

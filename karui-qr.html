@@ -123,7 +123,7 @@
       // into dots, hold the dotted name still, curve the dots into place, settle the
       // markers, then hand over to the code image. Everything after the stamp is
       // timed from when it's done.
-      const stamp = { delay: 220, duration: 525 };
+      const stamp = { delay: 90, duration: 525 };
       const T = { hold: 300, dissolve: 305, dotted: 250, travel: 1000, stagger: 350, markers: 1600, markersFor: 440, final: 2125, finalFor: 265 };
       const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 

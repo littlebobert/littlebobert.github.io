@@ -5,6 +5,7 @@
 ## Features
 
 - Spam filtering for every app's notifications: spam and promotions are judged by the message itself, not the app it came from.
+- For people who keep notifications turned off: they may be missing things like a friend changing plans or an important delivery. With notifications back on, Karui lets those through and keeps promotions from the same apps silent.
 - See messages people unsend: every app's notifications are kept in one searchable history, including messages the sender later unsent.
 - Wake Me: people you choose can ring an alarm in an emergency, even when your iPhone is silenced or in a Focus.
 - Your VIP contacts always get through your Focus, from any app.

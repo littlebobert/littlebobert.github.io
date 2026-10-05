@@ -47,7 +47,7 @@
        first time the page loads it grows in from a thin line to its full width; after
        that it's just there. Tapping it opens it large at /hanko. */
     .sasu-hero { display: flow-root; }
-    .karui-hero-seal { float: right; position: relative; display: block; width: 38px; height: 112px; margin: 2pt 0 4pt 14px; cursor: pointer; }
+    .karui-hero-seal { float: right; position: relative; display: block; width: 26px; height: 112px; margin: 2pt 0 4pt 14px; cursor: pointer; }
     /* The image is laid out 4× larger and scaled back down, so the stamp's thinning
        filter works in quarter-pixel steps; at actual size Safari only has a handful of
        whole-pixel weights and the ink visibly jumps. A white margin, the page's own
@@ -89,7 +89,7 @@
 
     @media (max-width: 560px) {
       .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
-      .karui-hero-seal { width: 28px; height: 83px; margin-left: 10px; }
+      .karui-hero-seal { width: 19px; height: 82px; margin-left: 10px; }
     }
   </style>
 </head>
@@ -100,7 +100,7 @@
     </div>
 
     <section class="sasu-hero">
-      <a href="karui-hanko.html" class="karui-hero-seal" aria-label="About the 通知を軽く seal" data-aria-label-en="About the 通知を軽く seal" data-aria-label-ja="「通知を軽く」の判子について"><img src="assets/karui-seal-tagline.png?v=3" alt="" width="38" height="112"></a>
+      <a href="karui-hanko.html" class="karui-hero-seal" aria-label="About the 通知を軽く seal" data-aria-label-en="About the 通知を軽く seal" data-aria-label-ja="「通知を軽く」の判子について"><img src="assets/karui-seal-tagline.png?v=4" alt="" width="26" height="112"></a>
       <script src="karui-seal-ink.js?v=1"></script>
       <script>
         // The seal inks in the first time the page loads (add ?stamp to the address to
@@ -132,7 +132,7 @@
     <section class="sasu-section">
       <p class="karui-demo-label" data-label-en="Karui on the new iPhone Duo" data-label-ja="新しいiPhone Duoで動くKarui">Karui on the new iPhone Duo</p>
       <button class="karui-demo-sound" type="button" aria-pressed="false" data-label-off-en="Tap for sound" data-label-off-ja="タップで音声オン" data-label-on-en="Sound on" data-label-on-ja="音声オン">Tap for sound</button>
-      <video class="karui-demo" src="assets/karui-demo-en.mp4?v=18" data-src-en="assets/karui-demo-en.mp4?v=18" data-src-ja="assets/karui-demo-ja.mp4?v=18" poster="assets/karui-demo-en.jpg?v=18" data-poster-en="assets/karui-demo-en.jpg?v=18" data-poster-ja="assets/karui-demo-ja.jpg?v=18" width="720" height="1004" autoplay muted loop playsinline preload="auto" aria-label="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-en="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-ja="デモ：Karuiは届いた通知をその場で仕分け、スパムは鳴らさず理由を示し、送信取り消しされたメッセージも残し、緊急の連絡ではアラームで知らせます。"></video>
+      <video class="karui-demo" src="assets/karui-demo-en.mp4?v=20" data-src-en="assets/karui-demo-en.mp4?v=20" data-src-ja="assets/karui-demo-ja.mp4?v=20" poster="assets/karui-demo-en.jpg?v=20" data-poster-en="assets/karui-demo-en.jpg?v=20" data-poster-ja="assets/karui-demo-ja.jpg?v=20" width="720" height="1004" autoplay muted loop playsinline preload="auto" aria-label="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-en="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-ja="デモ：Karuiは届いた通知をその場で仕分け、スパムは鳴らさず理由を示し、送信取り消しされたメッセージも残し、緊急の連絡ではアラームで知らせます。"></video>
       <p class="karui-demo-caption is-hidden" aria-hidden="true"></p>
     </section>
 
@@ -260,7 +260,7 @@
     // The demo's captions, in seconds into each language's video. Each shows until the
     // next starts; null is a gap between them.
     const demoCaptions = {
-      en: [[0.3, 'Karui sorts every notification the moment it arrives.'], [4.35, null], [4.6, 'Spam stays silent. Friends get through.'], [6.9, null], [7.3, 'You can even read unsent messages.'], [10.1, null], [10.5, 'Emergencies wake you up, even on silent.']],
+      en: [[0.3, 'Karui sorts every notification the moment it arrives.'], [3.75, null], [4.0, 'Spam stays silent, but friends get through.'], [6.9, null], [7.3, 'You can even read unsent messages.'], [10.1, null], [10.5, 'Emergencies wake you up, even on silent.']],
       ja: [[0.3, '届いた通知を、Karuiがその場で仕分け'], [3.35, null], [3.6, 'スパムは鳴らさず、友だちは通す。'], [6.1, null], [6.4, '送信取り消しされても、Karuiで読める'], [9.3, null], [9.7, '緊急の連絡は、寝ていてもアラームで知らせる']],
     };
     const demoCaption = document.querySelector('.karui-demo-caption');

@@ -1,8 +1,8 @@
 // Generates the decorative seals on the Karui home page:
 //   assets/karui-seal.png          24 × 51 points at 4×, beside the footer photo
 //   assets/karui-seal-large.png    96 × 204 points at 3×, for the #seal view
-//   assets/karui-seal-tagline.png        38 × 112 points at 3×, stamped beside the hero
-//   assets/karui-seal-tagline-large.png  96 × 283 points at 3×, for the #tagline view
+//   assets/karui-seal-tagline.png        26 × 112 points at 3×, stamped beside the hero
+//   assets/karui-seal-tagline-large.png  66 × 283 points at 3×, for the #tagline view
 //
 //   swift scripts/generate-karui-seal.swift
 //
@@ -114,6 +114,8 @@ renderSeal(nameColumns, pointWidth: 24, pointHeight: 51, scale: 4, borderPoints:
 renderSeal(nameColumns, pointWidth: 96, pointHeight: 204, scale: 3, borderPoints: 1.6 * 4, radiusPoints: 3.5 * 4, to: "assets/karui-seal-large.png")
 // 通知を軽く, the App Store name's tagline, stamped beside the hero the first time the
 // page loads. Five dense kanji need more room between them than ガルシア's kana.
-renderSeal(["通知を軽く"], pointWidth: 38, pointHeight: 112, scale: 3, borderPoints: 2, radiusPoints: 4, spacing: 0.16, to: "assets/karui-seal-tagline.png")
-// The same seal as wide as the large ガルシア one, for the #tagline view.
-renderSeal(["通知を軽く"], pointWidth: 96, pointHeight: 283, scale: 3, borderPoints: 5, radiusPoints: 10, spacing: 0.16, to: "assets/karui-seal-tagline-large.png")
+// Just wide enough that the lettering keeps its own proportions: any wider and it is
+// stretched to fill the column, which makes kanji look squat.
+renderSeal(["通知を軽く"], pointWidth: 26, pointHeight: 112, scale: 3, borderPoints: 2, radiusPoints: 4, spacing: 0.16, to: "assets/karui-seal-tagline.png")
+// The same seal two and a half times as tall, for the #tagline view.
+renderSeal(["通知を軽く"], pointWidth: 66, pointHeight: 283, scale: 3, borderPoints: 5, radiusPoints: 10, spacing: 0.16, to: "assets/karui-seal-tagline-large.png")

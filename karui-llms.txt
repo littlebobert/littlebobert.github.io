@@ -1,6 +1,6 @@
 # Karui
 
-> Karui is an iPhone app that silences spam notifications and reveals unsent messages. It uses Apple Intelligence to decide, privately and entirely on the device, which notifications from any app should interrupt you, which can wait for a summary, and which are spam.
+> Karui is an iPhone and iPad app that silences spam notifications and reveals unsent messages. It uses Apple Intelligence to decide, privately and entirely on the device, which notifications from any app should interrupt you, which can wait for a summary, and which are spam.
 
 ## Features
 
@@ -33,7 +33,8 @@ Classification runs on the iPhone with Apple's on-device model. Notifications, c
 
 ## Requirements and limitations
 
-- Requires an iPhone running iOS 27 or later with Apple Intelligence enabled, and the Shortcuts app.
+- Requires an iPhone or iPad running iOS or iPadOS 27 or later, and the Shortcuts app.
+- Spam filtering and deadline reminders also need Apple Intelligence to be supported and turned on. Viewing unsent messages works without it.
 - Tapping a Karui notification opens the original app, not the specific message. In Messages and WhatsApp it opens the conversation when Karui has the sender's number.
 
 ## Availability

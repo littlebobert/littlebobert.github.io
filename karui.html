@@ -132,7 +132,7 @@
     <section class="sasu-section">
       <p class="karui-demo-label" data-label-en="Karui on the new iPhone Duo" data-label-ja="新しいiPhone Duoで動くKarui">Karui on the new iPhone Duo</p>
       <button class="karui-demo-sound" type="button" aria-pressed="false" data-label-off-en="Tap for sound" data-label-off-ja="タップで音声オン" data-label-on-en="Sound on" data-label-on-ja="音声オン">Tap for sound</button>
-      <video class="karui-demo" src="assets/karui-demo-en.mp4?v=17" data-src-en="assets/karui-demo-en.mp4?v=17" data-src-ja="assets/karui-demo-ja.mp4?v=17" poster="assets/karui-demo-en.jpg?v=17" data-poster-en="assets/karui-demo-en.jpg?v=17" data-poster-ja="assets/karui-demo-ja.jpg?v=17" width="720" height="1004" autoplay muted loop playsinline preload="auto" aria-label="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-en="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-ja="デモ：Karuiは届いた通知をその場で仕分け、スパムは鳴らさず理由を示し、送信取り消しされたメッセージも残し、緊急の連絡ではアラームで知らせます。"></video>
+      <video class="karui-demo" src="assets/karui-demo-en.mp4?v=18" data-src-en="assets/karui-demo-en.mp4?v=18" data-src-ja="assets/karui-demo-ja.mp4?v=18" poster="assets/karui-demo-en.jpg?v=18" data-poster-en="assets/karui-demo-en.jpg?v=18" data-poster-ja="assets/karui-demo-ja.jpg?v=18" width="720" height="1004" autoplay muted loop playsinline preload="auto" aria-label="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-en="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-ja="デモ：Karuiは届いた通知をその場で仕分け、スパムは鳴らさず理由を示し、送信取り消しされたメッセージも残し、緊急の連絡ではアラームで知らせます。"></video>
       <p class="karui-demo-caption is-hidden" aria-hidden="true"></p>
     </section>
 
@@ -260,8 +260,8 @@
     // The demo's captions, in seconds into each language's video. Each shows until the
     // next starts; null is a gap between them.
     const demoCaptions = {
-      en: [[0.3, 'Karui sorts every notification the moment it arrives.'], [4.35, null], [4.6, 'Spam stays silent.'], [6.9, null], [7.3, 'You can even read unsent messages.'], [10.1, null], [10.5, 'Emergencies wake you up, even on silent.']],
-      ja: [[0.3, '届いた通知を、Karuiがその場で仕分け'], [4.45, null], [4.7, 'スパムは鳴らさず。'], [6.1, null], [6.4, '送信取り消しされても、Karuiで読める'], [9.3, null], [9.7, '緊急の連絡は、寝ていてもアラームで知らせる']],
+      en: [[0.3, 'Karui sorts every notification the moment it arrives.'], [4.35, null], [4.6, 'Spam stays silent. Friends get through.'], [6.9, null], [7.3, 'You can even read unsent messages.'], [10.1, null], [10.5, 'Emergencies wake you up, even on silent.']],
+      ja: [[0.3, '届いた通知を、Karuiがその場で仕分け'], [3.35, null], [3.6, 'スパムは鳴らさず、友だちは通す。'], [6.1, null], [6.4, '送信取り消しされても、Karuiで読める'], [9.3, null], [9.7, '緊急の連絡は、寝ていてもアラームで知らせる']],
     };
     const demoCaption = document.querySelector('.karui-demo-caption');
     let shownCaption;

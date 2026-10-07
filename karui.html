@@ -76,20 +76,29 @@
 
     /* The demo, recorded on iPhone Duo closed, in portrait, in Apple's iPhone Duo bezel
        (from Apple Design Resources) on the page's white, under its label. */
-    /* The Live Activity, drawn in HTML so it stays crisp and reads in both languages. */
-    .karui-activity { display: flex; align-items: center; gap: 12pt; box-sizing: border-box; width: 100%; max-width: 480px; margin: 0 auto 4pt; padding: 12pt 14pt; border-radius: 22px; background: #0b0d0c; color: #eeece3; font-family: -apple-system, "SF Pro Text", "Hiragino Sans", sans-serif; text-align: left; }
-    .karui-activity-text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 3pt; }
-    .karui-activity-title { display: flex; align-items: center; gap: 6pt; font-size: 10pt; font-weight: 600; color: #7bb893; }
-    .karui-activity-title svg { width: 14px; height: 14px; flex: none; }
-    .karui-activity-counts { font-size: 14pt; font-weight: 600; line-height: 1.25; font-variant-numeric: tabular-nums; }
+    /* The Live Activity, drawn in HTML so it stays crisp and reads in both languages.
+       Sizes follow the real card: 15pt semibold counts, 12pt title and button, 15pt
+       side padding, 26pt corners, a 28pt-tall button. */
+    .karui-activity { display: flex; align-items: center; gap: 12px; box-sizing: border-box; width: 100%; max-width: 480px; margin: 0 auto 4pt; padding: 14px 15px; border-radius: 26px; background: #0b0d0c; color: #eeece3; font-family: -apple-system, "SF Pro Text", "Hiragino Sans", sans-serif; text-align: left; }
+    .karui-activity-text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
+    .karui-activity-title { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; color: #7bb893; }
+    .karui-activity-title svg { width: 15px; height: 15px; flex: none; }
+    .karui-activity-counts { font-size: 15px; font-weight: 600; line-height: 1.25; font-variant-numeric: tabular-nums; }
     .karui-activity-counts span:not(.dot) { white-space: nowrap; }
     .karui-activity-counts .is-important { color: #e8856a; }
     .karui-activity-counts .dot { color: #9ea39b; }
-    .karui-activity-snooze { flex: none; display: inline-flex; align-items: center; gap: 6pt; padding: 7pt 11pt; border-radius: 999px; background: rgba(123, 184, 147, 0.18); color: #7bb893; font-size: 10pt; font-weight: 600; white-space: nowrap; }
-    .karui-activity-snooze svg { width: 14px; height: 14px; }
+    .karui-activity-snooze { flex: none; display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 13px; border-radius: 999px; background: rgba(123, 184, 147, 0.22); color: #7bb893; font-size: 12px; font-weight: 600; white-space: nowrap; }
+    .karui-activity-snooze svg { width: 13px; height: 13px; }
     .karui-activity-caption { max-width: 480px; margin: 0 auto 14pt; font-size: 10pt; color: var(--karui-muted); text-align: center; }
-    /* Phone widths: smaller counts and button so the counts stay on one line. */
-    @media (max-width: 480px) { .karui-activity { gap: 8px; padding: 12px 16px; } .karui-activity-title { font-size: 9pt; } .karui-activity-counts { font-size: 10pt; } .karui-activity-snooze { padding: 6px 9px; font-size: 8.5pt; gap: 4px; } .karui-activity-snooze svg { width: 11px; height: 11px; } }
+    /* Phones: the card runs to 16px from the screen edge, as the real one does, so the
+       counts fit on one line at the real size. */
+    @media (max-width: 480px) { .karui-activity { position: relative; left: 50%; transform: translateX(-50%); width: calc(100vw - 32px); max-width: none; } }
+    /* Where the real size would wrap, a point or two smaller instead. */
+    @media (max-width: 400px) { .karui-activity-counts { font-size: 14px; } }
+    @media (max-width: 364px) { .karui-activity-counts { font-size: 13px; } }
+    html[lang="ja"] .karui-activity-counts { font-size: 14px; }
+    @media (max-width: 380px) { html[lang="ja"] .karui-activity-counts { font-size: 12.5px; } html[lang="ja"] .karui-activity-snooze { font-size: 11px; padding: 0 11px; } }
+    @media (max-width: 364px) { html[lang="ja"] .karui-activity-counts { font-size: 12px; } }
     .karui-demo-label { margin: 10pt 0 5pt; font-size: 10pt; font-weight: 600; color: #555; text-align: center; }
     .karui-demo { display: block; width: 100%; max-width: 360px; height: auto; aspect-ratio: 720 / 1004; margin: 0 auto; background: #fff url("assets/karui-demo-en.jpg?v=20") center / cover no-repeat; }
     html[lang="ja"] .karui-demo { background-image: url("assets/karui-demo-ja.jpg?v=20"); }

@@ -38,6 +38,8 @@ const assetFiles = [
   'karui-seal-tagline.png',
   'karui-seal-tagline-large.png',
   'karui-social.png',
+  // KN004's App Privacy Report screenshot.
+  'karui-kn004-privacy-report.jpg',
   ...['en', 'ja'].flatMap((language) => [`karui-demo-${language}.mp4`, `karui-demo-${language}.jpg`]),
 ];
 

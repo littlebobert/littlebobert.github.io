@@ -76,6 +76,19 @@
 
     /* The demo, recorded on iPhone Duo closed, in portrait, in Apple's iPhone Duo bezel
        (from Apple Design Resources) on the page's white, under its label. */
+    /* The Live Activity, drawn in HTML so it stays crisp and reads in both languages. */
+    .karui-activity { display: flex; align-items: center; gap: 12pt; box-sizing: border-box; width: 100%; max-width: 480px; margin: 0 auto 4pt; padding: 12pt 14pt; border-radius: 22px; background: #0b0d0c; color: #eeece3; font-family: -apple-system, "SF Pro Text", "Hiragino Sans", sans-serif; text-align: left; }
+    .karui-activity-text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 3pt; }
+    .karui-activity-title { display: flex; align-items: center; gap: 6pt; font-size: 10pt; font-weight: 600; color: #7bb893; }
+    .karui-activity-title svg { width: 14px; height: 14px; flex: none; }
+    .karui-activity-counts { font-size: 14pt; font-weight: 600; line-height: 1.25; font-variant-numeric: tabular-nums; }
+    .karui-activity-counts span:not(.dot) { white-space: nowrap; }
+    .karui-activity-counts .is-important { color: #e8856a; }
+    .karui-activity-counts .dot { color: #9ea39b; }
+    .karui-activity-snooze { flex: none; display: inline-flex; align-items: center; gap: 6pt; padding: 7pt 11pt; border-radius: 999px; background: rgba(123, 184, 147, 0.18); color: #7bb893; font-size: 10pt; font-weight: 600; white-space: nowrap; }
+    .karui-activity-snooze svg { width: 14px; height: 14px; }
+    .karui-activity-caption { max-width: 480px; margin: 0 auto 14pt; font-size: 10pt; color: var(--karui-muted); text-align: center; }
+    @media (max-width: 380px) { .karui-activity { gap: 8pt; padding: 10pt 12pt; } .karui-activity-counts { font-size: 13pt; } }
     .karui-demo-label { margin: 10pt 0 5pt; font-size: 10pt; font-weight: 600; color: #555; text-align: center; }
     .karui-demo { display: block; width: 100%; max-width: 360px; height: auto; aspect-ratio: 720 / 1004; margin: 0 auto; background: #fff url("assets/karui-demo-en.jpg?v=20") center / cover no-repeat; }
     html[lang="ja"] .karui-demo { background-image: url("assets/karui-demo-ja.jpg?v=20"); }
@@ -125,9 +138,21 @@
           <div class="sasu-subtitle" data-label-en="Silence spam notifications. See messages people unsend." data-label-ja="迷惑通知を消音。送信取り消しされたメッセージを確認。">Silence spam notifications. See messages people unsend.</div>
         </div>
       </div>
-      <p class="hero-proposition" data-label-en="Apple’s Focus modes silence whole apps, Karui decides message by message." data-label-ja="Appleの集中モードはアプリ単位で消音しますが、Karuiは通知ごとに判断します。">Apple’s Focus modes silence whole apps, Karui decides message by message.</p>
+      <p class="hero-proposition" data-label-en="Apple’s Focus modes, with smarter judgment. Private." data-label-ja="Appleの集中モードに、賢い判断を。プライベートに。">Apple’s Focus modes, with smarter judgment. Private.</p>
       <a class="download-link" href="https://apps.apple.com/app/karui-notifications/id6814134614" data-label-en="Download for iPhone and iPad" data-label-ja="iPhone・iPad版をダウンロード">Download for iPhone and iPad</a>
       <div class="small-note" data-label-en="Requires iOS or iPadOS 27 or later. Spam filtering needs Apple Intelligence. Free, with no in-app purchases, subscription, or sign up." data-label-ja="iOS 27またはiPadOS 27以降が必要です。迷惑通知のフィルタリングにはApple Intelligenceが必要です。無料で、アプリ内課金、サブスクリプション、登録はありません。">Requires iOS or iPadOS 27 or later. Spam filtering needs Apple Intelligence. Free, with no in-app purchases, subscription, or sign up.</div>
+    </section>
+
+    <section class="sasu-section">
+      <p class="karui-demo-label" data-label-en="Karui’s Live Activity" data-label-ja="Karuiのライブアクティビティ">Karui’s Live Activity</p>
+      <div class="karui-activity" role="img" aria-label="Karui’s Live Activity on the Lock Screen: Karui is filtering, 1 important, 17 kept quiet, with a Snooze 1 hr button" data-aria-label-en="Karui’s Live Activity on the Lock Screen: Karui is filtering, 1 important, 17 kept quiet, with a Snooze 1 hr button" data-aria-label-ja="ロック画面のKaruiのライブアクティビティ：Karuiがフィルタ中、重要1件、静かにした通知17件、1時間スヌーズボタン付き">
+        <div class="karui-activity-text">
+          <div class="karui-activity-title"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.6 4.5A2.5 2.5 0 0 1 7.8 3h8.4a2.5 2.5 0 0 1 2.2 1.5l3.1 6.6c.3.6.5 1.3.5 2V17a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-3.9c0-.7.2-1.4.5-2l3.1-6.6ZM7.8 5 4.9 11H9a3 3 0 0 0 6 0h4.1L16.2 5H7.8Z"/></svg><span data-label-en="Karui is filtering" data-label-ja="Karuiがフィルタ中">Karui is filtering</span></div>
+          <div class="karui-activity-counts"><span class="is-important" data-label-en="1 important" data-label-ja="重要 1件">1 important</span> <span class="dot">·</span> <span data-label-en="17 kept quiet" data-label-ja="静かにした通知 17件">17 kept quiet</span></div>
+        </div>
+        <div class="karui-activity-snooze"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.3 2.1a.75.75 0 0 1 .3 1.2A8 8 0 0 0 20.7 15.4a.75.75 0 0 1 1.2.3A10 10 0 1 1 12.3 2.1Z"/></svg><span data-label-en="Snooze 1 hr" data-label-ja="1時間スヌーズ">Snooze 1 hr</span></div>
+      </div>
+      <p class="karui-activity-caption" data-label-en="An optional readout on your Lock Screen, with Snooze." data-label-ja="ロック画面に表示できるオプションの集計で、スヌーズ付きです。">An optional readout on your Lock Screen, with Snooze.</p>
     </section>
 
     <section class="sasu-section">

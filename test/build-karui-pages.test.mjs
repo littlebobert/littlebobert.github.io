@@ -67,13 +67,16 @@ test('builds the changelog page and links to it from every page', async () => {
   // Tapping the icon opens a full-screen QR code for showing the site in person, on its
   // own page, /qr; old karui.jp/#qr links are sent there.
   assert.match(pages[0], /<a href="\/qr" class="karui-qr-trigger"/);
-  // The demo, recorded on iPhone Duo, under its label, with no App Store screenshots.
+  // The demo: four screens from the iPhone Duo recording, under its label, each with its
+  // caption below; no video and no App Store screenshots.
   assert.match(pages[0], /<p class="karui-demo-label" data-label-en="Karui on the new iPhone Duo"/);
-  assert.match(pages[0], /<video class="karui-demo" src="\/assets\/karui-demo-en\.mp4\?v=20" data-src-en="\/assets\/karui-demo-en\.mp4\?v=20" data-src-ja="\/assets\/karui-demo-ja\.mp4\?v=20" poster="\/assets\/karui-demo-en\.jpg\?v=20"[^>]* autoplay muted loop playsinline/);
-  assert.doesNotMatch(pages[0], /karui-shot-|shot-viewer/);
-  assert.match(pages[0], /<p class="karui-demo-caption is-hidden" aria-hidden="true"><\/p>/);
-  for (const file of ['karui-demo-en.mp4', 'karui-demo-ja.mp4', 'karui-demo-en.jpg', 'karui-demo-ja.jpg']) {
-    await readFile(path.join(outputDirectory, 'assets', file));
+  assert.match(pages[0], /<div class="karui-demo" role="group" aria-roledescription="carousel"/);
+  assert.match(pages[0], /<img class="karui-demo-shot is-current" src="\/assets\/karui-demo-en-1\.jpg\?v=1" data-src-en="\/assets\/karui-demo-en-1\.jpg\?v=1" data-src-ja="\/assets\/karui-demo-ja-1\.jpg\?v=1"/);
+  assert.strictEqual(pages[0].match(/class="karui-demo-shot/g).length, 4);
+  assert.strictEqual(pages[0].match(/<p class="karui-demo-caption/g).length, 4);
+  assert.doesNotMatch(pages[0], /<video|karui-shot-|shot-viewer/);
+  for (const language of ['en', 'ja']) {
+    for (const screen of [1, 2, 3, 4]) await readFile(path.join(outputDirectory, 'assets', `karui-demo-${language}-${screen}.jpg`));
   }
   assert.match(pages[0], /location\.hash === '#qr'/);
   assert.doesNotMatch(pages[0], /karui-qr-morph/);

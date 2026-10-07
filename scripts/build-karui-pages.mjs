@@ -40,7 +40,8 @@ const assetFiles = [
   'karui-social.png',
   // KN004's App Privacy Report screenshot.
   'karui-kn004-privacy-report.jpg',
-  ...['en', 'ja'].flatMap((language) => [`karui-demo-${language}.mp4`, `karui-demo-${language}.jpg`]),
+  // The demo's four screens, in each language.
+  ...['en', 'ja'].flatMap((language) => [1, 2, 3, 4].map((screen) => `karui-demo-${language}-${screen}.jpg`)),
 ];
 
 await rm(outputDirectory, { force: true, recursive: true });

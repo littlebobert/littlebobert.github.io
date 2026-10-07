@@ -41,7 +41,9 @@
     .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
     .karui-icon { box-sizing: border-box; border: 1px solid var(--karui-ink); border-radius: 12px; }
     .sasu-hero .download-link { margin-top: 9pt; }
-    .hero-proposition { max-width: 540px; margin: 9pt 0 0; font-size: 10pt; line-height: 1.45; }
+    .sasu-hero .sasu-subtitle { font-size: 11pt; line-height: 1.3; }
+    /* The second line of the pitch, below the icon and name, in plain body text. */
+    .hero-proposition { margin: 8pt 0 0; }
     /* The 通知を軽く seal floats at the top right, under the language switcher, so the
        tagline in either language wraps before it rather than running under it. The
        first time the page loads it grows in from a thin line to its full width; after
@@ -90,6 +92,18 @@
     .karui-activity-counts .dot { color: #9ea39b; }
     .karui-activity-snooze { flex: none; display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 13px; border-radius: 999px; background: rgba(123, 184, 147, 0.22); color: #7bb893; font-size: 12px; font-weight: 600; white-space: nowrap; }
     .karui-activity-snooze svg { width: 13px; height: 13px; }
+    /* A mock Lock Screen, bottom half only: the card sits on a dark gradient wallpaper
+       inside a phone's rounded lower corners, with the flashlight and camera buttons
+       and the Home indicator below it, so the card reads as a Lock Screen readout. */
+    .karui-lockscreen { position: relative; box-sizing: border-box; width: 100%; max-width: 400px; margin: 0 auto 10pt; padding: 36px 16px 14px; border-radius: 0 0 48px 48px; background: linear-gradient(180deg, #2a3b4c 0%, #1a2a38 45%, #0d1620 100%); overflow: hidden; }
+    .karui-lockscreen::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 40% at 30% 10%, rgba(123, 184, 147, 0.22), transparent 70%), radial-gradient(ellipse 60% 40% at 80% 90%, rgba(232, 133, 106, 0.14), transparent 70%); pointer-events: none; }
+    .karui-lockscreen > * { position: relative; }
+    .karui-lockscreen .karui-activity { max-width: none; margin: 0; background: rgba(11, 13, 12, 0.72); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
+    .karui-lockscreen-controls { display: flex; justify-content: space-between; margin: 30px 24px 0; }
+    .karui-lockscreen-controls span { display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: rgba(255, 255, 255, 0.16); color: #fff; }
+    .karui-lockscreen-controls svg { width: 24px; height: 24px; }
+    .karui-lockscreen-home { width: 134px; height: 5px; margin: 14px auto 0; border-radius: 3px; background: #fff; }
+    @media (max-width: 480px) { .karui-lockscreen { position: relative; left: 50%; transform: translateX(-50%); width: 100vw; max-width: none; border-radius: 0; } .karui-lockscreen .karui-activity { position: static; left: auto; transform: none; width: auto; } }
     .karui-activity-caption { max-width: 400px; margin: 0 auto 14pt; font-size: 10pt; color: var(--karui-muted); text-align: center; }
     /* Phones: the card runs to 16px from the screen edge, as the real one does, so the
        counts fit on one line at the real size. */
@@ -101,16 +115,28 @@
     @media (max-width: 380px) { html[lang="ja"] .karui-activity-counts { font-size: 12.5px; } html[lang="ja"] .karui-activity-snooze { font-size: 11px; padding: 0 11px; } }
     @media (max-width: 364px) { html[lang="ja"] .karui-activity-counts { font-size: 12px; } }
     .karui-demo-label { margin: 10pt 0 5pt; font-size: 10pt; font-weight: 600; color: #555; text-align: center; }
-    .karui-demo { display: block; width: 100%; max-width: 360px; height: auto; aspect-ratio: 720 / 1004; margin: 0 auto; background: #fff url("assets/karui-demo-en.jpg?v=20") center / cover no-repeat; }
-    html[lang="ja"] .karui-demo { background-image: url("assets/karui-demo-ja.jpg?v=20"); }
-    /* The demo's captions, timed to the video by the script below. Tall enough for two
-       lines, so the page doesn't jump as they change. */
-    .karui-demo-caption { max-width: 360px; min-height: 2.6em; margin: 6pt auto 12pt; font-family: Verdana, "Hiragino Sans", sans-serif; font-size: 13pt; font-weight: bold; line-height: 1.3; text-align: center; color: var(--karui-ink); text-wrap: balance; transition: opacity 0.2s; }
-    .karui-demo-caption.is-hidden { opacity: 0; }
-    .karui-demo.has-sound-toggle { cursor: pointer; }
-    .karui-demo-sound { display: block; margin: 0 auto 8pt; padding: 2pt 6pt; border: 1px solid #aaa; border-radius: 4px; background: #fff; color: #555; font: inherit; font-size: 10pt; cursor: pointer; appearance: none; -webkit-appearance: none; box-shadow: none; }
-    .karui-demo-sound[aria-pressed="true"] { border-color: var(--karui-muted); color: #222; }
-    @media (prefers-reduced-motion: reduce) { .karui-demo-caption { transition: none; } }
+    /* The demo: four screens of the Duo, one per caption, stacked and faded between. A tap
+       on the right half goes forward, on the left half back; the arrows and dots below do
+       the same. */
+    .karui-demo { position: relative; width: 100%; max-width: 360px; aspect-ratio: 720 / 1004; margin: 0 auto; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+    .karui-demo-shot { position: absolute; inset: 0; display: block; width: 100%; height: auto; opacity: 0; transition: opacity 0.25s; pointer-events: none; }
+    .karui-demo-shot.is-current { opacity: 1; }
+    .karui-demo-zone { position: absolute; top: 0; bottom: 0; width: 50%; margin: 0; padding: 0; border: 0; background: none; cursor: pointer; appearance: none; -webkit-appearance: none; -webkit-tap-highlight-color: transparent; }
+    .karui-demo-zone-prev { left: 0; }
+    .karui-demo-zone-next { right: 0; }
+    .karui-demo-caption { display: none; max-width: 480px; min-height: 2.6em; margin: 6pt auto 4pt; font-family: Verdana, "Hiragino Sans", sans-serif; font-size: 13pt; font-weight: bold; line-height: 1.3; text-align: center; color: var(--karui-ink); text-wrap: balance; }
+    .karui-demo-caption.is-current { display: block; }
+    .karui-demo-controls { display: flex; align-items: center; justify-content: center; gap: 7px; margin: 0 auto 12pt; }
+    /* Plain chevrons, drawn in the page's ink; the whole 36px square is the tap target. */
+    .karui-demo-arrow { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin: 0 4px; padding: 0; border: 0; border-radius: 8px; background: none; color: var(--karui-ink); cursor: pointer; appearance: none; -webkit-appearance: none; -webkit-tap-highlight-color: transparent; }
+    .karui-demo-arrow svg { width: 18px; height: 18px; display: block; }
+    .karui-demo-arrow:hover { color: var(--karui-moss); }
+    .karui-demo-arrow:active { transform: translateY(1px); }
+    .karui-demo-arrow:focus-visible { outline: 2px solid var(--karui-moss); outline-offset: 2px; }
+    .karui-demo-dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: var(--karui-line); cursor: pointer; appearance: none; -webkit-appearance: none; }
+    .karui-demo-dot.is-current { background: var(--karui-ink); }
+    .karui-demo-dot:focus-visible { outline: 2px solid var(--karui-moss); outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) { .karui-demo-shot { transition: none; } }
 
     @media (max-width: 560px) {
       .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
@@ -150,12 +176,13 @@
         </div>
       </div>
       <p class="hero-proposition" data-label-en="Apple’s Focus modes, with smarter judgment. Private." data-label-ja="Appleの集中モードに、賢い判断を。プライベートに。">Apple’s Focus modes, with smarter judgment. Private.</p>
-      <a class="download-link" href="https://apps.apple.com/app/karui-notifications/id6814134614" data-label-en="Download for iPhone and iPad" data-label-ja="iPhone・iPad版をダウンロード">Download for iPhone and iPad</a>
+      <a class="download-link" href="https://apps.apple.com/app/karui-notifications/id6814134614" data-label-en="Download for iPhone" data-label-ja="iPhone版をダウンロード">Download for iPhone</a>
       <div class="small-note" data-label-en="Requires iOS or iPadOS 27 or later. Spam filtering needs Apple Intelligence. Free, with no in-app purchases, subscription, or sign up." data-label-ja="iOS 27またはiPadOS 27以降が必要です。迷惑通知のフィルタリングにはApple Intelligenceが必要です。無料で、アプリ内課金、サブスクリプション、登録はありません。">Requires iOS or iPadOS 27 or later. Spam filtering needs Apple Intelligence. Free, with no in-app purchases, subscription, or sign up.</div>
     </section>
 
     <section class="sasu-section">
       <p class="karui-demo-label" data-label-en="Karui’s Live Activity" data-label-ja="Karuiのライブアクティビティ">Karui’s Live Activity</p>
+      <div class="karui-lockscreen">
       <div class="karui-activity" role="img" aria-label="Karui’s Live Activity on the Lock Screen: Karui is filtering, 1 important, 17 kept quiet, with a Snooze 1 hr button" data-aria-label-en="Karui’s Live Activity on the Lock Screen: Karui is filtering, 1 important, 17 kept quiet, with a Snooze 1 hr button" data-aria-label-ja="ロック画面のKaruiのライブアクティビティ：Karuiがフィルタ中、重要1件、静かにした通知17件、1時間スヌーズボタン付き">
         <div class="karui-activity-text">
           <div class="karui-activity-title"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.6 4.5A2.5 2.5 0 0 1 7.8 3h8.4a2.5 2.5 0 0 1 2.2 1.5l3.1 6.6c.3.6.5 1.3.5 2V17a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-3.9c0-.7.2-1.4.5-2l3.1-6.6ZM7.8 5 4.9 11H9a3 3 0 0 0 6 0h4.1L16.2 5H7.8Z"/></svg><span data-label-en="Karui is filtering" data-label-ja="Karuiがフィルタ中">Karui is filtering</span></div>
@@ -163,14 +190,39 @@
         </div>
         <div class="karui-activity-snooze"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.3 2.1a.75.75 0 0 1 .3 1.2A8 8 0 0 0 20.7 15.4a.75.75 0 0 1 1.2.3A10 10 0 1 1 12.3 2.1Z"/></svg><span data-label-en="Snooze 1 hr" data-label-ja="1時間スヌーズ">Snooze 1 hr</span></div>
       </div>
+        <div class="karui-lockscreen-controls" aria-hidden="true">
+          <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 2h8a1 1 0 0 1 1 1v3.2a3 3 0 0 1-.6 1.8L15 10v11a1 1 0 0 1-1 1h-4a1 1 0 0 1-1-1V10L7.6 8A3 3 0 0 1 7 6.2V3a1 1 0 0 1 1-1Zm1 2v2h6V4H9Zm3 8a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3Z"/></svg></span>
+          <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 3h6l1.2 2H20a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h3.8L9 3Zm3 5a4.5 4.5 0 1 0 0 9 4.5 4.5 0 0 0 0-9Zm0 2a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Z"/></svg></span>
+        </div>
+        <div class="karui-lockscreen-home" aria-hidden="true"></div>
+      </div>
       <p class="karui-activity-caption" data-label-en="An optional readout on your Lock Screen, with Snooze." data-label-ja="ロック画面に表示できるオプションの集計で、スヌーズ付きです。">An optional readout on your Lock Screen, with Snooze.</p>
     </section>
 
     <section class="sasu-section">
       <p class="karui-demo-label" data-label-en="Karui on the new iPhone Duo" data-label-ja="新しいiPhone Duoで動くKarui">Karui on the new iPhone Duo</p>
-      <button class="karui-demo-sound" type="button" aria-pressed="false" data-label-off-en="Tap for sound" data-label-off-ja="タップで音声オン" data-label-on-en="Sound on" data-label-on-ja="音声オン">Tap for sound</button>
-      <video class="karui-demo" src="assets/karui-demo-en.mp4?v=20" data-src-en="assets/karui-demo-en.mp4?v=20" data-src-ja="assets/karui-demo-ja.mp4?v=20" poster="assets/karui-demo-en.jpg?v=20" data-poster-en="assets/karui-demo-en.jpg?v=20" data-poster-ja="assets/karui-demo-ja.jpg?v=20" width="720" height="1004" autoplay muted loop playsinline preload="auto" aria-label="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-en="Demo: Karui sorts notifications as they arrive, silences spam and shows why, keeps messages people unsend, and wakes you for an emergency." data-aria-label-ja="デモ：Karuiは届いた通知をその場で仕分け、スパムは鳴らさず理由を示し、送信取り消しされたメッセージも残し、緊急の連絡ではアラームで知らせます。"></video>
-      <p class="karui-demo-caption is-hidden" aria-hidden="true"></p>
+      <div class="karui-demo" role="group" aria-roledescription="carousel" aria-label="Karui on iPhone Duo, four screens" data-aria-label-en="Karui on iPhone Duo, four screens" data-aria-label-ja="iPhone DuoのKarui、4画面" tabindex="0">
+        <img class="karui-demo-shot is-current" src="assets/karui-demo-en-1.jpg?v=1" data-src-en="assets/karui-demo-en-1.jpg?v=1" data-src-ja="assets/karui-demo-ja-1.jpg?v=1" width="720" height="1004" alt="Karui’s History, with notifications sorted as they arrived." data-alt-en="Karui’s History, with notifications sorted as they arrived." data-alt-ja="届いた通知が仕分けされたKaruiの履歴">
+        <img class="karui-demo-shot" src="assets/karui-demo-en-2.jpg?v=1" data-src-en="assets/karui-demo-en-2.jpg?v=1" data-src-ja="assets/karui-demo-ja-2.jpg?v=1" width="720" height="1004" alt="A promotion classified as spam, with Open Mail and reclassify options." data-alt-en="A promotion classified as spam, with Open Mail and reclassify options." data-alt-ja="スパムと分類された宣伝通知の詳細。Mailを開く、もう一度分類するなどの選択肢付き" loading="lazy">
+        <img class="karui-demo-shot" src="assets/karui-demo-en-3.jpg?v=1" data-src-en="assets/karui-demo-en-3.jpg?v=1" data-src-ja="assets/karui-demo-ja-3.jpg?v=1" width="720" height="1004" alt="History keeps Sam’s party message, next to silenced promotions." data-alt-en="History keeps Sam’s party message, next to silenced promotions." data-alt-ja="サムのパーティーのメッセージが残り、宣伝は静かにされた履歴" loading="lazy">
+        <img class="karui-demo-shot" src="assets/karui-demo-en-4.jpg?v=1" data-src-en="assets/karui-demo-en-4.jpg?v=1" data-src-ja="assets/karui-demo-ja-4.jpg?v=1" width="720" height="1004" alt="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-en="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-ja="緊急アラーム：母から「今病院にいるの」のメッセージ。母に電話ボタン付き" loading="lazy">
+        <button class="karui-demo-zone karui-demo-zone-prev" type="button" tabindex="-1" aria-hidden="true"></button>
+        <button class="karui-demo-zone karui-demo-zone-next" type="button" tabindex="-1" aria-hidden="true"></button>
+      </div>
+      <div class="karui-demo-captions" aria-live="polite">
+        <p class="karui-demo-caption is-current" data-label-en="Karui sorts every notification the moment it arrives." data-label-ja="届いた通知を、Karuiがその場で仕分け">Karui sorts every notification the moment it arrives.</p>
+        <p class="karui-demo-caption" data-label-en="Spam stays silent, but friends get through." data-label-ja="スパムは鳴らさず、友だちは通す。">Spam stays silent, but friends get through.</p>
+        <p class="karui-demo-caption" data-label-en="You can even read unsent messages." data-label-ja="送信取り消しされても、Karuiで読める">You can even read unsent messages.</p>
+        <p class="karui-demo-caption" data-label-en="Emergencies wake you up, even on silent." data-label-ja="緊急の連絡は、寝ていてもアラームで知らせる">Emergencies wake you up, even on silent.</p>
+      </div>
+      <div class="karui-demo-controls">
+        <button class="karui-demo-arrow karui-demo-prev" type="button" aria-label="Previous screen" data-aria-label-en="Previous screen" data-aria-label-ja="前の画面"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="karui-demo-dot is-current" type="button" aria-label="Screen 1 of 4" data-aria-label-en="Screen 1 of 4" data-aria-label-ja="4画面中1番目"></button>
+        <button class="karui-demo-dot" type="button" aria-label="Screen 2 of 4" data-aria-label-en="Screen 2 of 4" data-aria-label-ja="4画面中2番目"></button>
+        <button class="karui-demo-dot" type="button" aria-label="Screen 3 of 4" data-aria-label-en="Screen 3 of 4" data-aria-label-ja="4画面中3番目"></button>
+        <button class="karui-demo-dot" type="button" aria-label="Screen 4 of 4" data-aria-label-en="Screen 4 of 4" data-aria-label-ja="4画面中4番目"></button>
+        <button class="karui-demo-arrow karui-demo-next" type="button" aria-label="Next screen" data-aria-label-en="Next screen" data-aria-label-ja="次の画面"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
     </section>
 
     <section class="karui-detail">
@@ -181,12 +233,10 @@
     <section class="karui-detail">
       <h2 data-label-en="Also:" data-label-ja="その他の機能：">Also:</h2>
       <ul class="feature-list">
-        <li data-label-en="Lets your VIPs through your Focus, from any app" data-label-ja="VIPからの通知は、どのアプリからでも集中モードを通します">Lets your VIPs through your Focus, from any app</li>
         <li data-label-en="Rings an alarm when someone you choose has an emergency, even when your device is silenced" data-label-ja="選んだ人からの緊急の連絡は、消音中でもアラームでお知らせします">Rings an alarm when someone you choose has an emergency, even when your device is silenced</li>
         <li data-label-en="Lets one-time codes through" data-label-ja="確認コードを認識して通します">Lets one-time codes through</li>
-        <li data-label-en="Keeps every notification, silenced or not, in one searchable history" data-label-ja="鳴らさなかった通知も含め、すべての通知を検索できる一つの履歴に残します">Keeps every notification, silenced or not, in one searchable history</li>
         <li data-label-en="Combines quick messages from one person into one notification" data-label-ja="同じ人からの連続メッセージを、1件の通知にまとめます">Combines quick messages from one person into one notification</li>
-        <li data-label-en="Auto-replies to your VIPs in Messages, WhatsApp, LINE, and Messenger while you’re driving or busy" data-label-ja="運転中・取り込み中は、Messages・WhatsApp・LINE・MessengerでVIPに自動返信します">Auto-replies to your VIPs in Messages, WhatsApp, LINE, and Messenger while you’re driving or busy</li>
+        <li data-label-en="Auto-replies to your VIPs while you’re driving or busy" data-label-ja="運転中・取り込み中は、VIPに自動返信します">Auto-replies to your VIPs while you’re driving or busy</li>
         <li data-label-en="Translates notifications into your language" data-label-ja="通知をあなたの言語に翻訳します">Translates notifications into your language</li>
       </ul>
     </section>
@@ -236,13 +286,10 @@
       document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
         element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
       });
-      // Only when it changes: setting a video's src, even to the same address, restarts it.
+      // Only when it changes, so an image already showing isn't fetched again.
       document.querySelectorAll('[data-src-en][data-src-ja]').forEach((element) => {
         const source = selected === 'ja' ? element.dataset.srcJa : element.dataset.srcEn;
         if (element.getAttribute('src') !== source) element.src = source;
-      });
-      document.querySelectorAll('[data-poster-en][data-poster-ja]').forEach((element) => {
-        element.poster = selected === 'ja' ? element.dataset.posterJa : element.dataset.posterEn;
       });
       document.querySelectorAll('[data-aria-label-en][data-aria-label-ja]').forEach((element) => {
         element.setAttribute('aria-label', selected === 'ja' ? element.dataset.ariaLabelJa : element.dataset.ariaLabelEn);
@@ -256,82 +303,47 @@
 
     languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
 
-    // With Reduce Motion, the demo waits on its first frame with controls to play it.
-    // Controls also appear if the browser blocks autoplay (Low Power Mode on iPhone),
-    // until it plays.
+    // The demo: four screens, one per caption. A tap on the right half of the phone goes
+    // forward and on the left half back, round and round; so do the arrows and dots
+    // below it, the arrow keys with the demo focused, and a sideways swipe.
     const demo = document.querySelector('.karui-demo');
-    const reduceMotionQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
-    const settleDemo = () => {
-      demo.controls = reduceMotionQuery.matches;
-      if (reduceMotionQuery.matches) demo.pause();
-      else demo.play().catch(() => { demo.controls = true; });
+    const demoShots = [...demo.querySelectorAll('.karui-demo-shot')];
+    const demoCaptions = [...document.querySelectorAll('.karui-demo-caption')];
+    const demoDots = [...document.querySelectorAll('.karui-demo-dot')];
+    let demoIndex = 0;
+    const showDemo = (index) => {
+      demoIndex = (index + demoShots.length) % demoShots.length;
+      [demoShots, demoCaptions, demoDots].forEach((items) => {
+        items.forEach((item, i) => item.classList.toggle('is-current', i === demoIndex));
+      });
     };
-    demo.addEventListener('play', () => { if (!reduceMotionQuery.matches) demo.controls = false; });
-    settleDemo();
-    reduceMotionQuery.addEventListener('change', settleDemo);
-    // Safari holds off loading and autoplaying media in a tab that isn't in front, and
-    // sometimes doesn't resume on its own; a stalled load gets the same nudge.
-    const resumeDemo = () => {
-      if (document.hidden || reduceMotionQuery.matches || !demo.paused) return;
-      if (demo.readyState < HTMLMediaElement.HAVE_CURRENT_DATA) demo.load();
-      demo.play().catch(() => { demo.controls = true; });
-    };
-    document.addEventListener('visibilitychange', resumeDemo);
-    ['stalled', 'error'].forEach((type) => demo.addEventListener(type, () => setTimeout(resumeDemo, 2000)));
-
-    // The demo has a voice reading its captions. It plays muted, as autoplay requires,
-    // until someone taps the video or the button above it; turning sound on starts the
-    // demo over so the voice begins at the beginning. With the browser's own controls
-    // showing (Reduce Motion, or autoplay blocked), a tap on the video is theirs.
-    const demoSound = document.querySelector('.karui-demo-sound');
-    const showDemoSound = () => {
-      const on = !demo.muted;
-      const language = document.documentElement.lang === 'ja' ? 'Ja' : 'En';
-      demoSound.textContent = demoSound.dataset[(on ? 'labelOn' : 'labelOff') + language];
-      demoSound.setAttribute('aria-pressed', String(on));
-      demo.classList.toggle('has-sound-toggle', !demo.controls);
-    };
-    const toggleDemoSound = () => {
-      demo.muted = !demo.muted;
-      if (!demo.muted) {
-        demo.currentTime = 0;
-        demo.play().catch(() => { demo.controls = true; });
-      }
-    };
-    demoSound.addEventListener('click', toggleDemoSound);
-    demo.addEventListener('click', () => { if (!demo.controls) toggleDemoSound(); });
-    ['volumechange', 'play', 'pause', 'loadeddata'].forEach((type) => demo.addEventListener(type, showDemoSound));
-    languageSwitch.addEventListener('click', showDemoSound);
-
-    // The demo's captions, in seconds into each language's video. Each shows until the
-    // next starts; null is a gap between them.
-    const demoCaptions = {
-      en: [[0.3, 'Karui sorts every notification the moment it arrives.'], [3.75, null], [4.0, 'Spam stays silent, but friends get through.'], [6.9, null], [7.3, 'You can even read unsent messages.'], [10.1, null], [10.5, 'Emergencies wake you up, even on silent.']],
-      ja: [[0.3, '届いた通知を、Karuiがその場で仕分け'], [3.35, null], [3.6, 'スパムは鳴らさず、友だちは通す。'], [6.1, null], [6.4, '送信取り消しされても、Karuiで読める'], [9.3, null], [9.7, '緊急の連絡は、寝ていてもアラームで知らせる']],
-    };
-    const demoCaption = document.querySelector('.karui-demo-caption');
-    let shownCaption;
-    const updateDemoCaption = () => {
-      const cues = demoCaptions[document.documentElement.lang] || demoCaptions.en;
-      let text = null;
-      for (const [start, cue] of cues) if (demo.currentTime >= start) text = cue;
-      if (text === shownCaption) return;
-      shownCaption = text;
-      if (text) demoCaption.textContent = text;
-      demoCaption.classList.toggle('is-hidden', !text);
-    };
-    // Checked every frame while it plays, so captions change on time; timeupdate alone
-    // fires only about four times a second.
-    const followDemo = () => {
-      updateDemoCaption();
-      if (!demo.paused) requestAnimationFrame(followDemo);
-    };
-    demo.addEventListener('play', () => requestAnimationFrame(followDemo));
-    ['seeked', 'timeupdate', 'loadeddata'].forEach((type) => demo.addEventListener(type, updateDemoCaption));
-    languageSwitch.addEventListener('click', () => { shownCaption = undefined; updateDemoCaption(); });
+    let demoSwipeStart;
+    let demoSwiped = false;
+    demo.addEventListener('pointerdown', (event) => { demoSwipeStart = event.clientX; demoSwiped = false; });
+    demo.addEventListener('pointerup', (event) => {
+      if (demoSwipeStart === undefined) return;
+      const distance = event.clientX - demoSwipeStart;
+      demoSwipeStart = undefined;
+      if (Math.abs(distance) < 40) return;
+      demoSwiped = true;
+      showDemo(demoIndex + (distance < 0 ? 1 : -1));
+    });
+    demo.addEventListener('pointercancel', () => { demoSwipeStart = undefined; });
+    // A swipe that ends over a zone also fires its click, which is ignored.
+    const stepDemo = (step) => () => { if (demoSwiped) demoSwiped = false; else showDemo(demoIndex + step); };
+    document.querySelector('.karui-demo-zone-prev').addEventListener('click', stepDemo(-1));
+    document.querySelector('.karui-demo-zone-next').addEventListener('click', stepDemo(1));
+    document.querySelector('.karui-demo-prev').addEventListener('click', () => showDemo(demoIndex - 1));
+    document.querySelector('.karui-demo-next').addEventListener('click', () => showDemo(demoIndex + 1));
+    demoDots.forEach((dot, index) => dot.addEventListener('click', () => showDemo(index)));
+    demo.addEventListener('keydown', (event) => {
+      if (event.key === 'ArrowRight') showDemo(demoIndex + 1);
+      else if (event.key === 'ArrowLeft') showDemo(demoIndex - 1);
+      else return;
+      event.preventDefault();
+    });
 
     setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
-    showDemoSound();
   </script>
 </body>
 </html>

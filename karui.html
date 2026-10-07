@@ -79,7 +79,7 @@
     /* The Live Activity, drawn in HTML so it stays crisp and reads in both languages.
        Sizes follow the real card: 15pt semibold counts, 12pt title and button, 15pt
        side padding, 26pt corners, a 28pt-tall button. */
-    .karui-activity { display: flex; align-items: center; gap: 12px; box-sizing: border-box; width: 100%; max-width: 480px; margin: 0 auto 4pt; padding: 14px 15px; border-radius: 26px; background: #0b0d0c; color: #eeece3; font-family: -apple-system, "SF Pro Text", "Hiragino Sans", sans-serif; text-align: left; }
+    .karui-activity { display: flex; align-items: center; gap: 12px; box-sizing: border-box; width: 100%; max-width: 400px; margin: 0 auto 4pt; padding: 14px 15px; border-radius: 26px; background: #0b0d0c; color: #eeece3; font-family: -apple-system, "SF Pro Text", "Hiragino Sans", sans-serif; text-align: left; }
     .karui-activity-text { flex: 1 1 auto; min-width: 0; display: flex; flex-direction: column; gap: 5px; }
     .karui-activity-title { display: flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; color: #7bb893; }
     .karui-activity-title svg { width: 15px; height: 15px; flex: none; }
@@ -89,7 +89,7 @@
     .karui-activity-counts .dot { color: #9ea39b; }
     .karui-activity-snooze { flex: none; display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 13px; border-radius: 999px; background: rgba(123, 184, 147, 0.22); color: #7bb893; font-size: 12px; font-weight: 600; white-space: nowrap; }
     .karui-activity-snooze svg { width: 13px; height: 13px; }
-    .karui-activity-caption { max-width: 480px; margin: 0 auto 14pt; font-size: 10pt; color: var(--karui-muted); text-align: center; }
+    .karui-activity-caption { max-width: 400px; margin: 0 auto 14pt; font-size: 10pt; color: var(--karui-muted); text-align: center; }
     /* Phones: the card runs to 16px from the screen edge, as the real one does, so the
        counts fit on one line at the real size. */
     @media (max-width: 480px) { .karui-activity { position: relative; left: 50%; transform: translateX(-50%); width: calc(100vw - 32px); max-width: none; } }

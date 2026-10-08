@@ -66,10 +66,12 @@
     </section>
     <section class="karui-section karui-changelog">
       <div class="changelog-filter" role="group" aria-label="Changelog view">
-        <button type="button" data-changelog-view="builds" aria-pressed="true" data-label-en="All builds" data-label-ja="すべてのビルド">All builds</button><span class="footer-separator" aria-hidden="true">|</span>
-        <button type="button" data-changelog-view="store" aria-pressed="false" data-label-en="App Store releases" data-label-ja="App Storeリリース">App Store releases</button>
+        <button type="button" data-changelog-view="store" aria-pressed="true" data-label-en="App Store releases" data-label-ja="App Storeリリース">App Store releases</button><span class="footer-separator" aria-hidden="true">|</span>
+        <button type="button" data-changelog-view="builds" aria-pressed="false" data-label-en="All builds" data-label-ja="すべてのビルド">All builds</button>
       </div>
-      <div class="changelog-builds">
+      <!-- The App Store view is the default; it's built from this list by the script
+           below, so the list starts hidden and no build-by-build text flashes first. -->
+      <div class="changelog-builds" hidden>
 <!-- karui-changelog:start -->
 <h2 data-karui-build="62">0.1.6 (62) <span class="store-badge" data-label-en="Pending App Store Release" data-label-ja="App Store公開待ち">Pending App Store Release</span></h2>
 <span class="release-date" data-label-en="October 8, 2026" data-label-ja="2026年10月8日">October 8, 2026</span>
@@ -455,7 +457,7 @@
 </ul>
 <!-- karui-changelog:end -->
       </div>
-      <div class="changelog-store" hidden></div>
+      <div class="changelog-store"></div>
     </section>
     <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
   </main>
@@ -518,6 +520,7 @@
     }
 
     buildStoreView();
+    setChangelogView('store');
     document.querySelectorAll('[data-changelog-view]').forEach((button) => {
       button.addEventListener('click', () => setChangelogView(button.dataset.changelogView));
     });

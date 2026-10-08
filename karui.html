@@ -103,14 +103,18 @@
     .karui-lockscreen-controls span { display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: rgba(255, 255, 255, 0.16); color: #fff; }
     .karui-lockscreen-controls svg { width: 24px; height: 24px; }
     .karui-lockscreen-home { width: 134px; height: 5px; margin: 14px auto 0; border-radius: 3px; background: #fff; }
-    @media (max-width: 480px) { .karui-lockscreen { position: relative; left: 50%; transform: translateX(-50%); width: 100vw; max-width: none; border-radius: 0; } .karui-lockscreen .karui-activity { position: static; left: auto; transform: none; width: auto; } }
+    /* Phones: inset from the screen edge like the page's other content, and a touch
+       smaller inside so the card still runs to 16px from the mock's edge. */
+    @media (max-width: 480px) { .karui-lockscreen { position: relative; left: 50%; transform: translateX(-50%); width: calc(100vw - 32px); max-width: none; padding: 30px 14px 12px; border-radius: 0 0 40px 40px; } .karui-lockscreen .karui-activity { position: static; left: auto; transform: none; width: auto; } .karui-lockscreen-controls { margin: 26px 20px 0; } }
     .karui-activity-caption { max-width: 400px; margin: 0 auto 14pt; font-size: 10pt; color: var(--karui-muted); text-align: center; }
     /* Phones: the card runs to 16px from the screen edge, as the real one does, so the
        counts fit on one line at the real size. */
     @media (max-width: 480px) { .karui-activity { position: relative; left: 50%; transform: translateX(-50%); width: calc(100vw - 32px); max-width: none; } }
-    /* Where the real size would wrap, a point or two smaller instead. */
-    @media (max-width: 400px) { .karui-activity-counts { font-size: 14px; } }
-    @media (max-width: 364px) { .karui-activity-counts { font-size: 13px; } }
+    /* Where the real size would wrap, a point or two smaller instead; the inset mock
+       leaves the card 32px less than the screen. */
+    @media (max-width: 480px) { .karui-activity-counts { font-size: 14px; } }
+    @media (max-width: 400px) { .karui-activity-counts { font-size: 13px; } .karui-activity { gap: 10px; padding: 14px 13px; } .karui-activity-snooze { padding: 0 10px; font-size: 11px; } }
+    @media (max-width: 364px) { .karui-activity-counts { font-size: 12px; } }
     html[lang="ja"] .karui-activity-counts { font-size: 14px; }
     @media (max-width: 380px) { html[lang="ja"] .karui-activity-counts { font-size: 12.5px; } html[lang="ja"] .karui-activity-snooze { font-size: 11px; padding: 0 11px; } }
     @media (max-width: 364px) { html[lang="ja"] .karui-activity-counts { font-size: 12px; } }

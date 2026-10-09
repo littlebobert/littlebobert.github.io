@@ -95,31 +95,42 @@
     .karui-activity-counts .dot { color: #9ea39b; }
     .karui-activity-snooze { flex: none; display: inline-flex; align-items: center; gap: 6px; height: 28px; padding: 0 13px; border-radius: 999px; background: rgba(123, 184, 147, 0.22); color: #7bb893; font-size: 12px; font-weight: 600; white-space: nowrap; }
     .karui-activity-snooze svg { width: 13px; height: 13px; }
-    /* A mock Lock Screen, bottom half only: the card sits on a dark gradient wallpaper
-       inside a phone's rounded lower corners, with the flashlight and camera buttons
-       and the Home indicator below it, so the card reads as a Lock Screen readout. */
-    .karui-lockscreen { position: relative; box-sizing: border-box; width: 100%; max-width: 400px; margin: 0 auto 10pt; padding: 36px 16px 14px; border-radius: 0 0 48px 48px; background: linear-gradient(180deg, #2a3b4c 0%, #1a2a38 45%, #0d1620 100%); overflow: hidden; }
-    .karui-lockscreen::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 40% at 30% 10%, rgba(123, 184, 147, 0.22), transparent 70%), radial-gradient(ellipse 60% 40% at 80% 90%, rgba(232, 133, 106, 0.14), transparent 70%); pointer-events: none; }
-    .karui-lockscreen > * { position: relative; }
+    /* A mock Lock Screen, bottom part only: the card sits on a dark gradient wallpaper
+       with the flashlight and camera buttons and the Home indicator below it, in the
+       bottom of an iPhone's shell (assets/karui-lockscreen-shell.png, made by Karui's
+       Scripts/make-landing-shell.sh), cut straight across at the top. The wrapper is
+       the shell's width, and the screen sits inside it by the bezel's own numbers, as
+       fractions of that width (cqw): the bezel is 1470 wide to the screen's 1320, with
+       75 beside the screen on each side and 66 below it; so the screen is 400px wide
+       in a 445px shell. The screen's lower corners hide under the bezel at any radius
+       between the opening's (180/1470) and the shell's outer edge. */
+    .karui-lockscreen { position: relative; container-type: inline-size; box-sizing: border-box; width: 100%; max-width: 445.45px; margin: 0 auto 10pt; overflow: hidden; }
+    .karui-lockscreen-screen { position: relative; box-sizing: border-box; margin: 0 5.102cqw 4.49cqw; padding: 40px 16px 14px; border-radius: 0 0 14cqw 14cqw; background: linear-gradient(180deg, #2a3b4c 0%, #1a2a38 45%, #0d1620 100%); overflow: hidden; }
+    .karui-lockscreen-screen::before { content: ""; position: absolute; inset: 0; background: radial-gradient(ellipse 70% 40% at 30% 10%, rgba(123, 184, 147, 0.22), transparent 70%), radial-gradient(ellipse 60% 40% at 80% 90%, rgba(232, 133, 106, 0.14), transparent 70%); pointer-events: none; }
+    .karui-lockscreen-screen > * { position: relative; }
+    .karui-lockscreen-shell { position: absolute; left: 0; bottom: 0; width: 100%; height: auto; pointer-events: none; }
     .karui-lockscreen .karui-activity { max-width: none; margin: 0; background: rgba(11, 13, 12, 0.72); -webkit-backdrop-filter: blur(20px); backdrop-filter: blur(20px); }
     .karui-lockscreen-controls { display: flex; justify-content: space-between; margin: 30px 24px 0; }
     .karui-lockscreen-controls span { display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; border-radius: 50%; background: rgba(255, 255, 255, 0.16); color: #fff; }
     .karui-lockscreen-controls svg { width: 24px; height: 24px; }
     .karui-lockscreen-home { width: 134px; height: 5px; margin: 14px auto 0; border-radius: 3px; background: #fff; }
-    /* Phones: inset from the screen edge like the page's other content, and a touch
-       smaller inside so the card still runs to 16px from the mock's edge. */
-    @media (max-width: 480px) { .karui-lockscreen { position: relative; left: 50%; transform: translateX(-50%); width: calc(100vw - 32px); max-width: none; padding: 30px 14px 12px; border-radius: 0 0 40px 40px; } .karui-lockscreen .karui-activity { position: static; left: auto; transform: none; width: auto; } .karui-lockscreen-controls { margin: 26px 20px 0; } }
+    /* Phones: the shell runs to 4px from the screen's edges, and the mock is a touch
+       smaller inside so the card still runs to 14px from the mock screen's edge. */
+    @media (max-width: 480px) { .karui-lockscreen { position: relative; left: 50%; transform: translateX(-50%); width: calc(100vw - 8px); max-width: none; } .karui-lockscreen-screen { padding: 34px 14px 12px; } .karui-lockscreen .karui-activity { position: static; left: auto; transform: none; width: auto; } .karui-lockscreen-controls { margin: 26px 20px 0; } }
     .karui-activity-caption { max-width: 400px; margin: 0 auto 14pt; font-size: 10pt; color: var(--karui-muted); text-align: center; }
     /* Phones: the card runs to 16px from the screen edge, as the real one does, so the
        counts fit on one line at the real size. */
     @media (max-width: 480px) { .karui-activity { position: relative; left: 50%; transform: translateX(-50%); width: calc(100vw - 32px); max-width: none; } }
-    /* Where the real size would wrap, a point or two smaller instead; the inset mock
-       leaves the card 32px less than the screen. */
+    /* Where the real size would wrap, a point or two smaller instead; the shell and
+       the mock's inset leave the card about 60px less than the screen. */
     @media (max-width: 480px) { .karui-activity-counts { font-size: 14px; } }
     @media (max-width: 400px) { .karui-activity-counts { font-size: 13px; } .karui-activity { gap: 10px; padding: 14px 13px; } .karui-activity-snooze { padding: 0 10px; font-size: 11px; } }
-    @media (max-width: 364px) { .karui-activity-counts { font-size: 12px; } }
+    @media (max-width: 390px) { .karui-activity-counts { font-size: 12px; } }
+    @media (max-width: 364px) { .karui-activity-counts { font-size: 11px; } }
+    /* Japanese: one line down to 391px; narrower phones wrap after the dot, as the
+       Snooze pill's label is long. */
     html[lang="ja"] .karui-activity-counts { font-size: 14px; }
-    @media (max-width: 380px) { html[lang="ja"] .karui-activity-counts { font-size: 12.5px; } html[lang="ja"] .karui-activity-snooze { font-size: 11px; padding: 0 11px; } }
+    @media (max-width: 400px) { html[lang="ja"] .karui-activity-counts { font-size: 12.5px; } html[lang="ja"] .karui-activity-snooze { font-size: 11px; padding: 0 11px; } }
     @media (max-width: 364px) { html[lang="ja"] .karui-activity-counts { font-size: 12px; } }
     .karui-demo-label { margin: 10pt 0 5pt; font-size: 10pt; font-weight: 600; color: #555; text-align: center; }
     /* The demo: four screens of the Duo, one per caption, stacked and faded between. A tap
@@ -190,6 +201,7 @@
     <section class="sasu-section">
       <p class="karui-demo-label" data-label-en="Karui’s Live Activity" data-label-ja="Karuiのライブアクティビティ">Karui’s Live Activity</p>
       <div class="karui-lockscreen">
+      <div class="karui-lockscreen-screen">
       <div class="karui-activity" role="img" aria-label="Karui’s Live Activity on the Lock Screen: Karui is filtering, 1 important, 17 kept quiet, with a Snooze 1 hr button" data-aria-label-en="Karui’s Live Activity on the Lock Screen: Karui is filtering, 1 important, 17 kept quiet, with a Snooze 1 hr button" data-aria-label-ja="ロック画面のKaruiのライブアクティビティ：Karuiがフィルタ中、重要1件、静かにした通知17件、1時間スヌーズボタン付き">
         <div class="karui-activity-text">
           <div class="karui-activity-title"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M5.6 4.5A2.5 2.5 0 0 1 7.8 3h8.4a2.5 2.5 0 0 1 2.2 1.5l3.1 6.6c.3.6.5 1.3.5 2V17a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3v-3.9c0-.7.2-1.4.5-2l3.1-6.6ZM7.8 5 4.9 11H9a3 3 0 0 0 6 0h4.1L16.2 5H7.8Z"/></svg><span data-label-en="Karui is filtering" data-label-ja="Karuiがフィルタ中">Karui is filtering</span></div>
@@ -203,16 +215,18 @@
         </div>
         <div class="karui-lockscreen-home" aria-hidden="true"></div>
       </div>
+        <img class="karui-lockscreen-shell" src="assets/karui-lockscreen-shell.png?v=1" alt="" aria-hidden="true" width="890" height="760">
+      </div>
       <p class="karui-activity-caption" data-label-en="An optional readout on your Lock Screen, with Snooze." data-label-ja="ロック画面に表示できるオプションの集計で、スヌーズ付きです。">An optional readout on your Lock Screen, with Snooze.</p>
     </section>
 
     <section class="sasu-section">
       <p class="karui-demo-label" data-label-en="Karui on the new iPhone Duo" data-label-ja="新しいiPhone Duoで動くKarui">Karui on the new iPhone Duo</p>
       <div class="karui-demo" role="group" aria-roledescription="carousel" aria-label="Karui on iPhone Duo, four screens" data-aria-label-en="Karui on iPhone Duo, four screens" data-aria-label-ja="iPhone DuoのKarui、4画面" tabindex="0">
-        <img class="karui-demo-shot is-current" src="assets/karui-demo-en-1.jpg?v=2" data-src-en="assets/karui-demo-en-1.jpg?v=2" data-src-ja="assets/karui-demo-ja-1.jpg?v=2" width="720" height="1004" alt="Karui’s History, with notifications sorted as they arrived." data-alt-en="Karui’s History, with notifications sorted as they arrived." data-alt-ja="届いた通知が仕分けされたKaruiの履歴">
-        <img class="karui-demo-shot" src="assets/karui-demo-en-2.jpg?v=2" data-src-en="assets/karui-demo-en-2.jpg?v=2" data-src-ja="assets/karui-demo-ja-2.jpg?v=2" width="720" height="1004" alt="A promotion classified as spam, with Open Mail and reclassify options." data-alt-en="A promotion classified as spam, with Open Mail and reclassify options." data-alt-ja="スパムと分類された宣伝通知の詳細。Mailを開く、もう一度分類するなどの選択肢付き" loading="lazy">
-        <img class="karui-demo-shot" src="assets/karui-demo-en-3.jpg?v=2" data-src-en="assets/karui-demo-en-3.jpg?v=2" data-src-ja="assets/karui-demo-ja-3.jpg?v=2" width="720" height="1004" alt="History keeps Sam’s party message, next to silenced promotions." data-alt-en="History keeps Sam’s party message, next to silenced promotions." data-alt-ja="サムのパーティーのメッセージが残り、宣伝は静かにされた履歴" loading="lazy">
-        <img class="karui-demo-shot" src="assets/karui-demo-en-4.jpg?v=2" data-src-en="assets/karui-demo-en-4.jpg?v=2" data-src-ja="assets/karui-demo-ja-4.jpg?v=2" width="720" height="1004" alt="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-en="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-ja="緊急アラーム：母から「今病院にいるの」のメッセージ。母に電話ボタン付き" loading="lazy">
+        <img class="karui-demo-shot is-current" src="assets/karui-demo-en-1.jpg?v=3" data-src-en="assets/karui-demo-en-1.jpg?v=3" data-src-ja="assets/karui-demo-ja-1.jpg?v=3" width="720" height="1004" alt="Karui’s History, with notifications sorted as they arrived." data-alt-en="Karui’s History, with notifications sorted as they arrived." data-alt-ja="届いた通知が仕分けされたKaruiの履歴">
+        <img class="karui-demo-shot" src="assets/karui-demo-en-2.jpg?v=3" data-src-en="assets/karui-demo-en-2.jpg?v=3" data-src-ja="assets/karui-demo-ja-2.jpg?v=3" width="720" height="1004" alt="A promotion classified as spam, with Open Mail and reclassify options." data-alt-en="A promotion classified as spam, with Open Mail and reclassify options." data-alt-ja="スパムと分類された宣伝通知の詳細。Mailを開く、もう一度分類するなどの選択肢付き" loading="lazy">
+        <img class="karui-demo-shot" src="assets/karui-demo-en-3.jpg?v=3" data-src-en="assets/karui-demo-en-3.jpg?v=3" data-src-ja="assets/karui-demo-ja-3.jpg?v=3" width="720" height="1004" alt="History keeps Sam’s party message, next to silenced promotions." data-alt-en="History keeps Sam’s party message, next to silenced promotions." data-alt-ja="サムのパーティーのメッセージが残り、宣伝は静かにされた履歴" loading="lazy">
+        <img class="karui-demo-shot" src="assets/karui-demo-en-4.jpg?v=3" data-src-en="assets/karui-demo-en-4.jpg?v=3" data-src-ja="assets/karui-demo-ja-4.jpg?v=3" width="720" height="1004" alt="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-en="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-ja="緊急アラーム：母から「今病院にいるの」のメッセージ。母に電話ボタン付き" loading="lazy">
         <button class="karui-demo-zone karui-demo-zone-prev" type="button" tabindex="-1" aria-hidden="true"></button>
         <button class="karui-demo-zone karui-demo-zone-next" type="button" tabindex="-1" aria-hidden="true"></button>
       </div>

@@ -26,7 +26,7 @@
     .kaketa-section p { margin: 0; }
     .kaketa-section ul { padding-left: 20pt; }
     .kaketa-section li { padding-bottom: 2pt; }
-    .kaketa-demo-label { margin: 0 0 6pt; font-size: 9pt; font-weight: bold; color: #555; }
+    .kaketa-demo-label { margin: 0 0 6pt; text-align: center; font-size: 9pt; font-weight: bold; color: #555; }
     /* The practice card, drawn in HTML so it stays crisp in every language. */
     .kaketa-card { max-width: 380px; margin: 0 auto; padding: 14px 16px 16px; border: 1px solid rgba(0,0,0,0.08); border-radius: 18px; background: #fffdf8; box-shadow: 0 10px 28px rgba(0,0,0,0.08); font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Helvetica Neue', sans-serif; color: #1c1c1f; }
     .kaketa-card-kicker { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #6b6b66; }
@@ -92,7 +92,7 @@
         </div>
         <div class="kaketa-card-known" aria-hidden="true" data-label-en="✓ I already know this word" data-label-ja="✓ この単語はもう知っている" data-label-fil="✓ Alam ko na ang salitang ito">✓ I already know this word</div>
       </div>
-      <p class="kaketa-caption" data-label-en="Known words leave the queue. Missed words come back tomorrow." data-label-ja="知っている単語は出題から外れ、書けなかった単語は明日また出てきます。" data-label-fil="Lumalabas sa pila ang mga salitang alam na. Babalik bukas ang mga hindi nakuha.">Known words leave the queue. Missed words come back tomorrow.</p>
+      <p class="kaketa-caption" data-label-en="Mark words you already know. The rest resurface when you’re about to forget them." data-label-ja="もう知っている言葉はマークするだけ。残りは忘れかけた頃にまた出てきます。" data-label-fil="Markahan ang mga salitang alam mo na. Ang iba ay babalik kapag malapit mo nang makalimutan.">Mark words you already know. The rest resurface when you’re about to forget them.</p>
     </section>
 
     <section class="kaketa-section">
@@ -101,18 +101,18 @@
         <li data-label-en="By school grade: the kanji taught in each year of Japanese elementary school, with common words for each, a few kanji per section like a textbook" data-label-ja="学年別：日本の小学校で各学年に習う漢字と、それを使うよく使われる単語。教科書のように数字ずつのセクションに" data-label-fil="Ayon sa baitang: ang kanji na itinuturo sa bawat taon ng elementarya sa Japan, may mga karaniwang salita para sa bawat isa, ilang kanji bawat seksyon tulad ng textbook">By school grade: the kanji taught in each year of Japanese elementary school, with common words for each, a few kanji per section like a textbook</li>
         <li data-label-en="By JLPT level, N5 to N1" data-label-ja="JLPTレベル別、N5からN1まで" data-label-fil="Ayon sa antas ng JLPT, N5 hanggang N1">By JLPT level, N5 to N1</li>
         <li data-label-en="My Words: your address, your family’s names, phrases from a letter you need to write by hand" data-label-ja="マイ単語：住所、家族の名前、手書きで書く必要のある文書の言い回し" data-label-fil="Aking mga Salita: ang address mo, mga pangalan ng pamilya, mga parirala mula sa liham na kailangan mong isulat sa kamay">My Words: your address, your family’s names, phrases from a letter you need to write by hand</li>
-        <li data-label-en="Mark whole sections or groups as known, or select words one by one" data-label-ja="セクションやグループごとにまとめて習得済みにしたり、単語を1つずつ選んだり" data-label-fil="Markahan ang buong seksyon o grupo bilang alam na, o pumili ng mga salita isa-isa">Mark whole sections or groups as known, or select words one by one</li>
       </ul>
     </section>
 
     <section class="kaketa-section">
       <h2 data-label-en="Also:" data-label-ja="そのほか：" data-label-fil="Pati na rin:">Also:</h2>
       <ul class="feature-list">
-        <li data-label-en="Prompts you choose: the reading, the meaning, or an example sentence with the word blanked out. Switch on any card" data-label-ja="出題形式は選べます：読み、意味、または単語を空欄にした例文。カードごとに切り替え可能" data-label-fil="Pahiwatig na pipiliin mo: ang pagbasa, ang kahulugan, o isang halimbawang pangungusap na may blangko. Palitan sa kahit anong card">Prompts you choose: the reading, the meaning, or an example sentence with the word blanked out. Switch on any card</li>
+        <li data-label-en="Mark whole sections or groups as known, or select words one by one" data-label-ja="セクションやグループごとにまとめて習得済みにしたり、単語を1つずつ選んだり" data-label-fil="Markahan ang buong seksyon o grupo bilang alam na, o pumili ng mga salita isa-isa">Mark whole sections or groups as known, or select words one by one</li>
+        <li data-label-en="Prompts you choose: the reading, the meaning, or an example sentence with the word blanked out" data-label-ja="出題形式は選べます：読み、意味、または単語を空欄にした例文" data-label-fil="Pahiwatig na pipiliin mo: ang pagbasa, ang kahulugan, o isang halimbawang pangungusap na may blangko">Prompts you choose: the reading, the meaning, or an example sentence with the word blanked out</li>
         <li data-label-en="Meanings in English, Japanese, or Tagalog" data-label-ja="意味は英語、日本語、タガログ語で" data-label-fil="Mga kahulugan sa Ingles, Hapon, o Tagalog">Meanings in English, Japanese, or Tagalog</li>
-        <li data-label-en="Every kanji’s stroke order, animated, on the answer" data-label-ja="答えには各漢字の書き順をアニメーションで表示" data-label-fil="Pagkakasunod ng stroke ng bawat kanji, animated, sa sagot">Every kanji’s stroke order, animated, on the answer</li>
-        <li data-label-en="Optional handwriting check: OpenAI looks at what you wrote and says whether it matches. Free, up to 300 checks a day" data-label-ja="手書きチェック（任意）：書いた文字をOpenAIが見て、合っているか判定します。無料、1日300回まで" data-label-fil="Opsyonal na pagsuri ng sulat-kamay: tinitingnan ng OpenAI ang isinulat mo at sinasabi kung tama. Libre, hanggang 300 pagsuri sa isang araw">Optional handwriting check: OpenAI looks at what you wrote and says whether it matches. Free, up to 300 checks a day</li>
-        <li data-label-en="Progress syncs between iPhone and iPad through iCloud" data-label-ja="進み具合はiCloudでiPhoneとiPadの間で同期" data-label-fil="Nagsi-sync ang progreso sa pagitan ng iPhone at iPad sa iCloud">Progress syncs between iPhone and iPad through iCloud</li>
+        <li data-label-en="Every kanji’s stroke order, animated" data-label-ja="各漢字の書き順をアニメーションで" data-label-fil="Pagkakasunod ng stroke ng bawat kanji, animated">Every kanji’s stroke order, animated</li>
+        <li data-label-en="Handwriting check" data-label-ja="手書きチェック" data-label-fil="Pagsuri ng sulat-kamay">Handwriting check</li>
+        <li data-label-en="Progress syncs between iPhone and iPad" data-label-ja="進み具合はiPhoneとiPadの間で同期" data-label-fil="Nagsi-sync ang progreso sa pagitan ng iPhone at iPad">Progress syncs between iPhone and iPad</li>
       </ul>
     </section>
 
@@ -123,7 +123,7 @@
 
     <footer class="kaketa-footer">
       <p class="footer-links"><a href="kaketa-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴" data-label-fil="Changelog">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="kaketa-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー" data-label-fil="Privacy">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="kaketa-support.html" data-label-en="Support" data-label-ja="サポート" data-label-fil="Suporta">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="kaketa-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞" data-label-fil="Pasasalamat">Acknowledgements</a></p>
-      <p><span data-label-en="Made by" data-label-ja="制作：" data-label-fil="Gawa ni">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）" data-label-fil=" sa Japan."> in Japan.</span></p>
+      <p><span data-label-en="Designed by" data-label-ja="デザイン：" data-label-fil="Dinisenyo ni">Designed by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja="（東京）" data-label-fil=" sa Tokyo"> in Tokyo</span></p>
     </footer>
   </main>
   <script src="kaketa-language.js?v=1"></script>

@@ -55,8 +55,10 @@ test('copies the shared files and assets', async () => {
   await readOutputFile('_headers');
   await readFile(path.join(outputDirectory, 'assets/kaketa-icon.png'));
   await readFile(path.join(outputDirectory, 'assets/kaketa-social.png'));
-  for (const language of ['en', 'ja', 'fil']) {
-    await readFile(path.join(outputDirectory, `assets/kaketa-landing-shot-${language}.webp`));
+  for (const screen of ['shot', 'grid', 'words']) {
+    for (const language of ['en', 'ja', 'fil']) {
+      await readFile(path.join(outputDirectory, `assets/kaketa-landing-${screen}-${language}.webp`));
+    }
   }
 });
 
@@ -103,4 +105,12 @@ test('the hero seal inks in and opens the tagline page', async () => {
   assert.match(hankoPage, /<img src="\/assets\/kaketa-seal-tagline-large\.png\?v=\d+"/);
   assert.match(hankoPage, /<a class="kaketa-hanko-close" href="\/"/);
   await readOutputFile('karui-seal-ink.js');
+});
+
+test('the landing page carousel has three screens with captions and dots', async () => {
+  const homePage = await readOutputFile('index.html');
+  assert.equal(homePage.match(/class="kaketa-shot( is-current)?"/g).length, 3);
+  assert.equal(homePage.match(/class="kaketa-caption( is-current)?"/g).length, 3);
+  assert.equal(homePage.match(/class="kaketa-demo-dot( is-current)?"/g).length, 3);
+  assert.match(homePage, /data-src-fil="\/assets\/kaketa-landing-words-fil\.webp\?v=\d+"/);
 });

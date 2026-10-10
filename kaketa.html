@@ -47,9 +47,25 @@
     .kaketa-section li + li { margin-top: 3pt; }
     .kaketa-demo-label { margin: 0 0 6pt; text-align: center; font-size: 9pt; font-weight: bold; color: #555; }
     /* The practice card, drawn in HTML so it stays crisp in every language. */
-    /* The screenshot in its shell, made by Kaketa’s Scripts/make-landing-shot.sh. */
-    .kaketa-shot { display: block; width: 100%; max-width: 300px; height: auto; margin: 0 auto; }
-    .kaketa-caption { margin: 8pt 0 0; text-align: center; color: #555; font-size: 9pt; }
+    /* The screenshots in their shells, made by Kaketa’s Scripts/make-landing-shot.sh:
+       three screens, stacked and faded between, like Karui's demo. A tap on the right
+       half goes forward, on the left half back; the arrows and dots below do the same. */
+    .kaketa-demo { position: relative; width: 100%; max-width: 300px; aspect-ratio: 900 / 1837; margin: 0 auto; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+    .kaketa-shot { position: absolute; inset: 0; display: block; width: 100%; height: auto; opacity: 0; transition: opacity 0.25s; pointer-events: none; }
+    .kaketa-shot.is-current { opacity: 1; }
+    .kaketa-demo-zone { position: absolute; top: 0; bottom: 0; width: 50%; margin: 0; padding: 0; border: 0; background: none; cursor: pointer; appearance: none; -webkit-appearance: none; -webkit-tap-highlight-color: transparent; }
+    .kaketa-demo-zone-prev { left: 0; }
+    .kaketa-demo-zone-next { right: 0; }
+    .kaketa-caption { display: none; max-width: 480px; min-height: 2.6em; margin: 8pt auto 0; text-align: center; color: #555; font-size: 9pt; text-wrap: balance; }
+    .kaketa-caption.is-current { display: block; }
+    .kaketa-demo-controls { display: flex; align-items: center; justify-content: center; gap: 7px; margin: 2pt auto 0; }
+    .kaketa-demo-arrow { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin: 0 4px; padding: 0; border: 0; border-radius: 8px; background: none; color: #1a211e; cursor: pointer; appearance: none; -webkit-appearance: none; -webkit-tap-highlight-color: transparent; }
+    .kaketa-demo-arrow svg { width: 18px; height: 18px; display: block; }
+    .kaketa-demo-arrow:active { transform: translateY(1px); }
+    .kaketa-demo-arrow:focus-visible, .kaketa-demo-dot:focus-visible { outline: 2px solid #c7422b; outline-offset: 2px; }
+    .kaketa-demo-dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: #d8d6ce; cursor: pointer; appearance: none; -webkit-appearance: none; }
+    .kaketa-demo-dot.is-current { background: #1a211e; }
+    @media (prefers-reduced-motion: reduce) { .kaketa-shot { transition: none; } }
     .kaketa-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
     .kaketa-footer p { margin: 4pt 0; }
     .footer-links .footer-separator { margin: 0 6pt; color: #777; }
@@ -106,9 +122,26 @@
     </section>
 
     <section class="sasu-section">
-      <p class="kaketa-demo-label" data-label-en="After a handwriting check" data-label-ja="手書きチェックのあと" data-label-fil="Pagkatapos ng pagsuri ng sulat-kamay">After a handwriting check</p>
-      <img class="kaketa-shot" src="assets/kaketa-landing-shot-en.webp?v=1" data-src-en="assets/kaketa-landing-shot-en.webp?v=1" data-src-ja="assets/kaketa-landing-shot-ja.webp?v=1" data-src-fil="assets/kaketa-landing-shot-fil.webp?v=1" width="900" height="1837" alt="Kaketa on an iPhone after a handwriting check: the reading にほん with the meaning Japan, 日本 written by hand over the correct strokes in red with both numbered, a Looks right verdict, and Not Yet and Got It buttons." data-alt-en="Kaketa on an iPhone after a handwriting check: the reading にほん with the meaning Japan, 日本 written by hand over the correct strokes in red with both numbered, a Looks right verdict, and Not Yet and Got It buttons." data-alt-ja="手書きチェック後のiPhoneのKaketa：読み「にほん」と意味「Japan」、赤い正しい筆画の上に手書きした「日本」（どちらも番号付き）、「合っています」の判定、「まだ」と「書けた」のボタン。" data-alt-fil="Kaketa sa iPhone pagkatapos ng pagsuri ng sulat-kamay: ang pagbasang にほん na may kahulugang Japan, ang 日本 na isinulat-kamay sa ibabaw ng tamang mga stroke na pula na parehong may numero, ang hatol na Mukhang tama, at mga button na Hindi pa at Nakuha ko.">
-      <p class="kaketa-caption" data-label-en="Mark words you already know. The rest resurface when you’re about to forget them." data-label-ja="もう知っている言葉はマークするだけ。残りは忘れかけた頃にまた出てきます。" data-label-fil="Markahan ang mga salitang alam mo na. Ang iba ay babalik kapag malapit mo nang makalimutan.">Mark words you already know. The rest resurface when you’re about to forget them.</p>
+      <p class="kaketa-demo-label" data-label-en="Kaketa on iPhone" data-label-ja="iPhoneのKaketa" data-label-fil="Kaketa sa iPhone">Kaketa on iPhone</p>
+      <div class="kaketa-demo" role="group" aria-roledescription="carousel" aria-label="Kaketa on iPhone, three screens" data-aria-label-en="Kaketa on iPhone, three screens" data-aria-label-ja="iPhoneのKaketa、3画面" data-aria-label-fil="Kaketa sa iPhone, tatlong screen" tabindex="0">
+        <img class="kaketa-shot is-current" src="assets/kaketa-landing-shot-en.webp?v=2" data-src-en="assets/kaketa-landing-shot-en.webp?v=2" data-src-ja="assets/kaketa-landing-shot-ja.webp?v=2" data-src-fil="assets/kaketa-landing-shot-fil.webp?v=2" width="900" height="1837" alt="Kaketa after a handwriting check: the reading にほん with the meaning Japan, 日本 written by hand over the correct strokes, and the verdict Looks right." data-alt-en="Kaketa after a handwriting check: the reading にほん with the meaning Japan, 日本 written by hand over the correct strokes, and the verdict Looks right." data-alt-ja="手書きチェックのあとのKaketa：読み「にほん」と意味、正しい画の上に手書きの「日本」、判定は「合っています」" data-alt-fil="Kaketa pagkatapos ng pagsuri ng sulat-kamay: ang pagbasang にほん na may kahulugang Japan, 日本 na isinulat sa kamay sa ibabaw ng mga tamang stroke, at ang hatol na Mukhang tama.">
+        <img class="kaketa-shot" src="assets/kaketa-landing-grid-en.webp?v=2" data-src-en="assets/kaketa-landing-grid-en.webp?v=2" data-src-ja="assets/kaketa-landing-grid-ja.webp?v=2" data-src-fil="assets/kaketa-landing-grid-fil.webp?v=2" width="900" height="1837" alt="The Practice tab: the first grade’s kanji in a grid, mastered ones shaded, with a card held open on 本 showing its stroke order, meaning, readings, and a Practice button." data-alt-en="The Practice tab: the first grade’s kanji in a grid, mastered ones shaded, with a card held open on 本 showing its stroke order, meaning, readings, and a Practice button." data-alt-ja="練習タブ：小学1年の漢字のグリッド。習得済みは色付き。「本」のカードが開いていて、書き順、意味、読み、練習ボタンが見える" data-alt-fil="Ang tab na Practice: ang mga kanji ng unang baitang sa isang grid, may kulay ang mga nasanay na, at isang card na nakabukas sa 本 na nagpapakita ng pagkakasunod ng stroke, kahulugan, mga pagbasa, at isang Practice na button." loading="lazy">
+        <img class="kaketa-shot" src="assets/kaketa-landing-words-en.webp?v=2" data-src-en="assets/kaketa-landing-words-en.webp?v=2" data-src-ja="assets/kaketa-landing-words-ja.webp?v=2" data-src-fil="assets/kaketa-landing-words-fil.webp?v=2" width="900" height="1837" alt="Grade 1 in the Words tab: a progress bar of mastered, learning, and new words, and its sections, with a seal on the ones already mastered." data-alt-en="Grade 1 in the Words tab: a progress bar of mastered, learning, and new words, and its sections, with a seal on the ones already mastered." data-alt-ja="単語タブの小学1年：習得済み・学習中・新規の進み具合と、各セクション。習得済みのセクションには判子" data-alt-fil="Baitang 1 sa tab na Words: isang progress bar ng mga nasanay, pinag-aaralan, at bagong salita, at ang mga seksyon nito, na may seal sa mga nasanay na." loading="lazy">
+        <button class="kaketa-demo-zone kaketa-demo-zone-prev" type="button" tabindex="-1" aria-hidden="true"></button>
+        <button class="kaketa-demo-zone kaketa-demo-zone-next" type="button" tabindex="-1" aria-hidden="true"></button>
+      </div>
+      <div class="kaketa-demo-captions" aria-live="polite">
+        <p class="kaketa-caption is-current" data-label-en="Write the word, show the answer, and see every stroke checked." data-label-ja="書いて、答えを見て、一画ずつチェック。" data-label-fil="Isulat ang salita, ipakita ang sagot, at makita ang bawat stroke na sinuri.">Write the word, show the answer, and see every stroke checked.</p>
+        <p class="kaketa-caption" data-label-en="Press a kanji to see its stroke order and how its words are going." data-label-ja="漢字を押さえると、書き順と単語の進み具合が見られます。" data-label-fil="Pindutin ang isang kanji para makita ang pagkakasunod ng stroke at kung kumusta ang mga salita nito.">Press a kanji to see its stroke order and how its words are going.</p>
+        <p class="kaketa-caption" data-label-en="Mark words you already know. The rest resurface when you’re about to forget them." data-label-ja="もう知っている言葉はマークするだけ。残りは忘れかけた頃にまた出てきます。" data-label-fil="Markahan ang mga salitang alam mo na. Ang iba ay babalik kapag malapit mo nang makalimutan.">Mark words you already know. The rest resurface when you’re about to forget them.</p>
+      </div>
+      <div class="kaketa-demo-controls">
+        <button class="kaketa-demo-arrow kaketa-demo-prev" type="button" aria-label="Previous screen" data-aria-label-en="Previous screen" data-aria-label-ja="前の画面" data-aria-label-fil="Nakaraang screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="kaketa-demo-dot is-current" type="button" aria-label="Screen 1 of 3" data-aria-label-en="Screen 1 of 3" data-aria-label-ja="3画面中1番目" data-aria-label-fil="Screen 1 ng 3"></button>
+        <button class="kaketa-demo-dot" type="button" aria-label="Screen 2 of 3" data-aria-label-en="Screen 2 of 3" data-aria-label-ja="3画面中2番目" data-aria-label-fil="Screen 2 ng 3"></button>
+        <button class="kaketa-demo-dot" type="button" aria-label="Screen 3 of 3" data-aria-label-en="Screen 3 of 3" data-aria-label-ja="3画面中3番目" data-aria-label-fil="Screen 3 ng 3"></button>
+        <button class="kaketa-demo-arrow kaketa-demo-next" type="button" aria-label="Next screen" data-aria-label-en="Next screen" data-aria-label-ja="次の画面" data-aria-label-fil="Susunod na screen"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
     </section>
 
     <section class="kaketa-section">
@@ -141,6 +174,47 @@
       <p class="kaketa-maker"><span class="kaketa-maker-marks"><a href="https://onemorething.tokyo" class="kaketa-maker-photo-link" aria-label="Justin Garcia’s website"><img class="kaketa-maker-photo" src="assets/karui-developer.jpg?v=3" alt="" width="40" height="51"></a><a href="kaketa-seal.html" class="kaketa-seal-trigger" aria-label="About the name seal" data-aria-label-en="About the name seal" data-aria-label-ja="名前の判子について" data-aria-label-fil="Tungkol sa name seal"><img class="kaketa-maker-seal" src="assets/karui-seal.png?v=8" alt="" width="24" height="51"></a></span><span class="kaketa-maker-text"><span data-label-en="Designed by " data-label-ja="東京の個人開発者 " data-label-fil="Dinisenyo ni ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作" data-label-fil=" sa Tokyo"> in Tokyo</span></span></p>
     </footer>
   </main>
+  <script>
+    // The demo: three screens, one per caption. A tap on the right half of the phone goes
+    // forward and on the left half back, round and round; so do the arrows and dots
+    // below it, the arrow keys with the demo focused, and a sideways swipe.
+    (() => {
+      const demo = document.querySelector('.kaketa-demo');
+      const shots = [...demo.querySelectorAll('.kaketa-shot')];
+      const captions = [...document.querySelectorAll('.kaketa-caption')];
+      const dots = [...document.querySelectorAll('.kaketa-demo-dot')];
+      let index = 0;
+      const show = (next) => {
+        index = (next + shots.length) % shots.length;
+        [shots, captions, dots].forEach((items) => items.forEach((item, i) => item.classList.toggle('is-current', i === index)));
+      };
+      let swipeStart;
+      let swiped = false;
+      demo.addEventListener('pointerdown', (event) => { swipeStart = event.clientX; swiped = false; });
+      demo.addEventListener('pointerup', (event) => {
+        if (swipeStart === undefined) return;
+        const distance = event.clientX - swipeStart;
+        swipeStart = undefined;
+        if (Math.abs(distance) < 40) return;
+        swiped = true;
+        show(index + (distance < 0 ? 1 : -1));
+      });
+      demo.addEventListener('pointercancel', () => { swipeStart = undefined; });
+      // A swipe that ends over a zone also fires its click, which is ignored.
+      const step = (by) => () => { if (swiped) swiped = false; else show(index + by); };
+      demo.querySelector('.kaketa-demo-zone-prev').addEventListener('click', step(-1));
+      demo.querySelector('.kaketa-demo-zone-next').addEventListener('click', step(1));
+      document.querySelector('.kaketa-demo-prev').addEventListener('click', () => show(index - 1));
+      document.querySelector('.kaketa-demo-next').addEventListener('click', () => show(index + 1));
+      dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+      demo.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') show(index + 1);
+        else if (event.key === 'ArrowLeft') show(index - 1);
+        else return;
+        event.preventDefault();
+      });
+    })();
+  </script>
   <script src="kaketa-language.js?v=2"></script>
 </body>
 </html>

@@ -28,6 +28,11 @@ test('builds every Kaketa clean route', async () => {
   assert.match(privacyPage, /Privacy Policy/);
   assert.match(supportPage, /Support/);
   assert.match(changelogPage, /kaketa-changelog:start/);
+  // Two views, like Karui's: App Store releases (the default, built by the page's script) and all builds.
+  assert.match(changelogPage, /data-changelog-view="store" aria-pressed="true"/);
+  assert.match(changelogPage, /data-changelog-view="builds"/);
+  assert.match(changelogPage, /<div class="changelog-builds" hidden>/);
+  assert.match(changelogPage, /<div class="changelog-store"><\/div>/);
   assert.match(acknowledgementsPage, /KanjiVG/);
   assert.match(technotesPage, /href="\/technotes\/kn001"/);
   assert.match(kn001Page, /KN001/);

@@ -7,6 +7,8 @@
     "build:karui-pages": "node scripts/build-karui-pages.mjs",
     "test:karui-pages": "node --test test/build-karui-pages.test.mjs",
     "build:karui-social": "node scripts/build-karui-social.mjs",
+    "build:kaketa-pages": "node scripts/build-kaketa-pages.mjs",
+    "test:kaketa-pages": "node --test test/build-kaketa-pages.test.mjs",
     "build:shadan-pages": "node scripts/build-shadan-pages.mjs",
     "test:shadan-pages": "node --test test/build-shadan-pages.test.mjs",
     "build:shadan-social": "node scripts/build-shadan-social.mjs",

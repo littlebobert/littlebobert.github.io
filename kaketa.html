@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Kaketa: Write Kanji by Hand</title>
+  <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link rel="icon" href="assets/kaketa-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/kaketa-apple-touch-icon.png?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://kaketa.jp/">
+  <meta name="description" content="An iPhone and iPad app for practicing handwriting Japanese words with kanji. Skip the words you already know and spend your time on the ones you can’t write yet." data-label-en="An iPhone and iPad app for practicing handwriting Japanese words with kanji. Skip the words you already know and spend your time on the ones you can’t write yet." data-label-ja="漢字を含む日本語の単語を手で書く練習をするiPhone・iPadアプリ。もう知っている言葉は飛ばして、まだ書けない言葉に時間を使えます。" data-label-fil="App para sa iPhone at iPad para magsanay ng pagsusulat-kamay ng mga salitang Hapon na may kanji. Laktawan ang mga salitang alam mo na at gugulin ang oras mo sa mga hindi mo pa maisulat.">
+  <meta property="og:title" content="Kaketa: Write Japanese words by hand. Skip the ones you know." data-label-en="Kaketa: Write Japanese words by hand. Skip the ones you know." data-label-ja="Kaketa：日本語の単語を手で書く練習。知っている言葉は飛ばせる。" data-label-fil="Kaketa: Isulat ang mga salitang Hapon sa kamay. Laktawan ang alam mo na.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kaketa.jp/">
+  <meta property="og:site_name" content="Kaketa">
+  <meta property="og:description" content="An iPhone and iPad app for practicing handwriting Japanese words with kanji. Skip the words you already know and spend your time on the ones you can’t write yet." data-label-en="An iPhone and iPad app for practicing handwriting Japanese words with kanji. Skip the words you already know and spend your time on the ones you can’t write yet." data-label-ja="漢字を含む日本語の単語を手で書く練習をするiPhone・iPadアプリ。もう知っている言葉は飛ばして、まだ書けない言葉に時間を使えます。" data-label-fil="App para sa iPhone at iPad para magsanay ng pagsusulat-kamay ng mga salitang Hapon na may kanji. Laktawan ang mga salitang alam mo na at gugulin ang oras mo sa mga hindi mo pa maisulat.">
+  <meta property="og:image" content="https://kaketa.jp/assets/kaketa-icon.png?v=1">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Kaketa: Write Kanji by Hand">
+  <meta name="twitter:image" content="https://kaketa.jp/assets/kaketa-icon.png?v=1">
+  <style>
+    .kaketa-icon { box-sizing: border-box; border: 1px solid #1a211e; border-radius: 12px; }
+    .hero-proposition { margin: 8pt 0 10pt; font-size: 11pt; }
+    .small-note { padding-top: 6pt; color: #555; font-size: 9pt; }
+    .kaketa-section { padding: 6pt 0 5pt; }
+    .kaketa-section p { margin: 0; }
+    .kaketa-section ul { padding-left: 20pt; }
+    .kaketa-section li { padding-bottom: 2pt; }
+    .kaketa-demo-label { margin: 0 0 6pt; font-size: 9pt; font-weight: bold; color: #555; }
+    /* The practice card, drawn in HTML so it stays crisp in every language. */
+    .kaketa-card { max-width: 380px; margin: 0 auto; padding: 14px 16px 16px; border: 1px solid rgba(0,0,0,0.08); border-radius: 18px; background: #fffdf8; box-shadow: 0 10px 28px rgba(0,0,0,0.08); font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Helvetica Neue', sans-serif; color: #1c1c1f; }
+    .kaketa-card-kicker { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #6b6b66; }
+    .kaketa-card-reading { margin: 6px 0 2px; font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-size: 30px; line-height: 1.2; }
+    .kaketa-card-gloss { font-size: 13px; color: #6b6b66; }
+    .kaketa-grid { display: flex; justify-content: center; gap: 0; margin: 14px 0 12px; }
+    .kaketa-cell { position: relative; width: 108px; height: 108px; border: 1.5px solid #ccc7bd; background: #fffdf8; }
+    .kaketa-cell + .kaketa-cell { border-left: 0; }
+    .kaketa-cell::before, .kaketa-cell::after { content: ''; position: absolute; border: 0 dashed #ddd8ce; }
+    .kaketa-cell::before { left: 50%; top: 0; bottom: 0; border-left-width: 1px; }
+    .kaketa-cell::after { top: 50%; left: 0; right: 0; border-top-width: 1px; }
+    .kaketa-cell span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Klee', 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-size: 72px; line-height: 1; color: #1c1c1f; }
+    .kaketa-card-buttons { display: flex; gap: 10px; }
+    .kaketa-card-button { flex: 1; padding: 10px 0; border-radius: 999px; text-align: center; font-size: 13px; font-weight: 600; color: #fff; }
+    .kaketa-card-button.is-not-yet { background: #c7422b; }
+    .kaketa-card-button.is-got-it { background: #386b4d; }
+    .kaketa-card-known { margin-top: 10px; text-align: center; font-size: 12px; color: #6b6b66; }
+    .kaketa-caption { margin: 8pt 0 0; text-align: center; color: #555; font-size: 9pt; }
+    .kaketa-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .kaketa-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    .footer-links a { white-space: nowrap; }
+    .language-switcher select { min-width: 92px; }
+  </style>
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher">
+      <label for="language-select" class="visually-hidden" hidden>Language</label>
+      <select id="language-select" aria-label="Language">
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="fil">Tagalog</option>
+      </select>
+    </div>
+
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <img class="sasu-icon kaketa-icon" src="assets/kaketa-icon.png?v=1" alt="Kaketa app icon: the character 書 in a practice square" data-alt-en="Kaketa app icon: the character 書 in a practice square" data-alt-ja="Kaketaアプリアイコン：練習マスの中の「書」" data-alt-fil="Icon ng Kaketa: ang karakter na 書 sa isang kuwadrado">
+        <div>
+          <h1>Kaketa</h1>
+          <div class="sasu-subtitle" data-label-en="Write Japanese words by hand. Skip the ones you already know." data-label-ja="日本語の単語を手で書く練習。もう知っている言葉は飛ばせます。" data-label-fil="Isulat ang mga salitang Hapon sa kamay. Laktawan ang mga alam mo na.">Write Japanese words by hand. Skip the ones you already know.</div>
+        </div>
+      </div>
+      <p class="hero-proposition" data-label-en="See the reading, write the kanji, check the stroke order. Mark each word got it, not yet, or already known." data-label-ja="読みを見て、漢字を書いて、書き順を確認。単語ごとに「書けた」「まだ」「もう知っている」を選びます。" data-label-fil="Tingnan ang pagbasa, isulat ang kanji, tingnan ang pagkakasunod ng stroke. Markahan ang bawat salita: nakuha, hindi pa, o alam na.">See the reading, write the kanji, check the stroke order. Mark each word got it, not yet, or already known.</p>
+      <a class="download-link" href="https://apps.apple.com/app/kaketa" data-label-en="Coming soon to the App Store" data-label-ja="App Storeで近日公開" data-label-fil="Malapit nang lumabas sa App Store">Coming soon to the App Store</a>
+      <div class="small-note" data-label-en="Requires iOS or iPadOS 27 or later. Works with Apple Pencil or a finger. Free, with no account." data-label-ja="iOS・iPadOS 27以降が必要です。Apple Pencilでも指でも書けます。無料、アカウント不要。" data-label-fil="Kailangan ng iOS o iPadOS 27 o mas bago. Gumagana sa Apple Pencil o daliri. Libre, walang account.">Requires iOS or iPadOS 27 or later. Works with Apple Pencil or a finger. Free, with no account.</div>
+    </section>
+
+    <section class="sasu-section">
+      <p class="kaketa-demo-label" data-label-en="A practice card" data-label-ja="練習カード" data-label-fil="Isang card ng pagsasanay">A practice card</p>
+      <div class="kaketa-card" role="img" aria-label="A Kaketa practice card: the reading がっこう with the meaning school, two squares where 学校 has been written by hand, and Not Yet and Got It buttons" data-aria-label-en="A Kaketa practice card: the reading がっこう with the meaning school, two squares where 学校 has been written by hand, and Not Yet and Got It buttons" data-aria-label-ja="Kaketaの練習カード：読み「がっこう」と意味「school」、手書きで「学校」と書かれた2つのマス、「まだ」と「書けた」のボタン" data-aria-label-fil="Card ng Kaketa: ang pagbasang がっこう na may kahulugang school, dalawang kuwadrado na may sulat-kamay na 学校, at mga button na Hindi pa at Nakuha ko">
+        <div class="kaketa-card-kicker" data-label-en="Reading" data-label-ja="読み" data-label-fil="Pagbasa">Reading</div>
+        <div class="kaketa-card-reading">がっこう</div>
+        <div class="kaketa-card-gloss" data-label-en="school" data-label-ja="学ぶところ。小学校、中学校など" data-label-fil="paaralan">school</div>
+        <div class="kaketa-grid" aria-hidden="true">
+          <div class="kaketa-cell"><span>学</span></div>
+          <div class="kaketa-cell"><span>校</span></div>
+        </div>
+        <div class="kaketa-card-buttons" aria-hidden="true">
+          <div class="kaketa-card-button is-not-yet" data-label-en="Not Yet" data-label-ja="まだ" data-label-fil="Hindi pa">Not Yet</div>
+          <div class="kaketa-card-button is-got-it" data-label-en="Got It" data-label-ja="書けた" data-label-fil="Nakuha ko">Got It</div>
+        </div>
+        <div class="kaketa-card-known" aria-hidden="true" data-label-en="✓ I already know this word" data-label-ja="✓ この単語はもう知っている" data-label-fil="✓ Alam ko na ang salitang ito">✓ I already know this word</div>
+      </div>
+      <p class="kaketa-caption" data-label-en="Known words leave the queue. Missed words come back tomorrow." data-label-ja="知っている単語は出題から外れ、書けなかった単語は明日また出てきます。" data-label-fil="Lumalabas sa pila ang mga salitang alam na. Babalik bukas ang mga hindi nakuha.">Known words leave the queue. Missed words come back tomorrow.</p>
+    </section>
+
+    <section class="kaketa-section">
+      <h2 data-label-en="Words to practice" data-label-ja="練習する単語" data-label-fil="Mga salitang sasanayin">Words to practice</h2>
+      <ul class="feature-list">
+        <li data-label-en="By school grade: the kanji taught in each year of Japanese elementary school, with common words for each, a few kanji per section like a textbook" data-label-ja="学年別：日本の小学校で各学年に習う漢字と、それを使うよく使われる単語。教科書のように数字ずつのセクションに" data-label-fil="Ayon sa baitang: ang kanji na itinuturo sa bawat taon ng elementarya sa Japan, may mga karaniwang salita para sa bawat isa, ilang kanji bawat seksyon tulad ng textbook">By school grade: the kanji taught in each year of Japanese elementary school, with common words for each, a few kanji per section like a textbook</li>
+        <li data-label-en="By JLPT level, N5 to N1" data-label-ja="JLPTレベル別、N5からN1まで" data-label-fil="Ayon sa antas ng JLPT, N5 hanggang N1">By JLPT level, N5 to N1</li>
+        <li data-label-en="My Words: your address, your family’s names, phrases from a letter you need to write by hand" data-label-ja="マイ単語：住所、家族の名前、手書きで書く必要のある文書の言い回し" data-label-fil="Aking mga Salita: ang address mo, mga pangalan ng pamilya, mga parirala mula sa liham na kailangan mong isulat sa kamay">My Words: your address, your family’s names, phrases from a letter you need to write by hand</li>
+        <li data-label-en="Mark whole sections or groups as known, or select words one by one" data-label-ja="セクションやグループごとにまとめて習得済みにしたり、単語を1つずつ選んだり" data-label-fil="Markahan ang buong seksyon o grupo bilang alam na, o pumili ng mga salita isa-isa">Mark whole sections or groups as known, or select words one by one</li>
+      </ul>
+    </section>
+
+    <section class="kaketa-section">
+      <h2 data-label-en="Also:" data-label-ja="そのほか：" data-label-fil="Pati na rin:">Also:</h2>
+      <ul class="feature-list">
+        <li data-label-en="Prompts you choose: the reading, the meaning, or an example sentence with the word blanked out. Switch on any card" data-label-ja="出題形式は選べます：読み、意味、または単語を空欄にした例文。カードごとに切り替え可能" data-label-fil="Pahiwatig na pipiliin mo: ang pagbasa, ang kahulugan, o isang halimbawang pangungusap na may blangko. Palitan sa kahit anong card">Prompts you choose: the reading, the meaning, or an example sentence with the word blanked out. Switch on any card</li>
+        <li data-label-en="Meanings in English, Japanese, or Tagalog" data-label-ja="意味は英語、日本語、タガログ語で" data-label-fil="Mga kahulugan sa Ingles, Hapon, o Tagalog">Meanings in English, Japanese, or Tagalog</li>
+        <li data-label-en="Every kanji’s stroke order, animated, on the answer" data-label-ja="答えには各漢字の書き順をアニメーションで表示" data-label-fil="Pagkakasunod ng stroke ng bawat kanji, animated, sa sagot">Every kanji’s stroke order, animated, on the answer</li>
+        <li data-label-en="Optional handwriting check: with your own OpenAI API key, Kaketa asks OpenAI whether what you wrote matches" data-label-ja="手書きチェック（任意）：自分のOpenAI APIキーで、書いた文字が合っているかOpenAIに判定してもらえます" data-label-fil="Opsyonal na pagsuri ng sulat-kamay: gamit ang sarili mong OpenAI API key, tinatanong ng Kaketa ang OpenAI kung tama ang isinulat mo">Optional handwriting check: with your own OpenAI API key, Kaketa asks OpenAI whether what you wrote matches</li>
+        <li data-label-en="Progress syncs between iPhone and iPad through iCloud" data-label-ja="進み具合はiCloudでiPhoneとiPadの間で同期" data-label-fil="Nagsi-sync ang progreso sa pagitan ng iPhone at iPad sa iCloud">Progress syncs between iPhone and iPad through iCloud</li>
+      </ul>
+    </section>
+
+    <section class="kaketa-section">
+      <h2 data-label-en="Privacy:" data-label-ja="プライバシー：" data-label-fil="Privacy:">Privacy:</h2>
+      <p><span data-label-en="Kaketa has no account, no server, and no analytics. The only thing that ever leaves your device is a picture of your handwriting, sent to OpenAI only when you turn the handwriting check on and tap Check. " data-label-ja="Kaketaにはアカウントもサーバーも分析もありません。デバイスの外に出るのは、手書きチェックをオンにして「チェック」を押したときにOpenAIに送られる手書きの画像だけです。" data-label-fil="Walang account, server, o analytics ang Kaketa. Ang tanging lumalabas sa device mo ay larawan ng sulat-kamay mo, ipinapadala sa OpenAI lamang kapag binuksan mo ang pagsuri at pinindot ang Suriin. ">Kaketa has no account, no server, and no analytics. The only thing that ever leaves your device is a picture of your handwriting, sent to OpenAI only when you turn the handwriting check on and tap Check. </span><a href="kaketa-privacy.html" data-label-en="Details" data-label-ja="詳細" data-label-fil="Mga detalye">Details</a><span data-label-en="." data-label-ja="" data-label-fil=".">.</span></p>
+    </section>
+
+    <footer class="kaketa-footer">
+      <p class="footer-links"><a href="kaketa-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴" data-label-fil="Changelog">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="kaketa-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー" data-label-fil="Privacy">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="kaketa-support.html" data-label-en="Support" data-label-ja="サポート" data-label-fil="Suporta">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="kaketa-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞" data-label-fil="Pasasalamat">Acknowledgements</a></p>
+      <p><span data-label-en="Made by" data-label-ja="制作：" data-label-fil="Gawa ni">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）" data-label-fil=" sa Japan."> in Japan.</span></p>
+    </footer>
+  </main>
+  <script src="kaketa-language.js?v=1"></script>
+</body>
+</html>

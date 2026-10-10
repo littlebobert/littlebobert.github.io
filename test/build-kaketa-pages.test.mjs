@@ -14,12 +14,14 @@ async function readOutputFile(relativePath) {
 }
 
 test('builds every Kaketa clean route', async () => {
-  const [homePage, privacyPage, supportPage, changelogPage, acknowledgementsPage] = await Promise.all([
+  const [homePage, privacyPage, supportPage, changelogPage, acknowledgementsPage, technotesPage, kn001Page] = await Promise.all([
     readOutputFile('index.html'),
     readOutputFile('privacy/index.html'),
     readOutputFile('support/index.html'),
     readOutputFile('changelog/index.html'),
     readOutputFile('acknowledgements/index.html'),
+    readOutputFile('technotes/index.html'),
+    readOutputFile('technotes/kn001/index.html'),
   ]);
 
   assert.match(homePage, /<h1>Kaketa<\/h1>/);
@@ -27,8 +29,10 @@ test('builds every Kaketa clean route', async () => {
   assert.match(supportPage, /Support/);
   assert.match(changelogPage, /kaketa-changelog:start/);
   assert.match(acknowledgementsPage, /KanjiVG/);
+  assert.match(technotesPage, /href="\/technotes\/kn001"/);
+  assert.match(kn001Page, /KN001/);
 
-  for (const page of [homePage, privacyPage, supportPage, changelogPage, acknowledgementsPage]) {
+  for (const page of [homePage, privacyPage, supportPage, changelogPage, acknowledgementsPage, technotesPage, kn001Page]) {
     assert.match(page, /href="\/sasu-common\.css\?v=\d+"/);
     assert.match(page, /src="\/kaketa-language\.js\?v=\d+"/);
     assert.match(page, /href="\/assets\/kaketa-favicon\.png\?v=1"/);
@@ -36,10 +40,11 @@ test('builds every Kaketa clean route', async () => {
     assert.match(page, /href="\/support"/);
     assert.match(page, /href="\/changelog"/);
     assert.match(page, /href="\/acknowledgements"/);
+    assert.match(page, /href="\/technotes"/);
     assert.doesNotMatch(page, /href="kaketa[-a-z]*\.html"/);
     assert.match(page, /data-label-fil=/);
   }
-  for (const page of [privacyPage, supportPage, changelogPage, acknowledgementsPage]) {
+  for (const page of [privacyPage, supportPage, changelogPage, acknowledgementsPage, technotesPage, kn001Page]) {
     assert.match(page, /href="\/"/);
   }
 });

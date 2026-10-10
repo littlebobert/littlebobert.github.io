@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Kaketa Technical Notes</title>
+  <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link rel="icon" href="assets/kaketa-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/kaketa-apple-touch-icon.png?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://kaketa.jp/technotes">
+  <meta name="description" content="Technical Notes on how Kaketa works and what I learned while working on it." data-label-en="Technical Notes on how Kaketa works and what I learned while working on it." data-label-ja="Kaketaの仕組みと開発中に学んだことをまとめた技術ノート。" data-label-fil="Mga Technical Note tungkol sa kung paano gumagana ang Kaketa at kung ano ang natutunan ko habang ginagawa ito.">
+  <meta property="og:title" content="Kaketa Technical Notes" data-label-en="Kaketa Technical Notes" data-label-ja="Kaketa技術ノート" data-label-fil="Mga Technical Note ng Kaketa">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://kaketa.jp/technotes">
+  <meta property="og:site_name" content="Kaketa">
+  <meta property="og:description" content="Technical Notes on how Kaketa works and what I learned while working on it." data-label-en="Technical Notes on how Kaketa works and what I learned while working on it." data-label-ja="Kaketaの仕組みと開発中に学んだことをまとめた技術ノート。" data-label-fil="Mga Technical Note tungkol sa kung paano gumagana ang Kaketa at kung ano ang natutunan ko habang ginagawa ito.">
+  <meta property="og:image" content="https://kaketa.jp/assets/kaketa-social.png?v=1">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Kaketa Technical Notes" data-label-en="Kaketa Technical Notes" data-label-ja="Kaketa技術ノート" data-label-fil="Mga Technical Note ng Kaketa">
+  <meta name="twitter:image" content="https://kaketa.jp/assets/kaketa-social.png?v=1">
+  <style>
+    .kaketa-icon { box-sizing: border-box; border: 1px solid #1a211e; border-radius: 12px; }
+    .kaketa-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
+    .kaketa-breadcrumbs a { color: #666; }
+    .kaketa-breadcrumb-separator { margin: 0 5pt; color: #999; }
+    .kaketa-section { padding: 6pt 0 5pt; }
+    .kaketa-section p { margin: 0; }
+    .kaketa-section ul { margin: 0; padding-left: 20pt; }
+    .kaketa-note-list li + li { margin-top: 8pt; }
+    .kaketa-note-meta { color: #555; font-size: 0.9em; }
+    .kaketa-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .kaketa-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    .footer-links a { white-space: nowrap; }
+    .language-switcher select { min-width: 92px; }
+  </style>
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher">
+      <select id="language-select" aria-label="Language">
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="fil">Tagalog</option>
+      </select>
+    </div>
+    <nav class="kaketa-breadcrumbs" aria-label="Breadcrumb"><a href="kaketa.html">Kaketa</a><span class="kaketa-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="Technical Notes" data-label-ja="技術ノート" data-label-fil="Mga Technical Note">Technical Notes</span></nav>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="kaketa.html"><img class="sasu-icon kaketa-icon" src="assets/kaketa-icon.png?v=1" alt="Kaketa app icon" data-alt-en="Kaketa app icon" data-alt-ja="Kaketaアプリアイコン" data-alt-fil="Icon ng Kaketa"></a>
+        <div><h1 data-label-en="Technical Notes" data-label-ja="技術ノート" data-label-fil="Mga Technical Note">Technical Notes</h1><div class="sasu-subtitle">Kaketa</div></div>
+      </div>
+    </section>
+    <section class="kaketa-section">
+      <p data-label-en="Notes on how Kaketa works and what I learned while working on it. The notes are in English and Japanese." data-label-ja="Kaketaの仕組みと、開発中に学んだことをまとめたノートです。英語と日本語で書いています。" data-label-fil="Mga tala tungkol sa kung paano gumagana ang Kaketa at kung ano ang natutunan ko habang ginagawa ito. Nasa Ingles at Hapon ang mga tala.">Notes on how Kaketa works and what I learned while working on it. The notes are in English and Japanese.</p>
+    </section>
+    <section class="kaketa-section">
+      <ul class="kaketa-note-list">
+        <li><a href="kaketa-technote-kn001.html" data-label-en="KN001: Checking Handwritten Kanji Stroke by Stroke, Without a Model" data-label-ja="KN001：モデルを使わずに手書きの漢字を一画ずつチェックする" data-label-fil="KN001: Pagsuri ng Sulat-Kamay na Kanji Bawat Stroke, Nang Walang Modelo">KN001: Checking Handwritten Kanji Stroke by Stroke, Without a Model</a><br><span class="kaketa-note-meta" data-label-en="October 10, 2026" data-label-ja="2026年10月10日" data-label-fil="Oktubre 10, 2026">October 10, 2026</span><br><span data-label-en="Why Kaketa replaced OpenAI and Apple’s Foundation Models with a deterministic stroke matcher built on KanjiVG and Hanzi Writer’s checks, how it works, and how they compare on my own attempts." data-label-ja="KaketaがOpenAIとAppleのFoundation Modelsをやめて、KanjiVGとHanzi Writerの判定に基づく決定論的なストローク照合に切り替えた理由、その仕組み、そして開発者自身の練習記録での比較。" data-label-fil="Kung bakit pinalitan ng Kaketa ang OpenAI at ang Foundation Models ng Apple ng isang deterministic na stroke matcher na nakabatay sa KanjiVG at sa mga pagsuri ng Hanzi Writer, kung paano ito gumagana, at kung paano naghahambing ang tatlo sa sarili kong mga pagsubok.">Why Kaketa replaced OpenAI and Apple’s Foundation Models with a deterministic stroke matcher built on KanjiVG and Hanzi Writer’s checks, how it works, and how they compare on my own attempts.</span></li>
+      </ul>
+    </section>
+    <footer class="kaketa-footer"><p class="footer-links"><a href="kaketa.html" data-label-en="Home" data-label-ja="ホーム" data-label-fil="Home">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="kaketa-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴" data-label-fil="Changelog">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="kaketa-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー" data-label-fil="Privacy">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="kaketa-support.html" data-label-en="Support" data-label-ja="サポート" data-label-fil="Suporta">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="kaketa-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート" data-label-fil="Tech Notes">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="kaketa-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞" data-label-fil="Pasasalamat">Acknowledgements</a></p><p><span data-label-en="Designed by" data-label-ja="デザイン：" data-label-fil="Dinisenyo ni">Designed by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja="（東京）" data-label-fil=" sa Tokyo"> in Tokyo</span></p></footer>
+  </main>
+  <script src="kaketa-language.js?v=2"></script>
+</body>
+</html>

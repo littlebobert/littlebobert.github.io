@@ -27,6 +27,8 @@ const pages = [
   ['kaketa-support.html', ['support.html', 'support/index.html']],
   ['kaketa-changelog.html', ['changelog.html', 'changelog/index.html']],
   ['kaketa-acknowledgements.html', ['acknowledgements.html', 'acknowledgements/index.html']],
+  ['kaketa-technotes.html', ['technotes.html', 'technotes/index.html']],
+  ['kaketa-technote-kn001.html', ['technotes/kn001.html', 'technotes/kn001/index.html']],
 ];
 
 export function createDeployedPage(source) {
@@ -40,7 +42,9 @@ export function createDeployedPage(source) {
     .replaceAll('href="kaketa-privacy.html"', 'href="/privacy"')
     .replaceAll('href="kaketa-support.html"', 'href="/support"')
     .replaceAll('href="kaketa-changelog.html"', 'href="/changelog"')
-    .replaceAll('href="kaketa-acknowledgements.html"', 'href="/acknowledgements"');
+    .replaceAll('href="kaketa-acknowledgements.html"', 'href="/acknowledgements"')
+    .replaceAll('href="kaketa-technotes.html"', 'href="/technotes"')
+    .replaceAll('href="kaketa-technote-kn001.html"', 'href="/technotes/kn001"');
 }
 
 await rm(outputDirectory, { force: true, recursive: true });

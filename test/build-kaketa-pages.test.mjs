@@ -49,6 +49,7 @@ test('copies the shared files and assets', async () => {
   await readOutputFile('kaketa-language.js');
   await readOutputFile('_headers');
   await readFile(path.join(outputDirectory, 'assets/kaketa-icon.png'));
+  await readFile(path.join(outputDirectory, 'assets/kaketa-social.png'));
   for (const language of ['en', 'ja', 'fil']) {
     await readFile(path.join(outputDirectory, `assets/kaketa-landing-shot-${language}.webp`));
   }

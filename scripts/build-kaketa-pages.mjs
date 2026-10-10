@@ -13,6 +13,7 @@ const siteFiles = ['_headers', 'sasu-common.css', 'kaketa-language.js'];
 const assetFiles = [
   'kaketa-favicon.png',
   'kaketa-icon.png',
+  'kaketa-social.png',
   'kaketa-apple-touch-icon.png',
   'kaketa-landing-shot-en.webp',
   'kaketa-landing-shot-ja.webp',

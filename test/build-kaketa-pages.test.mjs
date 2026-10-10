@@ -81,3 +81,14 @@ test('the icon opens the QR page, whose seal turns into a tested code', async ()
   assert.match(qrPage, /src="\/kaketa-language\.js\?v=\d+"/);
   await readFile(path.join(outputDirectory, 'assets/kaketa-qr-seal.json'));
 });
+
+test('the footer seal opens a page with the bigger copy', async () => {
+  const homePage = await readOutputFile('index.html');
+  assert.match(homePage, /<a href="\/seal" class="kaketa-seal-trigger"/);
+  assert.match(homePage, /<img class="kaketa-maker-photo" src="\/assets\/karui-developer\.jpg\?v=\d+"/);
+  const sealPage = await readOutputFile('seal/index.html');
+  assert.match(sealPage, /<link rel="canonical" href="https:\/\/kaketa\.jp\/seal">/);
+  assert.match(sealPage, /<img src="\/assets\/karui-seal-large\.png\?v=\d+"/);
+  assert.match(sealPage, /<a class="kaketa-hanko-close" href="\/"/);
+  await readFile(path.join(outputDirectory, 'assets/karui-seal.png'));
+});

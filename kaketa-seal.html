@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Kaketa: ガルシア</title>
+  <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link rel="icon" href="assets/kaketa-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/kaketa-apple-touch-icon.png?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://kaketa.jp/seal">
+  <meta name="description" content="Justin Garcia’s name seal, ガルシア, from the footer of Kaketa’s home page." data-label-en="Justin Garcia’s name seal, ガルシア, from the footer of Kaketa’s home page." data-label-ja="Kaketaのホームページのフッターにある、ガルシアの名前の判子。" data-label-fil="Ang name seal ni Justin Garcia, ガルシア, mula sa footer ng home page ng Kaketa.">
+  <style>
+    body.sasu-site { background: #fff; }
+    /* The name seal from the home page's footer, on its own page, rather
+       than an overlay there, which Safari sometimes let the home page show through. */
+    .sasu-page { min-height: 100svh; box-sizing: border-box; display: flex; flex-direction: column; }
+    .kaketa-hanko { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8pt; padding-bottom: 8vh; text-align: center; }
+    .kaketa-hanko img { width: 96px; height: auto; margin-bottom: 4pt; }
+    .kaketa-hanko-title { font-size: 14pt; font-weight: bold; }
+    .language-switcher select { min-width: 92px; }
+    .kaketa-hanko-note { max-width: 28em; margin: 0; line-height: 1.65em; color: black; text-wrap: pretty; }
+  </style>
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher">
+      <select id="language-select" aria-label="Language">
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="fil">Tagalog</option>
+      </select>
+    </div>
+    <section class="kaketa-hanko">
+      <img src="assets/karui-seal-large.png?v=3" alt="Name seal reading ガルシア (Garcia)" data-alt-en="Name seal reading ガルシア (Garcia)" data-alt-ja="「ガルシア」と入った名前の判子" data-alt-fil="Name seal na nagbabasang ガルシア (Garcia)" width="96" height="204">
+      <div class="kaketa-hanko-title" data-label-en="My hanko" data-label-ja="私の判子" data-label-fil="Ang hanko ko">My hanko</div>
+      <p class="kaketa-hanko-note" data-label-en="In Japan, people use a personal seal like this to sign important documents. This one reads ガ⁠ル⁠シ⁠ア, “Garcia” in katakana, the script Japanese uses for foreign words and names." data-label-ja="「ガルシア」と入った名前の判子です。" data-label-fil="Sa Japan, gumagamit ang mga tao ng personal na seal na tulad nito para pumirma sa mga mahahalagang dokumento. Ang nakasulat dito ay ガ⁠ル⁠シ⁠ア, “Garcia” sa katakana, ang panulat na ginagamit ng Hapon para sa mga banyagang salita at pangalan.">In Japan, people use a personal seal like this to sign important documents. This one reads ガ⁠ル⁠シ⁠ア, “Garcia” in katakana, the script Japanese uses for foreign words and names.</p>
+      <a class="kaketa-hanko-close" href="kaketa.html" data-label-en="Close" data-label-ja="閉じる" data-label-fil="Isara">Close</a>
+    </section>
+  </main>
+  <script>
+    // Coming from the home page, Close goes back to it, where it was left, rather than
+    // loading it again.
+    document.querySelector('.kaketa-hanko-close').addEventListener('click', (event) => {
+      let fromHome = false;
+      try { fromHome = new URL(document.referrer).origin === location.origin; } catch {}
+      if (!fromHome || history.length < 2) return;
+      event.preventDefault();
+      history.back();
+    });
+  </script>
+  <script src="kaketa-language.js?v=2"></script>
+</body>
+</html>

@@ -21,6 +21,10 @@ const assetFiles = [
   'kaketa-qr-seal.png',
   'kaketa-qr-seal-name.png',
   'kaketa-qr-seal.json',
+  // The maker's photo and name seal, shared with Karui's page.
+  'karui-developer.jpg',
+  'karui-seal.png',
+  'karui-seal-large.png',
 ];
 
 // Source page → the routes it is served at.
@@ -33,6 +37,7 @@ const pages = [
   ['kaketa-technotes.html', ['technotes.html', 'technotes/index.html']],
   ['kaketa-technote-kn001.html', ['technotes/kn001.html', 'technotes/kn001/index.html']],
   ['kaketa-qr.html', ['qr.html', 'qr/index.html']],
+  ['kaketa-seal.html', ['seal.html', 'seal/index.html']],
 ];
 
 export function createDeployedPage(source) {
@@ -49,7 +54,8 @@ export function createDeployedPage(source) {
     .replaceAll('href="kaketa-acknowledgements.html"', 'href="/acknowledgements"')
     .replaceAll('href="kaketa-technotes.html"', 'href="/technotes"')
     .replaceAll('href="kaketa-technote-kn001.html"', 'href="/technotes/kn001"')
-    .replaceAll('href="kaketa-qr.html"', 'href="/qr"');
+    .replaceAll('href="kaketa-qr.html"', 'href="/qr"')
+    .replaceAll('href="kaketa-seal.html"', 'href="/seal"');
 }
 
 await rm(outputDirectory, { force: true, recursive: true });

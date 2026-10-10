@@ -42,6 +42,15 @@
     .kaketa-footer p { margin: 4pt 0; }
     .footer-links .footer-separator { margin: 0 6pt; color: #777; }
     .footer-links a { white-space: nowrap; }
+    /* The maker's photo and name seal above the credit, as on Karui's page; the seal
+       opens a page with a bigger copy. The photo and seal files are shared with Karui. */
+    .kaketa-maker { display: flex; flex-direction: column-reverse; align-items: center; gap: 6pt; margin-top: 10pt !important; }
+    .kaketa-maker-marks { display: flex; align-items: center; justify-content: center; gap: 6pt; }
+    .kaketa-maker-photo { width: 40px; height: 51px; border-radius: 5px; object-fit: cover; flex: none; }
+    .kaketa-maker-text { text-align: center; line-height: 1.65em; }
+    .kaketa-maker-seal { width: 24px; height: 51px; flex: none; }
+    .kaketa-seal-trigger, .kaketa-maker-photo-link { display: flex; flex: none; cursor: pointer; }
+    .kaketa-seal-trigger { margin-left: -2pt; }
     .language-switcher select { min-width: 92px; }
   </style>
 </head>
@@ -102,7 +111,7 @@
 
     <footer class="kaketa-footer">
       <p class="footer-links"><a href="kaketa-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴" data-label-fil="Changelog">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="kaketa-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー" data-label-fil="Privacy">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="kaketa-support.html" data-label-en="Support" data-label-ja="サポート" data-label-fil="Suporta">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="kaketa-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート" data-label-fil="Tech Notes">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="kaketa-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞" data-label-fil="Pasasalamat">Acknowledgements</a></p>
-      <p><span data-label-en="Designed by" data-label-ja="デザイン：" data-label-fil="Dinisenyo ni">Designed by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja="（東京）" data-label-fil=" sa Tokyo"> in Tokyo</span></p>
+      <p class="kaketa-maker"><span class="kaketa-maker-marks"><a href="https://onemorething.tokyo" class="kaketa-maker-photo-link" aria-label="Justin Garcia’s website"><img class="kaketa-maker-photo" src="assets/karui-developer.jpg?v=3" alt="" width="40" height="51"></a><a href="kaketa-seal.html" class="kaketa-seal-trigger" aria-label="About the name seal" data-aria-label-en="About the name seal" data-aria-label-ja="名前の判子について" data-aria-label-fil="Tungkol sa name seal"><img class="kaketa-maker-seal" src="assets/karui-seal.png?v=8" alt="" width="24" height="51"></a></span><span class="kaketa-maker-text"><span data-label-en="Designed by " data-label-ja="東京の個人開発者 " data-label-fil="Dinisenyo ni ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作" data-label-fil=" sa Tokyo"> in Tokyo</span></span></p>
     </footer>
   </main>
   <script src="kaketa-language.js?v=2"></script>

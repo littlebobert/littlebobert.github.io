@@ -14,6 +14,7 @@ const assetFiles = [
   'kaketa-favicon.png',
   'kaketa-icon.png',
   'kaketa-apple-touch-icon.png',
+  'kaketa-landing-shot.webp',
 ];
 
 // Source page → the routes it is served at.

@@ -28,22 +28,8 @@
     .kaketa-section li + li { margin-top: 3pt; }
     .kaketa-demo-label { margin: 0 0 6pt; text-align: center; font-size: 9pt; font-weight: bold; color: #555; }
     /* The practice card, drawn in HTML so it stays crisp in every language. */
-    .kaketa-card { max-width: 380px; margin: 0 auto; padding: 14px 16px 16px; border: 1px solid rgba(0,0,0,0.08); border-radius: 18px; background: #fffdf8; box-shadow: 0 10px 28px rgba(0,0,0,0.08); font-family: -apple-system, BlinkMacSystemFont, 'Hiragino Sans', 'Helvetica Neue', sans-serif; color: #1c1c1f; }
-    .kaketa-card-kicker { font-size: 10px; font-weight: 600; letter-spacing: 0.06em; text-transform: uppercase; color: #6b6b66; }
-    .kaketa-card-reading { margin: 6px 0 2px; font-family: 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-size: 30px; line-height: 1.2; }
-    .kaketa-card-gloss { font-size: 13px; color: #6b6b66; }
-    .kaketa-grid { display: flex; justify-content: center; gap: 0; margin: 14px 0 12px; }
-    .kaketa-cell { position: relative; width: 108px; height: 108px; border: 1.5px solid #ccc7bd; background: #fffdf8; }
-    .kaketa-cell + .kaketa-cell { border-left: 0; }
-    .kaketa-cell::before, .kaketa-cell::after { content: ''; position: absolute; border: 0 dashed #ddd8ce; }
-    .kaketa-cell::before { left: 50%; top: 0; bottom: 0; border-left-width: 1px; }
-    .kaketa-cell::after { top: 50%; left: 0; right: 0; border-top-width: 1px; }
-    .kaketa-cell span { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font-family: 'Klee', 'Hiragino Mincho ProN', 'Yu Mincho', serif; font-size: 72px; line-height: 1; color: #1c1c1f; }
-    .kaketa-card-buttons { display: flex; gap: 10px; }
-    .kaketa-card-button { flex: 1; padding: 10px 0; border-radius: 999px; text-align: center; font-size: 13px; font-weight: 600; color: #fff; }
-    .kaketa-card-button.is-not-yet { background: #c7422b; }
-    .kaketa-card-button.is-got-it { background: #386b4d; }
-    .kaketa-card-known { margin-top: 10px; text-align: center; font-size: 12px; color: #6b6b66; }
+    /* The screenshot in its shell, made by Kaketa’s Scripts/make-landing-shot.sh. */
+    .kaketa-shot { display: block; width: 100%; max-width: 300px; height: auto; margin: 0 auto; }
     .kaketa-caption { margin: 8pt 0 0; text-align: center; color: #555; font-size: 9pt; }
     .kaketa-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
     .kaketa-footer p { margin: 4pt 0; }
@@ -77,21 +63,8 @@
     </section>
 
     <section class="sasu-section">
-      <p class="kaketa-demo-label" data-label-en="A practice card" data-label-ja="練習カード" data-label-fil="Isang card ng pagsasanay">A practice card</p>
-      <div class="kaketa-card" role="img" aria-label="A Kaketa practice card: the reading がっこう with the meaning school, two squares where 学校 has been written by hand, Not Yet and Got It buttons, and an I have already mastered this word button" data-aria-label-en="A Kaketa practice card: the reading がっこう with the meaning school, two squares where 学校 has been written by hand, Not Yet and Got It buttons, and an I have already mastered this word button" data-aria-label-ja="Kaketaの練習カード：読み「がっこう」と意味「school」、手書きで「学校」と書かれた2つのマス、「まだ」と「書けた」のボタン" data-aria-label-fil="Card ng Kaketa: ang pagbasang がっこう na may kahulugang school, dalawang kuwadrado na may sulat-kamay na 学校, at mga button na Hindi pa at Nakuha ko">
-        <div class="kaketa-card-kicker" data-label-en="Reading" data-label-ja="読み" data-label-fil="Pagbasa">Reading</div>
-        <div class="kaketa-card-reading">がっこう</div>
-        <div class="kaketa-card-gloss" data-label-en="school" data-label-ja="学ぶところ。小学校、中学校など" data-label-fil="paaralan">school</div>
-        <div class="kaketa-grid" aria-hidden="true">
-          <div class="kaketa-cell"><span>学</span></div>
-          <div class="kaketa-cell"><span>校</span></div>
-        </div>
-        <div class="kaketa-card-buttons" aria-hidden="true">
-          <div class="kaketa-card-button is-not-yet" data-label-en="Not Yet" data-label-ja="まだ" data-label-fil="Hindi pa">Not Yet</div>
-          <div class="kaketa-card-button is-got-it" data-label-en="Got It" data-label-ja="書けた" data-label-fil="Nakuha ko">Got It</div>
-        </div>
-        <div class="kaketa-card-known" aria-hidden="true" data-label-en="✓ I have already mastered this word" data-label-ja="✓ この単語はもう習得済み" data-label-fil="✓ Nasanay ko na ang salitang ito">✓ I have already mastered this word</div>
-      </div>
+      <p class="kaketa-demo-label" data-label-en="After a handwriting check" data-label-ja="手書きチェックのあと" data-label-fil="Pagkatapos ng pagsuri ng sulat-kamay">After a handwriting check</p>
+      <img class="kaketa-shot" src="assets/kaketa-landing-shot.webp?v=1" width="900" height="1837" alt="Kaketa on an iPhone after a handwriting check: the reading にほん with the meaning Japan, 日本 written by hand over the correct strokes in red, a Looks right verdict, and Not Yet and Got It buttons." data-alt-en="Kaketa on an iPhone after a handwriting check: the reading にほん with the meaning Japan, 日本 written by hand over the correct strokes in red, a Looks right verdict, and Not Yet and Got It buttons." data-alt-ja="手書きチェック後のiPhoneのKaketa：読み「にほん」と意味「Japan」、赤い正しい筆画の上に手書きした「日本」、「合っています」の判定、「まだ」と「書けた」のボタン。" data-alt-fil="Kaketa sa iPhone pagkatapos ng pagsuri ng sulat-kamay: ang pagbasang にほん na may kahulugang Japan, ang 日本 na isinulat-kamay sa ibabaw ng tamang mga stroke na pula, ang hatol na Mukhang tama, at mga button na Hindi pa at Nakuha ko.">
       <p class="kaketa-caption" data-label-en="Mark words you already know. The rest resurface when you’re about to forget them." data-label-ja="もう知っている言葉はマークするだけ。残りは忘れかけた頃にまた出てきます。" data-label-fil="Markahan ang mga salitang alam mo na. Ang iba ay babalik kapag malapit mo nang makalimutan.">Mark words you already know. The rest resurface when you’re about to forget them.</p>
     </section>
 

@@ -1,8 +1,40 @@
 {
-  "updatedAt": "2026-10-09T20:08:24.862Z",
+  "updatedAt": "2026-10-10T19:19:37.007Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2108990972814393427",
+      "text": "my free iPhone app for silencing spam notifications and viewing messages people unsend has been updated. there’s a snooze button, and an optional Live Activity to quickly see the number of new important notifications.\n\nhttps://t.co/XvhuIJPcHX https://t.co/F1Yk16lkWz",
+      "createdAt": "2026-10-10T18:40:05.000Z",
+      "url": "https://x.com/_bobertdowney/status/2108990972814393427",
+      "urls": [
+        {
+          "url": "https://t.co/XvhuIJPcHX",
+          "expandedUrl": "https://karui.jp",
+          "displayUrl": "karui.jp",
+          "start": 219,
+          "end": 242
+        },
+        {
+          "url": "https://t.co/F1Yk16lkWz",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2108990972814393427/photo/1",
+          "displayUrl": "pic.x.com/F1Yk16lkWz",
+          "start": 243,
+          "end": 266
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2108990972814393427-0.png"
+        }
+      ]
+    },
     {
       "id": "2106473493248512377",
       "text": "my free app for fighting spam iPhone notifications and viewing messages people unsend has been updated.\n\nit’s now a lot easier to set up, and will learn and improve its filtering based on your manual corrections.\n\nhttps://t.co/XvhuIJPcHX",
@@ -194,38 +226,6 @@
           "alt": "",
           "type": "photo",
           "image": "assets/generated/x/mine-post-2104500151910023355-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2104126960146448534",
-      "text": "not a-Muse-d: I made a Safari extension for Mac that hides the memes you're tired of seeing, look-alikes too, even in video previews. everything runs on your Mac. https://t.co/24shCxZG6m https://t.co/gHkqeMwm65",
-      "createdAt": "2026-09-27T08:32:14.000Z",
-      "url": "https://x.com/_bobertdowney/status/2104126960146448534",
-      "urls": [
-        {
-          "url": "https://t.co/24shCxZG6m",
-          "expandedUrl": "https://shadan.jp",
-          "displayUrl": "shadan.jp",
-          "start": 163,
-          "end": 186
-        },
-        {
-          "url": "https://t.co/gHkqeMwm65",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2104126960146448534/video/1",
-          "displayUrl": "pic.x.com/gHkqeMwm65",
-          "start": 187,
-          "end": 210
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2104126960146448534-0.png"
         }
       ]
     }

@@ -14,7 +14,9 @@ const assetFiles = [
   'kaketa-favicon.png',
   'kaketa-icon.png',
   'kaketa-apple-touch-icon.png',
-  'kaketa-landing-shot.webp',
+  'kaketa-landing-shot-en.webp',
+  'kaketa-landing-shot-ja.webp',
+  'kaketa-landing-shot-fil.webp',
 ];
 
 // Source page → the routes it is served at.
@@ -32,6 +34,7 @@ export function createDeployedPage(source) {
     .replaceAll('src="kaketa-language.js', 'src="/kaketa-language.js')
     .replaceAll('href="assets/', 'href="/assets/')
     .replaceAll('src="assets/', 'src="/assets/')
+    .replace(/(data-src-\w+)="assets\//g, '$1="/assets/')
     .replaceAll('href="kaketa.html"', 'href="/"')
     .replaceAll('href="kaketa-privacy.html"', 'href="/privacy"')
     .replaceAll('href="kaketa-support.html"', 'href="/support"')

@@ -1,7 +1,7 @@
 // Kaketa's pages come in English, Japanese, and Tagalog: every translatable element
 // carries data-label-en, data-label-ja, and data-label-fil (and data-alt-*,
-// data-aria-label-* for images and controls). The select at the top switches them,
-// and the choice is remembered.
+// data-aria-label-* for images and controls, and data-src-* for an image that comes
+// in each language). The select at the top switches them, and the choice is remembered.
 (() => {
   const supported = ['en', 'ja', 'fil'];
   const select = document.getElementById('language-select');
@@ -25,6 +25,9 @@
     });
     document.querySelectorAll('[data-alt-en]').forEach((element) => {
       element.alt = element.dataset['alt' + selected.charAt(0).toUpperCase() + selected.slice(1)] ?? element.dataset.altEn;
+    });
+    document.querySelectorAll('[data-src-en]').forEach((element) => {
+      element.src = element.dataset['src' + selected.charAt(0).toUpperCase() + selected.slice(1)] ?? element.dataset.srcEn;
     });
     document.querySelectorAll('[data-aria-label-en]').forEach((element) => {
       element.setAttribute('aria-label', element.dataset['ariaLabel' + selected.charAt(0).toUpperCase() + selected.slice(1)] ?? element.dataset.ariaLabelEn);

@@ -55,6 +55,8 @@ await Promise.all(
 await Promise.all(
   assetFiles.map((file) => cp(path.join(rootDirectory, 'assets', file), path.join(assetsDirectory, file))),
 );
+// Served at kaketa.jp/llms.txt for AI agents; the portfolio has its own llms.txt.
+await cp(path.join(rootDirectory, 'kaketa-llms.txt'), path.join(outputDirectory, 'llms.txt'));
 await Promise.all(
   pages.map(async ([source, outputs]) => {
     const page = createDeployedPage(await readFile(path.join(rootDirectory, source), 'utf8'));

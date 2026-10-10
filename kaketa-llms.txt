@@ -1,0 +1,40 @@
+# Kaketa
+
+> Kaketa (書けた, "I could write it") is an iPhone and iPad app for practicing handwritten Japanese words with kanji. You see a word's reading, write it in squares with Apple Pencil or a finger, show the answer with every character's stroke order, and mark it: got it, not yet, or already mastered. A built-in check compares each stroke you drew with the standard one, on the device.
+
+## Features
+
+- Words from the Japanese school grades, with kanji, readings, and meanings in English, Japanese, or Tagalog; add your own words too.
+- The prompt can be the reading, the meaning, or an example sentence with the word blanked out.
+- A stroke guide while writing: full, partial (one stroke when you ask), or none.
+- A handwriting check when the answer is shown: each stroke is compared with the standard stroke order, with a line per character and marks on strokes that are missing or drawn backwards. Its strictness is adjustable: Strict, Standard, or Loose.
+- Spaced repetition: missed words come back the next day; mastered words leave the queue. Whole sections or groups can be marked as mastered.
+- Press a kanji tile to see its stroke order, meaning, readings, and how its words are going.
+- Progress syncs between iPhone and iPad through iCloud.
+
+## How the check works
+
+Each stroke is assigned to the closest standard stroke (from KanjiVG) and judged on distance, start and end points, direction, shape, and length, the checks Hanzi Writer uses. A stroke drawn in the wrong direction counts as a slip, not a fault. Everything runs on the device in milliseconds; no model and no network are involved.
+
+## Privacy
+
+Kaketa has no account and no analytics. Progress and added words stay on the device and in the user's own iCloud. The handwriting check runs on the device. Nothing leaves the device.
+
+## Technical details
+
+- [Technical Note KN001: Grading Handwritten Kanji, Without an AI Model](https://kaketa.jp/technotes/kn001): why a vision model was replaced by a deterministic stroke matcher, how it works, and how the two compare.
+
+## Requirements
+
+- Requires an iPhone or iPad running iOS or iPadOS 26 or later. Apple Pencil is optional.
+
+## Pages
+
+- [Kaketa](https://kaketa.jp/): Overview and screenshots.
+- [Changelog](https://kaketa.jp/changelog): Release notes for each build.
+- [Support](https://kaketa.jp/support): Quick start, settings, and sync.
+- [Privacy](https://kaketa.jp/privacy): Privacy policy.
+- [Tech Notes](https://kaketa.jp/technotes): Technical notes on how Kaketa works.
+- [Acknowledgements](https://kaketa.jp/acknowledgements): Data sources and thanks.
+
+Kaketa is made by [Justin Garcia](https://onemorething.tokyo/) in Japan. Pages contain complete English content in static HTML, with Japanese and Tagalog available through each page's language control.

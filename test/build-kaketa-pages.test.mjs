@@ -59,3 +59,14 @@ test('copies the shared files and assets', async () => {
     await readFile(path.join(outputDirectory, `assets/kaketa-landing-shot-${language}.webp`));
   }
 });
+
+test('publishes llms.txt with links to pages that exist', async () => {
+  const llms = await readOutputFile('llms.txt');
+  assert.match(llms, /^# Kaketa\n\n> /);
+  const routes = [...llms.matchAll(/\]\(https:\/\/kaketa\.jp\/([a-z0-9/]*)\)/g)].map((match) => match[1]);
+  assert.ok(routes.length >= 6);
+  for (const route of routes) {
+    await readOutputFile(route === '' ? 'index.html' : `${route}/index.html`);
+  }
+  assert.match(await readOutputFile('_headers'), /\/llms\.txt\n\s+Content-Type: text\/plain; charset=utf-8/);
+});

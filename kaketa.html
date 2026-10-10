@@ -8,12 +8,12 @@
   <link rel="apple-touch-icon" href="assets/kaketa-apple-touch-icon.png?v=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://kaketa.jp/">
-  <meta name="description" content="An iPhone and iPad app for practicing handwriting Japanese words with kanji. Skip the words you already know and spend your time on the ones you can’t write yet." data-label-en="An iPhone and iPad app for practicing handwriting Japanese words with kanji. Skip the words you already know and spend your time on the ones you can’t write yet." data-label-ja="漢字を含む日本語の単語を手で書く練習をするiPhone・iPadアプリ。もう知っている言葉は飛ばして、まだ書けない言葉に時間を使えます。" data-label-fil="App para sa iPhone at iPad para magsanay ng pagsusulat-kamay ng mga salitang Hapon na may kanji. Laktawan ang mga salitang alam mo na at gugulin ang oras mo sa mga hindi mo pa maisulat.">
+  <meta name="description" content="An iPhone and iPad app for practicing handwriting Japanese words with kanji." data-label-en="An iPhone and iPad app for practicing handwriting Japanese words with kanji." data-label-ja="漢字を含む日本語の単語を手で書く練習をするiPhone・iPadアプリ。" data-label-fil="App para sa iPhone at iPad para magsanay ng pagsusulat-kamay ng mga salitang Hapon na may kanji.">
   <meta property="og:title" content="Kaketa: Write Japanese words by hand. Skip the ones you know." data-label-en="Kaketa: Write Japanese words by hand. Skip the ones you know." data-label-ja="Kaketa：日本語の単語を手で書く練習。知っている言葉は飛ばせる。" data-label-fil="Kaketa: Isulat ang mga salitang Hapon sa kamay. Laktawan ang alam mo na.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://kaketa.jp/">
   <meta property="og:site_name" content="Kaketa">
-  <meta property="og:description" content="An iPhone and iPad app for practicing handwriting Japanese words with kanji. Skip the words you already know and spend your time on the ones you can’t write yet." data-label-en="An iPhone and iPad app for practicing handwriting Japanese words with kanji. Skip the words you already know and spend your time on the ones you can’t write yet." data-label-ja="漢字を含む日本語の単語を手で書く練習をするiPhone・iPadアプリ。もう知っている言葉は飛ばして、まだ書けない言葉に時間を使えます。" data-label-fil="App para sa iPhone at iPad para magsanay ng pagsusulat-kamay ng mga salitang Hapon na may kanji. Laktawan ang mga salitang alam mo na at gugulin ang oras mo sa mga hindi mo pa maisulat.">
+  <meta property="og:description" content="An iPhone and iPad app for practicing handwriting Japanese words with kanji." data-label-en="An iPhone and iPad app for practicing handwriting Japanese words with kanji." data-label-ja="漢字を含む日本語の単語を手で書く練習をするiPhone・iPadアプリ。" data-label-fil="App para sa iPhone at iPad para magsanay ng pagsusulat-kamay ng mga salitang Hapon na may kanji.">
   <meta property="og:image" content="https://kaketa.jp/assets/kaketa-social.png?v=1">
   <meta property="og:image:secure_url" content="https://kaketa.jp/assets/kaketa-social.png?v=1">
   <meta property="og:image:type" content="image/png">
@@ -28,6 +28,18 @@
     .kaketa-icon { box-sizing: border-box; border: 1px solid #1a211e; border-radius: 12px; }
     .kaketa-qr-trigger { display: flex; flex: none; cursor: pointer; }
     .hero-proposition { margin: 8pt 0 10pt; font-size: 11pt; }
+    /* The 書いて覚える seal floats at the top right, under the language switcher, so the
+       tagline in any language wraps before it rather than running under it. The first
+       time the page loads it inks in from a thin line to full weight; after that it's
+       just there. Tapping it opens it large at /hanko. Karui's treatment. */
+    .sasu-hero { display: flow-root; }
+    .kaketa-hero-seal { float: right; position: relative; display: block; width: 26px; height: 112px; margin: 2pt 0 4pt 14px; cursor: pointer; }
+    /* Laid out 4× larger and scaled back down, so the ink-in's thinning filter works in
+       quarter-pixel steps; a white margin gives it paper on every side of the border. */
+    .kaketa-hero-seal img { position: absolute; top: -3px; left: -3px; box-sizing: content-box; width: 400%; height: 400%; padding: 12px; background: #fff; transform: scale(0.25); transform-origin: 0 0; }
+    @media (max-width: 560px) {
+      .kaketa-hero-seal { width: 19px; height: 82px; margin-left: 10px; }
+    }
     .small-note { padding-top: 6pt; color: #555; font-size: 9pt; }
     .kaketa-section { padding: 6pt 0 5pt; }
     .kaketa-section p { margin: 0; }
@@ -66,6 +78,21 @@
     </div>
 
     <section class="sasu-hero">
+      <a href="kaketa-hanko.html" class="kaketa-hero-seal" aria-label="About the 書いて覚える seal" data-aria-label-en="About the 書いて覚える seal" data-aria-label-ja="「書いて覚える」の判子について" data-aria-label-fil="Tungkol sa seal na 書いて覚える"><img src="assets/kaketa-seal-tagline.png?v=1" alt="" width="26" height="112"></a>
+      <script src="karui-seal-ink.js?v=1"></script>
+      <script>
+        // The seal inks in the first time the page loads (add ?stamp to the address to
+        // see it again). This runs before the first paint so it never flashes in place.
+        (() => {
+          let stamped = false;
+          try { stamped = localStorage.getItem('kaketa-hero-stamped') === '1'; } catch {}
+          if (new URLSearchParams(location.search).has('stamp')) stamped = false;
+          if (stamped) return;
+          try { localStorage.setItem('kaketa-hero-stamped', '1'); } catch {}
+          const seal = document.currentScript.previousElementSibling.previousElementSibling;
+          karuiInkIn(seal.querySelector('img'), 100);
+        })();
+      </script>
       <div class="sasu-hero-header">
         <a href="kaketa-qr.html" class="kaketa-qr-trigger" aria-label="Show a QR code for kaketa.jp" data-aria-label-en="Show a QR code for kaketa.jp" data-aria-label-ja="kaketa.jpのQRコードを表示" data-aria-label-fil="Ipakita ang QR code para sa kaketa.jp"><img class="sasu-icon kaketa-icon" src="assets/kaketa-icon.png?v=1" alt="Kaketa app icon: the character 書 in a practice square" data-alt-en="Kaketa app icon: the character 書 in a practice square" data-alt-ja="Kaketaアプリアイコン：練習マスの中の「書」" data-alt-fil="Icon ng Kaketa: ang karakter na 書 sa isang kuwadrado"></a>
         <div>

@@ -8,7 +8,8 @@ const rootDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)),
 const outputDirectory = path.join(rootDirectory, 'dist-kaketa');
 const assetsDirectory = path.join(outputDirectory, 'assets');
 
-const siteFiles = ['_headers', 'sasu-common.css', 'kaketa-language.js'];
+// karui-seal-ink.js inks the seals in; it's Karui's, shared.
+const siteFiles = ['_headers', 'sasu-common.css', 'kaketa-language.js', 'karui-seal-ink.js'];
 
 const assetFiles = [
   'kaketa-favicon.png',
@@ -25,6 +26,8 @@ const assetFiles = [
   'karui-developer.jpg',
   'karui-seal.png',
   'karui-seal-large.png',
+  'kaketa-seal-tagline.png',
+  'kaketa-seal-tagline-large.png',
 ];
 
 // Source page → the routes it is served at.
@@ -38,6 +41,7 @@ const pages = [
   ['kaketa-technote-kn001.html', ['technotes/kn001.html', 'technotes/kn001/index.html']],
   ['kaketa-qr.html', ['qr.html', 'qr/index.html']],
   ['kaketa-seal.html', ['seal.html', 'seal/index.html']],
+  ['kaketa-hanko.html', ['hanko.html', 'hanko/index.html']],
 ];
 
 export function createDeployedPage(source) {
@@ -55,7 +59,9 @@ export function createDeployedPage(source) {
     .replaceAll('href="kaketa-technotes.html"', 'href="/technotes"')
     .replaceAll('href="kaketa-technote-kn001.html"', 'href="/technotes/kn001"')
     .replaceAll('href="kaketa-qr.html"', 'href="/qr"')
-    .replaceAll('href="kaketa-seal.html"', 'href="/seal"');
+    .replaceAll('href="kaketa-seal.html"', 'href="/seal"')
+    .replaceAll('href="kaketa-hanko.html"', 'href="/hanko"')
+    .replaceAll('src="karui-seal-ink.js', 'src="/karui-seal-ink.js');
 }
 
 await rm(outputDirectory, { force: true, recursive: true });

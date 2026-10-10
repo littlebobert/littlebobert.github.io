@@ -92,3 +92,15 @@ test('the footer seal opens a page with the bigger copy', async () => {
   assert.match(sealPage, /<a class="kaketa-hanko-close" href="\/"/);
   await readFile(path.join(outputDirectory, 'assets/karui-seal.png'));
 });
+
+test('the hero seal inks in and opens the tagline page', async () => {
+  const homePage = await readOutputFile('index.html');
+  assert.match(homePage, /<a href="\/hanko" class="kaketa-hero-seal"/);
+  assert.match(homePage, /<script src="\/karui-seal-ink\.js\?v=\d+"><\/script>/);
+  assert.doesNotMatch(homePage, /Skip the words you already know and spend your time/);
+  const hankoPage = await readOutputFile('hanko/index.html');
+  assert.match(hankoPage, /<link rel="canonical" href="https:\/\/kaketa\.jp\/hanko">/);
+  assert.match(hankoPage, /<img src="\/assets\/kaketa-seal-tagline-large\.png\?v=\d+"/);
+  assert.match(hankoPage, /<a class="kaketa-hanko-close" href="\/"/);
+  await readOutputFile('karui-seal-ink.js');
+});

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Kaketa: 書いて覚える</title>
+  <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link rel="icon" href="assets/kaketa-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/kaketa-apple-touch-icon.png?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://kaketa.jp/hanko">
+  <meta name="description" content="The 書いて覚える seal on Kaketa’s home page: “write it to remember it,” in the style of a Japanese hanko." data-label-en="The 書いて覚える seal on Kaketa’s home page: “write it to remember it,” in the style of a Japanese hanko." data-label-ja="Kaketaのホームページにある「書いて覚える」の判子。" data-label-fil="Ang seal na 書いて覚える sa home page ng Kaketa: “isulat para matandaan,” sa estilo ng hanko ng Hapon.">
+  <style>
+    body.sasu-site { background: #fff; }
+    /* The seal on its own page, centered like the #seal view on the home page. A
+       separate page rather than an overlay there, so nothing of the home page can show
+       through while the seal inks in. */
+    .sasu-page { min-height: 100svh; box-sizing: border-box; display: flex; flex-direction: column; }
+    .kaketa-hanko { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8pt; padding-bottom: 8vh; text-align: center; }
+    /* White behind the image's transparent corners and a white ring around it: the
+       ink-in needs paper on every side of the border to thin it evenly. */
+    .kaketa-hanko img { width: 66px; height: auto; margin-bottom: 4pt; background: #fff; box-shadow: 0 0 0 6px #fff; }
+    .kaketa-hanko-title { font-size: 14pt; font-weight: bold; }
+    .language-switcher select { min-width: 92px; }
+    .kaketa-hanko-note { max-width: 28em; margin: 0; line-height: 1.65em; color: black; text-wrap: pretty; }
+  </style>
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher">
+      <select id="language-select" aria-label="Language">
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="fil">Tagalog</option>
+      </select>
+    </div>
+    <section class="kaketa-hanko">
+      <img src="assets/kaketa-seal-tagline-large.png?v=1" alt="Seal reading 書いて覚える (Write it to remember it)" data-alt-en="Seal reading 書いて覚える (Write it to remember it)" data-alt-ja="「書いて覚える」と入った判子" data-alt-fil="Seal na nagbabasang 書いて覚える (Isulat para matandaan)" width="66" height="283">
+      <script src="karui-seal-ink.js?v=1"></script>
+      <script>karuiInkIn(document.currentScript.previousElementSibling.previousElementSibling, 100);</script>
+      <div class="kaketa-hanko-title" data-label-en="Write it to remember it" data-label-ja="書いて覚える" data-label-fil="Isulat para matandaan">Write it to remember it</div>
+      <p class="kaketa-hanko-note" data-label-en="Kaketa is Japanese for “I could write it.” This seal reads 書⁠い⁠て⁠覚⁠え⁠る, or “write it to remember it.” It’s meant to resemble a hanko, the seal people in Japan use to sign important documents." data-label-ja="Kaketaという名前は「書けた」から来ています。この判子には「書いて覚える」と入っています。" data-label-fil="Ang Kaketa ay Hapon para sa “naisulat ko.” Ang nakasulat sa seal na ito ay 書⁠い⁠て⁠覚⁠え⁠る, o “isulat para matandaan.” Ginawa itong kahawig ng hanko, ang seal na ginagamit ng mga tao sa Japan para pumirma sa mga mahahalagang dokumento.">Kaketa is Japanese for “I could write it.” This seal reads 書⁠い⁠て⁠覚⁠え⁠る, or “write it to remember it.” It’s meant to resemble a hanko, the seal people in Japan use to sign important documents.</p>
+      <a class="kaketa-hanko-close" href="kaketa.html" data-label-en="Close" data-label-ja="閉じる" data-label-fil="Isara">Close</a>
+    </section>
+  </main>
+  <script>
+    // Coming from the home page, Close goes back to it, where it was left, rather than
+    // loading it again.
+    document.querySelector('.kaketa-hanko-close').addEventListener('click', (event) => {
+      let fromHome = false;
+      try { fromHome = new URL(document.referrer).origin === location.origin; } catch {}
+      if (!fromHome || history.length < 2) return;
+      event.preventDefault();
+      history.back();
+    });
+  </script>
+  <script src="kaketa-language.js?v=2"></script>
+</body>
+</html>

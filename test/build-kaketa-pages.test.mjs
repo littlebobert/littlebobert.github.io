@@ -70,3 +70,14 @@ test('publishes llms.txt with links to pages that exist', async () => {
   }
   assert.match(await readOutputFile('_headers'), /\/llms\.txt\n\s+Content-Type: text\/plain; charset=utf-8/);
 });
+
+test('the icon opens the QR page, whose seal turns into a tested code', async () => {
+  const homePage = await readOutputFile('index.html');
+  assert.match(homePage, /<a href="\/qr" class="kaketa-qr-trigger"/);
+  const qrPage = await readOutputFile('qr/index.html');
+  assert.match(qrPage, /<link rel="canonical" href="https:\/\/kaketa\.jp\/qr">/);
+  assert.match(qrPage, /<img class="kaketa-qr-morph-final" src="\/assets\/kaketa-qr-seal\.png\?v=1"/);
+  assert.match(qrPage, /<a class="kaketa-qr-close" href="\/"/);
+  assert.match(qrPage, /src="\/kaketa-language\.js\?v=\d+"/);
+  await readFile(path.join(outputDirectory, 'assets/kaketa-qr-seal.json'));
+});

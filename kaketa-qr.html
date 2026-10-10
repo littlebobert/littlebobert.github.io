@@ -1,0 +1,308 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Kaketa: QR Code</title>
+  <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link rel="icon" href="assets/kaketa-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/kaketa-apple-touch-icon.png?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://kaketa.jp/qr">
+  <meta name="description" content="A QR code for kaketa.jp, for showing Kaketa to people in person." data-label-en="A QR code for kaketa.jp, for showing Kaketa to people in person." data-label-ja="kaketa.jpのQRコード。Kaketaを人に直接紹介するときに。" data-label-fil="QR code para sa kaketa.jp, para ipakita ang Kaketa sa mga tao nang personal.">
+  <script>
+    // When the seals will animate, they stay hidden until their animation is ready, so the
+    // finished code doesn't flash before the stamp. Without animation they show at once.
+    if (Element.prototype.animate && !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      document.documentElement.classList.add('kaketa-qr-animates');
+    }
+  </script>
+  <style>
+    body.sasu-site { background: #fff; }
+    .kaketa-qr-animates .kaketa-qr-morph:not(.is-prepared) { visibility: hidden; }
+    /* A full-screen QR code for kaketa.jp, for showing people in person. Opened by
+       tapping the icon on the home page; kaketa.jp/qr can be saved to the Home Screen.
+       Its own page rather than an overlay there, which Safari sometimes let the home
+       page show through while the seals animated. */
+    .sasu-page { min-height: 100svh; box-sizing: border-box; display: flex; flex-direction: column; }
+    .kaketa-qr { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 14pt; padding-bottom: 6vh; text-align: center; }
+    /* One slide for now; the row can take more codes to swipe between. */
+    .kaketa-qr-slides { display: flex; width: min(80vw, 70vh, 360px); overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; }
+    .kaketa-qr-slides::-webkit-scrollbar { display: none; }
+    .kaketa-qr-slides img { flex: 0 0 100%; width: 100%; height: auto; scroll-snap-align: center; }
+    /* A seal that turns into a code: its lettering dissolves into dots that curve
+       into place, then the real code image takes over. Without JavaScript, or with
+       Reduce Motion, the finished code shows straight away. */
+    .kaketa-qr-morph { position: relative; flex: 0 0 100%; aspect-ratio: 1; scroll-snap-align: center; container-type: inline-size; }
+    .kaketa-qr-morph-frame { position: absolute; box-sizing: border-box; border: 0 solid #c7422b; overflow: hidden; }
+    .kaketa-qr-morph > img, .kaketa-qr-morph > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .kaketa-qr-morph-frame > svg { position: absolute; width: 100cqw; height: 100cqw; overflow: visible; }
+    .kaketa-qr-morph-name { opacity: 0; }
+    .kaketa-qr-url { font-size: 14pt; font-weight: bold; }
+    .language-switcher select { min-width: 92px; }
+    .kaketa-qr-caption { max-width: 22em; margin: -6pt 0 0; line-height: 1.5; color: black; text-wrap: balance; }
+  </style>
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher">
+      <select id="language-select" aria-label="Language">
+        <option value="en">English</option>
+        <option value="ja">日本語</option>
+        <option value="fil">Tagalog</option>
+      </select>
+    </div>
+    <section class="kaketa-qr" id="qr" aria-label="QR code for kaketa.jp">
+      <div class="kaketa-qr-slides">
+        <div class="kaketa-qr-morph">
+          <img class="kaketa-qr-morph-name" src="assets/kaketa-qr-seal-name.png?v=1" alt="" width="648" height="648">
+          <svg class="kaketa-qr-morph-dots" aria-hidden="true"></svg>
+          <img class="kaketa-qr-morph-final" src="assets/kaketa-qr-seal.png?v=1" alt="QR code that opens https://kaketa.jp/, in seal red" width="648" height="648">
+        </div>
+      </div>
+      <div class="kaketa-qr-url">kaketa.jp</div>
+      <p class="kaketa-qr-caption" data-label-en="Kaketa for iPhone and iPad: write Japanese words by hand, and skip the ones you already know" data-label-ja="iPhoneとiPad用のKaketa：日本語の単語を手で書く練習。もう知っている言葉は飛ばせます" data-label-fil="Kaketa para sa iPhone at iPad: isulat ang mga salitang Hapon sa kamay, at laktawan ang mga alam mo na">Kaketa for iPhone and iPad: write Japanese words by hand, and skip the ones you already know</p>
+      <a class="kaketa-qr-close" href="kaketa.html" data-label-en="Close" data-label-ja="閉じる" data-label-fil="Isara">Close</a>
+    </section>
+  </main>
+  <script>
+    // Coming from the home page, Close goes back to it, where it was left, rather than
+    // loading it again.
+    document.querySelector('.kaketa-qr-close').addEventListener('click', (event) => {
+      let fromHome = false;
+      try { fromHome = new URL(document.referrer).origin === location.origin; } catch {}
+      if (!fromHome || history.length < 2) return;
+      event.preventDefault();
+      history.back();
+    });
+  </script>
+  <script src="kaketa-language.js?v=2"></script>
+  <script>
+    // The seal, 書いて覚える, is inked onto the page in a narrow frame, then its
+    // lettering dissolves into dots that curve into their places in the QR code while
+    // the frame widens into a square, and the real code image takes over, so what
+    // people scan is the tested image. It plays once per visit. Tap to skip. Reduce
+    // Motion shows the finished code at once.
+    (() => {
+      const view = document.getElementById('qr');
+      const stages = view ? [...view.querySelectorAll('.kaketa-qr-morph')] : [];
+      if (!stages.length || !stages[0].animate) return;
+      const slides = view.querySelector('.kaketa-qr-slides');
+      const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+      const ink = '#c7422b';
+      const svgNS = 'http://www.w3.org/2000/svg';
+      // Milliseconds: stamp the seal onto the blank page, hold it, dissolve the name
+      // into dots, hold the dotted name still, curve the dots into place, settle the
+      // markers, then hand over to the code image. Everything after the stamp is
+      // timed from when it's done.
+      const stamp = { delay: 90, duration: 525 };
+      const T = { hold: 300, dissolve: 305, dotted: 250, travel: 1000, stagger: 350, markers: 1600, markersFor: 440, final: 2125, finalFor: 265 };
+      const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
+
+      const make = (tag, attributes) => {
+        const element = document.createElementNS(svgNS, tag);
+        Object.entries(attributes).forEach(([key, value]) => element.setAttribute(key, value));
+        return element;
+      };
+
+      function morph(stage, index) {
+        const name = stage.querySelector('.kaketa-qr-morph-name');
+        const final = stage.querySelector('.kaketa-qr-morph-final');
+        const svg = stage.querySelector('svg');
+        let dots = [];
+        let markers = [];
+        let frame = null;
+        let erode = null;
+        let running = [];
+        let data = null;
+
+        function build(json) {
+          data = json;
+          const [inset, width, radius] = data.frame;
+          const p = data.pitch;
+          svg.setAttribute('viewBox', `0 0 ${data.canvas} ${data.canvas}`);
+          // The frame is a box sized in container units so it scales with the stage. Its
+          // resting place is the code's square frame; play() starts it at the name's
+          // narrow one. The dots live inside it, so they never show outside the border
+          // while it widens, and move opposite to it, so they keep their place on the
+          // stage.
+          const unit = (value) => `${(value / data.canvas) * 100}cqw`;
+          const box = ([x, y, w, h]) => ({ left: unit(x - width / 2), top: unit(y - width / 2), width: unit(w + width), height: unit(h + width) });
+          const counter = ([x, y]) => ({ left: unit(-x - width / 2), top: unit(-y - width / 2) });
+          const squareFrame = [inset, inset, data.canvas - inset * 2, data.canvas - inset * 2];
+          const square = box(squareFrame);
+          frame = {
+            element: document.createElement('div'), from: box(data.nameFrame), to: square, border: unit(width),
+            dotsFrom: counter(data.nameFrame), dotsTo: counter(squareFrame),
+          };
+          frame.element.className = 'kaketa-qr-morph-frame';
+          Object.assign(frame.element.style, square, {
+            borderWidth: frame.border,
+            borderRadius: `${((radius + width / 2) / data.canvas) * 100}cqw`,
+          });
+          stage.insertBefore(frame.element, svg);
+          frame.element.append(svg);
+          Object.assign(svg.style, frame.dotsTo);
+          const filter = make('filter', { id: `kaketa-qr-stamp-${index}` });
+          erode = make('feMorphology', { operator: 'erode', radius: 0 });
+          filter.append(erode);
+          svg.append(filter);
+          markers = data.markers.map(([x, y, w]) => {
+            const group = make('g', {});
+            const core = w === 5 * p ? p : 3 * p;
+            group.append(
+              make('rect', { x: x + p / 2, y: y + p / 2, width: w - p, height: w - p, rx: p * 1.3, fill: 'none', stroke: ink, 'stroke-width': p }),
+              make('rect', { x: x + (w - core) / 2, y: y + (w - core) / 2, width: core, height: core, rx: core * 0.25, fill: ink })
+            );
+            group.style.transformBox = 'fill-box';
+            group.style.transformOrigin = 'center';
+            svg.append(group);
+            return group;
+          });
+          const circle = (x, y) => {
+            const dot = make('circle', { cx: x, cy: y, r: p * 0.45, fill: ink });
+            dot.style.transformBox = 'fill-box';
+            dot.style.transformOrigin = 'center';
+            svg.append(dot);
+            return dot;
+          };
+          // Extras fill out the dotted lettering: each starts on the ink between the
+          // real dots, follows one of them to its module, and fades out on the way.
+          const extras = data.extras.map(([sx, sy, index]) => {
+            const [, , ex, ey] = data.dots[index];
+            return { dot: circle(ex, ey), dx: sx - ex, dy: sy - ey, order: index, fades: true };
+          });
+          dots = extras.concat(data.dots.map(([sx, sy, ex, ey], index) => (
+            { dot: circle(ex, ey), dx: sx - ex, dy: sy - ey, order: index, fades: false }
+          )));
+        }
+
+        // Cancelling returns everything to the finished code: the image on top of the
+        // dots and markers in their final places.
+        function skip() {
+          running.forEach((animation) => animation.cancel());
+          running = [];
+        }
+
+        function play() {
+          skip();
+          const stamped = stamp.delay + stamp.duration;
+          const timing = (delay, duration, extra = {}) => ({ delay: stamped + delay, duration, fill: 'both', easing: 'linear', ...extra });
+          // The stamp inks in: the frame and lettering come up thin and faint and grow
+          // to their full weight, like a seal pressed onto paper. The frame's border
+          // animates directly; the lettering is an image, so an erode filter thins it,
+          // and its radius follows the frame's animation, so skipping stops both.
+          const inkIn = { easing: 'cubic-bezier(0.2, 0.6, 0.3, 1)' };
+          const inking = frame.element.animate([
+            { borderWidth: `calc(${frame.border} * 0.25)`, opacity: 0 },
+            { opacity: 1, offset: 0.25 },
+            { borderWidth: frame.border, opacity: 1 },
+          ], { ...stamp, ...inkIn, fill: 'both' });
+          running.push(inking);
+          running.push(name.animate([{ opacity: 0 }, { opacity: 1, offset: 0.25 }, { opacity: 1 }], { ...stamp, ...inkIn, fill: 'both' }));
+          name.style.filter = `url(#${erode.parentNode.id})`;
+          const thinnest = stage.clientWidth * 0.009;
+          const thin = () => {
+            const progress = inking.effect.getComputedTiming().progress;
+            if (inking.playState === 'idle' || progress === null || progress >= 1) {
+              name.style.filter = '';
+              return;
+            }
+            erode.setAttribute('radius', thinnest * (1 - progress));
+            requestAnimationFrame(thin);
+          };
+          thin();
+          // The dots come up over the still-visible lettering, then the lettering fades
+          // out from under them, so the name breaks into dots instead of being swapped.
+          const lead = 220, appear = 265;
+          // Dots start small, so together they trace even the thin strokes, and grow to
+          // module size on the way. How small depends on the lettering's detail.
+          const small = data.startScale;
+          // Filled forwards only, so until it starts the stamp decides the opacity.
+          running.push(name.animate([{ opacity: 1 }, { opacity: 0 }], timing(T.hold + 90, T.dissolve, { fill: 'forwards' })));
+          const count = data.dots.length;
+          dots.forEach(({ dot, dx, dy, order, fades }) => {
+            // A quadratic curve bending off to the same side every time, so the dots
+            // sweep rather than slide straight.
+            const cx = dx / 2 - dy * 0.35, cy = dy / 2 + dx * 0.35;
+            const stagger = (order / count) * T.stagger;
+            const total = lead + T.dissolve + T.dotted + stagger + T.travel;
+            const depart = (lead + T.dissolve + T.dotted + stagger) / total;
+            const start = `translate(${dx}px, ${dy}px) scale(${small})`;
+            const frames = [
+              { transform: start, opacity: 0, offset: 0 },
+              { transform: start, opacity: 1, offset: appear / total },
+              { transform: start, opacity: 1, offset: depart },
+            ];
+            for (let k = 1; k <= 16; k += 1) {
+              const u = easeInOut(k / 16);
+              const a = (1 - u) * (1 - u), b = 2 * (1 - u) * u;
+              // Extras fade over the last 40% of the trip, merging into their dot.
+              const opacity = fades ? Math.min(1, (1 - k / 16) / 0.4) : 1;
+              frames.push({ transform: `translate(${a * dx + b * cx}px, ${a * dy + b * cy}px) scale(${small + (1 - small) * u})`, opacity, offset: depart + (1 - depart) * (k / 16) });
+            }
+            running.push(dot.animate(frames, timing(T.hold - lead, total)));
+          });
+          const widening = timing(T.hold + T.dissolve + T.dotted, T.travel * 0.8, { easing: 'cubic-bezier(0.65, 0, 0.35, 1)' });
+          running.push(frame.element.animate([frame.from, frame.to], widening));
+          running.push(svg.animate([frame.dotsFrom, frame.dotsTo], widening));
+          markers.forEach((marker) => running.push(marker.animate(
+            [{ transform: 'scale(0.6)', opacity: 0 }, { transform: 'scale(1)', opacity: 1 }],
+            timing(T.markers, T.markersFor, { easing: 'cubic-bezier(0.34, 1.4, 0.64, 1)' })
+          )));
+          running.push(final.animate([{ opacity: 0 }, { opacity: 1 }], timing(T.final, T.finalFor)));
+        }
+
+        // The dots come from the JSON beside the lettering image, with the same version
+        // query, so they update together.
+        const loaded = fetch(name.src.replace('-name.png', '.json'))
+          .then((response) => response.json())
+          .then(build)
+          .then(() => true, () => false);
+        stage.addEventListener('click', skip);
+        // Hold at the start, the blank page, until it's in view.
+        const ready = () => { play(); running.forEach((animation) => animation.pause()); };
+        const resume = () => running.forEach((animation) => animation.play());
+        return { stage, loaded, ready, resume, skip, prepared: null, played: false };
+      }
+
+      const morphs = stages.map(morph);
+      let open = false;
+
+      // A seal is in view when at least 60% of it shows in the slides.
+      const inView = (item) => {
+        const offset = Math.abs(slides.scrollLeft - (item.stage.offsetLeft - slides.firstElementChild.offsetLeft));
+        return offset <= slides.clientWidth * 0.4;
+      };
+      // Play a seal the first time it's in view on this visit, once it's ready.
+      async function playIfDue(item) {
+        if (!open || item.played || !item.prepared || !inView(item)) return;
+        item.played = true;
+        const prepared = item.prepared;
+        if (await prepared && item.prepared === prepared) item.resume();
+      }
+
+      function update() {
+        open = true;
+        // With Reduce Motion, every seal shows its finished code.
+        morphs.forEach((item) => { item.skip(); item.played = false; item.prepared = null; });
+        if (reduceMotion.matches) {
+          morphs.forEach((item) => item.stage.classList.add('is-prepared'));
+          return;
+        }
+        // Each seal waits on a blank page until it's swiped into view.
+        morphs.forEach((item) => {
+          item.prepared = item.loaded.then((ok) => {
+            if (ok && open) item.ready();
+            // Ready at its blank start, or, if the dots didn't load, the finished code.
+            item.stage.classList.add('is-prepared');
+            return ok && open;
+          });
+          playIfDue(item);
+        });
+      }
+      slides.addEventListener('scroll', () => morphs.forEach(playIfDue), { passive: true });
+      update();
+    })();
+  </script>
+</body>
+</html>

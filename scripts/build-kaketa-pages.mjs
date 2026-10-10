@@ -18,6 +18,9 @@ const assetFiles = [
   'kaketa-landing-shot-en.webp',
   'kaketa-landing-shot-ja.webp',
   'kaketa-landing-shot-fil.webp',
+  'kaketa-qr-seal.png',
+  'kaketa-qr-seal-name.png',
+  'kaketa-qr-seal.json',
 ];
 
 // Source page → the routes it is served at.
@@ -29,6 +32,7 @@ const pages = [
   ['kaketa-acknowledgements.html', ['acknowledgements.html', 'acknowledgements/index.html']],
   ['kaketa-technotes.html', ['technotes.html', 'technotes/index.html']],
   ['kaketa-technote-kn001.html', ['technotes/kn001.html', 'technotes/kn001/index.html']],
+  ['kaketa-qr.html', ['qr.html', 'qr/index.html']],
 ];
 
 export function createDeployedPage(source) {
@@ -44,7 +48,8 @@ export function createDeployedPage(source) {
     .replaceAll('href="kaketa-changelog.html"', 'href="/changelog"')
     .replaceAll('href="kaketa-acknowledgements.html"', 'href="/acknowledgements"')
     .replaceAll('href="kaketa-technotes.html"', 'href="/technotes"')
-    .replaceAll('href="kaketa-technote-kn001.html"', 'href="/technotes/kn001"');
+    .replaceAll('href="kaketa-technote-kn001.html"', 'href="/technotes/kn001"')
+    .replaceAll('href="kaketa-qr.html"', 'href="/qr"');
 }
 
 await rm(outputDirectory, { force: true, recursive: true });

@@ -1,8 +1,40 @@
 {
-  "updatedAt": "2026-10-10T19:19:37.007Z",
+  "updatedAt": "2026-10-11T19:35:31.857Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2109060021686534156",
+      "text": "hide memes like this with https://t.co/24shCxZG6m, with its fast local model https://t.co/Qzs0ufh6c9",
+      "createdAt": "2026-10-10T23:14:28.000Z",
+      "url": "https://x.com/_bobertdowney/status/2109060021686534156",
+      "urls": [
+        {
+          "url": "https://t.co/24shCxZG6m",
+          "expandedUrl": "https://shadan.jp",
+          "displayUrl": "shadan.jp",
+          "start": 26,
+          "end": 49
+        },
+        {
+          "url": "https://t.co/Qzs0ufh6c9",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2109060021686534156/photo/1",
+          "displayUrl": "pic.x.com/Qzs0ufh6c9",
+          "start": 77,
+          "end": 100
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2109060021686534156-0.png"
+        }
+      ]
+    },
     {
       "id": "2108990972814393427",
       "text": "my free iPhone app for silencing spam notifications and viewing messages people unsend has been updated. there’s a snooze button, and an optional Live Activity to quickly see the number of new important notifications.\n\nhttps://t.co/XvhuIJPcHX https://t.co/F1Yk16lkWz",
@@ -201,31 +233,6 @@
           "alt": "",
           "type": "photo",
           "image": "assets/generated/x/mine-post-2104526758783627420-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2104500151910023355",
-      "text": "無人島0円生活・エンジニア編 200万行のレガシーモノリス。ドキュメントなし、シニアは退職済み、AIツール禁止。 https://t.co/3JjddHVPlA",
-      "createdAt": "2026-09-28T09:15:10.000Z",
-      "url": "https://x.com/_bobertdowney/status/2104500151910023355",
-      "urls": [
-        {
-          "url": "https://t.co/3JjddHVPlA",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2104500151910023355/photo/1",
-          "displayUrl": "pic.x.com/3JjddHVPlA",
-          "start": 57,
-          "end": 80
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2104500151910023355-0.png"
         }
       ]
     }

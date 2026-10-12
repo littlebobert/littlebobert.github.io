@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.4.4</title>
+            <pubDate>Mon, 12 Oct 2026 17:54:47 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>28.1</sparkle:version>
+            <sparkle:shortVersionString>0.4.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.4
+
+Umete no longer sends your contacts' names to AI matching, and its privacy screens now describe iCloud sync.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="CgDRo//EKkkK3JPluofV1G/s2xIR+d93BAUnm4hMTG7FbvtywK5EDMox0DLe2ydO1cz8M5xQfnt+4Iin9NfbAw==" sparkle:length="359">https://umete.jp/Umete-0.4.4-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="psp7c1u0t9KDxE4zuybQgQunF8wTulwvB8OvaJlQq8GTyEHZAGpKgkUuzGc1fiYwl9gSWH7vaaQA59NmtqK0Ag==" sparkle:length="417">https://umete.jp/Umete-0.4.4-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.4/Umete-0.4.4-macOS.dmg" length="5911479" type="application/octet-stream" sparkle:edSignature="driV6LWanShS9Lj2LfiLeRU4cWTOJUsK7Uup8NXqNXFbIXkX6UKVorOk23HFskLtRo9cpZs1nqWIb4G/t+nGDg=="/>
+        </item>
+        <item>
             <title>0.4.3</title>
             <pubDate>Mon, 12 Oct 2026 17:19:58 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -146,24 +162,9 @@ Put Type first in Saved Data, prefills phone country codes from the Mac region, 
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="2CmKuXBRMN/AulQsRy1tMHzzGCkp0ND/Cm/n2HrWLiLDb2v8UJ5TwxyZBgUOzUjEdqF9ITP0pb83PSv5NtfoAQ==" sparkle:length="501">https://littlebobert.github.io/Ume-0.1.13-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.13/Ume-0.1.13-macOS.dmg" length="5617079" type="application/octet-stream" sparkle:edSignature="FKNMKgF29x5kQbNzuguSqFIs45Vqs4TNHUPnMuda6lWuzMvmuacbNczwO8Horv/77YZoLEeIkNB2j/dAGet6DA=="/>
         </item>
-        <item>
-            <title>0.1.12</title>
-            <pubDate>Fri, 14 Aug 2026 15:56:52 +0000</pubDate>
-            <link>https://littlebobert.github.io/ume.html</link>
-            <sparkle:version>17.1</sparkle:version>
-            <sparkle:shortVersionString>0.1.12</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Ume 0.1.12
-
-Fixed Add… refocusing a finished phone or date draft, and kept bug-report email headers when the AI log is truncated.
-
-「Add…」で完了済みの電話番号または日付の下書きに再フォーカスされる問題を修正し、AIログが切り詰められた場合もバグ報告メールのヘッダーを保持するようにしました。
-]]></description>
-            <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.12/Ume-0.1.12-macOS.dmg" length="5602743" type="application/octet-stream" sparkle:edSignature="O6VpkTkf4FDg4oF7ys5SNDBf97PyiahgURiy50xzwppfhTdi1953HBRbA/1nvs+UFXpfQLy8fKe9b28q1BMLCQ=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: Xqv/GMcjgyXRXqeyQ/sY2aNfFMpietA2NS1gu3Tk85pReAGZfXruipieqxKv7K5+RSwtgEJlDI1Qaet3ltBcAA==
-length: 14575
+edSignature: ezW1jQeIg9Ff5Atj8hAMwUrtGiVpJbUmtNAxDyuS6t4nXD5iICBgOuE/TpYhw2OQ5q16Qo9yhaIIe2K3dVtdDQ==
+length: 14909
 -->

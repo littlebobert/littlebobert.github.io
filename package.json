@@ -14,6 +14,7 @@
     "test:shadan-pages": "node --test test/build-shadan-pages.test.mjs",
     "build:shadan-social": "node scripts/build-shadan-social.mjs",
     "build:kehai-social": "node scripts/build-kehai-social.mjs",
+    "build:umete-social": "node scripts/build-umete-social.mjs",
     "build:resume-social": "node scripts/build-resume-social.mjs",
     "build:about-social": "node scripts/build-about-social.mjs",
     "build:japan-news": "node scripts/build-japan-news.mjs",

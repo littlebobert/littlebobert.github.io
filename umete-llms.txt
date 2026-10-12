@@ -1,0 +1,31 @@
+# Umete
+
+> Umete (埋めて, "fill it in") is a Safari extension, with an app for Mac, iPhone, and iPad, that remembers answers you type into web forms and fills them in when you ask. Complete a form once and choose "Remember my answers"; on forms later, choose "Fill this form". It never submits a form. Free, open source (MIT), no account.
+
+## Features
+
+- Fills text fields, text areas, menus, checkboxes, radio buttons, date fields (including split day/month/year), and ARIA comboboxes.
+- Saves addresses and contacts (doctors, emergency contacts) as structured entries and fills each part into the matching field.
+- Matches fields on the device using labels, accessible names, placeholders, names, ids, autocomplete hints, legends, headings, and table headers.
+- For fields it can't match, asks an AI which saved answer fits: Umete (free, default, no API key, 60 requests per device per day) or the user's own OpenAI or Anthropic key.
+- Syncs answers between devices through the user's iCloud, encrypted before upload.
+- Optional toolbar badge on pages it can fill, checked on the device.
+- Never reads or fills passwords, card numbers, security codes, secrets, tokens, or Social Security numbers.
+
+## Privacy
+
+No account, no ads, no analytics. Saved answers are encrypted with AES-GCM; the key is in the Apple Keychain (iCloud Keychain when sync is on). AI matching receives only field descriptions and the labels of saved answers, never saved values, values in the form, addresses, or the page's address or title.
+
+## Pages
+
+- [Home](https://umete.jp/)
+- [Tech Specs](https://umete.jp/specs): how matching, AI matching, encryption, and sync work.
+- [Privacy Policy](https://umete.jp/privacy)
+- [Support](https://umete.jp/support)
+- [Changelog](https://umete.jp/changelog)
+- [Acknowledgements](https://umete.jp/acknowledgements)
+- [Source code](https://github.com/littlebobert/umete)
+
+## Requirements
+
+- macOS 12 or later, or iOS or iPadOS 15 or later, with Safari. The Mac app is downloaded from umete.jp and updates itself with Sparkle.

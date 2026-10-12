@@ -225,15 +225,28 @@
     .ume-caption { margin: 0; padding: 9pt 6pt 0; color: #444; font-size: 11pt; }
 
 
-    .ume-detail { padding: 10pt 0 8pt; }
+    .sasu-hero .download-link { margin-top: 9pt; }
+    /* The second line of the pitch, below the icon and name, in plain body text. */
+    .hero-proposition { margin: 8pt 0 0; }
+    .ume-detail { padding: 6pt 0 5pt; }
     .ume-detail p { margin: 0; }
-    .privacy-source { padding-top: 7pt; }
-    .release-notes summary { cursor: pointer; font-weight: bold; font-size: 10pt; margin: 0; padding-bottom: 5pt; }
-    .release-notes h2 { display: inline-block; padding-top: 2pt; padding-bottom: 2pt; }
-    .release-date { padding-left: 4pt; font-size: 10pt; color: #555; }
+    .ume-detail p + p { margin-top: 7pt; }
+    .feature-list { margin: 3pt 0 0; padding-left: 20pt; }
+    .feature-list li + li { margin-top: 3pt; }
     .wordmark-kanji { margin-left: 6px; font-size: 0.55em; font-weight: 500; color: var(--ume-green-dark); vertical-align: 2px; }
-    .ume-footer { padding: 13pt 0 8pt; color: #555; text-align: center; }
+    .ume-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
     .ume-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    /* Keep two-word links like Tech Specs whole; the row wraps at the <wbr> after each separator. */
+    .footer-links a { white-space: nowrap; }
+    /* The maker's photo and name seal above the credit, as on Karui's and Kaketa's pages. */
+    .ume-maker { display: flex; flex-direction: column-reverse; align-items: center; gap: 6pt; margin-top: 10pt !important; }
+    .ume-maker-marks { display: flex; align-items: center; justify-content: center; gap: 6pt; }
+    .ume-maker-photo { width: 40px; height: 51px; border-radius: 5px; object-fit: cover; flex: none; }
+    .ume-maker-text { text-align: center; line-height: 1.65em; color: black; }
+    .ume-maker-seal { width: 24px; height: 51px; flex: none; }
+    .ume-maker-link { display: flex; flex: none; cursor: pointer; }
+    .ume-maker-link + .ume-maker-link { margin-left: -2pt; }
 
     @media (max-width: 560px) {
       .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
@@ -262,9 +275,9 @@
           <div class="sasu-subtitle" data-label-en="Autofill everything, privately." data-label-ja="あらゆるフォームに、プライバシーを守って自動入力。">Autofill everything, privately.</div>
         </div>
       </div>
-      <div class="sasu-tagline" data-label-en="An intelligent Safari form filler for iPhone, iPad, and Mac." data-label-ja="iPhone、iPad、Macで使える、賢いSafariフォーム入力支援。">An intelligent Safari form filler for iPhone, iPad, and Mac.</div>
+      <p class="hero-proposition" data-label-en="An intelligent Safari form filler for Mac, iPhone, and iPad." data-label-ja="Mac、iPhone、iPadで使える、賢いSafariフォーム入力支援。">An intelligent Safari form filler for Mac, iPhone, and iPad.</p>
       <a class="download-link" data-ume-download data-product="ume" data-product-action="download-macos" href="https://github.com/littlebobert/umete/releases/download/v0.4.3/Umete-0.4.3-macOS.dmg" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
-      <div class="small-note" data-label-en="Free and no in-app purchases." data-label-ja="無料で、アプリ内課金はありません。">Free and no in-app purchases.</div>
+      <div class="small-note" data-label-en="Requires macOS 12 or later. Free, with no in-app purchases, subscription, or sign up." data-label-ja="macOS 12以降が必要です。無料で、アプリ内課金、サブスクリプション、登録はありません。">Requires macOS 12 or later. Free, with no in-app purchases, subscription, or sign up.</div>
     </section>
 
     <section class="sasu-section">
@@ -352,13 +365,28 @@
 
     <section class="ume-detail">
       <h2 data-label-en="What it does:" data-label-ja="できること：">What it does:</h2>
-      <p data-label-en="Complete a form once and choose “Remember my answers.” On forms later, open Umete and choose “Fill this form.” You can inspect, edit, or delete saved answers in the Umete app." data-label-ja="フォームを一度入力して「回答を保存」を選びます。後でフォームを開いたとき、Umeteを開き「このフォームに入力」を選びます。保存した回答はUmeteアプリで確認、編集、削除できます。">Complete a form once and choose “Remember my answers.” On forms later, open Umete and choose “Fill this form.” You can inspect, edit, or delete saved answers in the Umete app.</p>
+      <p data-label-en="Complete a form once and choose “Remember my answers.” On forms later, open Umete and choose “Fill this form.” You can see, edit, or delete saved answers in the Umete app." data-label-ja="フォームを一度入力して「回答を保存」を選びます。後でフォームを開いたとき、Umeteを開き「このフォームに入力」を選びます。保存した回答はUmeteアプリで確認、編集、削除できます。">Complete a form once and choose “Remember my answers.” On forms later, open Umete and choose “Fill this form.” You can see, edit, or delete saved answers in the Umete app.</p>
+    </section>
+
+    <section class="ume-detail">
+      <h2 data-label-en="Also:" data-label-ja="その他の機能：">Also:</h2>
+      <ul class="feature-list">
+        <li data-label-en="Fills text fields, menus, checkboxes, radio buttons, and dates, even split ones" data-label-ja="テキスト欄、メニュー、チェックボックス、ラジオボタン、日付（分かれた欄も）に入力します">Fills text fields, menus, checkboxes, radio buttons, and dates, even split ones</li>
+        <li data-label-en="Saves addresses and contacts, like your doctor and an emergency contact, and fills each part into the right field" data-label-ja="住所や、かかりつけ医・緊急連絡先などの連絡先を保存し、各部分を正しい項目に入力します">Saves addresses and contacts, like your doctor and an emergency contact, and fills each part into the right field</li>
+        <li data-label-en="Uses AI for fields it doesn’t recognize, free and with no API key needed" data-label-ja="認識できない項目にはAIを使います。無料で、APIキーも不要です">Uses AI for fields it doesn’t recognize, free and with no API key needed</li>
+        <li data-label-en="Syncs your answers between Mac, iPhone, and iPad through iCloud, encrypted" data-label-ja="回答は暗号化したまま、iCloudでMac、iPhone、iPadの間で同期します">Syncs your answers between Mac, iPhone, and iPad through iCloud, encrypted</li>
+        <li data-label-en="Optionally badges its toolbar icon on pages it can fill" data-label-ja="オプションで、入力できるページではツールバーのアイコンにバッジを表示します">Optionally badges its toolbar icon on pages it can fill</li>
+        <li data-label-en="Skips passwords, card details, and other sensitive fields" data-label-ja="パスワード、カード情報などの機密性の高い項目は扱いません">Skips passwords, card details, and other sensitive fields</li>
+      </ul>
     </section>
 
     <section class="ume-detail">
       <h2 data-label-en="Privacy:" data-label-ja="プライバシー：">Privacy:</h2>
-      <p data-label-en="Umete reads eligible form controls only when you ask it to remember or fill a form. If you turn on the optional toolbar badge, Umete also checks each page you open for forms, on your device only, reading field labels but never values. Saved answers are encrypted with AES-GCM, and the device-only key is kept in Apple Keychain. Umete collects no analytics and skips passwords, payment details, security codes, secrets, tokens, and Social Security numbers. Umete just sends field descriptions and metadata to your AI provider, not your saved answers or the values currently entered in the form." data-label-ja="Umeteは、フォームの保存または入力を指示したときだけ対象項目を読み取ります。オプションのツールバーバッジをオンにした場合は、開いたページにフォームがあるかを端末内だけで確認し、項目のラベルは読み取りますが入力値は読み取りません。保存した回答はAES-GCMで暗号化され、端末専用キーはApple Keychainに保管されます。分析データは収集せず、パスワード、支払い情報、セキュリティコード、秘密情報、トークン、社会保障番号は対象外です。AIプロバイダーへ送信するのは項目の説明とメタデータだけで、保存した回答やフォームに入力済みの値は送信しません。">Umete reads eligible form controls only when you ask it to remember or fill a form. If you turn on the optional toolbar badge, Umete also checks each page you open for forms, on your device only, reading field labels but never values. Saved answers are encrypted with AES-GCM, and the device-only key is kept in Apple Keychain. Umete collects no analytics and skips passwords, payment details, security codes, secrets, tokens, and Social Security numbers. Umete just sends field descriptions and metadata to your AI provider, not your saved answers or the values currently entered in the form.</p>
-      <p class="privacy-source"><a href="https://github.com/littlebobert/umete" data-label-en="View the source code on GitHub." data-label-ja="ソースコードをGitHubで見る。">View the source code on GitHub.</a></p>
+      <p><span data-label-en="Umete has no account and no analytics. Saved answers are encrypted on your device and in your own iCloud, and are never sent to an AI. For fields it can’t match itself, Umete sends only descriptions of the fields, like their labels. " data-label-ja="Umeteにはアカウントも分析もありません。保存した回答はデバイス上とご自身のiCloudで暗号化され、AIに送信されることはありません。自分で照合できない項目については、ラベルなど項目の説明だけを送信します。">Umete has no account and no analytics. Saved answers are encrypted on your device and in your own iCloud, and are never sent to an AI. For fields it can’t match itself, Umete sends only descriptions of the fields, like their labels. </span><a href="ume-privacy.html" data-label-en="Details" data-label-ja="詳しく">Details</a><span data-label-en="." data-label-ja="">.</span></p>
+    </section>
+
+    <section class="ume-detail">
+      <p><a href="ume-specs.html" data-label-en="How it works and tech specs →" data-label-ja="仕組みと技術仕様 →">How it works and tech specs →</a></p>
     </section>
 
     <section class="ume-detail">
@@ -366,150 +394,23 @@
       <p data-label-en="Umete (埋めて) is Japanese for “fill it in,” the thing you say to a form." data-label-ja="Umete（埋めて）は「フォームを埋めて」という意味です。">Umete (埋めて) is Japanese for “fill it in,” the thing you say to a form.</p>
     </section>
 
-    <section class="ume-detail">
-      <h2 data-label-en="Requirements:" data-label-ja="動作要件：">Requirements:</h2>
-      <p data-label-en="Requires iOS or iPadOS 15 or newer, or macOS 12 or newer. Enable Umete in Safari Extensions and grant website access where needed. Requires your own OpenAI or Anthropic API key." data-label-ja="iOSまたはiPadOS 15以降、もしくはmacOS 12以降が必要です。Safariの拡張機能でUmeteを有効にし、必要なWebサイトへのアクセスを許可してください。自分のOpenAIまたはAnthropic APIキーが必要です。">Requires iOS or iPadOS 15 or newer, or macOS 12 or newer. Enable Umete in Safari Extensions and grant website access where needed. Requires your own OpenAI or Anthropic API key.</p>
-    </section>
-
-    <section class="ume-detail">
-      <details id="changelog" class="release-notes">
-        <summary data-label-en="Changelog" data-label-ja="変更履歴">Changelog</summary>
-        <!-- ume-changelog:start -->
-<h2 data-ume-release="0.4.3">0.4.3</h2>
-<span class="release-date" data-label-en="October 12, 2026" data-label-ja="2026年10月12日">October 12, 2026</span>
-<ul>
-  <li data-label-en="Umete now fills custom dropdowns like Delta&#39;s date of birth and gender, no longer repeats your phone number in a second phone field, and leaves fields asking for a phone&#39;s owner alone." data-label-ja="Umeteが、Deltaの生年月日や性別などのカスタムドロップダウンに対応しました。また、2つ目の電話番号欄に同じ番号を繰り返し入力せず、電話の所有者を尋ねる欄には何も入力しません。">Umete now fills custom dropdowns like Delta&#39;s date of birth and gender, no longer repeats your phone number in a second phone field, and leaves fields asking for a phone&#39;s owner alone.</li>
-</ul>
-<h2 data-ume-release="0.4.2">0.4.2</h2>
-<span class="release-date" data-label-en="October 12, 2026" data-label-ja="2026年10月12日">October 12, 2026</span>
-<ul>
-  <li data-label-en="Umete no longer fills the same phone number into a second phone field, or a phone number into fields asking for the phone&#39;s owner." data-label-ja="Umete は、2つ目の電話番号欄に同じ番号を入力したり、電話番号の名義人を尋ねる欄に電話番号を入力したりしなくなりました。">Umete no longer fills the same phone number into a second phone field, or a phone number into fields asking for the phone&#39;s owner.</li>
-</ul>
-<h2 data-ume-release="0.4.1">0.4.1</h2>
-<span class="release-date" data-label-en="October 12, 2026" data-label-ja="2026年10月12日">October 12, 2026</span>
-<ul>
-  <li data-label-en="Fixed filling hidden fields, such as alternate phone numbers behind tabs, and the extension failing to start on pages open during an update." data-label-ja="タブ内に隠れた予備の電話番号などの非表示フィールドへの入力と、アップデート中に開かれていたページで拡張機能が起動しない問題を修正しました。">Fixed filling hidden fields, such as alternate phone numbers behind tabs, and the extension failing to start on pages open during an update.</li>
-</ul>
-<h2 data-ume-release="0.4.0">0.4.0</h2>
-<span class="release-date" data-label-en="October 12, 2026" data-label-ja="2026年10月12日">October 12, 2026</span>
-<ul>
-  <li data-label-en="AI matching is now free by default, with no API key needed. Faster, cheaper matching with OpenAI&#39;s Decisions API." data-label-ja="AIマッチングがデフォルトで無料になり、APIキーも不要になりました。OpenAIのDecisions APIにより、さらに高速かつ低コストなマッチングを実現します。">AI matching is now free by default, with no API key needed. Faster, cheaper matching with OpenAI&#39;s Decisions API.</li>
-</ul>
-<h2 data-ume-release="0.3.0">0.3.0</h2>
-<span class="release-date" data-label-en="October 12, 2026" data-label-ja="2026年10月12日">October 12, 2026</span>
-<ul>
-  <li data-label-en="Ume is now Umete. New website at umete.jp." data-label-ja="UmeはUmeteになりました。新しいウェブサイトはumete.jpです。">Ume is now Umete. New website at umete.jp.</li>
-</ul>
-<h2 data-ume-release="0.2.0">0.2.0</h2>
-<span class="release-date" data-label-en="October 12, 2026" data-label-ja="2026年10月12日">October 12, 2026</span>
-<ul>
-  <li data-label-en="Added iCloud sync, saved contacts for doctors and emergency contacts, and an optional toolbar badge on pages Ume can fill." data-label-ja="iCloud同期、医師・緊急連絡先の保存、Umeが入力できるページに表示するオプションのツールバーバッジを追加しました。">Added iCloud sync, saved contacts for doctors and emergency contacts, and an optional toolbar badge on pages Ume can fill.</li>
-</ul>
-<h2 data-ume-release="0.1.15">0.1.15</h2>
-<span class="release-date" data-label-en="August 29, 2026" data-label-ja="2026年8月29日">August 29, 2026</span>
-<ul>
-  <li data-label-en="Switch back to Xcode 26 so I can publish a working TestFlight." data-label-ja="正常に動作するTestFlightビルドを公開できるよう、Xcode 26に戻す。">Switch back to Xcode 26 so I can publish a working TestFlight.</li>
-</ul>
-<h2 data-ume-release="0.1.14">0.1.14</h2>
-<span class="release-date" data-label-en="August 15, 2026" data-label-ja="2026年8月15日">August 15, 2026</span>
-<ul>
-  <li data-label-en="Composes Full name from first and last, fills Country of residence from the saved address country, and shows English update notes when the app is in English." data-label-ja="名と姓からフルネームを生成し、保存済み住所の国を居住国に設定します。また、アプリが英語の場合は英語のアップデート情報を表示します。">Composes Full name from first and last, fills Country of residence from the saved address country, and shows English update notes when the app is in English.</li>
-</ul>
-<h2 data-ume-release="0.1.13">0.1.13</h2>
-<span class="release-date" data-label-en="August 15, 2026" data-label-ja="2026年8月15日">August 15, 2026</span>
-<ul>
-  <li data-label-en="Put Type first in Saved Data, prefills phone country codes from the Mac region, defaults OpenAI to gpt-5.6-sol with high reasoning, and centers the About window title." data-label-ja="保存済みデータでTypeを先頭に移動し、Macの地域設定に基づいて電話の国番号を事前入力。OpenAIのデフォルトを高い推論レベルのgpt-5.6-solに設定し、Aboutウインドウのタイトルを中央揃え。">Put Type first in Saved Data, prefills phone country codes from the Mac region, defaults OpenAI to gpt-5.6-sol with high reasoning, and centers the About window title.</li>
-</ul>
-<h2 data-ume-release="0.1.12">0.1.12</h2>
-<span class="release-date" data-label-en="August 15, 2026" data-label-ja="2026年8月15日">August 15, 2026</span>
-<ul>
-  <li data-label-en="Fixed Add… refocusing a finished phone or date draft, and kept bug-report email headers when the AI log is truncated." data-label-ja="「Add…」で完了済みの電話番号または日付の下書きに再フォーカスされる問題を修正し、AIログが切り詰められた場合もバグ報告メールのヘッダーを保持するようにしました。">Fixed Add… refocusing a finished phone or date draft, and kept bug-report email headers when the AI log is truncated.</li>
-</ul>
-<h2 data-ume-release="0.1.11">0.1.11</h2>
-<span class="release-date" data-label-en="August 15, 2026" data-label-ja="2026年8月15日">August 15, 2026</span>
-<ul>
-  <li data-label-en="Fixed a reinstall error when leftover saved answers could not be decrypted, and included diagnostics in About → Report a Bug." data-label-ja="残っていた保存済み回答を復号できない場合に再インストールでエラーが発生する問題を修正し、About → Report a Bug に診断情報を追加しました。">Fixed a reinstall error when leftover saved answers could not be decrypted, and included diagnostics in About → Report a Bug.</li>
-</ul>
-<h2 data-ume-release="0.1.10">0.1.10</h2>
-<span class="release-date" data-label-en="August 13, 2026" data-label-ja="2026年8月13日">August 13, 2026</span>
-<ul>
-  <li data-label-en="Fixed adding and deleting saved answers in Settings, and made Debug Logs always available in the Safari extension." data-label-ja="「設定」で保存済みの回答を追加・削除する際の問題を修正し、Safari拡張機能でデバッグログを常に利用できるようにしました。">Fixed adding and deleting saved answers in Settings, and made Debug Logs always available in the Safari extension.</li>
-</ul>
-<h2 data-ume-release="0.1.9">0.1.9</h2>
-<span class="release-date" data-label-en="August 13, 2026" data-label-ja="2026年8月13日">August 13, 2026</span>
-<ul>
-  <li data-label-en="Fixed macOS update checks failing to start." data-label-ja="macOSのアップデート確認が開始されない問題を修正。">Fixed macOS update checks failing to start.</li>
-</ul>
-<h2 data-ume-release="0.1.8">0.1.8</h2>
-<span class="release-date" data-label-en="August 13, 2026" data-label-ja="2026年8月13日">August 13, 2026</span>
-<ul>
-  <li data-label-en="Added automatic signed macOS updates and a Keychain migration that should stop the extra unlock prompt on Mac." data-label-ja="macOSの自動署名付きアップデートと、Macで余分なロック解除プロンプトが表示されないようにするKeychain移行機能を追加しました。">Added automatic signed macOS updates and a Keychain migration that should stop the extra unlock prompt on Mac.</li>
-</ul>
-<h2 data-ume-release="0.1.7">0.1.7</h2>
-<span class="release-date" data-label-en="August 12, 2026" data-label-ja="2026年8月12日">August 12, 2026</span>
-<ul>
-  <li data-label-en="Added an Email Logs button that opens a reviewable support email draft from extension debug logs." data-label-ja="拡張機能のデバッグログから、内容を確認できるサポートメールの下書きを開く「Email Logs」ボタンを追加しました。">Added an Email Logs button that opens a reviewable support email draft from extension debug logs.</li>
-</ul>
-<h2 data-ume-release="0.1.6">0.1.6</h2>
-<span class="release-date" data-label-en="August 12, 2026" data-label-ja="2026年8月12日">August 12, 2026</span>
-<ul>
-  <li data-label-en="Fixed automatic Japanese changelog publishing for the Ume website." data-label-ja="Umeウェブサイトで日本語の変更履歴が自動公開されない問題を修正しました。">Fixed automatic Japanese changelog publishing for the Ume website.</li>
-</ul>
-<h2 data-ume-release="0.1.5">0.1.5</h2>
-<span class="release-date" data-label-en="August 12, 2026" data-label-ja="2026年8月12日">August 12, 2026</span>
-<ul>
-  <li data-label-en="Improved iOS release metadata and added automatic localized release notes and download updates." data-label-ja="iOSのリリースメタデータを改善し、ローカライズされたリリースノートとダウンロード更新の自動生成を追加しました。">Improved iOS release metadata and added automatic localized release notes and download updates.</li>
-</ul>
-        <h2 data-ume-release="0.1.4">0.1.4</h2>
-        <span class="release-date" data-label-en="August 12, 2026" data-label-ja="2026年8月12日">August 12, 2026</span>
-        <ul>
-          <li data-label-en="Added clearer drag-to-Applications instructions to the macOS installer." data-label-ja="macOSインストーラーに、アプリケーションフォルダへドラッグする手順をわかりやすく追加しました。">Added clearer drag-to-Applications instructions to the macOS installer.</li>
-        </ul>
-        <!-- ume-changelog:end -->
-      </details>
-    </section>
-
     <footer class="ume-footer">
-      <p><span data-label-en="Made by" data-label-ja="日本の">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja=" が制作。"> in Japan.</span></p>
+      <p class="footer-links"><a href="ume-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p>
+      <p class="ume-maker"><span class="ume-maker-marks"><a href="https://onemorething.tokyo" class="ume-maker-link" aria-label="Justin Garcia’s website"><img class="ume-maker-photo" src="assets/karui-developer.jpg?v=3" alt="" width="40" height="51"></a><a href="https://karui.jp/seal" class="ume-maker-link" aria-label="About the name seal" data-aria-label-en="About the name seal" data-aria-label-ja="名前の判子について"><img class="ume-maker-seal" src="assets/karui-seal.png?v=8" alt="" width="24" height="51"></a></span><span class="ume-maker-text"><span data-label-en="Designed by " data-label-ja="東京の個人開発者 ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作"> in Tokyo</span></span></p>
     </footer>
   </main>
 
   <script>
-    const supportedLanguages = ['en', 'ja'];
-    const languageSwitch = document.querySelector('.language-switch');
-    let currentLanguage = 'en';
-
-    function preferredLanguage() {
-      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
-      return language.startsWith('ja') ? 'ja' : 'en';
+    // The changelog moved to its own page; send old umete.jp/#changelog links, like
+    // the full version history link in older builds' update window, there.
+    if (window.location.hash === '#changelog') {
+      window.location.replace(document.querySelector('[href="ume-changelog.html"], [href="/changelog"]').href);
     }
-
-    function setLanguage(language, persist = true) {
-      const selected = supportedLanguages.includes(language) ? language : 'en';
-      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
-        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
-        if (element instanceof HTMLMetaElement) element.content = label;
-        else element.textContent = label;
-      });
-      document.querySelectorAll('[data-aria-label-en][data-aria-label-ja]').forEach((element) => {
-        element.setAttribute('aria-label', selected === 'ja' ? element.dataset.ariaLabelJa : element.dataset.ariaLabelEn);
-      });
-      document.documentElement.lang = selected;
-      currentLanguage = selected;
-      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
-      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
-      if (persist) localStorage.setItem('ume-language', selected);
-    }
-
-    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
-    setLanguage(localStorage.getItem('ume-language') || preferredLanguage(), false);
-
-    const changelog = document.querySelector('#changelog');
-    function openLinkedSection() {
-      if (window.location.hash === '#changelog') changelog.open = true;
-    }
-    window.addEventListener('hashchange', openLinkedSection);
-    openLinkedSection();
+    let currentLanguage = document.documentElement.lang;
+    document.addEventListener('umete-language', (event) => {
+      currentLanguage = event.detail;
+      updateDemoLabels(fillButton.disabled);
+    });
 
     const demo = document.querySelector('#ume-demo');
     const fillButton = demo.querySelector('.ume-action');
@@ -565,8 +466,8 @@
       updateDemoLabels(false);
     });
 
-    languageSwitch.addEventListener('click', () => updateDemoLabels(fillButton.disabled));
   </script>
+  <script src="umete-language.js?v=1"></script>
   <script src="product-click-tracking.js"></script>
 </body>
 

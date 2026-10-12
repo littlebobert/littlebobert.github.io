@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Umete Changelog</title>
+  <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link rel="icon" href="assets/ume-icon.png?v=1">
+  <link rel="apple-touch-icon" href="assets/ume-icon.png?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://umete.jp/changelog">
+  <meta name="description" content="Release notes for each version of Umete." data-label-en="Release notes for each version of Umete." data-label-ja="Umeteの各バージョンのリリースノート。">
+  <meta property="og:title" content="Umete Changelog" data-label-en="Umete Changelog" data-label-ja="Umete変更履歴">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umete.jp/changelog">
+  <meta property="og:site_name" content="Umete">
+  <meta property="og:image" content="https://umete.jp/assets/umete-social.png?v=1">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .umete-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
+    .umete-breadcrumbs a { color: #666; }
+    .umete-breadcrumb-separator { margin: 0 5pt; color: #999; }
+    .umete-section { padding: 6pt 0 5pt; }
+    .umete-changelog h2 { display: inline-block; padding-top: 2pt; padding-bottom: 2pt; }
+    .umete-changelog ul { margin: 3pt 0 3pt; padding-left: 20pt; }
+    .release-date { padding-left: 4pt; font-size: 10pt; color: #555; }
+    .umete-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .umete-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    .footer-links a { white-space: nowrap; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+  </style>
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <nav class="umete-breadcrumbs" aria-label="Breadcrumb"><a href="ume.html">Umete</a><span class="umete-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</span></nav>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="ume.html"><img class="sasu-icon" src="assets/ume-icon.png?v=1" alt="Umete app icon" data-alt-en="Umete app icon" data-alt-ja="Umeteアプリアイコン"></a>
+        <div><h1 data-label-en="Changelog" data-label-ja="変更履歴">Changelog</h1><div class="sasu-subtitle">Umete</div></div>
+      </div>
+    </section>
+    <section class="umete-section umete-changelog">
+        <!-- Umete's release workflow (scripts/update_landing_page.rb in littlebobert/umete)
+             adds each new version just below the start marker. -->
+        <!-- ume-changelog:start -->
+        <h2 data-ume-release="0.4.3">0.4.3</h2>
+        <span class="release-date" data-label-en="October 12, 2026" data-label-ja="2026年10月12日">October 12, 2026</span>
+        <ul>
+          <li data-label-en="Umete now fills custom dropdowns like Delta&#39;s date of birth and gender, no longer repeats your phone number in a second phone field, and leaves fields asking for a phone&#39;s owner alone." data-label-ja="Umeteが、Deltaの生年月日や性別などのカスタムドロップダウンに対応しました。また、2つ目の電話番号欄に同じ番号を繰り返し入力せず、電話の所有者を尋ねる欄には何も入力しません。">Umete now fills custom dropdowns like Delta&#39;s date of birth and gender, no longer repeats your phone number in a second phone field, and leaves fields asking for a phone&#39;s owner alone.</li>
+        </ul>
+        <h2 data-ume-release="0.4.2">0.4.2</h2>
+        <span class="release-date" data-label-en="October 12, 2026" data-label-ja="2026年10月12日">October 12, 2026</span>
+        <ul>
+          <li data-label-en="Umete no longer fills the same phone number into a second phone field, or a phone number into fields asking for the phone&#39;s owner." data-label-ja="Umete は、2つ目の電話番号欄に同じ番号を入力したり、電話番号の名義人を尋ねる欄に電話番号を入力したりしなくなりました。">Umete no longer fills the same phone number into a second phone field, or a phone number into fields asking for the phone&#39;s owner.</li>
+        </ul>
+        <h2 data-ume-release="0.4.1">0.4.1</h2>
+        <span class="release-date" data-label-en="October 12, 2026" data-label-ja="2026年10月12日">October 12, 2026</span>
+        <ul>
+          <li data-label-en="Fixed filling hidden fields, such as alternate phone numbers behind tabs, and the extension failing to start on pages open during an update." data-label-ja="タブ内に隠れた予備の電話番号などの非表示フィールドへの入力と、アップデート中に開かれていたページで拡張機能が起動しない問題を修正しました。">Fixed filling hidden fields, such as alternate phone numbers behind tabs, and the extension failing to start on pages open during an update.</li>
+        </ul>
+        <h2 data-ume-release="0.4.0">0.4.0</h2>
+        <span class="release-date" data-label-en="October 12, 2026" data-label-ja="2026年10月12日">October 12, 2026</span>
+        <ul>
+          <li data-label-en="AI matching is now free by default, with no API key needed. Faster, cheaper matching with OpenAI&#39;s Decisions API." data-label-ja="AIマッチングがデフォルトで無料になり、APIキーも不要になりました。OpenAIのDecisions APIにより、さらに高速かつ低コストなマッチングを実現します。">AI matching is now free by default, with no API key needed. Faster, cheaper matching with OpenAI&#39;s Decisions API.</li>
+        </ul>
+        <h2 data-ume-release="0.3.0">0.3.0</h2>
+        <span class="release-date" data-label-en="October 12, 2026" data-label-ja="2026年10月12日">October 12, 2026</span>
+        <ul>
+          <li data-label-en="Ume is now Umete. New website at umete.jp." data-label-ja="UmeはUmeteになりました。新しいウェブサイトはumete.jpです。">Ume is now Umete. New website at umete.jp.</li>
+        </ul>
+        <h2 data-ume-release="0.2.0">0.2.0</h2>
+        <span class="release-date" data-label-en="October 12, 2026" data-label-ja="2026年10月12日">October 12, 2026</span>
+        <ul>
+          <li data-label-en="Added iCloud sync, saved contacts for doctors and emergency contacts, and an optional toolbar badge on pages Ume can fill." data-label-ja="iCloud同期、医師・緊急連絡先の保存、Umeが入力できるページに表示するオプションのツールバーバッジを追加しました。">Added iCloud sync, saved contacts for doctors and emergency contacts, and an optional toolbar badge on pages Ume can fill.</li>
+        </ul>
+        <h2 data-ume-release="0.1.15">0.1.15</h2>
+        <span class="release-date" data-label-en="August 29, 2026" data-label-ja="2026年8月29日">August 29, 2026</span>
+        <ul>
+          <li data-label-en="Switch back to Xcode 26 so I can publish a working TestFlight." data-label-ja="正常に動作するTestFlightビルドを公開できるよう、Xcode 26に戻す。">Switch back to Xcode 26 so I can publish a working TestFlight.</li>
+        </ul>
+        <h2 data-ume-release="0.1.14">0.1.14</h2>
+        <span class="release-date" data-label-en="August 15, 2026" data-label-ja="2026年8月15日">August 15, 2026</span>
+        <ul>
+          <li data-label-en="Composes Full name from first and last, fills Country of residence from the saved address country, and shows English update notes when the app is in English." data-label-ja="名と姓からフルネームを生成し、保存済み住所の国を居住国に設定します。また、アプリが英語の場合は英語のアップデート情報を表示します。">Composes Full name from first and last, fills Country of residence from the saved address country, and shows English update notes when the app is in English.</li>
+        </ul>
+        <h2 data-ume-release="0.1.13">0.1.13</h2>
+        <span class="release-date" data-label-en="August 15, 2026" data-label-ja="2026年8月15日">August 15, 2026</span>
+        <ul>
+          <li data-label-en="Put Type first in Saved Data, prefills phone country codes from the Mac region, defaults OpenAI to gpt-5.6-sol with high reasoning, and centers the About window title." data-label-ja="保存済みデータでTypeを先頭に移動し、Macの地域設定に基づいて電話の国番号を事前入力。OpenAIのデフォルトを高い推論レベルのgpt-5.6-solに設定し、Aboutウインドウのタイトルを中央揃え。">Put Type first in Saved Data, prefills phone country codes from the Mac region, defaults OpenAI to gpt-5.6-sol with high reasoning, and centers the About window title.</li>
+        </ul>
+        <h2 data-ume-release="0.1.12">0.1.12</h2>
+        <span class="release-date" data-label-en="August 15, 2026" data-label-ja="2026年8月15日">August 15, 2026</span>
+        <ul>
+          <li data-label-en="Fixed Add… refocusing a finished phone or date draft, and kept bug-report email headers when the AI log is truncated." data-label-ja="「Add…」で完了済みの電話番号または日付の下書きに再フォーカスされる問題を修正し、AIログが切り詰められた場合もバグ報告メールのヘッダーを保持するようにしました。">Fixed Add… refocusing a finished phone or date draft, and kept bug-report email headers when the AI log is truncated.</li>
+        </ul>
+        <h2 data-ume-release="0.1.11">0.1.11</h2>
+        <span class="release-date" data-label-en="August 15, 2026" data-label-ja="2026年8月15日">August 15, 2026</span>
+        <ul>
+          <li data-label-en="Fixed a reinstall error when leftover saved answers could not be decrypted, and included diagnostics in About → Report a Bug." data-label-ja="残っていた保存済み回答を復号できない場合に再インストールでエラーが発生する問題を修正し、About → Report a Bug に診断情報を追加しました。">Fixed a reinstall error when leftover saved answers could not be decrypted, and included diagnostics in About → Report a Bug.</li>
+        </ul>
+        <h2 data-ume-release="0.1.10">0.1.10</h2>
+        <span class="release-date" data-label-en="August 13, 2026" data-label-ja="2026年8月13日">August 13, 2026</span>
+        <ul>
+          <li data-label-en="Fixed adding and deleting saved answers in Settings, and made Debug Logs always available in the Safari extension." data-label-ja="「設定」で保存済みの回答を追加・削除する際の問題を修正し、Safari拡張機能でデバッグログを常に利用できるようにしました。">Fixed adding and deleting saved answers in Settings, and made Debug Logs always available in the Safari extension.</li>
+        </ul>
+        <h2 data-ume-release="0.1.9">0.1.9</h2>
+        <span class="release-date" data-label-en="August 13, 2026" data-label-ja="2026年8月13日">August 13, 2026</span>
+        <ul>
+          <li data-label-en="Fixed macOS update checks failing to start." data-label-ja="macOSのアップデート確認が開始されない問題を修正。">Fixed macOS update checks failing to start.</li>
+        </ul>
+        <h2 data-ume-release="0.1.8">0.1.8</h2>
+        <span class="release-date" data-label-en="August 13, 2026" data-label-ja="2026年8月13日">August 13, 2026</span>
+        <ul>
+          <li data-label-en="Added automatic signed macOS updates and a Keychain migration that should stop the extra unlock prompt on Mac." data-label-ja="macOSの自動署名付きアップデートと、Macで余分なロック解除プロンプトが表示されないようにするKeychain移行機能を追加しました。">Added automatic signed macOS updates and a Keychain migration that should stop the extra unlock prompt on Mac.</li>
+        </ul>
+        <h2 data-ume-release="0.1.7">0.1.7</h2>
+        <span class="release-date" data-label-en="August 12, 2026" data-label-ja="2026年8月12日">August 12, 2026</span>
+        <ul>
+          <li data-label-en="Added an Email Logs button that opens a reviewable support email draft from extension debug logs." data-label-ja="拡張機能のデバッグログから、内容を確認できるサポートメールの下書きを開く「Email Logs」ボタンを追加しました。">Added an Email Logs button that opens a reviewable support email draft from extension debug logs.</li>
+        </ul>
+        <h2 data-ume-release="0.1.6">0.1.6</h2>
+        <span class="release-date" data-label-en="August 12, 2026" data-label-ja="2026年8月12日">August 12, 2026</span>
+        <ul>
+          <li data-label-en="Fixed automatic Japanese changelog publishing for the Ume website." data-label-ja="Umeウェブサイトで日本語の変更履歴が自動公開されない問題を修正しました。">Fixed automatic Japanese changelog publishing for the Ume website.</li>
+        </ul>
+        <h2 data-ume-release="0.1.5">0.1.5</h2>
+        <span class="release-date" data-label-en="August 12, 2026" data-label-ja="2026年8月12日">August 12, 2026</span>
+        <ul>
+          <li data-label-en="Improved iOS release metadata and added automatic localized release notes and download updates." data-label-ja="iOSのリリースメタデータを改善し、ローカライズされたリリースノートとダウンロード更新の自動生成を追加しました。">Improved iOS release metadata and added automatic localized release notes and download updates.</li>
+        </ul>
+        <h2 data-ume-release="0.1.4">0.1.4</h2>
+        <span class="release-date" data-label-en="August 12, 2026" data-label-ja="2026年8月12日">August 12, 2026</span>
+        <ul>
+          <li data-label-en="Added clearer drag-to-Applications instructions to the macOS installer." data-label-ja="macOSインストーラーに、アプリケーションフォルダへドラッグする手順をわかりやすく追加しました。">Added clearer drag-to-Applications instructions to the macOS installer.</li>
+        </ul>
+        <!-- ume-changelog:end -->
+    </section>
+    <footer class="umete-footer"><p class="footer-links"><a href="ume.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Designed by " data-label-ja="東京の個人開発者 ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作"> in Tokyo</span></p></footer>
+  </main>
+  <script src="umete-language.js?v=1"></script>
+</body>
+</html>

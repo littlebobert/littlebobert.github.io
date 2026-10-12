@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Umete Tech Specs</title>
+  <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link rel="icon" href="assets/ume-icon.png?v=1">
+  <link rel="apple-touch-icon" href="assets/ume-icon.png?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://umete.jp/specs">
+  <meta name="description" content="How Umete matches form fields, what AI matching sees, and how answers are encrypted and synced." data-label-en="How Umete matches form fields, what AI matching sees, and how answers are encrypted and synced." data-label-ja="Umeteがフォーム項目をどう照合し、AIマッチングが何を見て、回答をどう暗号化・同期するか。">
+  <meta property="og:title" content="Umete Tech Specs" data-label-en="Umete Tech Specs" data-label-ja="Umete 技術仕様">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umete.jp/specs">
+  <meta property="og:site_name" content="Umete">
+  <meta property="og:description" content="How Umete matches form fields, what AI matching sees, and how answers are encrypted and synced." data-label-en="How Umete matches form fields, what AI matching sees, and how answers are encrypted and synced." data-label-ja="Umeteがフォーム項目をどう照合し、AIマッチングが何を見て、回答をどう暗号化・同期するか。">
+  <meta property="og:image" content="https://umete.jp/assets/umete-social.png?v=1">
+  <meta name="twitter:card" content="summary_large_image">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .umete-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
+    .umete-breadcrumbs a { color: #666; }
+    .umete-breadcrumb-separator { margin: 0 5pt; color: #999; }
+    .umete-section { padding: 6pt 0 5pt; }
+    .umete-section p { margin: 0; }
+    .umete-section p + p, .umete-section ul + p, .umete-section ol + p { margin-top: 7pt; }
+    .umete-section p + ul, .umete-section p + ol { margin-top: 6pt; }
+    .umete-section ul, .umete-section ol { margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 2pt; padding-left: 20pt; }
+    .umete-section li + li { margin-top: 3pt; }
+    .umete-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .umete-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    /* Keep two-word links like Tech Specs whole; the row wraps at the <wbr> after each separator. */
+    .footer-links a { white-space: nowrap; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+  </style>
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <nav class="umete-breadcrumbs" aria-label="Breadcrumb"><a href="ume.html">Umete</a><span class="umete-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</span></nav>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="ume.html"><img class="sasu-icon" src="assets/ume-icon.png?v=1" alt="Umete app icon" data-alt-en="Umete app icon" data-alt-ja="Umeteアプリアイコン"></a>
+        <div><h1 data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</h1><div class="sasu-subtitle">Umete</div></div>
+      </div>
+    </section>
+    <section class="umete-section">
+      <h2 data-label-en="How it works" data-label-ja="仕組み">How it works</h2>
+      <ol>
+        <li data-label-en="You open Umete from Safari’s toolbar on a page. Only then does Safari let Umete into that page, and only into the page itself, not its frames." data-label-ja="ページでSafariのツールバーからUmeteを開きます。そのときに初めて、SafariがそのページへのUmeteのアクセスを許可します。対象はページ本体だけで、フレームは含みません。">You open Umete from Safari’s toolbar on a page. Only then does Safari let Umete into that page, and only into the page itself, not its frames.</li>
+        <li data-label-en="Remember my answers reads each visible field that has a value and isn’t sensitive, and saves its description and value, encrypted, in the Umete app." data-label-ja="「回答を保存」は、値が入っていて機密でない、表示されている各項目を読み取り、その説明と値を暗号化してUmeteアプリに保存します。">Remember my answers reads each visible field that has a value and isn’t sensitive, and saves its description and value, encrypted, in the Umete app.</li>
+        <li data-label-en="Fill this form matches each field against your saved answers on your device and fills the matches." data-label-ja="「このフォームに入力」は、各項目をデバイス上で保存済みの回答と照合し、一致したものを入力します。">Fill this form matches each field against your saved answers on your device and fills the matches.</li>
+        <li data-label-en="Any fields left over are described to an AI, which picks a saved answer by its label, or none. Umete checks each pick against what it sent and fills it on your device." data-label-ja="残った項目はAIに説明され、AIがラベルをもとに保存済みの回答を選ぶか、該当なしとします。Umeteは選ばれた結果を送信内容と照らし合わせて確認し、デバイス上で入力します。">Any fields left over are described to an AI, which picks a saved answer by its label, or none. Umete checks each pick against what it sent and fills it on your device.</li>
+        <li data-label-en="Umete never submits the form." data-label-ja="Umeteがフォームを送信することはありません。">Umete never submits the form.</li>
+      </ol>
+    </section>
+    <section class="umete-section">
+      <h2 data-label-en="Matching on your device" data-label-ja="デバイス上での照合">Matching on your device</h2>
+      <ul>
+        <li data-label-en="Each field is described by its label, accessible name and description, placeholder, name, id, autocomplete hint, type, fieldset legend, nearest heading, form name, and table headers." data-label-ja="各項目は、ラベル、アクセシブルな名前と説明、プレースホルダー、name、id、自動入力のヒント、種類、fieldsetの凡例、最も近い見出し、フォーム名、表の見出しで記述されます。">Each field is described by its label, accessible name and description, placeholder, name, id, autocomplete hint, type, fieldset legend, nearest heading, form name, and table headers.</li>
+        <li data-label-en="Answers are scored on these signals; a matching autocomplete hint counts most. A field is filled only when one answer clearly wins. Identifiers, like passport and membership numbers, and document dates are never filled with the wrong kind of answer." data-label-ja="回答はこれらの手がかりで採点され、自動入力のヒントの一致が最も重視されます。1つの回答が明確に上回る場合だけ入力します。パスポート番号や会員番号などの識別番号や書類の日付に、種類の違う回答を入れることはありません。">Answers are scored on these signals; a matching autocomplete hint counts most. A field is filled only when one answer clearly wins. Identifiers, like passport and membership numbers, and document dates are never filled with the wrong kind of answer.</li>
+        <li data-label-en="Supported controls: text fields, text areas, menus, checkboxes, radio buttons, date fields, and ARIA comboboxes, which Umete opens and picks from as a person would. Fields inside open shadow DOM are included." data-label-ja="対応する入力欄：テキスト欄、テキストエリア、メニュー、チェックボックス、ラジオボタン、日付欄、ARIAコンボボックス（人と同じように開いて選択します）。オープンなShadow DOM内の項目も対象です。">Supported controls: text fields, text areas, menus, checkboxes, radio buttons, date fields, and ARIA comboboxes, which Umete opens and picks from as a person would. Fields inside open shadow DOM are included.</li>
+        <li data-label-en="Names: builds a full name from first and last names, family name first for Japanese, Chinese, and Korean." data-label-ja="名前：姓と名からフルネームを組み立てます。日本語、中国語、韓国語では姓を先にします。">Names: builds a full name from first and last names, family name first for Japanese, Chinese, and Korean.</li>
+        <li data-label-en="Phone numbers: picks the country calling code in a separate menu and removes it, and the leading 0, from the number field." data-label-ja="電話番号：別のメニューで国番号を選び、番号欄からは国番号と先頭の0を除きます。">Phone numbers: picks the country calling code in a separate menu and removes it, and the leading 0, from the number field.</li>
+        <li data-label-en="Dates: fills date fields, split day, month, and year fields, and month-name menus, in the order the field shows." data-label-ja="日付：日付欄、日・月・年に分かれた項目、月名のメニューに、項目が示す順序で入力します。">Dates: fills date fields, split day, month, and year fields, and month-name menus, in the order the field shows.</li>
+        <li data-label-en="Addresses and contacts are saved as parts and filled part by part. Doctors are chosen by specialty when the form asks for one." data-label-ja="住所と連絡先は部分ごとに保存され、部分ごとに入力されます。フォームが診療科を尋ねる場合は、それに合う医師を選びます。">Addresses and contacts are saved as parts and filled part by part. Doctors are chosen by specialty when the form asks for one.</li>
+        <li data-label-en="Never read or filled: passwords, card numbers and card security codes, secrets, tokens, Social Security numbers, file uploads, and hidden or disabled fields." data-label-ja="読み取りも入力もしないもの：パスワード、カード番号とセキュリティコード、秘密情報、トークン、社会保障番号、ファイルのアップロード、非表示や無効の項目。">Never read or filled: passwords, card numbers and card security codes, secrets, tokens, Social Security numbers, file uploads, and hidden or disabled fields.</li>
+      </ul>
+    </section>
+    <section class="umete-section">
+      <h2 data-label-en="AI matching" data-label-ja="AIマッチング">AI matching</h2>
+      <ul>
+        <li data-label-en="Sent: field descriptions from an allow-list, up to 50 menu options per field, and the labels of your saved answers. Never sent: saved values, values in the form, addresses, and the page’s address or title." data-label-ja="送信するもの：許可リストに含まれる項目の説明、1項目につき最大50件のメニューの選択肢、保存済み回答のラベル。送信しないもの：保存した値、フォームの値、住所、ページのアドレスやタイトル。">Sent: field descriptions from an allow-list, up to 50 menu options per field, and the labels of your saved answers. Never sent: saved values, values in the form, addresses, and the page’s address or title.</li>
+        <li data-label-en="Umete (free), the default, goes through api.umete.jp, a Cloudflare Worker, to OpenAI’s Decisions API: one multiple-choice question per field, up to 10 per request. A pick is used only when the model gives it a probability of at least 60%." data-label-ja="初期設定のUmete（無料）は、Cloudflare Workerのapi.umete.jpを経由してOpenAIのDecisions APIを使います。1項目につき1問の選択式の質問で、1リクエストにつき最大10問です。モデルが60%以上の確率を示した場合だけ採用します。">Umete (free), the default, goes through api.umete.jp, a Cloudflare Worker, to OpenAI’s Decisions API: one multiple-choice question per field, up to 10 per request. A pick is used only when the model gives it a probability of at least 60%.</li>
+        <li data-label-en="The free tier allows 60 requests per device per day, 300 per network, and a shared daily cap. The server keeps only daily counts, keyed by salted hashes, and deletes them after three days." data-label-ja="無料枠は1台につき1日60リクエスト、1ネットワークにつき300リクエストで、全体の1日の上限もあります。サーバーはソルト付きハッシュごとの1日のリクエスト数だけを保存し、3日後に削除します。">The free tier allows 60 requests per device per day, 300 per network, and a shared daily cap. The server keeps only daily counts, keyed by salted hashes, and deletes them after three days.</li>
+        <li data-label-en="With your own key: OpenAI Decisions, OpenAI’s Responses API, or Anthropic’s Messages API, called directly from your device." data-label-ja="ご自身のキーを使う場合：OpenAI Decisions、OpenAIのResponses API、AnthropicのMessages APIを、デバイスから直接呼び出します。">With your own key: OpenAI Decisions, OpenAI’s Responses API, or Anthropic’s Messages API, called directly from your device.</li>
+      </ul>
+    </section>
+    <section class="umete-section">
+      <h2 data-label-en="Encryption and sync" data-label-ja="暗号化と同期">Encryption and sync</h2>
+      <ul>
+        <li data-label-en="Answers are sealed with AES-GCM (256-bit key) using CryptoKit, in Umete’s shared app group container. Up to 2,000 answers." data-label-ja="回答はCryptoKitのAES-GCM（256ビットのキー）で暗号化され、Umeteの共有App Groupコンテナに保存されます。最大2,000件です。">Answers are sealed with AES-GCM (256-bit key) using CryptoKit, in Umete’s shared app group container. Up to 2,000 answers.</li>
+        <li data-label-en="The key is in iCloud Keychain when sync is on, and device-only in the Keychain when it’s off." data-label-ja="キーは、同期がオンのときはiCloudキーチェーンに、オフのときはそのデバイスだけのキーチェーンに保管されます。">The key is in iCloud Keychain when sync is on, and device-only in the Keychain when it’s off.</li>
+        <li data-label-en="Sync uses a CloudKit private database. Each answer is its own record, encrypted before upload; conflicts are settled per answer by the latest change." data-label-ja="同期にはCloudKitのプライベートデータベースを使います。各回答は個別のレコードとして、アップロード前に暗号化されます。競合は回答ごとに最新の変更で解決します。">Sync uses a CloudKit private database. Each answer is its own record, encrypted before upload; conflicts are settled per answer by the latest change.</li>
+      </ul>
+    </section>
+    <section class="umete-section">
+      <h2 data-label-en="Toolbar badge" data-label-ja="ツールバーバッジ">Toolbar badge</h2>
+      <ul>
+        <li data-label-en="Optional and off by default. Needs access to all websites, since it checks each page as it loads." data-label-ja="オプションで、初期設定でオフです。読み込むページごとに確認するため、すべてのWebサイトへのアクセスが必要です。">Optional and off by default. Needs access to all websites, since it checks each page as it loads.</li>
+        <li data-label-en="Reads field labels and attributes, never values; stops after 200 fields and skips pages with more than 1,500 controls. The count on the icon is the number of fields Umete can fill." data-label-ja="項目のラベルと属性だけを読み取り、値は読みません。200項目で打ち切り、入力欄が1,500を超えるページは対象外です。アイコンの数字は、Umeteが入力できる項目の数です。">Reads field labels and attributes, never values; stops after 200 fields and skips pages with more than 1,500 controls. The count on the icon is the number of fields Umete can fill.</li>
+      </ul>
+    </section>
+    <section class="umete-section">
+      <h2 data-label-en="Requirements and updates" data-label-ja="動作環境とアップデート">Requirements and updates</h2>
+      <ul>
+        <li data-label-en="macOS 12 or later; iOS or iPadOS 15 or later. Safari." data-label-ja="macOS 12以降、iOS・iPadOS 15以降。Safari。">macOS 12 or later; iOS or iPadOS 15 or later. Safari.</li>
+        <li data-label-en="The Mac app is signed with Developer ID, notarized by Apple, and updates itself with Sparkle from a signed feed." data-label-ja="MacアプリはDeveloper IDで署名され、Appleの公証を受けており、署名付きフィードからSparkleで自動アップデートします。">The Mac app is signed with Developer ID, notarized by Apple, and updates itself with Sparkle from a signed feed.</li>
+        <li><span data-label-en="Umete is open source under the MIT License: " data-label-ja="UmeteはMITライセンスのオープンソースです：">Umete is open source under the MIT License: </span><a href="https://github.com/littlebobert/umete">github.com/littlebobert/umete</a></li>
+      </ul>
+    </section>
+    <footer class="umete-footer"><p class="footer-links"><a href="ume.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Designed by " data-label-ja="東京の個人開発者 ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作"> in Tokyo</span></p></footer>
+  </main>
+  <script src="umete-language.js?v=1"></script>
+</body>
+</html>

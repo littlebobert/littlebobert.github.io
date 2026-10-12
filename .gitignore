@@ -6,6 +6,7 @@ dist-kotai/
 dist-karui/
 dist-kaketa/
 dist-shadan/
+dist-umete/
 .env.local
 .npm-cache/
 

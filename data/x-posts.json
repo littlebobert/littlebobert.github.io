@@ -1,8 +1,33 @@
 {
-  "updatedAt": "2026-10-11T19:35:31.857Z",
+  "updatedAt": "2026-10-12T22:30:46.063Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2109406290565095523",
+      "text": "アパートのパーティーのたこ焼き🤤 https://t.co/BGXjRG4eRh",
+      "createdAt": "2026-10-11T22:10:25.000Z",
+      "url": "https://x.com/_bobertdowney/status/2109406290565095523",
+      "urls": [
+        {
+          "url": "https://t.co/BGXjRG4eRh",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2109406290565095523/photo/1",
+          "displayUrl": "pic.x.com/BGXjRG4eRh",
+          "start": 17,
+          "end": 40
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2109406290565095523-0.png"
+        }
+      ]
+    },
     {
       "id": "2109060021686534156",
       "text": "hide memes like this with https://t.co/24shCxZG6m, with its fast local model https://t.co/Qzs0ufh6c9",
@@ -201,38 +226,6 @@
           "alt": "",
           "type": "photo",
           "image": "assets/generated/x/mine-post-2104631400867811549-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2104526758783627420",
-      "text": "it’s been 5 days in Waiting for Review, even with an expedited review request. I guess there’s a flood right now with Shipaton. app ID 6814134614. the app is also a bit unusual I guess: https://t.co/XvhuIJPcHX https://t.co/6fPPsUzhQh",
-      "createdAt": "2026-09-28T11:00:54.000Z",
-      "url": "https://x.com/_bobertdowney/status/2104526758783627420",
-      "urls": [
-        {
-          "url": "https://t.co/XvhuIJPcHX",
-          "expandedUrl": "https://karui.jp",
-          "displayUrl": "karui.jp",
-          "start": 186,
-          "end": 209
-        },
-        {
-          "url": "https://t.co/6fPPsUzhQh",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2104526758783627420/photo/1",
-          "displayUrl": "pic.x.com/6fPPsUzhQh",
-          "start": 210,
-          "end": 233
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2104526758783627420-0.png"
         }
       ]
     }

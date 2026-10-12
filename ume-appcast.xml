@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.4.0</title>
+            <pubDate>Mon, 12 Oct 2026 16:10:41 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/#changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>24.1</sparkle:version>
+            <sparkle:shortVersionString>0.4.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.0
+
+AI matching is now free by default, with no API key needed. Faster, cheaper matching with OpenAI's Decisions API.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="YU5BqipQanmikVO77zMpR4T0HtOMhBmmrPSH74uOq07kCTumq547Py8TBvrugVThIBrdCzeao6+sClPzruAzCg==" sparkle:length="364">https://umete.jp/Umete-0.4.0-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="SloP8+CdFIqzh44KOxow9GvRKDUh39CBVGZ5MO6PDSvRq2avo11vlABPYO0QBZdagt6mjWruqkqKyKNnLZymBg==" sparkle:length="452">https://umete.jp/Umete-0.4.0-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.0/Umete-0.4.0-macOS.dmg" length="5907383" type="application/octet-stream" sparkle:edSignature="b+r3kfA9wmP+bS+siz/rKUZ0LVzhF9hc61/EW2rrCv+l/zP7OuIp4Y648UfIHIm6L/+UeyuczZ7w6DML26PqBg=="/>
+        </item>
+        <item>
             <title>0.3.0</title>
             <pubDate>Mon, 12 Oct 2026 12:57:25 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -142,24 +158,9 @@ macOSのアップデート確認が開始されない問題を修正。
 ]]></description>
             <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.9/Ume-0.1.9-macOS.dmg" length="5581239" type="application/octet-stream" sparkle:edSignature="rU5iXQAo1RN61tWJHdVrURi642c08Wc0o9ysQLVZwoS3QaV+WanKOoFSgsceJLfk5YU/lZWMWSDM6OMZB3MRCQ=="/>
         </item>
-        <item>
-            <title>0.1.8</title>
-            <pubDate>Wed, 12 Aug 2026 17:26:39 +0000</pubDate>
-            <link>https://littlebobert.github.io/ume.html</link>
-            <sparkle:version>12.1</sparkle:version>
-            <sparkle:shortVersionString>0.1.8</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Ume 0.1.8
-
-Added automatic signed macOS updates and a Keychain migration that should stop the extra unlock prompt on Mac.
-
-macOSの自動署名付きアップデートと、Macで余分なロック解除プロンプトが表示されないようにするKeychain移行機能を追加しました。
-]]></description>
-            <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.8/Ume-0.1.8-macOS.dmg" length="5596087" type="application/octet-stream" sparkle:edSignature="SVKt3mgPAQMk3t+jBGWj5mCLxuUqaSgRjX7OhDLzwi+PXUFck3rQH74b/D+cDw0dQtI1K6838VVCOvrpxQQVCQ=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: LXZ674+81tMjFJPFek70I9b06TehRVGZtY2DNuzVpDgtF9f6gtB7IiA4SDMQa27omiRw7YHqmIxfCUGNJtLBCg==
-length: 12678
+edSignature: QdyXfnNolS2Rcx2aNXxysUHKaIofsrDFOXRUHvwty8XFZ3b9ztlwLuYdUuioR66IY0Qmgel/TqKfJWmHnqWjDA==
+length: 13093
 -->

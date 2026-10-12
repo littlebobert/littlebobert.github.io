@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.4.2</title>
+            <pubDate>Mon, 12 Oct 2026 16:59:12 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/#changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>26.1</sparkle:version>
+            <sparkle:shortVersionString>0.4.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.2
+
+Umete no longer fills the same phone number into a second phone field, or a phone number into fields asking for the phone's owner.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="yJlT2c3aPAOMgXAyGOt4a1safdPe86uPU9WkpE1p0Y+MeA86e21o0v7c5SR36yg7UC3IEGt2227UU6xm/Ub6AA==" sparkle:length="381">https://umete.jp/Umete-0.4.2-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="OzQWg9amyK6kO9mUMFyFDcFoX7XViT6etlvywz5KYpbV1AUXuyABcOTsShfwet4c39CVMpLz9pYtDlAgHCU6Dw==" sparkle:length="423">https://umete.jp/Umete-0.4.2-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.2/Umete-0.4.2-macOS.dmg" length="5906871" type="application/octet-stream" sparkle:edSignature="nUckEMlcPCVIJNInbCTtUi//jRciiqQ6OfpurLqquasmXcnDWDT0q7/RNSorHZsW2oWY53az9MFwVIeqWtnnBg=="/>
+        </item>
+        <item>
             <title>0.4.1</title>
             <pubDate>Mon, 12 Oct 2026 16:43:04 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -144,24 +160,9 @@ Fixed a reinstall error when leftover saved answers could not be decrypted, and 
 ]]></description>
             <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.11/Ume-0.1.11-macOS.dmg" length="5596599" type="application/octet-stream" sparkle:edSignature="XnS1+T9yt7JVgbdjOkGKvkcN5FrZ0Me5Ya8pTycCt3dYYgaVmEjvBnfpMlLYYhsC1uC26I8HQqQsZ81Iyyd3CA=="/>
         </item>
-        <item>
-            <title>0.1.10</title>
-            <pubDate>Thu, 13 Aug 2026 14:48:42 +0000</pubDate>
-            <link>https://littlebobert.github.io/ume.html</link>
-            <sparkle:version>15.1</sparkle:version>
-            <sparkle:shortVersionString>0.1.10</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Ume 0.1.10
-
-Fixed adding and deleting saved answers in Settings, and made Debug Logs always available in the Safari extension.
-
-「設定」で保存済みの回答を追加・削除する際の問題を修正し、Safari拡張機能でデバッグログを常に利用できるようにしました。
-]]></description>
-            <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.10/Ume-0.1.10-macOS.dmg" length="5580215" type="application/octet-stream" sparkle:edSignature="ji9n88HutYUaIBBKeRvKyiqhqYCfxdbGjGornonAc71RnmqBaoK8lkQWyhA3Sg84LVTQEngKdgUJp2FbBGdWBg=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: AO3wfCibLVY6eOx4W64EO9ZIR27k39+pvrv+fBsbf8KW5orzry6DaomYZxsBJ5jzEmJvXle3hRX5ZVHcwEcjCg==
-length: 13706
+edSignature: B8iT+KaCsfxiEsJBZQ3HAXdAItrCNM5LSUI7I4DVGj7Nmdyvt1a+LE+tFEznUHYsOoFfXWJbx+bp0Fhma4qeDQ==
+length: 14130
 -->

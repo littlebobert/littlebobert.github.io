@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.4.1</title>
+            <pubDate>Mon, 12 Oct 2026 16:43:04 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/#changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>25.1</sparkle:version>
+            <sparkle:shortVersionString>0.4.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.1
+
+Fixed filling hidden fields, such as alternate phone numbers behind tabs, and the extension failing to start on pages open during an update.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="VK3zeGJ7dlly9zXJ6YhGDWskzq8tXOu/vigtPT0X3GTwrbJhbFeYYmVEshM11k04zTj0mvfK/FSthFDIbB1ABg==" sparkle:length="391">https://umete.jp/Umete-0.4.1-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="rQOupHwVuDqAocgJGL6dGZy6e+qnBTGWIIEWNKNr0PXUvy5FiBQjZVvaCYPG4Qw42izwVPg1FAhPN/++/w8fDA==" sparkle:length="458">https://umete.jp/Umete-0.4.1-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.1/Umete-0.4.1-macOS.dmg" length="5916087" type="application/octet-stream" sparkle:edSignature="kBAjW9YG5Ct2dHhScW+E3xnOFD9Vh7UZGdvAPnZo/rQB7q39ssAOx3ajMQ6kLyM2cd/hP56jH7aYHKW+53m5Dg=="/>
+        </item>
+        <item>
             <title>0.4.0</title>
             <pubDate>Mon, 12 Oct 2026 16:10:41 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -143,24 +159,9 @@ Fixed adding and deleting saved answers in Settings, and made Debug Logs always 
 ]]></description>
             <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.10/Ume-0.1.10-macOS.dmg" length="5580215" type="application/octet-stream" sparkle:edSignature="ji9n88HutYUaIBBKeRvKyiqhqYCfxdbGjGornonAc71RnmqBaoK8lkQWyhA3Sg84LVTQEngKdgUJp2FbBGdWBg=="/>
         </item>
-        <item>
-            <title>0.1.9</title>
-            <pubDate>Wed, 12 Aug 2026 19:35:36 +0000</pubDate>
-            <link>https://littlebobert.github.io/ume.html</link>
-            <sparkle:version>13.1</sparkle:version>
-            <sparkle:shortVersionString>0.1.9</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Ume 0.1.9
-
-Fixed macOS update checks failing to start.
-
-macOSのアップデート確認が開始されない問題を修正。
-]]></description>
-            <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.9/Ume-0.1.9-macOS.dmg" length="5581239" type="application/octet-stream" sparkle:edSignature="rU5iXQAo1RN61tWJHdVrURi642c08Wc0o9ysQLVZwoS3QaV+WanKOoFSgsceJLfk5YU/lZWMWSDM6OMZB3MRCQ=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: QdyXfnNolS2Rcx2aNXxysUHKaIofsrDFOXRUHvwty8XFZ3b9ztlwLuYdUuioR66IY0Qmgel/TqKfJWmHnqWjDA==
-length: 13093
+edSignature: AO3wfCibLVY6eOx4W64EO9ZIR27k39+pvrv+fBsbf8KW5orzry6DaomYZxsBJ5jzEmJvXle3hRX5ZVHcwEcjCg==
+length: 13706
 -->

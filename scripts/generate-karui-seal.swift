@@ -112,10 +112,10 @@ renderSeal(nameColumns, pointWidth: 24, pointHeight: 51, scale: 4, borderPoints:
 // 4× the footer size in points, at 3× for sharp phone screens.
 // Shown four times as big, where a full-size radius looked too round.
 renderSeal(nameColumns, pointWidth: 96, pointHeight: 204, scale: 3, borderPoints: 1.6 * 4, radiusPoints: 3.5 * 4, to: "assets/karui-seal-large.png")
-// 通知を軽く, the App Store name's tagline, stamped beside the hero the first time the
-// page loads. Five dense kanji need more room between them than ガルシア's kana.
-// Just wide enough that the lettering keeps its own proportions: any wider and it is
-// stretched to fill the column, which makes kanji look squat.
-renderSeal(["通知を軽く"], pointWidth: 26, pointHeight: 112, scale: 3, borderPoints: 2, radiusPoints: 4, spacing: 0.16, to: "assets/karui-seal-tagline.png")
+// 通知をかるく, the App Store name's tagline, stamped beside the hero the first time the
+// page loads. Six characters, three of them dense kanji, need more room between them
+// than ガルシア's kana. Just wide enough that the lettering keeps its own proportions:
+// any wider and it is stretched to fill the column, which makes kanji look squat.
+renderSeal(["通知をかるく"], pointWidth: 26, pointHeight: 112, scale: 3, borderPoints: 2, radiusPoints: 4, spacing: 0.16, to: "assets/karui-seal-tagline.png")
 // The same seal two and a half times as tall, for the #tagline view.
-renderSeal(["通知を軽く"], pointWidth: 66, pointHeight: 283, scale: 3, borderPoints: 5, radiusPoints: 10, spacing: 0.16, to: "assets/karui-seal-tagline-large.png")
+renderSeal(["通知をかるく"], pointWidth: 66, pointHeight: 283, scale: 3, borderPoints: 5, radiusPoints: 10, spacing: 0.16, to: "assets/karui-seal-tagline-large.png")

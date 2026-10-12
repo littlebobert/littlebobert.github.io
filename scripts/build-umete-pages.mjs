@@ -18,7 +18,7 @@ const siteFiles = [
 ];
 
 // Sparkle release notes referenced from the appcast.
-const releaseNotes = (await readdir(rootDirectory)).filter((file) => /^Ume-.*\.md$/.test(file));
+const releaseNotes = (await readdir(rootDirectory)).filter((file) => /^Ume(?:te)?-.*\.md$/.test(file));
 
 await rm(outputDirectory, { force: true, recursive: true });
 await mkdir(outputDirectory, { recursive: true });

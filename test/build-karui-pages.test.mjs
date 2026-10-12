@@ -85,12 +85,12 @@ test('builds the changelog page and links to it from every page', async () => {
   assert.match(qrPage, /<section class="karui-qr" id="qr"/);
   assert.match(qrPage, /<img src="\/assets\/karui-qr\.png\?v=1"/);
   assert.match(qrPage, /<a class="karui-qr-close" href="\/"/);
-  // It opens on the 通知を軽く seal that turns into a code, then swipes to the
+  // It opens on the 通知をかるく seal that turns into a code, then swipes to the
   // ガルシア one, then the icon code.
   assert.equal(qrPage.match(/<div class="karui-qr-morph">/g).length, 2);
   assert.ok(qrPage.indexOf('karui-qr-seal-tagline-name.png') < qrPage.indexOf('karui-qr-seal-name.png'));
   assert.ok(qrPage.indexOf('karui-qr-seal-name.png') < qrPage.indexOf('karui-qr.png'));
-  assert.match(qrPage, /src="\/assets\/karui-qr-seal-tagline-name\.png\?v=1"/);
+  assert.match(qrPage, /src="\/assets\/karui-qr-seal-tagline-name\.png\?v=2"/);
   assert.match(qrPage, /src="\/assets\/karui-qr-seal-name\.png\?v=3"/);
   assert.match(qrPage, /src="\/assets\/karui-qr-seal\.png\?v=3"/);
   assert.doesNotMatch(qrPage, /karui-qr-hanko/);
@@ -102,7 +102,7 @@ test('builds the changelog page and links to it from every page', async () => {
   assert.match(sealPage, /src="\/assets\/karui-seal-large\.png/);
   assert.match(sealPage, /<a class="karui-hanko-close" href="\/"/);
   assert.doesNotMatch(pages[0], /karui-seal-view/);
-  // The 通知を軽く seal beside the hero inks in, and tapping it opens it large on its
+  // The 通知をかるく seal beside the hero inks in, and tapping it opens it large on its
   // own page, /hanko, which inks in the same way.
   assert.match(pages[0], /<a href="\/hanko" class="karui-hero-seal"[^>]*><img src="\/assets\/karui-seal-tagline\.png/);
   assert.match(pages[0], /<script src="\/karui-seal-ink\.js\?v=1"><\/script>/);

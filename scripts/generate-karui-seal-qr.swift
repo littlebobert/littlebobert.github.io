@@ -1,5 +1,5 @@
 // Generates the animated seals at karui.jp/#qr, where a seal's lettering, in a
-// narrow frame, turns into a QR code for karui.jp. There are two: 通知を軽く, the
+// narrow frame, turns into a QR code for karui.jp. There are two: 通知をかるく, the
 // App Store name's tagline, and ガルシア, like the footer seal.
 //   assets/karui-qr-seal.png       the plain red QR code in a square frame, where
 //                                  both end
@@ -274,8 +274,8 @@ func seal(text: String, widthRatio: CGFloat, name: String, json: String, sampleS
     print("Wrote \(json) (\(dots.count) dots, \(extras.count) extras)")
 }
 
-// 通知を軽く, the App Store name's tagline, first. Its kanji are small and dense, so
-// they're sampled finely with small dots to stay legible.
-seal(text: "通知を軽く", widthRatio: 0.3, name: "assets/karui-qr-seal-tagline-name.png", json: "assets/karui-qr-seal-tagline.json", sampleStep: 2, extraSpacing: 0.19, startScale: 0.3)
+// 通知をかるく, the App Store name's tagline, first. Its six characters are small, and the
+// kanji dense, so they're sampled finely with small dots to stay legible.
+seal(text: "通知をかるく", widthRatio: 0.3, name: "assets/karui-qr-seal-tagline-name.png", json: "assets/karui-qr-seal-tagline.json", sampleStep: 2, extraSpacing: 0.19, startScale: 0.3)
 // ガルシア, in the footer seal's 24 × 51-point shape.
 seal(text: "ガルシア", widthRatio: 24 / 51, name: "assets/karui-qr-seal-name.png", json: "assets/karui-qr-seal.json", sampleStep: 3, extraSpacing: 0.22, startScale: 0.4)

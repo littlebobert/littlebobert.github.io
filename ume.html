@@ -40,190 +40,29 @@
     body.sasu-site { background: #fff; }
     .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
 
-    .ume-demo {
-      width: 526px;
-      max-width: 100%;
-      margin: -2pt auto 18pt;
-      text-align: center;
-    }
-
-    .ume-demo-label {
-      margin: 0 0 9px;
-      color: #555;
-      font-size: 11pt;
-      font-weight: bold;
-    }
-
-    .safari-window {
-      overflow: hidden;
-      border: 1px solid var(--ume-line);
-      border-radius: 12px;
-      background: #f5f5f6;
-      box-shadow: 0 10px 28px rgba(40, 37, 31, 0.13);
-      text-align: left;
-    }
-
-    .safari-titlebar {
-      position: relative;
-      min-height: 38px;
-      padding: 11px 12px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-      background: linear-gradient(#f2f2f2, #e5e5e5);
-    }
-
-    .traffic { position: absolute; left: 12px; top: 50%; display: flex; gap: 6px; transform: translateY(-50%); }
-    .traffic span { width: 11px; height: 11px; border-radius: 50%; }
-    .traffic span:nth-child(1) { background: #ff5f57; }
-    .traffic span:nth-child(2) { background: #febc2e; }
-    .traffic span:nth-child(3) { background: #28c840; }
-
-    .address-bar {
-      width: 56%;
-      min-width: 180px;
-      margin: 0 auto;
-      padding: 4px 12px;
-      border: 1px solid rgba(0, 0, 0, 0.08);
-      border-radius: 6px;
-      background: rgba(255, 255, 255, 0.92);
-      color: #555;
-      font: 10px/1.2 -apple-system, BlinkMacSystemFont, sans-serif;
-      text-align: center;
-    }
-
-    .demo-content {
-      position: relative;
-      min-height: 350px;
-      padding: 22px 214px 24px 24px;
-      background:
-        radial-gradient(circle at 15% 0%, rgba(180, 166, 66, 0.11), transparent 30%),
-        #fbfaf7;
-    }
-
-    .sample-form h3 {
-      margin: 0 0 4px;
-      padding: 0;
-      color: var(--ume-ink);
-      font: 700 17px/1.2 -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    .form-note {
-      margin-bottom: 14px;
-      color: #777;
-      font: 11px/1.35 -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    .field-row {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 9px;
-    }
-
-    .field { margin-bottom: 9px; }
-    .field label { display: block; margin-bottom: 4px; color: #4f4a42; font: 600 10px/1.2 -apple-system, BlinkMacSystemFont, sans-serif; }
-    .field input,
-    .field select {
-      width: 100%;
-      height: 29px;
-      padding: 5px 7px;
-      border: 1px solid #c7c3bb;
-      border-radius: 5px;
-      background: #fff;
-      color: #25231f;
-      font: 11px/1.2 -apple-system, BlinkMacSystemFont, sans-serif;
-      transition: border-color 180ms ease, background 180ms ease, box-shadow 180ms ease;
-    }
-
-    .field input[readonly] { cursor: default; }
-    .demo-filled .field input,
-    .demo-filled .field select { border-color: #7f9252; background: #fbfff4; box-shadow: 0 0 0 2px rgba(127, 146, 82, 0.12); }
-
-    .fake-submit {
-      display: inline-block;
-      margin-top: 3px;
-      padding: 7px 13px;
-      border: 0;
-      border-radius: 5px;
-      background: #d8d5cf;
-      color: #777;
-      font: 600 10px/1 -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    .ume-popover {
-      position: absolute;
-      top: 22px;
-      right: 18px;
-      width: 176px;
-      overflow: hidden;
-      border: 1px solid rgba(0, 0, 0, 0.12);
-      border-radius: 11px;
-      background: rgba(249, 249, 249, 0.98);
-      box-shadow: 0 12px 34px rgba(31, 28, 24, 0.2);
-      font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    .popover-header {
-      display: flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 11px 8px;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.07);
-    }
-
-    .popover-header img { width: 28px; height: 28px; border-radius: 7px; }
-    .popover-title { color: #25231f; font-size: 13px; font-weight: 700; }
-    .popover-subtitle { margin-top: 1px; color: #777; font-size: 9px; }
-    .popover-body { padding: 10px; }
-
-    .ume-action {
-      width: 100%;
-      padding: 8px 8px;
-      border: 1px solid var(--ume-green-dark);
-      border-radius: 6px;
-      background: var(--ume-green);
-      color: #fff;
-      cursor: pointer;
-      font: 700 11px/1.2 -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    .ume-action:hover { background: var(--ume-green-dark); }
-    .ume-action:focus-visible { outline: 2px solid rgba(22, 117, 209, 0.55); outline-offset: 2px; }
-    .ume-action:disabled { border-color: #6e8150; background: #7f9252; cursor: default; }
-
-    .remember-action {
-      width: 100%;
-      margin-top: 7px;
-      padding: 7px 5px;
-      border: 1px solid #c8c5be;
-      border-radius: 6px;
-      background: #fff;
-      color: #49453f;
-      font: 600 10px/1.2 -apple-system, BlinkMacSystemFont, sans-serif;
-    }
-
-    .fill-status {
-      min-height: 16px;
-      margin-top: 8px;
-      color: var(--ume-green-dark);
-      font-size: 9px;
-      font-weight: 600;
-      text-align: center;
-    }
-
-    .demo-reset {
-      margin: 8px 0 0;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      color: #596e36;
-      cursor: pointer;
-      font: 10pt Verdana, Geneva, sans-serif;
-      text-decoration: underline;
-      text-underline-offset: 2px;
-    }
-
-    .demo-reset[hidden] { display: none; }
-    .ume-caption { margin: 0; padding: 9pt 6pt 0; color: #444; font-size: 11pt; }
-
+    /* The screens from the App Store images, stacked and faded between, like Karui's
+       demo. A tap on the right half goes forward, on the left half back; the arrows and
+       dots below do the same. The phones are rendered by AppStoreScreenshots/scripts/
+       landing.mjs in the Umete repository. */
+    body { touch-action: manipulation; }
+    .ume-demo-label { margin: 10pt 0 5pt; font-size: 10pt; font-weight: 600; color: #555; text-align: center; }
+    .ume-carousel { position: relative; width: 100%; max-width: 300px; aspect-ratio: 900 / 1837; margin: 0 auto; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
+    .ume-shot { position: absolute; inset: 0; display: block; width: 100%; height: auto; opacity: 0; transition: opacity 0.25s; pointer-events: none; }
+    .ume-shot.is-current { opacity: 1; }
+    .ume-zone { position: absolute; top: 0; bottom: 0; width: 50%; margin: 0; padding: 0; border: 0; background: none; cursor: pointer; appearance: none; -webkit-appearance: none; -webkit-tap-highlight-color: transparent; }
+    .ume-zone-prev { left: 0; }
+    .ume-zone-next { right: 0; }
+    .ume-carousel-caption { display: none; max-width: 480px; min-height: 2.6em; margin: 8pt auto 4pt; font-family: Verdana, "Hiragino Sans", sans-serif; font-size: 13pt; font-weight: bold; line-height: 1.3; text-align: center; color: var(--ume-ink); text-wrap: balance; }
+    .ume-carousel-caption.is-current { display: block; }
+    .ume-controls { display: flex; align-items: center; justify-content: center; gap: 7px; margin: 0 auto 12pt; }
+    .ume-arrow { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin: 0 4px; padding: 0; border: 0; border-radius: 8px; background: none; color: var(--ume-ink); cursor: pointer; appearance: none; -webkit-appearance: none; -webkit-tap-highlight-color: transparent; }
+    .ume-arrow svg { width: 18px; height: 18px; display: block; }
+    .ume-arrow:hover { color: var(--ume-green); }
+    .ume-arrow:active { transform: translateY(1px); }
+    .ume-dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: var(--ume-line); cursor: pointer; appearance: none; -webkit-appearance: none; }
+    .ume-dot.is-current { background: var(--ume-ink); }
+    .ume-arrow:focus-visible, .ume-dot:focus-visible { outline: 2px solid var(--ume-green); outline-offset: 2px; }
+    @media (prefers-reduced-motion: reduce) { .ume-shot { transition: none; } }
 
     .sasu-hero .download-link { margin-top: 9pt; }
     /* The second line of the pitch, below the icon and name, in plain body text. */
@@ -250,14 +89,8 @@
 
     @media (max-width: 560px) {
       .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
-      .demo-content { min-height: 706px; padding: 210px 18px 20px; }
-      .ume-popover { top: 18px; right: 18px; bottom: auto; left: 18px; width: auto; }
-      .field-row { grid-template-columns: 1fr; gap: 0; }
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      .field input, .field select, .download-link { transition: none; }
-    }
   </style>
 </head>
 
@@ -281,85 +114,26 @@
     </section>
 
     <section class="sasu-section">
-      <figure class="ume-demo">
-        <div class="ume-demo-label" data-label-en="One tap fills entire forms." data-label-ja="ワンタップでフォーム全体に入力。">One tap fills entire forms.</div>
-        <div class="safari-window" id="ume-demo">
-          <div class="safari-titlebar">
-            <span class="traffic" aria-hidden="true"><span></span><span></span><span></span></span>
-            <div class="address-bar">travel.example</div>
-          </div>
-          <div class="demo-content">
-            <form class="sample-form" aria-label="Example traveler form" data-aria-label-en="Example traveler form" data-aria-label-ja="旅行者フォームの例">
-              <h3 data-label-en="Traveler details" data-label-ja="旅行者情報">Traveler details</h3>
-              <div class="form-note" data-label-en="Enter your details as they appear on your ID." data-label-ja="身分証明書に記載されているとおりに入力してください。">Enter your details as they appear on your ID.</div>
-              <div class="field-row">
-                <div class="field">
-                  <label for="demo-first" data-label-en="First name" data-label-ja="名">First name</label>
-                  <input id="demo-first" type="text" readonly>
-                </div>
-                <div class="field">
-                  <label for="demo-last" data-label-en="Last name" data-label-ja="姓">Last name</label>
-                  <input id="demo-last" type="text" readonly>
-                </div>
-              </div>
-              <div class="field">
-                <label for="demo-email" data-label-en="Email address" data-label-ja="メールアドレス">Email address</label>
-                <input id="demo-email" type="email" readonly>
-              </div>
-              <div class="field-row">
-                <div class="field">
-                  <label for="demo-code" data-label-en="Country calling code" data-label-ja="国番号">Country calling code</label>
-                  <select id="demo-code" tabindex="-1" aria-label="Country calling code example" data-aria-label-en="Country calling code example" data-aria-label-ja="国番号の例">
-                    <option value="1|US">United States +1</option>
-                    <option value="81|JP">Japan +81</option>
-                  </select>
-                </div>
-                <div class="field">
-                  <label for="demo-phone" data-label-en="Phone number" data-label-ja="電話番号">Phone number</label>
-                  <input id="demo-phone" type="tel" readonly>
-                </div>
-              </div>
-              <div class="field-row">
-                <div class="field">
-                  <label for="demo-dob" data-label-en="Date of birth" data-label-ja="生年月日">Date of birth</label>
-                  <input id="demo-dob" type="date" readonly>
-                </div>
-                <div class="field">
-                  <label for="demo-gender" data-label-en="Gender" data-label-ja="性別">Gender</label>
-                  <select id="demo-gender" tabindex="-1" aria-label="Gender example" data-aria-label-en="Gender example" data-aria-label-ja="性別の例">
-                    <option value="" data-label-en="Select" data-label-ja="選択">Select</option>
-                    <option value="female" data-label-en="Female" data-label-ja="女性">Female</option>
-                    <option value="male" data-label-en="Male" data-label-ja="男性">Male</option>
-                    <option value="unspecified" data-label-en="Unspecified" data-label-ja="指定しない">Unspecified</option>
-                  </select>
-                </div>
-              </div>
-              <div class="field">
-                <label for="demo-flyer" data-label-en="Frequent flyer number" data-label-ja="マイレージ番号">Frequent flyer number</label>
-                <input id="demo-flyer" type="text" readonly>
-              </div>
-              <button class="fake-submit" type="button" disabled data-label-en="Continue" data-label-ja="続ける">Continue</button>
-            </form>
-
-            <aside class="ume-popover" aria-label="Umete Safari extension example" data-aria-label-en="Umete Safari extension example" data-aria-label-ja="Umete Safari拡張機能の例">
-              <div class="popover-header">
-                <img src="assets/ume-icon.png?v=1" alt="">
-                <div>
-                  <div class="popover-title">Umete</div>
-                  <div class="popover-subtitle" data-label-en="9 saved answers" data-label-ja="9件の保存済み回答">9 saved answers</div>
-                </div>
-              </div>
-              <div class="popover-body">
-                <button class="ume-action" type="button" data-label-en="Fill this form" data-label-ja="このフォームに入力">Fill this form</button>
-                <button class="remember-action" type="button" tabindex="-1" data-label-en="Remember my answers" data-label-ja="回答を保存">Remember my answers</button>
-                <div class="fill-status" aria-live="polite"></div>
-              </div>
-            </aside>
-          </div>
-        </div>
-        <button class="demo-reset" type="button" hidden data-label-en="Reset demo" data-label-ja="デモをリセット">Reset demo</button>
-        <figcaption class="ume-caption" data-label-en="Umete fills only when you ask, and never submits the form for you." data-label-ja="Umeteは指示したときだけ入力し、フォームを自動送信することはありません。">Umete fills only when you ask, and never submits the form for you.</figcaption>
-      </figure>
+      <p class="ume-demo-label" data-label-en="Umete on iPhone" data-label-ja="iPhoneのUmete">Umete on iPhone</p>
+      <div class="ume-carousel" role="group" aria-roledescription="carousel" aria-label="Umete on iPhone, three screens" data-aria-label-en="Umete on iPhone, three screens" data-aria-label-ja="iPhoneのUmete、3画面" tabindex="0">
+        <img class="ume-shot is-current" src="assets/umete-landing-fill.webp?v=1" width="900" height="1837" alt="Safari on iPhone with an airline’s traveler form filled in by Umete, and Umete’s sheet saying it filled 9 fields." data-alt-en="Safari on iPhone with an airline’s traveler form filled in by Umete, and Umete’s sheet saying it filled 9 fields." data-alt-ja="iPhoneのSafariで、Umeteが航空会社の旅行者フォームに入力し、9項目を入力したと表示している画面">
+        <img class="ume-shot" src="assets/umete-landing-remembers.webp?v=1" width="900" height="1837" alt="Umete’s Saved Data: a home address, two doctors, an emergency contact, a passport number, and more." data-alt-en="Umete’s Saved Data: a home address, two doctors, an emergency contact, a passport number, and more." data-alt-ja="Umeteの保存済みデータ：自宅の住所、2人の医師、緊急連絡先、パスポート番号など" loading="lazy">
+        <img class="ume-shot" src="assets/umete-landing-private.webp?v=1" width="900" height="1837" alt="Umete’s Privacy tab: answers are encrypted, iCloud sync stays private, and answer values are never sent to AI." data-alt-en="Umete’s Privacy tab: answers are encrypted, iCloud sync stays private, and answer values are never sent to AI." data-alt-ja="Umeteのプライバシータブ：回答は暗号化され、iCloud同期は非公開で、回答の値はAIに送信されない" loading="lazy">
+        <button class="ume-zone ume-zone-prev" type="button" tabindex="-1" aria-hidden="true"></button>
+        <button class="ume-zone ume-zone-next" type="button" tabindex="-1" aria-hidden="true"></button>
+      </div>
+      <div class="ume-carousel-captions" aria-live="polite">
+        <p class="ume-carousel-caption is-current" data-label-en="Fill a whole form with one tap." data-label-ja="フォームをまるごと、ワンタップで。">Fill a whole form with one tap.</p>
+        <p class="ume-carousel-caption" data-label-en="Remembers your address, doctors, and more." data-label-ja="住所も、かかりつけ医も、覚えておく。">Remembers your address, doctors, and more.</p>
+        <p class="ume-carousel-caption" data-label-en="Your answers never go to AI." data-label-ja="回答は、AIに送りません。">Your answers never go to AI.</p>
+      </div>
+      <div class="ume-controls">
+        <button class="ume-arrow ume-prev" type="button" aria-label="Previous screen" data-aria-label-en="Previous screen" data-aria-label-ja="前の画面"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"/></svg></button>
+        <button class="ume-dot is-current" type="button" aria-label="Screen 1 of 3" data-aria-label-en="Screen 1 of 3" data-aria-label-ja="3画面中1番目"></button>
+        <button class="ume-dot" type="button" aria-label="Screen 2 of 3" data-aria-label-en="Screen 2 of 3" data-aria-label-ja="3画面中2番目"></button>
+        <button class="ume-dot" type="button" aria-label="Screen 3 of 3" data-aria-label-en="Screen 3 of 3" data-aria-label-ja="3画面中3番目"></button>
+        <button class="ume-arrow ume-next" type="button" aria-label="Next screen" data-aria-label-en="Next screen" data-aria-label-ja="次の画面"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg></button>
+      </div>
     </section>
 
 
@@ -406,66 +180,45 @@
     if (window.location.hash === '#changelog') {
       window.location.replace(document.querySelector('[href="ume-changelog.html"], [href="/changelog"]').href);
     }
-    let currentLanguage = document.documentElement.lang;
-    document.addEventListener('umete-language', (event) => {
-      currentLanguage = event.detail;
-      updateDemoLabels(fillButton.disabled);
-    });
-
-    const demo = document.querySelector('#ume-demo');
-    const fillButton = demo.querySelector('.ume-action');
-    const resetButton = document.querySelector('.demo-reset');
-    const fillStatus = demo.querySelector('.fill-status');
-    const fields = {
-      first: demo.querySelector('#demo-first'),
-      last: demo.querySelector('#demo-last'),
-      email: demo.querySelector('#demo-email'),
-      code: demo.querySelector('#demo-code'),
-      phone: demo.querySelector('#demo-phone'),
-      dob: demo.querySelector('#demo-dob'),
-      gender: demo.querySelector('#demo-gender'),
-      flyer: demo.querySelector('#demo-flyer')
-    };
-
-    function updateDemoLabels(filled) {
-      fillButton.textContent = filled
-        ? (currentLanguage === 'ja' ? '入力しました' : 'Form filled')
-        : (currentLanguage === 'ja' ? 'このフォームに入力' : 'Fill this form');
-      fillStatus.textContent = filled
-        ? (currentLanguage === 'ja' ? '8項目を端末上で入力しました' : 'Filled 8 fields locally')
-        : '';
-    }
-
-    fillButton.addEventListener('click', () => {
-      fields.first.value = 'Justin';
-      fields.last.value = 'Garcia';
-      fields.email.value = 'justin@example.com';
-      fields.code.value = '81|JP';
-      fields.phone.value = '90-1234-5678';
-      fields.dob.value = '1988-07-22';
-      fields.gender.value = 'male';
-      fields.flyer.value = 'NH1234567890';
-      demo.classList.add('demo-filled');
-      fillButton.disabled = true;
-      resetButton.hidden = false;
-      updateDemoLabels(true);
-    });
-
-    resetButton.addEventListener('click', () => {
-      fields.first.value = '';
-      fields.last.value = '';
-      fields.email.value = '';
-      fields.code.value = '1|US';
-      fields.phone.value = '';
-      fields.dob.value = '';
-      fields.gender.value = '';
-      fields.flyer.value = '';
-      demo.classList.remove('demo-filled');
-      fillButton.disabled = false;
-      resetButton.hidden = true;
-      updateDemoLabels(false);
-    });
-
+    // The carousel: three screens, one per caption. A tap on the right half of the
+    // phone goes forward and on the left half back, round and round; so do the arrows
+    // and dots below it, the arrow keys with it focused, and a sideways swipe.
+    (() => {
+      const carousel = document.querySelector('.ume-carousel');
+      const shots = [...carousel.querySelectorAll('.ume-shot')];
+      const captions = [...document.querySelectorAll('.ume-carousel-caption')];
+      const dots = [...document.querySelectorAll('.ume-dot')];
+      let index = 0;
+      const show = (next) => {
+        index = (next + shots.length) % shots.length;
+        [shots, captions, dots].forEach((items) => items.forEach((item, i) => item.classList.toggle('is-current', i === index)));
+      };
+      let swipeStart;
+      let swiped = false;
+      carousel.addEventListener('pointerdown', (event) => { swipeStart = event.clientX; swiped = false; });
+      carousel.addEventListener('pointerup', (event) => {
+        if (swipeStart === undefined) return;
+        const distance = event.clientX - swipeStart;
+        swipeStart = undefined;
+        if (Math.abs(distance) < 40) return;
+        swiped = true;
+        show(index + (distance < 0 ? 1 : -1));
+      });
+      carousel.addEventListener('pointercancel', () => { swipeStart = undefined; });
+      // A swipe that ends over a zone also fires its click, which is ignored.
+      const step = (by) => () => { if (swiped) swiped = false; else show(index + by); };
+      carousel.querySelector('.ume-zone-prev').addEventListener('click', step(-1));
+      carousel.querySelector('.ume-zone-next').addEventListener('click', step(1));
+      document.querySelector('.ume-prev').addEventListener('click', () => show(index - 1));
+      document.querySelector('.ume-next').addEventListener('click', () => show(index + 1));
+      dots.forEach((dot, i) => dot.addEventListener('click', () => show(i)));
+      carousel.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowRight') show(index + 1);
+        else if (event.key === 'ArrowLeft') show(index - 1);
+        else return;
+        event.preventDefault();
+      });
+    })();
   </script>
   <script src="umete-language.js?v=1"></script>
   <script src="product-click-tracking.js"></script>

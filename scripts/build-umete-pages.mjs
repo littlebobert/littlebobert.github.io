@@ -20,6 +20,10 @@ const siteFiles = [
 const assetFiles = [
   'ume-icon.png',
   'umete-social.png',
+  // The landing page's carousel, from the Umete repository's AppStoreScreenshots.
+  'umete-landing-fill.webp',
+  'umete-landing-remembers.webp',
+  'umete-landing-private.webp',
   // The maker's photo and name seal, shared with Karui's page.
   'karui-developer.jpg',
   'karui-seal.png',

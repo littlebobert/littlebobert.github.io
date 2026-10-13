@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.6.0</title>
+            <pubDate>Tue, 13 Oct 2026 11:43:52 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>111</sparkle:version>
+            <sparkle:shortVersionString>0.6.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Search now finds files. Type two or more letters to see matching files from Spotlight in a new Files section.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.0/Kehai-0.6.0-mac.zip" length="3267697" type="application/octet-stream" sparkle:edSignature="fWygTVnDRjKOW4x6GDh0DxkdHSYkiJemGuoadS5Xnz2leUKr0Efek6xJ8b8s2rJ8LFbuq5ms8os6kGoNiRblDQ=="/>
+        </item>
+        <item>
             <title>0.5.35</title>
             <pubDate>Mon, 12 Oct 2026 15:35:58 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Don’t bring up every window individually when bringing an app to the foreground, it’s too slow.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.34/Kehai-0.5.34-mac.zip" length="3162105" type="application/octet-stream" sparkle:edSignature="HjOis3SSRB8/dMrgu0CYOPmb0Pls/t+XPetLdC9fOfFnGi5l0pvWpt26kR8FqJK3l/MsUDx7yhDH+PmSgZSWCA=="/>
-        </item>
-        <item>
-            <title>0.5.33</title>
-            <pubDate>Mon, 05 Oct 2026 15:09:58 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>108</sparkle:version>
-            <sparkle:shortVersionString>0.5.33</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- More performance improvements for hot zones.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.33/Kehai-0.5.33-mac.zip" length="3161687" type="application/octet-stream" sparkle:edSignature="WsqAl0MRDIc9tEplrRXDFF9Ul6y3P30Rbc0QGCV8US7JMKat0ttiVtyfSPhqxBFnxeEX4c8FzMN4uVZ0GwOoBw=="/>
         </item>
     </channel>
 </rss>

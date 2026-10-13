@@ -33,6 +33,61 @@
     .footer-links .footer-separator { margin: 0 6pt; color: #777; }
     /* Keep two-word links like Tech Specs whole; the row wraps at the <wbr> after each separator. */
     .footer-links a { white-space: nowrap; }
+    /* The flow of Fill this form, in the style of Karui's specs diagram. A grid: the
+       steps go down the left column inside a "Your device" frame, an item spanning all
+       their rows, and the two things off the device, Apple's iCloud and the AI, stand in
+       the right column level with the steps that use them, joined by dashed lines. On
+       narrow screens they drop below the frame, side by side. */
+    .umete-flow { margin: 10pt 0 2pt; font-size: 0.92em; line-height: 1.4; }
+    .uf-main { display: grid; grid-template-columns: 1fr 180px; column-gap: 24px; }
+    .uf-frame { grid-column: 1; grid-row: 1 / 8; position: relative; border: 2px solid #1a211e; border-radius: 14px; }
+    .uf-phone-label { position: absolute; top: -9pt; left: 10pt; background: #fff; padding: 0 5pt; font-weight: bold; }
+    .uf-l { grid-column: 1; margin: 0 calc(9pt + 2px); }
+    .uf-main > .uf-l:nth-child(2) { grid-row: 1; margin-top: calc(13pt + 2px); }
+    .uf-main > .uf-l:nth-child(3) { grid-row: 2; }
+    .uf-main > .uf-l:nth-child(4) { grid-row: 3; }
+    .uf-main > .uf-l:nth-child(5) { grid-row: 4; }
+    .uf-main > .uf-l:nth-child(6) { grid-row: 5; }
+    .uf-main > .uf-l:nth-child(7) { grid-row: 6; }
+    .uf-main > .uf-l:nth-child(8) { grid-row: 7; margin-bottom: calc(13pt + 2px); }
+    .uf-step, .uf-result { background: #f4f3ee; border: 1px solid #d8d6ce; border-radius: 8px; padding: 6pt 9pt; }
+    .uf-step small, .uf-result span, .uf-store span, .uf-cloud > span { display: block; color: #555; font-size: 0.95em; }
+    .uf-result strong { display: block; }
+    .uf-important { border-color: #1a211e; background: #fff; }
+    .uf-arrow { position: relative; width: 0; height: 16px; justify-self: center; border-left: 1.5px solid #1a211e; }
+    .uf-arrow::after { content: ""; position: absolute; left: -5px; bottom: -1px; border: 4.5px solid transparent; border-top: 6px solid #1a211e; border-bottom: 0; }
+    .uf-labeled-arrow { position: relative; padding: 16px 0 22px; text-align: center; color: #555; font-size: 0.9em; line-height: 1.3; }
+    .uf-labeled-arrow::before { content: ""; position: absolute; top: 0; bottom: 1px; left: 50%; border-left: 1.5px solid #1a211e; }
+    .uf-labeled-arrow::after { content: ""; position: absolute; bottom: -1px; left: calc(50% - 4px); border: 4.5px solid transparent; border-top: 6px solid #1a211e; border-bottom: 0; }
+    .uf-labeled-arrow span { position: relative; background: #fff; padding: 3px 5px; }
+    .uf-store-row { display: grid; grid-template-columns: 1fr 18px 118px; align-items: center; }
+    .uf-store { border: 1.5px solid #777; border-radius: 12px; padding: 6pt 8pt; }
+    .uf-link { position: relative; border-top: 1.5px solid #1a211e; }
+    .uf-link::before, .uf-link::after { content: ""; position: absolute; top: -5.25px; border: 4.5px solid transparent; }
+    .uf-link::before { left: -1px; border-right: 6px solid #1a211e; border-left: 0; }
+    .uf-link::after { right: -1px; border-left: 6px solid #1a211e; border-right: 0; }
+    /* Dashed lines from the Saved answers row and the AI step cross the frame's padding,
+       border, and the column gap to the boxes outside. */
+    .uf-store-row, .uf-ai-step { position: relative; }
+    .uf-store-row::after, .uf-ai-step::after { content: ""; position: absolute; top: 50%; left: 100%; width: calc(9pt + 2px + 24px); border-top: 1.5px dashed #777; }
+    .uf-cloud { position: relative; grid-column: 2; align-self: start; border: 1.5px dashed #777; border-radius: 12px; padding: 6pt 8pt; }
+    .uf-icloud { grid-row: 3 / 5; }
+    .uf-ai { grid-row: 5 / 8; }
+    .uf-cloud-tag { color: #555; font-size: 0.9em; margin-bottom: 2pt; }
+    .uf-cloud span + span { margin-top: 4pt; }
+    .uf-never { color: #555; }
+    .uf-never strong { color: #1a211e; }
+    @media (max-width: 640px) {
+      .uf-main { grid-template-columns: 1fr 1fr; column-gap: 12px; }
+      .uf-frame, .uf-l { grid-column: 1 / -1; }
+      .uf-store-row::after, .uf-ai-step::after { display: none; }
+      .uf-cloud { grid-row: 8; margin-top: 18pt; }
+      .uf-icloud { grid-column: 1; }
+      .uf-ai { grid-column: 2; }
+      .uf-cloud::before { content: ""; position: absolute; top: -18px; left: 50%; height: 16px; border-left: 1.5px dashed #777; }
+      .uf-store-row { grid-template-columns: 1fr 14px 108px; }
+      .uf-store { padding: 6pt 7pt; }
+    }
     @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
   </style>
 </head>
@@ -50,11 +105,29 @@
       <h2 data-label-en="How it works" data-label-ja="仕組み">How it works</h2>
       <ol>
         <li data-label-en="You open Umete from Safari’s toolbar on a page. Only then does Safari let Umete into that page, and only into the page itself, not its frames." data-label-ja="ページでSafariのツールバーからUmeteを開きます。そのときに初めて、SafariがそのページへのUmeteのアクセスを許可します。対象はページ本体だけで、フレームは含みません。">You open Umete from Safari’s toolbar on a page. Only then does Safari let Umete into that page, and only into the page itself, not its frames.</li>
-        <li data-label-en="Remember my answers reads each visible field that has a value and isn’t sensitive, and saves its description and value, encrypted, in the Umete app." data-label-ja="「回答を保存」は、値が入っていて機密でない、表示されている各項目を読み取り、その説明と値を暗号化してUmeteアプリに保存します。">Remember my answers reads each visible field that has a value and isn’t sensitive, and saves its description and value, encrypted, in the Umete app.</li>
-        <li data-label-en="Fill this form matches each field against your saved answers on your device and fills the matches." data-label-ja="「このフォームに入力」は、各項目をデバイス上で保存済みの回答と照合し、一致したものを入力します。">Fill this form matches each field against your saved answers on your device and fills the matches.</li>
-        <li data-label-en="Any fields left over are described to an AI, which picks a saved answer by its label, or none. Umete checks each pick against what it sent and fills it on your device." data-label-ja="残った項目はAIに説明され、AIがラベルをもとに保存済みの回答を選ぶか、該当なしとします。Umeteは選ばれた結果を送信内容と照らし合わせて確認し、デバイス上で入力します。">Any fields left over are described to an AI, which picks a saved answer by its label, or none. Umete checks each pick against what it sent and fills it on your device.</li>
+        <li data-label-en="Pressing “Remember my answers” reads each visible field that has a value and isn’t sensitive, and saves its description and value, encrypted, in the Umete app." data-label-ja="「回答を保存」を押すと、値が入っていて機密でない、表示されている各項目を読み取り、その説明と値を暗号化してUmeteアプリに保存します。">Pressing “Remember my answers” reads each visible field that has a value and isn’t sensitive, and saves its description and value, encrypted, in the Umete app.</li>
+        <li data-label-en="Later, pressing “Fill this form” matches each field against your saved answers on your device and fills the matches." data-label-ja="後で「このフォームに入力」を押すと、各項目をデバイス上で保存済みの回答と照合し、一致したものを入力します。">Later, pressing “Fill this form” matches each field against your saved answers on your device and fills the matches.</li>
+        <li data-label-en="Any fields left over are described to an AI, which picks a saved answer by its label. Umete checks each pick against what it sent and fills it on your device." data-label-ja="残った項目はAIに説明され、AIがラベルをもとに保存済みの回答を選びます。Umeteは選ばれた結果を送信内容と照らし合わせて確認し、デバイス上で入力します。">Any fields left over are described to an AI, which picks a saved answer by its label. Umete checks each pick against what it sent and fills it on your device.</li>
         <li data-label-en="Umete never submits the form." data-label-ja="Umeteがフォームを送信することはありません。">Umete never submits the form.</li>
       </ol>
+      <figure class="umete-flow" aria-labelledby="umete-flow-title">
+        <div class="uf-main">
+          <div class="uf-frame"><div class="uf-phone-label" id="umete-flow-title" data-label-en="Your device" data-label-ja="あなたのデバイス">Your device</div></div>
+          <div class="uf-step uf-l"><strong data-label-en="Umete in Safari" data-label-ja="SafariのUmete">Umete in Safari</strong><small data-label-en="When you choose Fill this form, reads the page’s fields: labels, names, hints, placeholders, and menu options. Never passwords or card details." data-label-ja="「このフォームに入力」を選ぶと、ページの項目を読み取る：ラベル、名前、ヒント、プレースホルダー、メニューの選択肢。パスワードやカード情報は読まない">When you choose Fill this form, reads the page’s fields: labels, names, hints, placeholders, and menu options. Never passwords or card details.</small></div>
+          <div class="uf-arrow uf-l" aria-hidden="true"></div>
+          <div class="uf-store-row uf-l">
+            <div class="uf-step"><strong data-label-en="Matching on your device" data-label-ja="デバイス上での照合">Matching on your device</strong><small data-label-en="Scores each field against your saved answers and fills it when one answer clearly wins" data-label-ja="各項目を保存済みの回答と照合し、1つの回答が明らかに合うときだけ入力する">Scores each field against your saved answers and fills it when one answer clearly wins</small></div>
+            <div class="uf-link" aria-hidden="true"></div>
+            <div class="uf-store"><strong data-label-en="Saved answers" data-label-ja="保存済みの回答">Saved answers</strong><span data-label-en="Encrypted on your device" data-label-ja="デバイス上で暗号化">Encrypted on your device</span></div>
+          </div>
+          <div class="uf-labeled-arrow uf-l"><span data-label-en="Fields left over" data-label-ja="残った項目">Fields left over</span></div>
+          <div class="uf-step uf-ai-step uf-l"><strong data-label-en="AI picks, checked" data-label-ja="AIの選択を確認">AI picks, checked</strong><small data-label-en="Asks the AI which saved answer, by its label, fits each field; checks each pick against what it sent, then fills it" data-label-ja="各項目に合う回答をラベルでAIに選ばせ、選択を送信内容と照らし合わせてから入力する">Asks the AI which saved answer, by its label, fits each field; checks each pick against what it sent, then fills it</small></div>
+          <div class="uf-labeled-arrow uf-l"><span data-label-en="Filled on your device" data-label-ja="デバイス上で入力">Filled on your device</span></div>
+          <div class="uf-result uf-important uf-l"><strong data-label-en="The form, filled in" data-label-ja="入力されたフォーム">The form, filled in</strong><span data-label-en="You review it and submit it yourself. Umete never submits a form." data-label-ja="内容を確認してご自身で送信します。Umeteがフォームを送信することはありません。">You review it and submit it yourself. Umete never submits a form.</span></div>
+          <div class="uf-cloud uf-icloud"><div class="uf-cloud-tag" data-label-en="Sync" data-label-ja="同期">Sync</div><strong data-label-en="Apple’s iCloud" data-label-ja="AppleのiCloud">Apple’s iCloud</strong><span data-label-en="Your private CloudKit database. Each answer is encrypted before upload; Apple can’t read it." data-label-ja="ご自身のプライベートなCloudKitデータベース。各回答はアップロード前に暗号化され、Appleは読めない。">Your private CloudKit database. Each answer is encrypted before upload; Apple can’t read it.</span></div>
+          <div class="uf-cloud uf-ai"><div class="uf-cloud-tag" data-label-en="AI matching" data-label-ja="AIマッチング">AI matching</div><strong data-label-en="OpenAI’s Decisions API" data-label-ja="OpenAIのDecisions API">OpenAI’s Decisions API</strong><span data-label-en="Via api.umete.jp with Umete (free), or directly with your own OpenAI or Anthropic key" data-label-ja="Umete（無料）ではapi.umete.jp経由、ご自身のOpenAIまたはAnthropicのキーでは直接">Via api.umete.jp with Umete (free), or directly with your own OpenAI or Anthropic key</span><span data-label-en="Sees field descriptions and the labels of your answers; returns a label per field, or none" data-label-ja="項目の説明と回答のラベルだけを見て、項目ごとにラベルを1つ返すか、該当なしとする">Sees field descriptions and the labels of your answers; returns a label per field, or none</span><span class="uf-never"><strong data-label-en="Never sees:" data-label-ja="見ないもの：">Never sees:</strong><span data-label-en=" saved values, values in the form, addresses, or the page’s address or title" data-label-ja="保存した値、フォーム内の値、住所、ページのアドレスやタイトル"> saved values, values in the form, addresses, or the page’s address or title</span></span></div>
+        </div>
+      </figure>
     </section>
     <section class="umete-section">
       <h2 data-label-en="Matching on your device" data-label-ja="デバイス上での照合">Matching on your device</h2>

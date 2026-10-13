@@ -11,7 +11,6 @@ const assetsDirectory = path.join(outputDirectory, 'assets');
 
 const siteFiles = [
   '_headers',
-  'product-click-tracking.js',
   'sasu-common.css',
   'umete-language.js',
   'ume-appcast.xml',
@@ -44,7 +43,6 @@ export function createDeployedPage(source) {
   return source
     .replaceAll('href="sasu-common.css', 'href="/sasu-common.css')
     .replaceAll('src="umete-language.js', 'src="/umete-language.js')
-    .replaceAll('src="product-click-tracking.js', 'src="/product-click-tracking.js')
     .replaceAll('href="assets/', 'href="/assets/')
     .replaceAll('src="assets/', 'src="/assets/')
     .replaceAll('href="ume.html"', 'href="/"')

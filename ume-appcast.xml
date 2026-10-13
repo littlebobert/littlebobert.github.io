@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.4.5</title>
+            <pubDate>Tue, 13 Oct 2026 01:42:44 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>29.1</sparkle:version>
+            <sparkle:shortVersionString>0.4.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.5
+
+A redesigned iPhone and iPad app with standard controls, a tab bar, and support for larger text sizes, plus a new launch screen and a clearer, easier-to-tap Safari extension.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="DETU6gYrDhYXUdpLC/J4XV+er+Ne8d3sHqzhkYq0PYznmC0Xb4plCIcGC7LroOiDwY4REVYSz95GEN9I7FVECA==" sparkle:length="425">https://umete.jp/Umete-0.4.5-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="UKk3soQG9YFElRwDnHLyhTRX/Q1ErzjmJHH6fKUpEI0wLuPMfTOe6K1KR8ytsZMoB/hExs5HM27gSrtz7kbEBQ==" sparkle:length="498">https://umete.jp/Umete-0.4.5-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.5/Umete-0.4.5-macOS.dmg" length="6783927" type="application/octet-stream" sparkle:edSignature="cuWa06PyDkQaG3CellOuAzY5vh0zIw6PGA7kop6k2/XjyzC6v2HZ4IDiEVis8pmUC2B5kgYpKRCKB/HLGlCTAw=="/>
+        </item>
+        <item>
             <title>0.4.4</title>
             <pubDate>Mon, 12 Oct 2026 17:54:47 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -148,23 +164,9 @@ Composes Full name from first and last, fills Country of residence from the save
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="xvJv+YB7APdqQK353HSdo1F4QHYSeLDUXNCs+UQKJFHSSIITaupvlVfMsVXIaEhpE5SF9RN0kQkpIEFcYBeXDw==" sparkle:length="445">https://littlebobert.github.io/Ume-0.1.14-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.14/Ume-0.1.14-macOS.dmg" length="5614007" type="application/octet-stream" sparkle:edSignature="VKjTP8sDU0aKK98hglP0759Opnem6ecFlF++YI/hHNr8/lGcGFB9vl2p3khyzeZu9pqOshioAMz28XUdTtvyCQ=="/>
         </item>
-        <item>
-            <title>0.1.13</title>
-            <pubDate>Fri, 14 Aug 2026 16:22:50 +0000</pubDate>
-            <link>https://littlebobert.github.io/ume.html</link>
-            <sparkle:version>18.2</sparkle:version>
-            <sparkle:shortVersionString>0.1.13</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Ume 0.1.13
-
-Put Type first in Saved Data, prefills phone country codes from the Mac region, defaults OpenAI to gpt-5.6-sol with high reasoning, and centers the About window title.
-]]></description>
-            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="2CmKuXBRMN/AulQsRy1tMHzzGCkp0ND/Cm/n2HrWLiLDb2v8UJ5TwxyZBgUOzUjEdqF9ITP0pb83PSv5NtfoAQ==" sparkle:length="501">https://littlebobert.github.io/Ume-0.1.13-macOS.ja.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.13/Ume-0.1.13-macOS.dmg" length="5617079" type="application/octet-stream" sparkle:edSignature="FKNMKgF29x5kQbNzuguSqFIs45Vqs4TNHUPnMuda6lWuzMvmuacbNczwO8Horv/77YZoLEeIkNB2j/dAGet6DA=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: ezW1jQeIg9Ff5Atj8hAMwUrtGiVpJbUmtNAxDyuS6t4nXD5iICBgOuE/TpYhw2OQ5q16Qo9yhaIIe2K3dVtdDQ==
-length: 14909
+edSignature: gIKqMiG91fgKm1itLlJKkiwn/Y62HdpDaaqfSrTu74C87k6wXp6AR5Rw7v6AYOOb6u69OD3xCCW5oEGGffPrDw==
+length: 15234
 -->

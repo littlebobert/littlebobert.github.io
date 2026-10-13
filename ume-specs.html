@@ -42,7 +42,7 @@
     .uf-main { display: grid; grid-template-columns: 1fr 180px; column-gap: 24px; }
     .uf-frame { grid-column: 1; grid-row: 1 / 8; position: relative; border: 2px solid #1a211e; border-radius: 14px; }
     .uf-phone-label { position: absolute; top: -9pt; left: 10pt; background: #fff; padding: 0 5pt; font-weight: bold; }
-    .uf-l { grid-column: 1; margin: 0 calc(9pt + 2px); }
+    .uf-l { grid-column: 1; align-self: start; margin: 0 calc(9pt + 2px); }
     .uf-main > .uf-l:nth-child(2) { grid-row: 1; margin-top: calc(13pt + 2px); }
     .uf-main > .uf-l:nth-child(3) { grid-row: 2; }
     .uf-main > .uf-l:nth-child(4) { grid-row: 3; }
@@ -74,7 +74,7 @@
     .uf-icloud { grid-row: 3 / 5; }
     .uf-ai { grid-row: 5 / 8; }
     .uf-cloud-tag { color: #555; font-size: 0.9em; margin-bottom: 2pt; }
-    .uf-cloud span + span { margin-top: 4pt; }
+    .uf-cloud strong + span, .uf-cloud span + span { margin-top: 4pt; }
     .uf-never { color: #555; }
     .uf-never strong { color: #1a211e; }
     @media (max-width: 640px) {
@@ -125,7 +125,7 @@
           <div class="uf-labeled-arrow uf-l"><span data-label-en="Filled on your device" data-label-ja="デバイス上で入力">Filled on your device</span></div>
           <div class="uf-result uf-important uf-l"><strong data-label-en="The form, filled in" data-label-ja="入力されたフォーム">The form, filled in</strong><span data-label-en="You review it and submit it yourself. Umete never submits a form." data-label-ja="内容を確認してご自身で送信します。Umeteがフォームを送信することはありません。">You review it and submit it yourself. Umete never submits a form.</span></div>
           <div class="uf-cloud uf-icloud"><div class="uf-cloud-tag" data-label-en="Sync" data-label-ja="同期">Sync</div><strong data-label-en="Apple’s iCloud" data-label-ja="AppleのiCloud">Apple’s iCloud</strong><span data-label-en="Your private CloudKit database. Each answer is encrypted before upload; Apple can’t read it." data-label-ja="ご自身のプライベートなCloudKitデータベース。各回答はアップロード前に暗号化され、Appleは読めない。">Your private CloudKit database. Each answer is encrypted before upload; Apple can’t read it.</span></div>
-          <div class="uf-cloud uf-ai"><div class="uf-cloud-tag" data-label-en="AI matching" data-label-ja="AIマッチング">AI matching</div><strong data-label-en="OpenAI’s Decisions API" data-label-ja="OpenAIのDecisions API">OpenAI’s Decisions API</strong><span data-label-en="Via api.umete.jp with Umete (free), or directly with your own OpenAI or Anthropic key" data-label-ja="Umete（無料）ではapi.umete.jp経由、ご自身のOpenAIまたはAnthropicのキーでは直接">Via api.umete.jp with Umete (free), or directly with your own OpenAI or Anthropic key</span><span data-label-en="Sees field descriptions and the labels of your answers; returns a label per field, or none" data-label-ja="項目の説明と回答のラベルだけを見て、項目ごとにラベルを1つ返すか、該当なしとする">Sees field descriptions and the labels of your answers; returns a label per field, or none</span><span class="uf-never"><strong data-label-en="Never sees:" data-label-ja="見ないもの：">Never sees:</strong><span data-label-en=" saved values, values in the form, addresses, or the page’s address or title" data-label-ja="保存した値、フォーム内の値、住所、ページのアドレスやタイトル"> saved values, values in the form, addresses, or the page’s address or title</span></span></div>
+          <div class="uf-cloud uf-ai"><strong data-label-en="AI matching" data-label-ja="AIマッチング">AI matching</strong><span data-label-en="With Umete (free), or directly with your own OpenAI or Anthropic key" data-label-ja="Umete（無料）で、またはご自身のOpenAIかAnthropicのキーで直接">With Umete (free), or directly with your own OpenAI or Anthropic key</span><span data-label-en="Sees field descriptions and the field labels for your saved answers" data-label-ja="項目の説明と、保存済みの回答の項目ラベルを見る">Sees field descriptions and the field labels for your saved answers</span><span class="uf-never"><strong data-label-en="Never sees:" data-label-ja="見ないもの：">Never sees:</strong><span data-label-en=" saved values, values in the form, addresses, or the page’s address or title" data-label-ja="保存した値、フォーム内の値、住所、ページのアドレスやタイトル"> saved values, values in the form, addresses, or the page’s address or title</span></span></div>
         </div>
       </figure>
     </section>
@@ -133,7 +133,7 @@
       <h2 data-label-en="Matching on your device" data-label-ja="デバイス上での照合">Matching on your device</h2>
       <ul>
         <li data-label-en="Each field is described by its label, accessible name and description, placeholder, name, id, autocomplete hint, type, fieldset legend, nearest heading, form name, and table headers." data-label-ja="各項目は、ラベル、アクセシブルな名前と説明、プレースホルダー、name、id、自動入力のヒント、種類、fieldsetの凡例、最も近い見出し、フォーム名、表の見出しで記述されます。">Each field is described by its label, accessible name and description, placeholder, name, id, autocomplete hint, type, fieldset legend, nearest heading, form name, and table headers.</li>
-        <li data-label-en="Answers are scored on these signals; a matching autocomplete hint counts most. A field is filled only when one answer clearly wins. Identifiers, like passport and membership numbers, and document dates are never filled with the wrong kind of answer." data-label-ja="回答はこれらの手がかりで採点され、自動入力のヒントの一致が最も重視されます。1つの回答が明確に上回る場合だけ入力します。パスポート番号や会員番号などの識別番号や書類の日付に、種類の違う回答を入れることはありません。">Answers are scored on these signals; a matching autocomplete hint counts most. A field is filled only when one answer clearly wins. Identifiers, like passport and membership numbers, and document dates are never filled with the wrong kind of answer.</li>
+        <li data-label-en="Answers are scored on these signals; a matching autocomplete hint counts most. A field is filled only when one answer clearly wins." data-label-ja="回答はこれらの手がかりで採点され、自動入力のヒントの一致が最も重視されます。1つの回答が明確に上回る場合だけ入力します。">Answers are scored on these signals; a matching autocomplete hint counts most. A field is filled only when one answer clearly wins.</li>
         <li data-label-en="Supported controls: text fields, text areas, menus, checkboxes, radio buttons, date fields, and ARIA comboboxes, which Umete opens and picks from as a person would. Fields inside open shadow DOM are included." data-label-ja="対応する入力欄：テキスト欄、テキストエリア、メニュー、チェックボックス、ラジオボタン、日付欄、ARIAコンボボックス（人と同じように開いて選択します）。オープンなShadow DOM内の項目も対象です。">Supported controls: text fields, text areas, menus, checkboxes, radio buttons, date fields, and ARIA comboboxes, which Umete opens and picks from as a person would. Fields inside open shadow DOM are included.</li>
         <li data-label-en="Names: builds a full name from first and last names, family name first for Japanese, Chinese, and Korean." data-label-ja="名前：姓と名からフルネームを組み立てます。日本語、中国語、韓国語では姓を先にします。">Names: builds a full name from first and last names, family name first for Japanese, Chinese, and Korean.</li>
         <li data-label-en="Phone numbers: picks the country calling code in a separate menu and removes it, and the leading 0, from the number field." data-label-ja="電話番号：別のメニューで国番号を選び、番号欄からは国番号と先頭の0を除きます。">Phone numbers: picks the country calling code in a separate menu and removes it, and the leading 0, from the number field.</li>

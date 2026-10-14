@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.4.5</title>
+            <pubDate>Wed, 14 Oct 2026 21:53:01 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>10</sparkle:version>
+            <sparkle:shortVersionString>0.4.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed a bug where some notifications would open the wrong deep link.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.5/Karui-0.4.5-mac.zip" length="2078924" type="application/octet-stream" sparkle:edSignature="Y8cZ4ABA9N2R9fyXwdod6jPseo1JzAUjF0b5iPjwkiROx4n8txCqXVRBF+Olq/yHkRA3z9Df/NDi29wyfcwzCQ=="/>
+        </item>
+        <item>
             <title>0.4.4</title>
             <pubDate>Wed, 14 Oct 2026 21:40:29 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -26,20 +38,6 @@
             <description sparkle:format="markdown"><![CDATA[- The compact view's columns now run Category, App, Sender, Notification, Time by default, and the narrow ones stay narrow so the notification text has room; your own drag-and-drop layout is kept
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.3/Karui-0.4.3-mac.zip" length="2075773" type="application/octet-stream" sparkle:edSignature="KsGUFL+VTTgWhETenegAc8+Gl9RidEMU49MZsR0p032tMXbdHB78+m3VTZy8Y/TOJ9tGMUdCmG3kyMofIwtfDA=="/>
-        </item>
-        <item>
-            <title>0.4.2</title>
-            <pubDate>Wed, 14 Oct 2026 21:12:51 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>7</sparkle:version>
-            <sparkle:shortVersionString>0.4.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed automatic updates: earlier versions' updater could not run, so this one has to be installed by hand (download, replace Karui in Applications); updates work from here on
-- The Dock icon and the menu bar item show the unread count; turn it off under Settings
-- Sender has its own column in the compact view, sortable and movable like the others
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.2/Karui-0.4.2-mac.zip" length="2076761" type="application/octet-stream" sparkle:edSignature="vJbcJm0Q6N2kSwf2zCzMEh5Rxk9aCf8yjQvoa2A0iO1DyyB38cr7jEmMnUtCzb0emHliQE0ZBV1TRd67LDaRCQ=="/>
         </item>
     </channel>
 </rss>

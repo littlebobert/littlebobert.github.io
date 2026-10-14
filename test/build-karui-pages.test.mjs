@@ -49,6 +49,9 @@ test('builds the Karui for Mac page at /mac and links it from the home page', as
   assert.match(macPage, /src="\/assets\/karui-icon\.png\?v=2"/);
   assert.doesNotMatch(macPage, /href="karui\.html"/);
   assert.match(homePage, /href="\/mac"/);
+  // The Mac demo: three screens of the window, in English and Japanese.
+  assert.match(macPage, /<img class="karui-demo-shot is-current" src="\/assets\/karui-mac-demo-en-1\.jpg\?v=\d+" data-src-en="\/assets\/karui-mac-demo-en-1\.jpg\?v=\d+" data-src-ja="\/assets\/karui-mac-demo-ja-1\.jpg\?v=\d+"/);
+  assert.strictEqual(macPage.match(/class="karui-demo-shot/g).length, 3);
   assert.doesNotMatch(homePage, /href="karui-mac\.html"/);
 });
 

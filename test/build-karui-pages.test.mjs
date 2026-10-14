@@ -52,6 +52,7 @@ test('builds the Karui for Mac page at /mac and links it from the home page', as
   // The Mac demo: three screens of the window, in English and Japanese.
   assert.match(macPage, /<img class="karui-demo-shot is-current" src="\/assets\/karui-mac-demo-en-1\.jpg\?v=\d+" data-src-en="\/assets\/karui-mac-demo-en-1\.jpg\?v=\d+" data-src-ja="\/assets\/karui-mac-demo-ja-1\.jpg\?v=\d+"/);
   assert.strictEqual(macPage.match(/class="karui-demo-shot/g).length, 3);
+  await Promise.all(['en', 'ja'].flatMap((language) => [1, 2, 3].map((screen) => readOutputFile(`assets/karui-mac-demo-${language}-${screen}.jpg`))));
   assert.doesNotMatch(homePage, /href="karui-mac\.html"/);
 });
 

@@ -3,6 +3,19 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.4.8</title>
+            <pubDate>Thu, 15 Oct 2026 04:23:52 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>13</sparkle:version>
+            <sparkle:shortVersionString>0.4.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Threads are grouped the way Karui for iPhone's History groups them: email threads by subject without the "Re:", Slack channels by name, X posts by their text, chats by the group's name or the person
+- Apps, Senders, and Threads are tables now: sort by any column, drag columns to reorder or resize, and the layout is remembered
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.8/Karui-0.4.8-mac.zip" length="2103332" type="application/octet-stream" sparkle:edSignature="FKrNchIBkwoK/r+AGxrr2anfQcbAjjgq5fLUJ1QIZL1pHSf3P3LHXa63XQVYyzYpd3rhc+WDs0VYAMLmqm+2CA=="/>
+        </item>
+        <item>
             <title>0.4.7</title>
             <pubDate>Thu, 15 Oct 2026 03:54:42 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -29,18 +42,6 @@
 - Karui's diagnostics also go to the system log, for bug reports
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.6/Karui-0.4.6-mac.zip" length="2081213" type="application/octet-stream" sparkle:edSignature="gleccOnGlGGYyjAAx0UkZPROtUo7ICwROB9vxLrNUIB4ee3Bv0KxDZjVBp9toSM/5jltTfT+WnMTPqMfYZ0kBQ=="/>
-        </item>
-        <item>
-            <title>0.4.5</title>
-            <pubDate>Wed, 14 Oct 2026 21:53:01 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>10</sparkle:version>
-            <sparkle:shortVersionString>0.4.5</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed a bug where some notifications would open the wrong deep link.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.5/Karui-0.4.5-mac.zip" length="2078924" type="application/octet-stream" sparkle:edSignature="Y8cZ4ABA9N2R9fyXwdod6jPseo1JzAUjF0b5iPjwkiROx4n8txCqXVRBF+Olq/yHkRA3z9Df/NDi29wyfcwzCQ=="/>
         </item>
     </channel>
 </rss>

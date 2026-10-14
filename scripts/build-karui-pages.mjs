@@ -9,6 +9,7 @@ const privacyDirectory = path.join(outputDirectory, 'privacy');
 const supportDirectory = path.join(outputDirectory, 'support');
 const acknowledgementsDirectory = path.join(outputDirectory, 'acknowledgements');
 const changelogDirectory = path.join(outputDirectory, 'changelog');
+const macDirectory = path.join(outputDirectory, 'mac');
 const specsDirectory = path.join(outputDirectory, 'specs');
 const technotesDirectory = path.join(outputDirectory, 'technotes');
 const kn001Directory = path.join(technotesDirectory, 'kn001');
@@ -53,6 +54,7 @@ await Promise.all([
   mkdir(supportDirectory, { recursive: true }),
   mkdir(acknowledgementsDirectory, { recursive: true }),
   mkdir(changelogDirectory, { recursive: true }),
+  mkdir(macDirectory, { recursive: true }),
   mkdir(path.join(outputDirectory, 'hanko'), { recursive: true }),
   mkdir(path.join(outputDirectory, 'seal'), { recursive: true }),
   mkdir(path.join(outputDirectory, 'qr'), { recursive: true }),
@@ -98,6 +100,7 @@ function createDeployedPage(source) {
       'href="/acknowledgements"',
     )
     .replaceAll('href="karui-changelog.html"', 'href="/changelog"')
+    .replaceAll('href="karui-mac.html"', 'href="/mac"')
     .replaceAll('href="karui-hanko.html"', 'href="/hanko"')
     .replaceAll('href="karui-seal.html"', 'href="/seal"')
     .replaceAll('href="karui-qr.html"', 'href="/qr"')
@@ -143,8 +146,10 @@ await Promise.all([
   writeFile(path.join(changelogDirectory, 'index.html'), changelogPage),
 ]);
 
-// Tech Specs, the Technical Notes, and the /hanko, /seal, and /qr pages, each at a clean route.
+// Karui for Mac, Tech Specs, the Technical Notes, and the /hanko, /seal, and /qr pages,
+// each at a clean route.
 const technicalPages = [
+  ['karui-mac.html', ['mac.html', 'mac/index.html']],
   ['karui-hanko.html', ['hanko.html', 'hanko/index.html']],
   ['karui-seal.html', ['seal.html', 'seal/index.html']],
   ['karui-qr.html', ['qr.html', 'qr/index.html']],

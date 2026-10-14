@@ -3,6 +3,21 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.4.7</title>
+            <pubDate>Thu, 15 Oct 2026 03:54:42 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>12</sparkle:version>
+            <sparkle:shortVersionString>0.4.7</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Messages notifications without a link open their conversation anyway, by the sender, the way Karui for iPhone does; Contacts access is asked for the first time
+- Mark as hides Read when nothing selected is unread, and greys out the category a selection already has
+- The inbox keeps everything from the last month instead of stopping at 3,000 notifications
+- Sync Now's status shows while something is selected too
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.7/Karui-0.4.7-mac.zip" length="2099489" type="application/octet-stream" sparkle:edSignature="0RcXDVbcUMg/KD7J2nOMwAwREedP/73Ae57Z4TQdK8CA+JcZyM2n8cCPKu3hXvOlXomHaUw77UGPFqCHhKHbAg=="/>
+        </item>
+        <item>
             <title>0.4.6</title>
             <pubDate>Wed, 14 Oct 2026 22:34:25 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -26,19 +41,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed a bug where some notifications would open the wrong deep link.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.5/Karui-0.4.5-mac.zip" length="2078924" type="application/octet-stream" sparkle:edSignature="Y8cZ4ABA9N2R9fyXwdod6jPseo1JzAUjF0b5iPjwkiROx4n8txCqXVRBF+Olq/yHkRA3z9Df/NDi29wyfcwzCQ=="/>
-        </item>
-        <item>
-            <title>0.4.4</title>
-            <pubDate>Wed, 14 Oct 2026 21:40:29 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>9</sparkle:version>
-            <sparkle:shortVersionString>0.4.4</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed a bug where the Time column wouldn’t grow.
-- Simply selecting a notification in the list marks it as read.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.4/Karui-0.4.4-mac.zip" length="2076684" type="application/octet-stream" sparkle:edSignature="t5RwtHwtSd3Geec+IQHF0EJLTDv8ZFTzfShdUHech1Ncxp+rpqK8gf9eLo9BSim6kdhru58MiHPUJ6a3yQ5YDg=="/>
         </item>
     </channel>
 </rss>

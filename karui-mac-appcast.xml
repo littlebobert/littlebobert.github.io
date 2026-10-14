@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.4.3</title>
+            <pubDate>Wed, 14 Oct 2026 21:23:44 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>8</sparkle:version>
+            <sparkle:shortVersionString>0.4.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- The compact view's columns now run Category, App, Sender, Notification, Time by default, and the narrow ones stay narrow so the notification text has room; your own drag-and-drop layout is kept
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.3/Karui-0.4.3-mac.zip" length="2075773" type="application/octet-stream" sparkle:edSignature="KsGUFL+VTTgWhETenegAc8+Gl9RidEMU49MZsR0p032tMXbdHB78+m3VTZy8Y/TOJ9tGMUdCmG3kyMofIwtfDA=="/>
+        </item>
+        <item>
             <title>0.4.2</title>
             <pubDate>Wed, 14 Oct 2026 21:12:51 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -27,21 +39,6 @@
             <description sparkle:format="markdown"><![CDATA[- Add an unread count badge and add a separate column for the sender.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.1/Karui-0.4.1-mac.zip" length="2079111" type="application/octet-stream" sparkle:edSignature="A8wM5ae1t0qUSNOMNdNs2uaKyyoSH67rA8c7cEynlxR03XJlCxaYIGPoVz5Twpg1+PtA+PvNhUK/pdgX0Ab3Cg=="/>
-        </item>
-        <item>
-            <title>0.4.0</title>
-            <pubDate>Wed, 14 Oct 2026 20:16:42 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>5</sparkle:version>
-            <sparkle:shortVersionString>0.4.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Sync Now in the Notifications menu (⌘R) asks your iPhone to send its History right away and fetches the day's verdicts
-- A new app icon without the badge, so the Dock no longer looks like something is unread
-- The unread column can be moved like the others, and its place is remembered
-- Column widths leave more room for the notification text
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.0/Karui-0.4.0-mac.zip" length="2075307" type="application/octet-stream" sparkle:edSignature="pi0R/OQP4KGUFa2Kiv6C3XJDVcmM/WzuWoa9Z/PWIi0iN2GxuEg28kA0MLEaeAKYXrRRGo8ZZfydivHIP6vEBw=="/>
         </item>
     </channel>
 </rss>

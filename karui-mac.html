@@ -80,6 +80,14 @@
     .karui-demo-dot.is-current { background: var(--karui-ink); }
     .karui-demo-dot:focus-visible { outline: 2px solid var(--karui-moss); outline-offset: 2px; }
     @media (prefers-reduced-motion: reduce) { .karui-demo-shot { transition: none; } }
+    .karui-flow { display: block; width: 100%; max-width: 480px; height: auto; margin: 8pt auto 14pt; font-family: Verdana, "Hiragino Sans", sans-serif; }
+    .karui-flow .node { fill: #f4f3ee; stroke: #d8d6ce; stroke-width: 1; }
+    .karui-flow .cloud { fill: #fff; stroke: #777; stroke-width: 1.5; }
+    .karui-flow .node-label { fill: var(--karui-ink); font-size: 13px; font-weight: bold; text-anchor: middle; }
+    .karui-flow .node-sub { fill: #555; font-size: 11px; text-anchor: middle; }
+    .karui-flow .arrow { fill: none; stroke: var(--karui-ink); stroke-width: 1.5; marker-end: url(#karui-flow-head); }
+    .karui-flow .arrow-label { fill: #555; font-size: 11px; }
+    .karui-flow .arrow-label.left { text-anchor: end; }
   </style>
 </head>
 <body class="sasu-site">
@@ -123,6 +131,30 @@
 
     <section class="karui-detail">
       <h2 data-label-en="How it works:" data-label-ja="仕組み：">How it works:</h2>
+      <svg class="karui-flow" viewBox="0 0 480 500" role="img" aria-label="Karui for Mac reads Notification Center’s database and the apps’ own data, and exchanges links, read marks, sender hashes, decisions, and notification text with Karui for iPhone through your iCloud account" data-aria-label-en="Karui for Mac reads Notification Center’s database and the apps’ own data, and exchanges links, read marks, sender hashes, decisions, and notification text with Karui for iPhone through your iCloud account" data-aria-label-ja="Mac版Karuiは通知センターのデータベースと各アプリ自身のデータを読み、リンク、既読、送信者のハッシュ、判定、通知の本文をあなたのiCloudアカウント経由でiPhone版Karuiとやり取りする">
+        <defs><marker id="karui-flow-head" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#1a211e"/></marker></defs>
+        <rect class="node" x="110" y="6" width="260" height="72" rx="8"/>
+        <text class="node-label" x="240" y="31" data-label-en="On your Mac" data-label-ja="あなたのMac上">On your Mac</text>
+        <text class="node-sub" x="240" y="50" data-label-en="Notification Center’s database" data-label-ja="通知センターのデータベース">Notification Center’s database</text>
+        <text class="node-sub" x="240" y="65" data-label-en="Messages’, Spark’s, and Slack’s data" data-label-ja="メッセージ、Spark、Slackのデータ">Messages’, Spark’s, and Slack’s data</text>
+        <path class="arrow" d="M240 78 V122"/>
+        <text class="arrow-label left" x="232" y="104"><tspan x="232" data-label-en="Reads, with Full Disk Access" data-label-ja="フルディスクアクセスで読む">Reads, with Full Disk Access</tspan></text>
+        <rect class="node" x="110" y="124" width="260" height="58" rx="8"/>
+        <text class="node-label" x="240" y="149" data-label-en="Karui for Mac" data-label-ja="Mac版Karui">Karui for Mac</text>
+        <text class="node-sub" x="240" y="168" data-label-en="Finds each notification’s message or email" data-label-ja="通知ごとのメッセージやメールを見つける">Finds each notification’s message or email</text>
+        <rect class="cloud" x="110" y="278" width="260" height="58" rx="12"/>
+        <text class="node-label" x="240" y="303" data-label-en="Your iCloud account" data-label-ja="あなたのiCloudアカウント">Your iCloud account</text>
+        <text class="node-sub" x="240" y="322" data-label-en="Private; only your devices can read it" data-label-ja="プライベート・あなたの端末だけが読める">Private; only your devices can read it</text>
+        <rect class="node" x="130" y="432" width="220" height="58" rx="8"/>
+        <text class="node-label" x="240" y="457" data-label-en="Karui for iPhone" data-label-ja="iPhone版Karui">Karui for iPhone</text>
+        <text class="node-sub" x="240" y="476" data-label-en="Sorts your notifications" data-label-ja="通知を仕分ける">Sorts your notifications</text>
+        <path class="arrow" d="M200 182 V276"/>
+        <path class="arrow" d="M200 336 V430"/>
+        <path class="arrow" d="M280 432 V338"/>
+        <path class="arrow" d="M280 278 V184"/>
+        <text class="arrow-label left" x="190" y="213"><tspan x="190" data-label-en="Links" data-label-ja="リンク">Links</tspan><tspan x="190" dy="14" data-label-en="Read marks" data-label-ja="既読">Read marks</tspan><tspan x="190" dy="14" data-label-en="Hashes of senders" data-label-ja="書いたことのある">Hashes of senders</tspan><tspan x="190" dy="14" data-label-en="you’ve written to" data-label-ja="相手のハッシュ">you’ve written to</tspan></text>
+        <text class="arrow-label" x="290" y="374"><tspan x="290" data-label-en="Decisions" data-label-ja="判定">Decisions</tspan><tspan x="290" dy="14" data-label-en="Notification text," data-label-ja="通知の本文">Notification text,</tspan><tspan x="290" dy="14" data-label-en="encrypted" data-label-ja="（暗号化）">encrypted</tspan></text>
+      </svg>
       <p data-label-en="Karui for Mac watches Notification Center for Messages, Spark, and Slack. For each notification it finds the exact message or email in that app’s own database and sends your iPhone a link to it, with a fingerprint of the notification, through your iCloud account. Tap Karui’s alert on the iPhone and the right thread opens." data-label-ja="Mac版Karuiは、メッセージ、Spark、Slackの通知を通知センターで見張ります。通知ごとに、そのアプリ自身のデータベースから該当するメッセージやメールを探し、そのリンクを通知のフィンガープリントとともにiCloudアカウント経由でiPhoneに送ります。iPhoneでKaruiの通知をタップすると、正しいスレッドが開きます。">Karui for Mac watches Notification Center for Messages, Spark, and Slack. For each notification it finds the exact message or email in that app’s own database and sends your iPhone a link to it, with a fingerprint of the notification, through your iCloud account. Tap Karui’s alert on the iPhone and the right thread opens.</p>
       <p data-label-en="It also notices when you’ve read one on the Mac and tells your iPhone, which clears the alert there." data-label-ja="Macで読んだ通知も検知してiPhoneに伝え、iPhone側の通知を消します。">It also notices when you’ve read one on the Mac and tells your iPhone, which clears the alert there.</p>
       <p data-label-en="Once a day it looks at who you’ve written to in Spark and Messages and sends your iPhone hashes of those addresses, never the addresses themselves. With “Alert for senders you’ve written to” turned on, their notifications get through like a saved contact’s." data-label-ja="1日に1回、Sparkとメッセージで自分から連絡した相手を調べ、そのアドレスのハッシュをiPhoneに送ります。アドレスそのものは送りません。「書いたことのある相手は通知」をオンにすると、その相手からの通知は連絡先に登録した人と同じように通ります。">Once a day it looks at who you’ve written to in Spark and Messages and sends your iPhone hashes of those addresses, never the addresses themselves. With “Alert for senders you’ve written to” turned on, their notifications get through like a saved contact’s.</p>

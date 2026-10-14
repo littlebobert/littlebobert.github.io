@@ -45,8 +45,8 @@ const assetFiles = [
   ...['en', 'ja'].flatMap((language) => [1, 2, 3, 4].map((screen) => `karui-demo-${language}-${screen}.jpg`)),
   // The bottom of an iPhone's shell around the Live Activity's mock Lock Screen.
   'karui-lockscreen-shell.png',
-  // Karui for Mac's three screens in a MacBook Air, in each language.
-  ...['en', 'ja'].flatMap((language) => [1, 2, 3].map((screen) => `karui-mac-demo-${language}-${screen}.jpg`)),
+  // Karui for Mac's two screens in a MacBook Air, in each language.
+  ...['en', 'ja'].flatMap((language) => [1, 2].map((screen) => `karui-mac-demo-${language}-${screen}.jpg`)),
 ];
 
 await rm(outputDirectory, { force: true, recursive: true });

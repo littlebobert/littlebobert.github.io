@@ -43,8 +43,6 @@ const assetFiles = [
   'karui-kn004-privacy-report.jpg',
   // The demo's four screens, in each language.
   ...['en', 'ja'].flatMap((language) => [1, 2, 3, 4].map((screen) => `karui-demo-${language}-${screen}.jpg`)),
-  // The bottom of an iPhone's shell around the Live Activity's mock Lock Screen.
-  'karui-lockscreen-shell.png',
   // Karui for Mac's two screens in a MacBook Air, in each language.
   ...['en', 'ja'].flatMap((language) => [1, 2].map((screen) => `karui-mac-demo-${language}-${screen}.jpg`)),
 ];

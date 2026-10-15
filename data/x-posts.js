@@ -1,8 +1,27 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-10-14T19:27:34.557Z",
+  "updatedAt": "2026-10-15T19:13:16.342Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2110771638157611213",
+      "text": "通知が多すぎませんか？KaruiはiPhoneアプリ。宣伝やスパムを静かにして、大切な人からの通知だけを通します。Mac版も登場。フィルタリングを改善し、メッセージ、Slack、Sparkの通知をもっと便利に。無料・オープンソース\n\nhttps://t.co/7JBp91oCOs",
+      "createdAt": "2026-10-15T16:35:49.000Z",
+      "url": "https://x.com/_bobertdowney/status/2110771638157611213",
+      "urls": [
+        {
+          "url": "https://t.co/7JBp91oCOs",
+          "expandedUrl": "https://karui.jp/mac",
+          "displayUrl": "karui.jp/mac",
+          "start": 117,
+          "end": 140
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2109406290565095523",
       "text": "アパートのパーティーのたこ焼き🤤 https://t.co/BGXjRG4eRh",
@@ -194,38 +213,6 @@ window.X_POSTS_SNAPSHOT = {
           "alt": "",
           "type": "photo",
           "image": "assets/generated/x/mine-post-2104941829477241244-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2104631400867811549",
-      "text": "やっと自分のアプリをApp Storeでリリースできた🥹 https://t.co/jz770YqXYc https://t.co/2NpdtqOZcr",
-      "createdAt": "2026-09-28T17:56:42.000Z",
-      "url": "https://x.com/_bobertdowney/status/2104631400867811549",
-      "urls": [
-        {
-          "url": "https://t.co/jz770YqXYc",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2104631400867811549/photo/1",
-          "displayUrl": "pic.x.com/jz770YqXYc",
-          "start": 29,
-          "end": 52
-        },
-        {
-          "url": "https://t.co/2NpdtqOZcr",
-          "expandedUrl": "https://twitter.com/_bobertdowney/status/2104526758783627420",
-          "displayUrl": "x.com/_bobertdowney/…",
-          "start": 53,
-          "end": 76
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2104631400867811549-0.png"
         }
       ]
     }

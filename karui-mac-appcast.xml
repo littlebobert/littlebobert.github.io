@@ -3,6 +3,20 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.5.1</title>
+            <pubDate>Thu, 15 Oct 2026 12:52:21 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>15</sparkle:version>
+            <sparkle:shortVersionString>0.5.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Coming back from a notification or a group with ⌘[ puts the keyboard back on the list
+- ⌘F focuses the search field, and Escape leaves it for the list again
+- The About window and the Contacts prompt are in Japanese too
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.5.1/Karui-0.5.1-mac.zip" length="2135236" type="application/octet-stream" sparkle:edSignature="KmvXyvLCaqFm8yCqY9uA51Vn62C6bpRAzzn9ZNOs3Gwvw7pzymXsUkfeDaVM7wEaAwnx+rwX/hi9HYNLPsPLCA=="/>
+        </item>
+        <item>
             <title>0.5.0</title>
             <pubDate>Thu, 15 Oct 2026 11:55:36 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -29,21 +43,6 @@
 - Apps, Senders, and Threads are tables now: sort by any column, drag columns to reorder or resize, and the layout is remembered
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.8/Karui-0.4.8-mac.zip" length="2103332" type="application/octet-stream" sparkle:edSignature="FKrNchIBkwoK/r+AGxrr2anfQcbAjjgq5fLUJ1QIZL1pHSf3P3LHXa63XQVYyzYpd3rhc+WDs0VYAMLmqm+2CA=="/>
-        </item>
-        <item>
-            <title>0.4.7</title>
-            <pubDate>Thu, 15 Oct 2026 03:54:42 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>12</sparkle:version>
-            <sparkle:shortVersionString>0.4.7</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Messages notifications without a link open their conversation anyway, by the sender, the way Karui for iPhone does; Contacts access is asked for the first time
-- Mark as hides Read when nothing selected is unread, and greys out the category a selection already has
-- The inbox keeps everything from the last month instead of stopping at 3,000 notifications
-- Sync Now's status shows while something is selected too
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.7/Karui-0.4.7-mac.zip" length="2099489" type="application/octet-stream" sparkle:edSignature="0RcXDVbcUMg/KD7J2nOMwAwREedP/73Ae57Z4TQdK8CA+JcZyM2n8cCPKu3hXvOlXomHaUw77UGPFqCHhKHbAg=="/>
         </item>
     </channel>
 </rss>

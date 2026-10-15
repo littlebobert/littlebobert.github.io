@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.5.3</title>
+            <pubDate>Thu, 15 Oct 2026 15:46:12 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>17</sparkle:version>
+            <sparkle:shortVersionString>0.5.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Let column widths get bigger.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.5.3/Karui-0.5.3-mac.zip" length="2150217" type="application/octet-stream" sparkle:edSignature="0nKmMqWIPFAjNQs1eeH1m4hah+VjZvcEnQ8vRMqgMbzDrx2L/tE1ZiYMiudHzil7DcwAVhjJ7sI0u+uddi5dDA=="/>
+        </item>
+        <item>
             <title>0.5.2</title>
             <pubDate>Thu, 15 Oct 2026 14:17:11 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -28,21 +40,6 @@
 - The About window and the Contacts prompt are in Japanese too
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.5.1/Karui-0.5.1-mac.zip" length="2135236" type="application/octet-stream" sparkle:edSignature="KmvXyvLCaqFm8yCqY9uA51Vn62C6bpRAzzn9ZNOs3Gwvw7pzymXsUkfeDaVM7wEaAwnx+rwX/hi9HYNLPsPLCA=="/>
-        </item>
-        <item>
-            <title>0.5.0</title>
-            <pubDate>Thu, 15 Oct 2026 11:55:36 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>14</sparkle:version>
-            <sparkle:shortVersionString>0.5.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Threads group exactly as on the iPhone: a group chat by its members, so a renamed group stays one thread, using the subtitle, sender, and recipients the iPhone now sends
-- The same notification seen by both devices no longer appears twice when Spark fills in a subject line the iPhone leaves empty
-- If Notification Center's database goes missing, as it can after the disk runs full, Karui says so instead of blaming Full Disk Access, and picks it up again on its own
-- Return opens the selected notification or group, and ⌘[ goes back a level
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.5.0/Karui-0.5.0-mac.zip" length="2122380" type="application/octet-stream" sparkle:edSignature="zMEkzZBcPJGf8ZphR3z4IUpTLeQMzzIbstcR2WJLKq8msaaVD92tLKAvWG29p9HRoQQHoOHFtKrN09CxtnvyCw=="/>
         </item>
     </channel>
 </rss>

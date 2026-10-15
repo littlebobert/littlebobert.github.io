@@ -3,6 +3,21 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.5.0</title>
+            <pubDate>Thu, 15 Oct 2026 11:55:36 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>14</sparkle:version>
+            <sparkle:shortVersionString>0.5.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Threads group exactly as on the iPhone: a group chat by its members, so a renamed group stays one thread, using the subtitle, sender, and recipients the iPhone now sends
+- The same notification seen by both devices no longer appears twice when Spark fills in a subject line the iPhone leaves empty
+- If Notification Center's database goes missing, as it can after the disk runs full, Karui says so instead of blaming Full Disk Access, and picks it up again on its own
+- Return opens the selected notification or group, and ⌘[ goes back a level
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.5.0/Karui-0.5.0-mac.zip" length="2122380" type="application/octet-stream" sparkle:edSignature="zMEkzZBcPJGf8ZphR3z4IUpTLeQMzzIbstcR2WJLKq8msaaVD92tLKAvWG29p9HRoQQHoOHFtKrN09CxtnvyCw=="/>
+        </item>
+        <item>
             <title>0.4.8</title>
             <pubDate>Thu, 15 Oct 2026 04:23:52 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -29,19 +44,6 @@
 - Sync Now's status shows while something is selected too
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.7/Karui-0.4.7-mac.zip" length="2099489" type="application/octet-stream" sparkle:edSignature="0RcXDVbcUMg/KD7J2nOMwAwREedP/73Ae57Z4TQdK8CA+JcZyM2n8cCPKu3hXvOlXomHaUw77UGPFqCHhKHbAg=="/>
-        </item>
-        <item>
-            <title>0.4.6</title>
-            <pubDate>Wed, 14 Oct 2026 22:34:25 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>11</sparkle:version>
-            <sparkle:shortVersionString>0.4.6</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- A notification the iPhone reported before the Mac saw it no longer appears twice, and its link reaches the one row
-- Karui's diagnostics also go to the system log, for bug reports
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.4.6/Karui-0.4.6-mac.zip" length="2081213" type="application/octet-stream" sparkle:edSignature="gleccOnGlGGYyjAAx0UkZPROtUo7ICwROB9vxLrNUIB4ee3Bv0KxDZjVBp9toSM/5jltTfT+WnMTPqMfYZ0kBQ=="/>
         </item>
     </channel>
 </rss>

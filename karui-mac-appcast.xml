@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.6.1</title>
+            <pubDate>Sat, 17 Oct 2026 07:45:06 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>21</sparkle:version>
+            <sparkle:shortVersionString>0.6.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- The inbox suggests the next step toward sorting on this Mac: turning on Show History on your Mac on your iPhone, adding the Second Opinion Shortcut, or sending notifications only this Mac received to your iPhone.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.6.1/Karui-0.6.1-mac.zip" length="2665302" type="application/octet-stream" sparkle:edSignature="oQRGfPNWxSFOqlBQsUNEc9kHZv3krV0uaj7AnJU1xr1rrNt1mvIvrCrB5TZCIsQzh7ONJ3AKA+Y0C9ie7Zu5BA=="/>
+        </item>
+        <item>
             <title>0.6.0</title>
             <pubDate>Sat, 17 Oct 2026 07:09:46 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -27,18 +39,6 @@
             <description sparkle:format="markdown"><![CDATA[- Search filters the table as you type again, not only after leaving the field
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.5.5/Karui-0.5.5-mac.zip" length="2149473" type="application/octet-stream" sparkle:edSignature="4FUCsYRLda2Z7yvY1/tbgLjiJw5NCxnL4iqVEmcyI8RUMeGGcxT+GGpdWGqUkGw4lgy8n6VUCJO4P8YzcHJBCg=="/>
-        </item>
-        <item>
-            <title>0.5.4</title>
-            <pubDate>Fri, 16 Oct 2026 09:06:14 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>18</sparkle:version>
-            <sparkle:shortVersionString>0.5.4</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- A short message repeated days apart, like “Hi” from the same person, no longer takes over the older row and its time: each gets its own row, and read marks and deletions reach only the right one
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.5.4/Karui-0.5.4-mac.zip" length="2149498" type="application/octet-stream" sparkle:edSignature="/ADZoRvWeA9cNOhSIxW4Iu6d3Hzt+9gyN2s0WnKNeL+jl40M1zmXg2eQXUwQu06PQfb1gbDDhcVqT6kd5G5hDQ=="/>
         </item>
     </channel>
 </rss>

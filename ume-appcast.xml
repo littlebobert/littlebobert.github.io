@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.4.6</title>
+            <pubDate>Fri, 16 Oct 2026 21:50:19 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>30.1</sparkle:version>
+            <sparkle:shortVersionString>0.4.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.6
+
+Add and edit answers in the iPhone and iPad app, edit multi-line answers like a medication list in a larger editor on the Mac, and record successful iCloud syncs in bug reports.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="GMN6SDIH0J+RM1QEBoADZpLo35l0JFzejTyp+gXNuAZYa87hEyEm0J6BCGz1wfe7cmShssmLrCM3FWXiA+94Dg==" sparkle:length="428">https://umete.jp/Umete-0.4.6-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="QaOJxhl3c7d2gAjrNPhWZ2JFHwJMS/Md6QzzFpuoTMlrAl76P+mclNUMZg/w3bwgin3NhfXQJpoQ1NhBJbq/DQ==" sparkle:length="546">https://umete.jp/Umete-0.4.6-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.6/Umete-0.4.6-macOS.dmg" length="6810551" type="application/octet-stream" sparkle:edSignature="SKEEkDTntnxhzz0aIAfaGiFhhOpmNDA5T8VDIH/s+GSb5CvsvA8zzowPGVzqG0lprDOAq3QsDbH06kxb3nwADA=="/>
+        </item>
+        <item>
             <title>0.4.5</title>
             <pubDate>Tue, 13 Oct 2026 01:42:44 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -149,24 +165,9 @@ Switch back to Xcode 26 so I can publish a working TestFlight.
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="c1GJeL6noWoHXf7wvURZuSmrmNIBHxeu7VPK3HoFjQ83rk+HDG2O9813ayQLWRgtRD32fn1rsHjSKo2S6W72Bw==" sparkle:length="337">https://littlebobert.github.io/Ume-0.1.15-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.15/Ume-0.1.15-macOS.dmg" length="5629367" type="application/octet-stream" sparkle:edSignature="rNMgUZTtdB9H21KF4ppbBKBrW8TAMdvmsnvhjJALS/5pvM9k9oMh2suaqbFL1h12BulTUYR7H8HTXKePiCK9Cg=="/>
         </item>
-        <item>
-            <title>0.1.14</title>
-            <pubDate>Fri, 14 Aug 2026 17:30:42 +0000</pubDate>
-            <link>https://littlebobert.github.io/ume.html</link>
-            <sparkle:version>19.1</sparkle:version>
-            <sparkle:shortVersionString>0.1.14</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Ume 0.1.14
-
-Composes Full name from first and last, fills Country of residence from the saved address country, and shows English update notes when the app is in English.
-]]></description>
-            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="jXeA9JdoKMJMao08jiWVYjZmvFFC5EVkeBiWdqzIyXIRzOITsYlowrdSaHU7d5CRGsoXVybJa5t07XUA1wdAAw==" sparkle:length="407">https://littlebobert.github.io/Ume-0.1.14-macOS.en.md</sparkle:releaseNotesLink>
-            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="xvJv+YB7APdqQK353HSdo1F4QHYSeLDUXNCs+UQKJFHSSIITaupvlVfMsVXIaEhpE5SF9RN0kQkpIEFcYBeXDw==" sparkle:length="445">https://littlebobert.github.io/Ume-0.1.14-macOS.ja.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.14/Ume-0.1.14-macOS.dmg" length="5614007" type="application/octet-stream" sparkle:edSignature="VKjTP8sDU0aKK98hglP0759Opnem6ecFlF++YI/hHNr8/lGcGFB9vl2p3khyzeZu9pqOshioAMz28XUdTtvyCQ=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: gIKqMiG91fgKm1itLlJKkiwn/Y62HdpDaaqfSrTu74C87k6wXp6AR5Rw7v6AYOOb6u69OD3xCCW5oEGGffPrDw==
-length: 15234
+edSignature: ZXQz2f9RnutiDXdKrQjHdYbBXRY8dKqznHcP8Yq0ZP64/Pz01+A7uSIziqqf/H7zmiLTARaPwfu0Xw5NW4zfBw==
+length: 15307
 -->

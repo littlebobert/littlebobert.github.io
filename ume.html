@@ -64,7 +64,8 @@
     .ume-arrow:focus-visible, .ume-dot:focus-visible { outline: 2px solid var(--ume-green); outline-offset: 2px; }
     @media (prefers-reduced-motion: reduce) { .ume-shot { transition: none; } }
 
-    .sasu-hero .download-link { margin-top: 9pt; }
+    /* The two downloads side by side, iPhone and iPad first; they wrap on narrow screens. */
+    .download-row { display: flex; flex-wrap: wrap; gap: 6pt 8pt; margin-top: 9pt; }
     /* The second line of the pitch, below the icon and name, in plain body text. */
     .hero-proposition { margin: 8pt 0 0; }
     .ume-detail { padding: 6pt 0 5pt; }
@@ -109,8 +110,11 @@
         </div>
       </div>
       <p class="hero-proposition" data-label-en="An intelligent Safari form filler for Mac, iPhone, and iPad." data-label-ja="Mac、iPhone、iPadで使える、賢いSafariフォーム入力支援。">An intelligent Safari form filler for Mac, iPhone, and iPad.</p>
-      <a class="download-link" data-ume-download href="https://github.com/littlebobert/umete/releases/download/v0.4.6/Umete-0.4.6-macOS.dmg" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
-      <div class="small-note" data-label-en="Requires macOS 12 or later. Free, with no in-app purchases, subscription, or sign up." data-label-ja="macOS 12以降が必要です。無料で、アプリ内課金、サブスクリプション、登録はありません。">Requires macOS 12 or later. Free, with no in-app purchases, subscription, or sign up.</div>
+      <div class="download-row">
+        <a class="download-link" href="https://testflight.apple.com/join/GCQwC9GK" data-label-en="TestFlight beta for iPhone and iPad" data-label-ja="iPhone・iPad版 TestFlightベータ">TestFlight beta for iPhone and iPad</a>
+        <a class="download-link" data-ume-download href="https://github.com/littlebobert/umete/releases/download/v0.4.6/Umete-0.4.6-macOS.dmg" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
+      </div>
+      <div class="small-note" data-label-en="iPhone and iPad need iOS 15 or later and Apple’s TestFlight app; the Mac app needs macOS 12 or later. Free, with no in-app purchases, subscription, or sign up." data-label-ja="iPhone・iPadはiOS 15以降とAppleのTestFlightアプリ、MacはmacOS 12以降が必要です。無料で、アプリ内課金、サブスクリプション、登録はありません。">iPhone and iPad need iOS 15 or later and Apple’s TestFlight app; the Mac app needs macOS 12 or later. Free, with no in-app purchases, subscription, or sign up.</div>
     </section>
 
     <section class="sasu-section">

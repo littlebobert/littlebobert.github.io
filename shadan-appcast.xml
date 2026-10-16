@@ -4,6 +4,24 @@
         <title>Shadan</title>
         <link>https://shadan.jp/</link>
         <item>
+            <title>0.1.13</title>
+            <pubDate>Sat, 17 Oct 2026 01:16:51 +0900</pubDate>
+            <link>https://shadan.jp/</link>
+            <sparkle:version>14</sparkle:version>
+            <sparkle:shortVersionString>0.1.13</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Images that no longer load are left out of the review grid instead of being counted as “not the same thing”.
+- New Export… link on a topic’s review page saves its examples and what it currently hides or blurs to a file, to help track down mistakes.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.13/Shadan-0.1.13-mac.zip" length="212485575" type="application/octet-stream" sparkle:edSignature="6Q5y+H8ykaiVSZSn8qXvmdMwLeYNH1uy6YCPNVsBBBVbIBtGXTGpS9ZbKkvKoBKJpGto5uf6clMjhfebzxDwAg=="/>
+            <sparkle:deltas>
+                <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.13/Shadan14-13.delta" sparkle:deltaFrom="13" length="44686" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="Yr0ULkn4Fejlnor4sWw6RO8+3nQd9s3MFDHDdiDjSFXRY4YQIlaDd4cutRsfHMG5SnRtLuOYuv8LX3FJUuqtAA=="/>
+                <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.13/Shadan14-12.delta" sparkle:deltaFrom="12" length="45766" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="VO8lOA8f98swqGTJpcb0onqhh0hpO6GPS/PNhIVTiJoHtypbalWH4c22hzZrTAtSHIg+JHhaOuKm/nXdpVBHDg=="/>
+                <enclosure url="https://github.com/littlebobert/shadan-releases/releases/download/0.1.13/Shadan14-11.delta" sparkle:deltaFrom="11" length="47746" type="application/octet-stream" sparkle:deltaFromSparkleExecutableSize="977808" sparkle:deltaFromSparkleLocales="de,he,ar,el,ja,fa,uk" sparkle:edSignature="/fwbACbNFSdXgsPsf6Uh9Po3wUgKqcygLgxqN4Q39cMzlAgKOZmzcDtn/gJ63QXCav/79hfKXdqeoDL064hNAg=="/>
+            </sparkle:deltas>
+        </item>
+        <item>
             <title>0.1.12</title>
             <pubDate>Fri, 16 Oct 2026 02:40:58 +0900</pubDate>
             <link>https://shadan.jp/</link>

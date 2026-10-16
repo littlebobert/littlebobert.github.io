@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.5.4</title>
+            <pubDate>Fri, 16 Oct 2026 09:06:14 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>18</sparkle:version>
+            <sparkle:shortVersionString>0.5.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- A short message repeated days apart, like “Hi” from the same person, no longer takes over the older row and its time: each gets its own row, and read marks and deletions reach only the right one
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.5.4/Karui-0.5.4-mac.zip" length="2149498" type="application/octet-stream" sparkle:edSignature="/ADZoRvWeA9cNOhSIxW4Iu6d3Hzt+9gyN2s0WnKNeL+jl40M1zmXg2eQXUwQu06PQfb1gbDDhcVqT6kd5G5hDQ=="/>
+        </item>
+        <item>
             <title>0.5.3</title>
             <pubDate>Thu, 15 Oct 2026 15:46:12 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -26,20 +38,6 @@
 - Add links to open apps in either their macOS app or their website if no app is present.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.5.2/Karui-0.5.2-mac.zip" length="2146982" type="application/octet-stream" sparkle:edSignature="9KgX0w9flV30rfV5527DjkcpEDSO4QZf+xb4Zn2HiSJ57/NclltCzmx4eC0AqNsIzHP+bPgQdzR+He6R1/8DBA=="/>
-        </item>
-        <item>
-            <title>0.5.1</title>
-            <pubDate>Thu, 15 Oct 2026 12:52:21 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>15</sparkle:version>
-            <sparkle:shortVersionString>0.5.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Coming back from a notification or a group with ⌘[ puts the keyboard back on the list
-- ⌘F focuses the search field, and Escape leaves it for the list again
-- The About window and the Contacts prompt are in Japanese too
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.5.1/Karui-0.5.1-mac.zip" length="2135236" type="application/octet-stream" sparkle:edSignature="KmvXyvLCaqFm8yCqY9uA51Vn62C6bpRAzzn9ZNOs3Gwvw7pzymXsUkfeDaVM7wEaAwnx+rwX/hi9HYNLPsPLCA=="/>
         </item>
     </channel>
 </rss>

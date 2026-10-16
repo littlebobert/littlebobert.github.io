@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.5.5</title>
+            <pubDate>Fri, 16 Oct 2026 09:16:10 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>19</sparkle:version>
+            <sparkle:shortVersionString>0.5.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Search filters the table as you type again, not only after leaving the field
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.5.5/Karui-0.5.5-mac.zip" length="2149473" type="application/octet-stream" sparkle:edSignature="4FUCsYRLda2Z7yvY1/tbgLjiJw5NCxnL4iqVEmcyI8RUMeGGcxT+GGpdWGqUkGw4lgy8n6VUCJO4P8YzcHJBCg=="/>
+        </item>
+        <item>
             <title>0.5.4</title>
             <pubDate>Fri, 16 Oct 2026 09:06:14 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,19 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Let column widths get bigger.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.5.3/Karui-0.5.3-mac.zip" length="2150217" type="application/octet-stream" sparkle:edSignature="0nKmMqWIPFAjNQs1eeH1m4hah+VjZvcEnQ8vRMqgMbzDrx2L/tE1ZiYMiudHzil7DcwAVhjJ7sI0u+uddi5dDA=="/>
-        </item>
-        <item>
-            <title>0.5.2</title>
-            <pubDate>Thu, 15 Oct 2026 14:17:11 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>16</sparkle:version>
-            <sparkle:shortVersionString>0.5.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Improve performance while using the arrow keys to change the selected item rapidly.
-- Add links to open apps in either their macOS app or their website if no app is present.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.5.2/Karui-0.5.2-mac.zip" length="2146982" type="application/octet-stream" sparkle:edSignature="9KgX0w9flV30rfV5527DjkcpEDSO4QZf+xb4Zn2HiSJ57/NclltCzmx4eC0AqNsIzHP+bPgQdzR+He6R1/8DBA=="/>
         </item>
     </channel>
 </rss>

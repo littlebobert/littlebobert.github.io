@@ -1,0 +1,86 @@
+/* Halloween mode: only applies while <html> has the `halloween` class (see the inline script in <head>). */
+
+/* Zombie browse hand */
+html.halloween body {
+  cursor: url('assets/halloween-cursor.png') 5 0, auto;
+  cursor: -webkit-image-set(url('assets/halloween-cursor.png') 1x, url('assets/halloween-cursor@2x.png') 2x) 5 0, auto;
+}
+
+html.halloween :is(a, button, label, summary, select, [role="button"]) {
+  cursor: url('assets/halloween-cursor.png') 5 0, pointer !important;
+  cursor: -webkit-image-set(url('assets/halloween-cursor.png') 1x, url('assets/halloween-cursor@2x.png') 2x) 5 0, pointer !important;
+}
+
+.halloween-only {
+  display: none;
+}
+
+html.halloween .halloween-only {
+  display: block;
+}
+
+/* Sad Mac boot screen: black until it rises, then the desktop shows through as it fades */
+html.sad-mac-boot,
+html.sad-mac-boot body {
+  background: #000 !important;
+}
+
+html.sad-mac-boot body > :not(.sad-mac-screen) {
+  visibility: hidden;
+}
+
+.sad-mac-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  background: #000;
+  transition: opacity 0.35s ease;
+}
+
+.sad-mac-screen.is-leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sad-mac-icon {
+  width: 88px;
+  height: 104px;
+}
+
+.sad-mac-face-risen {
+  display: none;
+}
+
+.sad-mac-screen.is-rising .sad-mac-face-sad {
+  display: none;
+}
+
+.sad-mac-screen.is-rising .sad-mac-face-risen {
+  display: inline;
+}
+
+.sad-mac-screen.is-rising .sad-mac-icon {
+  animation: sad-mac-twitch 0.32s steps(2) 2;
+}
+
+body.home-page .sad-mac-screen .sad-mac-code {
+  color: #fff;
+  font-family: 'Monaco', 'Menlo', monospace !important;
+  font-size: 13px !important;
+  line-height: 1.4;
+  letter-spacing: 0.08em;
+  text-align: center;
+}
+
+@keyframes sad-mac-twitch {
+  0% { transform: translate(0, 0); }
+  25% { transform: translate(-2px, 1px); }
+  50% { transform: translate(2px, -1px); }
+  75% { transform: translate(-1px, -2px); }
+  100% { transform: translate(0, 0); }
+}

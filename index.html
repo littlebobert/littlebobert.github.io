@@ -8,6 +8,32 @@
   <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
   <link rel="shortcut icon" href="assets/karui-favicon.png?v=1" type="image/png">
   <link href='style.css?v=144' rel='stylesheet'>
+  <link href='halloween.css?v=1' rel='stylesheet'>
+  <script>
+    // Halloween mode, every year Oct 25 – Nov 1 in Japan time. ?halloween forces it on, ?halloween=0 off.
+    // The Sad Mac boot screen shows once a year per visitor, never with reduced motion.
+    (function () {
+      var param = new URLSearchParams(location.search).get('halloween');
+      var japan = new Date(Date.now() + 9 * 60 * 60 * 1000);
+      var month = japan.getUTCMonth();
+      var day = japan.getUTCDate();
+      var inSeason = (month === 9 && day >= 25) || (month === 10 && day === 1);
+      var forced = param !== null && param !== '0';
+      if (param === '0' || !(inSeason || forced)) return;
+
+      var root = document.documentElement;
+      var year = String(japan.getUTCFullYear());
+      root.classList.add('halloween');
+      root.dataset.halloweenYear = year;
+
+      var seen = false;
+      try { seen = localStorage.getItem('halloween-sad-mac') === year; } catch (error) {}
+      if (window.matchMedia('(prefers-reduced-motion: reduce)').matches || (seen && !forced)) return;
+      root.classList.add('sad-mac-boot');
+      // Never leave the page hidden if halloween.js fails to load.
+      setTimeout(function () { root.classList.remove('sad-mac-boot'); }, 5000);
+    })();
+  </script>
   <style>
     /* Preview: Ume face, sized to the window title (About) */
     body.home-page,
@@ -231,6 +257,11 @@
                 data-label-en="iOS and real-time speech AI products at Kotoba in Tokyo"
                 data-label-ja="<span class='latin'>Tokyo</span><span class='ja-text'>の</span><span class='latin'>iOS</span><span class='ja-text'>エンジニア。</span><span class='latin'>Kotoba</span><span class='ja-text'>で音声</span><span class='latin'>AI</span><span class='ja-text'>をリリースしています。</span>"
               >iOS and real-time speech AI products at Kotoba in Tokyo</p>
+              <p
+                class="halloween-only"
+                data-label-en="Stay Hungry. Stay Ghoulish."
+                data-label-ja="<span class='ja-text'>ハングリーであれ。ゾンビであれ。</span>"
+              >Stay Hungry. Stay Ghoulish.</p>
             </div>
           </div>
           <nav class="stack-actions" aria-label="Justin Garcia links">
@@ -986,6 +1017,7 @@
   <div class="window-zoom-rect" id="window-zoom-rect" hidden aria-hidden="true"></div>
   
   <script src="data/x-posts.js"></script>
+  <script src="halloween.js?v=1"></script>
   <script src="index.js?v=12"></script>
   <script>
     const MUD_LEADERBOARD_STORAGE_KEY = 'tokyo-mud-leaderboard';

@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.6.2</title>
+            <pubDate>Mon, 19 Oct 2026 05:57:47 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>22</sparkle:version>
+            <sparkle:shortVersionString>0.6.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Reasons from Karui's rules, like a message from an important contact, appear in Japanese when this Mac sorts.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.6.2/Karui-0.6.2-mac.zip" length="2666915" type="application/octet-stream" sparkle:edSignature="aOFFghmMBUhCVVCKvqxMvyAuWZf7b8XVD7LY0mO0akVjveDwVuCInODXxc8/R1mOHh74H0JOo6bVU9XxmPnyAg=="/>
+        </item>
+        <item>
             <title>0.6.1</title>
             <pubDate>Sat, 17 Oct 2026 07:45:06 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -27,18 +39,6 @@
 - Notifications only this Mac received can go to your iPhone, already sorted.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.6.0/Karui-0.6.0-mac.zip" length="2646131" type="application/octet-stream" sparkle:edSignature="Iwq9G+0YTUW57x9/8bv44vUhG9lyadMzZDLIZbfMCIbjyPl+nDOymGEhHn+2TS56C8m2sMioKHgH8vysBgB6Cg=="/>
-        </item>
-        <item>
-            <title>0.5.5</title>
-            <pubDate>Fri, 16 Oct 2026 09:16:10 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>19</sparkle:version>
-            <sparkle:shortVersionString>0.5.5</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Search filters the table as you type again, not only after leaving the field
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.5.5/Karui-0.5.5-mac.zip" length="2149473" type="application/octet-stream" sparkle:edSignature="4FUCsYRLda2Z7yvY1/tbgLjiJw5NCxnL4iqVEmcyI8RUMeGGcxT+GGpdWGqUkGw4lgy8n6VUCJO4P8YzcHJBCg=="/>
         </item>
     </channel>
 </rss>

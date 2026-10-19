@@ -19,6 +19,80 @@ html.halloween .halloween-only {
   display: block;
 }
 
+/* Key Caps desk accessory: only on the wide three-column layout, under Settings */
+.key-caps {
+  display: none;
+}
+
+@media (min-width: 860px) {
+  html.halloween body.home-page .key-caps {
+    display: block;
+    grid-area: settings;
+    justify-self: start;
+    align-self: start;
+    width: 100%;
+    max-width: 240px;
+  }
+}
+
+.key-caps-content {
+  padding: 6px 8px 8px;
+}
+
+.key-caps {
+  container-type: inline-size;
+}
+
+/* Key labels shrink with the window on narrower screens (the home page forces 11px everywhere) */
+body.home-page .key-caps .key-caps-key {
+  font-size: clamp(8px, 4.6cqw, 11px) !important;
+}
+
+.key-caps-display {
+  height: 18px;
+  margin-bottom: 6px;
+  padding: 0 4px;
+  border: 1px solid #000;
+  background: #fff;
+  text-align: left;
+  line-height: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.key-caps-board {
+  display: grid;
+  grid-template-columns: repeat(20, 1fr);
+  gap: 2px;
+}
+
+.key-caps-key {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #000;
+  border-radius: 2px;
+  background: #fff;
+  box-shadow: 0 1px 0 #000;
+  line-height: 1;
+  user-select: none;
+}
+
+.key-caps-space {
+  grid-row: 4;
+  grid-column: 6 / span 10;
+  aspect-ratio: 5;
+}
+
+.key-caps-key:active,
+.key-caps-key.is-down {
+  background: #000;
+  color: #fff;
+  box-shadow: none;
+  transform: translateY(1px);
+}
+
 /* Sad Mac boot screen: black until it rises, then the desktop shows through as it fades */
 html.sad-mac-boot,
 html.sad-mac-boot body {

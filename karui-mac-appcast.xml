@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.7.5</title>
+            <pubDate>Tue, 20 Oct 2026 08:40:10 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>28</sparkle:version>
+            <sparkle:shortVersionString>0.7.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- The log now says when the record that tells your iPhone you're using this Mac can't be saved to iCloud, and why.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.5/Karui-0.7.5-mac.zip" length="2723065" type="application/octet-stream" sparkle:edSignature="xc4UPad3IDZK81UcvzgLQAbuQUFvn5Esh/EOVPjLFY8xzbs9TRmhL6DnMpZiuTg6j8ILvlzI2YunoMC1fHxvAA=="/>
+        </item>
+        <item>
             <title>0.7.4</title>
             <pubDate>Tue, 20 Oct 2026 08:08:30 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -26,18 +38,6 @@
 - Fixed the Dock badge going missing after 0.7.0 asked for notification permission without it.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.3/Karui-0.7.3-mac.zip" length="2720755" type="application/octet-stream" sparkle:edSignature="SJo5ooDD/A3auXSuYRCYMqoGTsx3bbF3PkX7HU5mFDlKn+xoWV3zYCEPwZAq7ltX4cYwWoKFCshPz0D31oRJDQ=="/>
-        </item>
-        <item>
-            <title>0.7.2</title>
-            <pubDate>Mon, 19 Oct 2026 16:50:34 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>25</sparkle:version>
-            <sparkle:shortVersionString>0.7.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Your iPhone stays quiet while you use this Mac even with Karui's window behind other apps, and reading for a few minutes without touching anything no longer counts as away.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.2/Karui-0.7.2-mac.zip" length="2715806" type="application/octet-stream" sparkle:edSignature="piJAcQDYIELl+aw3NNqIoL4B3glHF7VU9NUM2WPLCwSiHAoTBS1pYr/P1e1gI48qSSR0Kl3UEAG2rkCbtCsZDw=="/>
         </item>
     </channel>
 </rss>

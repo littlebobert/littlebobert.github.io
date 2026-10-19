@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.7.4</title>
+            <pubDate>Tue, 20 Oct 2026 08:08:30 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>27</sparkle:version>
+            <sparkle:shortVersionString>0.7.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed a reason that showed only “{” when Private Cloud Compute answered in an unexpected format.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.4/Karui-0.7.4-mac.zip" length="2723171" type="application/octet-stream" sparkle:edSignature="6VlI1SrIVVUEkcDyiN++b53Fl6dd26sD730BiO6gZuMZcE1doFDMwlKF79qskKfjjYpW2GkhLFxkEun5Q/fXDg=="/>
+        </item>
+        <item>
             <title>0.7.3</title>
             <pubDate>Tue, 20 Oct 2026 07:56:46 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -26,19 +38,6 @@
             <description sparkle:format="markdown"><![CDATA[- Your iPhone stays quiet while you use this Mac even with Karui's window behind other apps, and reading for a few minutes without touching anything no longer counts as away.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.2/Karui-0.7.2-mac.zip" length="2715806" type="application/octet-stream" sparkle:edSignature="piJAcQDYIELl+aw3NNqIoL4B3glHF7VU9NUM2WPLCwSiHAoTBS1pYr/P1e1gI48qSSR0Kl3UEAG2rkCbtCsZDw=="/>
-        </item>
-        <item>
-            <title>0.7.1</title>
-            <pubDate>Mon, 19 Oct 2026 15:19:34 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>24</sparkle:version>
-            <sparkle:shortVersionString>0.7.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- A preview pane under the inbox shows the selected notification without opening it. Turn it on in View → Show Preview (⌥⌘P).
-- With the preview open, Return opens the notification's message, conversation, or app.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.1/Karui-0.7.1-mac.zip" length="2715118" type="application/octet-stream" sparkle:edSignature="Hl3Yg9UzPpyO2E6do9Op0Qf2R+wLRliFjQSBOxRAjVmL2XmfR2BUVv+H44B6idV8DLFNkzwe164QsvWiHr+VDQ=="/>
         </item>
     </channel>
 </rss>

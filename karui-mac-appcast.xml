@@ -3,6 +3,19 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.7.1</title>
+            <pubDate>Mon, 19 Oct 2026 15:19:34 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>24</sparkle:version>
+            <sparkle:shortVersionString>0.7.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- A preview pane under the inbox shows the selected notification without opening it. Turn it on in View → Show Preview (⌥⌘P).
+- With the preview open, Return opens the notification's message, conversation, or app.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.1/Karui-0.7.1-mac.zip" length="2715118" type="application/octet-stream" sparkle:edSignature="Hl3Yg9UzPpyO2E6do9Op0Qf2R+wLRliFjQSBOxRAjVmL2XmfR2BUVv+H44B6idV8DLFNkzwe164QsvWiHr+VDQ=="/>
+        </item>
+        <item>
             <title>0.7.0</title>
             <pubDate>Mon, 19 Oct 2026 14:16:47 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -26,18 +39,6 @@
             <description sparkle:format="markdown"><![CDATA[- Reasons from Karui's rules, like a message from an important contact, appear in Japanese when this Mac sorts.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.6.2/Karui-0.6.2-mac.zip" length="2666915" type="application/octet-stream" sparkle:edSignature="aOFFghmMBUhCVVCKvqxMvyAuWZf7b8XVD7LY0mO0akVjveDwVuCInODXxc8/R1mOHh74H0JOo6bVU9XxmPnyAg=="/>
-        </item>
-        <item>
-            <title>0.6.1</title>
-            <pubDate>Sat, 17 Oct 2026 07:45:06 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>21</sparkle:version>
-            <sparkle:shortVersionString>0.6.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- The inbox suggests the next step toward sorting on this Mac: turning on Show History on your Mac on your iPhone, adding the Second Opinion Shortcut, or sending notifications only this Mac received to your iPhone.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.6.1/Karui-0.6.1-mac.zip" length="2665302" type="application/octet-stream" sparkle:edSignature="oQRGfPNWxSFOqlBQsUNEc9kHZv3krV0uaj7AnJU1xr1rrNt1mvIvrCrB5TZCIsQzh7ONJ3AKA+Y0C9ie7Zu5BA=="/>
         </item>
     </channel>
 </rss>

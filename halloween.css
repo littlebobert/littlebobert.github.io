@@ -47,28 +47,57 @@ html.sad-mac-boot body > :not(.sad-mac-screen) {
   pointer-events: none;
 }
 
-.sad-mac-icon {
+/* Lightning: invert the whole screen, like an old Mac flashing */
+.sad-mac-screen.is-flash {
+  filter: invert(1);
+}
+
+.sad-mac-stage {
+  position: relative;
   width: 88px;
   height: 104px;
+}
+
+.sad-mac-icon {
+  display: block;
+  width: 88px;
+  height: 104px;
+  transition: filter 0.6s ease;
 }
 
 .sad-mac-face-risen {
   display: none;
 }
 
-.sad-mac-screen.is-rising .sad-mac-face-sad {
+.sad-mac-screen.is-risen-face .sad-mac-face-sad {
   display: none;
 }
 
-.sad-mac-screen.is-rising .sad-mac-face-risen {
+.sad-mac-screen.is-risen-face .sad-mac-face-risen {
   display: inline;
 }
 
-.sad-mac-screen.is-rising .sad-mac-icon {
-  animation: sad-mac-twitch 0.32s steps(2) 2;
+.sad-mac-screen.is-jolting .sad-mac-icon {
+  animation: sad-mac-jolt 0.8s steps(1) both;
 }
 
-body.home-page .sad-mac-screen .sad-mac-code {
+/* Rise in 4px steps (one pixel of the icon), with a zombie-green glow */
+.sad-mac-screen.is-rising .sad-mac-icon {
+  animation: sad-mac-rise 0.9s steps(6) both;
+  filter: drop-shadow(0 0 6px rgba(159, 184, 138, 0.85));
+}
+
+.sad-mac-dirt {
+  position: absolute;
+  bottom: 0;
+  width: 4px;
+  height: 4px;
+  background: #fff;
+  animation: sad-mac-dirt 0.7s steps(5) both;
+}
+
+body.home-page .sad-mac-screen .sad-mac-code,
+body.home-page .sad-mac-screen .sad-mac-code * {
   color: #fff;
   font-family: 'Monaco', 'Menlo', monospace !important;
   font-size: 13px !important;
@@ -77,10 +106,25 @@ body.home-page .sad-mac-screen .sad-mac-code {
   text-align: center;
 }
 
-@keyframes sad-mac-twitch {
-  0% { transform: translate(0, 0); }
-  25% { transform: translate(-2px, 1px); }
-  50% { transform: translate(2px, -1px); }
-  75% { transform: translate(-1px, -2px); }
-  100% { transform: translate(0, 0); }
+@keyframes sad-mac-jolt {
+  0% { transform: translate(0, 0) scale(1, 1); }
+  10% { transform: translate(-4px, 0) scale(1.06, 0.92); }
+  20% { transform: translate(4px, -4px) scale(0.96, 1.06); }
+  30% { transform: translate(0, 0) scale(1, 1); }
+  45% { transform: translate(-4px, -4px) scale(1.04, 0.96); }
+  55% { transform: translate(4px, 0) scale(1, 1); }
+  65% { transform: translate(0, -4px) scale(0.94, 1.08); }
+  75% { transform: translate(-4px, 0) scale(1.08, 0.92); }
+  85% { transform: translate(4px, -4px) scale(1, 1); }
+  100% { transform: translate(0, 0) scale(1, 1); }
+}
+
+@keyframes sad-mac-rise {
+  from { transform: translateY(0); }
+  to { transform: translateY(-24px); }
+}
+
+@keyframes sad-mac-dirt {
+  from { transform: translate(0, 0); opacity: 1; }
+  to { transform: translate(var(--dx), var(--dy)); opacity: 0; }
 }

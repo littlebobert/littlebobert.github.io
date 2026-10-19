@@ -12,6 +12,13 @@
     visitorLabel.textContent = 'Souls:';
   }
 
+  const aboutTitle = document.querySelector('#about-dialog > .title-bar .title-text');
+  if (aboutTitle) {
+    aboutTitle.dataset.labelEn = 'About this Undead Mac';
+    aboutTitle.dataset.labelJa = 'このアンデッドMacについて';
+    aboutTitle.textContent = 'About this Undead Mac';
+  }
+
   if (!root.classList.contains('sad-mac-boot')) return;
 
   // Sad Mac, drawn on a 22 x 26 grid. "W" is lit, "s" is lit only while sad, "r" only once it rises.

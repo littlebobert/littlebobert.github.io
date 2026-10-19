@@ -47,11 +47,6 @@ html.sad-mac-boot body > :not(.sad-mac-screen) {
   pointer-events: none;
 }
 
-/* Lightning: invert the whole screen, like an old Mac flashing */
-.sad-mac-screen.is-flash {
-  filter: invert(1);
-}
-
 .sad-mac-stage {
   position: relative;
   width: 88px;
@@ -87,13 +82,49 @@ html.sad-mac-boot body > :not(.sad-mac-screen) {
   filter: drop-shadow(0 0 6px rgba(159, 184, 138, 0.85));
 }
 
-.sad-mac-dirt {
+/* Lightning bolt: drawn top to bottom, flickers once (only the bolt), then fades */
+.sad-mac-bolt {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: none;
+  filter: drop-shadow(0 0 3px rgba(200, 220, 255, 0.95)) drop-shadow(0 0 14px rgba(140, 170, 255, 0.6));
+  animation: sad-mac-bolt-strike 0.14s steps(7) both;
+}
+
+.sad-mac-bolt svg {
+  display: block;
+}
+
+.sad-mac-bolt.is-restriking {
+  animation: sad-mac-bolt-restrike 0.14s steps(1) both;
+}
+
+.sad-mac-bolt.is-fading {
+  opacity: 0;
+  transition: opacity 0.25s ease-out;
+}
+
+/* The Mac holds the charge for a moment after the strike */
+.sad-mac-screen.is-charged .sad-mac-icon {
+  filter: drop-shadow(0 0 4px rgba(220, 235, 255, 1)) drop-shadow(0 0 16px rgba(150, 180, 255, 0.7));
+}
+
+.sad-mac-bit {
   position: absolute;
   bottom: 0;
   width: 4px;
   height: 4px;
   background: #fff;
-  animation: sad-mac-dirt 0.7s steps(5) both;
+  animation: sad-mac-bit 0.7s steps(5) both;
+}
+
+.sad-mac-bit.is-spark {
+  top: 0;
+  bottom: auto;
+  background: #e6eeff;
+  animation-duration: 0.45s;
 }
 
 body.home-page .sad-mac-screen .sad-mac-code,
@@ -124,7 +155,18 @@ body.home-page .sad-mac-screen .sad-mac-code * {
   to { transform: translateY(-24px); }
 }
 
-@keyframes sad-mac-dirt {
+@keyframes sad-mac-bolt-strike {
+  from { clip-path: inset(0 0 100% 0); }
+  to { clip-path: inset(0 0 0 0); }
+}
+
+@keyframes sad-mac-bolt-restrike {
+  0% { opacity: 1; }
+  30% { opacity: 0.2; }
+  60% { opacity: 1; }
+}
+
+@keyframes sad-mac-bit {
   from { transform: translate(0, 0); opacity: 1; }
   to { transform: translate(var(--dx), var(--dy)); opacity: 0; }
 }

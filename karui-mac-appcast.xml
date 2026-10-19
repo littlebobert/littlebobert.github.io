@@ -3,6 +3,19 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.7.0</title>
+            <pubDate>Mon, 19 Oct 2026 14:16:47 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>23</sparkle:version>
+            <sparkle:shortVersionString>0.7.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- While you're using this Mac, Karui on your iPhone alerts quietly, and this Mac shows the Important notifications only your iPhone received. Turn it off in Settings → iPhone.
+- Changes from your iPhone arrive right away, by push, instead of on the next check.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.0/Karui-0.7.0-mac.zip" length="2698773" type="application/octet-stream" sparkle:edSignature="K/elOBEy7hyfwrkugJuBJ+8Vg8SEJZR94Rg8/Ow1QeuBEgnSg4O5VItr/eA7yTpLDTMWq9bSQxTVJDcrL99vDQ=="/>
+        </item>
+        <item>
             <title>0.6.2</title>
             <pubDate>Mon, 19 Oct 2026 05:57:47 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,20 +38,6 @@
             <description sparkle:format="markdown"><![CDATA[- The inbox suggests the next step toward sorting on this Mac: turning on Show History on your Mac on your iPhone, adding the Second Opinion Shortcut, or sending notifications only this Mac received to your iPhone.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.6.1/Karui-0.6.1-mac.zip" length="2665302" type="application/octet-stream" sparkle:edSignature="oQRGfPNWxSFOqlBQsUNEc9kHZv3krV0uaj7AnJU1xr1rrNt1mvIvrCrB5TZCIsQzh7ONJ3AKA+Y0C9ie7Zu5BA=="/>
-        </item>
-        <item>
-            <title>0.6.0</title>
-            <pubDate>Sat, 17 Oct 2026 07:09:46 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>20</sparkle:version>
-            <sparkle:shortVersionString>0.6.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Sorts each notification as it arrives, with your iPhone's settings (macOS 26 or later with Apple Intelligence; turn on Show History on your Mac in Karui on your iPhone).
-- Second Opinion through your own Shortcut when it's on in Karui on your iPhone. Get the Shortcut in Settings → Sorting.
-- Notifications only this Mac received can go to your iPhone, already sorted.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.6.0/Karui-0.6.0-mac.zip" length="2646131" type="application/octet-stream" sparkle:edSignature="Iwq9G+0YTUW57x9/8bv44vUhG9lyadMzZDLIZbfMCIbjyPl+nDOymGEhHn+2TS56C8m2sMioKHgH8vysBgB6Cg=="/>
         </item>
     </channel>
 </rss>

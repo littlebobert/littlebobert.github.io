@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.7.2</title>
+            <pubDate>Mon, 19 Oct 2026 16:50:34 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>25</sparkle:version>
+            <sparkle:shortVersionString>0.7.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Your iPhone stays quiet while you use this Mac even with Karui's window behind other apps, and reading for a few minutes without touching anything no longer counts as away.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.2/Karui-0.7.2-mac.zip" length="2715806" type="application/octet-stream" sparkle:edSignature="piJAcQDYIELl+aw3NNqIoL4B3glHF7VU9NUM2WPLCwSiHAoTBS1pYr/P1e1gI48qSSR0Kl3UEAG2rkCbtCsZDw=="/>
+        </item>
+        <item>
             <title>0.7.1</title>
             <pubDate>Mon, 19 Oct 2026 15:19:34 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -27,18 +39,6 @@
 - Changes from your iPhone arrive right away, by push, instead of on the next check.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.0/Karui-0.7.0-mac.zip" length="2698773" type="application/octet-stream" sparkle:edSignature="K/elOBEy7hyfwrkugJuBJ+8Vg8SEJZR94Rg8/Ow1QeuBEgnSg4O5VItr/eA7yTpLDTMWq9bSQxTVJDcrL99vDQ=="/>
-        </item>
-        <item>
-            <title>0.6.2</title>
-            <pubDate>Mon, 19 Oct 2026 05:57:47 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>22</sparkle:version>
-            <sparkle:shortVersionString>0.6.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Reasons from Karui's rules, like a message from an important contact, appear in Japanese when this Mac sorts.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.6.2/Karui-0.6.2-mac.zip" length="2666915" type="application/octet-stream" sparkle:edSignature="aOFFghmMBUhCVVCKvqxMvyAuWZf7b8XVD7LY0mO0akVjveDwVuCInODXxc8/R1mOHh74H0JOo6bVU9XxmPnyAg=="/>
         </item>
     </channel>
 </rss>

@@ -3,6 +3,19 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.7.3</title>
+            <pubDate>Tue, 20 Oct 2026 07:56:46 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>26</sparkle:version>
+            <sparkle:shortVersionString>0.7.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- The Dock badge, the menu bar count, and the unread dots now mean unread Important notifications only.
+- Fixed the Dock badge going missing after 0.7.0 asked for notification permission without it.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.3/Karui-0.7.3-mac.zip" length="2720755" type="application/octet-stream" sparkle:edSignature="SJo5ooDD/A3auXSuYRCYMqoGTsx3bbF3PkX7HU5mFDlKn+xoWV3zYCEPwZAq7ltX4cYwWoKFCshPz0D31oRJDQ=="/>
+        </item>
+        <item>
             <title>0.7.2</title>
             <pubDate>Mon, 19 Oct 2026 16:50:34 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -26,19 +39,6 @@
 - With the preview open, Return opens the notification's message, conversation, or app.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.1/Karui-0.7.1-mac.zip" length="2715118" type="application/octet-stream" sparkle:edSignature="Hl3Yg9UzPpyO2E6do9Op0Qf2R+wLRliFjQSBOxRAjVmL2XmfR2BUVv+H44B6idV8DLFNkzwe164QsvWiHr+VDQ=="/>
-        </item>
-        <item>
-            <title>0.7.0</title>
-            <pubDate>Mon, 19 Oct 2026 14:16:47 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>23</sparkle:version>
-            <sparkle:shortVersionString>0.7.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- While you're using this Mac, Karui on your iPhone alerts quietly, and this Mac shows the Important notifications only your iPhone received. Turn it off in Settings → iPhone.
-- Changes from your iPhone arrive right away, by push, instead of on the next check.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.0/Karui-0.7.0-mac.zip" length="2698773" type="application/octet-stream" sparkle:edSignature="K/elOBEy7hyfwrkugJuBJ+8Vg8SEJZR94Rg8/Ow1QeuBEgnSg4O5VItr/eA7yTpLDTMWq9bSQxTVJDcrL99vDQ=="/>
         </item>
     </channel>
 </rss>

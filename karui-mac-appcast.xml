@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.7.6</title>
+            <pubDate>Tue, 20 Oct 2026 08:46:08 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>29</sparkle:version>
+            <sparkle:shortVersionString>0.7.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed your iPhone not going quiet while you use this Mac: the Mac's record saying you're here was never saved to iCloud.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.6/Karui-0.7.6-mac.zip" length="2722967" type="application/octet-stream" sparkle:edSignature="kY+ygHFQV87hcYEg5fijkQNkfOltPEnKuDMWyIPVIfmwWbOCJjc0wshFzdoMlbohdkBVlSse+Le1pgUz8v4DCQ=="/>
+        </item>
+        <item>
             <title>0.7.5</title>
             <pubDate>Tue, 20 Oct 2026 08:40:10 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,19 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed a reason that showed only “{” when Private Cloud Compute answered in an unexpected format.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.4/Karui-0.7.4-mac.zip" length="2723171" type="application/octet-stream" sparkle:edSignature="6VlI1SrIVVUEkcDyiN++b53Fl6dd26sD730BiO6gZuMZcE1doFDMwlKF79qskKfjjYpW2GkhLFxkEun5Q/fXDg=="/>
-        </item>
-        <item>
-            <title>0.7.3</title>
-            <pubDate>Tue, 20 Oct 2026 07:56:46 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>26</sparkle:version>
-            <sparkle:shortVersionString>0.7.3</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- The Dock badge, the menu bar count, and the unread dots now mean unread Important notifications only.
-- Fixed the Dock badge going missing after 0.7.0 asked for notification permission without it.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.3/Karui-0.7.3-mac.zip" length="2720755" type="application/octet-stream" sparkle:edSignature="SJo5ooDD/A3auXSuYRCYMqoGTsx3bbF3PkX7HU5mFDlKn+xoWV3zYCEPwZAq7ltX4cYwWoKFCshPz0D31oRJDQ=="/>
         </item>
     </channel>
 </rss>

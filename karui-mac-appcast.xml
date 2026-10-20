@@ -3,6 +3,20 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.7.7</title>
+            <pubDate>Tue, 20 Oct 2026 11:06:42 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>30</sparkle:version>
+            <sparkle:shortVersionString>0.7.7</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- With only unread notifications shown, one you select stays in the list until you select another.
+- The preview pane keeps the height you give it when filters change what the list shows.
+- Deadlines from Private Cloud Compute no longer treat a sender's own promise, like "I'll return it tomorrow", as your task.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.7/Karui-0.7.7-mac.zip" length="2732824" type="application/octet-stream" sparkle:edSignature="HB4MKYF4GrHZ3UJ+fgzgt4g8XMCwRBdOxuxPfd9WuqGMSilZzEcvBZ4N2mVd6weP7lBGXdGCaKUBVpcHRz3vDA=="/>
+        </item>
+        <item>
             <title>0.7.6</title>
             <pubDate>Tue, 20 Oct 2026 08:46:08 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +39,6 @@
             <description sparkle:format="markdown"><![CDATA[- The log now says when the record that tells your iPhone you're using this Mac can't be saved to iCloud, and why.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.5/Karui-0.7.5-mac.zip" length="2723065" type="application/octet-stream" sparkle:edSignature="xc4UPad3IDZK81UcvzgLQAbuQUFvn5Esh/EOVPjLFY8xzbs9TRmhL6DnMpZiuTg6j8ILvlzI2YunoMC1fHxvAA=="/>
-        </item>
-        <item>
-            <title>0.7.4</title>
-            <pubDate>Tue, 20 Oct 2026 08:08:30 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>27</sparkle:version>
-            <sparkle:shortVersionString>0.7.4</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed a reason that showed only “{” when Private Cloud Compute answered in an unexpected format.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.4/Karui-0.7.4-mac.zip" length="2723171" type="application/octet-stream" sparkle:edSignature="6VlI1SrIVVUEkcDyiN++b53Fl6dd26sD730BiO6gZuMZcE1doFDMwlKF79qskKfjjYpW2GkhLFxkEun5Q/fXDg=="/>
         </item>
     </channel>
 </rss>

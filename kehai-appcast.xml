@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.6.2</title>
+            <pubDate>Wed, 21 Oct 2026 08:17:55 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>113</sparkle:version>
+            <sparkle:shortVersionString>0.6.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Search now finds apps by their other names, so typing “codex” finds ChatGPT.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.2/Kehai-0.6.2-mac.zip" length="3272548" type="application/octet-stream" sparkle:edSignature="VkSphzrscwi43oTys0h1tuZFqKHqo7FICM/so1vduNoTpcdV9fL0ZgWF3GBVkyxe3x+KjyD5sb7B0Etc/wZMBg=="/>
+        </item>
+        <item>
             <title>0.6.1</title>
             <pubDate>Wed, 14 Oct 2026 20:31:16 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Search now finds files. Type two or more letters to see matching files from Spotlight in a new Files section.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.0/Kehai-0.6.0-mac.zip" length="3267697" type="application/octet-stream" sparkle:edSignature="fWygTVnDRjKOW4x6GDh0DxkdHSYkiJemGuoadS5Xnz2leUKr0Efek6xJ8b8s2rJ8LFbuq5ms8os6kGoNiRblDQ=="/>
-        </item>
-        <item>
-            <title>0.5.35</title>
-            <pubDate>Mon, 12 Oct 2026 15:35:58 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>110</sparkle:version>
-            <sparkle:shortVersionString>0.5.35</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Add support for opening apps that aren’t currently running.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.5.35/Kehai-0.5.35-mac.zip" length="3195981" type="application/octet-stream" sparkle:edSignature="S9f+g43rKKaVN+sN7XdQDnIgyLAqhpxDFG8En6Mpx3S26LCbquy+WQGkMguRmTJ6DhY0VHU8nTI2Mt9hqbEtDg=="/>
         </item>
     </channel>
 </rss>

@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.7.10</title>
+            <pubDate>Wed, 21 Oct 2026 13:21:37 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>33</sparkle:version>
+            <sparkle:shortVersionString>0.7.10</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Karui for Mac counts you as away after a minute without input, down from three, so your iPhone's alerts come back sooner when you walk away without locking your Mac.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.10/Karui-0.7.10-mac.zip" length="2734264" type="application/octet-stream" sparkle:edSignature="2R6NrsRhNBiZdGjmyyIA/TvhGAhmnhp83pPvewAHYmN/Oui02KZ7PMByXSMuDwAoNgYBGFim1AC2YBv+OgQyDg=="/>
+        </item>
+        <item>
             <title>0.7.9</title>
             <pubDate>Wed, 21 Oct 2026 10:48:21 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,20 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Slack messages open straight in the Slack app, without a stop in your browser.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.8/Karui-0.7.8-mac.zip" length="2734278" type="application/octet-stream" sparkle:edSignature="sW+OIEmHBE7SKX7SmwLcbwLrJbwUefzSvPFpB+Pacc83kZ0Vkl4vDEwDa6La/dFo2O8n83FYXPyqvfeDm8W4Dw=="/>
-        </item>
-        <item>
-            <title>0.7.7</title>
-            <pubDate>Tue, 20 Oct 2026 11:06:42 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>30</sparkle:version>
-            <sparkle:shortVersionString>0.7.7</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- With only unread notifications shown, one you select stays in the list until you select another.
-- The preview pane keeps the height you give it when filters change what the list shows.
-- Deadlines from Private Cloud Compute no longer treat a sender's own promise, like "I'll return it tomorrow", as your task.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.7/Karui-0.7.7-mac.zip" length="2732824" type="application/octet-stream" sparkle:edSignature="HB4MKYF4GrHZ3UJ+fgzgt4g8XMCwRBdOxuxPfd9WuqGMSilZzEcvBZ4N2mVd6weP7lBGXdGCaKUBVpcHRz3vDA=="/>
         </item>
     </channel>
 </rss>

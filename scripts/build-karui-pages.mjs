@@ -41,6 +41,7 @@ const assetFiles = [
   'karui-social.png',
   // KN004's App Privacy Report screenshot.
   'karui-kn004-privacy-report.jpg',
+  'karui-kn004-privacy-report-icloud.jpg',
   // The demo's four screens, in each language.
   ...['en', 'ja'].flatMap((language) => [1, 2, 3, 4].map((screen) => `karui-demo-${language}-${screen}.jpg`)),
   // Karui for Mac's two screens in a MacBook Air, in each language.

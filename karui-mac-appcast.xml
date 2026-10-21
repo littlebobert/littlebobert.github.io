@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.7.12</title>
+            <pubDate>Wed, 21 Oct 2026 14:07:29 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>35</sparkle:version>
+            <sparkle:shortVersionString>0.7.12</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Turning on the Unread filter also clears selected notifications you'd already read from the preview, so it never shows one the list hides.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.12/Karui-0.7.12-mac.zip" length="2739349" type="application/octet-stream" sparkle:edSignature="+wCzqgHtaCMF2uhI3kBJdSsQlrNhBj5YYzlpCbHHf64wHUzMSs3wnCoyCOyh3dO6AOoOcLO7dElIDl1fXFa/Dw=="/>
+        </item>
+        <item>
             <title>0.7.11</title>
             <pubDate>Wed, 21 Oct 2026 13:44:28 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Karui for Mac counts you as away after a minute without input, down from three, so your iPhone's alerts come back sooner when you walk away without locking your Mac.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.10/Karui-0.7.10-mac.zip" length="2734264" type="application/octet-stream" sparkle:edSignature="2R6NrsRhNBiZdGjmyyIA/TvhGAhmnhp83pPvewAHYmN/Oui02KZ7PMByXSMuDwAoNgYBGFim1AC2YBv+OgQyDg=="/>
-        </item>
-        <item>
-            <title>0.7.9</title>
-            <pubDate>Wed, 21 Oct 2026 10:48:21 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>32</sparkle:version>
-            <sparkle:shortVersionString>0.7.9</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Slack notifications open at their message again after Karui for Mac restarts. Before, a restart dropped their links, so opening one only opened Slack.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.9/Karui-0.7.9-mac.zip" length="2734289" type="application/octet-stream" sparkle:edSignature="NenUSzzzWVESvdLQJss3jy/GG+j5opIeaO386y1z+lPbnWjTVtPyuxLiOwCJqWmbnDGdK+iH4KbM2MdsZSs/Dg=="/>
         </item>
     </channel>
 </rss>

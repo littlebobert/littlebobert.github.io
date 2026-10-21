@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.7.8</title>
+            <pubDate>Wed, 21 Oct 2026 10:30:18 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>31</sparkle:version>
+            <sparkle:shortVersionString>0.7.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Slack messages open straight in the Slack app, without a stop in your browser.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.8/Karui-0.7.8-mac.zip" length="2734278" type="application/octet-stream" sparkle:edSignature="sW+OIEmHBE7SKX7SmwLcbwLrJbwUefzSvPFpB+Pacc83kZ0Vkl4vDEwDa6La/dFo2O8n83FYXPyqvfeDm8W4Dw=="/>
+        </item>
+        <item>
             <title>0.7.7</title>
             <pubDate>Tue, 20 Oct 2026 11:06:42 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -27,18 +39,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed your iPhone not going quiet while you use this Mac: the Mac's record saying you're here was never saved to iCloud.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.6/Karui-0.7.6-mac.zip" length="2722967" type="application/octet-stream" sparkle:edSignature="kY+ygHFQV87hcYEg5fijkQNkfOltPEnKuDMWyIPVIfmwWbOCJjc0wshFzdoMlbohdkBVlSse+Le1pgUz8v4DCQ=="/>
-        </item>
-        <item>
-            <title>0.7.5</title>
-            <pubDate>Tue, 20 Oct 2026 08:40:10 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>28</sparkle:version>
-            <sparkle:shortVersionString>0.7.5</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- The log now says when the record that tells your iPhone you're using this Mac can't be saved to iCloud, and why.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.5/Karui-0.7.5-mac.zip" length="2723065" type="application/octet-stream" sparkle:edSignature="xc4UPad3IDZK81UcvzgLQAbuQUFvn5Esh/EOVPjLFY8xzbs9TRmhL6DnMpZiuTg6j8ILvlzI2YunoMC1fHxvAA=="/>
         </item>
     </channel>
 </rss>

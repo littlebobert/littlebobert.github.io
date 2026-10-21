@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.7.11</title>
+            <pubDate>Wed, 21 Oct 2026 13:44:28 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>34</sparkle:version>
+            <sparkle:shortVersionString>0.7.11</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Turning on the Unread filter hides selected notifications you'd already read, instead of keeping them in the list.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.11/Karui-0.7.11-mac.zip" length="2736974" type="application/octet-stream" sparkle:edSignature="kwpQHcDjDlqWdna7nMtj1UUryVmy39guZR3pm3HdWGVKG22rtIcyltys8yxQnScH8kFCtDRGwhdiD84q7h9PDQ=="/>
+        </item>
+        <item>
             <title>0.7.10</title>
             <pubDate>Wed, 21 Oct 2026 13:21:37 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Slack notifications open at their message again after Karui for Mac restarts. Before, a restart dropped their links, so opening one only opened Slack.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.9/Karui-0.7.9-mac.zip" length="2734289" type="application/octet-stream" sparkle:edSignature="NenUSzzzWVESvdLQJss3jy/GG+j5opIeaO386y1z+lPbnWjTVtPyuxLiOwCJqWmbnDGdK+iH4KbM2MdsZSs/Dg=="/>
-        </item>
-        <item>
-            <title>0.7.8</title>
-            <pubDate>Wed, 21 Oct 2026 10:30:18 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>31</sparkle:version>
-            <sparkle:shortVersionString>0.7.8</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Slack messages open straight in the Slack app, without a stop in your browser.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.8/Karui-0.7.8-mac.zip" length="2734278" type="application/octet-stream" sparkle:edSignature="sW+OIEmHBE7SKX7SmwLcbwLrJbwUefzSvPFpB+Pacc83kZ0Vkl4vDEwDa6La/dFo2O8n83FYXPyqvfeDm8W4Dw=="/>
         </item>
     </channel>
 </rss>

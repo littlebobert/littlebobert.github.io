@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.8.4</title>
+            <pubDate>Thu, 22 Oct 2026 16:54:45 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>44</sparkle:version>
+            <sparkle:shortVersionString>0.8.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- With the next Karui update on your iPhone, a Slack thread reply shows once even when your iPhone's verdict arrives late.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.4/Karui-0.8.4-mac.zip" length="2777698" type="application/octet-stream" sparkle:edSignature="221o+3osI08vCtXqJOlcZ8hG7lrkXmz7ADjDkYO1SaiM/UnMcIMn3eZQqRHFlSWLuKDdhhnat2CUSYCWAerACw=="/>
+        </item>
+        <item>
             <title>0.8.3</title>
             <pubDate>Thu, 22 Oct 2026 15:56:25 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -26,20 +38,6 @@
 - Emails Spark announces late, after the Mac wakes, get their links.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.2/Karui-0.8.2-mac.zip" length="2771223" type="application/octet-stream" sparkle:edSignature="H2e9QGXLGeUEZnGX4Ddv6NlQKdXPBZc+NiK9956eA0DZE2cgyf7HmsfQoIxRW+JkbPhsTWUZM1hOl13t0jOXCg=="/>
-        </item>
-        <item>
-            <title>0.8.1</title>
-            <pubDate>Thu, 22 Oct 2026 13:11:07 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>41</sparkle:version>
-            <sparkle:shortVersionString>0.8.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- The preview shows Karui's search tags from your iPhone.
-- The search field has a button to clear it.
-- The preview's category, Sorted by, and tags lines are easier to read.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.1/Karui-0.8.1-mac.zip" length="2757457" type="application/octet-stream" sparkle:edSignature="iiT/2wIzRz11Wa2bskAA1pPhtOWixdWO3fraY5uQnVUoXB3WWrYbv4tFq4bniNahRvjDFqarVWMIXcGzGj1/AA=="/>
         </item>
     </channel>
 </rss>

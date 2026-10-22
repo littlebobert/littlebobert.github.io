@@ -114,11 +114,12 @@
       <pre class="karui-code"><code>Received: Monday, September 28, 2026 at 12:59
 Source: Slack
 Source is an important app: no
-Sender: Kensuke Sada
-Title: Reply from Kensuke Sada
-Subtitle (often a chat or thread name): #internal-kotoba-app-sales
-Body: @Yuta SASAKI When does this look like it will happen?
-Addressed to: @Yuta, not the user</code></pre>
+Sender: Haruto Mori
+Title: Reply from Haruto Mori
+Subtitle (often a chat or thread name): #sales-planning
+Body: @Ren Ishii When does this look like it will happen?
+Addressed to: @Ren, not the user</code></pre>
+      <p data-label-en="The names and the channel in this example are made up." data-label-ja="この例の名前とチャンネル名は架空のものです。">The names and the channel in this example are made up.</p>
     </section>
     <section class="karui-section">
       <h2 data-label-en="Only say what’s true" data-label-ja="当てはまることだけを書く">Only say what’s true</h2>
@@ -126,12 +127,12 @@ Addressed to: @Yuta, not the user</code></pre>
     </section>
     <section class="karui-section">
       <h2 data-label-en="State facts instead of hoping for inferences" data-label-ja="推論に頼らず、事実を書く">State facts instead of hoping for inferences</h2>
-      <p data-label-en="The model treated “@Yuta, can you send me that report?” in a Slack channel as a request to the user. Karui now finds the @names in a message, and if none is the user, adds a line saying so, as in the example above. The instructions also name the case: a message addressed to someone else is Neutral." data-label-ja="モデルは、Slackのチャンネルでの「@Yuta、あのレポートを送ってもらえますか？」を、ユーザーへの依頼として扱っていました。今はメッセージ内の@の名前を見つけ、どれもユーザーでなければ、上の例のようにその旨の行を加えています。指示文でも、ほかの人宛てのメッセージは「中立」だと明記しています。">The model treated “@Yuta, can you send me that report?” in a Slack channel as a request to the user. Karui now finds the @names in a message, and if none is the user, adds a line saying so, as in the example above. The instructions also name the case: a message addressed to someone else is Neutral.</p>
+      <p data-label-en="The model treated “@Ren, can you send me that report?” in a Slack channel as a request to the user. Karui now finds the @names in a message, and if none is the user, adds a line saying so, as in the example above. The instructions also name the case: a message addressed to someone else is Neutral." data-label-ja="モデルは、Slackのチャンネルでの「@Ren、あのレポートを送ってもらえますか？」を、ユーザーへの依頼として扱っていました。今はメッセージ内の@の名前を見つけ、どれもユーザーでなければ、上の例のようにその旨の行を加えています。指示文でも、ほかの人宛てのメッセージは「中立」だと明記しています。">The model treated “@Ren, can you send me that report?” in a Slack channel as a request to the user. Karui now finds the @names in a message, and if none is the user, adds a line saying so, as in the example above. The instructions also name the case: a message addressed to someone else is Neutral.</p>
       <p data-label-en="The same applies to what the model shouldn’t guess. It linked messages to the user’s calendar events that had nothing to do with them, so the instructions now say to connect a notification to an event only when it names that event or matches its place or time." data-label-ja="モデルに推測させたくないことについても同じです。関係のないカレンダーの予定にメッセージを結び付けていたため、今は、通知がその予定の名前を挙げているか、場所や時刻が一致する場合だけ結び付けるよう指示しています。">The same applies to what the model shouldn’t guess. It linked messages to the user’s calendar events that had nothing to do with them, so the instructions now say to connect a notification to an event only when it names that event or matches its place or time.</p>
     </section>
     <section class="karui-section">
       <h2 data-label-en="Check the answer with rules" data-label-ja="答えをルールで確かめる">Check the answer with rules</h2>
-      <p data-label-en="Even with “Addressed to: @Yuta, not the user” in the prompt, the model kept marking that Slack message Important. So after the model answers, a rule checks it. If the model says Important but the message is addressed only to other people, the result drops to Neutral with the reason “Addressed to @Yuta, not you,” unless the message matches the user’s urgent terms or is marked time sensitive. For reference, Private Cloud Compute got the same message right without the check." data-label-ja="プロンプトに「宛先：@Yuta（ユーザーではない）」とあっても、モデルはそのSlackのメッセージを「重要」と判定し続けました。そこで、モデルの回答後にルールで確認しています。モデルが「重要」と判断しても、メッセージがほかの人だけに宛てたものであれば、「@Yutaさん宛てで、あなた宛てではありません」という理由で「中立」に下げます。ただし、ユーザーの緊急の語句に一致する場合や、時間確認が必要な通知は除きます。参考までに、Private Cloud Computeは、この確認なしでも同じメッセージを正しく判定しました。">Even with “Addressed to: @Yuta, not the user” in the prompt, the model kept marking that Slack message Important. So after the model answers, a rule checks it. If the model says Important but the message is addressed only to other people, the result drops to Neutral with the reason “Addressed to @Yuta, not you,” unless the message matches the user’s urgent terms or is marked time sensitive. For reference, Private Cloud Compute got the same message right without the check.</p>
+      <p data-label-en="Even with “Addressed to: @Ren, not the user” in the prompt, the model kept marking that Slack message Important. So after the model answers, a rule checks it. If the model says Important but the message is addressed only to other people, the result drops to Neutral with the reason “Addressed to @Ren, not you,” unless the message matches the user’s urgent terms or is marked time sensitive. For reference, Private Cloud Compute got the same message right without the check." data-label-ja="プロンプトに「宛先：@Ren（ユーザーではない）」とあっても、モデルはそのSlackのメッセージを「重要」と判定し続けました。そこで、モデルの回答後にルールで確認しています。モデルが「重要」と判断しても、メッセージがほかの人だけに宛てたものであれば、「@Renさん宛てで、あなた宛てではありません」という理由で「中立」に下げます。ただし、ユーザーの緊急の語句に一致する場合や、時間確認が必要な通知は除きます。参考までに、Private Cloud Computeは、この確認なしでも同じメッセージを正しく判定しました。">Even with “Addressed to: @Ren, not the user” in the prompt, the model kept marking that Slack message Important. So after the model answers, a rule checks it. If the model says Important but the message is addressed only to other people, the result drops to Neutral with the reason “Addressed to @Ren, not you,” unless the message matches the user’s urgent terms or is marked time sensitive. For reference, Private Cloud Compute got the same message right without the check.</p>
     </section>
     <section class="karui-section">
       <h2 data-label-en="Decide with rules first where the answer is certain" data-label-ja="答えが明らかなときは、先にルールで決める">Decide with rules first where the answer is certain</h2>
@@ -139,7 +140,7 @@ Addressed to: @Yuta, not the user</code></pre>
     </section>
     <section class="karui-section">
       <h2 data-label-en="Revision History" data-label-ja="改訂履歴">Revision History</h2>
-      <ul><li><span class="karui-revision-date" data-label-en="2026-09-28" data-label-ja="2026-09-28">2026-09-28</span><span data-label-en=" First published." data-label-ja=" 初版公開。"> First published.</span></li></ul>
+      <ul><li><span class="karui-revision-date" data-label-en="2026-10-22" data-label-ja="2026-10-22">2026-10-22</span><span data-label-en=" Made-up names and channel in the Slack example." data-label-ja=" Slackの例の名前とチャンネル名を架空のものに変更。"> Made-up names and channel in the Slack example.</span></li><li><span class="karui-revision-date" data-label-en="2026-09-28" data-label-ja="2026-09-28">2026-09-28</span><span data-label-en=" First published." data-label-ja=" 初版公開。"> First published.</span></li></ul>
     </section>
     <section class="karui-section">
       <p><a href="karui-technotes.html" data-label-en="← All Technical Notes" data-label-ja="← 技術ノート一覧">← All Technical Notes</a></p>

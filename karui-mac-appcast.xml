@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.7.16</title>
+            <pubDate>Thu, 22 Oct 2026 10:26:02 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>39</sparkle:version>
+            <sparkle:shortVersionString>0.7.16</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- When Private Cloud Compute keeps failing through the Second Opinion Shortcut, as when it's rate limited, Karui for Mac pauses asking for a while and keeps the on-device model's answers.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.16/Karui-0.7.16-mac.zip" length="2745985" type="application/octet-stream" sparkle:edSignature="BLEFjgcLXMzsTVEwHx7ftQPQCTHJda9VtY/tXGznIpkoRl9P++DEmIoJCGVHJ9XVRXQ/Xg5UKkQDyMIUHjeTCA=="/>
+        </item>
+        <item>
             <title>0.7.15</title>
             <pubDate>Thu, 22 Oct 2026 09:24:52 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- A notification you read on your iPhone stays read here when your iPad comes back online with an older copy of your History.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.14/Karui-0.7.14-mac.zip" length="2742878" type="application/octet-stream" sparkle:edSignature="MzkCoCgbvZVYHyI4LAINF+T8PiTk7tOPVC/4RFwxU3IyknkcRkjMGqgOvJ4/iqBuRUFZwTPhXJq3t7y7Fnu7Ag=="/>
-        </item>
-        <item>
-            <title>0.7.13</title>
-            <pubDate>Wed, 21 Oct 2026 15:45:22 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>36</sparkle:version>
-            <sparkle:shortVersionString>0.7.13</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- If the Focus you use with Karui on your iPhone keeps Karui’s banners on this Mac in Notification Center, the inbox now says how to let them through.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.13/Karui-0.7.13-mac.zip" length="2742742" type="application/octet-stream" sparkle:edSignature="/lx6tW78y+aFhmXKIlnpyZq7u4tnUiDrnlLs92LCHWJviE4tYmQ7blZYWhlrkbd/QNwZXmdaLyTsd6aC5oKDAA=="/>
         </item>
     </channel>
 </rss>

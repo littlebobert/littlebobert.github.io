@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.8.6</title>
+            <pubDate>Thu, 22 Oct 2026 20:56:21 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>46</sparkle:version>
+            <sparkle:shortVersionString>0.8.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Slack posts a bot sends almost the same way every day, such as build uploads, no longer show twice or keep an earlier post's category.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.6/Karui-0.8.6-mac.zip" length="2781924" type="application/octet-stream" sparkle:edSignature="ttpiKx0e5p5r6w0HzQKoT8rbEY9vMj9BN0aKBNh7EwPUNZr4BiELoI6IwPJO9EtAFOIHNJl3Cv4gZUgjP0CTDg=="/>
+        </item>
+        <item>
             <title>0.8.5</title>
             <pubDate>Thu, 22 Oct 2026 18:30:08 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- With the next Karui update on your iPhone, a Slack thread reply shows once even when your iPhone's verdict arrives late.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.4/Karui-0.8.4-mac.zip" length="2777698" type="application/octet-stream" sparkle:edSignature="221o+3osI08vCtXqJOlcZ8hG7lrkXmz7ADjDkYO1SaiM/UnMcIMn3eZQqRHFlSWLuKDdhhnat2CUSYCWAerACw=="/>
-        </item>
-        <item>
-            <title>0.8.3</title>
-            <pubDate>Thu, 22 Oct 2026 15:56:25 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>43</sparkle:version>
-            <sparkle:shortVersionString>0.8.3</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Slack thread replies show once, with the link that opens the reply, on this Mac and from your iPhone.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.3/Karui-0.8.3-mac.zip" length="2774614" type="application/octet-stream" sparkle:edSignature="CGK2hcaEFYo6/TS3XhlNETpnRu80UzczMraYPn/isck7C/HBXIhAX6/tSNLyR527UQ0Jk/dW2/1rN/60az+2AQ=="/>
         </item>
     </channel>
 </rss>

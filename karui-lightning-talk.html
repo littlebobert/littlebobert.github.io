@@ -24,7 +24,7 @@
     .karui-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
     .karui-breadcrumbs a { color: #666; }
     .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
-    .karui-present { font: inherit; padding: 3pt 10pt; border: 1px solid #1a211e; border-radius: 6px; background: #fff; color: #000; cursor: pointer; }
+    .karui-present { font: inherit; margin-right: 8pt; padding: 3pt 10pt; border: 1px solid #1a211e; border-radius: 6px; background: #fff; color: #000; cursor: pointer; }
 
     /* The slides: 16:9 cards whose type scales with their width (cqw), so the same
        slide reads the same in the page and full screen. */
@@ -33,14 +33,12 @@
     .karui-slide { aspect-ratio: 16 / 9; overflow: hidden; display: flex; flex-direction: column; padding: 3.6cqw 4.6cqw 2.8cqw; border: 1px solid #1a211e; border-radius: 10px; background: #fff; font-size: 2.05cqw; line-height: 1.35; }
     .karui-slide-kicker { color: #cc2119; font-weight: bold; font-size: 1.85cqw; letter-spacing: 0.02em; }
     /* Two classes, to outrank the site's .sasu-page h2. */
-    .karui-slide .karui-slide-title { margin: 0.5cqw 0 1.8cqw; padding: 0; font-size: 3.6cqw; line-height: 1.18; font-weight: bold; text-wrap: balance; word-break: auto-phrase; }
+    .karui-slide .karui-slide-title { margin: 0.5cqw 0 1.3cqw; padding: 0; font-size: 3.6cqw; line-height: 1.18; font-weight: bold; text-wrap: balance; word-break: auto-phrase; }
     .karui-slide-source { margin-top: auto; padding-top: 1.2cqw; color: #666; font-size: 1.55cqw; }
-    .karui-slide-source a { color: #666; }
-    .karui-slide code { font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 0.92em; background: #f4f3ee; border-radius: 0.5cqw; padding: 0.1cqw 0.6cqw; }
-
+    
     /* Slide 1: three bursts from Karui's logs, to one time scale. */
-    .karui-bursts { display: grid; row-gap: 1.1cqw; }
-    .karui-burst { display: grid; grid-template-columns: 10cqw 1fr; column-gap: 2cqw; row-gap: 0.5cqw; align-items: center; }
+    .karui-bursts { display: grid; row-gap: 0.8cqw; }
+    .karui-burst { display: grid; grid-template-columns: 10cqw 1fr; column-gap: 2cqw; row-gap: 0.3cqw; align-items: center; }
     .karui-burst-time { color: #555; font-size: 1.8cqw; text-align: right; }
     .karui-burst-bar { position: relative; height: 3cqw; }
     .karui-burst-bar span { position: absolute; top: 0; bottom: 0; border-radius: 0.5cqw; }
@@ -48,7 +46,8 @@
     .karui-burst-refused { background: #cc2119; opacity: 0.85; }
     .karui-burst-label { grid-column: 2; display: flex; gap: 2cqw; font-size: 1.9cqw; }
     .karui-burst-label .is-refused { color: #cc2119; }
-    .karui-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2cqw; margin-top: 2.1cqw; }
+    .karui-bursts-caption { margin: -0.4cqw 0 0.6cqw 12cqw; color: #666; font-size: 1.6cqw; }
+    .karui-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2cqw; margin-top: 1.6cqw; }
     .karui-fact { padding: 0.9cqw 1.4cqw; background: #f4f3ee; border-radius: 1cqw; text-align: center; }
     .karui-fact-number { font-size: 3.5cqw; line-height: 1.1; font-weight: bold; color: #cc2119; }
     .karui-fact-caption { margin-top: 0.3cqw; font-size: 1.6cqw; color: #333; }
@@ -58,7 +57,6 @@
     .karui-path { padding: 2cqw 2.2cqw; border: 0.2cqw solid #1a211e; border-radius: 1.2cqw; }
     .karui-path--works { border-color: #cc2119; }
     .karui-path-name { font-weight: bold; font-size: 2.2cqw; }
-    .karui-path-api { margin-top: 0.6cqw; font-size: 1.7cqw; }
     .karui-path-number { margin-top: 1.4cqw; font-size: 6.4cqw; line-height: 1; font-weight: bold; }
     .karui-path--works .karui-path-number { color: #cc2119; }
     .karui-path-detail { margin-top: 1cqw; font-size: 2cqw; color: #333; }
@@ -75,8 +73,6 @@
     /* No fade while presenting starts, so the page's visible steps don't flash out. */
     .karui-talk.is-starting .karui-step { transition: none !important; }
     @media (prefers-reduced-motion: reduce) { .karui-talk.is-presenting .karui-step { transition: none; } }
-    .karui-slide-count { display: none; }
-    .karui-talk.is-presenting .karui-slide-count { display: block; position: fixed; right: 14px; bottom: 10px; color: #999; font-size: 12px; }
   </style>
   <link rel="canonical" href="https://karui.jp/technotes/lightning-talk">
   <meta name="description" content="Two slides for a five-minute talk: how many background calls Apple’s on-device model takes before it refuses, and why Private Cloud Compute through a Shortcut answers when the app’s own call can’t." data-label-en="Two slides for a five-minute talk: how many background calls Apple’s on-device model takes before it refuses, and why Private Cloud Compute through a Shortcut answers when the app’s own call can’t." data-label-ja="5分間のトークのための2枚のスライド。Appleのオンデバイスモデルがバックグラウンドで何回まで応じるか、そしてアプリ自身の呼び出しが拒否されるときにショートカット経由のPrivate Cloud Computeが応答する理由。">
@@ -107,7 +103,7 @@
       </div>
     </section>
     <section class="karui-section">
-      <p data-label-en="Two slides for a five-minute talk, from Technical Notes KN001 and KN002." data-label-ja="技術ノートKN001とKN002をもとにした、5分間のトークのための2枚のスライド。">Two slides for a five-minute talk, from Technical Notes KN001 and KN002.</p>
+      <p><span data-label-en="Two slides for a five-minute talk, from " data-label-ja="">Two slides for a five-minute talk, from </span><a href="karui.html">Karui</a><span data-label-en="’s Technical Notes " data-label-ja="の技術ノート">’s Technical Notes </span><a href="karui-technote-kn001.html">KN001</a><span data-label-en=" and " data-label-ja="と"> and </span><a href="karui-technote-kn002.html">KN002</a><span data-label-en="." data-label-ja="をもとにした、5分間のトークのための2枚のスライド。">.</span></p>
       <p class="karui-note-meta" data-label-en="October 22, 2026 · iOS 27.0 · Measured on iPhone 17 Pro" data-label-ja="2026年10月22日 · iOS 27.0 · iPhone 17 Proで計測">October 22, 2026 · iOS 27.0 · Measured on iPhone 17 Pro</p>
       <p><button class="karui-present" type="button" data-label-en="Present" data-label-ja="スライドショー">Present</button> <span class="karui-note-meta" data-label-en="Arrow keys, space, or a click to step through; Esc to stop." data-label-ja="矢印キー、スペース、クリックで進む。Escで終了。">Arrow keys, space, or a click to step through; Esc to stop.</span></p>
     </section>
@@ -115,25 +111,26 @@
     <section class="karui-talk" aria-label="Slides">
       <div class="karui-slide-frame">
         <article class="karui-slide" aria-label="Slide 1">
-          <div class="karui-slide-kicker" data-label-en="1 · Foundation Models" data-label-ja="1 · Foundation Models">1 · Foundation Models</div>
+          <div class="karui-slide-kicker" data-label-en="1/2 · Foundation Models" data-label-ja="1/2 · Foundation Models">1/2 · Foundation Models</div>
           <h2 class="karui-slide-title" data-label-en="Background on-device requests refused after about 6 calls, sometimes for hours" data-label-ja="バックグラウンドのオンデバイスリクエストは約6回で拒否され、数時間続くこともある">Background on-device requests refused after about 6 calls, sometimes for hours</h2>
           <!-- Each bar runs from the burst's first call, to one scale of 400 minutes:
                accepted calls in black, then the refusals in red. From KN001's table. -->
+          <div class="karui-bursts-caption karui-step" data-step-joins-next data-label-en="Three examples from Karui’s logs, September 26 and 27:" data-label-ja="Karuiのログから3つの例（9月26日・27日）：">Three examples from Karui’s logs, September 26 and 27:</div>
           <div class="karui-bursts">
             <div class="karui-burst karui-step">
               <div class="karui-burst-time" data-label-en="10:37 PM" data-label-ja="午後10:37">10:37 PM</div>
               <div class="karui-burst-bar"><span class="karui-burst-accepted" style="left: 0; width: 9.75%"></span><span class="karui-burst-refused" style="left: 17.75%; width: 81.25%"></span></div>
-              <div class="karui-burst-label"><span data-label-en="8 accepted" data-label-ja="8回成功">8 accepted</span><span class="is-refused" data-label-en="refused 5 h 25 min" data-label-ja="5時間25分拒否">refused 5 h 25 min</span></div>
+              <div class="karui-burst-label"><span data-label-en="8 accepted" data-label-ja="8回成功">8 accepted</span><span class="is-refused" data-label-en="refused for 5 h 25 min" data-label-ja="5時間25分拒否">refused for 5 h 25 min</span></div>
             </div>
             <div class="karui-burst karui-step">
               <div class="karui-burst-time" data-label-en="2:44 PM" data-label-ja="午後2:44">2:44 PM</div>
               <div class="karui-burst-bar"><span class="karui-burst-accepted" style="left: 0; width: 1.5%"></span><span class="karui-burst-refused" style="left: 4.75%; width: 29%"></span></div>
-              <div class="karui-burst-label"><span data-label-en="~7 accepted" data-label-ja="約7回成功">~7 accepted</span><span class="is-refused" data-label-en="refused 1 h 56 min" data-label-ja="1時間56分拒否">refused 1 h 56 min</span></div>
+              <div class="karui-burst-label"><span data-label-en="5 accepted" data-label-ja="5回成功">5 accepted</span><span class="is-refused" data-label-en="refused for 1 h 56 min" data-label-ja="1時間56分拒否">refused for 1 h 56 min</span></div>
             </div>
             <div class="karui-burst karui-step">
               <div class="karui-burst-time" data-label-en="5:54 PM" data-label-ja="午後5:54">5:54 PM</div>
               <div class="karui-burst-bar"><span class="karui-burst-accepted" style="left: 0; width: 9.5%"></span><span class="karui-burst-refused" style="left: 31.25%; width: 27.5%"></span></div>
-              <div class="karui-burst-label"><span data-label-en="8 accepted" data-label-ja="8回成功">8 accepted</span><span class="is-refused" data-label-en="refused 1 h 50 min" data-label-ja="1時間50分拒否">refused 1 h 50 min</span></div>
+              <div class="karui-burst-label"><span data-label-en="8 accepted" data-label-ja="8回成功">8 accepted</span><span class="is-refused" data-label-en="refused for 1 h 50 min" data-label-ja="1時間50分拒否">refused for 1 h 50 min</span></div>
             </div>
           </div>
           <!-- From the whole of History, September 20 to October 21. -->
@@ -142,39 +139,36 @@
             <div class="karui-fact karui-step"><div class="karui-fact-number">6</div><div class="karui-fact-caption" data-label-en="accepted before a refusal (median)" data-label-ja="拒否までの成功回数（中央値）">accepted before a refusal (median)</div></div>
             <div class="karui-fact karui-step"><div class="karui-fact-number" data-label-en="16 h" data-label-ja="16時間">16 h</div><div class="karui-fact-caption" data-label-en="the longest run: 49 refusals" data-label-ja="最長の連続拒否：49回">the longest run: 49 refusals</div></div>
           </div>
-          <div class="karui-slide-source"><span data-label-en="iPhone 17 Pro · iOS 27.0 · Karui’s History, Sep 20 – Oct 21 · " data-label-ja="iPhone 17 Pro · iOS 27.0 · Karuiの履歴（9月20日〜10月21日） · ">iPhone 17 Pro · iOS 27.0 · Karui’s History, Sep 20 – Oct 21 · </span><a href="karui-technote-kn001.html">KN001</a></div>
+          <div class="karui-slide-source"><span data-label-en="iPhone 17 Pro · iOS 27.0 · Karui’s History, Sep 20 – Oct 21" data-label-ja="iPhone 17 Pro · iOS 27.0 · Karuiの履歴（9月20日〜10月21日）">iPhone 17 Pro · iOS 27.0 · Karui’s History, Sep 20 – Oct 21</span></div>
         </article>
       </div>
 
       <div class="karui-slide-frame">
         <article class="karui-slide" aria-label="Slide 2">
-          <div class="karui-slide-kicker" data-label-en="2 · Private Cloud Compute" data-label-ja="2 · Private Cloud Compute">2 · Private Cloud Compute</div>
+          <div class="karui-slide-kicker" data-label-en="2/2 · Private Cloud Compute" data-label-ja="2/2 · Private Cloud Compute">2/2 · Private Cloud Compute</div>
           <h2 class="karui-slide-title" data-label-en="Shortcuts gets its own PCC budget" data-label-ja="ショートカットにはPCCの別の上限がある">Shortcuts gets its own PCC budget</h2>
           <div class="karui-paths">
             <div class="karui-path karui-step">
               <div class="karui-path-name" data-label-en="In the app" data-label-ja="アプリ内">In the app</div>
-              <div class="karui-path-api"><code>PrivateCloudComputeLanguageModel</code></div>
               <div class="karui-path-number">0%</div>
               <div class="karui-path-detail" data-label-en="answered: 0 of 64 while rate limited, one day" data-label-ja="回答：レート制限中の64回中0回（1日）">answered: 0 of 64 while rate limited, one day</div>
             </div>
             <div class="karui-path karui-path--works karui-step">
               <div class="karui-path-name" data-label-en="Through a Shortcut" data-label-ja="ショートカット経由">Through a Shortcut</div>
-              <div class="karui-path-api"><code data-label-en="Use Model" data-label-ja="モデルを使用">Use Model</code></div>
               <div class="karui-path-number">78%</div>
               <div class="karui-path-detail" data-label-en="answered: 1,285 of 1,651 while rate limited, over a month" data-label-ja="回答：レート制限中の1,651件中1,285件（1か月）">answered: 1,285 of 1,651 while rate limited, over a month</div>
             </div>
           </div>
           <div class="karui-caveat karui-step" data-label-en="PCC has its own limit too: about 10 per 75 min" data-label-ja="PCCにも上限がある：75分で約10回">PCC has its own limit too: about 10 per 75 min</div>
-          <div class="karui-slide-source"><span data-label-en="iPhone 17 Pro · iOS 27.0 · Karui’s History and logs · " data-label-ja="iPhone 17 Pro · iOS 27.0 · Karuiの履歴とログ · ">iPhone 17 Pro · iOS 27.0 · Karui’s History and logs · </span><a href="karui-technote-kn001.html">KN001</a>, <a href="karui-technote-kn002.html">KN002</a></div>
+          <div class="karui-slide-source"><span data-label-en="iPhone 17 Pro · iOS 27.0 · Karui’s History and logs" data-label-ja="iPhone 17 Pro · iOS 27.0 · Karuiの履歴とログ">iPhone 17 Pro · iOS 27.0 · Karui’s History and logs</span></div>
         </article>
       </div>
-      <div class="karui-slide-count" aria-hidden="true"></div>
     </section>
 
     <section class="karui-section">
       <p><a href="karui-technotes.html" data-label-en="← All Technical Notes" data-label-ja="← 技術ノート一覧">← All Technical Notes</a></p>
     </section>
-    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-lightning-talk.html" data-label-en="Lightning Talk" data-label-ja="ライトニングトーク">Lightning Talk</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
+    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
   </main>
   <script>
     const supportedLanguages = ['en', 'ja'];
@@ -214,15 +208,27 @@
     (() => {
       const talk = document.querySelector('.karui-talk');
       const frames = [...talk.querySelectorAll('.karui-slide-frame')];
-      const steps = frames.map((frame) => [...frame.querySelectorAll('.karui-step')]);
-      const count = talk.querySelector('.karui-slide-count');
+      // Each step is the elements one press brings in: a .karui-step, with any marked
+      // data-step-joins-next before it, as a caption that comes with what it labels.
+      const steps = frames.map((frame) => {
+        const groups = [];
+        let group = [];
+        for (const element of frame.querySelectorAll('.karui-step')) {
+          group.push(element);
+          if (!element.hasAttribute('data-step-joins-next')) {
+            groups.push(group);
+            group = [];
+          }
+        }
+        if (group.length) groups.push(group);
+        return groups;
+      });
       let current = 0;
       let shown = 0;
 
       function render() {
         frames.forEach((frame, i) => frame.classList.toggle('is-current', i === current));
-        steps[current].forEach((step, i) => step.classList.toggle('is-shown', i < shown));
-        count.textContent = `${current + 1} / ${frames.length}`;
+        steps[current].forEach((group, i) => group.forEach((element) => element.classList.toggle('is-shown', i < shown)));
       }
 
       function next() {
@@ -249,13 +255,13 @@
       function stop() {
         talk.classList.remove('is-presenting');
         frames.forEach((frame) => frame.classList.remove('is-current'));
-        steps.flat().forEach((step) => step.classList.remove('is-shown'));
+        steps.flat(2).forEach((element) => element.classList.remove('is-shown'));
         if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
       }
 
       document.querySelector('.karui-present').addEventListener('click', start);
       talk.addEventListener('click', (event) => {
-        if (!talk.classList.contains('is-presenting') || event.target.closest('a')) return;
+        if (!talk.classList.contains('is-presenting')) return;
         next();
       });
       document.addEventListener('keydown', (event) => {

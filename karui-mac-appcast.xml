@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.7.15</title>
+            <pubDate>Thu, 22 Oct 2026 09:24:52 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>38</sparkle:version>
+            <sparkle:shortVersionString>0.7.15</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- The preview says what sorted each notification: Apple's on-device model, Private Cloud Compute, Karui's rules, or you. Notifications sorted on the iPhone show it once the iPhone has the next Karui update.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.15/Karui-0.7.15-mac.zip" length="2744217" type="application/octet-stream" sparkle:edSignature="Ne0lnjiB0goXdXlUlY/ob37cvabdfd0sFWp0oRtdd1R5DZVaRjykozoxjD3nbA/1H8PIugulHC2nhy6UQS2wCA=="/>
+        </item>
+        <item>
             <title>0.7.14</title>
             <pubDate>Wed, 21 Oct 2026 16:33:45 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- If the Focus you use with Karui on your iPhone keeps Karui’s banners on this Mac in Notification Center, the inbox now says how to let them through.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.13/Karui-0.7.13-mac.zip" length="2742742" type="application/octet-stream" sparkle:edSignature="/lx6tW78y+aFhmXKIlnpyZq7u4tnUiDrnlLs92LCHWJviE4tYmQ7blZYWhlrkbd/QNwZXmdaLyTsd6aC5oKDAA=="/>
-        </item>
-        <item>
-            <title>0.7.12</title>
-            <pubDate>Wed, 21 Oct 2026 14:07:29 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>35</sparkle:version>
-            <sparkle:shortVersionString>0.7.12</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Turning on the Unread filter also clears selected notifications you'd already read from the preview, so it never shows one the list hides.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.12/Karui-0.7.12-mac.zip" length="2739349" type="application/octet-stream" sparkle:edSignature="+wCzqgHtaCMF2uhI3kBJdSsQlrNhBj5YYzlpCbHHf64wHUzMSs3wnCoyCOyh3dO6AOoOcLO7dElIDl1fXFa/Dw=="/>
         </item>
     </channel>
 </rss>

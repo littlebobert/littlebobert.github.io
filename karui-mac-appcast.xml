@@ -3,6 +3,20 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.8.1</title>
+            <pubDate>Thu, 22 Oct 2026 13:11:07 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>41</sparkle:version>
+            <sparkle:shortVersionString>0.8.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- The preview shows Karui's search tags from your iPhone.
+- The search field has a button to clear it.
+- The preview's category, Sorted by, and tags lines are easier to read.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.1/Karui-0.8.1-mac.zip" length="2757457" type="application/octet-stream" sparkle:edSignature="iiT/2wIzRz11Wa2bskAA1pPhtOWixdWO3fraY5uQnVUoXB3WWrYbv4tFq4bniNahRvjDFqarVWMIXcGzGj1/AA=="/>
+        </item>
+        <item>
             <title>0.8.0</title>
             <pubDate>Thu, 22 Oct 2026 11:28:00 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +39,6 @@
             <description sparkle:format="markdown"><![CDATA[- When Private Cloud Compute keeps failing through the Second Opinion Shortcut, as when it's rate limited, Karui for Mac pauses asking for a while and keeps the on-device model's answers.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.16/Karui-0.7.16-mac.zip" length="2745985" type="application/octet-stream" sparkle:edSignature="BLEFjgcLXMzsTVEwHx7ftQPQCTHJda9VtY/tXGznIpkoRl9P++DEmIoJCGVHJ9XVRXQ/Xg5UKkQDyMIUHjeTCA=="/>
-        </item>
-        <item>
-            <title>0.7.15</title>
-            <pubDate>Thu, 22 Oct 2026 09:24:52 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>38</sparkle:version>
-            <sparkle:shortVersionString>0.7.15</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- The preview says what sorted each notification: Apple's on-device model, Private Cloud Compute, Karui's rules, or you. Notifications sorted on the iPhone show it once the iPhone has the next Karui update.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.7.15/Karui-0.7.15-mac.zip" length="2744217" type="application/octet-stream" sparkle:edSignature="Ne0lnjiB0goXdXlUlY/ob37cvabdfd0sFWp0oRtdd1R5DZVaRjykozoxjD3nbA/1H8PIugulHC2nhy6UQS2wCA=="/>
         </item>
     </channel>
 </rss>

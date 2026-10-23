@@ -39,53 +39,111 @@
     .karui-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
     .karui-breadcrumbs a { color: #666; }
     .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
-    .karui-flow { margin: 10pt 0 2pt; font-size: 0.92em; line-height: 1.4; }
-    .kf-step, .kf-result { background: #f4f3ee; border: 1px solid #d8d6ce; border-radius: 8px; padding: 6pt 9pt; }
+    /* The diagram, drawn like a product's technical drawing: a framed sheet with zone
+       marks, hairlines, names in spaced capitals, the device outlined with its buttons
+       and a hatched screen, a dimension line, and a title block. All in the page's own font. Dashed lines are off the device. */
+    .karui-flow { --kf-ink: #1a1a1a;
+      position: relative; margin: 12pt 0 2pt; padding: 28px 18px 24px 40px; border: 1px solid var(--kf-ink);
+      font-size: 0.92em; line-height: 1.4; background: #fff; }
+    .karui-flow::before { content: ""; position: absolute; inset: 8px; border: 1px solid var(--kf-ink); pointer-events: none; }
+    .karui-flow strong, .kf-phone-label, .kf-cloud-tag, .kf-labeled-arrow span, .kf-title-block { letter-spacing: 0.06em; }
+    .karui-flow strong { text-transform: uppercase; font-size: 0.82em; font-weight: bold; }
+    .kf-zones { position: absolute; display: flex; justify-content: space-around; color: #444; font-size: 9px; line-height: 8px; pointer-events: none; }
+    .kf-zones-top { top: 0; left: 8px; right: 8px; }
+    .kf-zones-bottom { bottom: 0; left: 8px; right: 8px; }
+    .kf-zones-left { top: 8px; bottom: 8px; left: 0; width: 8px; flex-direction: column; align-items: center; }
+    .kf-zones-right { top: 8px; bottom: 8px; right: 0; width: 8px; flex-direction: column; align-items: center; }
+    .kf-step, .kf-result { background: #fff; border: 1px solid var(--kf-ink); border-radius: 0; padding: 6pt 9pt; }
     .kf-source-col { margin-right: 174px; }
-    .kf-apns { border: 1.5px solid #777; border-radius: 12px; padding: 6pt 9pt; text-align: center; }
+    .kf-apns { border: 1px solid var(--kf-ink); border-radius: 0; padding: 6pt 9pt; text-align: center; background: #fff; }
     .kf-apns span { display: block; color: #555; font-size: 0.95em; }
     .kf-step small, .kf-result span, .kf-cloud span { display: block; color: #555; font-size: 0.95em; }
-    .kf-arrow { position: relative; width: 0; height: 16px; margin: 0 auto; border-left: 1.5px solid #1a211e; }
-    .kf-arrow::after { content: ""; position: absolute; left: -5px; bottom: -1px; border: 4.5px solid transparent; border-top: 6px solid #1a211e; border-bottom: 0; }
+    .kf-arrow { position: relative; width: 0; height: 16px; margin: 0 auto; border-left: 1px solid var(--kf-ink); }
+    .kf-arrow::after { content: ""; position: absolute; left: -4.5px; bottom: -1px; border: 4px solid transparent; border-top: 8px solid var(--kf-ink); border-bottom: 0; }
     .kf-main { display: grid; grid-template-columns: 1fr 150px; gap: 24px; align-items: start; }
-    .kf-phone { position: relative; border: 2px solid #1a211e; border-radius: 14px; padding: 13pt 9pt; }
-    .kf-phone-label { position: absolute; top: -9pt; left: 10pt; background: #fff; padding: 0 5pt; font-weight: bold; }
+    /* The device, in an iPhone's proportions (iPhone 17 Pro, 71.9 × 150 mm) with its
+       rounded corners: an outer outline and the screen's inside it, the Dynamic Island,
+       two buttons on the left and one on the right, and the screen hatched like a
+       display's active area. The diagram sits centred on the screen; on a narrow
+       window, where it can't fit, the device grows taller instead. */
+    .kf-phone { position: relative; box-sizing: border-box; aspect-ratio: 71.9 / 150; display: flex; flex-direction: column; justify-content: center;
+      border: 1.5px solid var(--kf-ink); border-radius: 54px; padding: 40pt 10pt 30pt;
+      background: repeating-linear-gradient(135deg, rgb(26 26 26 / 16%) 0 1px, transparent 1px 7px); }
+    .kf-phone::before { content: ""; position: absolute; inset: 6px; border: 1px solid var(--kf-ink); border-radius: 48px; pointer-events: none; }
+    .kf-island { position: absolute; top: 18px; left: 50%; width: 27%; height: 16px; transform: translateX(-50%);
+      border-radius: 8px; background: var(--kf-ink); }
+    .kf-phone::after { content: ""; position: absolute; left: -5px; top: 74px; width: 3px; height: 30px; background: var(--kf-ink);
+      box-shadow: 0 42px 0 var(--kf-ink); }
+    .kf-side-button { position: absolute; right: -5px; top: 96px; width: 3px; height: 46px; background: var(--kf-ink); }
+    .kf-phone-label { position: absolute; top: -8pt; left: 22pt; background: #fff; padding: 0 5pt; font-weight: 600; text-transform: uppercase; font-size: 0.86em; }
+    /* A dimension line beside the device: roughly how long the on-device sort takes. */
+    .kf-dim { position: absolute; left: -34px; top: 40pt; bottom: 30pt; width: 12px; border-top: 1px solid var(--kf-ink); border-bottom: 1px solid var(--kf-ink); }
+    .kf-dim::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; border-left: 1px solid var(--kf-ink); }
+    .kf-dim::after { content: ""; position: absolute; left: calc(50% - 3.5px); top: 0; border: 3.5px solid transparent; border-bottom: 7px solid var(--kf-ink); border-top: 0; }
+    .kf-dim-end { position: absolute; left: calc(50% - 3.5px); bottom: 0; border: 3.5px solid transparent; border-top: 7px solid var(--kf-ink); border-bottom: 0; }
+    .kf-dim span { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-90deg); white-space: nowrap;
+      background: #fff; padding: 0 4px; font-size: 0.8em; letter-spacing: 0.04em; text-transform: uppercase; }
     .kf-order { margin: 3pt 0 0; padding-left: 16pt !important; }
     .kf-order li + li { margin-top: 2pt !important; }
     .kf-results { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
-    .kf-results::before { content: ""; position: absolute; top: 0; left: calc((100% - 8px) / 4); right: calc((100% - 8px) / 4 + 1.5px); border-top: 1.5px solid #1a211e; }
+    .kf-results::before { content: ""; position: absolute; top: 0; left: calc((100% - 8px) / 4); right: calc((100% - 8px) / 4 + 1px); border-top: 1px solid var(--kf-ink); }
     .kf-karui { position: relative; }
-    .kf-karui::after { content: ""; position: absolute; top: 100%; left: 50%; height: 10px; border-left: 1.5px solid #1a211e; }
+    .kf-karui::after { content: ""; position: absolute; top: 100%; left: 50%; height: 10px; border-left: 1px solid var(--kf-ink); }
     .kf-branch { display: flex; flex-direction: column; }
     .kf-branch .kf-result { flex: 1; }
     .kf-labeled-arrow { position: relative; padding: 16px 0 22px; text-align: center; color: #555; font-size: 0.9em; line-height: 1.3; }
-    .kf-labeled-arrow::before { content: ""; position: absolute; top: 0; bottom: 1px; left: 50%; border-left: 1.5px solid #1a211e; }
-    .kf-labeled-arrow::after { content: ""; position: absolute; bottom: -1px; left: calc(50% - 4px); border: 4.5px solid transparent; border-top: 6px solid #1a211e; border-bottom: 0; }
-    .kf-labeled-arrow span { position: relative; background: #fff; padding: 3px 5px; }
+    .kf-labeled-arrow::before { content: ""; position: absolute; top: 0; bottom: 1px; left: 50%; border-left: 1px solid var(--kf-ink); }
+    .kf-labeled-arrow::after { content: ""; position: absolute; bottom: -1px; left: calc(50% - 4px); border: 4px solid transparent; border-top: 8px solid var(--kf-ink); border-bottom: 0; }
+    .kf-labeled-arrow span { position: relative; background: #fff; padding: 2px 5px; text-transform: uppercase; font-size: 0.86em; }
     .kf-result strong { display: block; }
-    .kf-important { border-color: #1a211e; background: #fff; }
-    .kf-model-row { display: grid; grid-template-columns: 1fr 18px 118px; align-items: center; }
-    .kf-model { border: 1.5px solid #777; border-radius: 12px; padding: 6pt 8pt; }
-    .kf-link { position: relative; border-top: 1.5px solid #1a211e; }
-    .kf-link::before, .kf-link::after { content: ""; position: absolute; top: -5.25px; border: 4.5px solid transparent; }
-    .kf-link::before { left: -1px; border-right: 6px solid #1a211e; border-left: 0; }
-    .kf-link::after { right: -1px; border-left: 6px solid #1a211e; border-right: 0; }
-    /* Off the device: placed in the right-hand column, level with Karui's model step,
-       with a dashed line from the Karui box running under the on-device model. */
+    .kf-important { border: 1.5px solid var(--kf-ink); background: #fff; }
+    .kf-model-row { display: grid; grid-template-columns: 1fr 14px 104px; align-items: center; }
+    .kf-model { border: 1px solid var(--kf-ink); border-radius: 0; padding: 6pt 8pt; background: #fff; }
+    .kf-link { position: relative; border-top: 1px solid var(--kf-ink); }
+    .kf-link::before, .kf-link::after { content: ""; position: absolute; top: -4.5px; border: 4px solid transparent; }
+    .kf-link::before { left: -1px; border-right: 7px solid var(--kf-ink); border-left: 0; }
+    .kf-link::after { right: -1px; border-left: 7px solid var(--kf-ink); border-right: 0; }
+    /* Off the device: placed in the right-hand column, with a dashed line from the Karui
+       box running just under the on-device model's box, whatever its height. */
     .kf-model-row { position: relative; }
-    .kf-cloud { position: relative; box-sizing: border-box; background: #fff; border: 1.5px dashed #777; border-radius: 12px; padding: 6pt 8pt; }
-    .kf-model-row .kf-cloud { position: absolute; top: calc(50% + 30px); left: calc(100% + 9pt + 2px + 24px); width: 150px; }
-    .kf-model-row .kf-cloud::before { content: ""; position: absolute; top: 18px; left: calc(-18px - 118px - 9pt - 2px - 24px - 1.5px); width: calc(18px + 118px + 9pt + 2px + 24px); border-top: 1.5px dashed #777; }
+    .kf-cloud { position: relative; box-sizing: border-box; background: #fff; border: 1px dashed var(--kf-ink); border-radius: 0; padding: 6pt 8pt; }
+    .kf-model-wrap { position: relative; }
+    .kf-model-row .kf-cloud { position: absolute; top: calc(100% + 10px - 18px); left: calc(100% + 10pt + 2px + 24px); width: 150px; }
+    .kf-model-row .kf-cloud::before { content: ""; position: absolute; top: 18px; left: calc(-14px - 104px - 10pt - 2px - 24px - 1px); width: calc(14px + 104px + 10pt + 2px + 24px); border-top: 1px dashed var(--kf-ink); }
     /* On a phone the same box sits below the device instead; one copy shows at a time. */
     .kf-cloud-below { display: none; }
-    .kf-cloud-tag { color: #555; font-size: 0.9em; margin-bottom: 2pt; }
+    .kf-cloud-tag { color: #444; font-size: 0.8em; margin-bottom: 2pt; text-transform: uppercase; }
+    /* Also off the device: iCloud, level with History, joined to it by a dashed line, and
+       Karui for Mac below it. */
+    .kf-branch { position: relative; }
+    .kf-results .kf-sync { position: absolute; top: 52px; left: calc(100% + 10pt + 2px + 24px); width: 150px; }
+    /* The Second Opinion box above runs longer in Japanese. */
+    html[lang="ja"] .kf-results .kf-sync { top: 88px; }
+    .kf-results .kf-sync::before { content: ""; position: absolute; top: 18px; left: calc(-10pt - 2px - 24px - 1px); width: calc(10pt + 2px + 24px); border-top: 1px dashed var(--kf-ink); }
+    .kf-mac { position: relative; margin-top: 14px; padding: 6pt 8pt; border: 1px dashed var(--kf-ink); background: #fff; }
+    .kf-mac::before { content: ""; position: absolute; top: -15px; left: 50%; height: 14px; border-left: 1px dashed var(--kf-ink); }
+    .kf-sync-below { display: none; }
+    /* The title block, bottom right, as on a drawing sheet. */
+    .kf-title-block { display: grid; grid-template-columns: auto auto auto; width: fit-content; margin: 16pt 0 0 auto;
+      border: 1px solid var(--kf-ink); font-size: 0.72em; text-transform: uppercase; line-height: 1.25; }
+    .kf-title-block > div { padding: 3px 6px; border-left: 1px solid var(--kf-ink); border-top: 1px solid var(--kf-ink); }
+    .kf-title-block > .kf-tb-name { grid-column: 1 / -1; border-top: 0; border-left: 0; font-size: 1.5em; font-weight: 700; text-align: center; letter-spacing: 0.12em; }
+    .kf-title-block > .kf-tb-first { border-left: 0; }
+    .kf-title-block small { display: block; color: #555; font-size: 0.85em; }
     @media (max-width: 560px) {
+      .karui-flow { padding: 24px 16px 20px; }
+      .kf-dim, .kf-zones-left, .kf-zones-right { display: none; }
+      .kf-phone { padding: 34pt 10pt 22pt; border-radius: 40px; }
+      .kf-phone::before { border-radius: 34px; }
       .kf-main { grid-template-columns: 1fr; gap: 16px; }
       .kf-source-col { margin-right: 0; }
       .kf-model-row { grid-template-columns: 1fr 14px 108px; }
       .kf-model { padding: 6pt 7pt; }
       .kf-model-row .kf-cloud { display: none; }
       .kf-cloud-below { display: block; }
+      .kf-results .kf-sync { display: none; }
+      /* No line up to the box above: iCloud isn't reached through Private Cloud Compute. */
+      .kf-sync-below { display: block; position: relative; }
       .kf-cloud-below::before { content: ""; position: absolute; top: -18px; left: 50%; height: 16px; border-left: 1.5px dashed #777; }
     }
   </style>
@@ -127,6 +185,10 @@
         <li><span data-label-en="Karui posts Important notifications again, and your Focus lets them through. Tapping one opens the app it came from, or the conversation itself in Messages and WhatsApp when Karui has the sender’s number. With " data-label-ja="重要な通知はKaruiがあらためて通知し、集中モードを通過します。タップすると通知元のアプリが開きます。「メッセージ」とWhatsAppでは、Karuiが送信者の番号を把握している場合、その会話が直接開きます。">Karui posts Important notifications again, and your Focus lets them through. Tapping one opens the app it came from, or the conversation itself in Messages and WhatsApp when Karui has the sender’s number. With </span><a href="karui-mac.html" data-label-en="Karui for Mac" data-label-ja="Mac版Karui">Karui for Mac</a><span data-label-en=" on your Mac, it opens the exact email or message in Spark, Slack, or Messages. Neutral and Spam notifications stay quiet. Every notification is kept in History, and Neutral ones can also appear in a daily summary." data-label-ja="を使っていれば、Spark、Slack、「メッセージ」のメールやメッセージそのものが開きます。中立とスパムの通知は静かなままです。すべての通知は履歴に保存され、中立の通知は毎日のまとめにも含められます。"> on your Mac, it opens the exact email or message in Spark, Slack, or Messages. Neutral and Spam notifications stay quiet. Every notification is kept in History, and Neutral ones can also appear in a daily summary.</span></li>
       </ol>
       <figure class="karui-flow" aria-labelledby="karui-flow-title">
+        <div class="kf-zones kf-zones-top" aria-hidden="true"><span>4</span><span>3</span><span>2</span><span>1</span></div>
+        <div class="kf-zones kf-zones-bottom" aria-hidden="true"><span>4</span><span>3</span><span>2</span><span>1</span></div>
+        <div class="kf-zones kf-zones-left" aria-hidden="true"><span>C</span><span>B</span><span>A</span></div>
+        <div class="kf-zones kf-zones-right" aria-hidden="true"><span>C</span><span>B</span><span>A</span></div>
         <div class="kf-source-col">
           <div class="kf-apns"><strong data-label-en="Apple Push Notification service" data-label-ja="Appleプッシュ通知サービス">Apple Push Notification service</strong><span data-label-en="Delivers notifications from other apps’ servers" data-label-ja="ほかのアプリのサーバーからの通知を届ける">Delivers notifications from other apps’ servers</span></div>
           <div class="kf-labeled-arrow"><span data-label-en="A notification from an app your Focus silences" data-label-ja="集中モードで消音したアプリの通知">A notification from an app your Focus silences</span></div>
@@ -134,6 +196,9 @@
         <div class="kf-main">
           <div class="kf-phone">
             <div class="kf-phone-label" id="karui-flow-title" data-label-en="Your device" data-label-ja="あなたのデバイス">Your device</div>
+            <div class="kf-side-button" aria-hidden="true"></div>
+            <div class="kf-island" aria-hidden="true"></div>
+            <div class="kf-dim" aria-hidden="true"><span data-label-en="≈ 4 s on device" data-label-ja="端末上で約4秒">≈ 4 s on device</span><i class="kf-dim-end"></i></div>
             <div class="kf-step"><strong data-label-en="Karui Shortcut" data-label-ja="Karuiショートカット">Karui Shortcut</strong><small data-label-en="Runs on “When I receive a notification” and passes the app, title, text, and sender to Karui" data-label-ja="「通知を受信したとき」に実行され、アプリ、タイトル、本文、送信者をKaruiに渡す">Runs on “When I receive a notification” and passes the app, title, text, and sender to Karui</small></div>
             <div class="kf-arrow" aria-hidden="true"></div>
             <div class="kf-model-row">
@@ -145,15 +210,24 @@
                 </ol>
               </div>
               <div class="kf-link" aria-hidden="true"></div>
-              <div class="kf-model"><strong data-label-en="Apple’s on-device Foundation Model" data-label-ja="AppleのオンデバイスFoundation Model">Apple’s on-device Foundation Model</strong></div>
-              <div class="kf-cloud"><div class="kf-cloud-tag" data-label-en="Second Opinion · offered at setup" data-label-ja="セカンドオピニオン・セットアップで提案">Second Opinion · offered at setup</div><strong data-label-en="Apple’s Private Cloud Compute" data-label-ja="AppleのPrivate Cloud Compute">Apple’s Private Cloud Compute</strong><span data-label-en="Karui asks it directly, or through your Shortcut’s Use Model while Apple Intelligence is busy" data-label-ja="Karuiが直接、またはApple Intelligenceが混雑している間はショートカットの「モデルを使用」で問い合わせる">Karui asks it directly, or through your Shortcut’s Use Model while Apple Intelligence is busy</span></div>
+              <div class="kf-model-wrap">
+                <div class="kf-model"><strong data-label-en="Apple’s on-device Foundation Model" data-label-ja="AppleのオンデバイスFoundation Model">Apple’s on-device Foundation Model</strong></div>
+                <div class="kf-cloud"><div class="kf-cloud-tag" data-label-en="Second Opinion · offered at setup" data-label-ja="セカンドオピニオン・セットアップで提案">Second Opinion · offered at setup</div><strong data-label-en="Apple’s Private Cloud Compute" data-label-ja="AppleのPrivate Cloud Compute">Apple’s Private Cloud Compute</strong><span data-label-en="Karui asks it directly, or through your Shortcut’s Use Model while Apple Intelligence is busy" data-label-ja="Karuiが直接、またはApple Intelligenceが混雑している間はショートカットの「モデルを使用」で問い合わせる">Karui asks it directly, or through your Shortcut’s Use Model while Apple Intelligence is busy</span></div>
+              </div>
             </div>
             <div class="kf-results">
-              <div class="kf-branch"><div class="kf-labeled-arrow"><span data-label-en="Every result" data-label-ja="すべての結果">Every result</span></div><div class="kf-result"><strong data-label-en="History" data-label-ja="履歴">History</strong><span data-label-en="Saved on your device with its reason." data-label-ja="理由とともにデバイスに保存。">Saved on your device with its reason.</span></div></div>
               <div class="kf-branch"><div class="kf-labeled-arrow"><span data-label-en="Important only" data-label-ja="重要な通知だけ">Important only</span></div><div class="kf-result kf-important"><strong data-label-en="Karui’s alert" data-label-ja="Karuiの通知">Karui’s alert</strong><span data-label-en="Posted again; your Focus lets it through." data-label-ja="あらためて通知され、集中モードを通過する。">Posted again; your Focus lets it through.</span></div></div>
+              <div class="kf-branch"><div class="kf-labeled-arrow"><span data-label-en="Every result" data-label-ja="すべての結果">Every result</span></div><div class="kf-result"><strong data-label-en="History" data-label-ja="履歴">History</strong><span data-label-en="Saved on your device with its reason." data-label-ja="理由とともにデバイスに保存。">Saved on your device with its reason.</span></div><div class="kf-sync"><div class="kf-cloud"><div class="kf-cloud-tag" data-label-en="Optional · with Karui for Mac" data-label-ja="オプション・Mac版Karuiを使う場合">Optional · with Karui for Mac</div><strong data-label-en="Your iCloud account" data-label-ja="あなたのiCloudアカウント">Your iCloud account</strong><span data-label-en="History to the Mac; links and read marks back" data-label-ja="履歴をMacへ、リンクと既読をiPhoneへ">History to the Mac; links and read marks back</span></div><div class="kf-mac"><strong data-label-en="Karui for Mac" data-label-ja="Mac版Karui">Karui for Mac</strong></div></div></div>
             </div>
           </div>
           <div class="kf-cloud kf-cloud-below" aria-hidden="true"><div class="kf-cloud-tag" data-label-en="Second Opinion · offered at setup" data-label-ja="セカンドオピニオン・セットアップで提案">Second Opinion · offered at setup</div><strong data-label-en="Apple’s Private Cloud Compute" data-label-ja="AppleのPrivate Cloud Compute">Apple’s Private Cloud Compute</strong><span data-label-en="Karui asks it directly, or through your Shortcut’s Use Model while Apple Intelligence is busy" data-label-ja="Karuiが直接、またはApple Intelligenceが混雑している間はショートカットの「モデルを使用」で問い合わせる">Karui asks it directly, or through your Shortcut’s Use Model while Apple Intelligence is busy</span></div>
+          <div class="kf-sync kf-sync-below" aria-hidden="true"><div class="kf-cloud"><div class="kf-cloud-tag" data-label-en="Optional · with Karui for Mac" data-label-ja="オプション・Mac版Karuiを使う場合">Optional · with Karui for Mac</div><strong data-label-en="Your iCloud account" data-label-ja="あなたのiCloudアカウント">Your iCloud account</strong><span data-label-en="History to the Mac; links and read marks back" data-label-ja="履歴をMacへ、リンクと既読をiPhoneへ">History to the Mac; links and read marks back</span></div><div class="kf-mac"><strong data-label-en="Karui for Mac" data-label-ja="Mac版Karui">Karui for Mac</strong></div></div>
+        </div>
+        <div class="kf-title-block" aria-hidden="true">
+          <div class="kf-tb-name">KARUI</div>
+          <div class="kf-tb-first"><small data-label-en="Title" data-label-ja="名称">Title</small><span data-label-en="Notification flow" data-label-ja="通知の流れ">Notification flow</span></div>
+          <div><small data-label-en="Scale" data-label-ja="尺度">Scale</small><span data-label-en="None" data-label-ja="なし">None</span></div>
+          <div><small data-label-en="Sheet" data-label-ja="シート">Sheet</small><span data-label-en="1 of 1" data-label-ja="1／1">1 of 1</span></div>
         </div>
       </figure>
     </section>

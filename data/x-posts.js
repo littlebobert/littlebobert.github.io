@@ -1,8 +1,65 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-10-22T19:15:19.997Z",
+  "updatedAt": "2026-10-23T19:19:13.177Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2113571029813744000",
+      "text": "a Japanese artist just created an icon for my app Kehai. Kehai is a free app that makes it easier to jump to the GitHub repo, app, file, or window I want. but Kehai hides itself in its app section so I find myself opening the About window to gaze at the icon 🤓. https://t.co/B5qmP5L9ld",
+      "createdAt": "2026-10-23T09:59:36.000Z",
+      "url": "https://x.com/_bobertdowney/status/2113571029813744000",
+      "urls": [
+        {
+          "url": "https://t.co/B5qmP5L9ld",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2113571029813744000/photo/1",
+          "displayUrl": "pic.x.com/B5qmP5L9ld",
+          "start": 262,
+          "end": 285
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2113571029813744000-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2113465745837564127",
+      "text": "KaruiはiPhone Duoに最適化されています。迷惑通知を鳴らさず、送信取り消しされたメッセージも読めて、緊急のときは選んだ人がアラームで起こせます。プライバシーを守って、無料で → https://t.co/XvhuIJPcHX https://t.co/a6qAOlH4qN",
+      "createdAt": "2026-10-23T03:01:14.000Z",
+      "url": "https://x.com/_bobertdowney/status/2113465745837564127",
+      "urls": [
+        {
+          "url": "https://t.co/XvhuIJPcHX",
+          "expandedUrl": "https://karui.jp",
+          "displayUrl": "karui.jp",
+          "start": 95,
+          "end": 118
+        },
+        {
+          "url": "https://t.co/a6qAOlH4qN",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2113465745837564127/video/1",
+          "displayUrl": "pic.x.com/a6qAOlH4qN",
+          "start": 119,
+          "end": 142
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2113465745837564127-0.png"
+        }
+      ]
+    },
     {
       "id": "2113207960185028915",
       "text": "Looney Tunes storm track https://t.co/PG5OquUmTj",
@@ -169,28 +226,6 @@ window.X_POSTS_SNAPSHOT = {
           "end": 237
         }
       ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2105469187472998400",
-      "text": "justin@onemorething.tokyo",
-      "createdAt": "2026-10-01T01:25:46.000Z",
-      "url": "https://x.com/_bobertdowney/status/2105469187472998400",
-      "urls": [],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2105468737860354104",
-      "text": "giving away my last 5 Steve Jobs commemorative coins.\n\nemail me feedback on the setup wizard in Karui, my free app for silencing spam notifications and seeing messages people unsend. I'll draw winners October 1st (my dad’s birthday) at 9:41 AM PT.\n\nopen to Japan, US, Canada,",
-      "createdAt": "2026-10-01T01:23:59.000Z",
-      "url": "https://x.com/_bobertdowney/status/2105468737860354104",
-      "urls": [],
       "avatar": "assets/generated/x/mine-avatar.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",

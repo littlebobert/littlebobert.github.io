@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.6.4</title>
+            <pubDate>Fri, 23 Oct 2026 15:45:06 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>115</sparkle:version>
+            <sparkle:shortVersionString>0.6.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- The app icon has bolder, darker brushstrokes, so it's easier to recognize at small sizes in the Dock and app switcher.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.4/Kehai-0.6.4-mac.zip" length="3146990" type="application/octet-stream" sparkle:edSignature="+8Mrq6HFFQSH9MmJwyU3ZpBmznJpN84fiH1fkmpqrI9/adJPulDJ7Wo5LjEd20bW33QxopYtApeGdn73DUqRAA=="/>
+        </item>
+        <item>
             <title>0.6.3</title>
             <pubDate>Wed, 21 Oct 2026 11:35:49 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Search now finds apps by their other names, so typing “codex” finds ChatGPT.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.2/Kehai-0.6.2-mac.zip" length="3272548" type="application/octet-stream" sparkle:edSignature="VkSphzrscwi43oTys0h1tuZFqKHqo7FICM/so1vduNoTpcdV9fL0ZgWF3GBVkyxe3x+KjyD5sb7B0Etc/wZMBg=="/>
-        </item>
-        <item>
-            <title>0.6.1</title>
-            <pubDate>Wed, 14 Oct 2026 20:31:16 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>112</sparkle:version>
-            <sparkle:shortVersionString>0.6.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Add a button to jump to each GitHub repo’s Actions.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.1/Kehai-0.6.1-mac.zip" length="3270362" type="application/octet-stream" sparkle:edSignature="1w+DOQ+VlYQ9PmHMKyIiC/tl7Tjm+3av4eE+NqQeBY0ACVORiuchhXfMbbgzz1bmZa0eiMRt9607zFYOXKFkDA=="/>
         </item>
     </channel>
 </rss>

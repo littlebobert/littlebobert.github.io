@@ -25,6 +25,8 @@
     .footer-links a { white-space: nowrap; }
     .karui-changelog h2 { display: inline-block; padding-top: 2pt; padding-bottom: 2pt; }
     .karui-changelog .store-badge { display: inline-block; margin-left: 4pt; padding: 0 4pt; border: 1px solid #1a211e; border-radius: 4px; font-size: 8pt; font-weight: normal; line-height: 1.5; vertical-align: 1px; }
+    /* Submitted, not yet on the App Store. Its badge becomes App Store when it is. */
+    .karui-changelog .store-badge.pending { border-style: dashed; color: #555; }
     .karui-changelog ul { margin: 3pt 0 3pt; padding-left: 20pt; }
     .release-date { padding-left: 4pt; font-size: 10pt; color: #555; }
     /* Text links like the footer's: the current view is plain, the other is a link. */
@@ -73,7 +75,7 @@
            below, so the list starts hidden and no build-by-build text flashes first. -->
       <div class="changelog-builds" hidden>
 <!-- karui-changelog:start -->
-<h2 data-karui-build="99">0.2.5 (99)</h2>
+<h2 data-karui-build="99">0.2.5 (99) <span class="store-badge pending" data-label-en="Pending Release" data-label-ja="リリース待ち">Pending Release</span></h2>
 <span class="release-date" data-label-en="October 24, 2026" data-label-ja="2026年10月24日">October 24, 2026</span>
 <ul>
   <li data-label-en="Deadline reminders arrive quietly, come as one notification when several are due the same morning, and quote the sentence that named the day." data-label-ja="期限リマインダーは静かに届き、同じ朝が期限のものは1件にまとめられ、日付が書かれた文も引用されます。">Deadline reminders arrive quietly, come as one notification when several are due the same morning, and quote the sentence that named the day.</li>
@@ -733,7 +735,8 @@
     }
 
     // The App Store view: each build with a store badge, with the notes of the builds
-    // since the release before it folded in, newest first. Built from the build list,
+    // since the release before it folded in, newest first. A pending badge counts, so a
+    // version waiting for release shows with what it will bring. Built from the build list,
     // so new entries and badges show up without anything else to maintain.
     function buildStoreView() {
       const builds = document.querySelector('.changelog-builds');

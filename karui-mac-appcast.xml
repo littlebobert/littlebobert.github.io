@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.8.9</title>
+            <pubDate>Sat, 24 Oct 2026 11:29:59 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>49</sparkle:version>
+            <sparkle:shortVersionString>0.8.9</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- - Sorts notifications that name a deadline the same way as the latest Karui for iPhone, which now reminds you only of tasks that are clearly yours to do.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.9/Karui-0.8.9-mac.zip" length="2791757" type="application/octet-stream" sparkle:edSignature="pgLp5sdCiLikoQNmbNMwAA/2hD2xlwkZDu8sngaL+o7tWUEkRH4JhW9RHGsi4L0xHuvzjnadIucFIRG15DPVDQ=="/>
+        </item>
+        <item>
             <title>0.8.8</title>
             <pubDate>Sat, 24 Oct 2026 10:34:11 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- A Slack direct message shows once, not twice: your iPhone's verdict now joins the Mac's own copy.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.7/Karui-0.8.7-mac.zip" length="2782066" type="application/octet-stream" sparkle:edSignature="XS2mYbMWa2ynhfd9pg2DhqzfWB5oYK++iJH3sJaY7Ga+9mESHs9Hr7bu4Xw2W3BcrhclFJkOaYBki2esBQqHBg=="/>
-        </item>
-        <item>
-            <title>0.8.6</title>
-            <pubDate>Thu, 22 Oct 2026 20:56:21 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>46</sparkle:version>
-            <sparkle:shortVersionString>0.8.6</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Slack posts a bot sends almost the same way every day, such as build uploads, no longer show twice or keep an earlier post's category.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.6/Karui-0.8.6-mac.zip" length="2781924" type="application/octet-stream" sparkle:edSignature="ttpiKx0e5p5r6w0HzQKoT8rbEY9vMj9BN0aKBNh7EwPUNZr4BiELoI6IwPJO9EtAFOIHNJl3Cv4gZUgjP0CTDg=="/>
         </item>
     </channel>
 </rss>

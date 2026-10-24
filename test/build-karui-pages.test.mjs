@@ -82,9 +82,11 @@ test('builds the changelog page and links to it from every page', async () => {
   // Tapping the icon opens a full-screen QR code for showing the site in person, on its
   // own page, /qr; old karui.jp/#qr links are sent there.
   assert.match(pages[0], /<a href="\/qr" class="karui-qr-trigger"/);
-  // The demo: four screens from the iPhone Duo recording, under its label, each with its
-  // caption below; no video and no App Store screenshots.
-  assert.match(pages[0], /<p class="karui-demo-label" data-label-en="Karui on the new iPhone Duo"/);
+  // The demo: four screens from the iPhone Duo recording, each with its caption below;
+  // no label above it, no video, and no App Store screenshots.
+  assert.doesNotMatch(pages[0], /karui-demo-label/);
+  // Beside Download, only what matters before trying it; the requirements are in Tech Specs.
+  assert.match(pages[0], /<div class="small-note" data-label-en="Free, no sign-up\." data-label-ja="無料、登録不要。">/);
   assert.match(pages[0], /<div class="karui-demo" role="group" aria-roledescription="carousel"/);
   assert.match(pages[0], /<img class="karui-demo-shot is-current" src="\/assets\/karui-demo-en-1\.jpg\?v=\d+" data-src-en="\/assets\/karui-demo-en-1\.jpg\?v=\d+" data-src-ja="\/assets\/karui-demo-ja-1\.jpg\?v=\d+"/);
   assert.strictEqual(pages[0].match(/class="karui-demo-shot/g).length, 4);

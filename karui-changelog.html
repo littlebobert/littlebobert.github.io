@@ -36,6 +36,17 @@
     .changelog-filter .footer-separator { margin: 0 6pt; color: #777; }
     .karui-changelog [hidden] { display: none; }
     @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+    /* The maker line, as the home page has it: photo, name seal, and who made Karui. */
+    .karui-maker { display: flex; flex-direction: column-reverse; align-items: center; gap: 6pt; margin-top: 10pt !important; }
+    .karui-maker-marks { display: flex; align-items: center; justify-content: center; gap: 6pt; }
+    .karui-maker-photo { width: 40px; height: 51px; border-radius: 5px; object-fit: cover; flex: none; }
+    .karui-maker-text { text-align: center; line-height: 1.65em; color: black; }
+    /* A surname seal beside the photo, as tall and with the same corners. */
+    .karui-maker-seal { width: 24px; height: 51px; flex: none; }
+    /* The photo and seal are links; the pointer covers all of each, not just the drawn lines. */
+    .karui-seal-trigger, .karui-maker-photo-link { display: flex; flex: none; cursor: pointer; }
+    .karui-seal-trigger { margin-left: -2pt; }
+    .karui-seal-trigger img, .karui-maker-photo-link img { cursor: pointer; }
   </style>
   <link rel="canonical" href="https://karui.jp/changelog">
   <meta name="description" content="Release notes for each Karui build." data-label-en="Release notes for each Karui build." data-label-ja="Karuiの各ビルドのリリースノート。">
@@ -75,14 +86,14 @@
            below, so the list starts hidden and no build-by-build text flashes first. -->
       <div class="changelog-builds" hidden>
 <!-- karui-changelog:start -->
-<h2 data-karui-build="102">0.2.5 (102)</h2>
+<h2 data-karui-build="102">0.2.5 (102) <span class="store-badge pending" data-label-en="Pending Release" data-label-ja="リリース待ち">Pending Release</span></h2>
 <span class="release-date" data-label-en="October 24, 2026" data-label-ja="2026年10月24日">October 24, 2026</span>
 <ul>
   <li data-label-en="Added Settings › History › Statistics, showing how Karui has been doing." data-label-ja="「設定」›「履歴」›「統計」を追加しました。Karuiのこれまでの動作状況を確認できます。">Added Settings › History › Statistics, showing how Karui has been doing.</li>
   <li data-label-en="Spoken Alerts now also say what the notification is, like “Mom sent you a message,” and “One-time code” for codes." data-label-ja="「通知の読み上げ」で、「お母さんからメッセージが届きました」のように通知の種類も伝えるようになりました。認証コードの場合は「ワンタイムコード」と読み上げます。">Spoken Alerts now also say what the notification is, like “Mom sent you a message,” and “One-time code” for codes.</li>
 </ul>
 
-<h2 data-karui-build="100">0.2.5 (100) <span class="store-badge pending" data-label-en="Pending Release" data-label-ja="リリース待ち">Pending Release</span></h2>
+<h2 data-karui-build="100">0.2.5 (100)</h2>
 <span class="release-date" data-label-en="October 24, 2026" data-label-ja="2026年10月24日">October 24, 2026</span>
 <ul>
   <li data-label-en="Toasts like “Marked 3 read” now appear at the bottom of the screen, where Undo is easier to reach." data-label-ja="「3件を既読にしました」などのトーストが画面下部に表示されるようになり、「取り消す」を操作しやすくなりました。">Toasts like “Marked 3 read” now appear at the bottom of the screen, where Undo is easier to reach.</li>
@@ -718,7 +729,7 @@
       </div>
       <div class="changelog-store"></div>
     </section>
-    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
+    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p class="karui-maker"><span class="karui-maker-marks"><a href="https://onemorething.tokyo" class="karui-maker-photo-link" aria-label="Justin Garcia’s website"><img class="karui-maker-photo" src="assets/karui-developer.jpg?v=3" alt="" width="40" height="51"></a><a href="karui-seal.html" class="karui-seal-trigger" aria-label="About the name seal"><img class="karui-maker-seal" src="assets/karui-seal.png?v=8" alt="" width="24" height="51"></a></span><span class="karui-maker-text"><span data-label-en="Designed by " data-label-ja="東京の個人開発者 ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作"> in Tokyo</span></span></p></footer>
   </main>
   <script>
     const supportedLanguages = ['en', 'ja'];

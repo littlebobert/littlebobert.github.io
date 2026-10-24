@@ -43,7 +43,9 @@ test('builds every Karui clean route', async () => {
 
 test('builds the Karui for Mac page at /mac and links it from the home page', async () => {
   const [homePage, macPage] = await Promise.all([readOutputFile('index.html'), readOutputFile('mac/index.html')]);
-  assert.match(macPage, /<h1[^>]*><span[^>]*>Karui for Mac<\/span> <span class="beta-badge"[^>]*>Beta<\/span><\/h1>/);
+  // Out of beta: the title alone.
+  assert.match(macPage, /<h1[^>]*><span[^>]*>Karui for Mac<\/span><\/h1>/);
+  assert.doesNotMatch(macPage, /beta-badge/);
   assert.match(macPage, /href="\/"/);
   assert.match(macPage, /href="\/privacy"/);
   assert.match(macPage, /src="\/assets\/karui-icon\.png\?v=2"/);

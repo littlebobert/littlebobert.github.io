@@ -41,9 +41,9 @@
     .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
     /* The diagram, drawn like a product's technical drawing: a framed sheet with zone
        marks, hairlines, names in spaced capitals, the device outlined with its buttons
-       and a hatched screen, a dimension line, and a title block. All in the page's own font. Dashed lines are off the device. */
+       and a hatched screen, and a title block. All in the page's own font. Dashed lines are off the device. */
     .karui-flow { --kf-ink: #1a1a1a;
-      position: relative; margin: 12pt 0 2pt; padding: 28px 18px 24px 40px; border: 1px solid var(--kf-ink);
+      position: relative; margin: 12pt 0 2pt; padding: 28px 18px 24px 18px; border: 1px solid var(--kf-ink);
       font-size: 0.92em; line-height: 1.4; background: #fff; }
     .karui-flow::before { content: ""; position: absolute; inset: 8px; border: 1px solid var(--kf-ink); pointer-events: none; }
     .karui-flow strong, .kf-phone-label, .kf-cloud-tag, .kf-labeled-arrow span, .kf-title-block { letter-spacing: 0.06em; }
@@ -76,13 +76,6 @@
       box-shadow: 0 42px 0 var(--kf-ink); }
     .kf-side-button { position: absolute; right: -5px; top: 96px; width: 3px; height: 46px; background: var(--kf-ink); }
     .kf-phone-label { position: absolute; top: -8pt; left: 22pt; background: #fff; padding: 0 5pt; font-weight: 600; text-transform: uppercase; font-size: 0.86em; }
-    /* A dimension line beside the device: roughly how long the on-device sort takes. */
-    .kf-dim { position: absolute; left: -34px; top: 40pt; bottom: 30pt; width: 12px; border-top: 1px solid var(--kf-ink); border-bottom: 1px solid var(--kf-ink); }
-    .kf-dim::before { content: ""; position: absolute; left: 50%; top: 0; bottom: 0; border-left: 1px solid var(--kf-ink); }
-    .kf-dim::after { content: ""; position: absolute; left: calc(50% - 3.5px); top: 0; border: 3.5px solid transparent; border-bottom: 7px solid var(--kf-ink); border-top: 0; }
-    .kf-dim-end { position: absolute; left: calc(50% - 3.5px); bottom: 0; border: 3.5px solid transparent; border-top: 7px solid var(--kf-ink); border-bottom: 0; }
-    .kf-dim span { position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%) rotate(-90deg); white-space: nowrap;
-      background: #fff; padding: 0 4px; font-size: 0.8em; letter-spacing: 0.04em; text-transform: uppercase; }
     .kf-order { margin: 3pt 0 0; padding-left: 16pt !important; }
     .kf-order li + li { margin-top: 2pt !important; }
     .kf-results { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 10px; }
@@ -132,7 +125,7 @@
     .kf-title-block small { display: block; color: #555; font-size: 0.85em; }
     @media (max-width: 560px) {
       .karui-flow { padding: 24px 16px 20px; }
-      .kf-dim, .kf-zones-left, .kf-zones-right { display: none; }
+      .kf-zones-left, .kf-zones-right { display: none; }
       .kf-phone { padding: 34pt 10pt 22pt; border-radius: 40px; }
       .kf-phone::before { border-radius: 34px; }
       .kf-main { grid-template-columns: 1fr; gap: 16px; }
@@ -146,6 +139,17 @@
       .kf-sync-below { display: block; position: relative; }
       .kf-cloud-below::before { content: ""; position: absolute; top: -18px; left: 50%; height: 16px; border-left: 1.5px dashed #777; }
     }
+    /* The maker line, as the home page has it: photo, name seal, and who made Karui. */
+    .karui-maker { display: flex; flex-direction: column-reverse; align-items: center; gap: 6pt; margin-top: 10pt !important; }
+    .karui-maker-marks { display: flex; align-items: center; justify-content: center; gap: 6pt; }
+    .karui-maker-photo { width: 40px; height: 51px; border-radius: 5px; object-fit: cover; flex: none; }
+    .karui-maker-text { text-align: center; line-height: 1.65em; color: black; }
+    /* A surname seal beside the photo, as tall and with the same corners. */
+    .karui-maker-seal { width: 24px; height: 51px; flex: none; }
+    /* The photo and seal are links; the pointer covers all of each, not just the drawn lines. */
+    .karui-seal-trigger, .karui-maker-photo-link { display: flex; flex: none; cursor: pointer; }
+    .karui-seal-trigger { margin-left: -2pt; }
+    .karui-seal-trigger img, .karui-maker-photo-link img { cursor: pointer; }
   </style>
   <link rel="canonical" href="https://karui.jp/specs">
   <meta name="description" content="How Karui works: classification, speed, privacy, and requirements." data-label-en="How Karui works: classification, speed, privacy, and requirements." data-label-ja="Karuiの仕組み：分類、速度、プライバシー、動作環境。">
@@ -198,7 +202,6 @@
             <div class="kf-phone-label" id="karui-flow-title" data-label-en="Your device" data-label-ja="あなたのデバイス">Your device</div>
             <div class="kf-side-button" aria-hidden="true"></div>
             <div class="kf-island" aria-hidden="true"></div>
-            <div class="kf-dim" aria-hidden="true"><span data-label-en="≈ 4 s on device" data-label-ja="端末上で約4秒">≈ 4 s on device</span><i class="kf-dim-end"></i></div>
             <div class="kf-step"><strong data-label-en="Karui Shortcut" data-label-ja="Karuiショートカット">Karui Shortcut</strong><small data-label-en="Runs on “When I receive a notification” and passes the app, title, text, and sender to Karui" data-label-ja="「通知を受信したとき」に実行され、アプリ、タイトル、本文、送信者をKaruiに渡す">Runs on “When I receive a notification” and passes the app, title, text, and sender to Karui</small></div>
             <div class="kf-arrow" aria-hidden="true"></div>
             <div class="kf-model-row">
@@ -266,7 +269,7 @@
     <section class="karui-section">
       <p><a href="karui-technotes.html" data-label-en="Technical Notes →" data-label-ja="技術ノート →">Technical Notes →</a></p>
     </section>
-    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Made by" data-label-ja="制作者：">Made by</span> <a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Japan." data-label-ja="（日本）"> in Japan.</span></p></footer>
+    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p class="karui-maker"><span class="karui-maker-marks"><a href="https://onemorething.tokyo" class="karui-maker-photo-link" aria-label="Justin Garcia’s website"><img class="karui-maker-photo" src="assets/karui-developer.jpg?v=3" alt="" width="40" height="51"></a><a href="karui-seal.html" class="karui-seal-trigger" aria-label="About the name seal"><img class="karui-maker-seal" src="assets/karui-seal.png?v=8" alt="" width="24" height="51"></a></span><span class="karui-maker-text"><span data-label-en="Designed by " data-label-ja="東京の個人開発者 ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作"> in Tokyo</span></span></p></footer>
   </main>
   <script>
     const supportedLanguages = ['en', 'ja'];

@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.8.8</title>
+            <pubDate>Sat, 24 Oct 2026 10:34:11 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>48</sparkle:version>
+            <sparkle:shortVersionString>0.8.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- - A sender you silence on your iPhone is Spam on your Mac too, in the app they wrote from.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.8/Karui-0.8.8-mac.zip" length="2791504" type="application/octet-stream" sparkle:edSignature="3kRtzI03J7UgCYqkZNd5aqndPXHeiw3Vq9AE0Maba8olidjsNPJl8l08/yt/KuSk+BIJVvN02IPdkSLcIanlDQ=="/>
+        </item>
+        <item>
             <title>0.8.7</title>
             <pubDate>Fri, 23 Oct 2026 14:03:24 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Slack posts a bot sends almost the same way every day, such as build uploads, no longer show twice or keep an earlier post's category.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.6/Karui-0.8.6-mac.zip" length="2781924" type="application/octet-stream" sparkle:edSignature="ttpiKx0e5p5r6w0HzQKoT8rbEY9vMj9BN0aKBNh7EwPUNZr4BiELoI6IwPJO9EtAFOIHNJl3Cv4gZUgjP0CTDg=="/>
-        </item>
-        <item>
-            <title>0.8.5</title>
-            <pubDate>Thu, 22 Oct 2026 18:30:08 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>45</sparkle:version>
-            <sparkle:shortVersionString>0.8.5</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Behind the scenes: Karui notes when Apple Intelligence says its limit on background sorting will lift, ready for the next Karui on your iPhone.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.5/Karui-0.8.5-mac.zip" length="2781034" type="application/octet-stream" sparkle:edSignature="0C4fqCWodWpTaDH3GbtIfkTe6xZwY+oJIkRdaeMGgqlmy5YziU5tuF8YSm+4AWkQ+OWA7Y1BV9Mc/7YHxJemBg=="/>
         </item>
     </channel>
 </rss>

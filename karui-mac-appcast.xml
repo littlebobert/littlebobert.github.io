@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.8.11</title>
+            <pubDate>Sun, 25 Oct 2026 21:10:53 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>51</sparkle:version>
+            <sparkle:shortVersionString>0.8.11</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed more Spark emails showing twice, when your iPhone and this Mac each saw the email's text a little differently. Emails already showing twice become one.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.11/Karui-0.8.11-mac.zip" length="2798048" type="application/octet-stream" sparkle:edSignature="i9fju/CFHt7r8mJcEtU1x3SrKbVkDTXoEuQizLBZHrgmlf8JTVYBQYLfQVyCp6i2cx3GUOPCD8iUvLGLvIBsCg=="/>
+        </item>
+        <item>
             <title>0.8.10</title>
             <pubDate>Sat, 24 Oct 2026 23:43:47 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Sorts notifications that name a deadline the same way as the latest Karui for iPhone, which now reminds you only of tasks that are clearly yours to do.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.9/Karui-0.8.9-mac.zip" length="2791757" type="application/octet-stream" sparkle:edSignature="pgLp5sdCiLikoQNmbNMwAA/2hD2xlwkZDu8sngaL+o7tWUEkRH4JhW9RHGsi4L0xHuvzjnadIucFIRG15DPVDQ=="/>
-        </item>
-        <item>
-            <title>0.8.8</title>
-            <pubDate>Sat, 24 Oct 2026 10:34:11 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>48</sparkle:version>
-            <sparkle:shortVersionString>0.8.8</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- A sender you silence on your iPhone is Spam on your Mac too, in the app they wrote from.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.8/Karui-0.8.8-mac.zip" length="2791504" type="application/octet-stream" sparkle:edSignature="3kRtzI03J7UgCYqkZNd5aqndPXHeiw3Vq9AE0Maba8olidjsNPJl8l08/yt/KuSk+BIJVvN02IPdkSLcIanlDQ=="/>
         </item>
     </channel>
 </rss>

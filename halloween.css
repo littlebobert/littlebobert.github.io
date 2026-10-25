@@ -27,7 +27,7 @@ html.halloween .halloween-only {
 }
 
 /* Desk accessories stack under Settings. Narrower layouts only get In the Dark, since Key Caps
-   needs a keyboard. */
+   needs a keyboard, and put it first: right after the main window, above the clocks. */
 .desk-accessory {
   display: none;
 }
@@ -36,6 +36,12 @@ html.halloween body.home-page .after-dark {
   display: block;
   width: 100%;
   max-width: 240px;
+}
+
+@media (max-width: 859px) {
+  html.halloween body.home-page .after-dark {
+    order: -1;
+  }
 }
 
 @media (min-width: 860px) {

@@ -26,9 +26,16 @@ html.halloween .halloween-only {
   }
 }
 
-/* Desk accessories (Key Caps, In the Dark): only on the wide three-column layout, under Settings */
+/* Desk accessories stack under Settings. Narrower layouts only get In the Dark, since Key Caps
+   needs a keyboard. */
 .desk-accessory {
   display: none;
+}
+
+html.halloween body.home-page .after-dark {
+  display: block;
+  width: 100%;
+  max-width: 240px;
 }
 
 @media (min-width: 860px) {
@@ -39,6 +46,7 @@ html.halloween .halloween-only {
     align-self: start;
     width: 100%;
     max-width: 240px;
+    margin-top: var(--desk-accessory-top, 0);
   }
 }
 

@@ -233,7 +233,7 @@
     const place = () => {
       let top = 36 + settings.offsetHeight + 12;
       document.querySelectorAll('.desk-accessory').forEach((accessory) => {
-        accessory.style.marginTop = `${top}px`;
+        accessory.style.setProperty('--desk-accessory-top', `${top}px`);
         top += accessory.offsetHeight + 12;
       });
     };

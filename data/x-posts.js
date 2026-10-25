@@ -1,8 +1,19 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-10-24T18:13:08.929Z",
+  "updatedAt": "2026-10-25T18:26:36.185Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2114163572553241066",
+      "text": "Chains of Thought: thick gold necklaces for AI researchers. a new Mike Matas joint",
+      "createdAt": "2026-10-25T01:14:09.000Z",
+      "url": "https://x.com/_bobertdowney/status/2114163572553241066",
+      "urls": [],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2113571029813744000",
       "text": "a Japanese artist just created an icon for my app Kehai. Kehai is a free app that makes it easier to jump to the GitHub repo, app, file, or window I want. but Kehai hides itself in its app section so I find myself opening the About window to gaze at the icon 🤓. https://t.co/B5qmP5L9ld",

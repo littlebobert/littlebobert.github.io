@@ -7,9 +7,9 @@
 
   const visitorLabel = document.querySelector('.stack-visitor-counter [data-label-en]');
   if (visitorLabel) {
-    visitorLabel.dataset.labelEn = 'Souls:';
-    visitorLabel.dataset.labelJa = '魂:';
-    visitorLabel.textContent = 'Souls:';
+    visitorLabel.dataset.labelEn = 'Souls<span class="souls-detail"> (number of visitors)</span>:';
+    visitorLabel.dataset.labelJa = '魂<span class="souls-detail">（訪問者数）</span>:';
+    visitorLabel.innerHTML = visitorLabel.dataset.labelEn;
   }
 
   const aboutTitle = document.querySelector('#about-dialog > .title-bar .title-text');
@@ -20,6 +20,7 @@
   }
 
   setUpKeyCaps();
+  setUpScreensaver();
 
   if (!root.classList.contains('sad-mac-boot')) return;
 
@@ -223,6 +224,29 @@
   screen.addEventListener('click', finish);
   window.addEventListener('keydown', finish);
 
+  // Desk accessories share the Settings grid cell, so they stack below Settings in the order
+  // they're added, and move when Settings or one of them is rolled up or closed.
+  function addDeskAccessory(widget) {
+    const settings = document.getElementById('appearance-panel');
+    const stack = [...document.querySelectorAll('.desk-accessory')];
+    (stack[stack.length - 1] || settings).after(widget);
+    const place = () => {
+      let top = 36 + settings.offsetHeight + 12;
+      document.querySelectorAll('.desk-accessory').forEach((accessory) => {
+        accessory.style.marginTop = `${top}px`;
+        top += accessory.offsetHeight + 12;
+      });
+    };
+    place();
+    const observer = new ResizeObserver(place);
+    observer.observe(settings);
+    observer.observe(widget);
+    widget.querySelector('.close-box').addEventListener('click', () => {
+      widget.remove();
+      place();
+    });
+  }
+
   // Key Caps desk accessory under Settings. Every so often a ghost types on it.
   function setUpKeyCaps() {
     const settings = document.getElementById('appearance-panel');
@@ -252,7 +276,7 @@
     display.className = 'key-caps-display';
 
     const widget = document.createElement('div');
-    widget.className = 'clock-widget key-caps';
+    widget.className = 'clock-widget desk-accessory key-caps';
     widget.setAttribute('aria-hidden', 'true');
     widget.innerHTML = `
       <div class="clock-title-bar">
@@ -261,13 +285,7 @@
       </div>
       <div class="clock-content key-caps-content"></div>`;
     widget.querySelector('.key-caps-content').append(display, board);
-    widget.querySelector('.close-box').addEventListener('click', () => widget.remove());
-    settings.after(widget);
-
-    // Shares the Settings grid cell, so sit just below Settings (and follow it when it's rolled up).
-    const place = () => { widget.style.marginTop = `${36 + settings.offsetHeight + 12}px`; };
-    place();
-    new ResizeObserver(place).observe(settings);
+    addDeskAccessory(widget);
 
     // What the ghost types. In Japanese it types romaji, then "converts" it like an input method.
     const WORDS = {
@@ -373,5 +391,386 @@
       setTimeout(haunt, 9000 + Math.random() * 7000);
     }
     setTimeout(haunt, 3500);
+  }
+
+  // Screensaver after a while with no input: winged jack-o'-lanterns and bats
+  // flying down and to the left, like the old flying toasters. Any input wakes the desktop.
+  function setUpScreensaver() {
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+    const IDLE_MS = 45000;
+    const SLEEP_CORNER = 10;
+    const PIXEL = 3;
+
+    // Colors by letter. "y" is candlelight, which flickers (see .screensaver-glow).
+    const COLORS = {
+      W: '#fff', e: '#d4d4d4', g: '#a8a8a8', k: '#6e6e6e',
+      H: '#ffb050', O: '#ff8a1f', M: '#d96a12', D: '#9c440b', c: '#e07f1c',
+      G: '#6f8f3a', J: '#45601f', b: '#777', B: '#555', N: '#3a3a3a',
+    };
+
+    // Where the face is carved, by longitude and latitude on the pumpkin (radians, 0 at the
+    // face's center), so it wraps around the curve: triangle eyes and nose, and a grin with teeth.
+    function isCarved(lon, lat) {
+      const eye = (center) => {
+        const down = lat + 0.5;
+        return down >= 0 && down <= 0.36 && Math.abs(lon - center) <= (0.24 * down) / 0.36;
+      };
+      if (eye(-0.38) || eye(0.38)) return true;
+      const noseDown = lat + 0.06;
+      if (noseDown >= 0 && noseDown <= 0.16 && Math.abs(lon) <= (0.1 * noseDown) / 0.16 + 0.01) return true;
+      if (Math.abs(lon) >= 0.72) return false;
+      const top = 0.3 - 0.5 * lon * lon;
+      const bottom = top + 0.32 * (1 - (lon / 0.74) ** 2);
+      if (lat <= top || lat >= bottom) return false;
+      const upperTooth = Math.abs(Math.abs(lon) - 0.24) < 0.08 && lat < top + 0.1;
+      const lowerTooth = Math.abs(lon) < 0.08 && lat > bottom - 0.1;
+      return !upperTooth && !lowerTooth;
+    }
+
+    // A jack-o'-lantern in three-quarter view, turned toward the way it flies (down and to the left),
+    // lit from the upper left, with darker grooves between its lobes.
+    function drawPumpkin(grid, left, top, width, height) {
+      const centerX = left + width / 2;
+      const centerY = top + height / 2;
+      const turn = 0.35;
+      const holes = new Set();
+      for (let y = top; y < top + height; y += 1) {
+        for (let x = left; x < left + width; x += 1) {
+          const u = (x + 0.5 - centerX) / (width / 2);
+          const v = (y + 0.5 - centerY) / (height / 2);
+          const lobes = 1 - 0.04 * Math.abs(Math.cos(Math.atan2(v, u) * 5));
+          if (u * u + v * v > lobes * lobes) continue;
+          const z = Math.sqrt(Math.max(0, 1 - u * u - v * v));
+          const lon = Math.atan2(u, z) + turn;
+          const lat = Math.asin(Math.min(1, v));
+          if (isCarved(lon, lat)) {
+            holes.add(`${x},${y}`);
+            grid[y][x] = 'y';
+            continue;
+          }
+          const groove = Math.exp(-(Math.sin(lon * 5) ** 2) / 0.025) * (1 - v * v);
+          const shade = -0.55 * u - 0.6 * v + 0.58 * z - 0.45 * groove;
+          grid[y][x] = shade > 0.7 ? 'H' : shade > 0.3 ? 'O' : shade > -0.1 ? 'M' : 'D';
+        }
+      }
+      // The cut's inner wall shows along the top and right of each hole.
+      holes.forEach((cell) => {
+        const [x, y] = cell.split(',').map(Number);
+        if (!holes.has(`${x},${y - 1}`) || !holes.has(`${x + 1},${y}`)) grid[y][x] = 'c';
+      });
+      const stemX = Math.round(centerX + 1);
+      [[0, 0], [0, -1], [1, -2], [1, -3], [2, -4]].forEach(([dx, dy]) => {
+        grid[top + 1 + dy][stemX + dx] = 'G';
+        grid[top + 1 + dy][stemX + dx + 1] = 'G';
+        grid[top + 1 + dy][stemX + dx + 2] = 'J';
+      });
+    }
+
+    // A feathered wing: a fan from its root, longest at the leading edge, with notched feather
+    // tips and shafts. `spine` is the leading edge's angle in degrees.
+    function drawWing(grid, rootX, rootY, spine, long, short, fill, line) {
+      const span = 72;
+      grid.forEach((row, y) => {
+        row.forEach((cell, x) => {
+          const distance = Math.hypot(x + 0.5 - rootX, y + 0.5 - rootY);
+          const angle = ((Math.atan2(y + 0.5 - rootY, x + 0.5 - rootX) * 180) / Math.PI - spine + 540) % 360 - 180;
+          if (angle < -5 || angle > span) return;
+          const t = Math.max(0, angle) / span;
+          const reach = long - t * (long - short);
+          const feather = (angle + 5) % 12;
+          if (distance > reach - (feather > 8 ? 2.5 * (1 - t / 2) : 0)) return;
+          row[x] = feather < 1.4 && angle > 4 && distance > reach / 2 ? line : fill;
+        });
+      });
+    }
+
+    // Wings up, level, then down. The far wing is drawn first, in grey, behind the pumpkin.
+    function flyingPumpkin(spine) {
+      const grid = Array.from({ length: 46 }, () => Array(52).fill('.'));
+      drawWing(grid, 20, 24, spine - 10, 18, 10, 'g', 'k');
+      drawPumpkin(grid, 1, 20, 30, 24);
+      drawWing(grid, 25, 27, spine, 24, 13, 'W', 'e');
+      return grid.map((row) => row.join(''));
+    }
+
+    // A bat's wing: skin stretched between finger bones, sagging between their tips.
+    function drawBatWing(grid, rootX, rootY, spine, long, short, fill, bone) {
+      const span = 80;
+      const gap = 20;
+      grid.forEach((row, y) => {
+        row.forEach((cell, x) => {
+          const distance = Math.hypot(x + 0.5 - rootX, y + 0.5 - rootY);
+          const angle = ((Math.atan2(y + 0.5 - rootY, x + 0.5 - rootX) * 180) / Math.PI - spine + 540) % 360 - 180;
+          if (angle < -3 || angle > span) return;
+          const a = Math.max(0, angle);
+          const between = (a % gap) / gap;
+          const reach = (long - (a / span) * (long - short)) * (1 - 0.2 * Math.sin(Math.PI * between));
+          if (distance > reach) return;
+          const nearest = Math.min(span - gap, Math.round(angle / gap) * gap);
+          const offBone = distance * Math.abs(Math.sin(((angle - nearest) * Math.PI) / 180));
+          row[x] = offBone < 0.5 && distance > 2 ? bone : fill;
+        });
+      });
+    }
+
+    // A bat in three-quarter view, head down and to the left, lit from the upper left.
+    function flyingBat(spine) {
+      const grid = Array.from({ length: 24 }, () => Array(32).fill('.'));
+      drawBatWing(grid, 10.5, 10.5, spine - 12, 12, 6, 'N', 'B');
+      const blob = (centerX, centerY, radiusX, radiusY, dark) => {
+        grid.forEach((row, y) => {
+          row.forEach((cell, x) => {
+            const u = (x + 0.5 - centerX) / radiusX;
+            const v = (y + 0.5 - centerY) / radiusY;
+            if (u * u + v * v > 1) return;
+            const shade = -0.6 * u - 0.7 * v;
+            row[x] = shade > 0.32 ? 'b' : shade > dark ? 'B' : 'N';
+          });
+        });
+      };
+      blob(12.5, 14, 4.8, 3.8, -0.4);
+      blob(8, 16.5, 3, 2.7, -0.5);
+      [[4, 11], [5, 12], [5, 13], [6, 13], [6, 14]].forEach(([x, y]) => { grid[y][x] = 'b'; });
+      [[9, 11], [9, 12], [9, 13], [10, 13], [10, 14]].forEach(([x, y]) => { grid[y][x] = 'B'; });
+      grid[16][6] = 'y';
+      grid[16][9] = 'y';
+      drawBatWing(grid, 12.5, 11.5, spine, 17, 8, 'B', 'b');
+      return grid.map((row) => row.join(''));
+    }
+
+    const frameSvg = (rows, frame) => {
+      const fills = {};
+      rows.forEach((row, y) => {
+        [...row].forEach((cell, x) => {
+          if (cell !== '.') fills[cell] = `${fills[cell] || ''}<rect x="${x}" y="${y}" width="1" height="1"/>`;
+        });
+      });
+      const groups = Object.entries(fills).map(([cell, rects]) => (
+        cell === 'y' ? `<g class="screensaver-glow">${rects}</g>` : `<g fill="${COLORS[cell]}">${rects}</g>`
+      ));
+      return `<g data-frame="${frame}">${groups.join('')}</g>`;
+    };
+
+    // Each kind: its flap frames, how long each frame shows, and its speed and heading.
+    const KINDS = {
+      pumpkin: { frames: [-95, -45, 5].map(flyingPumpkin), flap: [0, 1, 2, 1], frameMs: 130, speed: [55, 90], slope: 0.5 },
+      bat: { frames: [-100, -40, 15].map(flyingBat), flap: [0, 1, 2, 1], frameMs: 70, speed: [120, 170], slope: 0.25, bob: 10 },
+    };
+    Object.values(KINDS).forEach((kind) => {
+      const columns = kind.frames[0][0].length;
+      const rowCount = Math.max(...kind.frames.map((rows) => rows.length));
+      kind.width = columns * PIXEL;
+      kind.height = rowCount * PIXEL;
+      kind.svg = `<svg viewBox="0 0 ${columns} ${rowCount}" width="${kind.width}" height="${kind.height}" shape-rendering="crispEdges">${kind.frames.map(frameSvg).join('')}</svg>`;
+    });
+
+    // Settings from the In the Dark desk accessory, as steps on its sliders.
+    const SPEEDS = [0.5, 0.75, 1, 1.5, 2];
+    const DENSITIES = [0.5, 0.75, 1, 1.5, 2];
+    const options = { speed: 2, density: 2 };
+    try {
+      const saved = JSON.parse(localStorage.getItem('after-dark') || '{}');
+      ['speed', 'density'].forEach((key) => {
+        if (Number.isInteger(saved[key]) && saved[key] >= 0 && saved[key] < SPEEDS.length) options[key] = saved[key];
+      });
+    } catch (error) {}
+
+    const random = (min, max) => min + Math.random() * (max - min);
+    let lastInputAt = Date.now();
+    let lastPointer = null;
+    let saver = null;
+
+    function start(fromCorner = false) {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      const density = DENSITIES[options.density];
+      const speed = SPEEDS[options.speed];
+      const pumpkins = Math.max(1, Math.round(Math.min(10, Math.max(3, (width * height) / 130000)) * density));
+      const counts = {
+        pumpkin: pumpkins,
+        bat: Math.max(1, Math.round((width < 600 ? 1 : 3) * density)),
+      };
+
+      const screen = document.createElement('div');
+      screen.className = 'screensaver';
+      screen.setAttribute('aria-hidden', 'true');
+
+      // Re-enter from the top or right edge, weighted by how long each edge is.
+      const respawn = (sprite) => {
+        const { kind } = sprite;
+        if (Math.random() < width / (width + height)) {
+          sprite.x = random(0, width + kind.width);
+          sprite.y = -kind.height - random(0, 80);
+        } else {
+          sprite.x = width + random(0, 80);
+          sprite.y = random(-kind.height, height * 0.7);
+        }
+      };
+
+      const sprites = [];
+      Object.entries(counts).forEach(([name, count]) => {
+        for (let i = 0; i < count; i += 1) {
+          const kind = KINDS[name];
+          const el = document.createElement('div');
+          el.className = 'screensaver-sprite';
+          el.innerHTML = kind.svg;
+          el.querySelectorAll('.screensaver-glow').forEach((glow) => {
+            glow.style.animationDelay = `${-random(0, 2)}s`;
+          });
+          const sprite = {
+            el, kind,
+            x: random(0, width), y: random(-kind.height, height),
+            speed: random(...kind.speed) * speed,
+            phase: random(0, 1000), frame: -1,
+          };
+          sprites.push(sprite);
+        }
+      });
+      // Shuffle so bats pass in front of and behind the pumpkins.
+      sprites.sort(() => Math.random() - 0.5).forEach((sprite) => screen.append(sprite.el));
+      document.body.append(screen);
+      requestAnimationFrame(() => screen.classList.add('is-on'));
+
+      let last = performance.now();
+      let raf = 0;
+      const tick = (now) => {
+        const dt = Math.min(0.1, (now - last) / 1000);
+        last = now;
+        sprites.forEach((sprite) => {
+          const { kind } = sprite;
+          sprite.x -= sprite.speed * dt;
+          sprite.y += sprite.speed * kind.slope * dt;
+          if (sprite.x < -kind.width || sprite.y > height) respawn(sprite);
+          const bob = kind.bob ? Math.sin((now + sprite.phase) / 190) * kind.bob : 0;
+          sprite.el.style.transform = `translate3d(${sprite.x.toFixed(2)}px, ${(sprite.y + bob).toFixed(2)}px, 0)`;
+          // Wings beat a little faster when they fly faster.
+          const beat = Math.floor(((now + sprite.phase) * Math.sqrt(speed)) / kind.frameMs);
+          const frame = kind.flap[beat % kind.flap.length];
+          if (frame !== sprite.frame) {
+            sprite.frame = frame;
+            sprite.el.dataset.frame = String(frame);
+          }
+        });
+        raf = requestAnimationFrame(tick);
+      };
+      raf = requestAnimationFrame(tick);
+
+      saver = {
+        startedAt: Date.now(),
+        pointer: lastPointer,
+        fromCorner,
+        stop() {
+          cancelAnimationFrame(raf);
+          screen.classList.remove('is-on');
+          setTimeout(() => screen.remove(), 300);
+          saver = null;
+          lastInputAt = Date.now();
+        },
+      };
+    }
+
+    // Sleep Now corner, like After Dark's: put the mouse in the bottom-left corner to start it now.
+    // A quick flick can leave the window without a move inside the corner, so leaving counts too.
+    const inSleepCorner = (event) => event.pointerType === 'mouse'
+      && event.clientX <= SLEEP_CORNER && event.clientY >= window.innerHeight - SLEEP_CORNER;
+
+    // Wake on any input, and swallow the key that woke it so it doesn't also type or navigate.
+    const onInput = (event) => {
+      lastInputAt = Date.now();
+      if (!saver) {
+        if (event.type === 'pointermove') lastPointer = [event.clientX, event.clientY];
+        if (inSleepCorner(event) && !root.classList.contains('sad-mac-boot')) start(true);
+        return;
+      }
+      if (event.type === 'pointerout') return;
+      if (event.type === 'pointermove') {
+        // Stay asleep while the mouse rests in the Sleep Now corner.
+        if (saver.fromCorner && inSleepCorner(event)) return;
+        // Ignore the tiny drift a resting mouse or a re-layout can report.
+        if (Date.now() - saver.startedAt < 600) return;
+        const here = [event.clientX, event.clientY];
+        saver.pointer ??= here;
+        if (Math.hypot(here[0] - saver.pointer[0], here[1] - saver.pointer[1]) < 6) return;
+      }
+      if (event.type === 'keydown') {
+        event.preventDefault();
+        event.stopImmediatePropagation();
+      }
+      saver.stop();
+    };
+    ['pointermove', 'pointerdown', 'keydown', 'wheel', 'touchstart'].forEach((type) => {
+      window.addEventListener(type, onInput, { capture: true, passive: type !== 'keydown' });
+    });
+    document.addEventListener('pointerout', (event) => {
+      if (!event.relatedTarget) onInput(event);
+    });
+    window.addEventListener('scroll', () => { lastInputAt = Date.now(); }, { capture: true, passive: true });
+
+    setInterval(() => {
+      if (saver || document.hidden || Date.now() - lastInputAt < IDLE_MS) return;
+      if (root.classList.contains('sad-mac-boot')) return;
+      // Clicks inside the desktop browser or a video land in an iframe, where we can't see them.
+      if (document.activeElement?.tagName === 'IFRAME') return;
+      start();
+    }, 1000);
+
+    // "In the Dark" desk accessory, after the After Dark control panel: a little screen showing
+    // the module, speed and density sliders, and Sleep Now.
+    // The preview is the pumpkin with its wings level, cropped to its pixels so it sits centered.
+    const previewRows = KINDS.pumpkin.frames[1];
+    const lit = previewRows.flatMap((row, y) => [...row].flatMap((cell, x) => (cell === '.' ? [] : [[x, y]])));
+    const left = Math.min(...lit.map(([x]) => x));
+    const top = Math.min(...lit.map(([, y]) => y));
+    const width = Math.max(...lit.map(([x]) => x)) + 1 - left;
+    const height = Math.max(...lit.map(([, y]) => y)) + 1 - top;
+    const previewSvg = `<svg viewBox="${left} ${top} ${width} ${height}" shape-rendering="crispEdges">${frameSvg(previewRows, 1)}</svg>`;
+
+    const widget = document.createElement('div');
+    widget.className = 'clock-widget desk-accessory after-dark';
+    widget.innerHTML = `
+      <div class="clock-title-bar">
+        <div class="close-box"></div>
+        <span class="clock-title">In the Dark</span>
+      </div>
+      <div class="clock-content after-dark-content">
+        <div class="after-dark-module">
+          <div class="after-dark-preview" aria-hidden="true">${previewSvg}</div>
+          <span data-label-en="Flying Pumpkins" data-label-ja="空飛ぶカボチャ">Flying Pumpkins</span>
+        </div>
+        <label class="after-dark-setting">
+          <span data-label-en="Speed" data-label-ja="速さ">Speed</span>
+          <span class="after-dark-slider">
+            <input type="range" min="0" max="${SPEEDS.length - 1}" step="1" data-option="speed">
+            <span class="after-dark-ticks" aria-hidden="true">${'<i></i>'.repeat(SPEEDS.length)}</span>
+          </span>
+        </label>
+        <label class="after-dark-setting">
+          <span data-label-en="Density" data-label-ja="数">Density</span>
+          <span class="after-dark-slider">
+            <input type="range" min="0" max="${DENSITIES.length - 1}" step="1" data-option="density">
+            <span class="after-dark-ticks" aria-hidden="true">${'<i></i>'.repeat(DENSITIES.length)}</span>
+          </span>
+        </label>
+        <button type="button" class="stack-index-shortcut after-dark-sleep" data-label-en="Sleep Now" data-label-ja="今すぐスリープ">Sleep Now</button>
+      </div>`;
+
+    widget.querySelectorAll('input[data-option]').forEach((input) => {
+      input.value = String(options[input.dataset.option]);
+      input.addEventListener('input', () => {
+        options[input.dataset.option] = Number(input.value);
+        try {
+          localStorage.setItem('after-dark', JSON.stringify(options));
+        } catch (error) {}
+      });
+    });
+
+    const sleepButton = widget.querySelector('.after-dark-sleep');
+    sleepButton.addEventListener('click', () => {
+      sleepButton.blur();
+      if (!saver) start();
+    });
+
+
+    addDeskAccessory(widget);
   }
 })();

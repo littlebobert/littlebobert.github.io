@@ -19,13 +19,20 @@ html.halloween .halloween-only {
   display: block;
 }
 
-/* Key Caps desk accessory: only on the wide three-column layout, under Settings */
-.key-caps {
+/* Phones only have room for "Souls:" */
+@media (max-width: 520px) {
+  .souls-detail {
+    display: none;
+  }
+}
+
+/* Desk accessories (Key Caps, In the Dark): only on the wide three-column layout, under Settings */
+.desk-accessory {
   display: none;
 }
 
 @media (min-width: 860px) {
-  html.halloween body.home-page .key-caps {
+  html.halloween body.home-page .desk-accessory {
     display: block;
     grid-area: settings;
     justify-self: start;
@@ -243,4 +250,171 @@ body.home-page .sad-mac-screen .sad-mac-code * {
 @keyframes sad-mac-bit {
   from { transform: translate(0, 0); opacity: 1; }
   to { transform: translate(var(--dx), var(--dy)); opacity: 0; }
+}
+
+/* Screensaver after a while idle: flying jack-o'-lanterns on black */
+.screensaver {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  overflow: hidden;
+  background: #000;
+  cursor: none !important;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.screensaver.is-on {
+  opacity: 1;
+  transition-duration: 0.6s;
+}
+
+.screensaver-sprite {
+  position: absolute;
+  top: 0;
+  left: 0;
+  will-change: transform;
+}
+
+.screensaver-sprite svg {
+  display: block;
+}
+
+.screensaver-sprite g[data-frame] {
+  display: none;
+}
+
+.screensaver-sprite[data-frame="0"] g[data-frame="0"],
+.screensaver-sprite[data-frame="1"] g[data-frame="1"],
+.screensaver-sprite[data-frame="2"] g[data-frame="2"] {
+  display: inline;
+}
+
+/* Candles flicker inside the carved faces */
+.screensaver-glow {
+  fill: #ffd23f;
+  animation: screensaver-candle 1.3s steps(1) infinite;
+}
+
+@keyframes screensaver-candle {
+  0% { fill: #ffd23f; }
+  35% { fill: #ffe680; }
+  55% { fill: #ffb92e; }
+  80% { fill: #ffdc5c; }
+}
+
+/* In the Dark desk accessory */
+.after-dark-content {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 6px 8px 8px;
+  text-align: left;
+}
+
+.after-dark-module {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* A little black screen with the module's pumpkin centered in it, holding still */
+.after-dark-preview {
+  box-sizing: border-box;
+  flex-shrink: 0;
+  width: 64px;
+  height: 48px;
+  padding: 5px;
+  border: 1px solid #000;
+  background: #000;
+}
+
+.after-dark-preview svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.after-dark-preview .screensaver-glow {
+  animation: none;
+}
+
+.after-dark-setting {
+  display: grid;
+  grid-template-columns: 52px 1fr;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Platinum-style slider: a recessed groove, a pointed thumb, and a tick for each step */
+.after-dark-slider {
+  display: block;
+}
+
+.after-dark-setting input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  display: block;
+  width: 100%;
+  height: 16px;
+  margin: 0;
+  background: transparent;
+}
+
+.after-dark-setting input[type="range"]::-webkit-slider-runnable-track {
+  height: 4px;
+  border-radius: 1px;
+  background: #a9a9a9;
+  box-shadow:
+    inset 1px 1px 0 var(--classic-ink, #111),
+    0 1px 0 var(--classic-highlight, #fff);
+}
+
+.after-dark-setting input[type="range"]::-moz-range-track {
+  height: 4px;
+  border-radius: 1px;
+  background: #a9a9a9;
+  box-shadow:
+    inset 1px 1px 0 var(--classic-ink, #111),
+    0 1px 0 var(--classic-highlight, #fff);
+}
+
+.after-dark-setting input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 11px;
+  height: 15px;
+  margin-top: -3px;
+  border: none;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='15' shape-rendering='crispEdges'%3E%3Cpath d='M.5.5h10v9l-5 5-5-5z' fill='%23eee' stroke='%23111'/%3E%3Cpath d='M1.5 9V1.5h8' fill='none' stroke='%23fff'/%3E%3Cpath d='M3.5 4v4m2-4v4m2-4v4' stroke='%23777'/%3E%3C/svg%3E") no-repeat;
+}
+
+.after-dark-setting input[type="range"]::-moz-range-thumb {
+  width: 11px;
+  height: 15px;
+  border: none;
+  border-radius: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='11' height='15' shape-rendering='crispEdges'%3E%3Cpath d='M.5.5h10v9l-5 5-5-5z' fill='%23eee' stroke='%23111'/%3E%3Cpath d='M1.5 9V1.5h8' fill='none' stroke='%23fff'/%3E%3Cpath d='M3.5 4v4m2-4v4m2-4v4' stroke='%23777'/%3E%3C/svg%3E") no-repeat;
+}
+
+.after-dark-setting input[type="range"]:focus-visible {
+  outline: 2px solid var(--classic-accent, #000);
+  outline-offset: 1px;
+}
+
+/* Ticks line up with where the thumb's point lands at each step */
+.after-dark-ticks {
+  display: flex;
+  justify-content: space-between;
+  padding: 1px 5px 0;
+}
+
+.after-dark-ticks i {
+  width: 1px;
+  height: 3px;
+  background: var(--classic-ink, #111);
+}
+
+.after-dark-sleep {
+  align-self: center;
+  margin-top: 2px;
 }

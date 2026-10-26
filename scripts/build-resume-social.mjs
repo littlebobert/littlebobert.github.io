@@ -31,7 +31,7 @@ const svgFontFamily = "Verdana, Geneva, sans-serif";
 
 const textBlocks = [
   { text: 'Justin Garcia', size: 116, weight: 'bold', pangoWeight: 'Bold', color: '#1a1f26', lineHeight: 1.1, spaceAfter: 36 },
-  { text: 'Product engineer, iOS and real-time speech AI. Previously at Apple', size: 80, weight: 'normal', pangoWeight: '', color: '#1a1f26', lineHeight: 1.25, spaceAfter: 30 },
+  { text: 'Software engineer, Apple platforms and real-time speech AI. Previously at Apple', size: 80, weight: 'normal', pangoWeight: '', color: '#1a1f26', lineHeight: 1.25, spaceAfter: 30 },
   { text: 'Tokyo, Japan', size: 68, weight: 'normal', pangoWeight: '', color: '#6b7480', lineHeight: 1.25, spaceAfter: 0, pinBottom: true },
 ].map((block) => ({ ...block, size: Math.round(block.size * scale), spaceAfter: Math.round(block.spaceAfter * scale) }));
 

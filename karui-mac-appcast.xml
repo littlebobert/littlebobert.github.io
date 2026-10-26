@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.9.0</title>
+            <pubDate>Tue, 27 Oct 2026 04:07:54 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>57</sparkle:version>
+            <sparkle:shortVersionString>0.9.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- When you leave your Mac, the notifications your iPhone held while you were here now reach it right away, and the ones you already read here don't. Needs Karui for iPhone 0.2.7.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.9.0/Karui-0.9.0-mac.zip" length="2867658" type="application/octet-stream" sparkle:edSignature="11B79vOc8HXrS6rPEToivyu6Sy35Yh6OCVvoBkdqBHg6NL9AinI/g+lwUyqvo+qvdPjuQM4BUhKwj+FykISgCg=="/>
+        </item>
+        <item>
             <title>0.8.16</title>
             <pubDate>Mon, 26 Oct 2026 13:30:43 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -26,18 +38,6 @@
 - Setup steps catch your eye with a small, one-time animation.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.15/Karui-0.8.15-mac.zip" length="2853890" type="application/octet-stream" sparkle:edSignature="tdoK2lx+gjDiZBNISXpzxGniettcUv6m9I4cHSsAAmD5RDAO2ZJ5P7csJGJAdarKONQDWo6d0kTpZznxPc1uAw=="/>
-        </item>
-        <item>
-            <title>0.8.14</title>
-            <pubDate>Mon, 26 Oct 2026 11:09:19 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>54</sparkle:version>
-            <sparkle:shortVersionString>0.8.14</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Clicking one of Karui's notifications now shows that notification in Karui, selected with its preview, instead of only bringing Karui forward.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.14/Karui-0.8.14-mac.zip" length="2835436" type="application/octet-stream" sparkle:edSignature="gV/E07Wc7Tjk1XclJvk092TVIL6rawj9kSISEn0+NnIEZhiBoeMXl0htW/p9/7XqgVfZr8/gkIc7KI5q0wm2Aw=="/>
         </item>
     </channel>
 </rss>

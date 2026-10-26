@@ -18,7 +18,7 @@ Each stroke is assigned to the closest standard stroke (from KanjiVG) and judged
 
 ## Privacy
 
-Kaketa has no account and no analytics. Progress and added words stay on the device and in the user's own iCloud. The handwriting check runs on the device. Nothing leaves the device.
+Kaketa has no account and no analytics. Progress and added words stay on the device and in the user's own iCloud. The handwriting check runs on the device. Nothing is sent anywhere else.
 
 ## Technical details
 

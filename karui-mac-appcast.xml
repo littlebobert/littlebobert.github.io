@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.8.16</title>
+            <pubDate>Mon, 26 Oct 2026 13:30:43 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>56</sparkle:version>
+            <sparkle:shortVersionString>0.8.16</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Opening one of Karui's notifications now marks it read, including when it opens on its own screen.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.16/Karui-0.8.16-mac.zip" length="2853733" type="application/octet-stream" sparkle:edSignature="r2B4EN5nSYQjThGvscDYQKFZAXpovSOwy7hMvuF7n3JCIKOC/CzT9JbJyleMrJIbGhqZA8audh3JAefInmwfBA=="/>
+        </item>
+        <item>
             <title>0.8.15</title>
             <pubDate>Mon, 26 Oct 2026 13:18:08 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -26,18 +38,6 @@
             <description sparkle:format="markdown"><![CDATA[- Clicking one of Karui's notifications now shows that notification in Karui, selected with its preview, instead of only bringing Karui forward.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.14/Karui-0.8.14-mac.zip" length="2835436" type="application/octet-stream" sparkle:edSignature="gV/E07Wc7Tjk1XclJvk092TVIL6rawj9kSISEn0+NnIEZhiBoeMXl0htW/p9/7XqgVfZr8/gkIc7KI5q0wm2Aw=="/>
-        </item>
-        <item>
-            <title>0.8.13</title>
-            <pubDate>Mon, 26 Oct 2026 10:53:17 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>53</sparkle:version>
-            <sparkle:shortVersionString>0.8.13</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- During a Focus that lets Karui through, Important notifications from Slack, Spark, and this Mac's other apps now come through as Karui's own. Karui reads which Focus is on from macOS, so there's no Focus filter to add.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.13/Karui-0.8.13-mac.zip" length="2830105" type="application/octet-stream" sparkle:edSignature="iQkOVAxNdFZYj6TyQLdIAS17qvN4rPPeNbm1HhjaPD/oxqO2tP9GjC7QAGYrQ5VRF9jc2AgR748T/ArsYNVzAQ=="/>
         </item>
     </channel>
 </rss>

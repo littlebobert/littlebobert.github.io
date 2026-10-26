@@ -3,6 +3,19 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.8.15</title>
+            <pubDate>Mon, 26 Oct 2026 13:18:08 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>55</sparkle:version>
+            <sparkle:shortVersionString>0.8.15</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- When Second Opinion's Shortcut keeps failing, Karui waits before asking again, and now keeps waiting after Karui restarts or updates.
+- Setup steps catch your eye with a small, one-time animation.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.15/Karui-0.8.15-mac.zip" length="2853890" type="application/octet-stream" sparkle:edSignature="tdoK2lx+gjDiZBNISXpzxGniettcUv6m9I4cHSsAAmD5RDAO2ZJ5P7csJGJAdarKONQDWo6d0kTpZznxPc1uAw=="/>
+        </item>
+        <item>
             <title>0.8.14</title>
             <pubDate>Mon, 26 Oct 2026 11:09:19 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,19 +38,6 @@
             <description sparkle:format="markdown"><![CDATA[- During a Focus that lets Karui through, Important notifications from Slack, Spark, and this Mac's other apps now come through as Karui's own. Karui reads which Focus is on from macOS, so there's no Focus filter to add.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.13/Karui-0.8.13-mac.zip" length="2830105" type="application/octet-stream" sparkle:edSignature="iQkOVAxNdFZYj6TyQLdIAS17qvN4rPPeNbm1HhjaPD/oxqO2tP9GjC7QAGYrQ5VRF9jc2AgR748T/ArsYNVzAQ=="/>
-        </item>
-        <item>
-            <title>0.8.12</title>
-            <pubDate>Mon, 26 Oct 2026 09:19:42 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>52</sparkle:version>
-            <sparkle:shortVersionString>0.8.12</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- During a Focus, Important notifications from Slack, Spark, and this Mac's other apps now come through as Karui's own. Add Karui to the Focus under Focus Filters in System Settings.
-- Fixed an Important notification your iPhone kept quiet while you were at this Mac sometimes not showing here.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.12/Karui-0.8.12-mac.zip" length="2815542" type="application/octet-stream" sparkle:edSignature="d1DZJ7OW61AsNL2BStRofKFmdBtGh4OQv33nMtrdKHhYEC3b3RJT9uo+GmebDbbybumb3bCoQhpj9KdfypUJCg=="/>
         </item>
     </channel>
 </rss>

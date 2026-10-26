@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.8.14</title>
+            <pubDate>Mon, 26 Oct 2026 11:09:19 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>54</sparkle:version>
+            <sparkle:shortVersionString>0.8.14</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Clicking one of Karui's notifications now shows that notification in Karui, selected with its preview, instead of only bringing Karui forward.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.14/Karui-0.8.14-mac.zip" length="2835436" type="application/octet-stream" sparkle:edSignature="gV/E07Wc7Tjk1XclJvk092TVIL6rawj9kSISEn0+NnIEZhiBoeMXl0htW/p9/7XqgVfZr8/gkIc7KI5q0wm2Aw=="/>
+        </item>
+        <item>
             <title>0.8.13</title>
             <pubDate>Mon, 26 Oct 2026 10:53:17 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -26,18 +38,6 @@
 - Fixed an Important notification your iPhone kept quiet while you were at this Mac sometimes not showing here.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.12/Karui-0.8.12-mac.zip" length="2815542" type="application/octet-stream" sparkle:edSignature="d1DZJ7OW61AsNL2BStRofKFmdBtGh4OQv33nMtrdKHhYEC3b3RJT9uo+GmebDbbybumb3bCoQhpj9KdfypUJCg=="/>
-        </item>
-        <item>
-            <title>0.8.11</title>
-            <pubDate>Sun, 25 Oct 2026 21:10:53 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>51</sparkle:version>
-            <sparkle:shortVersionString>0.8.11</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed more Spark emails showing twice, when your iPhone and this Mac each saw the email's text a little differently. Emails already showing twice become one.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.11/Karui-0.8.11-mac.zip" length="2798048" type="application/octet-stream" sparkle:edSignature="i9fju/CFHt7r8mJcEtU1x3SrKbVkDTXoEuQizLBZHrgmlf8JTVYBQYLfQVyCp6i2cx3GUOPCD8iUvLGLvIBsCg=="/>
         </item>
     </channel>
 </rss>

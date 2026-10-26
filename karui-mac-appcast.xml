@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.9.1</title>
+            <pubDate>Tue, 27 Oct 2026 08:49:57 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>58</sparkle:version>
+            <sparkle:shortVersionString>0.9.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fewer late banners for notifications only your iPhone got: none for apps that are on this Mac, which show their own, or for ones you've already read.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.9.1/Karui-0.9.1-mac.zip" length="2871740" type="application/octet-stream" sparkle:edSignature="37cGWlrj2xWXCHNuCkqsLExeawM9v01uscKEzoR3BJfBL7HqmQvaOTSOQEVVpCLnMSExBSOKUQFyfneqdOdNAA=="/>
+        </item>
+        <item>
             <title>0.9.0</title>
             <pubDate>Tue, 27 Oct 2026 04:07:54 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,19 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Opening one of Karui's notifications now marks it read, including when it opens on its own screen.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.16/Karui-0.8.16-mac.zip" length="2853733" type="application/octet-stream" sparkle:edSignature="r2B4EN5nSYQjThGvscDYQKFZAXpovSOwy7hMvuF7n3JCIKOC/CzT9JbJyleMrJIbGhqZA8audh3JAefInmwfBA=="/>
-        </item>
-        <item>
-            <title>0.8.15</title>
-            <pubDate>Mon, 26 Oct 2026 13:18:08 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>55</sparkle:version>
-            <sparkle:shortVersionString>0.8.15</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- When Second Opinion's Shortcut keeps failing, Karui waits before asking again, and now keeps waiting after Karui restarts or updates.
-- Setup steps catch your eye with a small, one-time animation.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.15/Karui-0.8.15-mac.zip" length="2853890" type="application/octet-stream" sparkle:edSignature="tdoK2lx+gjDiZBNISXpzxGniettcUv6m9I4cHSsAAmD5RDAO2ZJ5P7csJGJAdarKONQDWo6d0kTpZznxPc1uAw=="/>
         </item>
     </channel>
 </rss>

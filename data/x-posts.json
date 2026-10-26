@@ -1,8 +1,46 @@
 {
-  "updatedAt": "2026-10-25T18:26:36.185Z",
+  "updatedAt": "2026-10-26T20:34:44.067Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2114801064805564669",
+      "text": "I’ve gone full gaijin software engineer: I’ve created my own Japanese learning app 🤡 . This one lets me practice handwriting. I seem to remember words a bit better that way too. And it’s free, with no subscription or sign-up. https://t.co/np8BYUfLpu",
+      "createdAt": "2026-10-26T19:27:19.000Z",
+      "url": "https://x.com/_bobertdowney/status/2114801064805564669",
+      "urls": [
+        {
+          "url": "https://t.co/np8BYUfLpu",
+          "expandedUrl": "https://kaketa.jp",
+          "displayUrl": "kaketa.jp",
+          "start": 226,
+          "end": 249
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2114558951694217502",
+      "text": "10月31日に東京で、XcodeとApple Intelligenceに関する面白そうなイベントがある。あと1枠空いてるよ。https://t.co/GkwmPXsHfX",
+      "createdAt": "2026-10-26T03:25:15.000Z",
+      "url": "https://x.com/_bobertdowney/status/2114558951694217502",
+      "urls": [
+        {
+          "url": "https://t.co/GkwmPXsHfX",
+          "expandedUrl": "https://mosa.connpass.com/event/406933/",
+          "displayUrl": "mosa.connpass.com/event/406933/",
+          "start": 62,
+          "end": 85
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2114163572553241066",
       "text": "Chains of Thought: thick gold necklaces for AI researchers. a new Mike Matas joint",
@@ -190,57 +228,6 @@
           "image": "assets/generated/x/mine-post-2109060021686534156-0.png"
         }
       ]
-    },
-    {
-      "id": "2108990972814393427",
-      "text": "my free iPhone app for silencing spam notifications and viewing messages people unsend has been updated. there’s a snooze button, and an optional Live Activity to quickly see the number of new important notifications.\n\nhttps://t.co/XvhuIJPcHX https://t.co/F1Yk16lkWz",
-      "createdAt": "2026-10-10T18:40:05.000Z",
-      "url": "https://x.com/_bobertdowney/status/2108990972814393427",
-      "urls": [
-        {
-          "url": "https://t.co/XvhuIJPcHX",
-          "expandedUrl": "https://karui.jp",
-          "displayUrl": "karui.jp",
-          "start": 219,
-          "end": 242
-        },
-        {
-          "url": "https://t.co/F1Yk16lkWz",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2108990972814393427/photo/1",
-          "displayUrl": "pic.x.com/F1Yk16lkWz",
-          "start": 243,
-          "end": 266
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2108990972814393427-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2106473493248512377",
-      "text": "my free app for fighting spam iPhone notifications and viewing messages people unsend has been updated.\n\nit’s now a lot easier to set up, and will learn and improve its filtering based on your manual corrections.\n\nhttps://t.co/XvhuIJPcHX",
-      "createdAt": "2026-10-03T19:56:31.000Z",
-      "url": "https://x.com/_bobertdowney/status/2106473493248512377",
-      "urls": [
-        {
-          "url": "https://t.co/XvhuIJPcHX",
-          "expandedUrl": "https://karui.jp",
-          "displayUrl": "karui.jp",
-          "start": 214,
-          "end": 237
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 }

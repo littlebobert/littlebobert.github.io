@@ -3,6 +3,19 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.8.12</title>
+            <pubDate>Mon, 26 Oct 2026 09:19:42 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>52</sparkle:version>
+            <sparkle:shortVersionString>0.8.12</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- During a Focus, Important notifications from Slack, Spark, and this Mac's other apps now come through as Karui's own. Add Karui to the Focus under Focus Filters in System Settings.
+- Fixed an Important notification your iPhone kept quiet while you were at this Mac sometimes not showing here.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.12/Karui-0.8.12-mac.zip" length="2815542" type="application/octet-stream" sparkle:edSignature="d1DZJ7OW61AsNL2BStRofKFmdBtGh4OQv33nMtrdKHhYEC3b3RJT9uo+GmebDbbybumb3bCoQhpj9KdfypUJCg=="/>
+        </item>
+        <item>
             <title>0.8.11</title>
             <pubDate>Sun, 25 Oct 2026 21:10:53 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +38,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed some Spark emails showing twice, once as your iPhone sorted them and once as this Mac did.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.10/Karui-0.8.10-mac.zip" length="2793153" type="application/octet-stream" sparkle:edSignature="3ZyqeAr0s3/SYubvFgKoxhmbz3qDmXnmAlnxxLoR45A2APBS93bUgqxQjNySZDGwnF9iB/OGF607/CfoUgetDw=="/>
-        </item>
-        <item>
-            <title>0.8.9</title>
-            <pubDate>Sat, 24 Oct 2026 11:29:59 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>49</sparkle:version>
-            <sparkle:shortVersionString>0.8.9</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Sorts notifications that name a deadline the same way as the latest Karui for iPhone, which now reminds you only of tasks that are clearly yours to do.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.9/Karui-0.8.9-mac.zip" length="2791757" type="application/octet-stream" sparkle:edSignature="pgLp5sdCiLikoQNmbNMwAA/2hD2xlwkZDu8sngaL+o7tWUEkRH4JhW9RHGsi4L0xHuvzjnadIucFIRG15DPVDQ=="/>
         </item>
     </channel>
 </rss>

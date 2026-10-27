@@ -21,6 +21,9 @@ const headshotSize = 400;
 const headshotGap = Math.round(48 * scale);
 const headshotCornerRadius = Math.round(headshotSize * 0.16);
 const headshotBorderWidth = 8;
+// The source photo is cropped tight around the face, so zoom out by mirroring
+// its left and right edges outward before cropping to a square.
+const headshotZoomOut = 1.15;
 const contentRight = size - edgePadding;
 // The headshot sits in the bottom-right corner, inset by the padding.
 const headshotLeft = contentRight - headshotSize;
@@ -30,7 +33,7 @@ const fontFamily = 'Verdana';
 const svgFontFamily = "Verdana, Geneva, sans-serif";
 
 const textBlocks = [
-  { text: 'Justin Garcia', size: 116, weight: 'bold', pangoWeight: 'Bold', color: '#1a1f26', lineHeight: 1.1, spaceAfter: 36 },
+  { text: 'Justin Garcia', size: 100, weight: 'bold', pangoWeight: 'Bold', color: '#1a1f26', lineHeight: 1.1, spaceAfter: 36 },
   { text: 'Apple platforms and real-time speech AI product engineer. Previously at Apple', size: 80, weight: 'normal', pangoWeight: '', color: '#1a1f26', lineHeight: 1.25, spaceAfter: 30 },
   { text: 'Tokyo, Japan', size: 68, weight: 'normal', pangoWeight: '', color: '#6b7480', lineHeight: 1.25, spaceAfter: 0, pinBottom: true },
 ].map((block) => ({ ...block, size: Math.round(block.size * scale), spaceAfter: Math.round(block.spaceAfter * scale) }));
@@ -126,7 +129,13 @@ const roundedCornerMask = Buffer.from(`
   <rect width="${headshotSize}" height="${headshotSize}" rx="${headshotCornerRadius}" fill="#ffffff"/>
 </svg>
 `);
-const headshot = await sharp(await readFile(headshotPath))
+const headshotSource = await readFile(headshotPath);
+const { width: headshotSourceWidth } = await sharp(headshotSource).metadata();
+const headshotSidePadding = Math.round((headshotSourceWidth * (headshotZoomOut - 1)) / 2);
+const zoomedOutHeadshot = await sharp(headshotSource)
+  .extend({ left: headshotSidePadding, right: headshotSidePadding, extendWith: 'mirror' })
+  .toBuffer();
+const headshot = await sharp(zoomedOutHeadshot)
   .resize(headshotSize, headshotSize, { fit: 'cover', position: 'top' })
   .composite([{ input: roundedCornerMask, blend: 'dest-in' }])
   .png()

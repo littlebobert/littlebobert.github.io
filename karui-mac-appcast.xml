@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.9.2</title>
+            <pubDate>Tue, 27 Oct 2026 09:35:57 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>59</sparkle:version>
+            <sparkle:shortVersionString>0.9.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Messages that only reached your iPhone, because the conversation was open on this Mac, are now marked read here once you've read them in Messages.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.9.2/Karui-0.9.2-mac.zip" length="2876877" type="application/octet-stream" sparkle:edSignature="42xxNjc4QfF7DfLJPoJUep/8IKPqm0LGZP/XgenWIrdyuCwC991kZ+gWuwHsl6If+7B9ElT3J/6PwsAh6zQqCg=="/>
+        </item>
+        <item>
             <title>0.9.1</title>
             <pubDate>Tue, 27 Oct 2026 08:49:57 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- When you leave your Mac, the notifications your iPhone held while you were here now reach it right away, and the ones you already read here don't. Needs Karui for iPhone 0.2.7.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.9.0/Karui-0.9.0-mac.zip" length="2867658" type="application/octet-stream" sparkle:edSignature="11B79vOc8HXrS6rPEToivyu6Sy35Yh6OCVvoBkdqBHg6NL9AinI/g+lwUyqvo+qvdPjuQM4BUhKwj+FykISgCg=="/>
-        </item>
-        <item>
-            <title>0.8.16</title>
-            <pubDate>Mon, 26 Oct 2026 13:30:43 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>56</sparkle:version>
-            <sparkle:shortVersionString>0.8.16</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Opening one of Karui's notifications now marks it read, including when it opens on its own screen.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.8.16/Karui-0.8.16-mac.zip" length="2853733" type="application/octet-stream" sparkle:edSignature="r2B4EN5nSYQjThGvscDYQKFZAXpovSOwy7hMvuF7n3JCIKOC/CzT9JbJyleMrJIbGhqZA8audh3JAefInmwfBA=="/>
         </item>
     </channel>
 </rss>

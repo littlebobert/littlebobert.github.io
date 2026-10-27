@@ -35,8 +35,19 @@
     .karui-slide-kicker { color: #cc2119; font-weight: bold; font-size: 1.85cqw; letter-spacing: 0.02em; }
     /* Two classes, to outrank the site's .sasu-page h2. */
     .karui-slide .karui-slide-title { margin: 0.4cqw 0 1cqw; padding: 0; font-size: 3.6cqw; line-height: 1.18; font-weight: bold; text-wrap: balance; word-break: auto-phrase; }
-    
-    /* Slide 1: three bursts from Karui's logs, to one time scale. */
+
+    /* Slide 1: why Karui sorts notifications with Apple Intelligence. */
+    .karui-reasons { display: grid; grid-template-columns: max-content 1fr; gap: 1.4cqw; margin-top: 0.6cqw; }
+    .karui-reason { display: grid; grid-column: 1 / -1; grid-template-columns: subgrid; column-gap: 3cqw; align-items: center; padding: 1.3cqw 2cqw; background: #f4f3ee; border-radius: 1cqw; }
+    .karui-reason-name { font-size: 2.9cqw; line-height: 1.1; font-weight: bold; color: #cc2119; white-space: nowrap; }
+    .karui-reason-detail { font-size: 2.1cqw; color: #333; }
+
+    /* Slide 2: what Karui is, beside the app's icon as the Home Screen shows it. */
+    .karui-about { display: flex; align-items: center; gap: 3cqw; margin-top: 1.4cqw; }
+    .karui-about-icon { width: 12cqw; height: 12cqw; flex: none; border-radius: 2.7cqw; box-shadow: 0 0.3cqw 1.2cqw rgba(0, 0, 0, 0.18); }
+    .karui-about-tagline { font-size: 2.8cqw; color: #333; }
+
+    /* Slide 3: three bursts from Karui's logs, to one time scale. */
     .karui-bursts { display: grid; row-gap: 0.4cqw; }
     .karui-burst { display: grid; grid-template-columns: 10cqw 1fr; column-gap: 2cqw; row-gap: 0.3cqw; align-items: center; }
     .karui-burst-time { color: #555; font-size: 1.8cqw; text-align: right; }
@@ -52,15 +63,9 @@
     .karui-fact-number { font-size: 3.5cqw; line-height: 1.1; font-weight: bold; color: #cc2119; }
     .karui-fact-caption { margin-top: 0.3cqw; font-size: 1.6cqw; color: #333; }
 
-    /* Slide 2: the app's own call beside the Shortcut's. */
-    .karui-paths { display: grid; grid-template-columns: 1fr 1fr; gap: 3cqw; }
-    .karui-path { padding: 2cqw 2.2cqw; border: 0.2cqw solid #1a211e; border-radius: 1.2cqw; }
-    .karui-path--works { border-color: #cc2119; }
-    .karui-path-name { font-weight: bold; font-size: 2.2cqw; }
-    .karui-path-number { margin-top: 1.4cqw; font-size: 6.4cqw; line-height: 1; font-weight: bold; }
-    .karui-path--works .karui-path-number { color: #cc2119; }
-    .karui-path-detail { margin-top: 1cqw; font-size: 2cqw; color: #333; }
-    .karui-caveat { margin-top: 2.6cqw; padding: 1.4cqw 1.8cqw; background: #f4f3ee; border-radius: 1cqw; font-size: 2.1cqw; font-weight: bold; text-align: center; }
+    /* Slide 4: the workaround, in two points. */
+    .karui-points { display: grid; gap: 1.4cqw; margin: 0.6cqw 0 0; padding: 0; list-style: none; }
+    .karui-points li { padding: 1.6cqw 2.2cqw; background: #f4f3ee; border-radius: 1cqw; font-size: 2.8cqw; }
 
     /* Presenting: one slide at a time, as large as the screen allows, each .karui-step
        appearing on its own press. In the page, everything shows. */
@@ -90,12 +95,12 @@
     .karui-seal-trigger img, .karui-maker-photo-link img { cursor: pointer; }
   </style>
   <link rel="canonical" href="https://karui.jp/technotes/lightning-talk">
-  <meta name="description" content="Two slides for a five-minute talk: how many background calls Apple’s on-device model takes before it refuses, and why Private Cloud Compute through a Shortcut answers when the app’s own call can’t." data-label-en="Two slides for a five-minute talk: how many background calls Apple’s on-device model takes before it refuses, and why Private Cloud Compute through a Shortcut answers when the app’s own call can’t." data-label-ja="5分間のトークのための2枚のスライド。Appleのオンデバイスモデルがバックグラウンドで何回まで応じるか、そしてアプリ自身の呼び出しが拒否されるときにショートカット経由のPrivate Cloud Computeが応答する理由。">
+  <meta name="description" content="Four slides for a five-minute talk: why Karui uses Apple Intelligence, what Karui is, how many background calls Apple’s on-device model takes before it refuses, and why Private Cloud Compute through a Shortcut answers when the app’s own call can’t." data-label-en="Four slides for a five-minute talk: why Karui uses Apple Intelligence, what Karui is, how many background calls Apple’s on-device model takes before it refuses, and why Private Cloud Compute through a Shortcut answers when the app’s own call can’t." data-label-ja="5分間のトークのための4枚のスライド。KaruiがApple Intelligenceを使う理由、Karuiとは何か、Appleのオンデバイスモデルがバックグラウンドで何回まで応じるか、そしてアプリ自身の呼び出しが拒否されるときにショートカット経由のPrivate Cloud Computeが応答する理由。">
   <meta property="og:title" content="Lightning Talk: Apple Intelligence in the Background" data-label-en="Lightning Talk: Apple Intelligence in the Background" data-label-ja="ライトニングトーク：バックグラウンドのApple Intelligence">
   <meta property="og:type" content="article">
   <meta property="og:url" content="https://karui.jp/technotes/lightning-talk">
   <meta property="og:site_name" content="Karui">
-  <meta property="og:description" content="Two slides for a five-minute talk: how many background calls Apple’s on-device model takes before it refuses, and why Private Cloud Compute through a Shortcut answers when the app’s own call can’t." data-label-en="Two slides for a five-minute talk: how many background calls Apple’s on-device model takes before it refuses, and why Private Cloud Compute through a Shortcut answers when the app’s own call can’t." data-label-ja="5分間のトークのための2枚のスライド。Appleのオンデバイスモデルがバックグラウンドで何回まで応じるか、そしてアプリ自身の呼び出しが拒否されるときにショートカット経由のPrivate Cloud Computeが応答する理由。">
+  <meta property="og:description" content="Four slides for a five-minute talk: why Karui uses Apple Intelligence, what Karui is, how many background calls Apple’s on-device model takes before it refuses, and why Private Cloud Compute through a Shortcut answers when the app’s own call can’t." data-label-en="Four slides for a five-minute talk: why Karui uses Apple Intelligence, what Karui is, how many background calls Apple’s on-device model takes before it refuses, and why Private Cloud Compute through a Shortcut answers when the app’s own call can’t." data-label-ja="5分間のトークのための4枚のスライド。KaruiがApple Intelligenceを使う理由、Karuiとは何か、Appleのオンデバイスモデルがバックグラウンドで何回まで応じるか、そしてアプリ自身の呼び出しが拒否されるときにショートカット経由のPrivate Cloud Computeが応答する理由。">
   <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=5">
   <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=5">
   <meta property="og:image:type" content="image/png">
@@ -118,7 +123,7 @@
       </div>
     </section>
     <section class="karui-section">
-      <p><span data-label-en="Two slides for a five-minute talk, from " data-label-ja="">Two slides for a five-minute talk, from </span><a href="karui.html">Karui</a><span data-label-en="’s Technical Notes " data-label-ja="の技術ノート">’s Technical Notes </span><a href="karui-technote-kn001.html">KN001</a><span data-label-en=" and " data-label-ja="と"> and </span><a href="karui-technote-kn002.html">KN002</a><span data-label-en="." data-label-ja="をもとにした、5分間のトークのための2枚のスライド。">.</span></p>
+      <p><span data-label-en="Four slides for a five-minute talk, from " data-label-ja="">Four slides for a five-minute talk, from </span><a href="karui.html">Karui</a><span data-label-en="’s Technical Notes " data-label-ja="の技術ノート">’s Technical Notes </span><a href="karui-technote-kn001.html">KN001</a><span data-label-en=" and " data-label-ja="と"> and </span><a href="karui-technote-kn002.html">KN002</a><span data-label-en="." data-label-ja="をもとにした、5分間のトークのための4枚のスライド。">.</span></p>
       <p class="karui-note-meta" data-label-en="iOS 27.0 · Measured on iPhone 17 Pro" data-label-ja="iOS 27.0 · iPhone 17 Proで計測">iOS 27.0 · Measured on iPhone 17 Pro</p>
       <p><button class="karui-present" type="button" data-label-en="Present" data-label-ja="スライドショー">Present</button> <span class="karui-note-meta" data-label-en="Arrow keys, space, or a click to step through; Esc to stop." data-label-ja="矢印キー、スペース、クリックで進む。Escで終了。">Arrow keys, space, or a click to step through; Esc to stop.</span></p>
     </section>
@@ -126,33 +131,20 @@
     <section class="karui-talk" aria-label="Slides">
       <div class="karui-slide-frame">
         <article class="karui-slide" aria-label="Slide 1">
-          <div class="karui-slide-kicker" data-label-en="1/2 · Foundation Models" data-label-ja="1/2 · Foundation Models">1/2 · Foundation Models</div>
-          <h2 class="karui-slide-title" data-label-en="Background on-device requests refused after about 6 calls, sometimes for hours" data-label-ja="バックグラウンドのオンデバイスリクエストは約6回で拒否され、数時間続くこともある">Background on-device requests refused after about 6 calls, sometimes for hours</h2>
-          <!-- Each bar runs from the burst's first call, to one scale of 400 minutes:
-               accepted calls in black, then the refusals in red. From KN001's table. -->
-          <div class="karui-bursts-caption karui-step" data-step-joins-next data-label-en="Three examples from Karui’s logs, September 26 and 27:" data-label-ja="Karuiのログから3つの例（9月26日・27日）：">Three examples from Karui’s logs, September 26 and 27:</div>
-          <div class="karui-bursts">
-            <div class="karui-burst karui-step">
-              <div class="karui-burst-time" data-label-en="10:37 PM" data-label-ja="午後10:37">10:37 PM</div>
-              <div class="karui-burst-bar"><span class="karui-burst-accepted" style="left: 0; width: 9.75%"></span><span class="karui-burst-refused" style="left: 17.75%; width: 81.25%"></span></div>
-              <div class="karui-burst-label"><span data-label-en="8 accepted" data-label-ja="8回成功">8 accepted</span><span class="is-refused" data-label-en="refused for 5 h 25 min" data-label-ja="5時間25分拒否">refused for 5 h 25 min</span></div>
+          <div class="karui-slide-kicker karui-step" data-label-en="1/4 · Why Apple Intelligence" data-label-ja="1/4 · なぜApple Intelligenceか">1/4 · Why Apple Intelligence</div>
+          <h2 class="karui-slide-title karui-step" data-label-en="Private, free" data-label-ja="プライベートで無料">Private, free</h2>
+          <div class="karui-reasons">
+            <div class="karui-reason karui-step">
+              <div class="karui-reason-name" data-label-en="On-device option" data-label-ja="オンデバイス可">On-device option</div>
+              <div class="karui-reason-detail" data-label-en="No model to download" data-label-ja="モデルのダウンロード不要">No model to download</div>
             </div>
-            <div class="karui-burst karui-step">
-              <div class="karui-burst-time" data-label-en="2:44 PM" data-label-ja="午後2:44">2:44 PM</div>
-              <div class="karui-burst-bar"><span class="karui-burst-accepted" style="left: 0; width: 1.5%"></span><span class="karui-burst-refused" style="left: 4.75%; width: 29%"></span></div>
-              <div class="karui-burst-label"><span data-label-en="5 accepted" data-label-ja="5回成功">5 accepted</span><span class="is-refused" data-label-en="refused for 1 h 56 min" data-label-ja="1時間56分拒否">refused for 1 h 56 min</span></div>
+            <div class="karui-reason karui-step">
+              <div class="karui-reason-name" data-label-en="Free" data-label-ja="無料">Free</div>
             </div>
-            <div class="karui-burst karui-step">
-              <div class="karui-burst-time" data-label-en="5:54 PM" data-label-ja="午後5:54">5:54 PM</div>
-              <div class="karui-burst-bar"><span class="karui-burst-accepted" style="left: 0; width: 9.5%"></span><span class="karui-burst-refused" style="left: 31.25%; width: 27.5%"></span></div>
-              <div class="karui-burst-label"><span data-label-en="8 accepted" data-label-ja="8回成功">8 accepted</span><span class="is-refused" data-label-en="refused for 1 h 50 min" data-label-ja="1時間50分拒否">refused for 1 h 50 min</span></div>
+            <div class="karui-reason karui-step">
+              <div class="karui-reason-name" data-label-en="Trust" data-label-ja="信頼">Trust</div>
+              <div class="karui-reason-detail" data-label-en="It’s Apple" data-label-ja="Appleだから">It’s Apple</div>
             </div>
-          </div>
-          <!-- From the whole of History, September 20 to October 21. -->
-          <div class="karui-facts">
-            <div class="karui-fact karui-step"><div class="karui-fact-number">48%</div><div class="karui-fact-caption" data-label-en="of 3,443 requests in a month refused" data-label-ja="1か月の3,443回のうち拒否された割合">of 3,443 requests in a month refused</div></div>
-            <div class="karui-fact karui-step"><div class="karui-fact-number">6</div><div class="karui-fact-caption" data-label-en="accepted before a refusal (median)" data-label-ja="拒否までの成功回数（中央値）">accepted before a refusal (median)</div></div>
-            <div class="karui-fact karui-step"><div class="karui-fact-number" data-label-en="16 h" data-label-ja="16時間">16 h</div><div class="karui-fact-caption" data-label-en="the longest run: 49 refusals" data-label-ja="最長の連続拒否：49回">the longest run: 49 refusals</div></div>
           </div>
           <div class="karui-slide-subtitles" aria-hidden="true"><span data-label-en="Live subtitles in Japanese by Kotoba will appear here." data-label-ja="ここにKotobaによる日本語のライブ字幕が表示されます。">Live subtitles in Japanese by Kotoba will appear here.</span></div>
         </article>
@@ -160,21 +152,58 @@
 
       <div class="karui-slide-frame">
         <article class="karui-slide" aria-label="Slide 2">
-          <div class="karui-slide-kicker" data-label-en="2/2 · Private Cloud Compute" data-label-ja="2/2 · Private Cloud Compute">2/2 · Private Cloud Compute</div>
-          <h2 class="karui-slide-title" data-label-en="Shortcuts gets its own PCC budget" data-label-ja="ショートカットにはPCCの別の上限がある">Shortcuts gets its own PCC budget</h2>
-          <div class="karui-paths">
-            <div class="karui-path karui-step">
-              <div class="karui-path-name" data-label-en="In the app" data-label-ja="アプリ内">In the app</div>
-              <div class="karui-path-number">0%</div>
-              <div class="karui-path-detail" data-label-en="answered: 0 of 64 while rate limited, one day" data-label-ja="回答：レート制限中の64回中0回（1日）">answered: 0 of 64 while rate limited, one day</div>
+          <div class="karui-slide-kicker karui-step" data-label-en="2/4 · What is Karui" data-label-ja="2/4 · Karuiとは">2/4 · What is Karui</div>
+          <h2 class="karui-slide-title karui-step" data-label-en="A spam filter for push notifications" data-label-ja="プッシュ通知のスパムフィルター">A spam filter for push notifications</h2>
+          <div class="karui-about karui-step">
+            <img class="karui-about-icon" src="assets/karui-app-icon.png?v=1" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン">
+            <div class="karui-about-tagline" data-label-en="Private, free, uses Apple Intelligence" data-label-ja="プライベート、無料、Apple Intelligenceを使用">Private, free, uses Apple Intelligence</div>
+          </div>
+          <div class="karui-slide-subtitles" aria-hidden="true"><span data-label-en="Live subtitles in Japanese by Kotoba will appear here." data-label-ja="ここにKotobaによる日本語のライブ字幕が表示されます。">Live subtitles in Japanese by Kotoba will appear here.</span></div>
+        </article>
+      </div>
+
+      <div class="karui-slide-frame">
+        <article class="karui-slide" aria-label="Slide 3">
+          <div class="karui-slide-kicker karui-step" data-label-en="3/4 · On-Device Foundation Model" data-label-ja="3/4 · オンデバイスのFoundation Model">3/4 · On-Device Foundation Model</div>
+          <h2 class="karui-slide-title karui-step" data-label-en="iOS refuses background on-device requests" data-label-ja="バックグラウンドのオンデバイス要求をiOSが拒否">iOS refuses background on-device requests</h2>
+          <!-- Each bar runs from the burst's first call, to one scale of 400 minutes:
+               accepted calls in black, then the refusals in red. From KN001's table. -->
+          <div class="karui-bursts-caption karui-step" data-step-joins-next data-label-en="Three examples" data-label-ja="3つの例">Three examples</div>
+          <div class="karui-bursts">
+            <div class="karui-burst karui-step">
+              <div class="karui-burst-time" data-label-en="~10 PM" data-label-ja="22時頃">~10 PM</div>
+              <div class="karui-burst-bar"><span class="karui-burst-accepted" style="left: 0; width: 9.75%"></span><span class="karui-burst-refused" style="left: 17.75%; width: 81.25%"></span></div>
+              <div class="karui-burst-label"><span data-label-en="8 accepted" data-label-ja="8回成功">8 accepted</span><span class="is-refused" data-label-en="refused for ~5 h" data-label-ja="約5時間拒否">refused for ~5 h</span></div>
             </div>
-            <div class="karui-path karui-path--works karui-step">
-              <div class="karui-path-name" data-label-en="Through a Shortcut" data-label-ja="ショートカット経由">Through a Shortcut</div>
-              <div class="karui-path-number">78%</div>
-              <div class="karui-path-detail" data-label-en="answered: 1,285 of 1,651 while rate limited, over a month" data-label-ja="回答：レート制限中の1,651件中1,285件（1か月）">answered: 1,285 of 1,651 while rate limited, over a month</div>
+            <div class="karui-burst karui-step">
+              <div class="karui-burst-time" data-label-en="~3 PM" data-label-ja="15時頃">~3 PM</div>
+              <div class="karui-burst-bar"><span class="karui-burst-accepted" style="left: 0; width: 1.5%"></span><span class="karui-burst-refused" style="left: 4.75%; width: 29%"></span></div>
+              <div class="karui-burst-label"><span data-label-en="5 accepted" data-label-ja="5回成功">5 accepted</span><span class="is-refused" data-label-en="refused for ~2 h" data-label-ja="約2時間拒否">refused for ~2 h</span></div>
+            </div>
+            <div class="karui-burst karui-step">
+              <div class="karui-burst-time" data-label-en="~6 PM" data-label-ja="18時頃">~6 PM</div>
+              <div class="karui-burst-bar"><span class="karui-burst-accepted" style="left: 0; width: 9.5%"></span><span class="karui-burst-refused" style="left: 31.25%; width: 27.5%"></span></div>
+              <div class="karui-burst-label"><span data-label-en="8 accepted" data-label-ja="8回成功">8 accepted</span><span class="is-refused" data-label-en="refused for ~2 h" data-label-ja="約2時間拒否">refused for ~2 h</span></div>
             </div>
           </div>
-          <div class="karui-caveat karui-step" data-label-en="PCC has its own limit too: about 10 per 75 min" data-label-ja="PCCにも上限がある：75分で約10回">PCC has its own limit too: about 10 per 75 min</div>
+          <!-- From the whole of History, September 20 to October 21. -->
+          <div class="karui-facts">
+            <div class="karui-fact karui-step"><div class="karui-fact-number" data-label-en="~50%" data-label-ja="約50%">~50%</div><div class="karui-fact-caption" data-label-en="of ~3k requests in a month refused" data-label-ja="1か月約3,000回中の拒否">of ~3k requests in a month refused</div></div>
+            <div class="karui-fact karui-step"><div class="karui-fact-number" data-label-en="~6" data-label-ja="約6回">~6</div><div class="karui-fact-caption" data-label-en="accepted before a refusal" data-label-ja="拒否までの成功回数">accepted before a refusal</div></div>
+            <div class="karui-fact karui-step"><div class="karui-fact-number" data-label-en="16 h" data-label-ja="16時間">16 h</div><div class="karui-fact-caption" data-label-en="the longest run of refusals" data-label-ja="最長の連続拒否">the longest run of refusals</div></div>
+          </div>
+          <div class="karui-slide-subtitles" aria-hidden="true"><span data-label-en="Live subtitles in Japanese by Kotoba will appear here." data-label-ja="ここにKotobaによる日本語のライブ字幕が表示されます。">Live subtitles in Japanese by Kotoba will appear here.</span></div>
+        </article>
+      </div>
+
+      <div class="karui-slide-frame">
+        <article class="karui-slide" aria-label="Slide 4">
+          <div class="karui-slide-kicker karui-step" data-label-en="4/4 · Workaround" data-label-ja="4/4 · 回避策">4/4 · Workaround</div>
+          <h2 class="karui-slide-title karui-step" data-label-en="Use a Shortcut" data-label-ja="ショートカットを使う">Use a Shortcut</h2>
+          <ul class="karui-points">
+            <li class="karui-step" data-label-en="Ask your users to install your Shortcut." data-label-ja="ユーザーにショートカットをインストールしてもらう。">Ask your users to install your Shortcut.</li>
+            <li class="karui-step" data-label-en="You get a separate rate limit budget." data-label-ja="レート制限の枠が別にもらえる。">You get a separate rate limit budget.</li>
+          </ul>
           <div class="karui-slide-subtitles" aria-hidden="true"><span data-label-en="Live subtitles in Japanese by Kotoba will appear here." data-label-ja="ここにKotobaによる日本語のライブ字幕が表示されます。">Live subtitles in Japanese by Kotoba will appear here.</span></div>
         </article>
       </div>

@@ -31,16 +31,19 @@ const svgFontFamily = "Verdana, Geneva, sans-serif";
 
 const textBlocks = [
   { text: 'Justin Garcia', size: 116, weight: 'bold', pangoWeight: 'Bold', color: '#1a1f26', lineHeight: 1.1, spaceAfter: 36 },
-  { text: 'Software engineer, Apple platforms and real-time speech AI. Previously at Apple', size: 80, weight: 'normal', pangoWeight: '', color: '#1a1f26', lineHeight: 1.25, spaceAfter: 30 },
+  { text: 'Apple platforms & real-time speech AI product engineer. Previously at Apple', size: 80, weight: 'normal', pangoWeight: '', color: '#1a1f26', lineHeight: 1.25, spaceAfter: 30 },
   { text: 'Tokyo, Japan', size: 68, weight: 'normal', pangoWeight: '', color: '#6b7480', lineHeight: 1.25, spaceAfter: 0, pinBottom: true },
 ].map((block) => ({ ...block, size: Math.round(block.size * scale), spaceAfter: Math.round(block.spaceAfter * scale) }));
+
+// Both Pango markup and SVG treat text as XML, so `&` and friends need escaping.
+const escapeMarkup = (text) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
 const measureCache = new Map();
 async function measure(text, block) {
   const key = `${block.pangoWeight}|${block.size}|${text}`;
   if (!measureCache.has(key)) {
     const font = [fontFamily, block.pangoWeight, block.size].filter(Boolean).join(' ');
-    const { info } = await sharp({ text: { text, font, dpi: 72 } }).png().toBuffer({ resolveWithObject: true });
+    const { info } = await sharp({ text: { text: escapeMarkup(text), font, dpi: 72 } }).png().toBuffer({ resolveWithObject: true });
     measureCache.set(key, info.width);
   }
   return measureCache.get(key);
@@ -147,7 +150,7 @@ const headshotBorder = Buffer.from(`
 const textElements = lines
   .map(
     (line) =>
-      `<text x="${line.x}" y="${line.baseline}" font-family="${svgFontFamily}" font-weight="${line.block.weight}" font-size="${line.block.size}" fill="${line.block.color}">${line.text}</text>`,
+      `<text x="${line.x}" y="${line.baseline}" font-family="${svgFontFamily}" font-weight="${line.block.weight}" font-size="${line.block.size}" fill="${line.block.color}">${escapeMarkup(line.text)}</text>`,
   )
   .join('\n  ');
 

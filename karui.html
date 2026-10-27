@@ -105,9 +105,33 @@
     .karui-demo-dot:focus-visible { outline: 2px solid var(--karui-moss); outline-offset: 2px; }
     @media (prefers-reduced-motion: reduce) { .karui-demo-shot { transition: none; } }
 
+    /* Karui beside Focus and Apple Intelligence, for someone who already uses them:
+       a check for what each does, a dash for what it doesn't, a few words where it
+       does part of it. What both do comes first, so Focus's column starts full and
+       Karui's stays full. Karui's column is tinted. */
+    .karui-compare-table { width: 100%; margin-top: 7pt; border-collapse: collapse; font-size: 9pt; line-height: 1.45; }
+    .karui-compare-table th, .karui-compare-table td { padding: 5pt 6pt; border-top: 1px solid var(--karui-line); vertical-align: middle; }
+    .karui-compare-table thead > tr > * { padding-top: 0; padding-bottom: 4pt; border-top: 0; vertical-align: bottom; }
+    /* Karui's column only ever holds a check; Focus's holds the "Only…" notes, so it's wider. */
+    .karui-compare-table tbody th { width: 50%; padding-left: 0; text-align: left; font-weight: normal; }
+    .karui-compare-table .karui-compare-focus { width: 32%; text-align: center; }
+    .karui-compare-table .karui-compare-karui { width: 18%; text-align: center; }
+    .karui-compare-table thead .karui-compare-focus { color: var(--karui-muted); }
+    .karui-compare-table thead .karui-compare-karui { color: var(--karui-moss); }
+    .karui-compare-table td.karui-compare-karui { background: rgba(56, 95, 73, 0.07); }
+    /* Drawn, in the stroke of the demo's chevrons, so they're the same in either language. */
+    .karui-compare-yes, .karui-compare-no { display: inline-block; width: 18px; height: 18px; vertical-align: middle; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
+    .karui-compare-yes { color: var(--karui-moss); }
+    .karui-compare-no { color: rgba(26, 33, 30, 0.3); }
+    /* Japanese wraps between phrases where the browser can, not mid-word. */
+    .karui-compare-partial { display: block; color: var(--karui-muted); font-size: 8pt; line-height: 1.3; text-wrap: balance; word-break: auto-phrase; }
+
     @media (max-width: 560px) {
       .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
       .karui-hero-seal { width: 19px; height: 82px; margin-left: 10px; }
+      .karui-compare-table tbody th { width: 46%; }
+      .karui-compare-table .karui-compare-focus { width: 34%; }
+      .karui-compare-table .karui-compare-karui { width: 20%; }
     }
   </style>
 </head>
@@ -178,12 +202,81 @@
 
     <section class="karui-detail">
       <h2 data-label-en="Already using Apple’s Focus modes?" data-label-ja="Appleの集中モードを使っていますか？">Already using Apple’s Focus modes?</h2>
-      <p data-label-en="Karui builds on top of Focus modes. It improves spam filtering, lets your VIPs through from any app, not just Apple’s, and adds new features like Auto Reply while you’re driving." data-label-ja="Karuiは集中モードの上に重ねて使います。スパムのフィルタリングを改善し、Apple製以外のアプリからもVIPの通知を通し、運転中の自動返信などの新しい機能も加えます。">Karui builds on top of Focus modes. It improves spam filtering, lets your VIPs through from any app, not just Apple’s, and adds new features like Auto Reply while you’re driving.</p>
+      <p><span data-label-en="Karui builds on top of Focus modes. It improves spam filtering, lets your VIPs through from any app, not just Apple’s, and adds new features like Auto Reply while you’re driving. " data-label-ja="Karuiは集中モードの上に重ねて使います。スパムのフィルタリングを改善し、Apple製以外のアプリからもVIPの通知を通し、運転中の自動返信などの新しい機能も加えます。">Karui builds on top of Focus modes. It improves spam filtering, lets your VIPs through from any app, not just Apple’s, and adds new features like Auto Reply while you’re driving. </span><a href="#compare" data-label-en="How they compare ↓" data-label-ja="違いを比べる ↓">How they compare ↓</a></p>
     </section>
 
     <section class="karui-detail">
       <h2 data-label-en="On your Mac too" data-label-ja="Macでも">On your Mac too</h2>
       <p><span data-label-en="Karui on your Mac improves filtering and clears notifications on your iPhone you’ve already dealt with on your Mac. " data-label-ja="MacのKaruiはフィルタリングを改善し、Macで片付けた通知をiPhoneからも消します。">Karui on your Mac improves filtering and clears notifications on your iPhone you’ve already dealt with on your Mac. </span><a href="karui-mac.html" data-label-en="Karui for Mac →" data-label-ja="Mac版Karui →">Karui for Mac →</a></p>
+    </section>
+    <section class="karui-detail" id="compare">
+      <h2 data-label-en="How it compares" data-label-ja="比べてみると">How it compares</h2>
+      <table class="karui-compare-table">
+        <thead>
+          <tr>
+            <td></td>
+            <th scope="col" class="karui-compare-focus" data-label-en="Focus + Apple Intelligence" data-label-ja="集中モード＋Apple Intelligence">Focus + Apple Intelligence</th>
+            <th scope="col" class="karui-compare-karui">Karui</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row" data-label-en="Lets the apps and people you allow through" data-label-ja="許可したアプリと人の通知を通す">Lets the apps and people you allow through</th>
+            <td class="karui-compare-focus"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" data-label-en="Judges each notification by what it says" data-label-ja="通知ごとに内容で判断">Judges each notification by what it says</th>
+            <td class="karui-compare-focus"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" data-label-en="Summarizes notifications" data-label-ja="通知を要約">Summarizes notifications</th>
+            <td class="karui-compare-focus"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" data-label-en="Combines bursts of messages" data-label-ja="連続したメッセージをまとめる">Combines bursts of messages</th>
+            <td class="karui-compare-focus"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" data-label-en="Auto-replies to your VIPs" data-label-ja="VIPに自動返信">Auto-replies to your VIPs</th>
+            <td class="karui-compare-focus"><span class="karui-compare-partial" data-label-en="Only in Messages, while driving" data-label-ja="運転中の「メッセージ」のみ">Only in Messages, while driving</span></td>
+            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" data-label-en="Translates notifications" data-label-ja="通知を翻訳">Translates notifications</th>
+            <td class="karui-compare-focus"><span class="karui-compare-partial" data-label-en="Only in Messages" data-label-ja="「メッセージ」内のみ">Only in Messages</span></td>
+            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" data-label-en="Marks a conversation Important, even temporarily" data-label-ja="会話を重要に（期間限定も可）">Marks a conversation Important, even temporarily</th>
+            <td class="karui-compare-focus"><span class="karui-compare-partial" data-label-en="Only in Mail" data-label-ja="「メール」のみ">Only in Mail</span></td>
+            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" data-label-en="Learns when you correct it" data-label-ja="誤りを直すと学習">Learns when you correct it</th>
+            <td class="karui-compare-focus"><svg class="karui-compare-no" viewBox="0 0 24 24" role="img" aria-label="No" data-aria-label-en="No" data-aria-label-ja="なし"><path d="M8 12h8"/></svg></td>
+            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" data-label-en="Quiets a busy chat after its first alert" data-label-ja="にぎやかなチャットは最初の通知のあと静かに">Quiets a busy chat after its first alert</th>
+            <td class="karui-compare-focus"><svg class="karui-compare-no" viewBox="0 0 24 24" role="img" aria-label="No" data-aria-label-en="No" data-aria-label-ja="なし"><path d="M8 12h8"/></svg></td>
+            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" data-label-en="Keeps your iPhone quiet while you’re at your Mac" data-label-ja="Macを使っている間はiPhoneを静かに">Keeps your iPhone quiet while you’re at your Mac</th>
+            <td class="karui-compare-focus"><svg class="karui-compare-no" viewBox="0 0 24 24" role="img" aria-label="No" data-aria-label-en="No" data-aria-label-ja="なし"><path d="M8 12h8"/></svg></td>
+            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" data-label-en="Lets you read messages people unsend" data-label-ja="送信取り消しされたメッセージも読める">Lets you read messages people unsend</th>
+            <td class="karui-compare-focus"><svg class="karui-compare-no" viewBox="0 0 24 24" role="img" aria-label="No" data-aria-label-en="No" data-aria-label-ja="なし"><path d="M8 12h8"/></svg></td>
+            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+          </tr>
+        </tbody>
+      </table>
     </section>
     <section class="karui-detail">
       <h2 data-label-en="Privacy" data-label-ja="プライバシー">Privacy</h2>

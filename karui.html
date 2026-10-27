@@ -109,7 +109,7 @@
        a check for what each does, a dash for what it doesn't, a few words where it
        does part of it. What both do comes first, so Focus's column starts full and
        Karui's stays full. Karui's column is tinted. */
-    .karui-compare-table { width: 100%; margin-top: 7pt; border-collapse: collapse; font-size: 9pt; line-height: 1.45; }
+    .karui-compare-table { width: 100%; margin-top: 7pt; border-collapse: collapse; font-size: inherit; line-height: 1.45; }
     .karui-compare-table th, .karui-compare-table td { padding: 5pt 6pt; border-top: 1px solid var(--karui-line); vertical-align: middle; }
     .karui-compare-table thead > tr > * { padding-top: 0; padding-bottom: 4pt; border-top: 0; vertical-align: bottom; }
     /* Karui's column only ever holds a check; Focus's holds the "Only…" notes, so it's wider. */
@@ -124,7 +124,7 @@
     .karui-compare-yes { color: var(--karui-moss); }
     .karui-compare-no { color: rgba(26, 33, 30, 0.3); }
     /* Japanese wraps between phrases where the browser can, not mid-word. */
-    .karui-compare-partial { display: block; color: var(--karui-muted); font-size: 8pt; line-height: 1.3; text-wrap: balance; word-break: auto-phrase; }
+    .karui-compare-partial { display: block; color: var(--karui-muted); font-size: 9pt; line-height: 1.3; text-wrap: balance; word-break: auto-phrase; }
 
     @media (max-width: 560px) {
       .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }

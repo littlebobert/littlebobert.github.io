@@ -1,8 +1,33 @@
 {
-  "updatedAt": "2026-10-26T20:34:44.067Z",
+  "updatedAt": "2026-10-27T20:07:10.394Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2114872622798504360",
+      "text": "Siri AI、本日iOS 27.2で日本語に対応。今必要なメモを、@kotoba_tech のアプリから見つけてくれます。 https://t.co/SPCGizRvSt",
+      "createdAt": "2026-10-27T00:11:40.000Z",
+      "url": "https://x.com/_bobertdowney/status/2114872622798504360",
+      "urls": [
+        {
+          "url": "https://t.co/SPCGizRvSt",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2114872622798504360/photo/1",
+          "displayUrl": "pic.x.com/SPCGizRvSt",
+          "start": 63,
+          "end": 86
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2114872622798504360-0.png"
+        }
+      ]
+    },
     {
       "id": "2114801064805564669",
       "text": "I’ve gone full gaijin software engineer: I’ve created my own Japanese learning app 🤡 . This one lets me practice handwriting. I seem to remember words a bit better that way too. And it’s free, with no subscription or sign-up. https://t.co/np8BYUfLpu",
@@ -194,38 +219,6 @@
           "alt": "",
           "type": "photo",
           "image": "assets/generated/x/mine-post-2109406290565095523-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2109060021686534156",
-      "text": "hide memes like this with https://t.co/24shCxZG6m, with its fast local model https://t.co/Qzs0ufh6c9",
-      "createdAt": "2026-10-10T23:14:28.000Z",
-      "url": "https://x.com/_bobertdowney/status/2109060021686534156",
-      "urls": [
-        {
-          "url": "https://t.co/24shCxZG6m",
-          "expandedUrl": "https://shadan.jp",
-          "displayUrl": "shadan.jp",
-          "start": 26,
-          "end": 49
-        },
-        {
-          "url": "https://t.co/Qzs0ufh6c9",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2109060021686534156/photo/1",
-          "displayUrl": "pic.x.com/Qzs0ufh6c9",
-          "start": 77,
-          "end": 100
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2109060021686534156-0.png"
         }
       ]
     }

@@ -190,9 +190,12 @@ func loadStamp(_ path: String) -> Stamp {
     context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
     // The ink is red on transparent paper, so how much redder than green a pixel is,
     // premultiplied, says how much ink covers it; the gray at the paper's edges has none.
+    // Partial coverage is firmed up as if the stamp were pressed harder, like the
+    // seals from generate-karui-seal.swift, so pale flecks don't wash out the red.
     func coverage(_ x: Int, _ y: Int) -> UInt8 {
         let i = (y * width + x) * 4
-        return UInt8(max(0, min(255, (Int(pixels[i]) - Int(pixels[i + 1])) * 255 / 110)))
+        let amount = max(0, min(1, Double(Int(pixels[i]) - Int(pixels[i + 1])) / 110))
+        return UInt8(((1 - pow(1 - amount, 1.4)) * 255).rounded())
     }
     // The border runs the length of every row and column inside it, so a row or column
     // with ink across more than a tenth of it is inside; specks outside never are.

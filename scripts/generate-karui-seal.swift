@@ -12,9 +12,15 @@
 // outside it, and set on white, which the ink-in animation needs on every side of
 // the border. Each seal keeps its scan's proportions, so the script prints the
 // width each comes out at; the pages give the same sizes.
+//
+// The scanned ink is a light crimson, about 4.6:1 against white, so each seal is
+// deepened as if pressed harder: every pixel's ink density is multiplied by
+// `density`, which darkens solid ink to about 6:1 while white stays white and the
+// carving's edges and flecks keep their shape.
 import AppKit
 
 let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
+let density = 1.4
 
 struct Scan {
     let image: CGImage
@@ -68,6 +74,16 @@ func render(_ scan: Scan, pointHeight: CGFloat, scale: CGFloat, to path: String)
         width: CGFloat(scan.image.width) * scaleX,
         height: scanHeight * scaleY
     ))
+    // Optical density is -log(value), so multiplying it is raising each channel to
+    // that power. The image is opaque, so premultiplying doesn't matter.
+    let pixels = context.data!.bindMemory(to: UInt8.self, capacity: context.bytesPerRow * height)
+    let curve = (0...255).map { UInt8((pow(Double($0) / 255, density) * 255).rounded()) }
+    for y in 0..<height {
+        for x in 0..<width {
+            let i = y * context.bytesPerRow + x * 4
+            for channel in 0..<3 { pixels[i + channel] = curve[Int(pixels[i + channel])] }
+        }
+    }
     let outputURL = root.appendingPathComponent(path)
     let output = NSBitmapImageRep(cgImage: context.makeImage()!)
     try! output.representation(using: .png, properties: [:])!.write(to: outputURL)

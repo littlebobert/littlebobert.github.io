@@ -72,6 +72,8 @@
     /* Presenting: one slide at a time, as large as the screen allows, each .karui-step
        appearing on its own press. In the page, everything shows. */
     .karui-talk.is-presenting { position: fixed; inset: 0; z-index: 10; display: flex; align-items: center; justify-content: center; margin: 0; background: #fff; cursor: pointer; }
+    /* No page scrollbar beside the slides when presenting in the window. */
+    html:has(.karui-talk.is-presenting) { overflow: hidden; }
     .karui-talk.is-presenting .karui-slide-frame { display: none; width: min(100vw, 177.78vh); }
     .karui-talk.is-presenting .karui-slide-frame.is-current { display: block; }
     .karui-talk.is-presenting .karui-slide { border: 0; border-radius: 0; }
@@ -127,7 +129,7 @@
     <section class="karui-section">
       <p><span data-label-en="Four slides for a five-minute talk, from " data-label-ja="">Four slides for a five-minute talk, from </span><a href="karui.html">Karui</a><span data-label-en="’s Technical Notes " data-label-ja="の技術ノート">’s Technical Notes </span><a href="karui-technote-kn001.html">KN001</a><span data-label-en=" and " data-label-ja="と"> and </span><a href="karui-technote-kn002.html">KN002</a><span data-label-en="." data-label-ja="をもとにした、5分間のトークのための4枚のスライド。">.</span></p>
       <p class="karui-note-meta" data-label-en="iOS 27.0 · Measured on iPhone 17 Pro" data-label-ja="iOS 27.0 · iPhone 17 Proで計測">iOS 27.0 · Measured on iPhone 17 Pro</p>
-      <p><button class="karui-present" type="button" data-label-en="Present" data-label-ja="スライドショー">Present</button> <span class="karui-note-meta" data-label-en="Arrow keys, space, or a click to step through; Esc to stop." data-label-ja="矢印キー、スペース、クリックで進む。Escで終了。">Arrow keys, space, or a click to step through; Esc to stop.</span></p>
+      <p><button class="karui-present" type="button" data-label-en="Present" data-label-ja="スライドショー">Present</button><button class="karui-present" type="button" data-in-window data-label-en="Present in Window" data-label-ja="ウインドウ内で表示">Present in Window</button></p>
     </section>
 
     <section class="karui-talk" aria-label="Slides">
@@ -290,13 +292,14 @@
         render();
       }
 
-      function start() {
+      // In the window, without full screen, so a recorder like Loom can still show its camera.
+      function start(inWindow) {
         current = 0;
         shown = 0;
         talk.classList.add('is-starting', 'is-presenting');
         render();
         requestAnimationFrame(() => requestAnimationFrame(() => talk.classList.remove('is-starting')));
-        talk.requestFullscreen?.().catch(() => {});
+        if (!inWindow) talk.requestFullscreen?.().catch(() => {});
       }
 
       function stop() {
@@ -306,7 +309,9 @@
         if (document.fullscreenElement) document.exitFullscreen().catch(() => {});
       }
 
-      document.querySelector('.karui-present').addEventListener('click', start);
+      for (const button of document.querySelectorAll('.karui-present')) {
+        button.addEventListener('click', () => start(button.hasAttribute('data-in-window')));
+      }
       talk.addEventListener('click', (event) => {
         if (!talk.classList.contains('is-presenting')) return;
         next();

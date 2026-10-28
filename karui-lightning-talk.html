@@ -77,10 +77,6 @@
     .karui-talk.is-presenting .karui-slide-frame { display: none; width: min(100vw, 177.78vh); }
     .karui-talk.is-presenting .karui-slide-frame.is-current { display: block; }
     .karui-talk.is-presenting .karui-slide { border: 0; border-radius: 0; }
-    /* Where the live subtitles go, held for them while presenting. */
-    .karui-slide { position: relative; }
-    .karui-slide-subtitles { display: none; position: absolute; left: 4.6cqw; right: 4.6cqw; bottom: 0; height: 18%; align-items: center; justify-content: center; color: #999; font-size: 1.8cqw; text-align: center; }
-    .karui-talk.is-presenting .karui-slide-subtitles { display: flex; }
     .karui-talk.is-presenting .karui-step { opacity: 0; transition: opacity 0.3s ease; }
     .karui-talk.is-presenting .karui-step.is-shown { opacity: 1; }
     /* No fade while presenting starts, so the page's visible steps don't flash out. */
@@ -150,7 +146,6 @@
               <div class="karui-reason-detail" data-label-en="It’s Apple" data-label-ja="Appleだから">It’s Apple</div>
             </div>
           </div>
-          <div class="karui-slide-subtitles" aria-hidden="true"><span data-label-en="Live subtitles in Japanese by Kotoba will appear here." data-label-ja="ここにKotobaによる日本語のライブ字幕が表示されます。">Live subtitles in Japanese by Kotoba will appear here.</span></div>
         </article>
       </div>
 
@@ -163,7 +158,6 @@
             <div class="karui-about-tagline" data-label-en="Private, free, uses Apple Intelligence" data-label-ja="プライベート、無料、Apple Intelligenceを使用">Private, free, uses Apple Intelligence</div>
           </div>
           <div class="karui-about-need karui-step"><span data-label-en="Karui needs Apple Intelligence " data-label-ja="Karuiが通知を分類するには、">Karui needs Apple Intelligence </span><strong data-label-en="in the background" data-label-ja="バックグラウンドで">in the background</strong><span data-label-en=" to categorize notifications" data-label-ja="Apple Intelligenceが必要"> to categorize notifications</span></div>
-          <div class="karui-slide-subtitles" aria-hidden="true"><span data-label-en="Live subtitles in Japanese by Kotoba will appear here." data-label-ja="ここにKotobaによる日本語のライブ字幕が表示されます。">Live subtitles in Japanese by Kotoba will appear here.</span></div>
         </article>
       </div>
 
@@ -197,7 +191,6 @@
             <div class="karui-fact karui-step"><div class="karui-fact-number" data-label-en="~6" data-label-ja="約6回">~6</div><div class="karui-fact-caption" data-label-en="accepted before a refusal" data-label-ja="拒否までの成功回数">accepted before a refusal</div></div>
             <div class="karui-fact karui-step"><div class="karui-fact-number" data-label-en="16 h" data-label-ja="16時間">16 h</div><div class="karui-fact-caption" data-label-en="the longest run of refusals" data-label-ja="最長の連続拒否">the longest run of refusals</div></div>
           </div>
-          <div class="karui-slide-subtitles" aria-hidden="true"><span data-label-en="Live subtitles in Japanese by Kotoba will appear here." data-label-ja="ここにKotobaによる日本語のライブ字幕が表示されます。">Live subtitles in Japanese by Kotoba will appear here.</span></div>
         </article>
       </div>
 
@@ -209,7 +202,6 @@
             <li class="karui-step" data-label-en="Ask your users to install your Shortcut." data-label-ja="ユーザーにショートカットをインストールしてもらう。">Ask your users to install your Shortcut.</li>
             <li class="karui-step" data-label-en="You get a separate rate limit budget." data-label-ja="レート制限の枠が別にもらえる。">You get a separate rate limit budget.</li>
           </ul>
-          <div class="karui-slide-subtitles" aria-hidden="true"><span data-label-en="Live subtitles in Japanese by Kotoba will appear here." data-label-ja="ここにKotobaによる日本語のライブ字幕が表示されます。">Live subtitles in Japanese by Kotoba will appear here.</span></div>
         </article>
       </div>
     </section>

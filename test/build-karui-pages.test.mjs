@@ -109,8 +109,8 @@ test('builds the changelog page and links to it from every page', async () => {
   assert.equal(qrPage.match(/<div class="karui-qr-morph">/g).length, 2);
   assert.ok(qrPage.indexOf('karui-qr-seal-tagline-name.png') < qrPage.indexOf('karui-qr-seal-name.png'));
   assert.ok(qrPage.indexOf('karui-qr-seal-name.png') < qrPage.indexOf('karui-qr.png'));
-  assert.match(qrPage, /src="\/assets\/karui-qr-seal-tagline-name\.png\?v=3"/);
-  assert.match(qrPage, /src="\/assets\/karui-qr-seal-name\.png\?v=3"/);
+  assert.match(qrPage, /src="\/assets\/karui-qr-seal-tagline-name\.png\?v=4"/);
+  assert.match(qrPage, /src="\/assets\/karui-qr-seal-name\.png\?v=4"/);
   assert.match(qrPage, /src="\/assets\/karui-qr-seal\.png\?v=3"/);
   assert.doesNotMatch(qrPage, /karui-qr-hanko/);
   assert.match(pages[0], /class="karui-maker-seal" src="\/assets\/karui-seal\.png/);
@@ -180,7 +180,7 @@ test('builds Tech Specs and the Technical Notes, linked from every page', async 
   const talkPage = await readOutputFile('technotes/lightning-talk/index.html');
   assert.match(talkPage, /<h1[^>]*>Lightning Talk: Apple Intelligence in the Background<\/h1>/);
   assert.match(talkPage, /<link rel="canonical" href="https:\/\/karui\.jp\/technotes\/lightning-talk">/);
-  assert.equal([...talkPage.matchAll(/class="karui-slide"/g)].length, 2);
+  assert.equal([...talkPage.matchAll(/class="karui-slide"/g)].length, 4);
   // Projected, a link does nothing: the slides name their sources without linking them.
   const slidesStart = talkPage.indexOf('class="karui-talk"');
   assert.doesNotMatch(talkPage.slice(slidesStart, talkPage.indexOf('</section>', slidesStart)), /<a /);

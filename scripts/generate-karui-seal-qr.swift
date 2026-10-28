@@ -1,11 +1,13 @@
 // Generates the animated seals at karui.jp/#qr, where a seal's lettering, in a
 // narrow frame, turns into a QR code for karui.jp. There are two: 通知をかるく, the
-// App Store name's tagline, and ガルシア, like the footer seal.
+// App Store name's tagline, and ガルシア, the footer seal, both from the scans of
+// hand-carved stamps in scripts/karui-seal-scans.
 //   assets/karui-qr-seal.png       the plain red QR code in a square frame, where
 //                                  both end
 //   assets/karui-qr-seal-tagline-name.png, assets/karui-qr-seal-name.png
-//                                  each seal's red lettering alone, on transparent;
-//                                  the page draws the frame so it can widen
+//                                  each stamp, border and all, in the code's red on
+//                                  transparent; the page fades its own frame in over
+//                                  the stamp's border so it can widen
 //   assets/karui-qr-seal-tagline.json, assets/karui-qr-seal.json
 //                                  each data dot's start (on the lettering) and end
 //                                  (its QR module), extra dots that fill out the
@@ -18,12 +20,10 @@
 // doesn't read back as the URL, so a broken code never gets written.
 import AppKit
 import CoreImage
-import CoreText
 
 let url = "https://karui.jp/"
 let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingLastPathComponent()
 let ink = NSColor(srgbRed: 0.80, green: 0.13, blue: 0.10, alpha: 1)  // shuiro, vermilion
-let fontName = "ToppanBunkyuMidashiMinchoStdN-ExtraBold"
 let message = url.data(using: .utf8)!
 
 // The plain generator at one pixel per module gives the module grid; the rounded
@@ -171,53 +171,104 @@ func minimumDistancePairing(_ a: [CGPoint], _ b: [CGPoint]) -> [Int] {
 let rounding = { (value: CGFloat) in (Double(value) * 10).rounded() / 10 }
 let squareSide = canvas - frameInset * 2
 
-// One seal: its lettering in one column in a frame as tall as the code's square one
-// and `widthRatio` as wide, centered. The page widens that frame into the square.
-//   text           the lettering, top to bottom
-//   name           the lettering image, on transparent: the page draws the frame
+// A stamp from its scan, cropped to its border, as two masks in the scan's pixels,
+// top row first: all its ink, and its lettering alone, with the border erased.
+struct Stamp {
+    let ink: CGImage
+    let lettering: CGImage
+    var aspect: CGFloat { CGFloat(ink.width) / CGFloat(ink.height) }
+}
+
+func loadStamp(_ path: String) -> Stamp {
+    let image = NSImage(contentsOf: root.appendingPathComponent(path))!.cgImage(forProposedRect: nil, context: nil, hints: nil)!
+    let width = image.width, height = image.height
+    var pixels = [UInt8](repeating: 0, count: width * height * 4)
+    let context = CGContext(
+        data: &pixels, width: width, height: height, bitsPerComponent: 8, bytesPerRow: width * 4,
+        space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue
+    )!
+    context.draw(image, in: CGRect(x: 0, y: 0, width: width, height: height))
+    // The ink is red on transparent paper, so how much redder than green a pixel is,
+    // premultiplied, says how much ink covers it; the gray at the paper's edges has none.
+    func coverage(_ x: Int, _ y: Int) -> UInt8 {
+        let i = (y * width + x) * 4
+        return UInt8(max(0, min(255, (Int(pixels[i]) - Int(pixels[i + 1])) * 255 / 110)))
+    }
+    // The border runs the length of every row and column inside it, so a row or column
+    // with ink across more than a tenth of it is inside; specks outside never are.
+    let rows = (0..<height).filter { y in (0..<width).filter { coverage($0, y) > 128 }.count > width / 10 }
+    let columns = (0..<width).filter { x in (0..<height).filter { coverage(x, $0) > 128 }.count > height / 10 }
+    let (left, top, right, bottom) = (columns.first!, rows.first!, columns.last!, rows.last!)
+    // How thick the border is: the median run of ink in from each edge, over the middle
+    // of that edge, where the lettering doesn't reach it.
+    func median(_ runs: [Int]) -> Int { runs.sorted()[runs.count / 2] }
+    func run(from start: Int, step: Int, at: (Int) -> UInt8) -> Int {
+        var length = 0
+        while length < 200, at(start + length * step) > 128 { length += 1 }
+        return length
+    }
+    let middleRows = Array(stride(from: top + (bottom - top) / 5, to: bottom - (bottom - top) / 5, by: 2))
+    let middleColumns = Array(stride(from: left + (right - left) / 5, to: right - (right - left) / 5, by: 2))
+    // Erase a little past the median, since the carved border's inner edge wanders.
+    let band = { (runs: [Int]) in Int(Double(median(runs)) * 1.5) + 2 }
+    let leftBand = band(middleRows.map { y in run(from: left, step: 1) { coverage($0, y) } })
+    let rightBand = band(middleRows.map { y in run(from: right, step: -1) { coverage($0, y) } })
+    let topBand = band(middleColumns.map { x in run(from: top, step: 1) { coverage(x, $0) } })
+    let bottomBand = band(middleColumns.map { x in run(from: bottom, step: -1) { coverage(x, $0) } })
+
+    func mask(_ keep: (Int, Int) -> Bool) -> CGImage {
+        let maskWidth = right - left + 1, maskHeight = bottom - top + 1
+        var values = [UInt8](repeating: 0, count: maskWidth * maskHeight)
+        for y in 0..<maskHeight {
+            for x in 0..<maskWidth where keep(x, y) { values[y * maskWidth + x] = coverage(left + x, top + y) }
+        }
+        let context = CGContext(
+            data: &values, width: maskWidth, height: maskHeight, bitsPerComponent: 8, bytesPerRow: maskWidth,
+            space: CGColorSpaceCreateDeviceGray(), bitmapInfo: CGImageAlphaInfo.none.rawValue
+        )!
+        return context.makeImage()!
+    }
+    let maskWidth = right - left + 1, maskHeight = bottom - top + 1
+    return Stamp(
+        ink: mask { _, _ in true },
+        lettering: mask { x, y in x >= leftBand && x < maskWidth - rightBand && y >= topBand && y < maskHeight - bottomBand }
+    )
+}
+
+// One seal: its stamp in a frame as tall as the code's square one, and as wide as the
+// stamp's proportions make it, centered. The page widens that frame into the square.
+//   stamp          the scan, in scripts/karui-seal-scans
+//   name           the stamp image, on transparent: the page draws the frame
 //   json           the dots, markers and frames for the page
 //   sampleStep     how finely to sample the lettering for dot positions, in pixels
 //   extraSpacing   how far apart extra dots are, in modules; smaller traces more detail
 //   startScale     how big the dots start, relative to a module, so they trace thin
 //                  strokes and grow on the way
-func seal(text: String, widthRatio: CGFloat, name: String, json: String, sampleStep: Int, extraSpacing: CGFloat, startScale: Double) {
-    let nameFrame = CGRect(x: (canvas - squareSide * widthRatio) / 2, y: frameInset, width: squareSide * widthRatio, height: squareSide)
-    func drawName(_ context: CGContext, color: NSColor) {
-        let column = Array(text)
-        let inner = nameFrame.insetBy(dx: frameWidth, dy: frameWidth)
-        let usableWidth = inner.width * 0.72, usableHeight = inner.height * 0.80
-        let step = usableHeight / CGFloat(column.count)
-        let fontSize = min(step * 1.12, usableWidth * 0.95)
-        // Seal lettering is stretched to fill its column; katakana are narrow otherwise.
-        let stretch = min(usableWidth * 0.92 / fontSize, 1.6)
-        for (index, character) in column.enumerated() {
-            let y = canvas / 2 + usableHeight / 2 - step * (CGFloat(index) + 0.5)
-            let line = CTLineCreateWithAttributedString(NSAttributedString(
-                string: String(character),
-                attributes: [.font: NSFont(name: fontName, size: fontSize)!, .foregroundColor: color]
-            ))
-            let bounds = CTLineGetBoundsWithOptions(line, .useGlyphPathBounds)
-            context.saveGState()
-            context.translateBy(x: canvas / 2, y: y)
-            context.scaleBy(x: stretch, y: 1)
-            context.textPosition = CGPoint(x: -bounds.midX, y: -bounds.midY)
-            CTLineDraw(line, context)
-            context.restoreGState()
-        }
+func seal(stamp path: String, name: String, json: String, sampleStep: Int, extraSpacing: CGFloat, startScale: Double) {
+    let stamp = loadStamp(path)
+    let nameFrame = CGRect(x: (canvas - squareSide * stamp.aspect) / 2, y: frameInset, width: squareSide * stamp.aspect, height: squareSide)
+    // The page's frame is centered on nameFrame, so the stamp's border fills the same
+    // band when the page fades from one to the other.
+    let stampRect = nameFrame.insetBy(dx: -frameWidth / 2, dy: -frameWidth / 2)
+    func draw(_ mask: CGImage, in context: CGContext, color: NSColor) {
+        context.saveGState()
+        context.interpolationQuality = .high
+        context.clip(to: stampRect, mask: mask)
+        context.setFillColor(color.cgColor)
+        context.fill(stampRect)
+        context.restoreGState()
     }
-    write(render(framed: false) { drawName($0, color: ink) }, to: name)
+    write(render(framed: false) { draw(stamp.ink, in: $0, color: ink) }, to: name)
 
-    // Sample the lettering: rasterize it, then keep evenly spread points on the ink.
+    // Sample the lettering, without the border, which becomes the frame: rasterize it,
+    // then keep evenly spread points on the ink.
     let maskSize = Int(canvas)
     var mask = [UInt8](repeating: 0, count: maskSize * maskSize)
     let maskContext = CGContext(
         data: &mask, width: maskSize, height: maskSize, bitsPerComponent: 8, bytesPerRow: maskSize,
         space: CGColorSpaceCreateDeviceGray(), bitmapInfo: CGImageAlphaInfo.none.rawValue
     )!
-    NSGraphicsContext.saveGraphicsState()
-    NSGraphicsContext.current = NSGraphicsContext(cgContext: maskContext, flipped: false)
-    drawName(maskContext, color: .white)
-    NSGraphicsContext.restoreGraphicsState()
+    draw(stamp.lettering, in: maskContext, color: .white)
     var inkPoints: [CGPoint] = []
     for y in stride(from: 0, to: maskSize, by: sampleStep) {
         for x in stride(from: 0, to: maskSize, by: sampleStep) where mask[y * maskSize + x] > 128 {
@@ -242,7 +293,7 @@ func seal(text: String, widthRatio: CGFloat, name: String, json: String, sampleS
         if starts.count == ends.count { break }
         spacing *= 0.92
     }
-    guard starts.count == ends.count else { fatalError("Couldn't place \(ends.count) points on \(text)") }
+    guard starts.count == ends.count else { fatalError("Couldn't place \(ends.count) points on \(path)") }
     starts.sort { hilbert($0) < hilbert($1) }
     let match = minimumDistancePairing(starts, ends)
 
@@ -274,8 +325,10 @@ func seal(text: String, widthRatio: CGFloat, name: String, json: String, sampleS
     print("Wrote \(json) (\(dots.count) dots, \(extras.count) extras)")
 }
 
+// The carved strokes are thick, so the dots can start fairly large and spread out,
+// which keeps the number of extras the page animates down, about 1,000 and 500.
 // 通知をかるく, the App Store name's tagline, first. Its six characters are small, and the
-// kanji dense, so they're sampled finely with small dots to stay legible.
-seal(text: "通知をかるく", widthRatio: 0.3, name: "assets/karui-qr-seal-tagline-name.png", json: "assets/karui-qr-seal-tagline.json", sampleStep: 2, extraSpacing: 0.19, startScale: 0.3)
-// ガルシア, in the footer seal's 24 × 51-point shape.
-seal(text: "ガルシア", widthRatio: 24 / 51, name: "assets/karui-qr-seal-name.png", json: "assets/karui-qr-seal.json", sampleStep: 3, extraSpacing: 0.22, startScale: 0.4)
+// kanji dense, so they're sampled more finely with smaller dots to stay legible.
+seal(stamp: "scripts/karui-seal-scans/tsuchi-wo-karuku.png", name: "assets/karui-qr-seal-tagline-name.png", json: "assets/karui-qr-seal-tagline.json", sampleStep: 2, extraSpacing: 0.32, startScale: 0.5)
+// ガルシア, the footer seal.
+seal(stamp: "scripts/karui-seal-scans/garcia.png", name: "assets/karui-qr-seal-name.png", json: "assets/karui-qr-seal.json", sampleStep: 3, extraSpacing: 0.38, startScale: 0.6)

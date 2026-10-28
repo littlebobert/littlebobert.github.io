@@ -48,12 +48,12 @@
     <section class="karui-qr" id="qr" aria-label="QR code for karui.jp">
       <div class="karui-qr-slides">
         <div class="karui-qr-morph">
-          <img class="karui-qr-morph-name" src="assets/karui-qr-seal-tagline-name.png?v=3" alt="" width="648" height="648">
+          <img class="karui-qr-morph-name" src="assets/karui-qr-seal-tagline-name.png?v=4" alt="" width="648" height="648">
           <svg class="karui-qr-morph-dots" aria-hidden="true"></svg>
           <img class="karui-qr-morph-final" src="assets/karui-qr-seal.png?v=3" alt="QR code that opens https://karui.jp/, in seal red" width="648" height="648">
         </div>
         <div class="karui-qr-morph">
-          <img class="karui-qr-morph-name" src="assets/karui-qr-seal-name.png?v=3" alt="" width="648" height="648">
+          <img class="karui-qr-morph-name" src="assets/karui-qr-seal-name.png?v=4" alt="" width="648" height="648">
           <svg class="karui-qr-morph-dots" aria-hidden="true"></svg>
           <img class="karui-qr-morph-final" src="assets/karui-qr-seal.png?v=3" alt="QR code that opens https://karui.jp/, in seal red" width="648" height="648">
         </div>
@@ -105,11 +105,11 @@
     setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
   </script>
   <script>
-    // The seals: 通知をかるく first, then ガルシア a swipe away. Each is inked onto
-    // the page in a narrow frame like the footer seal, then its lettering dissolves
-    // into dots that curve into their places in the QR code while the frame widens
-    // into a square, and the real code image takes over, so what people scan is the
-    // tested image. Each plays once per visit, when it's swiped into view. Tap to
+    // The seals: 通知をかるく first, then ガルシア a swipe away. Each hand-carved stamp
+    // is inked onto the page, then its lettering dissolves into dots while a drawn
+    // frame takes over from the stamp's border, and the dots curve into their places
+    // in the QR code while the frame widens into a square. The real code image takes
+    // over, so what people scan is the tested image. Each plays once per visit, when it's swiped into view. Tap to
     // skip. Reduce Motion shows the finished codes at once.
     (() => {
       const view = document.getElementById('qr');
@@ -216,18 +216,13 @@
           skip();
           const stamped = stamp.delay + stamp.duration;
           const timing = (delay, duration, extra = {}) => ({ delay: stamped + delay, duration, fill: 'both', easing: 'linear', ...extra });
-          // The stamp inks in: the frame and lettering come up thin and faint and grow
-          // to their full weight, like a seal pressed onto paper. The frame's border
-          // animates directly; the lettering is an image, so an erode filter thins it,
-          // and its radius follows the frame's animation, so skipping stops both.
+          // The stamp inks in: its border and lettering come up thin and faint and grow
+          // to their full weight, like a seal pressed onto paper. It's an image, so an
+          // erode filter thins it, and the filter's radius follows the stamp's animation,
+          // so skipping stops both.
           const inkIn = { easing: 'cubic-bezier(0.2, 0.6, 0.3, 1)' };
-          const inking = frame.element.animate([
-            { borderWidth: `calc(${frame.border} * 0.25)`, opacity: 0 },
-            { opacity: 1, offset: 0.25 },
-            { borderWidth: frame.border, opacity: 1 },
-          ], { ...stamp, ...inkIn, fill: 'both' });
+          const inking = name.animate([{ opacity: 0 }, { opacity: 1, offset: 0.25 }, { opacity: 1 }], { ...stamp, ...inkIn, fill: 'both' });
           running.push(inking);
-          running.push(name.animate([{ opacity: 0 }, { opacity: 1, offset: 0.25 }, { opacity: 1 }], { ...stamp, ...inkIn, fill: 'both' }));
           name.style.filter = `url(#${erode.parentNode.id})`;
           const thinnest = stage.clientWidth * 0.009;
           const thin = () => {
@@ -248,6 +243,9 @@
           const small = data.startScale;
           // Filled forwards only, so until it starts the stamp decides the opacity.
           running.push(name.animate([{ opacity: 1 }, { opacity: 0 }], timing(T.hold + 90, T.dissolve, { fill: 'forwards' })));
+          // The drawn frame fades in over the stamp's border as the stamp fades, ready
+          // to widen. It sits on the border's band, so the edge doesn't jump.
+          running.push(frame.element.animate([{ opacity: 0 }, { opacity: 1 }], timing(T.hold + 90, T.dissolve)));
           const count = data.dots.length;
           dots.forEach(({ dot, dx, dy, order, fades }) => {
             // A quadratic curve bending off to the same side every time, so the dots

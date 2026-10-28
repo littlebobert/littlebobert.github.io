@@ -1,8 +1,33 @@
 {
-  "updatedAt": "2026-10-27T20:07:10.394Z",
+  "updatedAt": "2026-10-28T20:20:42.816Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2115446370178138448",
+      "text": "Apple Intelligence is an interesting alternative to the other AI models because it’s private by design and it’s free for both you and your users. I built Karui, an app for filtering out unwanted push notifications, and it’s powered by Apple Intelligence. here’s a short talk I https://t.co/hPduNp38sE",
+      "createdAt": "2026-10-28T14:11:32.000Z",
+      "url": "https://x.com/_bobertdowney/status/2115446370178138448",
+      "urls": [
+        {
+          "url": "https://t.co/hPduNp38sE",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2115446370178138448/video/1",
+          "displayUrl": "pic.x.com/hPduNp38sE",
+          "start": 277,
+          "end": 300
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2115446370178138448-0.png"
+        }
+      ]
+    },
     {
       "id": "2114872622798504360",
       "text": "Siri AI、本日iOS 27.2で日本語に対応。今必要なメモを、@kotoba_tech のアプリから見つけてくれます。 https://t.co/SPCGizRvSt",
@@ -196,31 +221,6 @@
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2109406290565095523",
-      "text": "アパートのパーティーのたこ焼き🤤 https://t.co/BGXjRG4eRh",
-      "createdAt": "2026-10-11T22:10:25.000Z",
-      "url": "https://x.com/_bobertdowney/status/2109406290565095523",
-      "urls": [
-        {
-          "url": "https://t.co/BGXjRG4eRh",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2109406290565095523/photo/1",
-          "displayUrl": "pic.x.com/BGXjRG4eRh",
-          "start": 17,
-          "end": 40
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2109406290565095523-0.png"
-        }
-      ]
     }
   ]
 }

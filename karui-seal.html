@@ -18,6 +18,8 @@
     .karui-hanko img { width: 98px; height: auto; margin-bottom: 4pt; }
     .karui-hanko-title { font-size: 14pt; font-weight: bold; }
     .karui-hanko-note { max-width: 28em; margin: 0; line-height: 1.65em; color: black; text-wrap: pretty; }
+    /* In Japanese the seal says it all; no note. */
+    .karui-hanko-note:empty { display: none; }
   </style>
 </head>
 <body class="sasu-site">
@@ -26,7 +28,7 @@
     <section class="karui-hanko">
       <img src="assets/karui-seal-large.png?v=5" alt="Name seal reading ガルシア (Garcia)" data-alt-en="Name seal reading ガルシア (Garcia)" data-alt-ja="「ガルシア」と入った名前の判子" width="98" height="204">
       <div class="karui-hanko-title" data-label-en="My hanko" data-label-ja="私の判子">My hanko</div>
-      <p class="karui-hanko-note" data-label-en="In Japan, people use a personal seal like this to sign important documents. This one reads ガ⁠ル⁠シ⁠ア, “Garcia” in katakana, the script Japanese uses for foreign words and names." data-label-ja="「ガルシア」と入った名前の判子です。">In Japan, people use a personal seal like this to sign important documents. This one reads ガ⁠ル⁠シ⁠ア, “Garcia” in katakana, the script Japanese uses for foreign words and names.</p>
+      <p class="karui-hanko-note" data-label-en="In Japan, people use a personal seal like this to sign important documents. This one reads ガ⁠ル⁠シ⁠ア, “Garcia” in katakana, the script Japanese uses for foreign words and names." data-label-ja="">In Japan, people use a personal seal like this to sign important documents. This one reads ガ⁠ル⁠シ⁠ア, “Garcia” in katakana, the script Japanese uses for foreign words and names.</p>
       <a class="karui-hanko-close" href="karui.html" data-label-en="Close" data-label-ja="閉じる">Close</a>
     </section>
   </main>

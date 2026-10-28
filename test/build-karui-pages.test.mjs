@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { access, readFile, readdir } from 'node:fs/promises';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
@@ -200,5 +200,15 @@ test('builds Tech Specs and the Technical Notes, linked from every page', async 
   }
   for (const page of [specsPage, technotesPage, kn001Page, kn002Page, kn003Page, kn004Page, kn005Page, talkPage]) {
     assert.doesNotMatch(page, /href="karui-[a-z0-9-]+\.html"/);
+  }
+});
+
+test('copies every asset a built page refers to', async () => {
+  const files = await readdir(outputDirectory, { recursive: true });
+  const pages = await Promise.all(files.filter((file) => file.endsWith('.html')).map(readOutputFile));
+  const assets = new Set(pages.flatMap((page) => [...page.matchAll(/"\/assets\/([^"?]+)/g)].map((match) => match[1])));
+  assert.ok(assets.has('karui-app-icon.png'));
+  for (const asset of assets) {
+    await access(path.join(outputDirectory, 'assets', asset));
   }
 });

@@ -45,6 +45,9 @@ const assetFiles = [
   // KN004's App Privacy Report screenshot.
   'karui-kn004-privacy-report.jpg',
   'karui-kn004-privacy-report-icloud.jpg',
+  // The lightning talk's recording, and its first frame until it plays.
+  'karui-lightning-talk.mp4',
+  'karui-lightning-talk-poster.jpg',
   // The demo's four screens, in each language.
   ...['en', 'ja'].flatMap((language) => [1, 2, 3, 4].map((screen) => `karui-demo-${language}-${screen}.jpg`)),
   // Karui for Mac's two screens in a MacBook Air, in each language.

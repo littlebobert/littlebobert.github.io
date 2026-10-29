@@ -26,6 +26,10 @@
     .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
     .karui-present { font: inherit; margin-right: 8pt; padding: 3pt 10pt; border: 1px solid #1a211e; border-radius: 6px; background: #fff; color: #000; cursor: pointer; }
 
+    /* The recording, cropped to the screen and captions, with room below them for the player controls; held narrower than the page. */
+    .karui-recording { margin: 8pt auto 10pt; max-width: 540px; }
+    .karui-recording video { display: block; width: 100%; height: auto; border-radius: 12px; background: #000; }
+    .karui-recording figcaption { margin-top: 4pt; color: #555; font-size: 0.9em; text-align: center; }
     /* The slides: 16:9 cards whose type scales with their width (cqw), so the same
        slide reads the same in the page and full screen. Their content stays in the top
        three quarters or so, leaving the bottom for live subtitles. */
@@ -124,7 +128,11 @@
     </section>
     <section class="karui-section">
       <p><span data-label-en="Four slides for a five-minute talk, from " data-label-ja="">Four slides for a five-minute talk, from </span><a href="karui.html">Karui</a><span data-label-en="’s Technical Notes " data-label-ja="の技術ノート">’s Technical Notes </span><a href="karui-technote-kn001.html">KN001</a><span data-label-en=" and " data-label-ja="と"> and </span><a href="karui-technote-kn002.html">KN002</a><span data-label-en="." data-label-ja="をもとにした、5分間のトークのための4枚のスライド。">.</span></p>
-      <p class="karui-note-meta" data-label-en="iOS 27.0 · Measured on iPhone 17 Pro" data-label-ja="iOS 27.0 · iPhone 17 Proで計測">iOS 27.0 · Measured on iPhone 17 Pro</p>
+      <!-- Shows its first frame until played; plays with sound. -->
+      <figure class="karui-recording">
+        <video src="assets/karui-lightning-talk.mp4?v=4" poster="assets/karui-lightning-talk-poster.jpg?v=4" controls playsinline preload="metadata" width="720" height="880" aria-labelledby="karui-recording-caption"></video>
+        <figcaption id="karui-recording-caption" data-label-en="The talk, recorded with captions · 3:20" data-label-ja="トークの録画（英語字幕付き）· 3:20">The talk, recorded with captions · 3:20</figcaption>
+      </figure>
       <p><button class="karui-present" type="button" data-label-en="Present" data-label-ja="スライドショー">Present</button><button class="karui-present" type="button" data-in-window data-label-en="Present in Window" data-label-ja="ウインドウ内で表示">Present in Window</button></p>
     </section>
 

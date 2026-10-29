@@ -17,6 +17,7 @@ const kn002Directory = path.join(technotesDirectory, 'kn002');
 const kn003Directory = path.join(technotesDirectory, 'kn003');
 const kn004Directory = path.join(technotesDirectory, 'kn004');
 const kn005Directory = path.join(technotesDirectory, 'kn005');
+const kn006Directory = path.join(technotesDirectory, 'kn006');
 const lightningTalkDirectory = path.join(technotesDirectory, 'lightning-talk');
 
 const siteFiles = [
@@ -71,6 +72,7 @@ await Promise.all([
   mkdir(kn003Directory, { recursive: true }),
   mkdir(kn004Directory, { recursive: true }),
   mkdir(kn005Directory, { recursive: true }),
+  mkdir(kn006Directory, { recursive: true }),
   mkdir(lightningTalkDirectory, { recursive: true }),
 ]);
 
@@ -119,6 +121,7 @@ function createDeployedPage(source) {
     .replaceAll('href="karui-technote-kn003.html"', 'href="/technotes/kn003"')
     .replaceAll('href="karui-technote-kn004.html"', 'href="/technotes/kn004"')
     .replaceAll('href="karui-technote-kn005.html"', 'href="/technotes/kn005"')
+    .replaceAll('href="karui-technote-kn006.html"', 'href="/technotes/kn006"')
     .replaceAll('href="karui-lightning-talk.html"', 'href="/technotes/lightning-talk"');
 }
 
@@ -169,6 +172,7 @@ const technicalPages = [
   ['karui-technote-kn003.html', ['technotes/kn003.html', 'technotes/kn003/index.html']],
   ['karui-technote-kn004.html', ['technotes/kn004.html', 'technotes/kn004/index.html']],
   ['karui-technote-kn005.html', ['technotes/kn005.html', 'technotes/kn005/index.html']],
+  ['karui-technote-kn006.html', ['technotes/kn006.html', 'technotes/kn006/index.html']],
   ['karui-lightning-talk.html', ['technotes/lightning-talk.html', 'technotes/lightning-talk/index.html']],
 ];
 await Promise.all(

@@ -138,7 +138,7 @@ test('publishes llms.txt with links to pages that exist', async () => {
   const llms = await readOutputFile('llms.txt');
   assert.match(llms, /^# Karui\n\n> /);
   const routes = [...llms.matchAll(/\]\(https:\/\/karui\.jp\/([a-z0-9/]*)\)/g)].map((match) => match[1]);
-  assert.deepEqual(routes, ['specs', 'technotes/kn001', 'technotes/kn002', 'technotes/kn003', 'technotes/kn004', 'technotes/kn005', '', 'changelog', 'support', 'privacy', 'technotes', 'acknowledgements']);
+  assert.deepEqual(routes, ['specs', 'technotes/kn001', 'technotes/kn002', 'technotes/kn003', 'technotes/kn004', 'technotes/kn005', 'technotes/kn006', '', 'changelog', 'support', 'privacy', 'technotes', 'acknowledgements']);
   for (const route of routes) {
     await readOutputFile(route ? `${route}/index.html` : 'index.html');
   }
@@ -153,6 +153,7 @@ test('builds Tech Specs and the Technical Notes, linked from every page', async 
   const kn003Page = await readOutputFile('technotes/kn003/index.html');
   const kn004Page = await readOutputFile('technotes/kn004/index.html');
   const kn005Page = await readOutputFile('technotes/kn005/index.html');
+  const kn006Page = await readOutputFile('technotes/kn006/index.html');
 
   assert.match(specsPage, /<h1[^>]*>Tech Specs<\/h1>/);
   assert.match(technotesPage, /<h1[^>]*>Technical Notes<\/h1>/);
@@ -174,6 +175,10 @@ test('builds Tech Specs and the Technical Notes, linked from every page', async 
   assert.match(technotesPage, /href="\/technotes\/kn005"/);
   assert.match(kn005Page, /<h1[^>]*>KN005: Translating Notifications Before a Two-Second Deadline<\/h1>/);
   assert.match(kn005Page, /<link rel="canonical" href="https:\/\/karui\.jp\/technotes\/kn005">/);
+  assert.match(technotesPage, /href="\/technotes\/kn006"/);
+  assert.match(kn006Page, /<h1[^>]*>KN006: Benchmarking Private Cloud Compute Against Claude Opus 5\.5<\/h1>/);
+  assert.match(kn006Page, /<link rel="canonical" href="https:\/\/karui\.jp\/technotes\/kn006">/);
+  assert.match(kn006Page, /href="\/technotes\/kn004"/);
   assert.match(specsPage, /href="\/technotes\/kn001"/);
 
   // The lightning talk lives beside the notes, linked from the notes' page only.
@@ -198,7 +203,7 @@ test('builds Tech Specs and the Technical Notes, linked from every page', async 
     assert.doesNotMatch(page, /href="\/technotes\/lightning-talk"/);
     assert.doesNotMatch(page, /href="karui-(specs|technotes|technote-kn001)\.html"/);
   }
-  for (const page of [specsPage, technotesPage, kn001Page, kn002Page, kn003Page, kn004Page, kn005Page, talkPage]) {
+  for (const page of [specsPage, technotesPage, kn001Page, kn002Page, kn003Page, kn004Page, kn005Page, kn006Page, talkPage]) {
     assert.doesNotMatch(page, /href="karui-[a-z0-9-]+\.html"/);
   }
 });

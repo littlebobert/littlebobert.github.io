@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>KN006: Benchmarking Private Cloud Compute Against Claude Opus 5.5</title>
+  <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=2">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .karui-icon { box-sizing: border-box; border: 1px solid #1a211e; border-radius: 12px; }
+    .karui-section { padding: 6pt 0 5pt; }
+    .karui-section p { margin: 0; }
+    .karui-section p + p, .karui-section ul + p, .karui-section ol + p { margin-top: 7pt; }
+    .karui-section ul, .karui-section ol { padding-left: 20pt; }
+    .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .karui-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    /* Keep two-word links like Tech Specs whole; the row wraps at the <wbr> after each separator. */
+    .footer-links a { white-space: nowrap; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+    .karui-section h2 { margin: 6pt 0 4pt; }
+    .karui-section h3 { margin: 8pt 0 3pt; }
+    .karui-section h2 + h3 { margin-top: 0; }
+    .karui-section li + li { margin-top: 3pt; }
+    .karui-section p + ul, .karui-section p + ol { margin-top: 6pt; }
+    .karui-section h2 + ul, .karui-section h2 + ol { margin-top: 0; }
+    .karui-section > ul:last-child, .karui-section > ol:last-child { margin-bottom: 0; }
+    .karui-code { background: #f4f3ee; border-radius: 8px; padding: 8pt 10pt; overflow-x: auto; font-size: calc(0.85em + 1pt); line-height: 1.4; }
+    .karui-table { border-collapse: collapse; width: 100%; margin: 4pt 0; }
+    .karui-table th, .karui-table td { border-bottom: 1px solid #e3e1da; padding: 5pt 6pt 5pt 0; text-align: left; vertical-align: top; }
+    .karui-table th { color: #555; font-weight: 600; }
+    .karui-table td:first-child, .karui-table th:first-child { white-space: nowrap; padding-right: 14pt; }
+    .karui-table-note { color: #555; font-size: 0.85em; margin-top: 3pt !important; }
+    .karui-quote { margin: 6pt 0 6pt 0; padding: 2pt 0 2pt 10pt; border-left: 3px solid #d8d6ce; color: #333; }
+    .karui-revision-date { font-weight: 600; }
+    .swift-string { color: #c41a16; }
+    .swift-keyword { color: #9b2393; font-weight: 600; }
+    .swift-type { color: #3900a0; }
+    .swift-function { color: #326d74; }
+    .karui-note-list li + li { margin-top: 8pt; }
+    .karui-note-meta { color: #555; font-size: 0.9em; }
+    .karui-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
+    .karui-breadcrumbs a { color: #666; }
+    .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
+    /* The maker line, as the home page has it: photo, name seal, and who made Karui. */
+    .karui-maker { display: flex; flex-direction: column-reverse; align-items: center; gap: 6pt; margin-top: 10pt !important; }
+    .karui-maker-marks { display: flex; align-items: center; justify-content: center; gap: 6pt; }
+    .karui-maker-photo { width: 40px; height: 51px; border-radius: 5px; object-fit: cover; flex: none; }
+    .karui-maker-text { text-align: center; line-height: 1.65em; color: black; }
+    /* A surname seal beside the photo, as tall and with the same corners. */
+    .karui-maker-seal { width: 24px; height: 51px; flex: none; }
+    /* The photo and seal are links; the pointer covers all of each, not just the drawn lines. */
+    .karui-seal-trigger, .karui-maker-photo-link { display: flex; flex: none; cursor: pointer; }
+    .karui-seal-trigger { margin-left: -2pt; }
+    .karui-seal-trigger img, .karui-maker-photo-link img { cursor: pointer; }
+    /* Charts: thin bars from one baseline, values at the tips, a legend for the two series. */
+    .karui-chart { margin: 6pt 0 10pt; }
+    .karui-chart-title { font-weight: 600; margin: 0 0 4pt !important; }
+    .karui-legend { display: flex; flex-wrap: wrap; gap: 2pt 12pt; color: #555; font-size: 0.85em; margin: 0 0 8pt !important; }
+    .karui-swatch { display: inline-block; width: 10px; height: 10px; border-radius: 2px; margin-right: 5px; vertical-align: -1px; }
+    .karui-pcc { background: #2a78d6; }
+    .karui-opus { background: #b85137; }
+    .karui-bars { display: grid; grid-template-columns: 13em 1fr; gap: 8pt 10pt; align-items: center; }
+    .karui-bars-label { font-size: 0.9em; line-height: 1.25; }
+    .karui-bars-pair { display: flex; flex-direction: column; gap: 3px; border-left: 1px solid #c9c7c0; }
+    .karui-bar-row { display: flex; align-items: center; gap: 6px; }
+    .karui-bar { height: 12px; border-radius: 0 4px 4px 0; flex: none; }
+    .karui-bar-value { color: #555; font-size: 0.8em; white-space: nowrap; font-variant-numeric: tabular-nums; }
+    .karui-tiles { display: flex; gap: 8pt; }
+    .karui-tile { flex: 1; display: flex; flex-direction: column; background: #f4f3ee; border-radius: 8px; padding: 7pt 10pt 8pt; }
+    .karui-tile p { margin: 0; }
+    /* A label that wraps on a phone pushes the number down; keep both numbers level. */
+    .karui-tile-label { flex: 1; color: #555; font-size: 0.85em; }
+    .karui-tile-value { font-size: 2.2em; font-weight: 600; line-height: 1.2; font-variant-numeric: tabular-nums; }
+    .karui-tile-detail { color: #555; font-size: 0.8em; }
+    @media (max-width: 560px) {
+      .karui-bars { grid-template-columns: 1fr; gap: 3pt; }
+      .karui-bars-pair { margin-bottom: 6pt; }
+    }
+  </style>
+  <link rel="canonical" href="https://karui.jp/technotes/kn006">
+  <meta name="description" content="An ongoing benchmark of how well Private Cloud Compute sorts notifications with Karui’s Second Opinion prompt, compared with Claude Opus 5.5 and graded by hand." data-label-en="An ongoing benchmark of how well Private Cloud Compute sorts notifications with Karui’s Second Opinion prompt, compared with Claude Opus 5.5 and graded by hand." data-label-ja="KaruiのセカンドオピニオンのプロンプトでPrivate Cloud Computeが通知をどれだけ正しく分類できるかを、Claude Opus 5.5と比べ、手作業の採点で測る継続中のベンチマーク。">
+  <meta property="og:title" content="KN006: Benchmarking Private Cloud Compute Against Claude Opus 5.5" data-label-en="KN006: Benchmarking Private Cloud Compute Against Claude Opus 5.5" data-label-ja="KN006：Private Cloud ComputeとClaude Opus 5.5のベンチマーク">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2026-10-29">
+  <meta property="og:url" content="https://karui.jp/technotes/kn006">
+  <meta property="og:site_name" content="Karui">
+  <meta property="og:description" content="An ongoing benchmark of how well Private Cloud Compute sorts notifications with Karui’s Second Opinion prompt, compared with Claude Opus 5.5 and graded by hand." data-label-en="An ongoing benchmark of how well Private Cloud Compute sorts notifications with Karui’s Second Opinion prompt, compared with Claude Opus 5.5 and graded by hand." data-label-ja="KaruiのセカンドオピニオンのプロンプトでPrivate Cloud Computeが通知をどれだけ正しく分類できるかを、Claude Opus 5.5と比べ、手作業の採点で測る継続中のベンチマーク。">
+  <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KN006: Benchmarking Private Cloud Compute Against Claude Opus 5.5" data-label-en="KN006: Benchmarking Private Cloud Compute Against Claude Opus 5.5" data-label-ja="KN006：Private Cloud ComputeとClaude Opus 5.5のベンチマーク">
+  <meta name="twitter:description" content="An ongoing benchmark of how well Private Cloud Compute sorts notifications with Karui’s Second Opinion prompt, compared with Claude Opus 5.5 and graded by hand." data-label-en="An ongoing benchmark of how well Private Cloud Compute sorts notifications with Karui’s Second Opinion prompt, compared with Claude Opus 5.5 and graded by hand." data-label-ja="KaruiのセカンドオピニオンのプロンプトでPrivate Cloud Computeが通知をどれだけ正しく分類できるかを、Claude Opus 5.5と比べ、手作業の採点で測る継続中のベンチマーク。">
+  <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta name="twitter:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <nav class="karui-breadcrumbs" aria-label="Breadcrumb"><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><a href="karui-technotes.html" data-label-en="Technical Notes" data-label-ja="技術ノート">Technical Notes</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="KN006" data-label-ja="KN006">KN006</span></nav>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="karui.html"><img class="sasu-icon karui-icon" src="assets/karui-icon.png?v=2" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン"></a>
+        <div><h1 data-label-en="KN006: Benchmarking Private Cloud Compute Against Claude Opus 5.5" data-label-ja="KN006：Private Cloud ComputeとClaude Opus 5.5のベンチマーク">KN006: Benchmarking Private Cloud Compute Against Claude Opus 5.5</h1><div class="sasu-subtitle">Karui</div></div>
+      </div>
+    </section>
+    <section class="karui-section">
+      <p data-label-en="An ongoing benchmark of how well Private Cloud Compute sorts my notifications with Karui’s Second Opinion prompt, compared with Claude Opus 5.5 on the same prompt and graded by hand." data-label-ja="KaruiのセカンドオピニオンのプロンプトでPrivate Cloud Computeが私の通知をどれだけ正しく分類できるかを、同じプロンプトでのClaude Opus 5.5と比べ、手作業の採点で測る継続中のベンチマーク。">An ongoing benchmark of how well Private Cloud Compute sorts my notifications with Karui’s Second Opinion prompt, compared with Claude Opus 5.5 on the same prompt and graded by hand.</p>
+      <p class="karui-note-meta" data-label-en="October 29, 2026 · In progress: 87 of 464 notifications so far" data-label-ja="2026年10月29日 · 継続中：これまでに464件中87件">October 29, 2026 · In progress: 87 of 464 notifications so far</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Results so far" data-label-ja="これまでの結果">Results so far</h2>
+      <figure class="karui-chart"><p class="karui-chart-title" data-label-en="Matched my grade, on 87 notifications" data-label-ja="私の採点との一致（87件）">Matched my grade, on 87 notifications</p><div class="karui-tiles"><div class="karui-tile"><p class="karui-tile-label"><span class="karui-swatch karui-pcc" aria-hidden="true"></span><span data-label-en="Private Cloud Compute" data-label-ja="Private Cloud Compute">Private Cloud Compute</span></p><p class="karui-tile-value">60%</p><p class="karui-tile-detail" data-label-en="52 of 87" data-label-ja="87件中52件">52 of 87</p></div><div class="karui-tile"><p class="karui-tile-label"><span class="karui-swatch karui-opus" aria-hidden="true"></span><span data-label-en="Claude Opus 5.5" data-label-ja="Claude Opus 5.5">Claude Opus 5.5</span></p><p class="karui-tile-value">70%</p><p class="karui-tile-detail" data-label-en="61 of 87" data-label-ja="87件中61件">61 of 87</p></div></div></figure>
+      <figure class="karui-chart"><p class="karui-chart-title" data-label-en="Mistakes · shorter is better" data-label-ja="誤り · 短いほど良い">Mistakes · shorter is better</p><p class="karui-legend"><span><span class="karui-swatch karui-pcc" aria-hidden="true"></span><span data-label-en="Private Cloud Compute" data-label-ja="Private Cloud Compute">Private Cloud Compute</span></span><span><span class="karui-swatch karui-opus" aria-hidden="true"></span><span data-label-en="Claude Opus 5.5" data-label-ja="Claude Opus 5.5">Claude Opus 5.5</span></span></p><div class="karui-bars"><div class="karui-bars-label" data-label-en="Missed an Important one (false negative)" data-label-ja="重要な通知の見逃し（偽陰性）">Missed an Important one (false negative)</div><div class="karui-bars-pair"><div class="karui-bar-row"><span class="karui-bar karui-pcc" style="width: calc((100% - 6.5em) * 0.417)"></span><span class="karui-bar-value" data-label-en="10 of 24" data-label-ja="24件中10件">10 of 24</span></div><div class="karui-bar-row"><span class="karui-bar karui-opus" style="width: calc((100% - 6.5em) * 0.542)"></span><span class="karui-bar-value" data-label-en="13 of 24" data-label-ja="24件中13件">13 of 24</span></div></div><div class="karui-bars-label" data-label-en="Called Important, but it wasn’t (false positive)" data-label-ja="重要と判断したが違った（偽陽性）">Called Important, but it wasn’t (false positive)</div><div class="karui-bars-pair"><div class="karui-bar-row"><span class="karui-bar karui-pcc" style="width: calc((100% - 6.5em) * 0.175)"></span><span class="karui-bar-value" data-label-en="11 of 63" data-label-ja="63件中11件">11 of 63</span></div><div class="karui-bar-row"><span class="karui-bar karui-opus" style="width: calc((100% - 6.5em) * 0.032)"></span><span class="karui-bar-value" data-label-en="2 of 63" data-label-ja="63件中2件">2 of 63</span></div></div><div class="karui-bars-label" data-label-en="Let Spam through (false negative)" data-label-ja="スパムの見逃し（偽陰性）">Let Spam through (false negative)</div><div class="karui-bars-pair"><div class="karui-bar-row"><span class="karui-bar karui-pcc" style="width: calc((100% - 6.5em) * 0.522)"></span><span class="karui-bar-value" data-label-en="12 of 23" data-label-ja="23件中12件">12 of 23</span></div><div class="karui-bar-row"><span class="karui-bar karui-opus" style="width: calc((100% - 6.5em) * 0.391)"></span><span class="karui-bar-value" data-label-en="9 of 23" data-label-ja="23件中9件">9 of 23</span></div></div><div class="karui-bars-label" data-label-en="Called Spam, but it wasn’t (false positive)" data-label-ja="スパムと判断したが違った（偽陽性）">Called Spam, but it wasn’t (false positive)</div><div class="karui-bars-pair"><div class="karui-bar-row"><span class="karui-bar karui-pcc" style="width: calc((100% - 6.5em) * 0.047)"></span><span class="karui-bar-value" data-label-en="3 of 64" data-label-ja="64件中3件">3 of 64</span></div><div class="karui-bar-row"><span class="karui-bar karui-opus" style="width: calc((100% - 6.5em) * 0.031)"></span><span class="karui-bar-value" data-label-en="2 of 64" data-label-ja="64件中2件">2 of 64</span></div></div></div></figure>
+      <p class="karui-table-note" data-label-en="Each bar is out of the notifications that could have that mistake: the 24 I graded Important, the 63 I didn’t, the 23 I graded Spam, and the 64 I didn’t." data-label-ja="各バーは、その誤りが起こりうる通知の数に対する割合です。私が重要と採点した24件、そうでない63件、スパムと採点した23件、そうでない64件です。">Each bar is out of the notifications that could have that mistake: the 24 I graded Important, the 63 I didn’t, the 23 I graded Spam, and the 64 I didn’t.</p>
+      <p data-label-en="Opus matched my grade more often, 70% to 60%. It was right on 16 notifications Private Cloud Compute missed, against 7 the other way: a lead, though not yet a significant one (exact McNemar p ≈ 0.09)." data-label-ja="Opusのほうが私の採点と一致することが多く、70%対60%でした。Private Cloud Computeが外してOpusが正解したのは16件、その逆は7件で、Opusがリードしていますが、まだ有意ではありません（正確なマクネマー検定でp ≈ 0.09）。">Opus matched my grade more often, 70% to 60%. It was right on 16 notifications Private Cloud Compute missed, against 7 the other way: a lead, though not yet a significant one (exact McNemar p ≈ 0.09).</p>
+      <p data-label-en="They make different mistakes. Private Cloud Compute raises false alarms, interrupting me for things like a delivery update. Opus rarely does, but missed more than half of my Important notifications. Missing an Important notification costs more than an extra interruption, so Private Cloud Compute’s lean has a case. Neither ever called a notification I graded Important Spam, the costliest mistake." data-label-ja="2つは誤り方が違います。Private Cloud Computeは誤報が多く、配達の通知などで私の手を止めました。Opusは誤報がほとんどない一方で、私が重要と採点した通知の半分以上を見逃しました。重要な通知を見逃すほうが余分に邪魔されるより代償が大きいため、Private Cloud Computeの傾向にも一理あります。どちらも、私が重要と採点した通知をスパムと判断したことは一度もありません。これが最も重い誤りです。">They make different mistakes. Private Cloud Compute raises false alarms, interrupting me for things like a delivery update. Opus rarely does, but missed more than half of my Important notifications. Missing an Important notification costs more than an extra interruption, so Private Cloud Compute’s lean has a case. Neither ever called a notification I graded Important Spam, the costliest mistake.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Where both missed" data-label-ja="両方が誤ったもの">Where both missed</h2>
+      <p data-label-en="Both called 8 notifications I graded Spam Neutral, mostly marketing I never asked for, and 7 I graded Important Neutral, such as an App Store review and payment receipts. On these the models agree with each other, not with me, so the prompt is the lever: counting unsolicited marketing as Spam, and account, payment, and review notices as Important, would likely help both more than switching models." data-label-ja="私がスパムと採点した8件を両方が普通と判断しました。ほとんどは頼んでいないマーケティングです。また、私が重要と採点した7件も両方が普通と判断しました。App Storeの審査や支払いの受領通知などです。これらについて2つのモデルは互いに一致し、私とは一致していないので、効くのはプロンプトです。頼んでいないマーケティングをスパムとし、アカウント、支払い、審査の通知を重要とすれば、モデルを切り替えるよりも両方の役に立ちそうです。">Both called 8 notifications I graded Spam Neutral, mostly marketing I never asked for, and 7 I graded Important Neutral, such as an App Store review and payment receipts. On these the models agree with each other, not with me, so the prompt is the lever: counting unsolicited marketing as Spam, and account, payment, and review notices as Important, would likely help both more than switching models.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="How it works" data-label-ja="測定方法">How it works</h2>
+      <ul><li data-label-en="I graded 501 notifications from my own History by hand, without seeing Karui’s answer, and left out 31 I graded Unclear and 6 Karui’s rules decided, since no prompt changes those. 464 remain." data-label-ja="自分の履歴から501件の通知を、Karuiの答えを見ずに手作業で採点しました。「判断できない」とした31件と、Karuiのルールで決まった6件はプロンプトを変えても結果が変わらないため除き、残りは464件です。">I graded 501 notifications from my own History by hand, without seeing Karui’s answer, and left out 31 I graded Unclear and 6 Karui’s rules decided, since no prompt changes those. 464 remain.</li><li data-label-en="They’re mostly hard cases: 485 of the 501 changed category after Karui first sorted them, usually because the on-device model was rate limited and a Second Opinion sorted them again. Expect lower accuracy than on a typical day." data-label-ja="その多くは難しいケースです。501件中485件は、Karuiが最初に分類したあとにカテゴリが変わりました。たいていはオンデバイスモデルがレート制限を受け、セカンドオピニオンが分類し直したものです。ふだんの通知より正解率は低めに出ます。">They’re mostly hard cases: 485 of the 501 changed category after Karui first sorted them, usually because the on-device model was rate limited and a Second Opinion sorted them again. Expect lower accuracy than on a typical day.</li><li data-label-en="Each model answers each notification once, with Karui’s Second Opinion prompt as shipped and my sorting settings: Private Cloud Compute through the “Karui Second Opinion” Shortcut on a Mac, Opus through the Claude API at medium effort." data-label-ja="各モデルは各通知に1回ずつ、出荷版のKaruiのセカンドオピニオンのプロンプトと私の分類設定で答えます。Private Cloud ComputeはMac上の「Karui Second Opinion」ショートカット経由、OpusはClaude API経由で、effortはmediumです。">Each model answers each notification once, with Karui’s Second Opinion prompt as shipped and my sorting settings: Private Cloud Compute through the “Karui Second Opinion” Shortcut on a Mac, Opus through the Claude API at medium effort.</li><li data-label-en="Apple limits Private Cloud Compute to about 90 answers a sitting, so this fills in over days; so far 91 of 464. This note will be updated." data-label-ja="AppleはPrivate Cloud Computeの回答を1回あたり約90件に制限しているため、数日かけて集めます。これまでに464件中91件です。本ノートは随時更新します。">Apple limits Private Cloud Compute to about 90 answers a sitting, so this fills in over days; so far 91 of 464. This note will be updated.</li></ul>
+      <p><span data-label-en="For this test I sent my own notifications to Anthropic. Karui itself never does: it uses only Apple’s on-device model and, with Second Opinion on, Private Cloud Compute (" data-label-ja="このテストのために、私は自分の通知をAnthropicに送りました。Karui自体がそうすることはありません。KaruiはAppleのオンデバイスモデルと、セカンドオピニオンがオンのときはPrivate Cloud Computeだけを使います（">For this test I sent my own notifications to Anthropic. Karui itself never does: it uses only Apple’s on-device model and, with Second Opinion on, Private Cloud Compute (</span><a href="karui-technote-kn004.html" data-label-en="KN004" data-label-ja="KN004">KN004</a><span data-label-en="). The tool, karui-eval, is in " data-label-ja="）。ツールのkarui-evalは">). The tool, karui-eval, is in </span><a href="https://github.com/littlebobert/karui-mac/tree/main/Eval" data-label-en="Karui for Mac’s source" data-label-ja="Karui for Macのソースコード">Karui for Mac’s source</a><span data-label-en="." data-label-ja="にあります。">.</span></p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Caveats and next" data-label-ja="注意点と今後">Caveats and next</h2>
+      <ul><li data-label-en="One grader, me, and 87 notifications so far: each percentage could be about 10 points off either way." data-label-ja="採点者は私1人で、これまでの件数は87件です。各割合は前後10ポイントほどずれる可能性があります。">One grader, me, and 87 notifications so far: each percentage could be about 10 points off either way.</li><li data-label-en="One answer per notification, so this doesn’t show how often an answer changes between runs." data-label-ja="各通知への回答は1回なので、実行ごとに答えがどれくらい変わるかは分かりません。">One answer per notification, so this doesn’t show how often an answer changes between runs.</li><li data-label-en="Apple can change Private Cloud Compute’s model and limits without notice." data-label-ja="AppleはPrivate Cloud Computeのモデルと制限を予告なく変えることがあります。">Apple can change Private Cloud Compute’s model and limits without notice.</li><li data-label-en="Next: extend both to all 464, and try a prompt aimed at the 19 both missed, first on Opus, then on Private Cloud Compute." data-label-ja="今後：両方を464件すべてに広げ、両方が誤った19件を狙ったプロンプトを、まずOpusで、次にPrivate Cloud Computeで試します。">Next: extend both to all 464, and try a prompt aimed at the 19 both missed, first on Opus, then on Private Cloud Compute.</li></ul>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Revision History" data-label-ja="改訂履歴">Revision History</h2>
+      <ul><li><span class="karui-revision-date" data-label-en="2026-10-29" data-label-ja="2026-10-29">2026-10-29</span><span data-label-en=" First published, with 87 of 464 notifications." data-label-ja=" 初版公開。464件中87件の結果。"> First published, with 87 of 464 notifications.</span></li></ul>
+    </section>
+    <section class="karui-section">
+      <p><a href="karui-technotes.html" data-label-en="← All Technical Notes" data-label-ja="← 技術ノート一覧">← All Technical Notes</a></p>
+    </section>
+    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p class="karui-maker"><span class="karui-maker-marks"><a href="https://onemorething.tokyo" class="karui-maker-photo-link" aria-label="Justin Garcia’s website"><img class="karui-maker-photo" src="assets/karui-developer.jpg?v=3" alt="" width="40" height="51"></a><a href="karui-seal.html" class="karui-seal-trigger" aria-label="About the name seal"><img class="karui-maker-seal" src="assets/karui-seal.png?v=10" alt="" width="24" height="51"></a></span><span class="karui-maker-text"><span data-label-en="Designed by " data-label-ja="東京の個人開発者 ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作"> in Tokyo</span></span></p></footer>
+  </main>
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('karui-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
+  </script>
+</body>
+</html>

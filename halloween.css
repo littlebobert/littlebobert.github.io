@@ -439,109 +439,15 @@ body.home-page .sad-mac-screen .sad-mac-code * {
   margin-top: 2px;
 }
 
-/* Balloon Help, but ghosts. See setUpBalloonHelp() in halloween.js. */
-.balloon-help-toggle {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 6px;
-  font-size: 14px;
-  line-height: 1;
-  cursor: url('assets/halloween-cursor.png') 5 0, pointer;
-  cursor: -webkit-image-set(url('assets/halloween-cursor.png') 1x, url('assets/halloween-cursor@2x.png') 2x) 5 0, pointer;
-}
-
-html[lang="ja"] .balloon-help-toggle {
-  font-size: 12px;
-  font-weight: bold;
-}
-
-/* A classic checkbox: a square that gets an X */
-.balloon-help-toggle input {
-  appearance: none;
-  -webkit-appearance: none;
-  flex: none;
-  width: 12px;
-  height: 12px;
-  margin: 0;
-  border: 1px solid #000;
-  border-radius: 0;
-  background: #fff;
-  cursor: inherit;
-}
-
-.balloon-help-toggle input:checked {
-  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' shape-rendering='crispEdges'%3E%3Cpath d='M0 0l10 10M10 0L0 10' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat;
-}
-
-.balloon-help-toggle input:focus-visible {
-  outline: 2px solid var(--classic-accent, #000);
-  outline-offset: 1px;
-}
-
-/* Balloons follow the mouse, so there's nothing to turn on without one */
-@media (hover: none) {
-  .balloon-help-toggle {
-    display: none;
-  }
-}
-
-.ghost-balloon {
-  position: fixed;
-  z-index: 100000;
+/* Balloon Help (index.js) shows ghosts during Halloween. The shape is ghostSvg() in halloween.js. */
+.help-balloon.is-ghost {
   min-width: 96px;
   max-width: 150px;
   padding: 0 12px 16px;
-  color: #000;
   text-align: center;
-  font-size: 16px;
-  line-height: 1.05;
-  pointer-events: none;
   animation:
-    ghost-balloon-appear 0.15s ease-out,
+    help-balloon-appear 0.15s ease-out,
     ghost-balloon-float 1.8s ease-in-out 0.15s infinite alternate;
-}
-
-.ghost-balloon[hidden] {
-  display: none;
-}
-
-html[lang="ja"] .ghost-balloon {
-  font-size: 12px;
-  font-weight: bold;
-  line-height: 1.35;
-  word-break: auto-phrase;
-}
-
-.ghost-balloon-text {
-  position: relative;
-  display: block;
-  white-space: pre-line;
-}
-
-.ghost-balloon-shape {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  overflow: visible;
-  filter: drop-shadow(2px 2px 0 #000);
-}
-
-.ghost-balloon-outline {
-  fill: none;
-  stroke: #000;
-  stroke-width: 3;
-  stroke-linejoin: round;
-}
-
-.ghost-balloon-fill {
-  fill: #fff;
-}
-
-/* Holding Option: a Blue Meanie */
-.ghost-balloon.is-meanie .ghost-balloon-fill {
-  fill: #a8c8ff;
 }
 
 .ghost-balloon-eyes,
@@ -555,10 +461,6 @@ html[lang="ja"] .ghost-balloon {
   animation: ghost-balloon-blink 4s step-end infinite;
 }
 
-@keyframes ghost-balloon-appear {
-  from { opacity: 0; }
-}
-
 @keyframes ghost-balloon-float {
   to { transform: translateY(-3px); }
 }
@@ -569,7 +471,7 @@ html[lang="ja"] .ghost-balloon {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .ghost-balloon,
+  .help-balloon.is-ghost,
   .ghost-balloon-eyes {
     animation: none;
   }

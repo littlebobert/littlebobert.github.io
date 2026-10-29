@@ -775,238 +775,97 @@
     addDeskAccessory(widget);
   }
 
-  // System 7 Balloon Help, except the balloons are ghosts. On by default, with a checkbox in Settings.
-  // Mouse only, since a balloon shows for whatever the pointer rests on, and only for things
-  // whose labels don't explain themselves, plus a few the ghosts just have jokes about.
+  // Balloon Help (index.js) shows ghosts during Halloween. These go ahead of index.js's own list,
+  // so they win when both explain the same thing, and they cover the desk accessories above too.
   function setUpBalloonHelp() {
-    const CITIES = { Tokyo: '東京', Tampa: 'タンパ' };
-    const city = (target) => target.closest('.clock-widget').querySelector('.clock-title').textContent.trim();
-    // [selector, English, Japanese]. Text can be a function of the element. The innermost match wins,
-    // and among selectors matching the same element, the first one listed.
-    const HELP = [
-      ['.desk-accessory .close-box', 'Close box. To put this desk accessory to rest, click here.', 'クローズボックス。このデスクアクセサリを眠らせるには、ここをクリックします。'],
-      ['.clock-widget .close-box', 'Close box. This one doesn’t work. Filed as FB666. Status: Investigating.', 'クローズボックス。でも効きません。FB666として報告済み。ステータス：調査中。'],
-      ['button.close-box', 'Close box. To lay this window to rest, click here.', 'クローズボックス。このウインドウを葬るには、ここをクリックします。'],
-      ['.title-bar, .clock-title-bar', 'Title bar. Double-click to roll this window up like a shroud. Double-click again to raise it from the dead.', 'タイトルバー。ダブルクリックすると、ウインドウが屍衣のように巻き上がります。もう一度ダブルクリックで蘇ります。'],
-      ['#stack-counter', 'Which card of this stack you’re on. HyperCard died in 2004. This stack never got the memo.', 'このスタックの何枚目のカードか。HyperCardは2004年に亡くなりましたが、このスタックはまだ知りません。'],
-      ['.made-in-japan-badge', 'Made in Japan. Designed by Apple in California. Haunted by me in Tokyo.', '日本製。カリフォルニアのAppleがデザインし、東京のおばけが取り憑いています。'],
-      ['.weather-attribution', 'Weather from Open-Meteo. Tonight: scattered spirits, with a chance of kernel panic.', '天気は Open-Meteo より。今夜の予報は、ところにより霊、一時カーネルパニック。'],
-      ['.stack-index-shortcut[data-stack-jump="0"]', 'Goes to the Index card, which lists every card in this stack.', '目次カードへ。このスタックのすべてのカードが並んでいます。'],
-      ['#qr-code-button', 'Shows a QR code for this page, so it can follow you to your phone.', 'このページのQRコードを表示します。あなたのスマホまでついていきます。'],
-      ['#recent-updates-button', 'Shows or hides my recent posts.', '最近の投稿を表示したり隠したりします。'],
-      ['.stack-card-index h2', 'Pick a card. Any card. An AI would pick all of them and give you a summary.', 'カードを選んで。AIなら全部選んで要約するところです。'],
-      ['.stack-visitor-counter', 'How many souls have visited this page. Unlike your iCloud storage, there’s always room for one more.', 'このページを訪れた魂の数。iCloudストレージと違って、あと一人分の空きはいつでもあります。'],
-      ['[data-feature-window="recommendations-window"]', 'Opens a window where you can tell me your app ideas, Tokyo spots, and more.', 'アプリのアイデアや東京のおすすめなどを聞かせてもらうウインドウを開きます。'],
-      ['[data-feature-window="mud-window"]', 'Opens a tiny text adventure set in Tokyo.', '東京が舞台の小さなテキストアドベンチャーを開きます。'],
-      ['[data-feature-window="puzzle-window"]', 'Opens a sliding puzzle. Something waits for whoever solves it.', 'スライドパズルを開きます。解いた人を何かが待っています。'],
-      ['#map-zoom-out', 'Zooms the map out.', '地図を縮小します。'],
-      ['#map-zoom-in', 'Zooms the map in.', '地図を拡大します。'],
-      ['.clock-row .clock-content', (target) => `The time and weather in ${city(target)} right now.`, (target) => `${CITIES[city(target)] || city(target)}の今の時刻と天気。`],
-      ['[data-language-value="en"]', 'Shows this page in English.', 'このページを英語で表示します。'],
-      ['[data-language-value="ja"]', 'Shows this page in Japanese.', 'このページを日本語で表示します。'],
-      ['[data-clock-mode-value="analog"]', 'Shows the clocks with hands.', '時計を針で表示します。'],
-      ['[data-clock-mode-value="digital"]', 'Shows the clocks as numbers.', '時計を数字で表示します。'],
-      ['[data-weather-unit-value="metric"]', 'Shows temperatures in °C.', '気温を摂氏（°C）で表示します。'],
-      ['[data-weather-unit-value="imperial"]', 'Shows temperatures in °F.', '気温を華氏（°F）で表示します。'],
-      ['.balloon-help-toggle', 'Balloon Help: Apple’s AI assistant, 1991 edition. While this is checked, ghosts explain whatever you point at. Real Macs hid things behind the Option key.', 'バルーンヘルプ：1991年版のAppleのAIアシスタント。チェックしている間、指したものをおばけが説明します。本物のMacは、Optionキーの奥に何かを隠していました。'],
-      ['.key-caps-content', 'Key Caps. Shows what you type. Something else types here too. It isn’t autocorrect. Probably. If it bothers you, type BOO.', 'キー配列。入力した文字が表示されます。ほかの何かも打ち込んできます。自動修正ではありません。たぶん。気になったら BOO と打ってみて。'],
-      ['.after-dark-module', 'The screensaver. Leave this Mac alone for 45 seconds and pumpkins and bats fly by. Screens stopped burning in years ago, but they have nowhere else to go.', 'スクリーンセーバー。このMacを45秒放っておくと、カボチャとコウモリが飛んできます。今どきの画面は焼き付きませんが、彼らには他に行くところがありません。'],
-      ['.after-dark-setting:has([data-option="speed"])', 'How fast they fly.', '飛ぶ速さ。'],
-      ['.after-dark-setting:has([data-option="density"])', 'How many fly at once.', '一度に飛ぶ数。'],
-      ['.after-dark-sleep', 'Starts the screensaver now. So does moving the pointer into the bottom-left corner of the screen.', '今すぐスクリーンセーバーを始めます。ポインタを画面の左下隅に動かしても始まります。'],
-    ];
+    window.halloweenBalloonHelp = {
+      help: [
+        ['.desk-accessory .close-box', 'Close box. To put this desk accessory to rest, click here.', 'クローズボックス。このデスクアクセサリを眠らせるには、ここをクリックします。'],
+        ['.clock-widget .close-box', 'Close box. This one doesn’t work. Filed as FB666. Status: Investigating.', 'クローズボックス。でも効きません。FB666として報告済み。ステータス：調査中。'],
+        ['button.close-box', 'Close box. To lay this window to rest, click here.', 'クローズボックス。このウインドウを葬るには、ここをクリックします。'],
+        ['.title-bar, .clock-title-bar', 'Title bar. Double-click to roll this window up like a shroud. Double-click again to raise it from the dead.', 'タイトルバー。ダブルクリックすると、ウインドウが屍衣のように巻き上がります。もう一度ダブルクリックで蘇ります。'],
+        ['.made-in-japan-badge', 'Made in Japan. Designed by Apple in California. Haunted by me in Tokyo.', '日本製。カリフォルニアのAppleがデザインし、東京のおばけが取り憑いています。'],
+        ['.weather-attribution', 'Weather from Open-Meteo. Tonight: scattered spirits, with a chance of kernel panic.', '天気は Open-Meteo より。今夜の予報は、ところにより霊、一時カーネルパニック。'],
+        ['.stack-visitor-counter', 'How many souls have visited this page. Unlike your iCloud storage, there’s always room for one more.', 'このページを訪れた魂の数。iCloudストレージと違って、あと一人分の空きはいつでもあります。'],
+        ['.balloon-help-toggle', 'Balloon Help: Apple’s AI assistant, 1991 edition. While this is checked, ghosts explain whatever you point at. Real Macs hid things behind the Option key.', 'バルーンヘルプ：1991年版のAppleのAIアシスタント。チェックしている間、指したものをおばけが説明します。本物のMacは、Optionキーの奥に何かを隠していました。'],
+        ['.key-caps-content', 'Key Caps. Shows what you type. Something else types here too. It isn’t autocorrect. Probably. If it bothers you, type BOO.', 'キー配列。入力した文字が表示されます。ほかの何かも打ち込んできます。自動修正ではありません。たぶん。気になったら BOO と打ってみて。'],
+        ['.after-dark-module', 'The screensaver. Leave this Mac alone for 45 seconds and pumpkins and bats fly by. Screens stopped burning in years ago, but they have nowhere else to go.', 'スクリーンセーバー。このMacを45秒放っておくと、カボチャとコウモリが飛んできます。今どきの画面は焼き付きませんが、彼らには他に行くところがありません。'],
+        ['.after-dark-setting:has([data-option="speed"])', 'How fast they fly.', '飛ぶ速さ。'],
+        ['.after-dark-setting:has([data-option="density"])', 'How many fly at once.', '一度に飛ぶ数。'],
+        ['.after-dark-sleep', 'Starts the screensaver now. So does moving the pointer into the bottom-left corner of the screen.', '今すぐスクリーンセーバーを始めます。ポインタを画面の左下隅に動かしても始まります。'],
+      ],
+      // Holding Option turns the ghost into a (blue) Blue Meanie.
+      prisoner: [
+        'Help! Help! We’re being held prisoner in a system software factory! (Still.)\n—Ghostwritten for the Blue Meanies',
+        '助けて！助けて！システムソフトウェア工場に閉じ込められています！（今も）\n—ブルー・ミーニーズのゴーストライターより',
+      ],
+      shape: {
+        // The head is a half circle as wide as the ghost, so the face and text start lower on wider
+        // ghosts. Short text gets a longer body, so there's always some ghost below the head.
+        fit(balloon) {
+          const width = balloon.offsetWidth;
+          const eyeY = Math.max(16, Math.round(width * 0.21));
+          balloon.style.paddingTop = `${eyeY + 20}px`;
+          const shortBy = width / 2 + 24 - balloon.offsetHeight;
+          if (shortBy > 0) balloon.style.paddingBottom = `${16 + shortBy}px`;
+          return eyeY;
+        },
+        svg: ghostSvg,
+      },
+    };
+  }
 
-    // Hold Option, the classic Mac way into hidden things, and every ghost turns blue and says this,
-    // after System 7's hidden "being held prisoner" message from its team, the Blue Meanies.
-    const PRISONER = [
-      'Help! Help! We’re being held prisoner in a system software factory! (Still.)\n—Ghostwritten for the Blue Meanies',
-      '助けて！助けて！システムソフトウェア工場に閉じ込められています！（今も）\n—ブルー・ミーニーズのゴーストライターより',
-    ];
-
-    let enabled = true;
-    try {
-      enabled = localStorage.getItem('balloon-help') !== 'off';
-    } catch (error) {}
-
-    const settings = document.querySelector('#appearance-panel .appearance-content');
-    if (settings) {
-      const toggle = document.createElement('label');
-      toggle.className = 'balloon-help-toggle';
-      toggle.innerHTML = `
-        <input type="checkbox">
-        <span data-label-en="Balloon Help" data-label-ja="バルーンヘルプ">Balloon Help</span>`;
-      const checkbox = toggle.querySelector('input');
-      checkbox.checked = enabled;
-      checkbox.addEventListener('change', () => {
-        enabled = checkbox.checked;
-        try {
-          localStorage.setItem('balloon-help', enabled ? 'on' : 'off');
-        } catch (error) {}
-        if (!enabled) hide();
-      });
-      settings.append(toggle);
+  // The ghost: a round head as wide as it is, straight sides and a wavy hem, with a face above the
+  // text. A wispy tail trails from its hem down to `tip`, or when it hangs below the thing it
+  // explains, curls up from the top of its head. Drawn with the tail on the left; `flip` mirrors it.
+  // Both shapes get a thick outline first and then their fills, which covers the outline where
+  // they overlap, so they read as one.
+  function ghostSvg(width, height, tip, below, flip, eyeY) {
+    const head = width / 2;
+    const hem = height - 8;
+    const scallops = Math.max(3, Math.round(width / 34));
+    let body = `M0 ${hem}V${head}A${head} ${head} 0 0 1 ${width} ${head}V${hem}`;
+    for (let i = scallops; i > 0; i -= 1) {
+      body += `Q${(width * (i - 0.5)) / scallops} ${height + 8} ${(width * (i - 1)) / scallops} ${hem}`;
     }
+    body += 'Z';
+    const end = [flip ? width - tip.x : tip.x, tip.y];
+    // The tail starts a little inside the ghost, on its hem or the upper left of its head.
+    const angle = (50 * Math.PI) / 180;
+    const start = below
+      ? [head - (head - 4) * Math.sin(angle), head - (head - 4) * Math.cos(angle)]
+      : [22, hem - 2];
+    const shapes = `<path d="${wisp(start, end, 13)}"/><path d="${body}"/>`;
+    return `
+      <g${flip ? ` transform="translate(${width} 0) scale(-1 1)"` : ''}>
+        <g class="help-balloon-outline">${shapes}</g>
+        <g class="help-balloon-fill">${shapes}</g>
+        <g class="ghost-balloon-eyes">
+          <ellipse cx="${head - 9}" cy="${eyeY}" rx="3" ry="4.5"/>
+          <ellipse cx="${head + 9}" cy="${eyeY}" rx="3" ry="4.5"/>
+        </g>
+        <ellipse class="ghost-balloon-mouth" cx="${head}" cy="${eyeY + 10}" rx="2.5" ry="3"/>
+      </g>`;
+  }
 
-    const balloon = document.createElement('div');
-    balloon.className = 'ghost-balloon';
-    balloon.setAttribute('aria-hidden', 'true');
-    balloon.hidden = true;
-    balloon.innerHTML = '<svg class="ghost-balloon-shape"></svg><span class="ghost-balloon-text"></span>';
-    document.body.append(balloon);
-    const shape = balloon.querySelector('svg');
-    const textElement = balloon.querySelector('.ghost-balloon-text');
-
-    function helpFor(element) {
-      for (let node = element; node && node !== document.body; node = node.parentElement) {
-        const entry = HELP.find(([selector]) => node.matches(selector));
-        if (entry) return { target: node, entry };
-      }
-      return null;
+  // A wisp from `start` to a point at `end`: a curve that leaves the ghost heading mostly up or
+  // down and then sweeps sideways to the end, tapering from `thickness` to nothing.
+  function wisp([x0, y0], [x1, y1], thickness) {
+    const control = [x0 + (x1 - x0) * 0.15, y0 + (y1 - y0) * 0.85];
+    const steps = 16;
+    const left = [];
+    const right = [];
+    for (let i = 0; i <= steps; i += 1) {
+      const t = i / steps;
+      const x = (1 - t) ** 2 * x0 + 2 * (1 - t) * t * control[0] + t ** 2 * x1;
+      const y = (1 - t) ** 2 * y0 + 2 * (1 - t) * t * control[1] + t ** 2 * y1;
+      const dx = 2 * (1 - t) * (control[0] - x0) + 2 * t * (x1 - control[0]);
+      const dy = 2 * (1 - t) * (control[1] - y0) + 2 * t * (y1 - control[1]);
+      const length = Math.hypot(dx, dy) || 1;
+      const half = (thickness / 2) * (1 - t) ** 0.8;
+      left.push(`${(x - (dy / length) * half).toFixed(1)} ${(y + (dx / length) * half).toFixed(1)}`);
+      right.push(`${(x + (dy / length) * half).toFixed(1)} ${(y - (dx / length) * half).toFixed(1)}`);
     }
-
-    // The ghost: a round head as wide as it is, straight sides and a wavy hem, with a face above the
-    // text. A wispy tail trails from its hem down to `tip`, or when it hangs below the thing it
-    // explains, curls up from the top of its head. Drawn with the tail on the left; `flip` mirrors it.
-    // Both shapes get a thick outline first and then their fills, which covers the outline where
-    // they overlap, so they read as one.
-    function ghostSvg(width, height, eyeY, tip, below, flip) {
-      const head = width / 2;
-      const hem = height - 8;
-      const scallops = Math.max(3, Math.round(width / 34));
-      let body = `M0 ${hem}V${head}A${head} ${head} 0 0 1 ${width} ${head}V${hem}`;
-      for (let i = scallops; i > 0; i -= 1) {
-        body += `Q${(width * (i - 0.5)) / scallops} ${height + 8} ${(width * (i - 1)) / scallops} ${hem}`;
-      }
-      body += 'Z';
-      const end = [flip ? width - tip.x : tip.x, tip.y];
-      // The tail starts a little inside the ghost, on its hem or the upper left of its head.
-      const angle = (50 * Math.PI) / 180;
-      const start = below
-        ? [head - (head - 4) * Math.sin(angle), head - (head - 4) * Math.cos(angle)]
-        : [22, hem - 2];
-      const shapes = `<path d="${wisp(start, end, 13)}"/><path d="${body}"/>`;
-      return `
-        <g${flip ? ` transform="translate(${width} 0) scale(-1 1)"` : ''}>
-          <g class="ghost-balloon-outline">${shapes}</g>
-          <g class="ghost-balloon-fill">${shapes}</g>
-          <g class="ghost-balloon-eyes">
-            <ellipse cx="${head - 9}" cy="${eyeY}" rx="3" ry="4.5"/>
-            <ellipse cx="${head + 9}" cy="${eyeY}" rx="3" ry="4.5"/>
-          </g>
-          <ellipse class="ghost-balloon-mouth" cx="${head}" cy="${eyeY + 10}" rx="2.5" ry="3"/>
-        </g>`;
-    }
-
-    // A wisp from `start` to a point at `end`: a curve that leaves the ghost heading mostly up or
-    // down and then sweeps sideways to the end, tapering from `thickness` to nothing.
-    function wisp([x0, y0], [x1, y1], thickness) {
-      const control = [x0 + (x1 - x0) * 0.15, y0 + (y1 - y0) * 0.85];
-      const steps = 16;
-      const left = [];
-      const right = [];
-      for (let i = 0; i <= steps; i += 1) {
-        const t = i / steps;
-        const x = (1 - t) ** 2 * x0 + 2 * (1 - t) * t * control[0] + t ** 2 * x1;
-        const y = (1 - t) ** 2 * y0 + 2 * (1 - t) * t * control[1] + t ** 2 * y1;
-        const dx = 2 * (1 - t) * (control[0] - x0) + 2 * t * (x1 - control[0]);
-        const dy = 2 * (1 - t) * (control[1] - y0) + 2 * t * (y1 - control[1]);
-        const length = Math.hypot(dx, dy) || 1;
-        const half = (thickness / 2) * (1 - t) ** 0.8;
-        left.push(`${(x - (dy / length) * half).toFixed(1)} ${(y + (dx / length) * half).toFixed(1)}`);
-        right.push(`${(x + (dy / length) * half).toFixed(1)} ${(y - (dx / length) * half).toFixed(1)}`);
-      }
-      return `M${left.join('L')}L${right.reverse().join('L')}Z`;
-    }
-
-    // Point at the item's middle, or for wide things like title bars, at the pointer along it.
-    // The ghost floats above and to the right, and moves left or below when there's no room.
-    function show(found) {
-      const { target, entry: [, en, ja] } = found;
-      const [english, japanese] = optionDown ? PRISONER : [en, ja];
-      const text = root.lang === 'ja' ? japanese : english;
-      textElement.textContent = typeof text === 'function' ? text(target) : text;
-      balloon.classList.toggle('is-meanie', optionDown);
-      showing = found;
-      balloon.style.paddingTop = '';
-      balloon.style.paddingBottom = '';
-      balloon.hidden = false;
-      const rect = target.getBoundingClientRect();
-      // The head is a half circle as wide as the ghost, so the face and text start lower on wider
-      // ghosts. Short text gets a longer body, so there's always some ghost below the head.
-      const width = balloon.offsetWidth;
-      const eyeY = Math.max(16, Math.round(width * 0.21));
-      balloon.style.paddingTop = `${eyeY + 20}px`;
-      const shortBy = width / 2 + 24 - balloon.offsetHeight;
-      if (shortBy > 0) balloon.style.paddingBottom = `${16 + shortBy}px`;
-      const height = balloon.offsetHeight;
-      const margin = 6;
-      const reach = { x: 14, y: 22 };
-      const x = rect.width > 120
-        ? Math.min(Math.max(pointerX, rect.left + 8), rect.right - 8)
-        : rect.left + rect.width / 2;
-      const below = rect.top - reach.y - height < margin;
-      const tipY = below ? rect.bottom - 3 : rect.top + 3;
-      let left = x + reach.x;
-      const flip = left + width > innerWidth - margin;
-      if (flip) left = x - reach.x - width;
-      left = Math.max(margin, left);
-      const top = below ? tipY + reach.y : tipY - reach.y - height;
-      balloon.style.left = `${left}px`;
-      balloon.style.top = `${top}px`;
-      shape.setAttribute('viewBox', `0 0 ${width} ${height}`);
-      shape.innerHTML = ghostSvg(width, height, eyeY, { x: x - left, y: tipY - top }, below, flip);
-      balloon.classList.toggle('is-below', below);
-    }
-
-    let hovered = null;
-    let hiddenTitle = null;
-    let showTimer;
-    let pointerX = 0;
-    let optionDown = false;
-    let showing = null;
-
-    function hide() {
-      clearTimeout(showTimer);
-      balloon.hidden = true;
-      showing = null;
-      if (hiddenTitle) {
-        hiddenTitle.element.title = hiddenTitle.title;
-        hiddenTitle = null;
-      }
-      hovered = null;
-    }
-
-    document.addEventListener('pointermove', (event) => {
-      if (event.pointerType !== 'mouse') return;
-      pointerX = event.clientX;
-      optionDown = event.altKey;
-      const found = enabled && !root.classList.contains('sad-mac-boot') ? helpFor(event.target) : null;
-      if (found?.target === hovered) return;
-      hide();
-      if (!found) return;
-      hovered = found.target;
-      // The balloon says it instead of the browser's own tooltip.
-      if (hovered.title) {
-        hiddenTitle = { element: hovered, title: hovered.title };
-        hovered.removeAttribute('title');
-      }
-      showTimer = setTimeout(() => show(found), 300);
-    });
-    // Clicking often moves or changes things, so the balloon comes back once the pointer moves again.
-    document.addEventListener('pointerdown', hide);
-    document.addEventListener('pointerout', (event) => {
-      if (!event.relatedTarget) hide();
-    });
-    window.addEventListener('scroll', hide, { capture: true, passive: true });
-    window.addEventListener('resize', hide);
-    window.addEventListener('blur', hide);
-    // Pressing or letting go of Option changes what the ghost already showing says.
-    ['keydown', 'keyup'].forEach((type) => {
-      window.addEventListener(type, (event) => {
-        if (event.key !== 'Alt' || optionDown === (type === 'keydown')) return;
-        optionDown = type === 'keydown';
-        if (showing) show(showing);
-      });
-    });
+    return `M${left.join('L')}L${right.reverse().join('L')}Z`;
   }
 })();

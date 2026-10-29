@@ -46,6 +46,7 @@ function updateClocks() {
 const STACK_CARD_STORAGE_KEY = 'about-stack-card-index';
 const CLOCK_MODE_STORAGE_KEY = 'clock-display-mode';
 const WEATHER_UNIT_STORAGE_KEY = 'weather-unit';
+const BALLOON_HELP_STORAGE_KEY = 'balloon-help';
 const VISITOR_COUNTED_STORAGE_KEY = 'page-views-counter-counted';
 const VISITOR_COUNT_CACHE_KEY = 'page-views-counter-last';
 const PORTFOLIO_API_BASE_URL = 'https://portfolio-backend.justin-garcia.workers.dev';
@@ -2711,6 +2712,188 @@ if (recentUpdatesButton && recentUpdatesDialog) {
   secondaryWindowLaunchers.set(recentUpdatesDialog, recentUpdatesButton);
   setRecentUpdatesOpenState(!recentUpdatesDialog.classList.contains('is-closed'));
 }
+
+// System 7 Balloon Help. On by default, with a checkbox in Settings. Mouse only, since a balloon shows
+// for whatever the pointer rests on, and only for things whose labels don't explain themselves, plus
+// a few jokes. Halloween mode (halloween.js, which runs first) swaps in ghosts: its own balloon shape
+// and things to say, which take priority over these.
+const BALLOON_CITIES = { Tokyo: '東京', Tampa: 'タンパ' };
+const balloonCity = (target) => target.closest('.clock-widget').querySelector('.clock-title').textContent.trim();
+// [selector, English, Japanese]. Text can be a function of the element. The innermost match wins,
+// and among selectors matching the same element, the first one listed.
+const BALLOON_HELP = [
+  ['.clock-widget .close-box', 'Close box. This one doesn’t work. Filed as FB1984. Status: Investigating.', 'クローズボックス。でも効きません。FB1984として報告済み。ステータス：調査中。'],
+  ['button.close-box', 'Close box. To close this window, click here.', 'クローズボックス。このウインドウを閉じるには、ここをクリックします。'],
+  ['.title-bar, .clock-title-bar', 'Title bar. Double-click to roll this window up into its title bar. Double-click again to roll it back down.', 'タイトルバー。ダブルクリックすると、ウインドウがタイトルバーだけに巻き上がります。もう一度ダブルクリックで元に戻ります。'],
+  ['#stack-counter', 'Which card of this stack you’re on. HyperCard died in 2004. This stack never got the memo.', 'このスタックの何枚目のカードか。HyperCardは2004年に亡くなりましたが、このスタックはまだ知りません。'],
+  ['.made-in-japan-badge', 'Made in Japan. Designed by me in Tokyo. Assembled in your browser.', '日本製。東京でデザインし、あなたのブラウザで組み立てています。'],
+  ['.weather-attribution', 'Weather from Open-Meteo. Tonight: clear, with a chance of kernel panic.', '天気は Open-Meteo より。今夜の予報は晴れ、一時カーネルパニック。'],
+  ['.stack-index-shortcut[data-stack-jump="0"]', 'Goes to the Index card, which lists every card in this stack.', '目次カードへ。このスタックのすべてのカードが並んでいます。'],
+  ['#qr-code-button', 'Shows a QR code for this page, so it can follow you to your phone.', 'このページのQRコードを表示します。あなたのスマホまでついていきます。'],
+  ['#recent-updates-button', 'Shows or hides my recent posts.', '最近の投稿を表示したり隠したりします。'],
+  ['.stack-card-index h2', 'Pick a card. Any card. An AI would pick all of them and give you a summary.', 'カードを選んで。AIなら全部選んで要約するところです。'],
+  ['.stack-visitor-counter', 'How many people have visited this page. Unlike your iCloud storage, there’s always room for one more.', 'このページを訪れた人の数。iCloudストレージと違って、あと一人分の空きはいつでもあります。'],
+  ['[data-feature-window="recommendations-window"]', 'Opens a window where you can tell me your app ideas, Tokyo spots, and more.', 'アプリのアイデアや東京のおすすめなどを聞かせてもらうウインドウを開きます。'],
+  ['[data-feature-window="mud-window"]', 'Opens a tiny text adventure set in Tokyo.', '東京が舞台の小さなテキストアドベンチャーを開きます。'],
+  ['[data-feature-window="puzzle-window"]', 'Opens a sliding puzzle. Something waits for whoever solves it.', 'スライドパズルを開きます。解いた人を何かが待っています。'],
+  ['#map-zoom-out', 'Zooms the map out.', '地図を縮小します。'],
+  ['#map-zoom-in', 'Zooms the map in.', '地図を拡大します。'],
+  ['.clock-row .clock-content', (target) => `The time and weather in ${balloonCity(target)} right now.`, (target) => `${BALLOON_CITIES[balloonCity(target)] || balloonCity(target)}の今の時刻と天気。`],
+  ['[data-language-value="en"]', 'Shows this page in English.', 'このページを英語で表示します。'],
+  ['[data-language-value="ja"]', 'Shows this page in Japanese.', 'このページを日本語で表示します。'],
+  ['[data-clock-mode-value="analog"]', 'Shows the clocks with hands.', '時計を針で表示します。'],
+  ['[data-clock-mode-value="digital"]', 'Shows the clocks as numbers.', '時計を数字で表示します。'],
+  ['[data-weather-unit-value="metric"]', 'Shows temperatures in °C.', '気温を摂氏（°C）で表示します。'],
+  ['[data-weather-unit-value="imperial"]', 'Shows temperatures in °F.', '気温を華氏（°F）で表示します。'],
+  ['.balloon-help-toggle', 'Balloon Help: Apple’s AI assistant, 1991 edition. While this is checked, balloons explain whatever you point at. Real Macs hid things behind the Option key.', 'バルーンヘルプ：1991年版のAppleのAIアシスタント。チェックしている間、指したものをバルーンが説明します。本物のMacは、Optionキーの奥に何かを隠していました。'],
+];
+// Hold Option, the classic Mac way into hidden things, and every balloon turns blue and says this,
+// after System 7's hidden "being held prisoner" message from its team, the Blue Meanies.
+const BALLOON_PRISONER = [
+  'Help! Help! We’re being held prisoner in a system software factory! (Still.)\n—The Blue Meanies',
+  '助けて！助けて！システムソフトウェア工場に閉じ込められています！（今も）\n—ブルー・ミーニーズ',
+];
+
+// A rounded rectangle with a straight tail from its bottom edge (or its top, when it hangs below
+// the thing it explains) to `tip`. Drawn with the tail on the left; `flip` mirrors it. Both shapes
+// get a thick outline first and then their fills, which covers the outline where they overlap,
+// so they read as one.
+const classicBalloonShape = {
+  svg(width, height, tip, below, flip) {
+    const x = flip ? width - tip.x : tip.x;
+    const edge = below ? 2 : height - 2;
+    const tail = `M14 ${edge}L${x} ${tip.y}L30 ${edge}Z`;
+    const body = `<rect width="${width}" height="${height}" rx="9"/>`;
+    const shapes = `<path d="${tail}"/>${body}`;
+    return `
+      <g${flip ? ` transform="translate(${width} 0) scale(-1 1)"` : ''}>
+        <g class="help-balloon-outline">${shapes}</g>
+        <g class="help-balloon-fill">${shapes}</g>
+      </g>`;
+  },
+};
+
+const halloweenBalloons = document.documentElement.classList.contains('halloween') ? window.halloweenBalloonHelp : null;
+const balloonHelp = [...(halloweenBalloons?.help || []), ...BALLOON_HELP];
+const balloonPrisoner = halloweenBalloons?.prisoner || BALLOON_PRISONER;
+const balloonShape = halloweenBalloons?.shape || classicBalloonShape;
+const balloonHelpCheckbox = document.getElementById('balloon-help-checkbox');
+const balloon = document.createElement('div');
+balloon.className = `help-balloon${halloweenBalloons ? ' is-ghost' : ''}`;
+balloon.setAttribute('aria-hidden', 'true');
+balloon.hidden = true;
+balloon.innerHTML = '<svg class="help-balloon-shape"></svg><span class="help-balloon-text"></span>';
+document.body.append(balloon);
+const balloonSvg = balloon.querySelector('svg');
+const balloonText = balloon.querySelector('.help-balloon-text');
+let balloonHelpEnabled = true;
+let hoveredForBalloon = null;
+let balloonHiddenTitle = null;
+let balloonTimer;
+let balloonPointerX = 0;
+let optionKeyDown = false;
+let shownBalloon = null;
+
+try {
+  balloonHelpEnabled = localStorage.getItem(BALLOON_HELP_STORAGE_KEY) !== 'off';
+} catch {}
+if (balloonHelpCheckbox) balloonHelpCheckbox.checked = balloonHelpEnabled;
+
+function balloonHelpFor(element) {
+  for (let node = element; node && node !== document.body; node = node.parentElement) {
+    const entry = balloonHelp.find(([selector]) => node.matches(selector));
+    if (entry) return { target: node, entry };
+  }
+  return null;
+}
+
+// Point at the item's middle, or for wide things like title bars, at the pointer along it.
+// The balloon floats above and to the right, and moves left or below when there's no room.
+function showBalloon(found) {
+  const { target, entry: [, en, ja] } = found;
+  const [english, japanese] = optionKeyDown ? balloonPrisoner : [en, ja];
+  const text = currentLanguage === 'ja' ? japanese : english;
+  balloonText.textContent = typeof text === 'function' ? text(target) : text;
+  balloon.classList.toggle('is-meanie', optionKeyDown);
+  shownBalloon = found;
+  balloon.style.paddingTop = '';
+  balloon.style.paddingBottom = '';
+  balloon.hidden = false;
+  const fitted = balloonShape.fit?.(balloon);
+  const rect = target.getBoundingClientRect();
+  const width = balloon.offsetWidth;
+  const height = balloon.offsetHeight;
+  const margin = 6;
+  const reach = { x: 14, y: 22 };
+  const x = rect.width > 120
+    ? Math.min(Math.max(balloonPointerX, rect.left + 8), rect.right - 8)
+    : rect.left + rect.width / 2;
+  const below = rect.top - reach.y - height < margin;
+  const tipY = below ? rect.bottom - 3 : rect.top + 3;
+  let left = x + reach.x;
+  const flip = left + width > innerWidth - margin;
+  if (flip) left = x - reach.x - width;
+  left = Math.max(margin, left);
+  const top = below ? tipY + reach.y : tipY - reach.y - height;
+  balloon.style.left = `${left}px`;
+  balloon.style.top = `${top}px`;
+  balloonSvg.setAttribute('viewBox', `0 0 ${width} ${height}`);
+  balloonSvg.innerHTML = balloonShape.svg(width, height, { x: x - left, y: tipY - top }, below, flip, fitted);
+  balloon.classList.toggle('is-below', below);
+}
+
+function hideBalloon() {
+  clearTimeout(balloonTimer);
+  balloon.hidden = true;
+  shownBalloon = null;
+  if (balloonHiddenTitle) {
+    balloonHiddenTitle.element.title = balloonHiddenTitle.title;
+    balloonHiddenTitle = null;
+  }
+  hoveredForBalloon = null;
+}
+
+balloonHelpCheckbox?.addEventListener('change', () => {
+  balloonHelpEnabled = balloonHelpCheckbox.checked;
+  try {
+    localStorage.setItem(BALLOON_HELP_STORAGE_KEY, balloonHelpEnabled ? 'on' : 'off');
+  } catch {}
+  if (!balloonHelpEnabled) hideBalloon();
+});
+
+document.addEventListener('pointermove', (event) => {
+  if (event.pointerType !== 'mouse') return;
+  balloonPointerX = event.clientX;
+  optionKeyDown = event.altKey;
+  const showable = balloonHelpEnabled && !document.documentElement.classList.contains('sad-mac-boot');
+  const found = showable ? balloonHelpFor(event.target) : null;
+  if (found?.target === hoveredForBalloon) return;
+  hideBalloon();
+  if (!found) return;
+  hoveredForBalloon = found.target;
+  // The balloon says it instead of the browser's own tooltip.
+  if (hoveredForBalloon.title) {
+    balloonHiddenTitle = { element: hoveredForBalloon, title: hoveredForBalloon.title };
+    hoveredForBalloon.removeAttribute('title');
+  }
+  balloonTimer = setTimeout(() => showBalloon(found), 300);
+});
+// Clicking often moves or changes things, so the balloon comes back once the pointer moves again.
+document.addEventListener('pointerdown', hideBalloon);
+document.addEventListener('pointerout', (event) => {
+  if (!event.relatedTarget) hideBalloon();
+});
+window.addEventListener('scroll', hideBalloon, { capture: true, passive: true });
+window.addEventListener('resize', hideBalloon);
+window.addEventListener('blur', hideBalloon);
+// Pressing or letting go of Option changes what the balloon already showing says.
+['keydown', 'keyup'].forEach((type) => {
+  window.addEventListener(type, (event) => {
+    if (event.key !== 'Alt' || optionKeyDown === (type === 'keydown')) return;
+    optionKeyDown = type === 'keydown';
+    if (shownBalloon) showBalloon(shownBalloon);
+  });
+});
 
 const savedLanguage = localStorage.getItem('site-language');
 const preferredLanguage = navigator.languages?.[0] || navigator.language || 'en';

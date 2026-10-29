@@ -3574,3 +3574,113 @@ html body.home-page .stack-product-button img.stack-product-icon-bordered {
   border: 1px solid #000;
   border-radius: 8px;
 }
+
+/* System 7 Balloon Help (see BALLOON_HELP in index.js), with its checkbox in Settings */
+.balloon-help-toggle {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 6px;
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+html[lang="ja"] .balloon-help-toggle {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* A classic checkbox: a square that gets an X */
+.balloon-help-toggle input {
+  appearance: none;
+  -webkit-appearance: none;
+  flex: none;
+  width: 12px;
+  height: 12px;
+  margin: 0;
+  border: 1px solid #000;
+  border-radius: 0;
+  background: #fff;
+  cursor: inherit;
+}
+
+.balloon-help-toggle input:checked {
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' shape-rendering='crispEdges'%3E%3Cpath d='M0 0l10 10M10 0L0 10' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat;
+}
+
+.balloon-help-toggle input:focus-visible {
+  outline: 2px solid var(--classic-accent, #000);
+  outline-offset: 1px;
+}
+
+/* Balloons follow the mouse, so there's nothing to turn on without one */
+@media (hover: none) {
+  .balloon-help-toggle {
+    display: none;
+  }
+}
+
+.help-balloon {
+  position: fixed;
+  z-index: 100000;
+  max-width: 200px;
+  padding: 7px 10px 8px;
+  color: #000;
+  font-size: 16px;
+  line-height: 1.05;
+  pointer-events: none;
+  animation: help-balloon-appear 0.15s ease-out;
+}
+
+.help-balloon[hidden] {
+  display: none;
+}
+
+html[lang="ja"] .help-balloon {
+  font-size: 12px;
+  font-weight: bold;
+  line-height: 1.35;
+  word-break: auto-phrase;
+}
+
+.help-balloon-text {
+  position: relative;
+  display: block;
+  white-space: pre-line;
+}
+
+.help-balloon-shape {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  filter: drop-shadow(2px 2px 0 #000);
+}
+
+.help-balloon-outline {
+  fill: none;
+  stroke: #000;
+  stroke-width: 3;
+  stroke-linejoin: round;
+}
+
+.help-balloon-fill {
+  fill: #fff;
+}
+
+/* Holding Option: a Blue Meanie */
+.help-balloon.is-meanie .help-balloon-fill {
+  fill: #a8c8ff;
+}
+
+@keyframes help-balloon-appear {
+  from { opacity: 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .help-balloon {
+    animation: none;
+  }
+}

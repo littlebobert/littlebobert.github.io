@@ -3,6 +3,19 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.6.5</title>
+            <pubDate>Thu, 29 Oct 2026 16:06:03 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>116</sparkle:version>
+            <sparkle:shortVersionString>0.6.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Kehai mini no longer shows the same app twice in the app strip when that app has more than one process running.
+- Searching for an app by name lists that app ahead of apps that only mention it in a window title, even when it isn't running yet.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.5/Kehai-0.6.5-mac.zip" length="3146904" type="application/octet-stream" sparkle:edSignature="gkouBPeMO+JWyQyFa9WWyN0rl9tbe5aO4BcOrq5Hijzj0pm31pJW3Pq2Z6ftweSJ44nKOLw3Rqg0Iat9mgG5Dg=="/>
+        </item>
+        <item>
             <title>0.6.4</title>
             <pubDate>Fri, 23 Oct 2026 15:45:06 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,18 +38,6 @@
             <description sparkle:format="markdown"><![CDATA[- Repository cards in Kehai mini show when each repo was last pushed without cutting off the text.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.3/Kehai-0.6.3-mac.zip" length="3273907" type="application/octet-stream" sparkle:edSignature="0M/aCrIweIScSpHzDuTUDwl+6v9TM3G3ShO+CvGvCkZDeknPtZeSbxXUFJD1us4WH0ALWr207fIhyQzwE/9pCg=="/>
-        </item>
-        <item>
-            <title>0.6.2</title>
-            <pubDate>Wed, 21 Oct 2026 08:17:55 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>113</sparkle:version>
-            <sparkle:shortVersionString>0.6.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Search now finds apps by their other names, so typing “codex” finds ChatGPT.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.2/Kehai-0.6.2-mac.zip" length="3272548" type="application/octet-stream" sparkle:edSignature="VkSphzrscwi43oTys0h1tuZFqKHqo7FICM/so1vduNoTpcdV9fL0ZgWF3GBVkyxe3x+KjyD5sb7B0Etc/wZMBg=="/>
         </item>
     </channel>
 </rss>

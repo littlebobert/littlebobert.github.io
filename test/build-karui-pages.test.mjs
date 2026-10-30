@@ -179,7 +179,7 @@ test('builds Tech Specs and the Technical Notes, linked from every page', async 
   assert.match(kn005Page, /<h1[^>]*>KN005: Translating Notifications Before a Two-Second Deadline<\/h1>/);
   assert.match(kn005Page, /<link rel="canonical" href="https:\/\/karui\.jp\/technotes\/kn005">/);
   assert.match(technotesPage, /href="\/technotes\/kn006"/);
-  assert.match(kn006Page, /<h1[^>]*>KN006: Benchmarking Private Cloud Compute Against Claude Opus 5\.5<\/h1>/);
+  assert.match(kn006Page, /<h1[^>]*>KN006: Private Cloud Compute vs\. Claude Opus 5\.5<\/h1>/);
   assert.match(kn006Page, /<link rel="canonical" href="https:\/\/karui\.jp\/technotes\/kn006">/);
   assert.match(kn006Page, /href="\/technotes\/kn004"/);
   assert.match(specsPage, /href="\/technotes\/kn001"/);

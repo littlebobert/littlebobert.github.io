@@ -30,7 +30,7 @@ Classification runs on the iPhone with Apple's on-device model. Notifications, c
 - [Technical Note KN003: Getting Reliable Answers from the On-Device Apple Foundation Model](https://karui.jp/technotes/kn003): prompt and schema choices that made the on-device model sort notifications more reliably.
 - [Technical Note KN004: Verifying What Karui Sends Off Your iPhone](https://karui.jp/technotes/kn004): how to check that Karui sends none of your data off your iPhone.
 - [Technical Note KN005: Translating Notifications Before a Two-Second Deadline](https://karui.jp/technotes/kn005): how Karui translates notifications without holding them up.
-- [Technical Note KN006: Benchmarking Private Cloud Compute Against Claude Opus 5.5](https://karui.jp/technotes/kn006): an ongoing benchmark of Second Opinion's answers against hand grades, compared with Claude Opus 5.5.
+- [Technical Note KN006: Private Cloud Compute vs. Claude Opus 5.5](https://karui.jp/technotes/kn006): an ongoing benchmark of Second Opinion's answers against hand grades, compared with Claude Opus 5.5.
 
 ## Requirements and limitations
 

@@ -88,6 +88,11 @@
     .karui-demo { position: relative; width: 100%; max-width: 360px; aspect-ratio: 720 / 1004; margin: 0 auto; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
     .karui-demo-shot { position: absolute; inset: 0; display: block; width: 100%; height: auto; opacity: 0; transition: opacity 0.25s; pointer-events: none; }
     .karui-demo-shot.is-current { opacity: 1; }
+    /* The first screen's clip of notifications sorting themselves, over its still, seen
+       only once it's really playing: if a browser won't autoplay (Low Power Mode on
+       iPhone), the still is simply there, as it is with Reduce Motion. */
+    .karui-demo-clip { position: absolute; inset: 0; display: block; width: 100%; height: auto; opacity: 0; transition: opacity 0.25s; pointer-events: none; }
+    .karui-demo-clip.is-playing { opacity: 1; }
     .karui-demo-zone { position: absolute; top: 0; bottom: 0; width: 50%; margin: 0; padding: 0; border: 0; background: none; cursor: pointer; appearance: none; -webkit-appearance: none; -webkit-tap-highlight-color: transparent; }
     .karui-demo-zone-prev { left: 0; }
     .karui-demo-zone-next { right: 0; }
@@ -103,7 +108,7 @@
     .karui-demo-dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: var(--karui-line); cursor: pointer; appearance: none; -webkit-appearance: none; }
     .karui-demo-dot.is-current { background: var(--karui-ink); }
     .karui-demo-dot:focus-visible { outline: 2px solid var(--karui-moss); outline-offset: 2px; }
-    @media (prefers-reduced-motion: reduce) { .karui-demo-shot { transition: none; } }
+    @media (prefers-reduced-motion: reduce) { .karui-demo-shot, .karui-demo-clip { transition: none; } }
 
     /* Karui beside Focus and Apple Intelligence, for someone who already uses them:
        a check for what each does, a dash for what it doesn't, a few words where it
@@ -172,10 +177,11 @@
 
     <section class="sasu-section">
       <div class="karui-demo" role="group" aria-roledescription="carousel" aria-label="Karui on iPhone Duo, four screens" data-aria-label-en="Karui on iPhone Duo, four screens" data-aria-label-ja="iPhone DuoのKarui、4画面" tabindex="0">
-        <img class="karui-demo-shot is-current" src="assets/karui-demo-en-1.jpg?v=3" data-src-en="assets/karui-demo-en-1.jpg?v=3" data-src-ja="assets/karui-demo-ja-1.jpg?v=3" width="720" height="1004" alt="Karui’s History, with notifications sorted as they arrived." data-alt-en="Karui’s History, with notifications sorted as they arrived." data-alt-ja="届いた通知が仕分けされたKaruiの履歴">
-        <img class="karui-demo-shot" src="assets/karui-demo-en-2.jpg?v=3" data-src-en="assets/karui-demo-en-2.jpg?v=3" data-src-ja="assets/karui-demo-ja-2.jpg?v=3" width="720" height="1004" alt="A promotion classified as spam, with Open Mail and reclassify options." data-alt-en="A promotion classified as spam, with Open Mail and reclassify options." data-alt-ja="スパムと分類された宣伝通知の詳細。Mailを開く、もう一度分類するなどの選択肢付き" loading="lazy">
-        <img class="karui-demo-shot" src="assets/karui-demo-en-3.jpg?v=3" data-src-en="assets/karui-demo-en-3.jpg?v=3" data-src-ja="assets/karui-demo-ja-3.jpg?v=3" width="720" height="1004" alt="History keeps Sam’s party message, next to silenced promotions." data-alt-en="History keeps Sam’s party message, next to silenced promotions." data-alt-ja="サムのパーティーのメッセージが残り、宣伝は静かにされた履歴" loading="lazy">
-        <img class="karui-demo-shot" src="assets/karui-demo-en-4.jpg?v=3" data-src-en="assets/karui-demo-en-4.jpg?v=3" data-src-ja="assets/karui-demo-ja-4.jpg?v=3" width="720" height="1004" alt="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-en="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-ja="緊急アラーム：母から「今病院にいるの」のメッセージ。母に電話ボタン付き" loading="lazy">
+        <img class="karui-demo-shot is-current" src="assets/karui-demo-en-1.jpg?v=4" data-src-en="assets/karui-demo-en-1.jpg?v=4" data-src-ja="assets/karui-demo-ja-1.jpg?v=4" width="720" height="1004" alt="Karui’s History, with notifications sorted as they arrived." data-alt-en="Karui’s History, with notifications sorted as they arrived." data-alt-ja="届いた通知が仕分けされたKaruiの履歴">
+        <img class="karui-demo-shot" src="assets/karui-demo-en-2.jpg?v=4" data-src-en="assets/karui-demo-en-2.jpg?v=4" data-src-ja="assets/karui-demo-ja-2.jpg?v=4" width="720" height="1004" alt="A promotion classified as spam, with Open Mail and reclassify options." data-alt-en="A promotion classified as spam, with Open Mail and reclassify options." data-alt-ja="スパムと分類された宣伝通知の詳細。Mailを開く、もう一度分類するなどの選択肢付き" loading="lazy">
+        <img class="karui-demo-shot" src="assets/karui-demo-en-3.jpg?v=4" data-src-en="assets/karui-demo-en-3.jpg?v=4" data-src-ja="assets/karui-demo-ja-3.jpg?v=4" width="720" height="1004" alt="History keeps Sam’s party message, next to silenced promotions." data-alt-en="History keeps Sam’s party message, next to silenced promotions." data-alt-ja="サムのパーティーのメッセージが残り、宣伝は静かにされた履歴" loading="lazy">
+        <img class="karui-demo-shot" src="assets/karui-demo-en-4.jpg?v=4" data-src-en="assets/karui-demo-en-4.jpg?v=4" data-src-ja="assets/karui-demo-ja-4.jpg?v=4" width="720" height="1004" alt="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-en="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-ja="緊急アラーム：母から「今病院にいるの」のメッセージ。母に電話ボタン付き" loading="lazy">
+        <video class="karui-demo-clip" src="assets/karui-demo-en-sort.mp4?v=4" data-src-en="assets/karui-demo-en-sort.mp4?v=4" data-src-ja="assets/karui-demo-ja-sort.mp4?v=4" width="720" height="1004" muted loop playsinline disablepictureinpicture disableremoteplayback preload="none" aria-hidden="true"></video>
         <button class="karui-demo-zone karui-demo-zone-prev" type="button" tabindex="-1" aria-hidden="true"></button>
         <button class="karui-demo-zone karui-demo-zone-next" type="button" tabindex="-1" aria-hidden="true"></button>
       </div>
@@ -352,7 +358,36 @@
       [demoShots, demoCaptions, demoDots].forEach((items) => {
         items.forEach((item, i) => item.classList.toggle('is-current', i === demoIndex));
       });
+      syncDemoClip();
     };
+    // The first screen's clip plays while that screen is showing and on the page, from
+    // the start each time someone comes back to it, and never with Reduce Motion.
+    const demoClip = demo.querySelector('.karui-demo-clip');
+    const reduceMotionQuery = matchMedia('(prefers-reduced-motion: reduce)');
+    let demoInView = false;
+    function syncDemoClip() {
+      if (demoIndex !== 0 || reduceMotionQuery.matches) demoClip.classList.remove('is-playing');
+      if (demoIndex !== 0 || reduceMotionQuery.matches || !demoInView || document.hidden) {
+        demoClip.pause();
+        return;
+      }
+      if (!demoClip.classList.contains('is-playing')) demoClip.currentTime = 0;
+      demoClip.play().catch(() => {});
+    }
+    demoClip.addEventListener('playing', () => {
+      if (demoIndex === 0 && !reduceMotionQuery.matches) demoClip.classList.add('is-playing');
+    });
+    // Switching language swaps its file, which starts over.
+    demoClip.addEventListener('emptied', () => {
+      demoClip.classList.remove('is-playing');
+      syncDemoClip();
+    });
+    new IntersectionObserver(([entry]) => {
+      demoInView = entry.isIntersecting;
+      syncDemoClip();
+    }, { threshold: 0.4 }).observe(demo);
+    document.addEventListener('visibilitychange', syncDemoClip);
+    reduceMotionQuery.addEventListener('change', syncDemoClip);
     let demoSwipeStart;
     let demoSwiped = false;
     demo.addEventListener('pointerdown', (event) => { demoSwipeStart = event.clientX; demoSwiped = false; });

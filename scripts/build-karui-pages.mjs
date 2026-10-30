@@ -51,6 +51,8 @@ const assetFiles = [
   'karui-lightning-talk-poster.jpg',
   // The demo's four screens, in each language.
   ...['en', 'ja'].flatMap((language) => [1, 2, 3, 4].map((screen) => `karui-demo-${language}-${screen}.jpg`)),
+  // The first screen's clip of notifications sorting themselves, in each language.
+  ...['en', 'ja'].map((language) => `karui-demo-${language}-sort.mp4`),
   // Karui for Mac's two screens in a MacBook Air, in each language.
   ...['en', 'ja'].flatMap((language) => [1, 2].map((screen) => `karui-mac-demo-${language}-${screen}.jpg`)),
 ];

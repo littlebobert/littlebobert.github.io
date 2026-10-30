@@ -84,8 +84,8 @@ test('builds the changelog page and links to it from every page', async () => {
   // Tapping the icon opens a full-screen QR code for showing the site in person, on its
   // own page, /qr; old karui.jp/#qr links are sent there.
   assert.match(pages[0], /<a href="\/qr" class="karui-qr-trigger"/);
-  // The demo: four screens from the iPhone Duo recording, each with its caption below;
-  // no label above it, no video, and no App Store screenshots.
+  // The demo: four screens from the iPhone Duo recording, each with its caption below, the
+  // first with a clip over its still; no label above it and no App Store screenshots.
   assert.doesNotMatch(pages[0], /karui-demo-label/);
   // Beside Download, only what matters before trying it; the requirements are in Tech Specs.
   assert.match(pages[0], /<div class="small-note" data-label-en="Free, no sign-up\." data-label-ja="無料、登録不要。">/);
@@ -93,7 +93,10 @@ test('builds the changelog page and links to it from every page', async () => {
   assert.match(pages[0], /<img class="karui-demo-shot is-current" src="\/assets\/karui-demo-en-1\.jpg\?v=\d+" data-src-en="\/assets\/karui-demo-en-1\.jpg\?v=\d+" data-src-ja="\/assets\/karui-demo-ja-1\.jpg\?v=\d+"/);
   assert.strictEqual(pages[0].match(/class="karui-demo-shot/g).length, 4);
   assert.strictEqual(pages[0].match(/<p class="karui-demo-caption/g).length, 4);
-  assert.doesNotMatch(pages[0], /<video|karui-shot-|shot-viewer/);
+  assert.strictEqual(pages[0].match(/<video/g).length, 1);
+  assert.match(pages[0], /<video class="karui-demo-clip" src="\/assets\/karui-demo-en-sort\.mp4\?v=\d+" data-src-en="\/assets\/karui-demo-en-sort\.mp4\?v=\d+" data-src-ja="\/assets\/karui-demo-ja-sort\.mp4\?v=\d+"[^>]* muted loop playsinline/);
+  assert.doesNotMatch(pages[0], /karui-shot-|shot-viewer/);
+  await Promise.all(['en', 'ja'].map((language) => readFile(path.join(outputDirectory, 'assets', `karui-demo-${language}-sort.mp4`))));
   for (const language of ['en', 'ja']) {
     for (const screen of [1, 2, 3, 4]) await readFile(path.join(outputDirectory, 'assets', `karui-demo-${language}-${screen}.jpg`));
   }

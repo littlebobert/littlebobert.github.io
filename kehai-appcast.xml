@@ -3,6 +3,20 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.6.6</title>
+            <pubDate>Fri, 30 Oct 2026 15:20:39 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>117</sparkle:version>
+            <sparkle:shortVersionString>0.6.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Searching in Kehai mini finds apps that ship inside other apps, like Xcode's Device Hub and Instruments, and menu-bar apps like Tailscale.
+- A menu-bar app that opens a regular window, like Tailscale, now appears in the app strip while it's running as a normal app.
+- The hot zone responds faster, and stays responsive when another app is busy, such as Xcode during a build.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.6/Kehai-0.6.6-mac.zip" length="3154110" type="application/octet-stream" sparkle:edSignature="88H0ws6V340x1yK0xaL/e+n3fcKHP9/8mhil0+7IjjRZa+MiiT1lqkJsUxJ6jRXGLR6Ei8I4pNacW8l5Z+AtBA=="/>
+        </item>
+        <item>
             <title>0.6.5</title>
             <pubDate>Thu, 29 Oct 2026 16:06:03 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -26,18 +40,6 @@
             <description sparkle:format="markdown"><![CDATA[- The app icon has bolder, darker brushstrokes, so it's easier to recognize at small sizes in the Dock and app switcher.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.4/Kehai-0.6.4-mac.zip" length="3146990" type="application/octet-stream" sparkle:edSignature="+8Mrq6HFFQSH9MmJwyU3ZpBmznJpN84fiH1fkmpqrI9/adJPulDJ7Wo5LjEd20bW33QxopYtApeGdn73DUqRAA=="/>
-        </item>
-        <item>
-            <title>0.6.3</title>
-            <pubDate>Wed, 21 Oct 2026 11:35:49 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>114</sparkle:version>
-            <sparkle:shortVersionString>0.6.3</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Repository cards in Kehai mini show when each repo was last pushed without cutting off the text.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.3/Kehai-0.6.3-mac.zip" length="3273907" type="application/octet-stream" sparkle:edSignature="0M/aCrIweIScSpHzDuTUDwl+6v9TM3G3ShO+CvGvCkZDeknPtZeSbxXUFJD1us4WH0ALWr207fIhyQzwE/9pCg=="/>
         </item>
     </channel>
 </rss>

@@ -1,8 +1,88 @@
 {
-  "updatedAt": "2026-10-29T20:20:18.519Z",
+  "updatedAt": "2026-10-30T19:56:35.759Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2115966423113900315",
+      "text": "https://t.co/OmwOlG5rJF",
+      "createdAt": "2026-10-30T00:38:02.000Z",
+      "url": "https://x.com/_bobertdowney/status/2115966423113900315",
+      "urls": [
+        {
+          "url": "https://t.co/OmwOlG5rJF",
+          "expandedUrl": "https://www.youtube.com/watch?v=aIxIp9dBv-I",
+          "displayUrl": "youtube.com/watch?v=aIxIp9…",
+          "start": 0,
+          "end": 23
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2115965946523533563",
+      "text": "Afterlife Intelligence / Stay Hungry, Stay Ghoulish. https://t.co/PTLz8iyUz6",
+      "createdAt": "2026-10-30T00:36:09.000Z",
+      "url": "https://x.com/_bobertdowney/status/2115965946523533563",
+      "urls": [
+        {
+          "url": "https://t.co/PTLz8iyUz6",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2115965946523533563/photo/1",
+          "displayUrl": "pic.x.com/PTLz8iyUz6",
+          "start": 53,
+          "end": 76
+        },
+        {
+          "url": "https://t.co/PTLz8iyUz6",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2115965946523533563/photo/1",
+          "displayUrl": "pic.x.com/PTLz8iyUz6",
+          "start": 53,
+          "end": 76
+        },
+        {
+          "url": "https://t.co/PTLz8iyUz6",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2115965946523533563/photo/1",
+          "displayUrl": "pic.x.com/PTLz8iyUz6",
+          "start": 53,
+          "end": 76
+        },
+        {
+          "url": "https://t.co/PTLz8iyUz6",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2115965946523533563/photo/1",
+          "displayUrl": "pic.x.com/PTLz8iyUz6",
+          "start": 53,
+          "end": 76
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2115965946523533563-0.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2115965946523533563-1.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2115965946523533563-2.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2115965946523533563-3.png"
+        }
+      ]
+    },
     {
       "id": "2115446370178138448",
       "text": "Apple Intelligence is an interesting alternative to the other AI models because it’s private by design and it’s free for both you and your users. I built Karui, an app for filtering out unwanted push notifications, and it’s powered by Apple Intelligence. here’s a short talk I https://t.co/hPduNp38sE",
@@ -171,50 +251,6 @@
           "displayUrl": "x.com/wni_jp/status/…",
           "start": 25,
           "end": 48
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2111224227106042158",
-      "text": "LFG https://t.co/dEzHX5D87f",
-      "createdAt": "2026-10-16T22:34:15.000Z",
-      "url": "https://x.com/_bobertdowney/status/2111224227106042158",
-      "urls": [
-        {
-          "url": "https://t.co/dEzHX5D87f",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2111224227106042158/photo/1",
-          "displayUrl": "pic.x.com/dEzHX5D87f",
-          "start": 4,
-          "end": 27
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2111224227106042158-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2110771638157611213",
-      "text": "通知が多すぎませんか？KaruiはiPhoneアプリ。宣伝やスパムを静かにして、大切な人からの通知だけを通します。Mac版も登場。フィルタリングを改善し、メッセージ、Slack、Sparkの通知をもっと便利に。無料・オープンソース\n\nhttps://t.co/7JBp91oCOs",
-      "createdAt": "2026-10-15T16:35:49.000Z",
-      "url": "https://x.com/_bobertdowney/status/2110771638157611213",
-      "urls": [
-        {
-          "url": "https://t.co/7JBp91oCOs",
-          "expandedUrl": "https://karui.jp/mac",
-          "displayUrl": "karui.jp/mac",
-          "start": 117,
-          "end": 140
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",

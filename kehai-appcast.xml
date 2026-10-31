@@ -3,6 +3,19 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.6.7</title>
+            <pubDate>Sat, 31 Oct 2026 15:10:30 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>118</sparkle:version>
+            <sparkle:shortVersionString>0.6.7</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- File search no longer sets off macOS's folder-access prompts on your first search. Desktop, Documents and Downloads are now opt-in: Kehai asks with one line in the Files section, and you can change your choice in Settings.
+- Fixed apps in the app strip that wouldn't open, such as Safari failing with "target process unavailable".
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.7/Kehai-0.6.7-mac.zip" length="3172071" type="application/octet-stream" sparkle:edSignature="MlozHSs5Dduoqfft6dQ9msNqbsooNfC398tG1cHjIuAxQzN+aheMnWpovDZHjioC0saD3zCTKkmN1dmO6K8sDQ=="/>
+        </item>
+        <item>
             <title>0.6.6</title>
             <pubDate>Fri, 30 Oct 2026 15:20:39 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -28,18 +41,6 @@
 - Searching for an app by name lists that app ahead of apps that only mention it in a window title, even when it isn't running yet.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.5/Kehai-0.6.5-mac.zip" length="3146904" type="application/octet-stream" sparkle:edSignature="gkouBPeMO+JWyQyFa9WWyN0rl9tbe5aO4BcOrq5Hijzj0pm31pJW3Pq2Z6ftweSJ44nKOLw3Rqg0Iat9mgG5Dg=="/>
-        </item>
-        <item>
-            <title>0.6.4</title>
-            <pubDate>Fri, 23 Oct 2026 15:45:06 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>115</sparkle:version>
-            <sparkle:shortVersionString>0.6.4</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- The app icon has bolder, darker brushstrokes, so it's easier to recognize at small sizes in the Dock and app switcher.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.4/Kehai-0.6.4-mac.zip" length="3146990" type="application/octet-stream" sparkle:edSignature="+8Mrq6HFFQSH9MmJwyU3ZpBmznJpN84fiH1fkmpqrI9/adJPulDJ7Wo5LjEd20bW33QxopYtApeGdn73DUqRAA=="/>
         </item>
     </channel>
 </rss>

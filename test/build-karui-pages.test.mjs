@@ -88,7 +88,7 @@ test('builds the changelog page and links to it from every page', async () => {
   // first with a clip over its still; no label above it and no App Store screenshots.
   assert.doesNotMatch(pages[0], /karui-demo-label/);
   // Beside Download, only what matters before trying it; the requirements are in Tech Specs.
-  assert.match(pages[0], /<div class="small-note" data-label-en="Free, no sign-up\." data-label-ja="無料、登録不要。">/);
+  assert.match(pages[0], /<div class="small-note" data-label-en="Free, with no subscriptions\." data-label-ja="無料、サブスクリプションなし。">/);
   assert.match(pages[0], /<div class="karui-demo" role="group" aria-roledescription="carousel"/);
   assert.match(pages[0], /<img class="karui-demo-shot is-current" src="\/assets\/karui-demo-en-1\.jpg\?v=\d+" data-src-en="\/assets\/karui-demo-en-1\.jpg\?v=\d+" data-src-ja="\/assets\/karui-demo-ja-1\.jpg\?v=\d+"/);
   assert.strictEqual(pages[0].match(/class="karui-demo-shot/g).length, 4);

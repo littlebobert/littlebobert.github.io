@@ -93,7 +93,8 @@ test('builds the changelog page and links to it from every page', async () => {
   assert.match(pages[0], /<img class="karui-demo-shot is-current" src="\/assets\/karui-demo-en-1\.jpg\?v=\d+" data-src-en="\/assets\/karui-demo-en-1\.jpg\?v=\d+" data-src-ja="\/assets\/karui-demo-ja-1\.jpg\?v=\d+"/);
   assert.strictEqual(pages[0].match(/class="karui-demo-shot/g).length, 4);
   assert.strictEqual(pages[0].match(/<p class="karui-demo-caption/g).length, 4);
-  assert.strictEqual(pages[0].match(/<video/g).length, 1);
+  assert.strictEqual(pages[0].match(/<video/g).length, 2);
+  assert.match(pages[0], /<span class="karui-icon-shape"><img src="\/assets\/karui-icon-sketch\.jpg\?v=\d+"[^>]*><video src="\/assets\/karui-icon-sketch\.mp4\?v=\d+" muted loop playsinline/);
   assert.match(pages[0], /<video class="karui-demo-clip" src="\/assets\/karui-demo-en-sort\.mp4\?v=\d+" data-src-en="\/assets\/karui-demo-en-sort\.mp4\?v=\d+" data-src-ja="\/assets\/karui-demo-ja-sort\.mp4\?v=\d+"[^>]* muted loop playsinline/);
   assert.doesNotMatch(pages[0], /karui-shot-|shot-viewer/);
   await Promise.all(['en', 'ja'].map((language) => readFile(path.join(outputDirectory, 'assets', `karui-demo-${language}-sort.mp4`))));

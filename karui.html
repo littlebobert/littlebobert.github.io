@@ -42,7 +42,13 @@
 
     body.sasu-site { background: #fff; }
     .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
-    .karui-icon { box-sizing: border-box; border: 1px solid var(--karui-ink); border-radius: 12px; }
+    /* The pencil sketch in the app icon's shape; the shadow keeps its light edges off the white page. */
+    .karui-icon { position: relative; display: block; flex: 0 0 56px; width: 56px; height: 56px; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25)); }
+    .karui-icon-shape { display: block; width: 100%; height: 100%; clip-path: polygon(100.0% 50.0%, 99.8% 72.1%, 99.3% 79.1%, 98.4% 84.0%, 97.2% 87.9%, 95.6% 91.0%, 93.5% 93.5%, 91.0% 95.6%, 87.9% 97.2%, 84.0% 98.4%, 79.1% 99.3%, 72.1% 99.8%, 50.0% 100.0%, 27.9% 99.8%, 20.9% 99.3%, 16.0% 98.4%, 12.1% 97.2%, 9.0% 95.6%, 6.5% 93.5%, 4.4% 91.0%, 2.8% 87.9%, 1.6% 84.0%, 0.7% 79.1%, 0.2% 72.1%, 0.0% 50.0%, 0.2% 27.9%, 0.7% 20.9%, 1.6% 16.0%, 2.8% 12.1%, 4.4% 9.0%, 6.5% 6.5%, 9.0% 4.4%, 12.1% 2.8%, 16.0% 1.6%, 20.9% 0.7%, 27.9% 0.2%, 50.0% 0.0%, 72.1% 0.2%, 79.1% 0.7%, 84.0% 1.6%, 87.9% 2.8%, 91.0% 4.4%, 93.5% 6.5%, 95.6% 9.0%, 97.2% 12.1%, 98.4% 16.0%, 99.3% 20.9%, 99.8% 27.9%); }
+    .karui-icon-shape img, .karui-icon-shape video { display: block; width: 100%; height: 100%; }
+    /* The still stays underneath: it's all that shows with no motion or a blocked video. */
+    .karui-icon-shape video { position: absolute; inset: 0; opacity: 0; }
+    .karui-icon-shape video.is-playing { opacity: 1; }
     .sasu-hero .download-link { margin-top: 9pt; }
     .sasu-hero .sasu-subtitle { font-size: 11pt; line-height: 1.3; }
     /* The second line of the pitch, below the icon and name, in plain body text. */
@@ -165,7 +171,7 @@
         })();
       </script>
       <div class="sasu-hero-header">
-        <a href="karui-qr.html" class="karui-qr-trigger" aria-label="Show a QR code for karui.jp"><img class="sasu-icon karui-icon" src="assets/karui-icon.png?v=2" alt="Karui app icon with a tray and red badge" data-alt-en="Karui app icon with a tray and red badge" data-alt-ja="トレイと赤いバッジのKaruiアプリアイコン"></a>
+        <a href="karui-qr.html" class="karui-qr-trigger" aria-label="Show a QR code for karui.jp"><span class="karui-icon"><span class="karui-icon-shape"><img src="assets/karui-icon-sketch.jpg?v=6" alt="Karui app icon with a tray and red badge, sketched in pencil" data-alt-en="Karui app icon with a tray and red badge, sketched in pencil" data-alt-ja="鉛筆で描いた、トレイと赤いバッジのKaruiアプリアイコン" width="56" height="56"><video src="assets/karui-icon-sketch.mp4?v=5" muted loop playsinline preload="auto" aria-hidden="true"></video></span></span></a>
         <div>
           <h1>Karui</h1>
           <div class="sasu-subtitle" data-label-en="Silence spam notifications. See messages people unsend." data-label-ja="迷惑通知を消音。送信取り消しされたメッセージを確認。">Silence spam notifications. See messages people unsend.</div>
@@ -177,11 +183,11 @@
 
     <section class="sasu-section">
       <div class="karui-demo" role="group" aria-roledescription="carousel" aria-label="Karui on iPhone Duo, four screens" data-aria-label-en="Karui on iPhone Duo, four screens" data-aria-label-ja="iPhone DuoのKarui、4画面" tabindex="0">
-        <img class="karui-demo-shot is-current" src="assets/karui-demo-en-1.jpg?v=4" data-src-en="assets/karui-demo-en-1.jpg?v=4" data-src-ja="assets/karui-demo-ja-1.jpg?v=4" width="720" height="1004" alt="Karui’s History, with notifications sorted as they arrived." data-alt-en="Karui’s History, with notifications sorted as they arrived." data-alt-ja="届いた通知が仕分けされたKaruiの履歴">
-        <img class="karui-demo-shot" src="assets/karui-demo-en-2.jpg?v=4" data-src-en="assets/karui-demo-en-2.jpg?v=4" data-src-ja="assets/karui-demo-ja-2.jpg?v=4" width="720" height="1004" alt="A promotion classified as spam, with Open Mail and reclassify options." data-alt-en="A promotion classified as spam, with Open Mail and reclassify options." data-alt-ja="スパムと分類された宣伝通知の詳細。Mailを開く、もう一度分類するなどの選択肢付き" loading="lazy">
-        <img class="karui-demo-shot" src="assets/karui-demo-en-3.jpg?v=4" data-src-en="assets/karui-demo-en-3.jpg?v=4" data-src-ja="assets/karui-demo-ja-3.jpg?v=4" width="720" height="1004" alt="History keeps Sam’s party message, next to silenced promotions." data-alt-en="History keeps Sam’s party message, next to silenced promotions." data-alt-ja="サムのパーティーのメッセージが残り、宣伝は静かにされた履歴" loading="lazy">
-        <img class="karui-demo-shot" src="assets/karui-demo-en-4.jpg?v=4" data-src-en="assets/karui-demo-en-4.jpg?v=4" data-src-ja="assets/karui-demo-ja-4.jpg?v=4" width="720" height="1004" alt="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-en="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-ja="緊急アラーム：母から「今病院にいるの」のメッセージ。母に電話ボタン付き" loading="lazy">
-        <video class="karui-demo-clip" src="assets/karui-demo-en-sort.mp4?v=4" data-src-en="assets/karui-demo-en-sort.mp4?v=4" data-src-ja="assets/karui-demo-ja-sort.mp4?v=4" width="720" height="1004" muted loop playsinline disablepictureinpicture disableremoteplayback preload="none" aria-hidden="true"></video>
+        <img class="karui-demo-shot is-current" src="assets/karui-demo-en-1.jpg?v=5" data-src-en="assets/karui-demo-en-1.jpg?v=5" data-src-ja="assets/karui-demo-ja-1.jpg?v=5" width="720" height="1004" alt="Karui’s History, with notifications sorted as they arrived." data-alt-en="Karui’s History, with notifications sorted as they arrived." data-alt-ja="届いた通知が仕分けされたKaruiの履歴">
+        <img class="karui-demo-shot" src="assets/karui-demo-en-2.jpg?v=5" data-src-en="assets/karui-demo-en-2.jpg?v=5" data-src-ja="assets/karui-demo-ja-2.jpg?v=5" width="720" height="1004" alt="A promotion classified as spam, with Open Mail and reclassify options." data-alt-en="A promotion classified as spam, with Open Mail and reclassify options." data-alt-ja="スパムと分類された宣伝通知の詳細。Mailを開く、もう一度分類するなどの選択肢付き" loading="lazy">
+        <img class="karui-demo-shot" src="assets/karui-demo-en-3.jpg?v=5" data-src-en="assets/karui-demo-en-3.jpg?v=5" data-src-ja="assets/karui-demo-ja-3.jpg?v=5" width="720" height="1004" alt="History keeps Sam’s party message, next to silenced promotions." data-alt-en="History keeps Sam’s party message, next to silenced promotions." data-alt-ja="サムのパーティーのメッセージが残り、宣伝は静かにされた履歴" loading="lazy">
+        <img class="karui-demo-shot" src="assets/karui-demo-en-4.jpg?v=5" data-src-en="assets/karui-demo-en-4.jpg?v=5" data-src-ja="assets/karui-demo-ja-4.jpg?v=5" width="720" height="1004" alt="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-en="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-ja="緊急アラーム：母から「今病院にいるの」のメッセージ。母に電話ボタン付き" loading="lazy">
+        <video class="karui-demo-clip" src="assets/karui-demo-en-sort.mp4?v=5" data-src-en="assets/karui-demo-en-sort.mp4?v=5" data-src-ja="assets/karui-demo-ja-sort.mp4?v=5" width="720" height="1004" muted loop playsinline disablepictureinpicture disableremoteplayback preload="none" aria-hidden="true"></video>
         <button class="karui-demo-zone karui-demo-zone-prev" type="button" tabindex="-1" aria-hidden="true"></button>
         <button class="karui-demo-zone karui-demo-zone-next" type="button" tabindex="-1" aria-hidden="true"></button>
       </div>
@@ -365,6 +371,19 @@
     const demoClip = demo.querySelector('.karui-demo-clip');
     const reduceMotionQuery = matchMedia('(prefers-reduced-motion: reduce)');
     let demoInView = false;
+    const sketchClip = document.querySelector('.karui-icon video');
+    function syncSketchClip() {
+      if (reduceMotionQuery.matches || document.hidden) {
+        sketchClip.pause();
+        sketchClip.classList.remove('is-playing');
+      } else {
+        sketchClip.play().catch(() => {});
+      }
+    }
+    sketchClip.addEventListener('playing', () => {
+      if (!reduceMotionQuery.matches) sketchClip.classList.add('is-playing');
+    });
+
     function syncDemoClip() {
       if (demoIndex !== 0 || reduceMotionQuery.matches) demoClip.classList.remove('is-playing');
       if (demoIndex !== 0 || reduceMotionQuery.matches || !demoInView || document.hidden) {
@@ -387,6 +406,9 @@
       syncDemoClip();
     }, { threshold: 0.4 }).observe(demo);
     document.addEventListener('visibilitychange', syncDemoClip);
+    document.addEventListener('visibilitychange', syncSketchClip);
+    reduceMotionQuery.addEventListener('change', syncSketchClip);
+    syncSketchClip();
     reduceMotionQuery.addEventListener('change', syncDemoClip);
     let demoSwipeStart;
     let demoSwiped = false;

@@ -30,6 +30,8 @@ const assetFiles = [
   'karui-favicon.png',
   'karui-developer.jpg',
   'karui-icon.png',
+  'karui-icon-sketch.jpg',
+  'karui-icon-sketch.mp4',
   // The lightning talk's What is Karui slide.
   'karui-app-icon.png',
   'karui-qr.png',

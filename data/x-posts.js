@@ -1,5 +1,5 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-10-30T19:56:35.759Z",
+  "updatedAt": "2026-10-31T19:21:24.497Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
@@ -208,38 +208,6 @@ window.X_POSTS_SNAPSHOT = {
       ]
     },
     {
-      "id": "2113465745837564127",
-      "text": "KaruiはiPhone Duoに最適化されています。迷惑通知を鳴らさず、送信取り消しされたメッセージも読めて、緊急のときは選んだ人がアラームで起こせます。プライバシーを守って、無料で → https://t.co/XvhuIJPcHX https://t.co/a6qAOlH4qN",
-      "createdAt": "2026-10-23T03:01:14.000Z",
-      "url": "https://x.com/_bobertdowney/status/2113465745837564127",
-      "urls": [
-        {
-          "url": "https://t.co/XvhuIJPcHX",
-          "expandedUrl": "https://karui.jp",
-          "displayUrl": "karui.jp",
-          "start": 95,
-          "end": 118
-        },
-        {
-          "url": "https://t.co/a6qAOlH4qN",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2113465745837564127/video/1",
-          "displayUrl": "pic.x.com/a6qAOlH4qN",
-          "start": 119,
-          "end": 142
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2113465745837564127-0.png"
-        }
-      ]
-    },
-    {
       "id": "2113207960185028915",
       "text": "Looney Tunes storm track https://t.co/PG5OquUmTj",
       "createdAt": "2026-10-22T09:56:53.000Z",
@@ -257,6 +225,31 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
+    },
+    {
+      "id": "2111224227106042158",
+      "text": "LFG https://t.co/dEzHX5D87f",
+      "createdAt": "2026-10-16T22:34:15.000Z",
+      "url": "https://x.com/_bobertdowney/status/2111224227106042158",
+      "urls": [
+        {
+          "url": "https://t.co/dEzHX5D87f",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2111224227106042158/photo/1",
+          "displayUrl": "pic.x.com/dEzHX5D87f",
+          "start": 4,
+          "end": 27
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2111224227106042158-0.png"
+        }
+      ]
     }
   ]
 };

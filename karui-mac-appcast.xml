@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.9.5</title>
+            <pubDate>Sat, 31 Oct 2026 15:44:17 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>62</sparkle:version>
+            <sparkle:shortVersionString>0.9.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Second Opinion is now called Private Cloud Sorting, to match Karui on your iPhone.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.9.5/Karui-0.9.5-mac.zip" length="2881641" type="application/octet-stream" sparkle:edSignature="EG1h9r1nX+MV8rn0ds/4wXfSgLyOdDKXoTbroYOAYoFFxIWpfBVxgRu3C+02H2Dy/zt3+AznGOpGLsuUTfaeDw=="/>
+        </item>
+        <item>
             <title>0.9.4</title>
             <pubDate>Fri, 30 Oct 2026 10:42:48 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- When you read an email or message on this Mac before your iPhone's copy of it arrives, your iPhone now clears its alert too.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.9.3/Karui-0.9.3-mac.zip" length="2880507" type="application/octet-stream" sparkle:edSignature="rKKCux+J+8NDGwkjnNaucy7/NK8xiaWAFYoearF7ljgp1P0yjYnFTQrEejJAngnxRfOwkpDDAGwpdcjt8POGAw=="/>
-        </item>
-        <item>
-            <title>0.9.2</title>
-            <pubDate>Tue, 27 Oct 2026 09:35:57 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>59</sparkle:version>
-            <sparkle:shortVersionString>0.9.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Messages that only reached your iPhone, because the conversation was open on this Mac, are now marked read here once you've read them in Messages.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.9.2/Karui-0.9.2-mac.zip" length="2876877" type="application/octet-stream" sparkle:edSignature="42xxNjc4QfF7DfLJPoJUep/8IKPqm0LGZP/XgenWIrdyuCwC991kZ+gWuwHsl6If+7B9ElT3J/6PwsAh6zQqCg=="/>
         </item>
     </channel>
 </rss>

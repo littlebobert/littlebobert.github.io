@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.4.7</title>
+            <pubDate>Sun, 01 Nov 2026 23:25:51 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>32.1</sparkle:version>
+            <sparkle:shortVersionString>0.4.7</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.7
+
+Search for autofill in Spotlight to find Umete. Settings tabs now stay the same width, the AI tab hides the model and key fields when Umete (free) is selected, and Add now offers Date, Gender, and Phone.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="miLtuTLTxilZ2KmRnja2HZ4LcZhqgOPTc14IY41LzYJsbJyZQ3z2haC5c21FnQooj0K/0qXTuxDwWARP5FfcDg==" sparkle:length="454">https://umete.jp/Umete-0.4.7-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="cjpNjeC7PYfDMkVw+wB/SYrhSHYAPq/uOCJPz5RnMMJ8kmQBn0DTNyqWxgNrOAwOwDgJlZzR/B4b5v4YKdkPAw==" sparkle:length="533">https://umete.jp/Umete-0.4.7-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.7/Umete-0.4.7-macOS.dmg" length="6800823" type="application/octet-stream" sparkle:edSignature="ND90nLe+Iqh4RxBmXcCXuwIGEcieVleRNRZutaL6nAKGLKKSpTwBqP56ZlFMCzH3FM/pwAgxHw5HJZ75pM5GDQ=="/>
+        </item>
+        <item>
             <title>0.4.6</title>
             <pubDate>Fri, 16 Oct 2026 21:50:19 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -149,25 +165,9 @@ Added iCloud sync, saved contacts for doctors and emergency contacts, and an opt
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="T51kO9+zxHLGLtjhpHFa/38uKRNHqF3isHgGQxUGst/bgnfE9IYc/2RqRYhdoEKIlj+oaBGhPMisIyp2hWGRAg==" sparkle:length="411">https://littlebobert.github.io/Ume-0.2.0-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.2.0/Ume-0.2.0-macOS.dmg" length="5858743" type="application/octet-stream" sparkle:edSignature="t5z8EGB7r/g2XQqt1JFJH0yh5/Fs5Kl50ScV4mquvKckSAiUCISzow/U9gf36ft0sR6JfluDtGGEqu1O2TGgCg=="/>
         </item>
-        <item>
-            <title>0.1.15</title>
-            <pubDate>Sat, 29 Aug 2026 14:06:08 +0000</pubDate>
-            <link>https://littlebobert.github.io/ume.html</link>
-            <sparkle:fullReleaseNotesLink>https://littlebobert.github.io/ume.html#changelog</sparkle:fullReleaseNotesLink>
-            <sparkle:version>20.1</sparkle:version>
-            <sparkle:shortVersionString>0.1.15</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Ume 0.1.15
-
-Switch back to Xcode 26 so I can publish a working TestFlight.
-]]></description>
-            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="t+kbLSfkf6DiE+LvSDUJVCq2rwkdnssynjMW44hMZe0JIlCUckDCC8lmxyB95/SfrA+EgD+TfM29EW9q1CPODA==" sparkle:length="312">https://littlebobert.github.io/Ume-0.1.15-macOS.en.md</sparkle:releaseNotesLink>
-            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="c1GJeL6noWoHXf7wvURZuSmrmNIBHxeu7VPK3HoFjQ83rk+HDG2O9813ayQLWRgtRD32fn1rsHjSKo2S6W72Bw==" sparkle:length="337">https://littlebobert.github.io/Ume-0.1.15-macOS.ja.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.1.15/Ume-0.1.15-macOS.dmg" length="5629367" type="application/octet-stream" sparkle:edSignature="rNMgUZTtdB9H21KF4ppbBKBrW8TAMdvmsnvhjJALS/5pvM9k9oMh2suaqbFL1h12BulTUYR7H8HTXKePiCK9Cg=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: ZXQz2f9RnutiDXdKrQjHdYbBXRY8dKqznHcP8Yq0ZP64/Pz01+A7uSIziqqf/H7zmiLTARaPwfu0Xw5NW4zfBw==
-length: 15307
+edSignature: AY6hxFVbiTjo8BRF2LEfT53PJnVsIurFFsKHJS6J3Ii5fNPn8y59V/DnYxJsaqY+8XY4oLeo+ftS32zjlw6wBg==
+length: 15378
 -->

@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.9.6</title>
+            <pubDate>Sun, 01 Nov 2026 21:16:33 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>63</sparkle:version>
+            <sparkle:shortVersionString>0.9.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Open Messages now opens a named group chat itself, instead of starting a new conversation with its members.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.9.6/Karui-0.9.6-mac.zip" length="2882260" type="application/octet-stream" sparkle:edSignature="tlEYfxoLu05HZ2noQ5N6JDEl+b0M3NaOz1touMTnrOKTm2/B/Gw7S6X8Kvs59RgpsdhLaiQ76mMi24CV7ResCw=="/>
+        </item>
+        <item>
             <title>0.9.5</title>
             <pubDate>Sat, 31 Oct 2026 15:44:17 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Karui now sorts German notifications: with your Mac set to German, Apple Intelligence writes its reasons in German, and German words for urgent, sale, and travel notifications count.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.9.4/Karui-0.9.4-mac.zip" length="2881647" type="application/octet-stream" sparkle:edSignature="Noct9yMrdNTqDCVt44iLuRPURh67M8sSN3MZJKzByyMdWPlRun69TyFresM4z5KGXgKKc6tulYJ92UHf45jxAQ=="/>
-        </item>
-        <item>
-            <title>0.9.3</title>
-            <pubDate>Tue, 27 Oct 2026 14:07:23 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>60</sparkle:version>
-            <sparkle:shortVersionString>0.9.3</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- When you read an email or message on this Mac before your iPhone's copy of it arrives, your iPhone now clears its alert too.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.9.3/Karui-0.9.3-mac.zip" length="2880507" type="application/octet-stream" sparkle:edSignature="rKKCux+J+8NDGwkjnNaucy7/NK8xiaWAFYoearF7ljgp1P0yjYnFTQrEejJAngnxRfOwkpDDAGwpdcjt8POGAw=="/>
         </item>
     </channel>
 </rss>

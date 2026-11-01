@@ -28,4 +28,4 @@ No account, no ads, no analytics. Saved answers are encrypted with AES-GCM; the 
 
 ## Requirements
 
-- macOS 12 or later, or iOS or iPadOS 15 or later, with Safari. The Mac app is downloaded from umete.jp and updates itself with Sparkle.
+- macOS 12 or later, or iOS or iPadOS 15 or later, with Safari. The iPhone and iPad app is on the [App Store](https://apps.apple.com/app/umete/id6800449141). The Mac app is downloaded from umete.jp and updates itself with Sparkle.

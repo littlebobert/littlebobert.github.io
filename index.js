@@ -2759,10 +2759,12 @@ const BALLOON_PRISONER = [
 // get a thick outline first and then their fills, which covers the outline where they overlap,
 // so they read as one.
 const classicBalloonShape = {
+  // The tip sits 7px in from the balloon's left edge and 10px past its bottom edge.
+  reach: { x: -7, y: 10 },
   svg(width, height, tip, below, flip) {
     const x = flip ? width - tip.x : tip.x;
     const edge = below ? 2 : height - 2;
-    const tail = `M14 ${edge}L${x} ${tip.y}L30 ${edge}Z`;
+    const tail = `M12 ${edge}L${x} ${tip.y}L25 ${edge}Z`;
     const body = `<rect width="${width}" height="${height}" rx="9"/>`;
     const shapes = `<path d="${tail}"/>${body}`;
     return `
@@ -2824,7 +2826,7 @@ function showBalloon(found) {
   const width = balloon.offsetWidth;
   const height = balloon.offsetHeight;
   const margin = 6;
-  const reach = { x: 14, y: 22 };
+  const { reach } = balloonShape;
   const x = rect.width > 120
     ? Math.min(Math.max(balloonPointerX, rect.left + 8), rect.right - 8)
     : rect.left + rect.width / 2;

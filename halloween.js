@@ -800,6 +800,7 @@
         '助けて！助けて！システムソフトウェア工場に閉じ込められています！（今も）\n—ブルー・ミーニーズのゴーストライターより',
       ],
       shape: {
+        reach: { x: 14, y: 22 },
         // The head is a half circle as wide as the ghost, so the face and text start lower on wider
         // ghosts. Short text gets a longer body, so there's always some ghost below the head.
         fit(balloon) {

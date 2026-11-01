@@ -45,7 +45,6 @@
        dots below do the same. The phones are rendered by AppStoreScreenshots/scripts/
        landing.mjs in the Umete repository. */
     body { touch-action: manipulation; }
-    .ume-demo-label { margin: 10pt 0 5pt; font-size: 10pt; font-weight: 600; color: #555; text-align: center; }
     .ume-carousel { position: relative; width: 100%; max-width: 300px; aspect-ratio: 900 / 1837; margin: 0 auto; touch-action: pan-y; user-select: none; -webkit-user-select: none; }
     .ume-shot { position: absolute; inset: 0; display: block; width: 100%; height: auto; opacity: 0; transition: opacity 0.25s; pointer-events: none; }
     .ume-shot.is-current { opacity: 1; }
@@ -73,7 +72,6 @@
     .ume-detail p + p { margin-top: 7pt; }
     .feature-list { margin: 3pt 0 0; padding-left: 20pt; }
     .feature-list li + li { margin-top: 3pt; }
-    .wordmark-kanji { margin-left: 6px; font-size: 0.55em; font-weight: 500; color: var(--ume-green-dark); vertical-align: 2px; }
     .ume-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
     .ume-footer p { margin: 4pt 0; }
     .footer-links .footer-separator { margin: 0 6pt; color: #777; }
@@ -105,7 +103,7 @@
       <div class="sasu-hero-header">
         <img class="sasu-icon" src="assets/ume-icon.png?v=1" alt="Umete app icon">
         <div>
-          <h1>Umete <span class="wordmark-kanji" lang="ja">(埋めて)</span></h1>
+          <h1>Umete</h1>
           <div class="sasu-subtitle" data-label-en="Autofill everything, privately." data-label-ja="あらゆるフォームに、プライバシーを守って自動入力。">Autofill everything, privately.</div>
         </div>
       </div>
@@ -114,11 +112,10 @@
         <a class="download-link" href="https://apps.apple.com/app/umete/id6800449141" data-label-en="Download for iPhone and iPad" data-label-ja="iPhone・iPad版をダウンロード">Download for iPhone and iPad</a>
         <a class="download-link" data-ume-download href="https://github.com/littlebobert/umete/releases/download/v0.4.6/Umete-0.4.6-macOS.dmg" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
       </div>
-      <div class="small-note" data-label-en="iPhone and iPad need iOS 15 or later; the Mac app needs macOS 12 or later. Free, with no in-app purchases, subscription, or sign up." data-label-ja="iPhone・iPadはiOS 15以降、MacはmacOS 12以降が必要です。無料で、アプリ内課金、サブスクリプション、登録はありません。">iPhone and iPad need iOS 15 or later; the Mac app needs macOS 12 or later. Free, with no in-app purchases, subscription, or sign up.</div>
+      <div class="small-note" data-label-en="Free, with no subscriptions and no sign-up." data-label-ja="無料で、サブスクリプションも登録もありません。">Free, with no subscriptions and no sign-up.</div>
     </section>
 
     <section class="sasu-section">
-      <p class="ume-demo-label" data-label-en="Umete on iPhone" data-label-ja="iPhoneのUmete">Umete on iPhone</p>
       <div class="ume-carousel" role="group" aria-roledescription="carousel" aria-label="Umete on iPhone, three screens" data-aria-label-en="Umete on iPhone, three screens" data-aria-label-ja="iPhoneのUmete、3画面" tabindex="0">
         <img class="ume-shot is-current" src="assets/umete-landing-fill.webp?v=1" width="900" height="1837" alt="Safari on iPhone with an airline’s traveler form filled in by Umete, and Umete’s sheet saying it filled 9 fields." data-alt-en="Safari on iPhone with an airline’s traveler form filled in by Umete, and Umete’s sheet saying it filled 9 fields." data-alt-ja="iPhoneのSafariで、Umeteが航空会社の旅行者フォームに入力し、9項目を入力したと表示している画面">
         <img class="ume-shot" src="assets/umete-landing-remembers.webp?v=1" width="900" height="1837" alt="Umete’s Saved Data: a home address, two doctors, an emergency contact, a passport number, and more." data-alt-en="Umete’s Saved Data: a home address, two doctors, an emergency contact, a passport number, and more." data-alt-ja="Umeteの保存済みデータ：自宅の住所、2人の医師、緊急連絡先、パスポート番号など" loading="lazy">

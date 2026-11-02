@@ -54,9 +54,9 @@ const assetFiles = [
   'karui-lightning-talk.mp4',
   'karui-lightning-talk-poster.jpg',
   // The demo's four screens, in each language.
-  ...['en', 'ja'].flatMap((language) => [1, 2, 3, 4].map((screen) => `karui-demo-${language}-${screen}.jpg`)),
+  ...['en', 'ja', 'ko'].flatMap((language) => [1, 2, 3, 4].map((screen) => `karui-demo-${language}-${screen}.jpg`)),
   // The first screen's clip of notifications sorting themselves, in each language.
-  ...['en', 'ja'].map((language) => `karui-demo-${language}-sort.mp4`),
+  ...['en', 'ja', 'ko'].map((language) => `karui-demo-${language}-sort.mp4`),
   // Karui for Mac's two screens in a MacBook Air, in each language.
   ...['en', 'ja'].flatMap((language) => [1, 2].map((screen) => `karui-mac-demo-${language}-${screen}.jpg`)),
 ];
@@ -107,6 +107,7 @@ function createDeployedPage(source) {
     .replaceAll('src="assets/', 'src="/assets/')
     .replaceAll('data-src-en="assets/', 'data-src-en="/assets/')
     .replaceAll('data-src-ja="assets/', 'data-src-ja="/assets/')
+    .replaceAll('data-src-ko="assets/', 'data-src-ko="/assets/')
     .replaceAll('poster="assets/', 'poster="/assets/')
     .replaceAll('data-poster-en="assets/', 'data-poster-en="/assets/')
     .replaceAll('data-poster-ja="assets/', 'data-poster-ja="/assets/')

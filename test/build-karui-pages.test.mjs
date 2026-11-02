@@ -97,8 +97,9 @@ test('builds the changelog page and links to it from every page', async () => {
   assert.match(pages[0], /<span class="karui-icon-shape"><img src="\/assets\/karui-icon-sketch\.jpg\?v=\d+"[^>]*><video src="\/assets\/karui-icon-sketch\.mp4\?v=\d+" muted loop playsinline/);
   assert.match(pages[0], /<video class="karui-demo-clip" src="\/assets\/karui-demo-en-sort\.mp4\?v=\d+" data-src-en="\/assets\/karui-demo-en-sort\.mp4\?v=\d+" data-src-ja="\/assets\/karui-demo-ja-sort\.mp4\?v=\d+"[^>]* muted loop playsinline/);
   assert.doesNotMatch(pages[0], /karui-shot-|shot-viewer/);
-  await Promise.all(['en', 'ja'].map((language) => readFile(path.join(outputDirectory, 'assets', `karui-demo-${language}-sort.mp4`))));
-  for (const language of ['en', 'ja']) {
+  assert.match(pages[0], /data-src-ko="\/assets\/karui-demo-ko-1\.jpg\?v=\d+"/);
+  await Promise.all(['en', 'ja', 'ko'].map((language) => readFile(path.join(outputDirectory, 'assets', `karui-demo-${language}-sort.mp4`))));
+  for (const language of ['en', 'ja', 'ko']) {
     for (const screen of [1, 2, 3, 4]) await readFile(path.join(outputDirectory, 'assets', `karui-demo-${language}-${screen}.jpg`));
   }
   assert.match(pages[0], /location\.hash === '#qr'/);

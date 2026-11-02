@@ -1,8 +1,40 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-11-01T19:45:26.536Z",
+  "updatedAt": "2026-11-02T23:07:59.133Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2117383583962914861",
+      "text": "もうWebフォームを手入力しなくて大丈夫。Umeteは、iPhoneとMacで使える無料のSafari機能拡張です。ワンタップでフォーム全体を入力でき、個人情報をAIに送ることはありません。https://t.co/aNKnr7L2be https://t.co/hczDi4c8Ru",
+      "createdAt": "2026-11-02T22:29:20.000Z",
+      "url": "https://x.com/_bobertdowney/status/2117383583962914861",
+      "urls": [
+        {
+          "url": "https://t.co/aNKnr7L2be",
+          "expandedUrl": "https://umete.jp",
+          "displayUrl": "umete.jp",
+          "start": 95,
+          "end": 118
+        },
+        {
+          "url": "https://t.co/hczDi4c8Ru",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2117383583962914861/video/1",
+          "displayUrl": "pic.x.com/hczDi4c8Ru",
+          "start": 119,
+          "end": 142
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2117383583962914861-0.png"
+        }
+      ]
+    },
     {
       "id": "2116860113671864619",
       "text": "谷川岳に登りました https://t.co/ROidKwZKlL",
@@ -230,31 +262,6 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2113571029813744000",
-      "text": "a Japanese artist just created an icon for my app Kehai. Kehai is a free app that makes it easier to jump to the GitHub repo, app, file, or window I want. but Kehai hides itself in its app section so I find myself opening the About window to gaze at the icon 🤓. https://t.co/B5qmP5L9ld",
-      "createdAt": "2026-10-23T09:59:36.000Z",
-      "url": "https://x.com/_bobertdowney/status/2113571029813744000",
-      "urls": [
-        {
-          "url": "https://t.co/B5qmP5L9ld",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2113571029813744000/photo/1",
-          "displayUrl": "pic.x.com/B5qmP5L9ld",
-          "start": 262,
-          "end": 285
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2113571029813744000-0.png"
-        }
-      ]
     }
   ]
 };

@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.10.1</title>
+            <pubDate>Mon, 02 Nov 2026 10:30:10 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>65</sparkle:version>
+            <sparkle:shortVersionString>0.10.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- A message you read in an open Messages conversation just before leaving your Mac is less likely to show up on your iPhone afterwards.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.1/Karui-0.10.1-mac.zip" length="2883882" type="application/octet-stream" sparkle:edSignature="8pwk3Bo1pMQMinC4A5ExbNPfchcvKOVDhLq5iAvNyW2DE7xPzAwOVYCpaxrs1ZGSzkO71QbTmgJodIKnao1tCQ=="/>
+        </item>
+        <item>
             <title>0.10.0</title>
             <pubDate>Mon, 02 Nov 2026 09:25:54 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Open Messages now opens a named group chat itself, instead of starting a new conversation with its members.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.9.6/Karui-0.9.6-mac.zip" length="2882260" type="application/octet-stream" sparkle:edSignature="tlEYfxoLu05HZ2noQ5N6JDEl+b0M3NaOz1touMTnrOKTm2/B/Gw7S6X8Kvs59RgpsdhLaiQ76mMi24CV7ResCw=="/>
-        </item>
-        <item>
-            <title>0.9.5</title>
-            <pubDate>Sat, 31 Oct 2026 15:44:17 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>62</sparkle:version>
-            <sparkle:shortVersionString>0.9.5</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Second Opinion is now called Private Cloud Sorting, to match Karui on your iPhone.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.9.5/Karui-0.9.5-mac.zip" length="2881641" type="application/octet-stream" sparkle:edSignature="EG1h9r1nX+MV8rn0ds/4wXfSgLyOdDKXoTbroYOAYoFFxIWpfBVxgRu3C+02H2Dy/zt3+AznGOpGLsuUTfaeDw=="/>
         </item>
     </channel>
 </rss>

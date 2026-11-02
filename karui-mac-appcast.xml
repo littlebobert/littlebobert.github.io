@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.10.3</title>
+            <pubDate>Mon, 02 Nov 2026 12:47:58 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>67</sparkle:version>
+            <sparkle:shortVersionString>0.10.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Marking a notification read here now clears its alert on your iPhone within seconds, with Karui 0.2.10 or later. The About window's animation has a darker tray.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.3/Karui-0.10.3-mac.zip" length="3093188" type="application/octet-stream" sparkle:edSignature="WYRCw5OIJdjXslxVElDVrilfTgiYF45vVwE2oiO5gfwT4U4E1UmNoOy9Xdksw62ad1bd3PLwoBpZn1WBeEvGCg=="/>
+        </item>
+        <item>
             <title>0.10.2</title>
             <pubDate>Mon, 02 Nov 2026 10:42:54 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- A message you read in an open Messages conversation just before leaving your Mac is less likely to show up on your iPhone afterwards.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.1/Karui-0.10.1-mac.zip" length="2883882" type="application/octet-stream" sparkle:edSignature="8pwk3Bo1pMQMinC4A5ExbNPfchcvKOVDhLq5iAvNyW2DE7xPzAwOVYCpaxrs1ZGSzkO71QbTmgJodIKnao1tCQ=="/>
-        </item>
-        <item>
-            <title>0.10.0</title>
-            <pubDate>Mon, 02 Nov 2026 09:25:54 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>64</sparkle:version>
-            <sparkle:shortVersionString>0.10.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- When you leave your Mac having read everything, Karui on your iPhone clears those alerts instead of showing them later.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.0/Karui-0.10.0-mac.zip" length="2883838" type="application/octet-stream" sparkle:edSignature="64Va+/UuVJwRfLnEOj9kGGZZjfWgruov0eF2DqFfvjQ+q16JAqqAK/Pf3IV7ppdqSj3SpppKWZyw0XQpJQ9PDg=="/>
         </item>
     </channel>
 </rss>

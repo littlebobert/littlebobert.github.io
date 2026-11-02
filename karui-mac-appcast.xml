@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.10.2</title>
+            <pubDate>Mon, 02 Nov 2026 10:42:54 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>66</sparkle:version>
+            <sparkle:shortVersionString>0.10.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- The About window now shows the pencil sketch animation of the Karui icon.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.2/Karui-0.10.2-mac.zip" length="3076378" type="application/octet-stream" sparkle:edSignature="21lxoAUGETLw6AtMVvBNBIPXbra2ws2ea5jfX4oNBhZNIdwWgJsgV74UJKd6Ap9/ChaBdsYpu3JCCkaccOs2Ag=="/>
+        </item>
+        <item>
             <title>0.10.1</title>
             <pubDate>Mon, 02 Nov 2026 10:30:10 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- When you leave your Mac having read everything, Karui on your iPhone clears those alerts instead of showing them later.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.0/Karui-0.10.0-mac.zip" length="2883838" type="application/octet-stream" sparkle:edSignature="64Va+/UuVJwRfLnEOj9kGGZZjfWgruov0eF2DqFfvjQ+q16JAqqAK/Pf3IV7ppdqSj3SpppKWZyw0XQpJQ9PDg=="/>
-        </item>
-        <item>
-            <title>0.9.6</title>
-            <pubDate>Sun, 01 Nov 2026 21:16:33 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>63</sparkle:version>
-            <sparkle:shortVersionString>0.9.6</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Open Messages now opens a named group chat itself, instead of starting a new conversation with its members.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.9.6/Karui-0.9.6-mac.zip" length="2882260" type="application/octet-stream" sparkle:edSignature="tlEYfxoLu05HZ2noQ5N6JDEl+b0M3NaOz1touMTnrOKTm2/B/Gw7S6X8Kvs59RgpsdhLaiQ76mMi24CV7ResCw=="/>
         </item>
     </channel>
 </rss>

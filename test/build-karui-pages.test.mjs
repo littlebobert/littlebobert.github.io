@@ -35,7 +35,7 @@ test('builds every Karui clean route', async () => {
 
   assert.match(acknowledgementsPage, /href="\/sasu-common\.css\?v=\d+"/);
   assert.match(acknowledgementsPage, /href="\/assets\/karui-favicon\.png\?v=1"/);
-  assert.match(acknowledgementsPage, /src="\/assets\/karui-icon\.png\?v=2"/);
+  assert.match(acknowledgementsPage, /src="\/assets\/karui-icon-sketch\.jpg\?v=\d+"/);
   assert.match(acknowledgementsPage, /href="\/"/);
   assert.match(acknowledgementsPage, /href="\/privacy"/);
   assert.match(acknowledgementsPage, /href="\/support"/);
@@ -48,7 +48,7 @@ test('builds the Karui for Mac page at /mac and links it from the home page', as
   assert.doesNotMatch(macPage, /beta-badge/);
   assert.match(macPage, /href="\/"/);
   assert.match(macPage, /href="\/privacy"/);
-  assert.match(macPage, /src="\/assets\/karui-icon\.png\?v=2"/);
+  assert.match(macPage, /src="\/assets\/karui-icon-sketch\.jpg\?v=\d+"/);
   assert.doesNotMatch(macPage, /href="karui\.html"/);
   assert.match(homePage, /href="\/mac"/);
   // The Mac demo: two screens of the window, in English and Japanese.
@@ -163,7 +163,7 @@ test('builds Tech Specs and the Technical Notes, linked from every page', async 
   assert.match(technotesPage, /<h1[^>]*>Technical Notes<\/h1>/);
   assert.match(kn001Page, /<h1[^>]*>KN001: Measuring the Background Rate Limit of Apple’s On-Device Foundation Model<\/h1>/);
   assert.match(kn001Page, /<link rel="canonical" href="https:\/\/karui\.jp\/technotes\/kn001">/);
-  assert.match(kn001Page, /src="\/assets\/karui-icon\.png\?v=2"/);
+  assert.match(kn001Page, /src="\/assets\/karui-icon-sketch\.jpg\?v=\d+"/);
   assert.match(technotesPage, /href="\/technotes\/kn001"/);
   assert.match(technotesPage, /href="\/technotes\/kn002"/);
   assert.match(kn002Page, /<h1[^>]*>KN002: Accessing Private Cloud Compute in an App Through Shortcuts<\/h1>/);

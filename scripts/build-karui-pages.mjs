@@ -24,6 +24,8 @@ const siteFiles = [
   '_headers',
   'sasu-common.css',
   'karui-seal-ink.js',
+  'karui-animated-icon.css',
+  'karui-animated-icon.js',
 ];
 
 const assetFiles = [
@@ -99,6 +101,8 @@ function createDeployedPage(source) {
   return source
     .replaceAll('href="sasu-common.css', 'href="/sasu-common.css')
     .replaceAll('src="karui-seal-ink.js', 'src="/karui-seal-ink.js')
+    .replaceAll('href="karui-animated-icon.css', 'href="/karui-animated-icon.css')
+    .replaceAll('src="karui-animated-icon.js', 'src="/karui-animated-icon.js')
     .replaceAll('href="assets/', 'href="/assets/')
     .replaceAll('src="assets/', 'src="/assets/')
     .replaceAll('data-src-en="assets/', 'data-src-en="/assets/')

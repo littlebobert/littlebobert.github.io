@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.10.0</title>
+            <pubDate>Mon, 02 Nov 2026 09:25:54 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>64</sparkle:version>
+            <sparkle:shortVersionString>0.10.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- When you leave your Mac having read everything, Karui on your iPhone clears those alerts instead of showing them later.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.0/Karui-0.10.0-mac.zip" length="2883838" type="application/octet-stream" sparkle:edSignature="64Va+/UuVJwRfLnEOj9kGGZZjfWgruov0eF2DqFfvjQ+q16JAqqAK/Pf3IV7ppdqSj3SpppKWZyw0XQpJQ9PDg=="/>
+        </item>
+        <item>
             <title>0.9.6</title>
             <pubDate>Sun, 01 Nov 2026 21:16:33 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Second Opinion is now called Private Cloud Sorting, to match Karui on your iPhone.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.9.5/Karui-0.9.5-mac.zip" length="2881641" type="application/octet-stream" sparkle:edSignature="EG1h9r1nX+MV8rn0ds/4wXfSgLyOdDKXoTbroYOAYoFFxIWpfBVxgRu3C+02H2Dy/zt3+AznGOpGLsuUTfaeDw=="/>
-        </item>
-        <item>
-            <title>0.9.4</title>
-            <pubDate>Fri, 30 Oct 2026 10:42:48 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>61</sparkle:version>
-            <sparkle:shortVersionString>0.9.4</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Karui now sorts German notifications: with your Mac set to German, Apple Intelligence writes its reasons in German, and German words for urgent, sale, and travel notifications count.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.9.4/Karui-0.9.4-mac.zip" length="2881647" type="application/octet-stream" sparkle:edSignature="Noct9yMrdNTqDCVt44iLuRPURh67M8sSN3MZJKzByyMdWPlRun69TyFresM4z5KGXgKKc6tulYJ92UHf45jxAQ=="/>
         </item>
     </channel>
 </rss>

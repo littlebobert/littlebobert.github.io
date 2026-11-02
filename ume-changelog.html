@@ -25,6 +25,8 @@
     .umete-changelog h2 { display: inline-block; padding-top: 2pt; padding-bottom: 2pt; }
     .umete-changelog ul { margin: 3pt 0 3pt; padding-left: 20pt; }
     .release-date { padding-left: 4pt; font-size: 10pt; color: #555; }
+    /* Marks a line that applies to one platform; a line without one applies to both. */
+    .platform-tag { display: inline-block; margin-right: 2pt; padding: 0 4pt; border: 1px solid #1a211e; border-radius: 4px; font-size: 8pt; line-height: 1.5; vertical-align: 1px; white-space: nowrap; }
     .umete-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
     .umete-footer p { margin: 4pt 0; }
     .footer-links .footer-separator { margin: 0 6pt; color: #777; }
@@ -49,17 +51,25 @@
 <h2 data-ume-release="0.4.7">0.4.7</h2>
 <span class="release-date" data-label-en="November 1, 2026" data-label-ja="2026年11月1日">November 1, 2026</span>
 <ul>
-  <li data-label-en="Search for autofill in Spotlight to find Umete. Settings tabs now stay the same width, the AI tab hides the model and key fields when Umete (free) is selected, and Add now offers Date, Gender, and Phone." data-label-ja="Spotlightで「autofill」を検索するとUmeteが見つかります。設定タブの幅が固定され、AIタブではUmete（free）の選択時にモデルとキーのフィールドが非表示になります。また、AddにDate、Gender、Phoneが追加されました。">Search for autofill in Spotlight to find Umete. Settings tabs now stay the same width, the AI tab hides the model and key fields when Umete (free) is selected, and Add now offers Date, Gender, and Phone.</li>
+  <li data-label-en="Search for autofill in Spotlight to find Umete." data-label-ja="Spotlightで「autofill」を検索するとUmeteが見つかります。">Search for autofill in Spotlight to find Umete.</li>
+  <li><span class="platform-tag" data-label-en="iPhone &amp; iPad" data-label-ja="iPhone・iPad">iPhone &amp; iPad</span> <span data-label-en="In AI Matching, OpenAI now has two modes: GPT-6.1 Sol and the Decisions API." data-label-ja="AIマッチングのOpenAIに、GPT-6.1 SolとDecisions APIの2つのモードが加わりました。">In AI Matching, OpenAI now has two modes: GPT-6.1 Sol and the Decisions API.</span></li>
+  <li><span class="platform-tag" data-label-en="iPhone &amp; iPad" data-label-ja="iPhone・iPad">iPhone &amp; iPad</span> <span data-label-en="Answers you add or edit can now be set to a type: Date, Gender, or Phone." data-label-ja="追加・編集する回答に、種類(日付、性別、電話番号)を設定できるようになりました。">Answers you add or edit can now be set to a type: Date, Gender, or Phone.</span></li>
+  <li><span class="platform-tag" data-label-en="iPhone &amp; iPad" data-label-ja="iPhone・iPad">iPhone &amp; iPad</span> <span data-label-en="General now links to Umete for Mac." data-label-ja="「一般」タブにUmete for Macへのリンクを追加しました。">General now links to Umete for Mac.</span></li>
+  <li><span class="platform-tag" data-label-en="Mac" data-label-ja="Mac">Mac</span> <span data-label-en="Settings tabs now stay the same width." data-label-ja="設定タブの幅が変わらなくなりました。">Settings tabs now stay the same width.</span></li>
+  <li><span class="platform-tag" data-label-en="Mac" data-label-ja="Mac">Mac</span> <span data-label-en="The AI tab hides the model and key fields when Umete (free) is selected." data-label-ja="AIタブでは、Umete(無料)の選択中はモデルとキーの欄を表示しません。">The AI tab hides the model and key fields when Umete (free) is selected.</span></li>
+  <li><span class="platform-tag" data-label-en="Mac" data-label-ja="Mac">Mac</span> <span data-label-en="Add now offers Date, Gender, and Phone." data-label-ja="「追加」メニューに日付、性別、電話番号が加わりました。">Add now offers Date, Gender, and Phone.</span></li>
 </ul>
 <h2 data-ume-release="0.4.6">0.4.6</h2>
 <span class="release-date" data-label-en="October 16, 2026" data-label-ja="2026年10月16日">October 16, 2026</span>
 <ul>
-  <li data-label-en="Add and edit answers in the iPhone and iPad app, edit multi-line answers like a medication list in a larger editor on the Mac, and record successful iCloud syncs in bug reports." data-label-ja="iPhoneおよびiPadアプリで回答の追加・編集が可能になり、Macでは服薬リストなどの複数行の回答を大きなエディタで編集できるようになりました。また、iCloud同期の成功情報をバグレポートに記録するようになりました。">Add and edit answers in the iPhone and iPad app, edit multi-line answers like a medication list in a larger editor on the Mac, and record successful iCloud syncs in bug reports.</li>
+  <li><span class="platform-tag" data-label-en="iPhone &amp; iPad" data-label-ja="iPhone・iPad">iPhone &amp; iPad</span> <span data-label-en="Add and edit answers in the iPhone and iPad app." data-label-ja="iPhoneおよびiPadアプリで回答の追加・編集ができるようになりました。">Add and edit answers in the iPhone and iPad app.</span></li>
+  <li><span class="platform-tag" data-label-en="Mac" data-label-ja="Mac">Mac</span> <span data-label-en="Edit multi-line answers, like a medication list, in a larger editor." data-label-ja="服薬リストなどの複数行の回答を、大きなエディタで編集できるようになりました。">Edit multi-line answers, like a medication list, in a larger editor.</span></li>
+  <li data-label-en="Record successful iCloud syncs in bug reports." data-label-ja="iCloud同期の成功がバグレポートに記録されるようになりました。">Record successful iCloud syncs in bug reports.</li>
 </ul>
 <h2 data-ume-release="0.4.5">0.4.5</h2>
 <span class="release-date" data-label-en="October 13, 2026" data-label-ja="2026年10月13日">October 13, 2026</span>
 <ul>
-  <li data-label-en="A redesigned iPhone and iPad app with standard controls, a tab bar, and support for larger text sizes, plus a new launch screen and a clearer, easier-to-tap Safari extension." data-label-ja="標準コントロール、タブバー、大きな文字サイズへの対応を備えたiPhoneおよびiPadアプリのデザインを刷新。新しい起動画面に加え、より見やすくタップしやすいSafari拡張機能も導入。">A redesigned iPhone and iPad app with standard controls, a tab bar, and support for larger text sizes, plus a new launch screen and a clearer, easier-to-tap Safari extension.</li>
+  <li><span class="platform-tag" data-label-en="iPhone &amp; iPad" data-label-ja="iPhone・iPad">iPhone &amp; iPad</span> <span data-label-en="A redesigned iPhone and iPad app with standard controls, a tab bar, and support for larger text sizes, plus a new launch screen and a clearer, easier-to-tap Safari extension." data-label-ja="標準コントロール、タブバー、大きな文字サイズへの対応を備えたiPhoneおよびiPadアプリのデザインを刷新。新しい起動画面に加え、より見やすくタップしやすいSafari拡張機能も導入。">A redesigned iPhone and iPad app with standard controls, a tab bar, and support for larger text sizes, plus a new launch screen and a clearer, easier-to-tap Safari extension.</span></li>
 </ul>
 <h2 data-ume-release="0.4.4">0.4.4</h2>
 <span class="release-date" data-label-en="October 12, 2026" data-label-ja="2026年10月12日">October 12, 2026</span>
@@ -99,7 +109,7 @@
         <h2 data-ume-release="0.1.15">0.1.15</h2>
         <span class="release-date" data-label-en="August 29, 2026" data-label-ja="2026年8月29日">August 29, 2026</span>
         <ul>
-          <li data-label-en="Switch back to Xcode 26 so I can publish a working TestFlight." data-label-ja="正常に動作するTestFlightビルドを公開できるよう、Xcode 26に戻す。">Switch back to Xcode 26 so I can publish a working TestFlight.</li>
+          <li><span class="platform-tag" data-label-en="iPhone &amp; iPad" data-label-ja="iPhone・iPad">iPhone &amp; iPad</span> <span data-label-en="Switch back to Xcode 26 so I can publish a working TestFlight." data-label-ja="正常に動作するTestFlightビルドを公開できるよう、Xcode 26に戻す。">Switch back to Xcode 26 so I can publish a working TestFlight.</span></li>
         </ul>
         <h2 data-ume-release="0.1.14">0.1.14</h2>
         <span class="release-date" data-label-en="August 15, 2026" data-label-ja="2026年8月15日">August 15, 2026</span>
@@ -109,12 +119,12 @@
         <h2 data-ume-release="0.1.13">0.1.13</h2>
         <span class="release-date" data-label-en="August 15, 2026" data-label-ja="2026年8月15日">August 15, 2026</span>
         <ul>
-          <li data-label-en="Put Type first in Saved Data, prefills phone country codes from the Mac region, defaults OpenAI to gpt-5.6-sol with high reasoning, and centers the About window title." data-label-ja="保存済みデータでTypeを先頭に移動し、Macの地域設定に基づいて電話の国番号を事前入力。OpenAIのデフォルトを高い推論レベルのgpt-5.6-solに設定し、Aboutウインドウのタイトルを中央揃え。">Put Type first in Saved Data, prefills phone country codes from the Mac region, defaults OpenAI to gpt-5.6-sol with high reasoning, and centers the About window title.</li>
+          <li><span class="platform-tag" data-label-en="Mac" data-label-ja="Mac">Mac</span> <span data-label-en="Put Type first in Saved Data, prefills phone country codes from the Mac region, defaults OpenAI to gpt-5.6-sol with high reasoning, and centers the About window title." data-label-ja="保存済みデータでTypeを先頭に移動し、Macの地域設定に基づいて電話の国番号を事前入力。OpenAIのデフォルトを高い推論レベルのgpt-5.6-solに設定し、Aboutウインドウのタイトルを中央揃え。">Put Type first in Saved Data, prefills phone country codes from the Mac region, defaults OpenAI to gpt-5.6-sol with high reasoning, and centers the About window title.</span></li>
         </ul>
         <h2 data-ume-release="0.1.12">0.1.12</h2>
         <span class="release-date" data-label-en="August 15, 2026" data-label-ja="2026年8月15日">August 15, 2026</span>
         <ul>
-          <li data-label-en="Fixed Add… refocusing a finished phone or date draft, and kept bug-report email headers when the AI log is truncated." data-label-ja="「Add…」で完了済みの電話番号または日付の下書きに再フォーカスされる問題を修正し、AIログが切り詰められた場合もバグ報告メールのヘッダーを保持するようにしました。">Fixed Add… refocusing a finished phone or date draft, and kept bug-report email headers when the AI log is truncated.</li>
+          <li><span class="platform-tag" data-label-en="Mac" data-label-ja="Mac">Mac</span> <span data-label-en="Fixed Add… refocusing a finished phone or date draft, and kept bug-report email headers when the AI log is truncated." data-label-ja="「Add…」で完了済みの電話番号または日付の下書きに再フォーカスされる問題を修正し、AIログが切り詰められた場合もバグ報告メールのヘッダーを保持するようにしました。">Fixed Add… refocusing a finished phone or date draft, and kept bug-report email headers when the AI log is truncated.</span></li>
         </ul>
         <h2 data-ume-release="0.1.11">0.1.11</h2>
         <span class="release-date" data-label-en="August 15, 2026" data-label-ja="2026年8月15日">August 15, 2026</span>
@@ -129,12 +139,12 @@
         <h2 data-ume-release="0.1.9">0.1.9</h2>
         <span class="release-date" data-label-en="August 13, 2026" data-label-ja="2026年8月13日">August 13, 2026</span>
         <ul>
-          <li data-label-en="Fixed macOS update checks failing to start." data-label-ja="macOSのアップデート確認が開始されない問題を修正。">Fixed macOS update checks failing to start.</li>
+          <li><span class="platform-tag" data-label-en="Mac" data-label-ja="Mac">Mac</span> <span data-label-en="Fixed macOS update checks failing to start." data-label-ja="macOSのアップデート確認が開始されない問題を修正。">Fixed macOS update checks failing to start.</span></li>
         </ul>
         <h2 data-ume-release="0.1.8">0.1.8</h2>
         <span class="release-date" data-label-en="August 13, 2026" data-label-ja="2026年8月13日">August 13, 2026</span>
         <ul>
-          <li data-label-en="Added automatic signed macOS updates and a Keychain migration that should stop the extra unlock prompt on Mac." data-label-ja="macOSの自動署名付きアップデートと、Macで余分なロック解除プロンプトが表示されないようにするKeychain移行機能を追加しました。">Added automatic signed macOS updates and a Keychain migration that should stop the extra unlock prompt on Mac.</li>
+          <li><span class="platform-tag" data-label-en="Mac" data-label-ja="Mac">Mac</span> <span data-label-en="Added automatic signed macOS updates and a Keychain migration that should stop the extra unlock prompt on Mac." data-label-ja="macOSの自動署名付きアップデートと、Macで余分なロック解除プロンプトが表示されないようにするKeychain移行機能を追加しました。">Added automatic signed macOS updates and a Keychain migration that should stop the extra unlock prompt on Mac.</span></li>
         </ul>
         <h2 data-ume-release="0.1.7">0.1.7</h2>
         <span class="release-date" data-label-en="August 12, 2026" data-label-ja="2026年8月12日">August 12, 2026</span>
@@ -154,7 +164,7 @@
         <h2 data-ume-release="0.1.4">0.1.4</h2>
         <span class="release-date" data-label-en="August 12, 2026" data-label-ja="2026年8月12日">August 12, 2026</span>
         <ul>
-          <li data-label-en="Added clearer drag-to-Applications instructions to the macOS installer." data-label-ja="macOSインストーラーに、アプリケーションフォルダへドラッグする手順をわかりやすく追加しました。">Added clearer drag-to-Applications instructions to the macOS installer.</li>
+          <li><span class="platform-tag" data-label-en="Mac" data-label-ja="Mac">Mac</span> <span data-label-en="Added clearer drag-to-Applications instructions to the macOS installer." data-label-ja="macOSインストーラーに、アプリケーションフォルダへドラッグする手順をわかりやすく追加しました。">Added clearer drag-to-Applications instructions to the macOS installer.</span></li>
         </ul>
         <!-- ume-changelog:end -->
     </section>

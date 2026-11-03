@@ -336,6 +336,55 @@ body.sasu-site {
   font-size: 9pt;
 }
 
-.home-link {
-  padding-bottom: 8pt;
+/* The maker's photo and name seal above the credit, as on Karui's and Umete's pages. */
+.sasu-footer {
+  padding: 10pt 0 8pt;
+  text-align: center;
+}
+
+.sasu-maker {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 6pt;
+  margin: 10pt 0 4pt;
+}
+
+.sasu-maker-marks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6pt;
+}
+
+.sasu-maker-photo {
+  width: 40px;
+  height: 51px;
+  border-radius: 5px;
+  object-fit: cover;
+  flex: none;
+}
+
+/* A surname seal beside the photo, as tall and with the same corners. */
+.sasu-maker-seal {
+  width: 24px;
+  height: 51px;
+  flex: none;
+}
+
+.sasu-maker-text {
+  text-align: center;
+  line-height: 1.65em;
+  color: black;
+}
+
+/* The photo and seal are links; the pointer covers all of each, not just the drawn lines. */
+.sasu-maker-link {
+  display: flex;
+  flex: none;
+  cursor: pointer;
+}
+
+.sasu-maker-link + .sasu-maker-link {
+  margin-left: -2pt;
 }

@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.6.8</title>
+            <pubDate>Tue, 03 Nov 2026 19:55:30 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>119</sparkle:version>
+            <sparkle:shortVersionString>0.6.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Typing the start of an app's name now puts that app first, even when it isn't running: "cale" offers Calendar ahead of a running Tailscale.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.8/Kehai-0.6.8-mac.zip" length="3172123" type="application/octet-stream" sparkle:edSignature="pWq//8vt4MKizwdo53UIehTtgSu6T88/C2Rwm78WRE8KWPuoMnesZNcX967QvY35kR7NIEqj/gF5b45ONBKoBA=="/>
+        </item>
+        <item>
             <title>0.6.7</title>
             <pubDate>Sat, 31 Oct 2026 15:10:30 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -28,19 +40,6 @@
 - The hot zone responds faster, and stays responsive when another app is busy, such as Xcode during a build.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.6/Kehai-0.6.6-mac.zip" length="3154110" type="application/octet-stream" sparkle:edSignature="88H0ws6V340x1yK0xaL/e+n3fcKHP9/8mhil0+7IjjRZa+MiiT1lqkJsUxJ6jRXGLR6Ei8I4pNacW8l5Z+AtBA=="/>
-        </item>
-        <item>
-            <title>0.6.5</title>
-            <pubDate>Thu, 29 Oct 2026 16:06:03 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>116</sparkle:version>
-            <sparkle:shortVersionString>0.6.5</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Kehai mini no longer shows the same app twice in the app strip when that app has more than one process running.
-- Searching for an app by name lists that app ahead of apps that only mention it in a window title, even when it isn't running yet.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.5/Kehai-0.6.5-mac.zip" length="3146904" type="application/octet-stream" sparkle:edSignature="gkouBPeMO+JWyQyFa9WWyN0rl9tbe5aO4BcOrq5Hijzj0pm31pJW3Pq2Z6ftweSJ44nKOLw3Rqg0Iat9mgG5Dg=="/>
         </item>
     </channel>
 </rss>

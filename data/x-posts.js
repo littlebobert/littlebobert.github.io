@@ -1,8 +1,152 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-11-02T23:07:59.133Z",
+  "updatedAt": "2026-11-03T21:04:42.688Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2117719216715690482",
+      "text": "Apple’s Private Cloud Compute is competitive with Opus 5.5 for categorizing push notifications to filter out the unimportant ones https://t.co/2Wr0ERqLTQ",
+      "createdAt": "2026-11-03T20:43:01.000Z",
+      "url": "https://x.com/_bobertdowney/status/2117719216715690482",
+      "urls": [
+        {
+          "url": "https://t.co/2Wr0ERqLTQ",
+          "expandedUrl": "https://karui.jp/technotes/kn006",
+          "displayUrl": "karui.jp/technotes/kn006",
+          "start": 130,
+          "end": 153
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2117714438820429971",
+      "text": "new in iOS 27.3: evaluate how well Siri interacts with your app by running scripted conversations and seeing how your app reacts https://t.co/8tqlLcAslv",
+      "createdAt": "2026-11-03T20:24:02.000Z",
+      "url": "https://x.com/_bobertdowney/status/2117714438820429971",
+      "urls": [
+        {
+          "url": "https://t.co/8tqlLcAslv",
+          "expandedUrl": "https://developer.apple.com/documentation/sirievaluations",
+          "displayUrl": "developer.apple.com/documentation/…",
+          "start": 129,
+          "end": 152
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2117528244065026395",
+      "text": "The Japanese artist I work with just made a beautiful stamp for my app Karui. She sent me the physical stamps by mail too. She makes some pretty unusual things. I wonder if this assignment was boring for her. https://t.co/OCii6AN6BP https://t.co/kzDN2UDsCv",
+      "createdAt": "2026-11-03T08:04:09.000Z",
+      "url": "https://x.com/_bobertdowney/status/2117528244065026395",
+      "urls": [
+        {
+          "url": "https://t.co/OCii6AN6BP",
+          "expandedUrl": "https://www.instagram.com/tae___art",
+          "displayUrl": "instagram.com/tae___art",
+          "start": 209,
+          "end": 232
+        },
+        {
+          "url": "https://t.co/kzDN2UDsCv",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2117528244065026395/photo/1",
+          "displayUrl": "pic.x.com/kzDN2UDsCv",
+          "start": 233,
+          "end": 256
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2117528244065026395-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2117513726425493576",
+      "text": "ランニングの後にとんかつ 🤤 https://t.co/DJT2AllBua",
+      "createdAt": "2026-11-03T07:06:28.000Z",
+      "url": "https://x.com/_bobertdowney/status/2117513726425493576",
+      "urls": [
+        {
+          "url": "https://t.co/DJT2AllBua",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2117513726425493576/photo/1",
+          "displayUrl": "pic.x.com/DJT2AllBua",
+          "start": 15,
+          "end": 38
+        },
+        {
+          "url": "https://t.co/DJT2AllBua",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2117513726425493576/photo/1",
+          "displayUrl": "pic.x.com/DJT2AllBua",
+          "start": 15,
+          "end": 38
+        },
+        {
+          "url": "https://t.co/DJT2AllBua",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2117513726425493576/photo/1",
+          "displayUrl": "pic.x.com/DJT2AllBua",
+          "start": 15,
+          "end": 38
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2117513726425493576-0.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2117513726425493576-1.png"
+        },
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2117513726425493576-2.png"
+        }
+      ]
+    },
+    {
+      "id": "2117443739073626484",
+      "text": "やった https://t.co/mZudFJb1I1",
+      "createdAt": "2026-11-03T02:28:22.000Z",
+      "url": "https://x.com/_bobertdowney/status/2117443739073626484",
+      "urls": [
+        {
+          "url": "https://t.co/mZudFJb1I1",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2117443739073626484/photo/1",
+          "displayUrl": "pic.x.com/mZudFJb1I1",
+          "start": 4,
+          "end": 27
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2117443739073626484-0.png"
+        }
+      ]
+    },
     {
       "id": "2117383583962914861",
       "text": "もうWebフォームを手入力しなくて大丈夫。Umeteは、iPhoneとMacで使える無料のSafari機能拡張です。ワンタップでフォーム全体を入力でき、個人情報をAIに送ることはありません。https://t.co/aNKnr7L2be https://t.co/hczDi4c8Ru",
@@ -163,105 +307,6 @@ window.X_POSTS_SNAPSHOT = {
           "image": "assets/generated/x/mine-post-2115965946523533563-3.png"
         }
       ]
-    },
-    {
-      "id": "2115446370178138448",
-      "text": "Apple Intelligence is an interesting alternative to the other AI models because it’s private by design and it’s free for both you and your users. I built Karui, an app for filtering out unwanted push notifications, and it’s powered by Apple Intelligence. here’s a short talk I https://t.co/hPduNp38sE",
-      "createdAt": "2026-10-28T14:11:32.000Z",
-      "url": "https://x.com/_bobertdowney/status/2115446370178138448",
-      "urls": [
-        {
-          "url": "https://t.co/hPduNp38sE",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2115446370178138448/video/1",
-          "displayUrl": "pic.x.com/hPduNp38sE",
-          "start": 277,
-          "end": 300
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2115446370178138448-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2114872622798504360",
-      "text": "Siri AI、本日iOS 27.2で日本語に対応。今必要なメモを、@kotoba_tech のアプリから見つけてくれます。 https://t.co/SPCGizRvSt",
-      "createdAt": "2026-10-27T00:11:40.000Z",
-      "url": "https://x.com/_bobertdowney/status/2114872622798504360",
-      "urls": [
-        {
-          "url": "https://t.co/SPCGizRvSt",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2114872622798504360/photo/1",
-          "displayUrl": "pic.x.com/SPCGizRvSt",
-          "start": 63,
-          "end": 86
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2114872622798504360-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2114801064805564669",
-      "text": "I’ve gone full gaijin software engineer: I’ve created my own Japanese learning app 🤡 . This one lets me practice handwriting. I seem to remember words a bit better that way too. And it’s free, with no subscription or sign-up. https://t.co/np8BYUfLpu",
-      "createdAt": "2026-10-26T19:27:19.000Z",
-      "url": "https://x.com/_bobertdowney/status/2114801064805564669",
-      "urls": [
-        {
-          "url": "https://t.co/np8BYUfLpu",
-          "expandedUrl": "https://kaketa.jp",
-          "displayUrl": "kaketa.jp",
-          "start": 226,
-          "end": 249
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2114558951694217502",
-      "text": "10月31日に東京で、XcodeとApple Intelligenceに関する面白そうなイベントがある。あと1枠空いてるよ。https://t.co/GkwmPXsHfX",
-      "createdAt": "2026-10-26T03:25:15.000Z",
-      "url": "https://x.com/_bobertdowney/status/2114558951694217502",
-      "urls": [
-        {
-          "url": "https://t.co/GkwmPXsHfX",
-          "expandedUrl": "https://mosa.connpass.com/event/406933/",
-          "displayUrl": "mosa.connpass.com/event/406933/",
-          "start": 62,
-          "end": 85
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2114163572553241066",
-      "text": "Chains of Thought: thick gold necklaces for AI researchers. a new Mike Matas joint",
-      "createdAt": "2026-10-25T01:14:09.000Z",
-      "url": "https://x.com/_bobertdowney/status/2114163572553241066",
-      "urls": [],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 };

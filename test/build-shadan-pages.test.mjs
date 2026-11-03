@@ -41,12 +41,15 @@ test('builds every Shadan clean route', async () => {
 
   assert.match(acknowledgementsPage, /href="\/sasu-common\.css\?v=\d+"/);
   assert.match(acknowledgementsPage, /href="\/assets\/shadan-favicon\.png\?v=1"/);
-  assert.match(acknowledgementsPage, /src="\/assets\/shadan-icon\.png\?v=1"/);
+  assert.match(acknowledgementsPage, /src="\/assets\/shadan-icon-sketch\.jpg\?v=\d+"/);
+  assert.match(acknowledgementsPage, /src="\/assets\/shadan-icon-sketch\.mp4\?v=\d+"/);
+  assert.match(acknowledgementsPage, /href="\/shadan-animated-icon\.css\?v=\d+"/);
+  assert.match(acknowledgementsPage, /src="\/shadan-animated-icon\.js\?v=\d+"/);
   assert.match(acknowledgementsPage, /href="\/"/);
   assert.match(acknowledgementsPage, /href="\/privacy"/);
   assert.match(acknowledgementsPage, /href="\/support"/);
 
-  for (const asset of ['shadan-favicon.png', 'shadan-icon.png', 'shadan-social.png']) {
+  for (const asset of ['shadan-favicon.png', 'shadan-icon.png', 'shadan-social.png', 'shadan-icon-sketch.jpg', 'shadan-icon-sketch.mp4']) {
     await readFile(path.join(outputDirectory, 'assets', asset));
   }
 });

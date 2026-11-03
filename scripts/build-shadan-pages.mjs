@@ -15,6 +15,8 @@ const siteFiles = [
   '_headers',
   'product-click-tracking.js',
   'sasu-common.css',
+  'shadan-animated-icon.css',
+  'shadan-animated-icon.js',
   // Sparkle feed the app checks at https://shadan.jp/shadan-appcast.xml.
   'shadan-appcast.xml',
 ];
@@ -25,6 +27,8 @@ const assetFiles = [
   'shadan-social.png',
   'shadan-demo.mp4',
   'shadan-demo-poster.jpg',
+  'shadan-icon-sketch.jpg',
+  'shadan-icon-sketch.mp4',
 ];
 
 await rm(outputDirectory, { force: true, recursive: true });
@@ -55,6 +59,8 @@ await Promise.all(
 function createDeployedPage(source) {
   return source
     .replaceAll('href="sasu-common.css', 'href="/sasu-common.css')
+    .replaceAll('href="shadan-animated-icon.css', 'href="/shadan-animated-icon.css')
+    .replaceAll('src="shadan-animated-icon.js', 'src="/shadan-animated-icon.js')
     .replaceAll('href="assets/', 'href="/assets/')
     .replaceAll('src="assets/', 'src="/assets/')
     .replaceAll('poster="assets/', 'poster="/assets/')

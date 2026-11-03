@@ -4,14 +4,13 @@
   <meta charset="utf-8">
   <title>Shadan Changelog</title>
   <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link href="shadan-animated-icon.css?v=1" rel="stylesheet">
   <link rel="icon" href="assets/shadan-favicon.png?v=1" type="image/png">
   <link rel="apple-touch-icon" href="assets/shadan-icon.png?v=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body.sasu-site { background: #fff; }
     .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
-    /* The macOS icon carries its own transparent margin; enlarge it so the tile reads at 56px. */
-    .sasu-icon.shadan-icon { flex-basis: 68px; width: 68px; height: 68px; margin: -6px; }
     .shadan-section { padding: 6pt 0 5pt; }
     .shadan-section p { margin: 0; }
     .shadan-section p + p, .shadan-section ul + p, .shadan-section ol + p { margin-top: 7pt; }
@@ -48,7 +47,7 @@
     <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
     <section class="sasu-hero">
       <div class="sasu-hero-header">
-        <a href="shadan.html"><img class="sasu-icon shadan-icon" src="assets/shadan-icon.png?v=1" alt="Shadan app icon" data-alt-en="Shadan app icon" data-alt-ja="Shadanアプリアイコン"></a>
+        <a href="shadan.html"><span class="shadan-sketch-icon"><span class="shadan-sketch-icon-shape"><img src="assets/shadan-icon-sketch.jpg?v=1" alt="Shadan app icon, a picture sketched in pencil and crossed out with a red line" data-alt-en="Shadan app icon, a picture sketched in pencil and crossed out with a red line" data-alt-ja="鉛筆で描いた画像に赤い斜線を引いたShadanのアプリアイコン" width="56" height="56"><video src="assets/shadan-icon-sketch.mp4?v=1" muted loop playsinline disablepictureinpicture disableremoteplayback preload="auto" aria-hidden="true"></video></span></span></a>
         <div><h1 data-label-en="Changelog" data-label-ja="変更履歴">Changelog</h1><div class="sasu-subtitle">Shadan</div></div>
       </div>
     </section>
@@ -180,5 +179,6 @@
     languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
     setLanguage(localStorage.getItem('shadan-language') || preferredLanguage(), false);
   </script>
+  <script src="shadan-animated-icon.js?v=1"></script>
 </body>
 </html>

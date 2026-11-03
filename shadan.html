@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Shadan</title>
   <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link href="shadan-animated-icon.css?v=1" rel="stylesheet">
   <link rel="icon" href="assets/shadan-favicon.png?v=1" type="image/png">
   <link rel="apple-touch-icon" href="assets/shadan-icon.png?v=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -28,8 +29,6 @@
   <style>
     body.sasu-site { background: #fff; }
     .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
-    /* The macOS icon carries its own transparent margin; enlarge it so the tile reads at 56px. */
-    .sasu-icon.shadan-icon { flex-basis: 68px; width: 68px; height: 68px; margin: -6px; }
     .sasu-hero .download-link { margin-top: 9pt; }
     .download-link.is-coming-soon,
     .download-link.is-coming-soon:hover { border-color: #999; background: #999; box-shadow: none; color: #fff; cursor: default; }
@@ -58,7 +57,7 @@
 
     <section class="sasu-hero">
       <div class="sasu-hero-header">
-        <img class="sasu-icon shadan-icon" src="assets/shadan-icon.png?v=1" alt="Shadan app icon: a picture crossed out with a red line" data-alt-en="Shadan app icon: a picture crossed out with a red line" data-alt-ja="赤い斜線で消された画像を描いたShadanのアプリアイコン">
+        <span class="shadan-sketch-icon"><span class="shadan-sketch-icon-shape"><img src="assets/shadan-icon-sketch.jpg?v=1" alt="Shadan app icon, a picture sketched in pencil and crossed out with a red line" data-alt-en="Shadan app icon, a picture sketched in pencil and crossed out with a red line" data-alt-ja="鉛筆で描いた画像に赤い斜線を引いたShadanのアプリアイコン" width="56" height="56"><video src="assets/shadan-icon-sketch.mp4?v=1" muted loop playsinline disablepictureinpicture disableremoteplayback preload="auto" aria-hidden="true"></video></span></span>
         <div>
           <h1>Shadan</h1>
           <div class="sasu-subtitle" data-label-en="Hide the memes you’re tired of seeing." data-label-ja="見飽きたミームを、非表示に。">Hide the memes you’re tired of seeing.</div>
@@ -136,5 +135,6 @@
     setLanguage(localStorage.getItem('shadan-language') || preferredLanguage(), false);
   </script>
   <script src="product-click-tracking.js"></script>
+  <script src="shadan-animated-icon.js?v=1"></script>
 </body>
 </html>

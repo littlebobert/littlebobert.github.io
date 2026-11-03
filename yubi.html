@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>Yubi</title>
   <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link href="yubi-animated-icon.css?v=1" rel="stylesheet">
   <link rel="icon" href="assets/yubi-icon.png?v=1">
   <link rel="apple-touch-icon" href="assets/yubi-icon.png?v=1">
   <link rel="canonical" href="https://onemorething.tokyo/yubi.html">
@@ -35,7 +36,6 @@
 
     body.sasu-site { background: #fff; }
     .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
-    .sasu-icon { border-radius: 12px; }
 
     .yubi-demo {
       width: 460px;
@@ -214,7 +214,7 @@
 
     <section class="sasu-hero">
       <div class="sasu-hero-header">
-        <img class="sasu-icon" src="assets/yubi-icon.png?v=1" alt="Yubi app icon">
+        <span class="yubi-sketch-icon"><span class="yubi-sketch-icon-shape"><img src="assets/yubi-icon-sketch.jpg?v=1" alt="Yubi app icon, the Peace Statue&#x27;s raised hand sketched in pencil, its finger tapping the sky" width="56" height="56"><video src="assets/yubi-icon-sketch.mp4?v=1" muted loop playsinline disablepictureinpicture disableremoteplayback preload="auto" aria-hidden="true"></video></span></span>
         <div>
           <h1>Yubi</h1>
           <div class="sasu-subtitle" data-label-en="Translate screens. Type in Japanese." data-label-ja="画面を翻訳。日本語で入力。">Translate screens. Type in Japanese.</div>
@@ -335,6 +335,7 @@
     languageSwitch.addEventListener('click', updateActionButtonLanguage);
   </script>
   <script src="product-click-tracking.js"></script>
+  <script src="yubi-animated-icon.js?v=1"></script>
 </body>
 
 </html>

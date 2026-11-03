@@ -11,6 +11,8 @@ const siteFiles = [
   'appcast.xml',
   'sasu-common.css',
   'sasu-common.js',
+  'sasu-animated-icon.css',
+  'sasu-animated-icon.js',
   'sasu-invite.html',
   'sasu.html',
   'style.css',

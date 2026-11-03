@@ -33,60 +33,107 @@
     .footer-links .footer-separator { margin: 0 6pt; color: #777; }
     /* Keep two-word links like Tech Specs whole; the row wraps at the <wbr> after each separator. */
     .footer-links a { white-space: nowrap; }
-    /* The flow of Fill this form, in the style of Karui's specs diagram. A grid: the
-       steps go down the left column inside a "Your device" frame, an item spanning all
-       their rows, and the two things off the device, Apple's iCloud and the AI, stand in
-       the right column level with the steps that use them, joined by dashed lines. On
-       narrow screens they drop below the frame, side by side. */
-    .umete-flow { margin: 10pt 0 2pt; font-size: 0.92em; line-height: 1.4; }
-    .uf-main { display: grid; grid-template-columns: 1fr 180px; column-gap: 24px; }
-    .uf-frame { grid-column: 1; grid-row: 1 / 8; position: relative; border: 2px solid #1a211e; border-radius: 14px; }
-    .uf-phone-label { position: absolute; top: -9pt; left: 10pt; background: #fff; padding: 0 5pt; font-weight: bold; }
-    .uf-l { grid-column: 1; align-self: start; margin: 0 calc(9pt + 2px); }
-    .uf-main > .uf-l:nth-child(2) { grid-row: 1; margin-top: calc(13pt + 2px); }
-    .uf-main > .uf-l:nth-child(3) { grid-row: 2; }
-    .uf-main > .uf-l:nth-child(4) { grid-row: 3; }
-    .uf-main > .uf-l:nth-child(5) { grid-row: 4; }
-    .uf-main > .uf-l:nth-child(6) { grid-row: 5; }
-    .uf-main > .uf-l:nth-child(7) { grid-row: 6; }
-    .uf-main > .uf-l:nth-child(8) { grid-row: 7; margin-bottom: calc(13pt + 2px); }
-    .uf-step, .uf-result { background: #f4f3ee; border: 1px solid #d8d6ce; border-radius: 8px; padding: 6pt 9pt; }
+    /* The flow of Fill this form, drawn like Karui's specs diagram, a product's technical
+       drawing: a framed sheet with zone marks, names in spaced capitals, the device
+       outlined with its buttons and a hatched screen, and a title block. Dashed lines
+       are off the device. The website stands above the device; below it, a grid: the
+       steps go down the left column inside the device, an item spanning all their rows
+       and the empty rows above and below them, and the two things off the device, Apple's
+       iCloud and the AI, stand in the right column level with the steps that use them.
+       On narrow screens they drop below the device, side by side. */
+    .umete-flow { --uf-ink: #1a1a1a;
+      position: relative; margin: 12pt 0 2pt; padding: 28px 18px 24px 18px; border: 1px solid var(--uf-ink);
+      font-size: 0.92em; line-height: 1.4; background: #fff; }
+    .umete-flow::before { content: ""; position: absolute; inset: 8px; border: 1px solid var(--uf-ink); pointer-events: none; }
+    .umete-flow strong, .uf-phone-label, .uf-cloud-tag, .uf-labeled-arrow span, .uf-title-block { letter-spacing: 0.06em; }
+    .umete-flow strong { text-transform: uppercase; font-size: 0.82em; font-weight: bold; }
+    .uf-zones { position: absolute; display: flex; justify-content: space-around; color: #444; font-size: 9px; line-height: 8px; pointer-events: none; }
+    .uf-zones-top { top: 0; left: 8px; right: 8px; }
+    .uf-zones-bottom { bottom: 0; left: 8px; right: 8px; }
+    .uf-zones-left { top: 8px; bottom: 8px; left: 0; width: 8px; flex-direction: column; align-items: center; }
+    .uf-zones-right { top: 8px; bottom: 8px; right: 0; width: 8px; flex-direction: column; align-items: center; }
+    .uf-source { margin-right: calc(160px + 24px); }
+    .uf-website { border: 1px solid var(--uf-ink); padding: 6pt 9pt; text-align: center; background: #fff; }
+    .uf-website span { display: block; color: #555; font-size: 0.95em; }
+    /* The device's rows are the steps, with an empty row above for the Dynamic Island and
+       one below that take up what's left of the device's height. */
+    .uf-main { display: grid; grid-template-columns: 1fr 160px; grid-template-rows: minmax(40pt, 1fr) repeat(7, auto) minmax(30pt, 1fr);
+      column-gap: 24px; container-type: inline-size; }
+    /* The device, in an iPhone's proportions (iPhone 17 Pro, 71.9 × 150 mm) with its
+       rounded corners: an outer outline and the screen's inside it, the Dynamic Island,
+       two buttons on the left and one on the right, and the screen hatched like a
+       display's active area. Its height comes from its width; when the steps need more,
+       the device grows taller instead. */
+    .uf-frame { grid-column: 1; grid-row: 1 / -1; position: relative; box-sizing: border-box; min-height: calc((100cqw - 160px - 24px) * 150 / 71.9);
+      border: 1.5px solid var(--uf-ink); border-radius: 54px;
+      background: repeating-linear-gradient(135deg, rgb(26 26 26 / 16%) 0 1px, transparent 1px 7px); }
+    .uf-frame::before { content: ""; position: absolute; inset: 6px; border: 1px solid var(--uf-ink); border-radius: 48px; pointer-events: none; }
+    .uf-frame::after { content: ""; position: absolute; left: -5px; top: 74px; width: 3px; height: 30px; background: var(--uf-ink);
+      box-shadow: 0 42px 0 var(--uf-ink); }
+    .uf-island { position: absolute; top: 18px; left: 50%; width: 27%; height: 16px; transform: translateX(-50%); border-radius: 8px; background: var(--uf-ink); }
+    .uf-side-button { position: absolute; right: -5px; top: 96px; width: 3px; height: 46px; background: var(--uf-ink); }
+    .uf-phone-label { position: absolute; top: -8pt; left: 22pt; background: #fff; padding: 0 5pt; font-weight: 600; text-transform: uppercase; font-size: 0.86em; }
+    .uf-l { grid-column: 1; align-self: start; margin: 0 12pt; }
+    .uf-main > .uf-l:nth-child(2) { grid-row: 2; }
+    .uf-main > .uf-l:nth-child(3) { grid-row: 3; }
+    .uf-main > .uf-l:nth-child(4) { grid-row: 4; }
+    .uf-main > .uf-l:nth-child(5) { grid-row: 5; }
+    .uf-main > .uf-l:nth-child(6) { grid-row: 6; }
+    .uf-main > .uf-l:nth-child(7) { grid-row: 7; }
+    .uf-main > .uf-l:nth-child(8) { grid-row: 8; }
+    .uf-step, .uf-result { background: #fff; border: 1px solid var(--uf-ink); padding: 6pt 9pt; }
     .uf-step small, .uf-result span, .uf-store span, .uf-cloud > span { display: block; color: #555; font-size: 0.95em; }
     .uf-result strong { display: block; }
-    .uf-important { border-color: #1a211e; background: #fff; }
-    .uf-arrow { position: relative; width: 0; height: 16px; justify-self: center; border-left: 1.5px solid #1a211e; }
-    .uf-arrow::after { content: ""; position: absolute; left: -5px; bottom: -1px; border: 4.5px solid transparent; border-top: 6px solid #1a211e; border-bottom: 0; }
+    .uf-important { border-width: 1.5px; }
+    .uf-arrow { position: relative; width: 0; height: 16px; justify-self: center; border-left: 1px solid var(--uf-ink); }
+    .uf-arrow::after { content: ""; position: absolute; left: -4.5px; bottom: -1px; border: 4px solid transparent; border-top: 8px solid var(--uf-ink); border-bottom: 0; }
     .uf-labeled-arrow { position: relative; padding: 16px 0 22px; text-align: center; color: #555; font-size: 0.9em; line-height: 1.3; }
-    .uf-labeled-arrow::before { content: ""; position: absolute; top: 0; bottom: 1px; left: 50%; border-left: 1.5px solid #1a211e; }
-    .uf-labeled-arrow::after { content: ""; position: absolute; bottom: -1px; left: calc(50% - 4px); border: 4.5px solid transparent; border-top: 6px solid #1a211e; border-bottom: 0; }
-    .uf-labeled-arrow span { position: relative; background: #fff; padding: 3px 5px; }
-    .uf-store-row { display: grid; grid-template-columns: 1fr 18px 118px; align-items: center; }
-    .uf-store { border: 1.5px solid #777; border-radius: 12px; padding: 6pt 8pt; }
-    .uf-link { position: relative; border-top: 1.5px solid #1a211e; }
-    .uf-link::before, .uf-link::after { content: ""; position: absolute; top: -5.25px; border: 4.5px solid transparent; }
-    .uf-link::before { left: -1px; border-right: 6px solid #1a211e; border-left: 0; }
-    .uf-link::after { right: -1px; border-left: 6px solid #1a211e; border-right: 0; }
-    /* Dashed lines from the Saved answers row and the AI step cross the frame's padding,
-       border, and the column gap to the boxes outside. */
+    .uf-labeled-arrow::before { content: ""; position: absolute; top: 0; bottom: 1px; left: 50%; border-left: 1px solid var(--uf-ink); }
+    .uf-labeled-arrow::after { content: ""; position: absolute; bottom: -1px; left: calc(50% - 4px); border: 4px solid transparent; border-top: 8px solid var(--uf-ink); border-bottom: 0; }
+    .uf-labeled-arrow span { position: relative; background: #fff; padding: 2px 5px; text-transform: uppercase; font-size: 0.86em; }
+    .uf-store-row { display: grid; grid-template-columns: 1fr 14px 104px; align-items: center; }
+    .uf-store { border: 1px solid var(--uf-ink); padding: 6pt 8pt; background: #fff; }
+    .uf-link { position: relative; border-top: 1px solid var(--uf-ink); }
+    .uf-link::before, .uf-link::after { content: ""; position: absolute; top: -4.5px; border: 4px solid transparent; }
+    .uf-link::before { left: -1px; border-right: 7px solid var(--uf-ink); border-left: 0; }
+    .uf-link::after { right: -1px; border-left: 7px solid var(--uf-ink); border-right: 0; }
+    /* Dashed lines from the Saved answers row and the AI step cross the device's edge
+       and the column gap to the boxes outside. */
     .uf-store-row, .uf-ai-step { position: relative; }
-    .uf-store-row::after, .uf-ai-step::after { content: ""; position: absolute; top: 50%; left: 100%; width: calc(9pt + 2px + 24px); border-top: 1.5px dashed #777; }
-    .uf-cloud { position: relative; grid-column: 2; align-self: start; border: 1.5px dashed #777; border-radius: 12px; padding: 6pt 8pt; }
-    .uf-icloud { grid-row: 3 / 5; }
-    .uf-ai { grid-row: 5 / 8; }
-    .uf-cloud-tag { color: #555; font-size: 0.9em; margin-bottom: 2pt; }
+    .uf-store-row::after, .uf-ai-step::after { content: ""; position: absolute; top: 50%; left: 100%; width: calc(12pt + 24px); border-top: 1px dashed var(--uf-ink); }
+    .uf-cloud { position: relative; grid-column: 2; align-self: start; background: #fff; border: 1px dashed var(--uf-ink); padding: 6pt 8pt; }
+    /* iCloud ends level with the end of the Saved answers row's arrow, and the AI box may
+       run into the empty row below the steps, so neither pushes the steps apart. */
+    .uf-icloud { grid-row: 2 / 6; align-self: end; }
+    .uf-ai { grid-row: 6 / 10; margin-top: 10px; }
+    .uf-cloud-tag { color: #444; font-size: 0.8em; margin-bottom: 2pt; text-transform: uppercase; }
     .uf-cloud strong + span, .uf-cloud span + span { margin-top: 4pt; }
     .uf-never { color: #555; }
-    .uf-never strong { color: #1a211e; }
+    .uf-never strong { color: var(--uf-ink); }
+    /* The title block, bottom right, as on a drawing sheet. */
+    .uf-title-block { display: grid; grid-template-columns: auto auto auto; width: fit-content; margin: 16pt 0 0 auto;
+      border: 1px solid var(--uf-ink); font-size: 0.72em; text-transform: uppercase; line-height: 1.25; }
+    .uf-title-block > div { padding: 3px 6px; border-left: 1px solid var(--uf-ink); border-top: 1px solid var(--uf-ink); }
+    .uf-title-block > .uf-tb-name { grid-column: 1 / -1; border-top: 0; border-left: 0; font-size: 1.5em; font-weight: 700; text-align: center; letter-spacing: 0.12em; }
+    .uf-title-block > .uf-tb-first { border-left: 0; }
+    .uf-title-block small { display: block; color: #555; font-size: 0.85em; }
     @media (max-width: 640px) {
-      .uf-main { grid-template-columns: 1fr 1fr; column-gap: 12px; }
+      .uf-source { margin-right: 0; }
+      .uf-main { grid-template-columns: 1fr 1fr; grid-template-rows: minmax(34pt, 1fr) repeat(7, auto) minmax(22pt, 1fr) auto; column-gap: 12px; }
+      .uf-frame { grid-row: 1 / 10; min-height: calc(100cqw * 150 / 71.9); border-radius: 40px; }
+      .uf-frame::before { border-radius: 34px; }
       .uf-frame, .uf-l { grid-column: 1 / -1; }
       .uf-store-row::after, .uf-ai-step::after { display: none; }
-      .uf-cloud { grid-row: 8; margin-top: 18pt; }
+      .uf-cloud { grid-row: 10; align-self: start; margin-top: 18pt; }
       .uf-icloud { grid-column: 1; }
       .uf-ai { grid-column: 2; }
-      .uf-cloud::before { content: ""; position: absolute; top: -18px; left: 50%; height: 16px; border-left: 1.5px dashed #777; }
-      .uf-store-row { grid-template-columns: 1fr 14px 108px; }
+      .uf-cloud::before { content: ""; position: absolute; top: -18px; left: 50%; height: 16px; border-left: 1px dashed var(--uf-ink); }
+      .uf-store-row { grid-template-columns: 1fr 14px 100px; }
       .uf-store { padding: 6pt 7pt; }
+    }
+    @media (max-width: 560px) {
+      .umete-flow { padding: 24px 16px 20px; }
+      .uf-zones-left, .uf-zones-right { display: none; }
     }
     @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
   </style>
@@ -111,8 +158,16 @@
         <li data-label-en="Umete never submits the form." data-label-ja="Umeteがフォームを送信することはありません。">Umete never submits the form.</li>
       </ol>
       <figure class="umete-flow" aria-labelledby="umete-flow-title">
+        <div class="uf-zones uf-zones-top" aria-hidden="true"><span>4</span><span>3</span><span>2</span><span>1</span></div>
+        <div class="uf-zones uf-zones-bottom" aria-hidden="true"><span>4</span><span>3</span><span>2</span><span>1</span></div>
+        <div class="uf-zones uf-zones-left" aria-hidden="true"><span>C</span><span>B</span><span>A</span></div>
+        <div class="uf-zones uf-zones-right" aria-hidden="true"><span>C</span><span>B</span><span>A</span></div>
+        <div class="uf-source">
+          <div class="uf-website"><strong data-label-en="A website" data-label-ja="Webサイト">A website</strong><span data-label-en="Serves a page with a form" data-label-ja="フォームのあるページを配信する">Serves a page with a form</span></div>
+          <div class="uf-labeled-arrow"><span data-label-en="The page, open in Safari" data-label-ja="Safariで開いたページ">The page, open in Safari</span></div>
+        </div>
         <div class="uf-main">
-          <div class="uf-frame"><div class="uf-phone-label" id="umete-flow-title" data-label-en="Your device" data-label-ja="あなたのデバイス">Your device</div></div>
+          <div class="uf-frame"><div class="uf-phone-label" id="umete-flow-title" data-label-en="Your device" data-label-ja="あなたのデバイス">Your device</div><div class="uf-island" aria-hidden="true"></div><div class="uf-side-button" aria-hidden="true"></div></div>
           <div class="uf-step uf-l"><strong data-label-en="Umete in Safari" data-label-ja="SafariのUmete">Umete in Safari</strong><small data-label-en="When you choose Fill this form, reads the page’s fields: labels, names, hints, placeholders, and menu options. Never passwords or card details." data-label-ja="「このフォームに入力」を選ぶと、ページの項目を読み取る：ラベル、名前、ヒント、プレースホルダー、メニューの選択肢。パスワードやカード情報は読まない">When you choose Fill this form, reads the page’s fields: labels, names, hints, placeholders, and menu options. Never passwords or card details.</small></div>
           <div class="uf-arrow uf-l" aria-hidden="true"></div>
           <div class="uf-store-row uf-l">
@@ -126,6 +181,12 @@
           <div class="uf-result uf-important uf-l"><strong data-label-en="The form, filled in" data-label-ja="入力されたフォーム">The form, filled in</strong><span data-label-en="You review it and submit it yourself. Umete never submits a form." data-label-ja="内容を確認してご自身で送信します。Umeteがフォームを送信することはありません。">You review it and submit it yourself. Umete never submits a form.</span></div>
           <div class="uf-cloud uf-icloud"><div class="uf-cloud-tag" data-label-en="Sync" data-label-ja="同期">Sync</div><strong data-label-en="Apple’s iCloud" data-label-ja="AppleのiCloud">Apple’s iCloud</strong><span data-label-en="Your private CloudKit database. Each answer is encrypted before upload; Apple can’t read it." data-label-ja="ご自身のプライベートなCloudKitデータベース。各回答はアップロード前に暗号化され、Appleは読めない。">Your private CloudKit database. Each answer is encrypted before upload; Apple can’t read it.</span></div>
           <div class="uf-cloud uf-ai"><strong data-label-en="AI matching" data-label-ja="AIマッチング">AI matching</strong><span data-label-en="With Umete (free), or directly with your own OpenAI or Anthropic key" data-label-ja="Umete（無料）で、またはご自身のOpenAIかAnthropicのキーで直接">With Umete (free), or directly with your own OpenAI or Anthropic key</span><span data-label-en="Sees field descriptions and the field labels for your saved answers" data-label-ja="項目の説明と、保存済みの回答の項目ラベルを見る">Sees field descriptions and the field labels for your saved answers</span><span class="uf-never"><strong data-label-en="Never sees:" data-label-ja="見ないもの：">Never sees:</strong><span data-label-en=" saved values, values in the form, addresses, or the page’s address or title" data-label-ja="保存した値、フォーム内の値、住所、ページのアドレスやタイトル"> saved values, values in the form, addresses, or the page’s address or title</span></span></div>
+        </div>
+        <div class="uf-title-block" aria-hidden="true">
+          <div class="uf-tb-name">UMETE</div>
+          <div class="uf-tb-first"><small data-label-en="Title" data-label-ja="名称">Title</small><span data-label-en="Fill this form" data-label-ja="このフォームに入力">Fill this form</span></div>
+          <div><small data-label-en="Scale" data-label-ja="尺度">Scale</small><span data-label-en="None" data-label-ja="なし">None</span></div>
+          <div><small data-label-en="Sheet" data-label-ja="シート">Sheet</small><span data-label-en="1 of 1" data-label-ja="1／1">1 of 1</span></div>
         </div>
       </figure>
     </section>

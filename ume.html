@@ -63,6 +63,17 @@
     .ume-arrow:focus-visible, .ume-dot:focus-visible { outline: 2px solid var(--ume-green); outline-offset: 2px; }
     @media (prefers-reduced-motion: reduce) { .ume-shot { transition: none; } }
 
+    /* The icon as a pencil sketch flipbook in the app icon's shape, as on Karui's page: a
+       bud opens into a plum blossom, the fruit swells and is coloured in, then drops.
+       Drawn by AppStoreScreenshots/scripts/sketch.mjs in the Umete repository. The still
+       underneath shows with no motion or a blocked video; the shadow keeps its light
+       edges off the white page. */
+    .ume-icon { position: relative; display: block; flex: 0 0 64px; width: 64px; height: 64px; filter: drop-shadow(0 1px 2px rgba(0, 0, 0, 0.25)); }
+    .ume-icon-shape { display: block; width: 100%; height: 100%; clip-path: polygon(100.0% 50.0%, 99.8% 72.1%, 99.3% 79.1%, 98.4% 84.0%, 97.2% 87.9%, 95.6% 91.0%, 93.5% 93.5%, 91.0% 95.6%, 87.9% 97.2%, 84.0% 98.4%, 79.1% 99.3%, 72.1% 99.8%, 50.0% 100.0%, 27.9% 99.8%, 20.9% 99.3%, 16.0% 98.4%, 12.1% 97.2%, 9.0% 95.6%, 6.5% 93.5%, 4.4% 91.0%, 2.8% 87.9%, 1.6% 84.0%, 0.7% 79.1%, 0.2% 72.1%, 0.0% 50.0%, 0.2% 27.9%, 0.7% 20.9%, 1.6% 16.0%, 2.8% 12.1%, 4.4% 9.0%, 6.5% 6.5%, 9.0% 4.4%, 12.1% 2.8%, 16.0% 1.6%, 20.9% 0.7%, 27.9% 0.2%, 50.0% 0.0%, 72.1% 0.2%, 79.1% 0.7%, 84.0% 1.6%, 87.9% 2.8%, 91.0% 4.4%, 93.5% 6.5%, 95.6% 9.0%, 97.2% 12.1%, 98.4% 16.0%, 99.3% 20.9%, 99.8% 27.9%); }
+    .ume-icon-shape img, .ume-icon-shape video { display: block; width: 100%; height: 100%; }
+    .ume-icon-shape video { position: absolute; inset: 0; opacity: 0; }
+    .ume-icon-shape video.is-playing { opacity: 1; }
+
     /* The two downloads side by side, iPhone and iPad first; they wrap on narrow screens. */
     .download-row { display: flex; flex-wrap: wrap; gap: 6pt 8pt; margin-top: 9pt; }
     /* The second line of the pitch, below the icon and name, in plain body text. */
@@ -101,7 +112,7 @@
 
     <section class="sasu-hero">
       <div class="sasu-hero-header">
-        <img class="sasu-icon" src="assets/ume-icon.png?v=1" alt="Umete app icon">
+        <span class="ume-icon"><span class="ume-icon-shape"><img src="assets/umete-icon-sketch.jpg?v=1" alt="Umete app icon, a plum sketched in pencil" data-alt-en="Umete app icon, a plum sketched in pencil" data-alt-ja="鉛筆で描いた梅の実のUmeteアプリアイコン" width="64" height="64"><video src="assets/umete-icon-sketch.mp4?v=1" muted loop playsinline disablepictureinpicture disableremoteplayback preload="auto" aria-hidden="true"></video></span></span>
         <div>
           <h1>Umete</h1>
           <div class="sasu-subtitle" data-label-en="Autofill everything, privately." data-label-ja="あらゆるフォームに、プライバシーを守って自動入力。">Autofill everything, privately.</div>
@@ -179,6 +190,25 @@
     if (window.location.hash === '#changelog') {
       window.location.replace(document.querySelector('[href="ume-changelog.html"], [href="/changelog"]').href);
     }
+    // Plays the header's sketch, except with Reduce Motion or while the page is hidden.
+    (() => {
+      const clip = document.querySelector('.ume-icon video');
+      const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)');
+      const sync = () => {
+        if (reduceMotion.matches || document.hidden) {
+          clip.pause();
+          clip.classList.remove('is-playing');
+        } else {
+          clip.play().catch(() => {});
+        }
+      };
+      clip.addEventListener('playing', () => {
+        if (!reduceMotion.matches) clip.classList.add('is-playing');
+      });
+      document.addEventListener('visibilitychange', sync);
+      reduceMotion.addEventListener('change', sync);
+      sync();
+    })();
     // The carousel: three screens, one per caption. A tap on the right half of the
     // phone goes forward and on the left half back, round and round; so do the arrows
     // and dots below it, the arrow keys with it focused, and a sideways swipe.

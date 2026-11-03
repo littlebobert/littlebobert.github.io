@@ -19,6 +19,9 @@ const siteFiles = [
 const assetFiles = [
   'ume-icon.png',
   'umete-social.png',
+  // The landing page's header icon, a pencil sketch flipbook and its still.
+  'umete-icon-sketch.mp4',
+  'umete-icon-sketch.jpg',
   // The landing page's carousel, from the Umete repository's AppStoreScreenshots.
   'umete-landing-fill.webp',
   'umete-landing-remembers.webp',

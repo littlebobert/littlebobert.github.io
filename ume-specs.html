@@ -4,6 +4,7 @@
   <meta charset="utf-8">
   <title>Umete Tech Specs</title>
   <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link href="umete-animated-icon.css?v=1" rel="stylesheet">
   <link rel="icon" href="assets/ume-icon.png?v=1">
   <link rel="apple-touch-icon" href="assets/ume-icon.png?v=1">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -73,7 +74,8 @@
     .uf-island { position: absolute; top: 18px; left: 50%; width: 27%; height: 16px; transform: translateX(-50%); border-radius: 8px; background: var(--uf-ink); }
     .uf-side-button { position: absolute; right: -5px; top: 96px; width: 3px; height: 46px; background: var(--uf-ink); }
     .uf-phone-label { position: absolute; top: -8pt; left: 22pt; background: #fff; padding: 0 5pt; font-weight: 600; text-transform: uppercase; font-size: 0.86em; }
-    .uf-l { grid-column: 1; align-self: start; margin: 0 12pt; }
+    /* Positioned, so the steps paint over the device, which is positioned too, and its hatching stays out of their boxes. */
+    .uf-l { position: relative; grid-column: 1; align-self: start; margin: 0 12pt; }
     .uf-main > .uf-l:nth-child(2) { grid-row: 2; }
     .uf-main > .uf-l:nth-child(3) { grid-row: 3; }
     .uf-main > .uf-l:nth-child(4) { grid-row: 4; }
@@ -144,7 +146,7 @@
     <nav class="umete-breadcrumbs" aria-label="Breadcrumb"><a href="ume.html">Umete</a><span class="umete-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</span></nav>
     <section class="sasu-hero">
       <div class="sasu-hero-header">
-        <a href="ume.html"><img class="sasu-icon" src="assets/ume-icon.png?v=1" alt="Umete app icon" data-alt-en="Umete app icon" data-alt-ja="Umeteアプリアイコン"></a>
+        <a href="ume.html"><span class="ume-icon"><span class="ume-icon-shape"><img src="assets/umete-icon-sketch.jpg?v=2" alt="Umete app icon, a plum sketched in pencil" data-alt-en="Umete app icon, a plum sketched in pencil" data-alt-ja="鉛筆で描いた梅の実のUmeteアプリアイコン" width="64" height="64"><video src="assets/umete-icon-sketch.mp4?v=2" muted loop playsinline disablepictureinpicture disableremoteplayback preload="auto" aria-hidden="true"></video></span></span></a>
         <div><h1 data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</h1><div class="sasu-subtitle">Umete</div></div>
       </div>
     </section>
@@ -237,6 +239,7 @@
     </section>
     <footer class="umete-footer"><p class="footer-links"><a href="ume.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Designed by " data-label-ja="東京の個人開発者 ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作"> in Tokyo</span></p></footer>
   </main>
+  <script src="umete-animated-icon.js?v=1"></script>
   <script src="umete-language.js?v=1"></script>
 </body>
 </html>

@@ -13,6 +13,8 @@ const siteFiles = [
   '_headers',
   'sasu-common.css',
   'umete-language.js',
+  'umete-animated-icon.css',
+  'umete-animated-icon.js',
   'ume-appcast.xml',
 ];
 
@@ -46,6 +48,8 @@ export function createDeployedPage(source) {
   return source
     .replaceAll('href="sasu-common.css', 'href="/sasu-common.css')
     .replaceAll('src="umete-language.js', 'src="/umete-language.js')
+    .replaceAll('href="umete-animated-icon.css', 'href="/umete-animated-icon.css')
+    .replaceAll('src="umete-animated-icon.js', 'src="/umete-animated-icon.js')
     .replaceAll('href="assets/', 'href="/assets/')
     .replaceAll('src="assets/', 'src="/assets/')
     .replaceAll('href="ume.html"', 'href="/"')

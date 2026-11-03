@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <title>Kehai</title>
   <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link href="kehai-animated-icon.css?v=1" rel="stylesheet">
   <link rel="icon" href="assets/kehai-icon.png?v=5">
   <link rel="apple-touch-icon" href="assets/kehai-icon.png?v=5">
   <link rel="canonical" href="https://kehai.jp/">
@@ -38,7 +39,6 @@
     body.sasu-site { background: #fff; }
     .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
     .sasu-hero .small-note { padding-bottom: 12pt; }
-    .kehai-icon { box-sizing: border-box; border: 1px solid var(--kehai-line); border-radius: 22%; }
     .release-notes summary { cursor: pointer; font-weight: bold; font-size: 10pt; margin: 0; padding-bottom: 5pt; }
     .release-notes h2 { display: inline-block; padding-top: 2pt; padding-bottom: 2pt; }
     .release-date { padding-left: 4pt; font-size: 10pt; color: #555; }
@@ -133,7 +133,7 @@
     </div>
     <section class="sasu-hero">
       <div class="sasu-hero-header">
-        <img class="sasu-icon kehai-icon" src="assets/kehai-icon.png?v=5" alt="Kehai app icon">
+        <span class="kehai-sketch-icon"><span class="kehai-sketch-icon-shape"><img src="assets/kehai-icon-sketch.jpg?v=1" alt="Kehai app icon, the brushstrokes of 回 sketched in pencil" width="56" height="56"><video src="assets/kehai-icon-sketch.mp4?v=1" muted loop playsinline disablepictureinpicture disableremoteplayback preload="auto" aria-hidden="true"></video></span></span>
         <div>
           <h1>Kehai</h1>
           <div class="sasu-subtitle" data-label-en="Tame your windows and switch apps faster." data-label-ja="ウインドウをすっきり整理し、アプリ切り替えをもっと速く。">Tame your windows and switch apps faster.</div>
@@ -948,6 +948,7 @@
     });
   </script>
   <script src="product-click-tracking.js"></script>
+  <script src="kehai-animated-icon.js?v=1"></script>
 </body>
 
 </html>

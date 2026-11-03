@@ -10,6 +10,8 @@ const siteFiles = [
   'product-click-tracking.js',
   'kehai-appcast.xml',
   'kehai.html',
+  'kehai-animated-icon.css',
+  'kehai-animated-icon.js',
   'sasu-common.css',
 ];
 

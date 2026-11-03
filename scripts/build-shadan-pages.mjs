@@ -29,6 +29,9 @@ const assetFiles = [
   'shadan-demo-poster.jpg',
   'shadan-icon-sketch.jpg',
   'shadan-icon-sketch.mp4',
+  // The maker's photo and name seal in the footer, as on Karui's pages.
+  'karui-developer.jpg',
+  'karui-seal.png',
 ];
 
 await rm(outputDirectory, { force: true, recursive: true });

@@ -3,6 +3,18 @@
     <channel>
         <title>Sasu</title>
         <item>
+            <title>0.2.22</title>
+            <pubDate>Wed, 04 Nov 2026 19:35:43 +0900</pubDate>
+            <link>https://sasu.jp</link>
+            <sparkle:version>47</sparkle:version>
+            <sparkle:shortVersionString>0.2.22</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[About Sasu now shows the pencil sketch of the icon from sasu.jp, drawing itself as you watch. With Reduce Motion on, it shows the finished drawing.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.22/Sasu-0.2.22-mac.zip" length="4948978" type="application/octet-stream" sparkle:edSignature="6RQTtcb12EBJFrmqQSccYoA1h+OWwzPd/Y7FWE6tqxRVyDaAYaWTtV1l9JBb/dOb58TYKx4Y6lQHM/us5DmmAA=="/>
+        </item>
+        <item>
             <title>0.2.21</title>
             <pubDate>Wed, 28 Oct 2026 14:05:23 +0900</pubDate>
             <link>https://sasu.jp</link>
@@ -26,18 +38,6 @@ Stopping a translation no longer shows an error alert.
             <description sparkle:format="markdown"><![CDATA[Fix a bug where Sasu showed two View menus.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.20/Sasu-0.2.20-mac.zip" length="4461437" type="application/octet-stream" sparkle:edSignature="nFM1GfaFqZWdi9DzRC/+TS8Qrog6oGzGFzCaNlSqjylrH+/6REawoi+a2SYQR/ffkc3/D6A9qFjAhWOApv6ZAA=="/>
-        </item>
-        <item>
-            <title>0.2.19</title>
-            <pubDate>Tue, 06 Oct 2026 18:13:36 +0900</pubDate>
-            <link>https://sasu.jp</link>
-            <sparkle:version>44</sparkle:version>
-            <sparkle:shortVersionString>0.2.19</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[Tighten up toolbar button labels.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.19/Sasu-0.2.19-mac.zip" length="4461162" type="application/octet-stream" sparkle:edSignature="vbxm+ivl6mN+/ETL3C1crqfbM4CUfYIF1iUGEobZm31D/j8V+EWh0C7bCvqOIEKXd4RdG9BxY39b5ZIdPHb8Ag=="/>
         </item>
     </channel>
 </rss>

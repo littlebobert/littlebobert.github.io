@@ -3,6 +3,20 @@
     <channel>
         <title>Sasu</title>
         <item>
+            <title>0.3.0</title>
+            <pubDate>Thu, 05 Nov 2026 02:11:56 +0900</pubDate>
+            <link>https://sasu.jp</link>
+            <sparkle:version>48</sparkle:version>
+            <sparkle:shortVersionString>0.3.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[You can now show context-aware furigana from the selected AI model above kanji in Japanese source text.
+Added GPT-6.1 Sol, GPT-6 Astra, Opus 5.5, and Fable 5.1 model presets.
+Added Ultrafast for supported OpenAI models, offering faster answers at about three times the cost of Fast.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.3.0/Sasu-0.3.0-mac.zip" length="4970920" type="application/octet-stream" sparkle:edSignature="pTKaWKtYOE95pREuzqnUUOtEya4KW6qbj6cmOl2uBKFeNrRyTLpBBmpG9g41OfmTo5mKVld//ghSX4rpSZ3zCg=="/>
+        </item>
+        <item>
             <title>0.2.22</title>
             <pubDate>Wed, 04 Nov 2026 19:35:43 +0900</pubDate>
             <link>https://sasu.jp</link>
@@ -26,18 +40,6 @@
 Stopping a translation no longer shows an error alert.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.21/Sasu-0.2.21-mac.zip" length="4469614" type="application/octet-stream" sparkle:edSignature="nJc0kqFw2gWcEJ4TL0FjLliA6S+/JMgi9MA9qW+KzgUtsdxqEk6My75bvRYm2501DTPw4BAHT4HNn7zcQrJIDw=="/>
-        </item>
-        <item>
-            <title>0.2.20</title>
-            <pubDate>Tue, 13 Oct 2026 14:32:19 +0900</pubDate>
-            <link>https://sasu.jp</link>
-            <sparkle:version>45</sparkle:version>
-            <sparkle:shortVersionString>0.2.20</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>13.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[Fix a bug where Sasu showed two View menus.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/sasu/releases/download/0.2.20/Sasu-0.2.20-mac.zip" length="4461437" type="application/octet-stream" sparkle:edSignature="nFM1GfaFqZWdi9DzRC/+TS8Qrog6oGzGFzCaNlSqjylrH+/6REawoi+a2SYQR/ffkc3/D6A9qFjAhWOApv6ZAA=="/>
         </item>
     </channel>
 </rss>

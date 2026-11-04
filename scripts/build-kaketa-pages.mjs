@@ -9,11 +9,13 @@ const outputDirectory = path.join(rootDirectory, 'dist-kaketa');
 const assetsDirectory = path.join(outputDirectory, 'assets');
 
 // karui-seal-ink.js inks the seals in; it's Karui's, shared.
-const siteFiles = ['_headers', 'sasu-common.css', 'kaketa-language.js', 'karui-seal-ink.js'];
+const siteFiles = ['_headers', 'sasu-common.css', 'kaketa-language.js', 'kaketa-animated-icon.css', 'kaketa-animated-icon.js', 'karui-seal-ink.js'];
 
 const assetFiles = [
   'kaketa-favicon.png',
   'kaketa-icon.png',
+  'kaketa-icon-sketch.jpg',
+  'kaketa-icon-sketch.mp4',
   'kaketa-social.png',
   'kaketa-apple-touch-icon.png',
   'kaketa-landing-shot-en.webp',
@@ -54,6 +56,8 @@ export function createDeployedPage(source) {
   return source
     .replaceAll('href="sasu-common.css', 'href="/sasu-common.css')
     .replaceAll('src="kaketa-language.js', 'src="/kaketa-language.js')
+    .replaceAll('href="kaketa-animated-icon.css', 'href="/kaketa-animated-icon.css')
+    .replaceAll('src="kaketa-animated-icon.js', 'src="/kaketa-animated-icon.js')
     .replaceAll('href="assets/', 'href="/assets/')
     .replaceAll('src="assets/', 'src="/assets/')
     .replace(/(data-src-\w+)="assets\//g, '$1="/assets/')

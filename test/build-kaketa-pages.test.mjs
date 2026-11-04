@@ -48,6 +48,11 @@ test('builds every Kaketa clean route', async () => {
     assert.match(page, /href="\/technotes"/);
     assert.doesNotMatch(page, /href="kaketa[-a-z]*\.html"/);
     assert.match(page, /data-label-fil=/);
+    // The header icon is the pencil sketch flipbook, with its still underneath.
+    assert.match(page, /href="\/kaketa-animated-icon\.css\?v=\d+"/);
+    assert.match(page, /src="\/kaketa-animated-icon\.js\?v=\d+"/);
+    assert.match(page, /src="\/assets\/kaketa-icon-sketch\.jpg\?v=\d+"/);
+    assert.match(page, /src="\/assets\/kaketa-icon-sketch\.mp4\?v=\d+"/);
   }
   for (const page of [privacyPage, supportPage, changelogPage, acknowledgementsPage, technotesPage, kn001Page]) {
     assert.match(page, /href="\/"/);
@@ -57,6 +62,10 @@ test('builds every Kaketa clean route', async () => {
 test('copies the shared files and assets', async () => {
   await readOutputFile('sasu-common.css');
   await readOutputFile('kaketa-language.js');
+  await readOutputFile('kaketa-animated-icon.css');
+  await readOutputFile('kaketa-animated-icon.js');
+  await readFile(path.join(outputDirectory, 'assets/kaketa-icon-sketch.jpg'));
+  await readFile(path.join(outputDirectory, 'assets/kaketa-icon-sketch.mp4'));
   await readOutputFile('_headers');
   await readFile(path.join(outputDirectory, 'assets/kaketa-icon.png'));
   await readFile(path.join(outputDirectory, 'assets/kaketa-social.png'));

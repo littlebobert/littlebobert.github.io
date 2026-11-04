@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.6.9</title>
+            <pubDate>Wed, 04 Nov 2026 19:32:22 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>120</sparkle:version>
+            <sparkle:shortVersionString>0.6.9</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- About Kehai now shows the pencil sketch of the icon from kehai.jp, drawing itself as you watch. With Reduce Motion on, it shows the finished drawing.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.9/Kehai-0.6.9-mac.zip" length="3356116" type="application/octet-stream" sparkle:edSignature="S2ob0gFkpG8K8pxIRbxxAL2PlVYome8Ih01TD/VhXyDYo1ZixiyyhaEzCn7EvSOCirj3k1VqPCEIv4QhswJZAQ=="/>
+        </item>
+        <item>
             <title>0.6.8</title>
             <pubDate>Tue, 03 Nov 2026 19:55:30 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -26,20 +38,6 @@
 - Fixed apps in the app strip that wouldn't open, such as Safari failing with "target process unavailable".
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.7/Kehai-0.6.7-mac.zip" length="3172071" type="application/octet-stream" sparkle:edSignature="MlozHSs5Dduoqfft6dQ9msNqbsooNfC398tG1cHjIuAxQzN+aheMnWpovDZHjioC0saD3zCTKkmN1dmO6K8sDQ=="/>
-        </item>
-        <item>
-            <title>0.6.6</title>
-            <pubDate>Fri, 30 Oct 2026 15:20:39 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>117</sparkle:version>
-            <sparkle:shortVersionString>0.6.6</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Searching in Kehai mini finds apps that ship inside other apps, like Xcode's Device Hub and Instruments, and menu-bar apps like Tailscale.
-- A menu-bar app that opens a regular window, like Tailscale, now appears in the app strip while it's running as a normal app.
-- The hot zone responds faster, and stays responsive when another app is busy, such as Xcode during a build.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.6/Kehai-0.6.6-mac.zip" length="3154110" type="application/octet-stream" sparkle:edSignature="88H0ws6V340x1yK0xaL/e+n3fcKHP9/8mhil0+7IjjRZa+MiiT1lqkJsUxJ6jRXGLR6Ei8I4pNacW8l5Z+AtBA=="/>
         </item>
     </channel>
 </rss>

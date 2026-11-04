@@ -28,6 +28,10 @@ Kaketa has no account and no analytics. Progress and added words stay on the dev
 
 - Requires an iPhone or iPad running iOS or iPadOS 26 or later. Apple Pencil is optional.
 
+## Availability
+
+- [Download on the App Store](https://apps.apple.com/app/kaketa/id6821230444): free; no sign-up needed.
+
 ## Pages
 
 - [Kaketa](https://kaketa.jp/): Overview and screenshots.

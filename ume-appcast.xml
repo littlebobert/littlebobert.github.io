@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.4.8</title>
+            <pubDate>Wed, 04 Nov 2026 11:48:45 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>33.3</sparkle:version>
+            <sparkle:shortVersionString>0.4.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.8
+
+About Umete now shows the pencil sketch of the icon from umete.jp, drawing itself as you watch. With Reduce Motion on, it shows the finished drawing.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="IQAwZVlDq+WrLmDpsruZJ1abTAT3ux1zupqaJ1kZuNxVy/HmAOJBWBXr/Qi/pXDzuIZyVvj6i2hMuOWQdCCmCg==" sparkle:length="400">https://umete.jp/Umete-0.4.8-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="HCKxdJCpTLPek4hS3LCBsLpz6hNGs0hRX+2fuFwBSk72tjpa+iF3z298DZQ8RNe6HXSCUxrN38kaO1CyZVkbDw==" sparkle:length="472">https://umete.jp/Umete-0.4.8-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.8/Umete-0.4.8-macOS.dmg" length="6928311" type="application/octet-stream" sparkle:edSignature="pRZMyux45cSw37LcwFNf97/Sv9XXTJMKyt4iYl8vv2DWJBy4EpJhw8T5cfZj055lxZQLWfJcenD7AB4Ktq+TCw=="/>
+        </item>
+        <item>
             <title>0.4.7</title>
             <pubDate>Sun, 01 Nov 2026 23:25:51 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -149,25 +165,9 @@ Ume is now Umete. New website at umete.jp.
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="5ue0PnY+dnWtBkNG70U2BG/aHwULz0xwK6Eaqyp/595xOjGHi4DrE8ONmSB3KMp34bNpuCnn7k7FkYaHx4/RAw==" sparkle:length="330">https://umete.jp/Umete-0.3.0-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.3.0/Umete-0.3.0-macOS.dmg" length="5858231" type="application/octet-stream" sparkle:edSignature="NSf1j287fCs8zhfeZd+6KSdWh5/iedBmLGM0CvhsK28Ymuk8mtRvEvcVNke+jvUvIgiDiSDlmtIZy3scRVYtCQ=="/>
         </item>
-        <item>
-            <title>0.2.0</title>
-            <pubDate>Mon, 12 Oct 2026 12:22:53 +0000</pubDate>
-            <link>https://littlebobert.github.io/ume.html</link>
-            <sparkle:fullReleaseNotesLink>https://littlebobert.github.io/ume.html#changelog</sparkle:fullReleaseNotesLink>
-            <sparkle:version>21.2</sparkle:version>
-            <sparkle:shortVersionString>0.2.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Ume 0.2.0
-
-Added iCloud sync, saved contacts for doctors and emergency contacts, and an optional toolbar badge on pages Ume can fill.
-]]></description>
-            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="ny/7JdJISjF1IDjIl+GcGQ2487U/tqbSsje0rhMJXny2hyn0rfoDedTzj6hNCupPWeX42HHNA/pD5GuaofFPAg==" sparkle:length="371">https://littlebobert.github.io/Ume-0.2.0-macOS.en.md</sparkle:releaseNotesLink>
-            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="T51kO9+zxHLGLtjhpHFa/38uKRNHqF3isHgGQxUGst/bgnfE9IYc/2RqRYhdoEKIlj+oaBGhPMisIyp2hWGRAg==" sparkle:length="411">https://littlebobert.github.io/Ume-0.2.0-macOS.ja.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/littlebobert/ume/releases/download/v0.2.0/Ume-0.2.0-macOS.dmg" length="5858743" type="application/octet-stream" sparkle:edSignature="t5z8EGB7r/g2XQqt1JFJH0yh5/Fs5Kl50ScV4mquvKckSAiUCISzow/U9gf36ft0sR6JfluDtGGEqu1O2TGgCg=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: AY6hxFVbiTjo8BRF2LEfT53PJnVsIurFFsKHJS6J3Ii5fNPn8y59V/DnYxJsaqY+8XY4oLeo+ftS32zjlw6wBg==
-length: 15378
+edSignature: IuKqAU/kBgolnDH+Kt3IrkfYe3i7FRv/wMnjnB0lvMzqDlGyaHMLK3PXgqqkxds9UkjplLY+K4YdeAZHxcAtAg==
+length: 15342
 -->

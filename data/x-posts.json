@@ -1,8 +1,52 @@
 {
-  "updatedAt": "2026-11-03T21:04:42.688Z",
+  "updatedAt": "2026-11-04T21:20:58.871Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2118041110580965703",
+      "text": "Siri people fielded my question during the lab 🤓 https://t.co/1wvNP246el",
+      "createdAt": "2026-11-04T18:02:06.000Z",
+      "url": "https://x.com/_bobertdowney/status/2118041110580965703",
+      "urls": [
+        {
+          "url": "https://t.co/1wvNP246el",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2118041110580965703/photo/1",
+          "displayUrl": "pic.x.com/1wvNP246el",
+          "start": 49,
+          "end": 72
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2118041110580965703-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2117918409468031376",
+      "text": "anyone else going to the Apple Intelligence lab at 2am JST 🫨? Siri is sometimes choosing a system app over mine even when mine is on screen https://t.co/IUUdSq4VOo",
+      "createdAt": "2026-11-04T09:54:32.000Z",
+      "url": "https://x.com/_bobertdowney/status/2117918409468031376",
+      "urls": [
+        {
+          "url": "https://t.co/IUUdSq4VOo",
+          "expandedUrl": "https://twitter.com/shshnkp/status/2117715120629633139",
+          "displayUrl": "x.com/shshnkp/status…",
+          "start": 140,
+          "end": 163
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2117719216715690482",
       "text": "Apple’s Private Cloud Compute is competitive with Opus 5.5 for categorizing push notifications to filter out the unimportant ones https://t.co/2Wr0ERqLTQ",
@@ -225,86 +269,6 @@
           "alt": "",
           "type": "photo",
           "image": "assets/generated/x/mine-post-2116860113671864619-2.png"
-        }
-      ]
-    },
-    {
-      "id": "2115966423113900315",
-      "text": "https://t.co/OmwOlG5rJF",
-      "createdAt": "2026-10-30T00:38:02.000Z",
-      "url": "https://x.com/_bobertdowney/status/2115966423113900315",
-      "urls": [
-        {
-          "url": "https://t.co/OmwOlG5rJF",
-          "expandedUrl": "https://www.youtube.com/watch?v=aIxIp9dBv-I",
-          "displayUrl": "youtube.com/watch?v=aIxIp9…",
-          "start": 0,
-          "end": 23
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2115965946523533563",
-      "text": "Afterlife Intelligence / Stay Hungry, Stay Ghoulish. https://t.co/PTLz8iyUz6",
-      "createdAt": "2026-10-30T00:36:09.000Z",
-      "url": "https://x.com/_bobertdowney/status/2115965946523533563",
-      "urls": [
-        {
-          "url": "https://t.co/PTLz8iyUz6",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2115965946523533563/photo/1",
-          "displayUrl": "pic.x.com/PTLz8iyUz6",
-          "start": 53,
-          "end": 76
-        },
-        {
-          "url": "https://t.co/PTLz8iyUz6",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2115965946523533563/photo/1",
-          "displayUrl": "pic.x.com/PTLz8iyUz6",
-          "start": 53,
-          "end": 76
-        },
-        {
-          "url": "https://t.co/PTLz8iyUz6",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2115965946523533563/photo/1",
-          "displayUrl": "pic.x.com/PTLz8iyUz6",
-          "start": 53,
-          "end": 76
-        },
-        {
-          "url": "https://t.co/PTLz8iyUz6",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2115965946523533563/photo/1",
-          "displayUrl": "pic.x.com/PTLz8iyUz6",
-          "start": 53,
-          "end": 76
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2115965946523533563-0.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2115965946523533563-1.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2115965946523533563-2.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2115965946523533563-3.png"
         }
       ]
     }

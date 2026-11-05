@@ -1,8 +1,40 @@
 {
-  "updatedAt": "2026-11-04T21:20:58.871Z",
+  "updatedAt": "2026-11-05T21:28:59.725Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2118099319530360879",
+      "text": "Apple’s Foundation Models are quite good compared to Opus 5.5 and GPT-6.1 Sol at categorizing push notifications as Important/Neutral/Spam. I’ve published my benchmarks: https://t.co/2Wr0ERqLTQ https://t.co/6KHrimAUej",
+      "createdAt": "2026-11-04T21:53:24.000Z",
+      "url": "https://x.com/_bobertdowney/status/2118099319530360879",
+      "urls": [
+        {
+          "url": "https://t.co/2Wr0ERqLTQ",
+          "expandedUrl": "https://karui.jp/technotes/kn006",
+          "displayUrl": "karui.jp/technotes/kn006",
+          "start": 170,
+          "end": 193
+        },
+        {
+          "url": "https://t.co/6KHrimAUej",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2118099319530360879/photo/1",
+          "displayUrl": "pic.x.com/6KHrimAUej",
+          "start": 194,
+          "end": 217
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2118099319530360879-0.png"
+        }
+      ]
+    },
     {
       "id": "2118041110580965703",
       "text": "Siri people fielded my question during the lab 🤓 https://t.co/1wvNP246el",

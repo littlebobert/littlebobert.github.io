@@ -1,8 +1,8 @@
 // Screensaver for the rest of the year (halloween.js has its own, with pumpkins, the last week of
 // October): Tokyo at night in pixel art, with Tokyo Tower and the Skytree lit up, office windows
-// going on and off, twinkling stars, the odd shooting star, and paper cranes flying over it all.
-// It starts after a while with no input, or from the Sleep Now corner, and any input wakes the
-// desktop. The After Hours desk accessory under Settings has a preview, sliders, and Sleep Now.
+// going on and off, twinkling stars, and the odd shooting star. It starts after a while with no
+// input, or from the Sleep Now corner, and any input wakes the desktop. The After Hours desk
+// accessory under Settings has a preview, a speed slider, and Sleep Now.
 (() => {
   const root = document.documentElement;
   const widget = document.getElementById('tokyo-night');
@@ -15,18 +15,15 @@
   const SLEEP_CORNER = 10;
   const PIXEL = 3; // CSS px per art pixel
   const SPEEDS = [0.5, 0.75, 1, 1.5, 2];
-  const DENSITIES = [0.5, 0.75, 1, 1.5, 2];
   const STORAGE_KEY = 'tokyo-night';
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
   // Only start by itself where there's a mouse; on a phone, 45 seconds of reading isn't idle.
   const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
-  const options = { speed: 2, density: 2 };
+  const options = { speed: 2 };
   try {
     const saved = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
-    ['speed', 'density'].forEach((key) => {
-      if (Number.isInteger(saved[key]) && saved[key] >= 0 && saved[key] < SPEEDS.length) options[key] = saved[key];
-    });
+    if (Number.isInteger(saved.speed) && saved.speed >= 0 && saved.speed < SPEEDS.length) options.speed = saved.speed;
   } catch (error) {}
 
   // A seeded random, so the city is the same all day and the preview holds still.
@@ -38,75 +35,6 @@
     };
   }
   const japanDay = () => Math.floor((Date.now() + 9 * 60 * 60 * 1000) / 86400000);
-
-  // --- Paper cranes, drawn as triangles on a 24 × 17 grid, flying left. Three wing positions.
-
-  const CRANE_W = 24;
-  const CRANE_H = 17;
-  // Origami paper: [light, fold, shade].
-  const PAPERS = [
-    ['#f05a4f', '#c8433b', '#932c27'],
-    ['#f4f1e8', '#d3cec0', '#a29d90'],
-    ['#f6a3bd', '#d77f9c', '#a85b75'],
-    ['#f0c75e', '#cfa43f', '#9a7629'],
-    ['#5cc2b6', '#3f9b90', '#2b6f68'],
-    ['#6d9be0', '#4e78b8', '#375589'],
-  ];
-
-  function triangle(grid, [ax, ay], [bx, by], [cx, cy], tone) {
-    const side = (px, py, x0, y0, x1, y1) => (px - x1) * (y0 - y1) - (x0 - x1) * (py - y1);
-    for (let y = 0; y < CRANE_H; y += 1) {
-      for (let x = 0; x < CRANE_W; x += 1) {
-        const px = x + 0.5;
-        const py = y + 0.5;
-        const d1 = side(px, py, ax, ay, bx, by);
-        const d2 = side(px, py, bx, by, cx, cy);
-        const d3 = side(px, py, cx, cy, ax, ay);
-        const negative = d1 < 0 || d2 < 0 || d3 < 0;
-        const positive = d1 > 0 || d2 > 0 || d3 > 0;
-        if (!(negative && positive)) grid[y][x] = tone;
-      }
-    }
-  }
-
-  // Tones: 0 light, 1 fold, 2 shade.
-  const WINGS = {
-    up: { back: [[11, 9], [15, 9], [17, 0]], front: [[[10, 9], [12, 9], [11, 0]], [[12, 9], [14, 9], [11, 0]]] },
-    level: { back: [[11, 9], [15, 9], [20, 3]], front: [[[10, 9], [13, 10], [18, 5]], [[13, 10], [15, 10], [18, 5]]] },
-    down: { back: [[11, 10], [15, 10], [17, 16]], front: [[[10, 10], [12, 10], [12, 16]], [[12, 10], [14, 10], [12, 16]]] },
-  };
-
-  function craneGrid(wing) {
-    const grid = Array.from({ length: CRANE_H }, () => Array(CRANE_W).fill(-1));
-    const { back, front } = WINGS[wing];
-    triangle(grid, ...back, 2);
-    triangle(grid, [7, 10], [17, 10], [12, 7], 0); // body, top
-    triangle(grid, [7, 10], [17, 10], [12, 13], 2); // body, underside
-    // The neck and tail rise steeply on either side, the crane's V.
-    triangle(grid, [7, 10], [10, 10], [4, 1], 0); // neck
-    triangle(grid, [4, 1], [5, 3], [1, 4], 1); // head and beak
-    triangle(grid, [14, 10], [17, 10], [21, 1], 1); // tail
-    triangle(grid, ...front[0], 0);
-    triangle(grid, ...front[1], 1);
-    return grid;
-  }
-
-  const CRANE_FRAMES = ['up', 'level', 'down'].map(craneGrid);
-  const FLAP = [0, 1, 2, 1];
-
-  // One small canvas per paper and wing position.
-  const craneSprites = PAPERS.map((paper) => CRANE_FRAMES.map((grid) => {
-    const sprite = document.createElement('canvas');
-    sprite.width = CRANE_W;
-    sprite.height = CRANE_H;
-    const ctx = sprite.getContext('2d');
-    grid.forEach((row, y) => row.forEach((tone, x) => {
-      if (tone < 0) return;
-      ctx.fillStyle = paper[tone];
-      ctx.fillRect(x, y, 1, 1);
-    }));
-    return sprite;
-  }));
 
   // --- The city, in art pixels.
 
@@ -197,7 +125,9 @@
       }
     }
 
-    const nearLandmark = (x, w) => [towerX, treeX].some((cx) => x < cx + 9 && x + w > cx - 9);
+    // Keep the landmarks' bases clear of the tallest buildings.
+    const clearance = [[towerX, Math.round(towerHeight * 0.17) + 3], [treeX, Math.round(treeHeight * 0.054) + 3]];
+    const nearLandmark = (x, w) => clearance.some(([cx, r]) => x < cx + r && x + w > cx - r);
 
     // Back row: lighter and dimmer, so the front row stands out.
     for (let x = -between(0, 8); x < width;) {
@@ -267,48 +197,76 @@
     lights.push({ x: cx, y: base - h - 1, phase: 0 });
   }
 
-  // The Skytree: a tripod base narrowing to a slim shaft, two observation decks, and a long
-  // antenna. Lit on alternating days in Iki (pale blue) or Miyabi (purple), like the real one.
+  // The Skytree, from its real proportions (634 m): a wide tripod base narrowing in a gentle
+  // concave curve to the Tembo Deck pod at 350 m, a smaller Tembo Galleria ring at 450 m, a slim
+  // shaft to the antenna section at about 500 m, and a needle on top with a white strobe. Lit on
+  // alternating days in Iki (pale blue) or Miyabi (purple, with gold decks), like the real one.
   function skytree(ctx, cx, base, h, lights, iki) {
-    const [edge, inner, deckColor] = iki
-      ? ['#a6dcff', '#5d9fd1', '#e3f4ff']
-      : ['#cfa7ff', '#8a63c9', '#f1e5ff'];
-    const baseHalf = Math.max(3, Math.round(h * 0.05));
+    const [edge, inner, core, deckLight] = iki
+      ? ['#c4e8ff', '#5aa3db', '#e9f7ff', '#f2fbff']
+      : ['#dcbcff', '#8a5ccf', '#f4e9ff', '#ffe09a'];
+    // Half the width at each height, as a fraction of the tower's height.
+    const DECK = [0.535, 0.553];
+    const GALLERIA = [0.7, 0.71];
+    const profile = (t) => {
+      if (t < DECK[0]) return 0.022 + 0.032 * Math.pow(1 - t / DECK[0], 1.7);
+      if (t < 0.7) return 0.019 - 0.004 * ((t - DECK[1]) / (0.7 - DECK[1]));
+      if (t < 0.78) return 0.014 - 0.003 * ((t - GALLERIA[1]) / (0.78 - GALLERIA[1]));
+      if (t < 0.9) return 0.006 - 0.003 * ((t - 0.78) / 0.12);
+      return 0;
+    };
+    const halfAt = (t) => Math.max(t < 0.9 ? 0.6 : 0, profile(t) * h);
+    const mod = (n, m) => ((n % m) + m) % m;
+
     for (let i = 0; i < h; i += 1) {
       const y = base - 1 - i;
       const t = i / h;
-      let half;
-      if (t > 0.8) half = 0;
-      else if (t > 0.72) half = 0.6;
-      else half = 1.9 + (baseHalf - 1.9) * Math.pow(Math.max(0, 1 - t / 0.14), 1.6);
+      const half = halfAt(t);
       const left = Math.round(cx - half);
       const right = Math.round(cx + half);
-      ctx.fillStyle = edge;
+      ctx.fillStyle = t < 0.78 ? edge : inner;
       ctx.fillRect(left, y, 1, 1);
-      ctx.fillRect(right, y, 1, 1);
-      ctx.fillStyle = inner;
+      if (right !== left) ctx.fillRect(right, y, 1, 1);
       for (let x = left + 1; x < right; x += 1) {
-        if ((x + y) % 2 === 0 || t > 0.14) ctx.fillRect(x, y, 1, 1);
+        // A diamond truss where the tower is wide enough to show one, with the lit core
+        // column (the shinbashira) glowing up the middle.
+        if (x === cx && t < DECK[0]) ctx.fillStyle = core;
+        else if (right - left >= 6 && !(mod(x + y, 4) === 0 || mod(x - y, 4) === 0)) continue;
+        else ctx.fillStyle = inner;
+        ctx.fillRect(x, y, 1, 1);
       }
     }
-    const deck = (t, height, half) => {
-      const y = Math.round(base - 1 - t * h);
-      ctx.fillStyle = deckColor;
-      ctx.fillRect(cx - half, y - height + 1, half * 2 + 1, height);
-      ctx.fillStyle = inner;
-      ctx.fillRect(cx - half, y - height + 1, half * 2 + 1, 1);
+
+    // The decks: a band of windows between lit rims, flaring out from the shaft below.
+    const deck = ([from, to], extra) => {
+      const bottom = Math.round(base - 1 - from * h);
+      const top = Math.round(base - 1 - to * h);
+      const half = Math.round(halfAt(from) + extra);
+      for (let y = top; y <= bottom + 1; y += 1) {
+        const flare = y > bottom ? 1 : 0; // a narrower row under the pod
+        const left = cx - half + flare;
+        const width = (half - flare) * 2 + 1;
+        const rim = y === top || y >= bottom;
+        ctx.fillStyle = rim ? edge : deckLight;
+        ctx.fillRect(left, y, width, 1);
+        if (!rim) {
+          ctx.fillStyle = inner;
+          for (let x = left + 1; x < left + width - 1; x += 3) ctx.fillRect(x, y, 1, 1);
+        }
+      }
     };
-    deck(0.55, 5, Math.max(4, Math.round(h * 0.035)));
-    deck(0.7, 3, Math.max(3, Math.round(h * 0.026)));
-    lights.push({ x: cx, y: base - h - 1, phase: 700 });
-    lights.push({ x: cx, y: Math.round(base - 1 - 0.55 * h) - 4, phase: 1100 });
+    deck(DECK, Math.max(2, h * 0.016));
+    deck(GALLERIA, Math.max(1, h * 0.008));
+
+    lights.push({ x: cx, y: base - h - 1, phase: 0, color: '#ffffff', flash: 120 });
+    lights.push({ x: cx, y: Math.round(base - 1 - 0.78 * h), phase: 800, color: '#ffffff', flash: 120 });
   }
 
   // --- Drawing a frame.
 
   const STAR = ['#4c5675', '#97a1c2', '#eef1ff'];
 
-  function drawFrame(ctx, scene, now, cranes, shootingStar) {
+  function drawFrame(ctx, scene, now, shootingStar) {
     ctx.drawImage(scene.sky, 0, 0);
     scene.stars.forEach((star) => {
       const twinkle = Math.sin((now + star.phase) / star.rate);
@@ -332,13 +290,11 @@
       }
     }
     ctx.drawImage(scene.city, 0, 0);
+    // Red aircraft lights blink; the Skytree's white strobes flash.
     scene.lights.forEach((light) => {
-      if ((now + light.phase) % 1600 > 380) return;
-      ctx.fillStyle = '#ff4433';
+      if ((now + light.phase) % 1600 > (light.flash || 380)) return;
+      ctx.fillStyle = light.color || '#ff4433';
       ctx.fillRect(light.x, light.y, 1, 1);
-    });
-    cranes.forEach((crane) => {
-      ctx.drawImage(craneSprites[crane.paper][crane.frame], Math.round(crane.x), Math.round(crane.y + crane.bob));
     });
   }
 
@@ -352,7 +308,6 @@
     const width = Math.ceil(window.innerWidth / PIXEL);
     const height = Math.ceil(window.innerHeight / PIXEL);
     const speed = SPEEDS[options.speed];
-    const density = DENSITIES[options.density];
 
     const screen = document.createElement('div');
     screen.className = 'tokyo-night-screen';
@@ -368,29 +323,6 @@
     const random = Math.random;
     const between = (min, max) => min + random() * (max - min);
 
-    const craneCount = Math.max(1, Math.round(Math.min(9, Math.max(3, (width * height) / 16000)) * density));
-    // Cranes come in from the right or the top, mostly over the sky.
-    const respawn = (crane, anywhere = false) => {
-      crane.paper = Math.floor(random() * PAPERS.length);
-      crane.speed = between(18, 32) * speed;
-      crane.slope = between(0.05, 0.2);
-      if (anywhere) {
-        crane.x = between(0, width);
-        crane.y = between(0, height * 0.55);
-      } else if (random() < width / (width + height * 0.6)) {
-        crane.x = between(width * 0.2, width + CRANE_W);
-        crane.y = -CRANE_H - between(0, 20);
-      } else {
-        crane.x = width + between(0, 30);
-        crane.y = between(0, height * 0.45);
-      }
-    };
-    const cranes = Array.from({ length: craneCount }, () => {
-      const crane = { phase: between(0, 1000), frame: 1, bob: 0 };
-      respawn(crane, true);
-      return crane;
-    });
-
     let shootingStar = null;
     let nextShootingStar = performance.now() + between(3000, 9000) / speed;
     let nextWindow = performance.now() + 400;
@@ -400,15 +332,6 @@
     const tick = (now) => {
       const dt = Math.min(0.1, (now - last) / 1000);
       last = now;
-
-      cranes.forEach((crane) => {
-        crane.x -= crane.speed * dt;
-        crane.y += crane.speed * crane.slope * dt;
-        if (crane.x < -CRANE_W || crane.y > height) respawn(crane);
-        crane.bob = Math.sin((now + crane.phase) / 420) * 1.5;
-        const beat = Math.floor(((now + crane.phase) * Math.sqrt(speed)) / 170);
-        crane.frame = FLAP[beat % FLAP.length];
-      });
 
       if (!shootingStar && now > nextShootingStar) {
         shootingStar = { x: between(width * 0.2, width), y: between(2, height * 0.3), vx: -150 * speed, vy: 75 * speed, life: 0 };
@@ -425,14 +348,14 @@
 
       // Somebody works late; somebody goes home.
       if (now > nextWindow && scene.windows.length) {
-        nextWindow = now + between(150, 600);
+        nextWindow = now + between(150, 600) / speed;
         const pane = scene.windows[Math.floor(random() * scene.windows.length)];
         if (random() < 0.45) pane.on = !pane.on;
         scene.cityCtx.fillStyle = pane.on ? pane.lit : pane.unlit;
         scene.cityCtx.fillRect(pane.x, pane.y, 1, 1);
       }
 
-      drawFrame(ctx, scene, now, cranes, shootingStar);
+      drawFrame(ctx, scene, now, shootingStar);
       raf = requestAnimationFrame(tick);
     };
     raf = requestAnimationFrame(tick);
@@ -506,7 +429,7 @@
   if (preview) {
     const scene = buildScene(preview.width, preview.height, 7);
     const ctx = preview.getContext('2d');
-    drawFrame(ctx, scene, 0, [{ paper: 0, frame: 0, x: 6, y: 3, bob: 0 }], null);
+    drawFrame(ctx, scene, 0, null);
   }
 
   widget.querySelectorAll('input[data-option]').forEach((input) => {

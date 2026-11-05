@@ -27,6 +27,13 @@ const API = 'https://api.elevenlabs.io';
 const MAX_CALL_SECONDS = 120;
 const DAILY_CALLS = 30;
 
+// Names speech recognition would otherwise hear as ordinary words ("Kehai" as "Kay high"):
+// Justin's apps, where he's worked, and a few others from the site.
+const KEYWORDS = [
+  'Justin Garcia', 'Karui', 'Kehai', 'Kotai', 'Kaketa', 'Sasu', 'Shadan', 'Umete', 'Yubi', 'Tsugu',
+  'Kotoba', 'Procore', 'iHeartMedia', 'WebKit', 'Siri', 'Apple Intelligence', 'onemorething.tokyo',
+];
+
 const FIRST_MESSAGES = {
   en: 'Hi, you’ve reached Justin’s desk. Ask me about him, his apps, or Tokyo.',
   ja: 'はい、ジャスティンのデスクです。本人のこと、アプリのこと、東京のこと、なんでも聞いてください。',
@@ -134,6 +141,7 @@ function agentBody({ prompt, voiceId, llm }) {
       // ElevenLabs requires an English-only model for an English agent; Japanese calls switch to
       // the multilingual Flash v2.5 through their language preset below.
       tts: { voice_id: voiceId, model_id: 'eleven_flash_v2' },
+      asr: { keywords: KEYWORDS },
       conversation: { max_duration_seconds: MAX_CALL_SECONDS },
       // The Speak window asks for Japanese when the site is in Japanese.
       language_presets: {

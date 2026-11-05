@@ -53,7 +53,9 @@
     const left = endsAt ? Math.max(0, Math.ceil((endsAt - Date.now()) / 1000)) : MAX_SECONDS;
     const clock = `${Math.floor(left / 60)}:${String(left % 60).padStart(2, '0')}`;
     switch (state) {
-      case 'dialing': return t('Dialing…', 'ダイヤル中…');
+      case 'dialing': return verifying
+        ? t('Check the box below to dial.', '下の確認ボックスを押すとダイヤルします。')
+        : t('Dialing…', 'ダイヤル中…');
       case 'listening': return textOnly
         ? t(`Your turn · ${clock}`, `どうぞ · ${clock}`)
         : t(`Listening · ${clock}`, `聞いています · ${clock}`);
@@ -302,6 +304,7 @@
   // --- Human verification. Cloudflare's managed check, shown only if it needs a tap.
 
   let turnstileId = null;
+  let verifying = false; // Cloudflare is showing its check and wants a tap
   let token = '';
   let tokenWaiters = [];
 
@@ -315,6 +318,14 @@
       sitekey: TURNSTILE_SITE_KEY,
       action: 'speak-call',
       appearance: 'interaction-only',
+      'before-interactive-callback'() {
+        verifying = true;
+        render();
+      },
+      'after-interactive-callback'() {
+        verifying = false;
+        render();
+      },
       callback(value) {
         token = value;
         tokenWaiters.forEach(({ resolve }) => resolve(value));
@@ -334,7 +345,8 @@
     if (token) return Promise.resolve(token);
     return new Promise((resolve, reject) => {
       tokenWaiters.push({ resolve });
-      setTimeout(() => reject(new Error('verification')), 30000);
+      // Long enough for a person to notice the check and tap it.
+      setTimeout(() => reject(new Error('verification')), 120000);
     });
   }
 

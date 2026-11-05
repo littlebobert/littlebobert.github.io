@@ -62,7 +62,7 @@
       case 'speaking': return t(`Talking · ${clock}`, `話しています · ${clock}`);
       case 'ended': return t('Call ended. Thanks for calling!', '通話が終わりました。ありがとうございました。');
       default: return available
-        ? t('Pick up the phone to call Justin’s desk.', '受話器を取ると、ジャスティンのデスクにつながります。')
+        ? t('Call Justin’s virtual assistant.', 'ジャスティンのバーチャルアシスタントに電話してみてください。')
         : t('The desk is closed for today. Try again tomorrow.', '今日の受付は終わりました。また明日どうぞ。');
     }
   }
@@ -82,7 +82,7 @@
     phone.disabled = !available && !inCall;
     phone.setAttribute('aria-label', inCall
       ? t('Hang up', '電話を切る')
-      : t('Call Justin’s desk', 'ジャスティンのデスクに電話する'));
+      : t('Call Justin’s virtual assistant', 'ジャスティンのバーチャルアシスタントに電話する'));
     [...transcript.querySelectorAll('.speak-who')].forEach((who) => {
       who.textContent = who.dataset.source === 'user' ? t('You', 'あなた') : t('Desk', 'デスク');
     });

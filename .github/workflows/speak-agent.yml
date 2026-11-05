@@ -1,0 +1,42 @@
+name: Update Speak Agent
+
+# Keeps the Speak phone's voice agent in step with the site: whenever what it knows changes on
+# master, scripts/speak-agent.mjs rebuilds its instructions and updates the existing agent.
+on:
+  push:
+    branches: [master]
+    paths:
+      - "llms.txt"
+      - "*-llms.txt"
+      - "resume.html"
+      - "data/tokyo-recommendations.json"
+      - "scripts/speak-agent.mjs"
+      - "scripts/speak-agent-prompt.md"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+# One update at a time; a newer push replaces a waiting one.
+concurrency:
+  group: speak-agent
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      # The script uses only Node's built-ins, so there's nothing to install.
+      - name: Update the agent
+        run: node scripts/speak-agent.mjs --update-only
+        env:
+          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}

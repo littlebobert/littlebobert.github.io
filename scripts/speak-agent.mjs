@@ -1,11 +1,17 @@
 // Creates or updates Speak's voice agent on ElevenLabs, from files in this repo, so the agent's
 // instructions and knowledge are versioned with the site.
 //
-//   ELEVENLABS_API_KEY=… node scripts/speak-agent.mjs [--voice Jessica] [--llm <model>] [--dry-run]
+//   ELEVENLABS_API_KEY=… node scripts/speak-agent.mjs [--voice <stock voice>] [--llm <model>]
+//                                                     [--dry-run] [--update-only]
 //
-// The key can also go in .env.local (ignored by git). The first run creates a private agent and
-// writes its ID into workers/portfolio-backend/wrangler.jsonc; later runs update that agent.
-// Deploy the Worker afterwards so it hands out calls to it.
+// The key can also go in .env.local (ignored by git). The first run creates a private agent with
+// the stock voice Jessica and writes its ID into workers/portfolio-backend/wrangler.jsonc; deploy
+// the Worker afterwards so it hands out calls to it. Later runs update that agent, keeping its
+// current voice and LLM unless --voice or --llm is given. Everything else comes from this repo,
+// so changes made in the ElevenLabs dashboard are replaced.
+//
+// .github/workflows/speak-agent.yml runs this with --update-only whenever what the agent knows
+// changes on master, so it never creates a second agent.
 //
 // The system prompt is scripts/speak-agent-prompt.md followed by what the site already says:
 // llms.txt and each app's *-llms.txt, the resume, and the approved Tokyo recommendations.
@@ -31,6 +37,7 @@ function option(name, fallback = null) {
   return index === -1 ? fallback : process.argv[index + 1];
 }
 const dryRun = process.argv.includes('--dry-run');
+const updateOnly = process.argv.includes('--update-only');
 
 async function loadLocalEnv() {
   try {
@@ -173,11 +180,11 @@ async function writeAgentId(agentId) {
 async function main() {
   await loadLocalEnv();
   const prompt = await systemPrompt();
-  const voiceName = option('voice', 'Jessica');
-  const llm = option('llm');
+  const voiceName = option('voice');
+  const llmOption = option('llm');
 
   if (dryRun) {
-    const body = agentBody({ prompt, voiceId: `<stock voice “${voiceName}”>`, llm });
+    const body = agentBody({ prompt, voiceId: `<${voiceName ? `stock voice “${voiceName}”` : 'current voice'}>`, llm: llmOption });
     body.conversation_config.agent.prompt.prompt = `<${prompt.length} characters>`;
     console.log(JSON.stringify(body, null, 2));
     console.log(`\n--- System prompt (${prompt.length} characters) ---\n\n${prompt}`);
@@ -187,18 +194,28 @@ async function main() {
     throw new Error('Set ELEVENLABS_API_KEY in the environment or in .env.local.');
   }
 
-  const voice = await stockVoice(voiceName);
-  const body = agentBody({ prompt, voiceId: voice.voice_id, llm });
   const agentId = await readAgentId();
   if (agentId) {
+    const current = await elevenLabs(`/v1/convai/agents/${agentId}`);
+    const voiceId = voiceName
+      ? (await stockVoice(voiceName)).voice_id
+      : current.conversation_config?.tts?.voice_id;
+    if (!voiceId) throw new Error(`Agent ${agentId} has no voice; pass --voice.`);
+    const llm = llmOption || current.conversation_config?.agent?.prompt?.llm || null;
+    const body = agentBody({ prompt, voiceId, llm });
     await elevenLabs(`/v1/convai/agents/${agentId}`, { method: 'PATCH', body: JSON.stringify(body) });
-    console.log(`Updated agent ${agentId} (voice: ${voice.name}, prompt: ${prompt.length} characters).`);
-  } else {
-    const created = await elevenLabs('/v1/convai/agents/create', { method: 'POST', body: JSON.stringify(body) });
-    await writeAgentId(created.agent_id);
-    console.log(`Created agent ${created.agent_id} (voice: ${voice.name}, prompt: ${prompt.length} characters).`);
-    console.log('Its ID is now in workers/portfolio-backend/wrangler.jsonc. Commit it and deploy the Worker.');
+    console.log(`Updated agent ${agentId} (voice ${voiceId}${llm ? `, LLM ${llm}` : ''}, prompt: ${prompt.length} characters).`);
+    return;
   }
+  if (updateOnly) {
+    throw new Error(`No ELEVENLABS_AGENT_ID in ${WRANGLER}; run this locally once to create the agent.`);
+  }
+  const voice = await stockVoice(voiceName || 'Jessica');
+  const body = agentBody({ prompt, voiceId: voice.voice_id, llm: llmOption });
+  const created = await elevenLabs('/v1/convai/agents/create', { method: 'POST', body: JSON.stringify(body) });
+  await writeAgentId(created.agent_id);
+  console.log(`Created agent ${created.agent_id} (voice: ${voice.name}, prompt: ${prompt.length} characters).`);
+  console.log('Its ID is now in workers/portfolio-backend/wrangler.jsonc. Commit it and deploy the Worker.');
 }
 
 main().catch((error) => {

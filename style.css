@@ -3802,3 +3802,76 @@ body.home-page .seismograph {
 .seismograph-fact {
   white-space: nowrap;
 }
+
+/* In-person signatures in the Guestbook (index.js, from onemorething.tokyo/sign). */
+.guestbook-signatures {
+  margin-top: 8px;
+  padding-top: 5px;
+  border-top: 2px solid #000;
+  font-size: 15px;
+  line-height: 1.15;
+}
+
+html[data-theme="classic"] .guestbook-signatures {
+  border-color: var(--classic-shadow);
+}
+
+.guestbook-signatures-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.guestbook-sign-link {
+  color: inherit;
+  white-space: nowrap;
+}
+
+.guestbook-signature-group + .guestbook-signature-group {
+  margin-top: 8px;
+}
+
+.guestbook-signature-event {
+  margin-bottom: 4px;
+  opacity: 0.8;
+}
+
+.guestbook-signature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(112px, 1fr));
+  gap: 6px;
+}
+
+.guestbook-signature {
+  display: block;
+  margin: 0;
+  padding: 3px 3px 2px;
+  border: 1px solid #000;
+  border-radius: 0;
+  background: #fff;
+  color: #111;
+  font: inherit;
+  text-align: center;
+  cursor: pointer;
+}
+
+.guestbook-signature svg {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2;
+}
+
+.guestbook-signature-name {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 12px;
+}
+
+.guestbook-signature:focus-visible {
+  outline: 2px dotted #000;
+  outline-offset: 1px;
+}

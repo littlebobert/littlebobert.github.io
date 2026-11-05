@@ -47,6 +47,26 @@ limit abuse.
 Totals are visible in the Access-protected `/admin` dashboard under **Product download clicks**.
 Apply D1 migrations before deploying Worker code that uses a new schema.
 
+## In-person guestbook
+
+People at events sign with a finger at `https://onemorething.tokyo/sign` (`sign.html` and
+`sign.js` in the site). The QR code for that URL is `assets/sign-qr.svg`, made by
+`swift scripts/generate-sign-qr.swift`, which also writes `src/sign-qr.js` for the live page.
+
+- `/admin/live` (behind Cloudflare Access, like `/admin`) is the page to keep open on your phone:
+  start an event, show the QR code, and each new signature takes over the screen and redraws
+  itself. Approve or reject from there or from `/admin`.
+- One event runs at a time, for 12 hours unless ended. Signatures are attached to the running
+  event on the server; without one they still arrive, just without an event.
+- `POST /api/submissions/signature` takes ink in a 400×200 box (`validateInk`), with its own rate
+  limit (`SIGNATURE_RATE_LIMITER`, 30 a minute per address) since a venue's Wi-Fi puts many
+  signers behind one address. `GET /api/v1/sign/current` names the running event;
+  `GET /api/content/signatures` lists approved signatures for the Guestbook.
+
+To try it locally, run `node test/local-server.mjs` (in-memory database, Turnstile always passes,
+`/admin` always signed in) and serve the site on port 8788; localhost pages use it automatically
+(`signature-ink.js`).
+
 ## Admin access
 
 Create a Cloudflare Access self-hosted application for:

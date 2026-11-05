@@ -17,6 +17,7 @@ function createEnvironment() {
       VISITOR_HASH_SALT: 'test-salt',
       DB: d1,
       SUBMISSION_RATE_LIMITER: { limit: async () => ({ success: true }) },
+      SIGNATURE_RATE_LIMITER: { limit: async () => ({ success: true }) },
       COUNTER_RATE_LIMITER: { limit: async () => ({ success: true }) },
     },
   };
@@ -328,4 +329,112 @@ test('admin routes require a verified Cloudflare Access identity', async () => {
     verifyAccess: async () => null,
   });
   assert.equal(response.status, 403);
+});
+
+const admin = { verifyAccess: async () => ({ email: 'owner@example.com' }) };
+
+function signatureBody(id, points = 3) {
+  const stroke = [];
+  for (let i = 0; i < points; i += 1) stroke.push(10 + (i % 380), 20 + (i % 170), i * 16);
+  return JSON.stringify({ turnstileToken: 'valid', id, name: 'Aiko', note: 'Hello from Shibuya', ink: { strokes: [stroke] } });
+}
+
+function signRequest(id, points) {
+  return request('/api/submissions/signature', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: signatureBody(id, points),
+  });
+}
+
+test('signatures join the running event, show live to the owner, and go public once approved', async () => {
+  const { env } = createEnvironment();
+
+  const noEvent = await handleRequest(request('/api/v1/sign/current'), env);
+  assert.deepEqual(await noEvent.json(), { event: null });
+
+  const before = await handleRequest(signRequest('sig-before'), env, { fetch: successfulTurnstile });
+  assert.equal(before.status, 202);
+  assert.equal((await before.json()).event, null);
+
+  const started = await handleRequest(request('/admin/api/events', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name: 'Tokyo iOS Meetup' }),
+  }), env, admin);
+  assert.equal(started.status, 201);
+  const event = (await started.json()).event;
+
+  const current = await handleRequest(request('/api/v1/sign/current'), env);
+  assert.equal((await current.json()).event.name, 'Tokyo iOS Meetup');
+
+  const during = await handleRequest(signRequest('sig-during'), env, { fetch: successfulTurnstile });
+  assert.equal((await during.json()).event, 'Tokyo iOS Meetup');
+
+  const live = await (await handleRequest(request('/admin/api/live'), env, admin)).json();
+  assert.equal(live.event.id, event.id);
+  assert.deepEqual(live.signatures.map((s) => s.id), ['sig-during']);
+  assert.equal(live.signatures[0].status, 'pending');
+  assert.equal(live.signatures[0].ink.strokes[0].length, 9);
+
+  const queue = await (await handleRequest(request('/admin/api/queue'), env, admin)).json();
+  assert.equal(queue.signatures.length, 2);
+
+  assert.deepEqual((await (await handleRequest(request('/api/content/signatures'), env)).json()).entries, []);
+  const approved = await handleRequest(request('/admin/api/signature/sig-during/approve', { method: 'POST' }), env, admin);
+  assert.equal(approved.status, 200);
+  const entries = (await (await handleRequest(request('/api/content/signatures'), env)).json()).entries;
+  assert.equal(entries.length, 1);
+  assert.equal(entries[0].eventName, 'Tokyo iOS Meetup');
+  assert.equal(entries[0].name, 'Aiko');
+  assert.deepEqual(entries[0].ink.strokes[0].slice(0, 3), [10, 20, 0]);
+
+  const ended = await handleRequest(request(`/admin/api/events/${event.id}/end`, { method: 'POST' }), env, admin);
+  assert.equal(ended.status, 200);
+  assert.deepEqual(await (await handleRequest(request('/api/v1/sign/current'), env)).json(), { event: null });
+});
+
+test('starting an event ends the one before it, and needs JSON', async () => {
+  const { env } = createEnvironment();
+  const start = (name, contentType = 'application/json') => handleRequest(request('/admin/api/events', {
+    method: 'POST',
+    headers: { 'Content-Type': contentType },
+    body: JSON.stringify({ name }),
+  }), env, admin);
+  assert.equal((await start('First', 'text/plain')).status, 415);
+  assert.equal((await start('')).status, 400);
+  await start('First');
+  await start('Second');
+  const current = await (await handleRequest(request('/api/v1/sign/current'), env)).json();
+  assert.equal(current.event.name, 'Second');
+});
+
+test('signatures can be long, but malformed or oversized ink is rejected', async () => {
+  const { env } = createEnvironment();
+  const long = await handleRequest(signRequest('sig-long', 2000), env, { fetch: successfulTurnstile });
+  assert.equal(long.status, 202);
+
+  const tooLong = await handleRequest(signRequest('sig-too-long', 3001), env, { fetch: successfulTurnstile });
+  assert.equal(tooLong.status, 400);
+
+  for (const ink of [{ strokes: [] }, { strokes: [[1, 2]] }, { strokes: [[401, 0, 0]] }, { strokes: [[1.5, 2, 0]] }, null]) {
+    const response = await handleRequest(request('/api/submissions/signature', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ turnstileToken: 'valid', ink }),
+    }), env, { fetch: successfulTurnstile });
+    assert.equal(response.status, 400, JSON.stringify(ink));
+  }
+});
+
+test('the live page shows the sign QR code and needs Cloudflare Access', async () => {
+  const { env } = createEnvironment();
+  const page = await handleRequest(request('/admin/live'), env, admin);
+  assert.equal(page.status, 200);
+  const html = await page.text();
+  assert.match(html, /onemorething\.tokyo\/sign/);
+  assert.match(html, /<svg[^>]*aria-label="QR code/);
+  assert.match(html, /function drawInk/);
+  const denied = await handleRequest(request('/admin/live'), env, { verifyAccess: async () => null });
+  assert.equal(denied.status, 403);
 });

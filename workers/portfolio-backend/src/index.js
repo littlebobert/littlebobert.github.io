@@ -1,5 +1,6 @@
 import { handleAdminRequest } from './admin.js';
 import { verifyAccessJwt } from './access.js';
+import { currentEvent } from './events.js';
 import {
   ValidationError,
   validateContactMessage,
@@ -7,6 +8,7 @@ import {
   validateGuestbook,
   validateMudScore,
   validateProductClick,
+  validateSignature,
   validateTokyoRecommendation,
 } from './validation.js';
 
@@ -63,17 +65,23 @@ function requireAllowedOrigin(request, env) {
   }
 }
 
-async function parseJsonBody(request) {
+async function parseJsonBody(request, maxBytes = 16_384) {
   const contentLength = Number(request.headers.get('Content-Length') || 0);
-  if (contentLength > 16_384) {
+  if (contentLength > maxBytes) {
+    throw new Response('Request body is too large.', { status: 413 });
+  }
+  // Content-Length can be missing, so the text is measured too.
+  const text = await request.text();
+  if (new TextEncoder().encode(text).length > maxBytes) {
     throw new Response('Request body is too large.', { status: 413 });
   }
   try {
-    return await request.json();
+    return JSON.parse(text);
   } catch {
     throw new ValidationError('The request body must be valid JSON.');
   }
 }
+
 
 async function enforceRateLimit(limiter, key) {
   if (!limiter) return;
@@ -175,6 +183,23 @@ async function insertContactMessage(db, value) {
   ).run();
 }
 
+async function insertSignature(db, value) {
+  const now = new Date().toISOString();
+  const event = await currentEvent(db, now);
+  await db.prepare(`
+    INSERT INTO signatures (id, event_id, name, note, ink, submitted_at)
+    VALUES (?, ?, ?, ?, ?, ?)
+  `).bind(
+    value.id,
+    event?.id ?? null,
+    value.name,
+    value.note,
+    JSON.stringify(value.ink),
+    now,
+  ).run();
+  return event;
+}
+
 async function publicContent(request, env, kind) {
   if (kind === 'guestbook') {
     const result = await env.DB.prepare(`
@@ -198,6 +223,21 @@ async function publicContent(request, env, kind) {
     `).all();
     return json(request, env, { entries: result.results || [] });
   }
+  if (kind === 'signatures') {
+    const result = await env.DB.prepare(`
+      SELECT signatures.id, signatures.name, signatures.note, signatures.ink,
+             signatures.submitted_at AS signedAt, signatures.approved_at AS approvedAt,
+             events.name AS eventName, events.started_at AS eventStartedAt
+      FROM signatures
+      LEFT JOIN events ON events.id = signatures.event_id
+      WHERE signatures.status = 'approved'
+      ORDER BY signatures.submitted_at DESC
+      LIMIT 60
+    `).all();
+    return json(request, env, {
+      entries: (result.results || []).map((entry) => ({ ...entry, ink: JSON.parse(entry.ink) })),
+    });
+  }
   if (kind === 'mud-leaderboard') {
     const result = await env.DB.prepare(`
       SELECT id, name, moves, side_quests AS sideQuests, side_quest_count AS sideQuestCount,
@@ -220,9 +260,17 @@ async function publicContent(request, env, kind) {
 async function submitContent(request, env, kind, deps) {
   requireAllowedOrigin(request, env);
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
-  await enforceRateLimit(env.SUBMISSION_RATE_LIMITER, `${ip}:${kind}`);
-  const body = await parseJsonBody(request);
+  // At an event, many signers can share the venue Wi-Fi's address, so signatures have their own,
+  // looser limit.
+  const limiter = kind === 'signature' ? env.SIGNATURE_RATE_LIMITER : env.SUBMISSION_RATE_LIMITER;
+  await enforceRateLimit(limiter, `${ip}:${kind}`);
+  const body = await parseJsonBody(request, kind === 'signature' ? 65_536 : 16_384);
   await verifyTurnstile(body, request, env, deps.fetch);
+  if (kind === 'signature') {
+    const value = validateSignature(body);
+    const event = await insertSignature(env.DB, value);
+    return json(request, env, { id: value.id, status: 'pending', event: event?.name ?? null }, 202);
+  }
   if (kind === 'guestbook') {
     const value = validateGuestbook(body);
     await insertGuestbook(env.DB, value);
@@ -340,6 +388,10 @@ export async function handleRequest(request, env, customDeps = {}) {
     }
     if (request.method === 'POST' && url.pathname === '/api/contact') {
       return await submitContact(request, env, deps);
+    }
+    if (request.method === 'GET' && url.pathname === '/api/v1/sign/current') {
+      const event = await currentEvent(env.DB);
+      return json(request, env, { event: event ? { name: event.name, endsAt: event.endsAt } : null });
     }
     if (request.method === 'GET' && url.pathname === '/api/v1/track') {
       return await trackVisitor(request, env);

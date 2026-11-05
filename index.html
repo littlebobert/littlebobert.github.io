@@ -7,7 +7,7 @@
   <title>Justin Garcia — iOS and Speech AI Engineer in Tokyo</title>
   <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
   <link rel="shortcut icon" href="assets/karui-favicon.png?v=1" type="image/png">
-  <link href='style.css?v=146' rel='stylesheet'>
+  <link href='style.css?v=147' rel='stylesheet'>
   <link href='halloween.css?v=10' rel='stylesheet'>
   <script>
     // Halloween mode, every year Oct 25 – Nov 1 in Japan time. ?halloween forces it on, ?halloween=0 off.
@@ -664,6 +664,13 @@
           </div>
           <p class="map-location-status" id="map-location-status" aria-live="polite"></p>
           <div class="guestbook-list" id="guestbook-list" aria-live="polite"></div>
+          <div class="guestbook-signatures" id="guestbook-signatures">
+            <div class="guestbook-signatures-heading">
+              <span data-label-en="Signed in person" data-label-ja="会場でのサイン">Signed in person</span>
+              <a href="sign.html" class="guestbook-sign-link" data-label-en="Sign with your finger" data-label-ja="指でサインする">Sign with your finger</a>
+            </div>
+            <div id="guestbook-signature-groups"></div>
+          </div>
         </section>
         </div>
       </div>
@@ -1043,7 +1050,8 @@
   
   <script src="data/x-posts.js"></script>
   <script src="halloween.js?v=10"></script>
-  <script src="index.js?v=16"></script>
+  <script src="signature-ink.js?v=1"></script>
+  <script src="index.js?v=17"></script>
   <script src="seismograph.js?v=1"></script>
   <script>
     const MUD_LEADERBOARD_STORAGE_KEY = 'tokyo-mud-leaderboard';

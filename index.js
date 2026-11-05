@@ -924,6 +924,7 @@ function setLanguage(language) {
   renderXSnapshot();
   renderPuzzle();
   renderGuestbook();
+  renderGuestbookSignatures();
   renderTokyoRecommendations();
   document.dispatchEvent(new CustomEvent('site-language-change', {
     detail: { language: currentLanguage },
@@ -990,6 +991,8 @@ let selectedMapCountryCode = '';
 let selectedMapPlace = '';
 let selectedMapCountryElement = null;
 let guestbookEntries = [];
+let guestbookSignatures = [];
+const guestbookSignatureGroups = document.getElementById('guestbook-signature-groups');
 let mapZoom = 1;
 let mapPanX = 0;
 let mapPanY = 0;
@@ -1963,6 +1966,82 @@ function renderGuestbook() {
   guestbookListElement.append(list);
 }
 
+// Signatures from onemorething.tokyo/sign (sign.js), grouped by the event they were signed at.
+// Each one redraws itself, stroke by stroke, when pointed at or tapped.
+function renderGuestbookSignatures() {
+  if (!guestbookSignatureGroups || !window.SignatureInk) return;
+  if (!guestbookSignatures.length) {
+    guestbookSignatureGroups.textContent = localizedText(
+      'None yet. Catch me at an event in Tokyo!',
+      'まだありません。東京のイベントで会いましょう！'
+    );
+    return;
+  }
+  const groups = new Map();
+  guestbookSignatures.forEach((entry) => {
+    const date = new Date(entry.eventStartedAt || entry.signedAt);
+    const key = entry.eventName ? `${entry.eventName}|${date.toDateString()}` : 'online';
+    if (!groups.has(key)) groups.set(key, { name: entry.eventName, date, entries: [] });
+    groups.get(key).entries.push(entry);
+  });
+  const dateLabel = (date) => date.toLocaleDateString(currentLanguage === 'ja' ? 'ja-JP' : 'en-US', {
+    timeZone: 'Asia/Tokyo', year: 'numeric', month: 'short', day: 'numeric',
+  });
+  guestbookSignatureGroups.replaceChildren(...[...groups.values()].map((group) => {
+    const section = document.createElement('div');
+    section.className = 'guestbook-signature-group';
+    const heading = document.createElement('div');
+    heading.className = 'guestbook-signature-event';
+    heading.textContent = group.name
+      ? `${group.name} · ${dateLabel(group.date)}`
+      : localizedText('Signed online', 'オンラインでサイン');
+    const grid = document.createElement('div');
+    grid.className = 'guestbook-signature-grid';
+    group.entries.forEach((entry) => {
+      const card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'guestbook-signature';
+      const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+      svg.setAttribute('aria-hidden', 'true');
+      window.SignatureInk.draw(svg, entry.ink);
+      const caption = document.createElement('span');
+      caption.className = 'guestbook-signature-name';
+      caption.textContent = entry.name || localizedText('Anonymous', '匿名');
+      card.title = [entry.name, entry.note].filter(Boolean).join(' — ');
+      card.setAttribute('aria-label', localizedText(
+        `Signature by ${entry.name || 'someone'}${entry.note ? `: ${entry.note}` : ''}. Replay it.`,
+        `${entry.name || '匿名'}さんのサイン${entry.note ? `：${entry.note}` : ''}。もう一度描く。`
+      ));
+      let stop = () => {};
+      const replay = () => {
+        stop();
+        stop = window.SignatureInk.draw(svg, entry.ink, { animate: true, maxDuration: 2500 });
+      };
+      card.addEventListener('pointerenter', (event) => {
+        if (event.pointerType === 'mouse') replay();
+      });
+      card.addEventListener('click', replay);
+      card.append(svg, caption);
+      grid.append(card);
+    });
+    section.append(heading, grid);
+    return section;
+  }));
+}
+
+async function fetchGuestbookSignatures() {
+  if (!guestbookSignatureGroups || !window.SignatureInk) return;
+  try {
+    const response = await fetch(`${window.SignatureInk.apiBase}/api/content/signatures`, { cache: 'no-store' });
+    if (!response.ok) throw new Error(`API request failed: ${response.status}`);
+    const data = await response.json();
+    guestbookSignatures = Array.isArray(data.entries) ? data.entries : [];
+  } catch (error) {
+    guestbookSignatures = [];
+  }
+  renderGuestbookSignatures();
+}
+
 async function fetchGuestbook() {
   if (!guestbookListElement) {
     return;
@@ -2920,6 +2999,7 @@ fetchVisitorCount();
 bindFeedScrollFade(xFeedElement);
 fetchXSnapshot();
 fetchGuestbook();
+fetchGuestbookSignatures();
 fetchTokyoRecommendations();
 setInterval(updateClocks, 1000);
 setInterval(fetchWeather, 30 * 60 * 1000);

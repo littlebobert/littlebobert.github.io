@@ -23,6 +23,14 @@
 			}
 		},
 		{
+			"name": "SIGNATURE_RATE_LIMITER",
+			"namespace_id": "91003",
+			"simple": {
+				"limit": 30,
+				"period": 60
+			}
+		},
+		{
 			"name": "COUNTER_RATE_LIMITER",
 			"namespace_id": "91002",
 			"simple": {

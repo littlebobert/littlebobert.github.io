@@ -79,6 +79,52 @@ export function validateGuestbook(body) {
   };
 }
 
+// Signature ink: points in a fixed 400×200 box, as flat [x, y, t, x, y, t, …] runs per stroke,
+// t in milliseconds since the first touch. Limits keep a scribble far under the body size cap.
+export const INK_WIDTH = 400;
+export const INK_HEIGHT = 200;
+const INK_MAX_STROKES = 120;
+const INK_MAX_POINTS = 3000;
+const INK_MAX_MS = 10 * 60 * 1000;
+
+export function validateInk(value) {
+  const strokes = value?.strokes;
+  if (!Array.isArray(strokes) || !strokes.length || strokes.length > INK_MAX_STROKES) {
+    throw new ValidationError('The signature is empty or too long.');
+  }
+  let points = 0;
+  const cleaned = strokes.map((stroke) => {
+    if (!Array.isArray(stroke) || !stroke.length || stroke.length % 3 !== 0) {
+      throw new ValidationError('The signature is malformed.');
+    }
+    points += stroke.length / 3;
+    return stroke.map((number, index) => {
+      const max = [INK_WIDTH, INK_HEIGHT, INK_MAX_MS][index % 3];
+      if (!Number.isInteger(number) || number < 0 || number > max) {
+        throw new ValidationError('The signature is malformed.');
+      }
+      return number;
+    });
+  });
+  if (points > INK_MAX_POINTS) {
+    throw new ValidationError('The signature is too long.');
+  }
+  return { width: INK_WIDTH, height: INK_HEIGHT, strokes: cleaned };
+}
+
+export function validateSignature(body) {
+  return {
+    id: cleanId(body.id),
+    name: cleanText(body.name, 24),
+    note: cleanText(body.note, 80),
+    ink: validateInk(body.ink),
+  };
+}
+
+export function validateEventName(body) {
+  return cleanText(body?.name, 60, { required: true });
+}
+
 export function validateTokyoRecommendation(body) {
   return {
     id: cleanId(body.id),

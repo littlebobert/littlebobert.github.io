@@ -1,0 +1,399 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#d7d7d7">
+  <meta name="robots" content="noindex">
+  <title>Sign my guestbook</title>
+  <meta name="description" content="Sign Justin Garcia’s guestbook with your finger.">
+  <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
+  <script src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit" async defer></script>
+  <style>
+    :root {
+      --ink: #111;
+      --chrome: #d7d7d7;
+      --window: #e9e9e9;
+      --shadow: #777;
+      --highlight: #fff;
+    }
+
+    * { box-sizing: border-box; }
+
+    html {
+      /* The classic desktop pattern, as on the home page. */
+      background: #bcbcbc;
+      background-image: radial-gradient(#9d9d9d 1px, transparent 1.2px);
+      background-size: 4px 4px;
+      color: var(--ink);
+      -webkit-text-size-adjust: 100%;
+    }
+
+    body {
+      margin: 0 auto;
+      max-width: 520px;
+      padding: max(16px, env(safe-area-inset-top)) 16px max(24px, env(safe-area-inset-bottom));
+      font: 15px/1.4 Verdana, Geneva, sans-serif;
+    }
+
+    html[lang="ja"] body {
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", Verdana, sans-serif;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .language {
+      display: flex;
+      gap: 0;
+    }
+
+    .qr-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font: inherit;
+      font-size: 13px;
+      padding: 3px 10px;
+      border: 1px solid var(--ink);
+      border-radius: 6px;
+      background: var(--window);
+      color: var(--ink);
+    }
+
+    .qr-button svg {
+      width: 14px;
+      height: 14px;
+    }
+
+    .qr-button:active { background: var(--ink); color: #fff; }
+
+    .qr-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      background: rgba(0, 0, 0, 0.25);
+    }
+
+    .qr-window {
+      width: min(100%, 360px);
+    }
+
+    .qr-window .title-bar::before {
+      left: 26px;
+    }
+
+    .close-box {
+      position: absolute;
+      left: 7px;
+      top: 4px;
+      z-index: 1;
+      width: 13px;
+      height: 13px;
+      padding: 0;
+      border: 1px solid var(--ink);
+      background: var(--chrome);
+      box-shadow: inset 1px 1px 0 var(--highlight), inset -1px -1px 0 var(--shadow);
+    }
+
+    .close-box:active { background: var(--ink); }
+
+    .qr-content {
+      text-align: center;
+    }
+
+    .qr-content img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border: 1px solid var(--ink);
+      image-rendering: pixelated;
+    }
+
+    .qr-url {
+      margin: 10px 0 2px;
+      font-weight: bold;
+    }
+
+    .qr-hint {
+      margin: 0;
+      font-size: 13px;
+      opacity: 0.8;
+    }
+
+    .language button {
+      font: inherit;
+      font-size: 13px;
+      padding: 3px 10px;
+      border: 1px solid var(--ink);
+      background: var(--window);
+      color: var(--ink);
+    }
+
+    .language button:first-child { border-radius: 6px 0 0 6px; }
+    .language button:last-child { border-radius: 0 6px 6px 0; border-left: 0; }
+    .language button[aria-pressed="true"] { background: var(--ink); color: #fff; }
+
+    .window {
+      background: var(--window);
+      border: 1px solid var(--ink);
+      box-shadow: inset 1px 1px 0 var(--highlight), inset -1px -1px 0 var(--shadow), 2px 2px 0 rgba(0, 0, 0, 0.35);
+    }
+
+    .title-bar {
+      position: relative;
+      height: 22px;
+      background: var(--chrome);
+      border-bottom: 1px solid var(--ink);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .title-bar::before {
+      content: "";
+      position: absolute;
+      left: 6px;
+      right: 6px;
+      top: 5px;
+      height: 11px;
+      background: repeating-linear-gradient(to bottom, var(--ink) 0 1px, var(--chrome) 1px 3px);
+    }
+
+    .title-bar h1 {
+      position: relative;
+      margin: 0;
+      padding: 0 10px;
+      background: var(--chrome);
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .content { padding: 14px; }
+
+    .event {
+      margin: 0 0 6px;
+      font-weight: bold;
+    }
+
+    .intro { margin: 0 0 12px; }
+
+    .paper {
+      position: relative;
+      background: #fff;
+      border: 1px solid var(--ink);
+      aspect-ratio: 2;
+      touch-action: none;
+      user-select: none;
+      -webkit-user-select: none;
+      -webkit-touch-callout: none;
+    }
+
+    .paper canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      cursor: crosshair;
+    }
+
+    /* The line to sign on, with its ×. */
+    .paper::before {
+      content: "×";
+      position: absolute;
+      left: 6%;
+      bottom: 17%;
+      font-size: 18px;
+      line-height: 1;
+      opacity: 0.55;
+    }
+
+    .paper::after {
+      content: "";
+      position: absolute;
+      left: 6%;
+      right: 6%;
+      bottom: 18%;
+      border-bottom: 1px dotted var(--ink);
+      opacity: 0.55;
+    }
+
+    .paper-hint {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0.45;
+      pointer-events: none;
+    }
+
+    .paper-tools {
+      display: flex;
+      justify-content: flex-end;
+      gap: 8px;
+      margin: 8px 0 12px;
+    }
+
+    button.mac {
+      font: inherit;
+      font-size: 14px;
+      color: var(--ink);
+      padding: 5px 14px;
+      border: 1px solid var(--ink);
+      border-radius: 8px;
+      background: var(--window);
+      box-shadow: inset 1px 1px 0 var(--highlight), inset -1px -1px 0 var(--shadow);
+    }
+
+    button.mac:active:not(:disabled) { background: var(--ink); color: #fff; }
+    button.mac:disabled { opacity: 0.45; }
+
+    /* The default button's thick outline. */
+    button.mac.default {
+      flex-shrink: 0;
+      white-space: nowrap;
+      outline: 3px solid var(--ink);
+      outline-offset: 2px;
+      font-weight: bold;
+      padding: 7px 22px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-size: 13px;
+    }
+
+    label input {
+      display: block;
+      width: 100%;
+      margin-top: 3px;
+      padding: 7px 8px;
+      border: 1px solid var(--ink);
+      border-radius: 0;
+      background: #fff;
+      color: var(--ink);
+      font: inherit;
+      /* 16px keeps iPhone Safari from zooming in. */
+      font-size: 16px;
+      box-shadow: inset 1px 1px 0 var(--shadow);
+    }
+
+    .actions {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-top: 14px;
+    }
+
+    .fine-print {
+      margin: 0;
+      font-size: 12px;
+      opacity: 0.75;
+    }
+
+    .status {
+      min-height: 1.4em;
+      margin: 10px 0 0;
+      font-size: 13px;
+    }
+
+    .status.error { color: #a00; }
+
+    #turnstile:empty { display: none; }
+    #turnstile { margin-top: 10px; }
+
+    .thanks { text-align: center; }
+    .thanks h2 { margin: 4px 0 10px; font-size: 22px; }
+    .thanks .paper { touch-action: auto; }
+    .thanks .paper::before, .thanks .paper::after { display: none; }
+    .thanks svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .thanks p { margin: 12px 0; }
+    .thanks a { color: inherit; }
+
+    [hidden] { display: none !important; }
+  </style>
+</head>
+
+<body>
+  <div class="toolbar">
+    <button type="button" class="qr-button" id="qr-open" aria-haspopup="dialog">
+      <svg viewBox="0 0 14 14" aria-hidden="true" shape-rendering="crispEdges"><path fill="currentColor" d="M0 0h6v6H0zM2 2v2h2V2zM8 0h6v6H8zM10 2v2h2V2zM0 8h6v6H0zM2 10v2h2v-2zM8 8h2v2H8zM12 8h2v2h-2zM10 10h2v2h-2zM8 12h2v2H8zM12 12h2v2h-2z"/></svg>
+      <span data-en="QR code" data-ja="QRコード">QR code</span>
+    </button>
+    <div class="language" role="group" aria-label="Language">
+      <button type="button" data-language="en" aria-pressed="true">English</button>
+      <button type="button" data-language="ja" aria-pressed="false">日本語</button>
+    </div>
+  </div>
+
+  <main class="window">
+    <div class="title-bar"><h1 data-en="Sign my guestbook" data-ja="ゲストブックにサイン">Sign my guestbook</h1></div>
+
+    <form class="content" id="sign-form" novalidate>
+      <p class="event" id="event" hidden></p>
+      <p class="intro" data-en="Hi, I’m Justin, an iOS engineer in Tokyo. Sign with your finger, or draw anything you like." data-ja="こんにちは、東京でiOSエンジニアをしているJustinです。指でサインしてください。絵でも大丈夫です。">Hi, I’m Justin, an iOS engineer in Tokyo. Sign with your finger, or draw anything you like.</p>
+
+      <div class="paper" id="paper">
+        <canvas id="canvas" aria-label="Signature pad" role="img"></canvas>
+        <div class="paper-hint" id="paper-hint" data-en="Sign here" data-ja="ここにサイン">Sign here</div>
+      </div>
+      <div class="paper-tools">
+        <button type="button" class="mac" id="undo" disabled data-en="Undo" data-ja="取り消す">Undo</button>
+        <button type="button" class="mac" id="clear" disabled data-en="Clear" data-ja="消去">Clear</button>
+      </div>
+
+      <label><span data-en="Name (optional)" data-ja="お名前（任意）">Name (optional)</span>
+        <input id="name" name="name" maxlength="24" autocomplete="nickname" enterkeyhint="next">
+      </label>
+      <label><span data-en="A note (optional)" data-ja="ひとこと（任意）">A note (optional)</span>
+        <input id="note" name="note" maxlength="80" enterkeyhint="done">
+      </label>
+
+      <div id="turnstile"></div>
+      <div class="actions">
+        <p class="fine-print" data-en="It appears on onemorething.tokyo once I approve it." data-ja="承認後、onemorething.tokyo に掲載されます。">It appears on onemorething.tokyo once I approve it.</p>
+        <button type="submit" class="mac default" id="submit" disabled data-en="Sign" data-ja="サイン">Sign</button>
+      </div>
+      <p class="status" id="status" role="status" aria-live="polite"></p>
+    </form>
+
+    <section class="content thanks" id="thanks" hidden>
+      <h2 id="thanks-title" data-en="Thank you!" data-ja="ありがとうございます！">Thank you!</h2>
+      <div class="paper"><svg id="thanks-ink" aria-hidden="true"></svg></div>
+      <p id="thanks-show" data-en="It’s on my phone now. Show me!" data-ja="今、私のスマホに届きました。見せてください！">It’s on my phone now. Show me!</p>
+      <p><a href="/" data-en="Visit onemorething.tokyo" data-ja="onemorething.tokyo を見る">Visit onemorething.tokyo</a></p>
+      <button type="button" class="mac" id="again" data-en="Sign again" data-ja="もう一度サイン">Sign again</button>
+    </section>
+  </main>
+
+  <div class="qr-overlay" id="qr-overlay" hidden>
+    <div class="window qr-window" role="dialog" aria-modal="true" aria-labelledby="qr-title">
+      <div class="title-bar">
+        <button type="button" class="close-box" id="qr-close" aria-label="Close"></button>
+        <h1 id="qr-title" data-en="Scan to sign" data-ja="読み取ってサイン">Scan to sign</h1>
+      </div>
+      <div class="content qr-content">
+        <img src="assets/sign-qr.svg?v=1" id="qr-image" alt="QR code for onemorething.tokyo/sign" width="296" height="296">
+        <p class="qr-url">onemorething.tokyo/sign</p>
+        <p class="qr-hint" data-en="Pass it on: point another phone’s camera here." data-ja="ほかのスマホのカメラをここに向けてください。">Pass it on: point another phone’s camera here.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="signature-ink.js?v=1"></script>
+  <script src="sign.js?v=2"></script>
+</body>
+
+</html>

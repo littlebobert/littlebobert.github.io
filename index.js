@@ -2801,6 +2801,11 @@ const balloonCity = (target) => target.closest('.clock-widget').querySelector('.
 // [selector, English, Japanese]. Text can be a function of the element. The innermost match wins,
 // and among selectors matching the same element, the first one listed.
 const BALLOON_HELP = [
+  ['.tokyo-night .close-box', 'Close box. Puts After Hours away until you reload. The screensaver still comes on when you leave this Mac alone.', 'クローズボックス。再読み込みするまでアフターアワーズをしまいます。放っておけば、スクリーンセーバーは今まで通り始まります。'],
+  ['.tokyo-night .after-dark-module', 'The screensaver. Leave this Mac alone for 45 seconds and Tokyo comes out at night: Tokyo Tower, the Skytree, people working late, and paper cranes flying over it all. The Skytree changes color every day, like the real one.', 'スクリーンセーバー。このMacを45秒放っておくと、夜の東京が現れます。東京タワー、スカイツリー、残業する人たち、そしてその上を飛ぶ折り鶴。スカイツリーは本物と同じく、日替わりで色が変わります。'],
+  ['.tokyo-night .after-dark-setting:has([data-option="speed"])', 'How fast the cranes fly, and how often stars fall.', '折り鶴の飛ぶ速さと、流れ星の頻度。'],
+  ['.tokyo-night .after-dark-setting:has([data-option="density"])', 'How many cranes fly at once. Fold a thousand and make a wish.', '一度に飛ぶ折り鶴の数。千羽折れば、願いがかなうかも。'],
+  ['.tokyo-night .after-dark-sleep', 'Starts the screensaver now. So does moving the pointer into the bottom-left corner of the screen.', '今すぐスクリーンセーバーを始めます。ポインタを画面の左下隅に動かしても始まります。'],
   ['.speak .close-box', 'Close box. Hangs up and puts the phone away until you reload.', 'クローズボックス。電話を切って、再読み込みするまでしまっておきます。'],
   ['.speak-phone', 'A desk phone for Justin’s site. Pick it up and ask about Justin, his apps, or Tokyo. The voice on the other end is an AI assistant, not Justin, and calls last two minutes.', 'このサイトのデスク電話。受話器を取って、ジャスティンのこと、アプリのこと、東京のことを聞いてみてください。電話に出るのはAIアシスタントで、本人ではありません。通話は2分までです。'],
   ['.speak-transcript', 'What’s been said on this call. Your voice isn’t recorded. ElevenLabs, who runs the call, keeps the text for 30 days so Justin can see what people ask.', 'この通話で話した内容。声は録音されません。通話を運営するElevenLabsが文字の記録を30日間保管し、ジャスティンがどんな質問があったか確認できます。'],

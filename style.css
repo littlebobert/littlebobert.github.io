@@ -3805,6 +3805,49 @@ body.home-page .seismograph {
   white-space: nowrap;
 }
 
+/* Tokyo Night screensaver and its After Hours desk accessory (tokyo-night.js), for the rest of
+   the year. The panel borrows In the Dark's look from halloween.css and stacks under Settings. */
+body.home-page .tokyo-night {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+}
+
+@media (min-width: 860px) {
+  body.home-page .tokyo-night {
+    grid-area: settings;
+    justify-self: start;
+    align-self: start;
+    margin-top: var(--desk-accessory-top, 0);
+  }
+}
+
+.after-dark-preview.tokyo-night-preview {
+  padding: 0;
+  image-rendering: pixelated;
+}
+
+.tokyo-night-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483646;
+  overflow: hidden;
+  background: #03050d;
+  cursor: none !important;
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.tokyo-night-screen.is-on {
+  opacity: 1;
+  transition-duration: 0.6s;
+}
+
+.tokyo-night-screen canvas {
+  display: block;
+  image-rendering: pixelated;
+}
+
 /* Speak desk accessory (speak.js): a pencil-sketched rotary phone that calls a voice agent.
    On wide screens it sits under the Tokyo and Tampa clocks, on the left; it isn't a
    .desk-accessory, so the stack under Settings leaves it alone. */

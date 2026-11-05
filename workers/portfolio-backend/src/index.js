@@ -2,6 +2,13 @@ import { handleAdminRequest } from './admin.js';
 import { verifyAccessJwt } from './access.js';
 import { currentEvent } from './events.js';
 import {
+  refundCall,
+  remainingCalls,
+  reserveCall,
+  signedConversationUrl,
+  speakConfigured,
+} from './speak.js';
+import {
   ValidationError,
   validateContactMessage,
   validateCounterKey,
@@ -361,6 +368,35 @@ async function trackProductClick(request, env) {
   return json(request, env, { success: true });
 }
 
+// Whether the Speak phone can take a call today, so it can say so before asking for the mic.
+async function speakStatus(request, env) {
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+  await enforceRateLimit(env.COUNTER_RATE_LIMITER, `${ip}:speak-status`);
+  const available = speakConfigured(env) && await remainingCalls(env) > 0;
+  return json(request, env, { available });
+}
+
+function speakError(code, message, status) {
+  return new Response(JSON.stringify({ error: message, code }), { status, headers: JSON_HEADERS });
+}
+
+async function startSpeakCall(request, env, deps) {
+  requireAllowedOrigin(request, env);
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+  await enforceRateLimit(env.SPEAK_RATE_LIMITER, `${ip}:speak`);
+  const body = await parseJsonBody(request, 4096);
+  if (!speakConfigured(env)) throw speakError('unavailable', 'Speak is resting right now.', 503);
+  await verifyTurnstile(body, request, env, deps.fetch);
+  if (!await reserveCall(env)) throw speakError('busy', 'Speak has taken all its calls for today.', 429);
+  try {
+    return json(request, env, { signedUrl: await signedConversationUrl(env, deps.fetch) });
+  } catch (error) {
+    await refundCall(env);
+    console.error(error);
+    throw speakError('upstream', 'The line is down. Please try again later.', 502);
+  }
+}
+
 export async function handleRequest(request, env, customDeps = {}) {
   const deps = {
     fetch: globalThis.fetch.bind(globalThis),
@@ -401,6 +437,12 @@ export async function handleRequest(request, env, customDeps = {}) {
     }
     if (request.method === 'POST' && url.pathname === '/api/v1/product-click') {
       return await trackProductClick(request, env);
+    }
+    if (request.method === 'GET' && url.pathname === '/api/v1/speak/status') {
+      return await speakStatus(request, env);
+    }
+    if (request.method === 'POST' && url.pathname === '/api/v1/speak/call') {
+      return await startSpeakCall(request, env, deps);
     }
     return json(request, env, { error: 'Not found.' }, 404);
   } catch (error) {

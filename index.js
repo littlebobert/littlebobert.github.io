@@ -2801,6 +2801,11 @@ const balloonCity = (target) => target.closest('.clock-widget').querySelector('.
 // [selector, English, Japanese]. Text can be a function of the element. The innermost match wins,
 // and among selectors matching the same element, the first one listed.
 const BALLOON_HELP = [
+  ['.speak .close-box', 'Close box. Hangs up and puts the phone away until you reload.', 'クローズボックス。電話を切って、再読み込みするまでしまっておきます。'],
+  ['.speak-phone', 'A desk phone for Justin’s site. Pick it up and ask about Justin, his apps, or Tokyo. The voice on the other end is an AI assistant, not Justin, and calls last two minutes.', 'このサイトのデスク電話。受話器を取って、ジャスティンのこと、アプリのこと、東京のことを聞いてみてください。電話に出るのはAIアシスタントで、本人ではありません。通話は2分までです。'],
+  ['.speak-transcript', 'What’s been said on this call. Your voice isn’t recorded. ElevenLabs, who runs the call, keeps the text for 30 days so Justin can see what people ask.', 'この通話で話した内容。声は録音されません。通話を運営するElevenLabsが文字の記録を30日間保管し、ジャスティンがどんな質問があったか確認できます。'],
+  ['.speak-text-call', 'No microphone, or somewhere quiet? Call and type instead. The desk types back.', 'マイクがない、または声を出せない場所なら、文字で電話できます。デスクも文字で答えます。'],
+  ['.speak-attribution', 'The voice and the conversation run on ElevenLabs. The desk only knows what’s on this site.', '音声と会話は ElevenLabs で動いています。デスクが知っているのは、このサイトに載っていることだけです。'],
   ['.seismograph .close-box', 'Close box. Puts the seismograph away until you reload. The earthquakes keep going, but you don’t have to watch.', 'クローズボックス。再読み込みするまで地震計をしまいます。地震は続きますが、見なくて済みます。'],
   ['.seismograph-paper', 'A drum recorder for Japan. When an earthquake is reported, the pen shakes about as hard as it was felt. Most days it just hums along. Japan sits where four tectonic plates meet, so not for long.', '日本の地震計。地震が発表されると、揺れの強さに合わせてペンが振れます。ふだんは静かに記録しているだけ。でも日本は4つのプレートが出会う場所なので、それも長くは続きません。'],
   ['.seismograph-latest', 'Shindo is how hard the ground shook where people are, from 1 to 7. Magnitude is how much energy the quake let out. A deep quake can have a big magnitude and barely be felt.', '震度は人のいる場所でどれだけ揺れたか（1〜7）。マグニチュードは地震が出したエネルギーの大きさ。深い地震は、マグニチュードが大きくてもほとんど揺れないことがあります。'],

@@ -4,6 +4,9 @@
 //
 //   node test/local-server.mjs
 //
+// Speak stays closed unless ELEVENLABS_API_KEY and ELEVENLABS_AGENT_ID are in the environment;
+// with them, calls go to the real agent and count against its daily limit.
+//
 // Then serve the site on http://localhost:8788 and open /sign, and /admin/live here.
 import { createServer } from 'node:http';
 import { handleRequest } from '../src/index.js';
@@ -21,10 +24,15 @@ const env = {
   TURNSTILE_HOSTNAMES: 'localhost',
   TURNSTILE_SECRET: 'local',
   VISITOR_HASH_SALT: 'local',
+  ELEVENLABS_API_KEY: process.env.ELEVENLABS_API_KEY || '',
+  ELEVENLABS_AGENT_ID: process.env.ELEVENLABS_AGENT_ID || '',
   DB: d1,
 };
 const deps = {
-  fetch: async () => Response.json({ success: true, hostname: 'localhost' }),
+  // Turnstile always passes; anything else (ElevenLabs) is the real thing.
+  fetch: async (url, init) => (String(url).startsWith('https://challenges.cloudflare.com/')
+    ? Response.json({ success: true, hostname: 'localhost' })
+    : fetch(url, init)),
   verifyAccess: async () => ({ email: 'local@localhost' }),
 };
 

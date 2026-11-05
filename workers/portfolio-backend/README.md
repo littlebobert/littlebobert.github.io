@@ -67,6 +67,30 @@ To try it locally, run `node test/local-server.mjs` (in-memory database, Turnsti
 `/admin` always signed in) and serve the site on port 8788; localhost pages use it automatically
 (`signature-ink.js`).
 
+## Speak (voice agent)
+
+The Speak desk accessory (`speak.js` in the site) is a rotary phone that calls an ElevenLabs
+voice agent about Justin, his apps, and Tokyo. The agent is private, so every call starts here:
+
+- `POST /api/v1/speak/call` checks the origin, `SPEAK_RATE_LIMITER` (3 a minute per address),
+  Turnstile, and today's allowance (`SPEAK_DAILY_CALLS`, Japan time, in `speak_calls`), then
+  returns a signed `wss://` URL for one conversation. A failed ElevenLabs request gives the call back.
+- `GET /api/v1/speak/status` says whether a call is available today, before the mic is asked for.
+
+Setup, once:
+
+1. Create an ElevenLabs API key limited to Agents (and Voices read), with a credit limit.
+2. In the site: `ELEVENLABS_API_KEY=… npm run speak-agent`. It creates the agent from
+   `scripts/speak-agent-prompt.md` plus the site's `llms.txt` files, resume, and Tokyo
+   recommendations, and writes its ID into `wrangler.jsonc`. Run it again after changing any of
+   those to update the agent. `--voice <stock voice name>` picks the voice (default Jessica);
+   `--dry-run` prints the agent and prompt without calling ElevenLabs.
+3. `npx wrangler secret put ELEVENLABS_API_KEY`, then apply migrations and deploy.
+
+The agent itself also stops calls at 2 minutes and 30 a day, and doesn't record voices; transcripts
+are kept 30 days. To try calls locally, start `test/local-server.mjs` with `ELEVENLABS_API_KEY`
+and `ELEVENLABS_AGENT_ID` in the environment (real calls, real minutes).
+
 ## Admin access
 
 Create a Cloudflare Access self-hosted application for:

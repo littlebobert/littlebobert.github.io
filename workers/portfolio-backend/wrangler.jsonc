@@ -11,7 +11,12 @@
 		"ALLOWED_ORIGIN_SUFFIXES": ".justin-garcia.pages.dev,.sasu-app.pages.dev,.littlebobert-github-io.pages.dev,.kotai.pages.dev,.karui-9yt.pages.dev,.shadan-7rm.pages.dev",
 		"TURNSTILE_HOSTNAMES": "onemorething.tokyo,justin-garcia.pages.dev,littlebobert.github.io",
 		"TEAM_DOMAIN": "https://solitary-term-564f.cloudflareaccess.com",
-		"POLICY_AUD": "7c67895eaafce2e790b5f9cf03414cbfb89e253cb1fb553812b3e0240e449648"
+		"POLICY_AUD": "7c67895eaafce2e790b5f9cf03414cbfb89e253cb1fb553812b3e0240e449648",
+		// Speak's voice agent. scripts/speak-agent.mjs (in the site) creates the agent and fills in
+		// its ID; the API key is the ELEVENLABS_API_KEY secret. Calls a day across all visitors,
+		// in Japan time; each lasts at most 2 minutes.
+		"ELEVENLABS_AGENT_ID": "agent_3201m6pvq8jqf9zshhs09bbh2dqm",
+		"SPEAK_DAILY_CALLS": "30"
 	},
 	"ratelimits": [
 		{
@@ -27,6 +32,14 @@
 			"namespace_id": "91003",
 			"simple": {
 				"limit": 30,
+				"period": 60
+			}
+		},
+		{
+			"name": "SPEAK_RATE_LIMITER",
+			"namespace_id": "91004",
+			"simple": {
+				"limit": 3,
 				"period": 60
 			}
 		},

@@ -7,7 +7,7 @@
   <title>Justin Garcia — iOS and Speech AI Engineer in Tokyo</title>
   <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
   <link rel="shortcut icon" href="assets/karui-favicon.png?v=1" type="image/png">
-  <link href='style.css?v=148' rel='stylesheet'>
+  <link href='style.css?v=149' rel='stylesheet'>
   <link href='halloween.css?v=10' rel='stylesheet'>
   <script>
     // Halloween mode, every year Oct 25 – Nov 1 in Japan time. ?halloween forces it on, ?halloween=0 off.
@@ -1024,6 +1024,36 @@
         </div>
       </div>
     </div>
+
+    <div class="clock-widget desk-accessory speak" id="speak">
+      <div class="clock-title-bar">
+        <div class="close-box"></div>
+        <span
+          class="clock-title"
+          data-label-en="Speak"
+          data-label-ja="電話"
+        >Speak</span>
+      </div>
+      <div class="clock-content speak-content">
+        <button type="button" class="speak-phone" aria-label="Call Justin’s desk">
+          <canvas class="speak-canvas" aria-hidden="true"></canvas>
+        </button>
+        <div class="speak-status" aria-live="polite"></div>
+        <ol class="speak-transcript" hidden></ol>
+        <form class="speak-type" hidden>
+          <input type="text" class="speak-input" maxlength="300" autocomplete="off" enterkeyhint="send">
+          <button type="submit" class="speak-button speak-send"></button>
+        </form>
+        <div class="speak-actions">
+          <button type="button" class="speak-button speak-call"></button>
+          <button type="button" class="speak-button speak-text-call"></button>
+        </div>
+        <div class="speak-turnstile"></div>
+        <div class="speak-attribution">
+          <a href="https://elevenlabs.io/agents" data-label-en="Voice by ElevenLabs" data-label-ja="音声: ElevenLabs">Voice by ElevenLabs</a>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 
@@ -1051,8 +1081,9 @@
   <script src="data/x-posts.js"></script>
   <script src="halloween.js?v=10"></script>
   <script src="signature-ink.js?v=1"></script>
-  <script src="index.js?v=17"></script>
+  <script src="index.js?v=18"></script>
   <script src="seismograph.js?v=1"></script>
+  <script src="speak.js?v=2"></script>
   <script>
     const MUD_LEADERBOARD_STORAGE_KEY = 'tokyo-mud-leaderboard';
     const MUD_STATE_STORAGE_KEY = 'tokyo-mud-current-run';

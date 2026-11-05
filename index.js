@@ -2722,6 +2722,11 @@ const balloonCity = (target) => target.closest('.clock-widget').querySelector('.
 // [selector, English, Japanese]. Text can be a function of the element. The innermost match wins,
 // and among selectors matching the same element, the first one listed.
 const BALLOON_HELP = [
+  ['.seismograph .close-box', 'Close box. Puts the seismograph away until you reload. The earthquakes keep going, but you don’t have to watch.', 'クローズボックス。再読み込みするまで地震計をしまいます。地震は続きますが、見なくて済みます。'],
+  ['.seismograph-paper', 'A drum recorder for Japan. When an earthquake is reported, the pen shakes about as hard as it was felt. Most days it just hums along. Japan sits where four tectonic plates meet, so not for long.', '日本の地震計。地震が発表されると、揺れの強さに合わせてペンが振れます。ふだんは静かに記録しているだけ。でも日本は4つのプレートが出会う場所なので、それも長くは続きません。'],
+  ['.seismograph-latest', 'Shindo is how hard the ground shook where people are, from 1 to 7. Magnitude is how much energy the quake let out. A deep quake can have a big magnitude and barely be felt.', '震度は人のいる場所でどれだけ揺れたか（1〜7）。マグニチュードは地震が出したエネルギーの大きさ。深い地震は、マグニチュードが大きくてもほとんど揺れないことがあります。'],
+  ['.seismograph-list', 'Recent earthquakes in Japan, newest first, with the strongest Shindo felt. Click one to play it back.', '日本で最近起きた地震。新しい順で、観測された最大震度つき。クリックすると再生します。'],
+  ['.seismograph-attribution', 'Earthquake reports from P2PQuake, which relays the Japan Meteorological Agency’s bulletins. Outlook: mostly stable, with a chance of aftershocks.', '地震情報は P2P地震情報 より。気象庁の発表を中継しています。見通し：おおむね安定、ところにより余震。'],
   ['.clock-widget .close-box', 'Close box. This one doesn’t work. Filed as FB1984. Status: Investigating.', 'クローズボックス。でも効きません。FB1984として報告済み。ステータス：調査中。'],
   ['button.close-box', 'Close box. To close this window, click here.', 'クローズボックス。このウインドウを閉じるには、ここをクリックします。'],
   ['.title-bar, .clock-title-bar', 'Title bar. Double-click to roll this window up into its title bar. Double-click again to roll it back down.', 'タイトルバー。ダブルクリックすると、ウインドウがタイトルバーだけに巻き上がります。もう一度ダブルクリックで元に戻ります。'],

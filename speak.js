@@ -560,21 +560,16 @@
     } catch (error) {}
   }
 
-  // --- Placement: under Settings on wide screens, stacked with any other desk accessories.
+  // --- Placement: under the clocks on wide screens. It shares their grid cell, so it's pushed
+  // down by their height, and follows them when one is rolled up.
 
-  const settings = document.getElementById('appearance-panel');
+  const clocks = document.querySelector('.clock-row');
   function place() {
-    if (!settings) return;
-    let top = 36 + settings.offsetHeight + 12;
-    document.querySelectorAll('.desk-accessory').forEach((accessory) => {
-      accessory.style.setProperty('--desk-accessory-top', `${top}px`);
-      top += accessory.offsetHeight + 12;
-    });
+    if (clocks) widget.style.setProperty('--speak-top', `${36 + clocks.offsetHeight + 12}px`);
   }
 
   const placement = new ResizeObserver(place);
-  if (settings) placement.observe(settings);
-  placement.observe(widget);
+  if (clocks) placement.observe(clocks);
   new ResizeObserver(resize).observe(canvas);
   const visibility = new IntersectionObserver((entries) => {
     if (!entries[entries.length - 1].isIntersecting) return;

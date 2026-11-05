@@ -3806,7 +3806,8 @@ body.home-page .seismograph {
 }
 
 /* Speak desk accessory (speak.js): a pencil-sketched rotary phone that calls a voice agent.
-   Stacks under Settings with the other desk accessories, like the seismograph. */
+   On wide screens it sits under the Tokyo and Tampa clocks, on the left; it isn't a
+   .desk-accessory, so the stack under Settings leaves it alone. */
 body.home-page .speak {
   display: block;
   width: 100%;
@@ -3815,10 +3816,10 @@ body.home-page .speak {
 
 @media (min-width: 860px) {
   body.home-page .speak {
-    grid-area: settings;
-    justify-self: start;
+    grid-area: clocks;
+    justify-self: end;
     align-self: start;
-    margin-top: var(--desk-accessory-top, 0);
+    margin-top: var(--speak-top, 0);
   }
 }
 

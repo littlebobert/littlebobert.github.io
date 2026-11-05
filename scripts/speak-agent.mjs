@@ -142,7 +142,8 @@ function agentBody({ prompt, voiceId, llm }) {
       // Private: a call needs a signed URL from the Worker, which checks Turnstile and the daily
       // allowance first. The agent ID alone isn't enough.
       auth: { enable_auth: true },
-      call_limits: { daily_limit: DAILY_CALLS, agent_concurrency_limit: 3 },
+      // No bursting past the concurrency limit, which ElevenLabs bills extra.
+      call_limits: { daily_limit: DAILY_CALLS, agent_concurrency_limit: 3, bursting_enabled: false },
       // No recordings of visitors' voices. Transcripts stay 30 days, to see what people ask.
       privacy: { record_voice: false, retention_days: 30 },
       // The Speak window picks English or Japanese and can switch a call to typing. Nothing else

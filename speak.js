@@ -106,8 +106,11 @@
     transcript.scrollTop = transcript.scrollHeight;
   }
 
-  // --- The phone, in pencil. Strokes wobble a little and are redrawn a few times a second while
-  // a call is on, like a flipbook; still otherwise, and always still with Reduce Motion.
+  // --- The phone, in pencil: a 黒電話 drawn the way you'd sketch one, with tapered strokes that
+  // overshoot their corners, hatching that follows the form, highlights erased out of the black
+  // bakelite, a cast shadow, and a few faint construction lines. While a call is on it's redrawn
+  // about eight times a second with fresh wobble, like a flipbook; otherwise it holds still, and
+  // always does with Reduce Motion. Drawn in a 220 × 100 sketch, scaled to fit.
 
   let width = 0;
   let height = 0;
@@ -117,6 +120,7 @@
     return (seed - 1) / 2147483646;
   };
   const wobble = (amount) => (random() - 0.5) * 2 * amount;
+  const GRAPHITE = '38, 36, 34';
 
   function resize() {
     const ratio = window.devicePixelRatio || 1;
@@ -128,152 +132,297 @@
     draw();
   }
 
-  // A pencil stroke through points: two passes, each a little off.
-  function pencil(points, { weight = 1.1, shade = 0.75, closed = false } = {}) {
-    for (let pass = 0; pass < 2; pass += 1) {
-      ctx.beginPath();
-      points.forEach(([x, y], index) => {
-        const px = x + wobble(0.7);
-        const py = y + wobble(0.7);
-        if (index === 0) ctx.moveTo(px, py);
-        else ctx.lineTo(px, py);
-      });
-      if (closed) ctx.closePath();
-      ctx.lineWidth = weight * (pass ? 0.7 : 1);
-      ctx.strokeStyle = `rgba(20, 20, 20, ${shade * (pass ? 0.6 : 1)})`;
-      ctx.stroke();
+  // Catmull-Rom through the points, so outlines are curves rather than polygons.
+  function smooth(points, closed = false, steps = 6) {
+    const count = points.length;
+    const at = (index) => (closed
+      ? points[(index + count) % count]
+      : points[Math.max(0, Math.min(count - 1, index))]);
+    const out = [];
+    const last = closed ? count : count - 1;
+    for (let i = 0; i < last; i += 1) {
+      const [p0, p1, p2, p3] = [at(i - 1), at(i), at(i + 1), at(i + 2)];
+      for (let step = 0; step < steps; step += 1) {
+        const t = step / steps;
+        const t2 = t * t;
+        const t3 = t2 * t;
+        out.push([0, 1].map((axis) => 0.5 * (
+          2 * p1[axis]
+          + (-p0[axis] + p2[axis]) * t
+          + (2 * p0[axis] - 5 * p1[axis] + 4 * p2[axis] - p3[axis]) * t2
+          + (-p0[axis] + 3 * p1[axis] - 3 * p2[axis] + p3[axis]) * t3)));
+      }
     }
+    out.push(closed ? out[0] : points[count - 1]);
+    return out;
   }
 
-  const ellipse = (cx, cy, rx, ry, rotation = 0, from = 0, to = Math.PI * 2, steps = 28) => {
+  const ellipse = (cx, cy, rx, ry, from = 0, to = Math.PI * 2, steps = 32) => {
     const points = [];
     for (let step = 0; step <= steps; step += 1) {
       const angle = from + ((to - from) * step) / steps;
-      const x = Math.cos(angle) * rx;
-      const y = Math.sin(angle) * ry;
-      points.push([
-        cx + x * Math.cos(rotation) - y * Math.sin(rotation),
-        cy + x * Math.sin(rotation) + y * Math.cos(rotation),
-      ]);
+      points.push([cx + Math.cos(angle) * rx, cy + Math.sin(angle) * ry]);
     }
     return points;
   };
 
-  // Diagonal graphite hatching inside a path: the phone is black, so it's shaded dark.
-  function hatch(path, spacing, shade) {
+  const toPath = (points) => {
+    const path = new Path2D();
+    points.forEach(([x, y], index) => (index ? path.lineTo(x, y) : path.moveTo(x, y)));
+    path.closePath();
+    return path;
+  };
+
+  // A pencil line: pressure swells in the middle and lifts at the ends, an open stroke runs a
+  // little past where it should stop, and a lighter second pass sits just off the first.
+  function stroke(points, { weight = 1.2, tone = 0.85, overshoot = 1.6, passes = 2, closed = false } = {}) {
+    let line = points;
+    if (!closed && line.length > 1 && overshoot) {
+      const extend = ([ax, ay], [bx, by]) => {
+        const length = Math.hypot(ax - bx, ay - by) || 1;
+        return [ax + ((ax - bx) / length) * overshoot, ay + ((ay - by) / length) * overshoot];
+      };
+      line = [extend(line[0], line[1]), ...line, extend(line[line.length - 1], line[line.length - 2])];
+    }
+    ctx.lineCap = 'round';
+    for (let pass = 0; pass < passes; pass += 1) {
+      const phase = random() * 10;
+      const drift = [wobble(0.5), wobble(0.5)];
+      const jittered = line.map(([x, y], index) => [
+        x + Math.sin(index * 0.45 + phase) * 0.45 + drift[0] * pass + wobble(0.12),
+        y + Math.cos(index * 0.38 + phase) * 0.45 + drift[1] * pass + wobble(0.12),
+      ]);
+      for (let i = 1; i < jittered.length; i += 1) {
+        const k = i / (jittered.length - 1);
+        const pressure = closed ? 0.8 + 0.2 * Math.sin(k * Math.PI * 3 + phase) : 0.3 + 0.7 * Math.pow(Math.sin(Math.PI * k), 0.6);
+        ctx.beginPath();
+        ctx.moveTo(...jittered[i - 1]);
+        ctx.lineTo(...jittered[i]);
+        ctx.lineWidth = weight * pressure * (pass ? 0.6 : 1);
+        ctx.strokeStyle = `rgba(${GRAPHITE}, ${tone * (pass ? 0.45 : 1)})`;
+        ctx.stroke();
+      }
+    }
+  }
+
+  // Hatching inside a shape: short parallel strokes at an angle, broken into dashes of varied
+  // length, the way a hand lays down tone.
+  function hatch(path, { angle = -0.95, spacing = 2.2, tone = 0.5, weight = 0.7, bounds = [0, 0, 220, 100] } = {}) {
+    const [x0, y0, x1, y1] = bounds;
+    const dx = Math.cos(angle);
+    const dy = Math.sin(angle);
+    const nx = -dy;
+    const ny = dx;
+    const cx = (x0 + x1) / 2;
+    const cy = (y0 + y1) / 2;
+    const reach = Math.hypot(x1 - x0, y1 - y0) / 2;
     ctx.save();
-    ctx.beginPath();
-    path.forEach(([x, y], index) => (index ? ctx.lineTo(x, y) : ctx.moveTo(x, y)));
-    ctx.closePath();
-    ctx.clip();
-    ctx.lineWidth = 0.8;
-    ctx.strokeStyle = `rgba(30, 30, 30, ${shade})`;
-    for (let offset = -height; offset < width; offset += spacing) {
-      ctx.beginPath();
-      ctx.moveTo(offset + wobble(1), height + 2);
-      ctx.lineTo(offset + height + wobble(1), -2);
-      ctx.stroke();
+    ctx.clip(path);
+    ctx.lineCap = 'round';
+    for (let offset = -reach; offset <= reach; offset += spacing + wobble(0.35)) {
+      let along = -reach;
+      while (along < reach) {
+        const dash = 7 + random() * 16;
+        const sx = cx + nx * offset + dx * along;
+        const sy = cy + ny * offset + dy * along;
+        ctx.beginPath();
+        ctx.moveTo(sx, sy);
+        ctx.lineTo(sx + dx * dash, sy + dy * dash);
+        ctx.lineWidth = weight * (0.7 + random() * 0.5);
+        ctx.strokeStyle = `rgba(${GRAPHITE}, ${tone * (0.75 + random() * 0.35)})`;
+        ctx.stroke();
+        along += dash + random() * 2.5;
+      }
     }
     ctx.restore();
   }
 
+  // An eraser: lifts graphite back off the paper for highlights.
+  function erase(draw) {
+    ctx.save();
+    ctx.globalCompositeOperation = 'destination-out';
+    draw();
+    ctx.restore();
+  }
+
+  // The handset, around its middle: an arched handle between two cups that open downward.
+  function handsetShape() {
+    const top = smooth([[-41, -2], [-28, -7], [0, -9], [28, -7], [41, -2]]);
+    const bottom = smooth([[37, 3], [20, -1], [0, -2], [-20, -1], [-37, 3]]);
+    return {
+      handle: [...top, ...bottom],
+      top,
+      bottom,
+      cups: [-46, 46].map((x) => ellipse(x, 3, 11, 7.5)),
+    };
+  }
+
   function draw() {
     if (!width || !height) return;
+    ctx.save();
     ctx.clearRect(0, 0, width, height);
     const inCall = ['dialing', 'listening', 'speaking'].includes(state);
     const now = performance.now();
     const still = reduceMotion.matches;
+    // A new drawing for each flipbook frame; the same one whenever the phone sits still.
+    seed = inCall && !still ? (Math.floor(now / 120) % 100000) + 7 : 42;
     const output = conversation && state === 'speaking' ? safeVolume('getOutputVolume') : 0;
     const micLevel = conversation && state === 'listening' && !textOnly ? safeVolume('getInputVolume') : 0;
-    const cx = width / 2;
-    const base = height - 8;
 
-    // The body: a rounded trapezoid, darker than the paper.
-    const body = [
-      [cx - 56, base], [cx + 56, base], [cx + 50, base - 22], [cx + 36, base - 46],
-      [cx - 36, base - 46], [cx - 50, base - 22],
-    ];
-    hatch(body, 3, 0.45);
-    pencil(body, { closed: true, weight: 1.4 });
+    const scale = Math.min(width / 220, height / 100);
+    ctx.translate((width - 220 * scale) / 2, (height - 100 * scale) / 2);
+    ctx.scale(scale, scale);
 
-    // The dial. It turns back home while dialing.
-    const dialX = cx;
-    const dialY = base - 22;
-    const turn = state === 'dialing' && !still ? Math.sin(now / 260) * 0.9 : 0;
+    // Construction lines, barely there.
+    stroke([[18, 66], [202, 66]], { weight: 0.5, tone: 0.1, passes: 1, overshoot: 0 });
+    stroke([[110, 14], [110, 97]], { weight: 0.5, tone: 0.08, passes: 1, overshoot: 0 });
+
+    // The cast shadow on the desk, and the desk's edge.
+    const shadow = toPath(ellipse(112, 91.5, 66, 4.6));
+    hatch(shadow, { angle: 0.05, spacing: 1.3, tone: 0.32, weight: 0.6, bounds: [40, 84, 184, 98] });
+    stroke([[22, 93.5], [96, 93]], { weight: 0.7, tone: 0.35, passes: 1 });
+    stroke([[128, 93], [198, 93.5]], { weight: 0.7, tone: 0.35, passes: 1 });
+
+    // The body: a low dome on a flanged base.
+    const bodyOutline = smooth([
+      [58, 89], [51, 82], [55, 68], [64, 55], [76, 47], [110, 43],
+      [144, 47], [156, 55], [165, 68], [169, 82], [162, 89], [110, 90.5],
+    ], true);
+    const body = toPath(bodyOutline);
+    hatch(body, { angle: -0.95, spacing: 1.9, tone: 0.62, bounds: [48, 40, 172, 92] });
+    // Cross-hatching where the body turns away from the light, and under the dome.
     ctx.save();
-    ctx.fillStyle = '#fff';
-    ctx.beginPath();
-    ctx.arc(dialX, dialY, 17, 0, Math.PI * 2);
-    ctx.fill();
+    ctx.clip(body);
+    hatch(new Path2D('M 128 40 L 175 40 L 175 92 L 118 92 Z'), { angle: 0.75, spacing: 2.3, tone: 0.4, bounds: [118, 40, 175, 92] });
+    hatch(new Path2D('M 40 78 L 180 78 L 180 92 L 40 92 Z'), { angle: 0.12, spacing: 1.7, tone: 0.35, bounds: [40, 78, 180, 92] });
     ctx.restore();
-    pencil(ellipse(dialX, dialY, 17, 17), { weight: 1.2 });
-    pencil(ellipse(dialX, dialY, 6, 6, 0, 0, Math.PI * 2, 14), { weight: 0.9 });
-    for (let hole = 0; hole < 10; hole += 1) {
-      const angle = -Math.PI * 0.35 + turn - hole * ((Math.PI * 1.6) / 9);
-      pencil(ellipse(dialX + Math.cos(angle) * 12, dialY + Math.sin(angle) * 12, 2.6, 2.6, 0, 0, Math.PI * 2, 8), {
-        weight: 0.8,
-        shade: 0.6,
-      });
-    }
+    // Glossy highlights erased out of the bakelite: the shoulder, and a rim of light on the right.
+    erase(() => {
+      stroke(smooth([[62, 70], [68, 58], [80, 50], [98, 46]]), { weight: 4.2, tone: 0.95, passes: 1, overshoot: 0 });
+      stroke(smooth([[66, 73], [74, 59], [86, 52]]), { weight: 1.6, tone: 0.9, passes: 1, overshoot: 0 });
+      stroke(smooth([[159, 60], [164, 71], [166, 81]]), { weight: 1.3, tone: 0.8, passes: 1, overshoot: 0 });
+    });
+    stroke(bodyOutline, { weight: 1.5, tone: 0.9, closed: true });
+    stroke(smooth([[57, 84.5], [110, 86], [163, 84.5]]), { weight: 0.8, tone: 0.55 }); // the flange
 
-    // The cradle's two prongs.
-    pencil([[cx - 30, base - 46], [cx - 33, base - 54], [cx - 26, base - 54]], { weight: 1.2 });
-    pencil([[cx + 30, base - 46], [cx + 33, base - 54], [cx + 26, base - 54]], { weight: 1.2 });
-
-    // The handset: on the cradle, or lifted and tilted during a call, rattling with the voice.
-    const lift = inCall ? 20 : 0;
-    const shake = still ? 0 : output * 2.5;
-    const hx = cx + (inCall ? -6 : 0) + wobble(shake);
-    const hy = base - 58 - lift + wobble(shake);
-    const tilt = (inCall ? -0.22 : 0) + wobble(shake * 0.02);
-    const along = (d, across = 0) => [
-      hx + Math.cos(tilt) * d - Math.sin(tilt) * across,
-      hy + Math.sin(tilt) * d + Math.cos(tilt) * across,
-    ];
-    const handle = [along(-40, -4), along(40, -4), along(40, 3), along(-40, 3)];
-    hatch(handle, 2.5, 0.55);
-    pencil(handle, { closed: true, weight: 1.2 });
-    [-44, 44].forEach((end) => {
-      const [ex, ey] = along(end, 6);
-      const cup = ellipse(ex, ey, 11, 7, tilt);
-      hatch(cup, 2.5, 0.55);
-      pencil(cup, { weight: 1.3 });
+    // The cradle's two rests on top of the dome.
+    [[86, 0], [134, 1]].forEach(([x, lean]) => {
+      const rest = smooth([[x - 6, 46.5], [x - 5, 40], [x - 1 + lean, 37.5], [x + 4 + lean, 38.5], [x + 6, 45.5]]);
+      hatch(toPath([...rest, [x, 47]]), { angle: -0.95, spacing: 1.6, tone: 0.6, bounds: [x - 8, 35, x + 8, 48] });
+      stroke(rest, { weight: 1.1, tone: 0.85 });
     });
 
-    // The curly cord, from the body to the mouthpiece end.
-    const [cordX, cordY] = along(44, 12);
-    const cord = [];
-    const startX = cx + 54;
-    const startY = base - 10;
-    for (let step = 0; step <= 40; step += 1) {
-      const k = step / 40;
-      const x = startX + (cordX - startX) * k + 10 * Math.sin(Math.PI * k);
-      const y = startY + (cordY - startY) * k;
-      cord.push([x + Math.cos(k * Math.PI * 14) * 2.2, y + Math.sin(k * Math.PI * 14) * 2.2]);
+    // The dial: paper showing through a finger wheel of ten holes, the center card, and the
+    // finger stop. It turns back home while dialing.
+    const dial = [110, 66];
+    const turn = state === 'dialing' && !still ? -0.55 - Math.sin(now / 240) * 0.55 : 0;
+    erase(() => {
+      ctx.fillStyle = '#000';
+      ctx.beginPath();
+      ctx.arc(dial[0], dial[1], 16.5, 0, Math.PI * 2);
+      ctx.fill();
+    });
+    hatch(toPath(ellipse(dial[0] + 3, dial[1] + 3, 15, 15)), { angle: -0.95, spacing: 2.6, tone: 0.16, bounds: [94, 50, 128, 84] });
+    stroke(ellipse(...dial, 15.5, 15.5), { weight: 1.3, tone: 0.9, closed: true });
+    stroke(ellipse(...dial, 13.6, 13.6, -2.6, 2.2, 24), { weight: 0.5, tone: 0.3, passes: 1 });
+    for (let hole = 0; hole < 10; hole += 1) {
+      const angle = (-40 - hole * 28) * (Math.PI / 180) + turn;
+      const hx = dial[0] + Math.cos(angle) * 10.2;
+      const hy = dial[1] + Math.sin(angle) * 10.2;
+      stroke(ellipse(hx, hy, 2.6, 2.6, 0, Math.PI * 2, 10), { weight: 0.75, tone: 0.75, closed: true, passes: 1 });
+      stroke(ellipse(hx, hy, 1.8, 1.8, Math.PI * 0.9, Math.PI * 1.9, 6), { weight: 0.9, tone: 0.5, passes: 1, overshoot: 0 });
     }
-    pencil(cord, { weight: 0.8, shade: 0.6 });
+    stroke(ellipse(...dial, 4.6, 4.6, 0, Math.PI * 2, 14), { weight: 0.8, tone: 0.7, closed: true, passes: 1 });
+    stroke([[dial[0] - 2.4, dial[1] - 0.8], [dial[0] + 2.2, dial[1] - 1]], { weight: 0.5, tone: 0.45, passes: 1, overshoot: 0 });
+    stroke([[dial[0] - 1.8, dial[1] + 1.2], [dial[0] + 1.6, dial[1] + 1.1]], { weight: 0.5, tone: 0.45, passes: 1, overshoot: 0 });
+    const stop = 22 * (Math.PI / 180);
+    stroke(smooth([
+      [dial[0] + Math.cos(stop) * 13, dial[1] + Math.sin(stop) * 13],
+      [dial[0] + Math.cos(stop) * 17.5, dial[1] + Math.sin(stop) * 17.5],
+      [dial[0] + Math.cos(stop + 0.18) * 19, dial[1] + Math.sin(stop + 0.18) * 19],
+    ]), { weight: 1.1, tone: 0.85, passes: 1, overshoot: 0 });
 
-    // Sound coming out of the earpiece while the desk talks; a squiggle at the mouthpiece while
-    // it listens to you.
+    // The handset: resting in the cradle, or lifted and tilted during a call, rattling with the
+    // voice on the line.
+    const shake = still ? 0 : output * 2.2;
+    const lift = inCall ? 1 : 0;
+    const origin = [110 - 4 * lift + wobble(shake), 34.5 - 19 * lift + wobble(shake)];
+    const tilt = -0.17 * lift + wobble(shake * 0.015);
+    const place = ([x, y]) => [
+      origin[0] + x * Math.cos(tilt) - y * Math.sin(tilt),
+      origin[1] + x * Math.sin(tilt) + y * Math.cos(tilt),
+    ];
+    const handset = handsetShape();
+
+    // The coiled cord, behind the handset: from the body's side to the mouthpiece, sagging.
+    const cordStart = [166, 76];
+    const cordEnd = place([47, 10]);
+    const sag = [Math.max(cordStart[0], cordEnd[0]) + 20, (cordStart[1] + cordEnd[1]) / 2 + 14];
+    const coil = [];
+    const turns = 13;
+    for (let step = 0; step <= turns * 10; step += 1) {
+      const k = step / (turns * 10);
+      const x = (1 - k) ** 2 * cordStart[0] + 2 * (1 - k) * k * sag[0] + k ** 2 * cordEnd[0];
+      const y = (1 - k) ** 2 * cordStart[1] + 2 * (1 - k) * k * sag[1] + k ** 2 * cordEnd[1];
+      const tx = 2 * (1 - k) * (sag[0] - cordStart[0]) + 2 * k * (cordEnd[0] - sag[0]);
+      const ty = 2 * (1 - k) * (sag[1] - cordStart[1]) + 2 * k * (cordEnd[1] - sag[1]);
+      const length = Math.hypot(tx, ty) || 1;
+      const phase = k * turns * Math.PI * 2;
+      coil.push([
+        x + (-ty / length) * Math.cos(phase) * 2.6 + (tx / length) * Math.sin(phase) * 1.4,
+        y + (tx / length) * Math.cos(phase) * 2.6 + (ty / length) * Math.sin(phase) * 1.4,
+      ]);
+    }
+    stroke(coil, { weight: 0.75, tone: 0.7, passes: 1, overshoot: 0 });
+
+    const handlePath = toPath(handset.handle.map(place));
+    const cupPaths = handset.cups.map((cup) => toPath(cup.map(place)));
+    const reach = [origin[0] - 62, origin[1] - 22, origin[0] + 62, origin[1] + 22];
+    // Paper behind the handset, so the body's lines don't show through it.
+    erase(() => {
+      ctx.fillStyle = '#000';
+      [handlePath, ...cupPaths].forEach((path) => ctx.fill(path));
+    });
+    [handlePath, ...cupPaths].forEach((path) => hatch(path, { angle: -0.95, spacing: 1.6, tone: 0.72, bounds: reach }));
+    cupPaths.forEach((path) => {
+      ctx.save();
+      ctx.clip(path);
+      hatch(new Path2D(`M ${reach[0]} ${origin[1] + 3} L ${reach[2]} ${origin[1] + 3} L ${reach[2]} ${reach[3]} L ${reach[0]} ${reach[3]} Z`), {
+        angle: 0.7, spacing: 2, tone: 0.4, bounds: reach,
+      });
+      ctx.restore();
+    });
+    erase(() => {
+      stroke(smooth([[-30, -6.2], [-10, -7.6], [12, -7.4], [28, -5.8]].map(place)), { weight: 1.7, tone: 0.95, passes: 1, overshoot: 0 });
+      [-46, 46].forEach((x) => stroke(ellipse(x, 3, 8, 5, Math.PI * 1.1, Math.PI * 1.55, 8).map(place), {
+        weight: 1.6, tone: 0.9, passes: 1, overshoot: 0,
+      }));
+    });
+    stroke(handset.top.map(place), { weight: 1.3, tone: 0.9 });
+    stroke(handset.bottom.map(place), { weight: 1, tone: 0.75 });
+    handset.cups.forEach((cup, index) => {
+      stroke(cup.map(place), { weight: 1.3, tone: 0.9, closed: true });
+      const x = index ? 46 : -46;
+      stroke(ellipse(x, 8.4, 8, 1.8, 0.1, Math.PI - 0.1, 10).map(place), { weight: 0.7, tone: 0.6, passes: 1, overshoot: 0 });
+    });
+
+    // Sound from the earpiece while the desk talks; a scribble at the mouthpiece while it listens.
     if (state === 'speaking') {
-      const [ex, ey] = along(-52, 4);
       const rings = still ? 2 : 1 + Math.round(output * 3);
       for (let ring = 1; ring <= rings; ring += 1) {
-        pencil(ellipse(ex, ey, 6 + ring * 5, 6 + ring * 5, 0, Math.PI * 0.75, Math.PI * 1.25, 8), {
-          weight: 0.9,
-          shade: 0.7,
-        });
+        const r = 4 + ring * 4.5;
+        stroke(ellipse(-57, 3, r, r, Math.PI * 0.78, Math.PI * 1.22, 8).map(place), { weight: 1, tone: 0.75, passes: 1 });
       }
     }
     if (state === 'listening' && !textOnly) {
-      const [mx, my] = along(58, 6);
-      const squiggle = [];
-      const amplitude = still ? 2 : 1 + micLevel * 6;
-      for (let step = 0; step <= 12; step += 1) {
-        squiggle.push([mx + step * 1.6, my - 4 + Math.sin(step * 1.4 + now / 90) * amplitude]);
+      const amplitude = still ? 1.6 : 0.8 + micLevel * 5;
+      const scribble = [];
+      for (let step = 0; step <= 14; step += 1) {
+        scribble.push([59 + step * 1.3, 4 + Math.sin(step * 1.5 + now / 90) * amplitude]);
       }
-      pencil(squiggle, { weight: 0.8, shade: 0.6 });
+      stroke(scribble.map(place), { weight: 0.8, tone: 0.6, passes: 1 });
     }
+    ctx.restore();
   }
 
   function safeVolume(method) {

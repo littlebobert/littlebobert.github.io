@@ -52,7 +52,10 @@ html.halloween body.home-page .after-dark {
     align-self: start;
     width: 100%;
     max-width: 240px;
-    margin-top: var(--desk-accessory-top, 0);
+    /* Offset rather than a margin, so the stack doesn't make the first row of the grid as
+       tall as itself and push Recent Updates down below it. */
+    position: relative;
+    top: var(--desk-accessory-top, 0);
   }
 }
 

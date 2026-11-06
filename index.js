@@ -2802,8 +2802,8 @@ const balloonCity = (target) => target.closest('.clock-widget').querySelector('.
 // and among selectors matching the same element, the first one listed.
 const BALLOON_HELP = [
   ['.tokyo-night .close-box', 'Close box. Puts After Hours away until you reload. The screensaver still comes on when you leave this Mac alone.', 'クローズボックス。再読み込みするまでアフターアワーズをしまいます。放っておけば、スクリーンセーバーは今まで通り始まります。'],
-  ['.tokyo-night .after-dark-module', 'The screensaver. Leave this Mac alone for 45 seconds and Tokyo comes out at night: Tokyo Tower, the Skytree, people working late, and the odd shooting star. The Skytree changes color every day, like the real one.', 'スクリーンセーバー。このMacを45秒放っておくと、夜の東京が現れます。東京タワー、スカイツリー、残業する人たち、ときどき流れ星。スカイツリーは本物と同じく、日替わりで色が変わります。'],
-  ['.tokyo-night .after-dark-setting:has([data-option="speed"])', 'How often stars fall, and how busy the offices are.', '流れ星の頻度と、オフィスの忙しさ。'],
+  ['.tokyo-night .after-dark-module', 'The screensaver. Leave this Mac alone for 45 seconds and Tokyo appears under its sky right now: day or night with the real sunrise and sunset, the moon in its real phase, and the weather as it is, rain, snow, fog, or thunderstorms included. The Skytree changes color every night, like the real one.', 'スクリーンセーバー。このMacを45秒放っておくと、いまの空の下の東京が現れます。実際の日の出・日の入りに合わせた昼と夜、本当の月齢の月、そして雨や雪、霧、雷まで、いまの天気そのまま。スカイツリーは本物と同じく、夜ごとに色が変わります。'],
+  ['.tokyo-night .after-dark-setting:has([data-option="speed"])', 'How fast the clouds drift, how often stars fall, and how busy the offices are.', '雲の流れる速さ、流れ星の頻度、オフィスの忙しさ。'],
   ['.tokyo-night .after-dark-sleep', 'Starts the screensaver now. So does moving the pointer into the bottom-left corner of the screen.', '今すぐスクリーンセーバーを始めます。ポインタを画面の左下隅に動かしても始まります。'],
   ['.speak .close-box', 'Close box. Hangs up and puts the phone away until you reload.', 'クローズボックス。電話を切って、再読み込みするまでしまっておきます。'],
   ['.speak-phone', 'A desk phone for Justin’s site. Pick it up and ask about Justin, his apps, or Tokyo. The voice on the other end is an AI assistant, not Justin, and calls last two minutes.', 'このサイトのデスク電話。受話器を取って、ジャスティンのこと、アプリのこと、東京のことを聞いてみてください。電話に出るのはAIアシスタントで、本人ではありません。通話は2分までです。'],

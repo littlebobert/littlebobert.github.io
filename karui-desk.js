@@ -1,14 +1,13 @@
 // Karui desk accessory: Karui's App Store listing on the desk, with the current version's release
-// notes shown as a stack of notifications, the way Karui would deliver them. The notes come from
-// the App Store through the portfolio backend (/api/v1/karui/latest), in the site's language;
-// the subtitle and promotional text are in index.html. Click a notification to expand it.
+// notes in one bubble below it. The notes come from the App Store through the portfolio backend
+// (/api/v1/karui/latest), in the site's language; the subtitle and promotional text are in
+// index.html. Click the bubble to read every note in full.
 (() => {
   const widget = document.getElementById('karui-desk');
   if (!widget) return;
 
   const local = ['localhost', '127.0.0.1'].includes(location.hostname);
   const API = local ? 'http://localhost:8787' : 'https://portfolio-backend.justin-garcia.workers.dev';
-  const ICON = 'assets/karui-icon.png?v=2';
 
   const release = widget.querySelector('.karui-desk-release');
   const notes = widget.querySelector('.karui-desk-notes');
@@ -17,12 +16,10 @@
   const TEXT = {
     whatsNew: ['What’s New in %@', '%@ の新機能'],
     loading: ['Checking the App Store…', 'App Storeを確認中…'],
-    failed: ['The App Store isn’t answering. The changelog has every release.', 'App Storeから応答がありません。すべてのリリースは変更履歴にあります。'],
+    failed: ['The App Store isn’t answering right now.', 'App Storeからいま応答がありません。'],
     released: ['Released %@', '%@リリース'],
     today: ['today', '今日'],
     yesterday: ['yesterday', '昨日'],
-    daysAgo: ['%@d ago', '%@日前'],
-    now: ['now', 'たった今'],
   };
   const text = (key, value = '') => TEXT[key][language() === 'ja' ? 1 : 0].replace('%@', value);
 
@@ -43,46 +40,23 @@
     }).format(date);
   }
 
-  // Like a notification's timestamp: "now" on the day, then days.
-  function noteAge(date) {
-    const days = tokyoDay(new Date()) - tokyoDay(date);
-    if (days <= 0) return text('now');
-    return text('daysAgo', String(days));
-  }
-
-  function notification(note, date) {
-    const item = document.createElement('li');
+  // One speech bubble with a paragraph per note. Each is cut at three lines until the bubble is
+  // clicked.
+  function bubble(items) {
     const card = document.createElement('button');
     card.type = 'button';
     card.className = 'karui-desk-note';
     card.setAttribute('aria-expanded', 'false');
-
-    const header = document.createElement('span');
-    header.className = 'karui-desk-note-header';
-    const icon = document.createElement('img');
-    icon.src = ICON;
-    icon.alt = '';
-    icon.width = 12;
-    icon.height = 12;
-    const app = document.createElement('span');
-    app.className = 'karui-desk-note-app';
-    app.textContent = 'KARUI';
-    const age = document.createElement('span');
-    age.className = 'karui-desk-note-age';
-    age.textContent = date ? noteAge(date) : '';
-    header.append(icon, app, age);
-
-    const body = document.createElement('span');
-    body.className = 'karui-desk-note-body';
-    body.textContent = note;
-
-    card.append(header, body);
+    card.append(...items.map((note) => {
+      const paragraph = document.createElement('span');
+      paragraph.className = 'karui-desk-note-body';
+      paragraph.textContent = note;
+      return paragraph;
+    }));
     card.addEventListener('click', () => {
-      const expanded = card.getAttribute('aria-expanded') !== 'true';
-      card.setAttribute('aria-expanded', String(expanded));
+      card.setAttribute('aria-expanded', String(card.getAttribute('aria-expanded') !== 'true'));
     });
-    item.append(card);
-    return item;
+    return card;
   }
 
   // --- Loading, once per language.
@@ -111,7 +85,7 @@
       when.textContent = text('released', releaseDate(date));
       release.append(when);
     }
-    notes.replaceChildren(...current.notes.map((note) => notification(note, date)));
+    if (current.notes.length) notes.replaceChildren(bubble(current.notes));
   }
 
   async function load() {

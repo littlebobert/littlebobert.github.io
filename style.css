@@ -3569,12 +3569,38 @@ html[data-theme="classic"] .recent-updates-button[aria-pressed="true"]:hover {
 
 
 
-html body.home-page .stack-product-button img.stack-product-icon-bordered {
+/* Each app's pencil-sketch icon from its landing page, playing while the Self-published card is
+   showing (product-sketches.js). The still underneath shows until its video plays. */
+html body.home-page .stack-product-button .stack-product-sketch {
+  position: relative;
+  display: block;
   box-sizing: border-box;
   width: 38px;
   height: 38px;
+  overflow: hidden;
   border: 1px solid #000;
   border-radius: 8px;
+  background: #fff;
+}
+
+html body.home-page .stack-product-button .stack-product-sketch img,
+html body.home-page .stack-product-button .stack-product-sketch picture,
+html body.home-page .stack-product-button .stack-product-sketch video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0;
+  object-fit: cover;
+}
+
+html body.home-page .stack-product-button .stack-product-sketch video {
+  opacity: 0;
+}
+
+html body.home-page .stack-product-button .stack-product-sketch video.is-playing {
+  opacity: 1;
 }
 
 /* System 7 Balloon Help (see BALLOON_HELP in index.js), with its checkbox in Settings */

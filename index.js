@@ -2801,6 +2801,10 @@ const balloonCity = (target) => target.closest('.clock-widget').querySelector('.
 // [selector, English, Japanese]. Text can be a function of the element. The innermost match wins,
 // and among selectors matching the same element, the first one listed.
 const BALLOON_HELP = [
+  ['.karui-desk .close-box', 'Close box. Puts Karui away until you reload. Your notifications stay just as loud.', 'クローズボックス。再読み込みするまでKaruiをしまいます。あなたの通知はうるさいままです。'],
+  ['.karui-desk-header', 'Karui, my iPhone app. It reads every notification on the device, lets the important ones through, keeps spam quiet, and saves messages people unsend.', '私のiPhoneアプリ、Karui。すべての通知を端末上で読み、大事なものだけを届け、スパムを静かにし、送信取り消しされたメッセージも残します。'],
+  ['.karui-desk-notes', 'What’s new in the version on the App Store right now, straight from its release notes. Click one to read all of it.', 'いまApp Storeに出ているバージョンの新機能。リリースノートそのままです。クリックすると全文が読めます。'],
+  ['.karui-desk-changelog', 'Every build, including the TestFlight ones that never made it to the App Store.', 'App Storeに出なかったTestFlight版も含めた、すべてのビルドの記録。'],
   ['.tokyo-night .close-box', 'Close box. Puts After Hours away until you reload. The screensaver still comes on when you leave this Mac alone.', 'クローズボックス。再読み込みするまでアフターアワーズをしまいます。放っておけば、スクリーンセーバーは今まで通り始まります。'],
   ['.tokyo-night .after-dark-module', 'The screensaver. Leave this Mac alone for 45 seconds and Tokyo appears under its sky right now: day or night with the real sunrise and sunset, the moon in its real phase, and the weather as it is, rain, snow, fog, or thunderstorms included. The Skytree changes color every night, like the real one.', 'スクリーンセーバー。このMacを45秒放っておくと、いまの空の下の東京が現れます。実際の日の出・日の入りに合わせた昼と夜、本当の月齢の月、そして雨や雪、霧、雷まで、いまの天気そのまま。スカイツリーは本物と同じく、夜ごとに色が変わります。'],
   ['.tokyo-night .after-dark-setting:has([data-option="speed"])', 'How fast the clouds drift, how often stars fall, and how busy the offices are.', '雲の流れる速さ、流れ星の頻度、オフィスの忙しさ。'],

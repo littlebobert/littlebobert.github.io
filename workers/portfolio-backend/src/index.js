@@ -1,4 +1,5 @@
 import { handleAdminRequest } from './admin.js';
+import { karuiRelease } from './app-store.js';
 import { verifyAccessJwt } from './access.js';
 import { currentEvent } from './events.js';
 import {
@@ -397,6 +398,24 @@ async function startSpeakCall(request, env, deps) {
   }
 }
 
+// Karui's current App Store version and release notes, for its desk accessory. Visitors share
+// the cached copy, so it can be cached by browsers and Cloudflare for a while too.
+async function karuiLatest(request, env, deps) {
+  const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
+  await enforceRateLimit(env.COUNTER_RATE_LIMITER, `${ip}:karui-latest`);
+  const language = new URL(request.url).searchParams.get('lang') === 'ja' ? 'ja' : 'en';
+  let release;
+  try {
+    release = await karuiRelease(language, deps.fetch);
+  } catch (error) {
+    console.error(error);
+    return json(request, env, { error: 'The App Store didn’t answer.' }, 502);
+  }
+  const response = json(request, env, { language, ...release });
+  response.headers.set('Cache-Control', 'public, max-age=900');
+  return response;
+}
+
 export async function handleRequest(request, env, customDeps = {}) {
   const deps = {
     fetch: globalThis.fetch.bind(globalThis),
@@ -437,6 +456,9 @@ export async function handleRequest(request, env, customDeps = {}) {
     }
     if (request.method === 'POST' && url.pathname === '/api/v1/product-click') {
       return await trackProductClick(request, env);
+    }
+    if (request.method === 'GET' && url.pathname === '/api/v1/karui/latest') {
+      return await karuiLatest(request, env, deps);
     }
     if (request.method === 'GET' && url.pathname === '/api/v1/speak/status') {
       return await speakStatus(request, env);

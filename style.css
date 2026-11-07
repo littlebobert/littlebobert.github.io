@@ -4037,6 +4037,156 @@ html[lang="ja"] .speak-who::after {
   color: #fff;
 }
 
+/* Karui desk accessory (karui-desk.js): the App Store listing, with the current release's notes
+   as a stack of notifications. On wide screens it sits under Speak on the left. */
+body.home-page .karui-desk {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+}
+
+@media (min-width: 860px) {
+  body.home-page .karui-desk {
+    grid-area: clocks;
+    justify-self: end;
+    align-self: start;
+    /* Offset rather than a margin, so the stack doesn't make the first row of the grid as
+       tall as itself and push Recent Updates down below it. */
+    position: relative;
+    top: var(--karui-desk-top, 0);
+  }
+}
+
+.karui-desk .clock-content.karui-desk-content {
+  padding: 6px 8px;
+  text-align: left;
+  white-space: normal;
+}
+
+.karui-desk-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: inherit;
+  text-decoration: none;
+}
+
+.karui-desk-icon {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border: 1px solid #000;
+  border-radius: 9px;
+}
+
+.karui-desk-name {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.karui-desk-name strong {
+  font-size: 18px;
+}
+
+.karui-desk-header:hover strong {
+  text-decoration: underline;
+}
+
+.karui-desk-promo {
+  margin: 6px 0 0;
+  line-height: 1.15;
+}
+
+.karui-desk-release {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  column-gap: 6px;
+  margin-top: 6px;
+  padding-top: 5px;
+  border-top: 2px solid #000;
+  line-height: 1.15;
+}
+
+.karui-desk-release strong,
+.karui-desk-date {
+  white-space: nowrap;
+}
+
+.karui-desk-notes {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin: 5px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.karui-desk-note {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 3px 5px 4px;
+  border: 1px solid #000;
+  border-radius: 6px;
+  box-shadow: 1px 1px 0 #000;
+  background: #fff;
+  color: #000;
+  font: inherit;
+  line-height: 1.15;
+  text-align: left;
+  cursor: pointer;
+}
+
+.karui-desk-note:focus-visible {
+  outline: 1px dotted currentColor;
+  outline-offset: 1px;
+}
+
+.karui-desk-note-header {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.karui-desk-note-header img {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+}
+
+.karui-desk-note-age {
+  margin-left: auto;
+}
+
+.karui-desk-note-body {
+  display: -webkit-box;
+  margin-top: 2px;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+.karui-desk-note[aria-expanded="true"] .karui-desk-note-body {
+  display: block;
+}
+
+.karui-desk-actions {
+  display: flex;
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.karui-desk-actions .speak-button {
+  text-align: center;
+  text-decoration: none;
+}
+
 /* In-person signatures in the Guestbook (index.js, from onemorething.tokyo/sign). */
 .guestbook-signatures {
   margin-top: 8px;

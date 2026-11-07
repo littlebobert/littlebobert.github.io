@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.10.8</title>
+            <pubDate>Sat, 07 Nov 2026 09:08:52 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>72</sparkle:version>
+            <sparkle:shortVersionString>0.10.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Notifications sorted on your iPhone by Karui Cloud, an invite-only program, now say “Sorted by Karui Cloud” in the inbox.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.8/Karui-0.10.8-mac.zip" length="3076540" type="application/octet-stream" sparkle:edSignature="IvY9FgDQONyYDXiHpUYAc3bJFa6z1wHcgFBmygnYg+jUDATYBnPTtOdVW8IvUqpGcXp5V22Sxz7uKJUwjEUlDg=="/>
+        </item>
+        <item>
             <title>0.10.7</title>
             <pubDate>Fri, 06 Nov 2026 18:19:33 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -26,18 +38,6 @@
             <description sparkle:format="markdown"><![CDATA[- Reading a notification in Spark, Slack, or Messages, or clearing it from Notification Center, now clears Karui’s alert on your iPhone within seconds, instead of it sometimes showing up quietly on your iPhone while you’re still at your Mac.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.6/Karui-0.10.6-mac.zip" length="3071464" type="application/octet-stream" sparkle:edSignature="ViZ7N0rm92xx4bZZOEc7OCAvy3KSg4UE2oCX+Fmw3IR8YiN/cUpdtaC6Rpf7RpCLpIeAVnirKaRNKcZi79tYCw=="/>
-        </item>
-        <item>
-            <title>0.10.5</title>
-            <pubDate>Mon, 02 Nov 2026 20:56:02 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>69</sparkle:version>
-            <sparkle:shortVersionString>0.10.5</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Opening a Slack notification now goes to the exact message, and a thread reply opens in its thread. Open Slack in the preview and Return both use the link.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.5/Karui-0.10.5-mac.zip" length="3069670" type="application/octet-stream" sparkle:edSignature="zWoPEvlGxXLPLHEV8eP0Hb0diAnkex2qtYKqfiNDxgzc/c8fJvHkPqa09wGEUWmBJlT8ZbZ26n3M9h3no1r8CQ=="/>
         </item>
     </channel>
 </rss>

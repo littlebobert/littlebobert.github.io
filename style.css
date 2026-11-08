@@ -3863,6 +3863,53 @@ body.home-page .tokyo-night {
   image-rendering: pixelated;
 }
 
+/* Only the chosen module's preview and sliders show. */
+.after-dark-preview[hidden],
+.after-dark-setting[hidden] {
+  display: none;
+}
+
+/* With a seasonal module around, the module name becomes a list to pick from, like After Dark's
+   module list: a white list box, with the chosen one highlighted. */
+.after-dark-modules {
+  flex: 1;
+  min-width: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  padding: 1px;
+  border: 1px solid var(--classic-ink, #111);
+  background: #fff;
+  box-shadow: 1px 1px 0 var(--classic-highlight, #fff);
+}
+
+.after-dark-modules:has(input:focus-visible) {
+  outline: 2px solid var(--classic-accent, #000);
+  outline-offset: 1px;
+}
+
+.after-dark-module-option {
+  position: relative;
+  display: block;
+  padding: 1px 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: var(--classic-ink, #111);
+  cursor: default;
+}
+
+.after-dark-module-option input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.after-dark-module-option:has(input:checked) {
+  background: var(--classic-ink, #111);
+  color: #fff;
+}
+
 .tokyo-night-screen {
   position: fixed;
   inset: 0;

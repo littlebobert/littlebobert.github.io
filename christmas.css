@@ -26,9 +26,9 @@ html.christmas .christmas-only {
   }
 }
 
-/* Seasonal desk accessories stack under Settings. On narrow screens, the Tree and Christmas
-   Delivery appear above the clocks; Key Caps stays desktop-only because it needs a keyboard. */
-html.christmas body.home-page .christmas-delivery,
+/* Seasonal desk accessories stack under Settings. On narrow screens, the Tree and After Hours
+   (with Christmas Delivery) appear above the clocks; Key Caps stays desktop-only because it
+   needs a keyboard. */
 html.christmas body.home-page .christmas-tree {
   display: block;
   width: 100%;
@@ -40,7 +40,7 @@ html.christmas body.home-page .christmas-tree {
     order: -2;
   }
 
-  html.christmas body.home-page .christmas-delivery {
+  html.christmas body.home-page .tokyo-night {
     order: -1;
   }
 }
@@ -304,7 +304,7 @@ body.home-page .happy-mac-screen .happy-mac-code {
   filter: drop-shadow(0 0 4px rgba(242, 193, 78, 0.22));
 }
 
-.christmas-delivery .after-dark-preview {
+.after-dark-preview[data-module="christmas-delivery"] {
   padding: 4px 2px;
 }
 

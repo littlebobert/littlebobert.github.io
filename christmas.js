@@ -6,7 +6,6 @@
   if (!root.classList.contains('christmas')) return;
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const finePointer = window.matchMedia('(hover: hover) and (pointer: fine)');
 
   const visitorLabel = document.querySelector('.stack-visitor-counter [data-label-en]');
   if (visitorLabel) {
@@ -457,10 +456,8 @@
     setTimeout(deliverWord, 4000);
   }
 
-  // Christmas Delivery: Santa's sleigh and winged presents, after 45 seconds with no input.
+  // Christmas Delivery: Santa’s sleigh and winged presents, a module for the After Hours screensaver.
   function setUpScreensaver() {
-    const IDLE_MS = 45000;
-    const SLEEP_CORNER = 10;
     const PIXEL = 3;
     const COLORS = {
       W: '#fff', e: '#d4d4d4', k: '#6e6e6e', K: '#161616',
@@ -600,12 +597,8 @@
     } catch (error) {}
 
     const random = (min, max) => min + Math.random() * (max - min);
-    let lastInputAt = Date.now();
-    let lastPointer = null;
-    let saver = null;
 
-    function start(fromCorner = false) {
-      if (reduceMotion.matches || saver) return;
+    function start() {
       const width = window.innerWidth;
       const height = window.innerHeight;
       const density = DENSITIES[options.density];
@@ -681,115 +674,33 @@
       };
       raf = requestAnimationFrame(tick);
 
-      saver = {
-        startedAt: Date.now(),
-        pointer: lastPointer,
-        fromCorner,
-        stop() {
-          cancelAnimationFrame(raf);
-          screen.classList.remove('is-on');
-          setTimeout(() => screen.remove(), 300);
-          saver = null;
-          lastInputAt = Date.now();
-        },
+      return () => {
+        cancelAnimationFrame(raf);
+        screen.classList.remove('is-on');
+        setTimeout(() => screen.remove(), 300);
       };
     }
 
-    const inSleepCorner = (event) => event.pointerType === 'mouse'
-      && event.clientX <= SLEEP_CORNER && event.clientY >= window.innerHeight - SLEEP_CORNER;
-
-    const onInput = (event) => {
-      lastInputAt = Date.now();
-      if (!saver) {
-        if (event.type === 'pointermove') lastPointer = [event.clientX, event.clientY];
-        if (inSleepCorner(event) && !root.classList.contains('christmas-boot')) start(true);
-        return;
-      }
-      if (event.type === 'pointerout') return;
-      if (event.type === 'pointermove') {
-        if (saver.fromCorner && inSleepCorner(event)) return;
-        if (Date.now() - saver.startedAt < 600) return;
-        const here = [event.clientX, event.clientY];
-        saver.pointer ??= here;
-        if (Math.hypot(here[0] - saver.pointer[0], here[1] - saver.pointer[1]) < 6) return;
-      }
-      if (event.type === 'keydown') {
-        event.preventDefault();
-        event.stopImmediatePropagation();
-      }
-      saver.stop();
-    };
-    ['pointermove', 'pointerdown', 'keydown', 'wheel', 'touchstart'].forEach((type) => {
-      window.addEventListener(type, onInput, { capture: true, passive: type !== 'keydown' });
-    });
-    document.addEventListener('pointerout', (event) => {
-      if (!event.relatedTarget) onInput(event);
-    });
-    window.addEventListener('scroll', () => { lastInputAt = Date.now(); }, { capture: true, passive: true });
-    window.addEventListener('resize', () => saver?.stop());
-
-    setInterval(() => {
-      if (saver || document.hidden || Date.now() - lastInputAt < IDLE_MS) return;
-      if (root.classList.contains('christmas-boot') || reduceMotion.matches || !finePointer.matches) return;
-      if (document.activeElement?.tagName === 'IFRAME') return;
-      if (document.querySelector('.speak.is-in-call')) return;
-      start();
-    }, 1000);
-
-    // The control panel borrows After Dark's sliders and preview, with a sleigh in the little screen.
-    const previewRows = KINDS.sleigh.frames[0];
-    const previewSvg = `<svg viewBox="0 0 62 34" shape-rendering="crispEdges">${frameSvg(previewRows, 0)}</svg>`;
-    const widget = document.createElement('div');
-    widget.className = 'clock-widget desk-accessory after-dark christmas-delivery';
-    widget.innerHTML = `
-      <div class="clock-title-bar">
-        <div class="close-box"></div>
-        <span class="clock-title" data-label-en="Christmas Delivery" data-label-ja="クリスマス便">Christmas Delivery</span>
-      </div>
-      <div class="clock-content after-dark-content">
-        <div class="after-dark-module">
-          <div class="after-dark-preview" aria-hidden="true">${previewSvg}</div>
-          <span data-label-en="Tokyo Sleigh" data-label-ja="東京のそり">Tokyo Sleigh</span>
-        </div>
-        <label class="after-dark-setting">
-          <span data-label-en="Speed" data-label-ja="速さ">Speed</span>
-          <span class="after-dark-slider">
-            <input type="range" min="0" max="${SPEEDS.length - 1}" step="1" data-option="speed">
-            <span class="after-dark-ticks" aria-hidden="true">${'<i></i>'.repeat(SPEEDS.length)}</span>
-          </span>
-        </label>
-        <label class="after-dark-setting">
-          <span data-label-en="Density" data-label-ja="数">Density</span>
-          <span class="after-dark-slider">
-            <input type="range" min="0" max="${DENSITIES.length - 1}" step="1" data-option="density">
-            <span class="after-dark-ticks" aria-hidden="true">${'<i></i>'.repeat(DENSITIES.length)}</span>
-          </span>
-        </label>
-        <button type="button" class="stack-index-shortcut after-dark-sleep" data-label-en="Sleep Now" data-label-ja="今すぐスリープ">Sleep Now</button>
-      </div>`;
-
-    widget.querySelectorAll('input[data-option]').forEach((input) => {
-      input.value = String(options[input.dataset.option]);
-      input.addEventListener('input', () => {
-        options[input.dataset.option] = Number(input.value);
+    // After Hours (tokyo-night.js) runs the idle timer, the Sleep Now corner and the desk accessory.
+    // Seasonal modules go first in its list and are the default screensaver while they're around.
+    const previewSvg = `<svg viewBox="0 0 62 34" shape-rendering="crispEdges">${frameSvg(KINDS.sleigh.frames[0], 0)}</svg>`;
+    window.afterHoursModules = [...(window.afterHoursModules || []), {
+      id: 'christmas-delivery',
+      season: `christmas-${root.dataset.christmasYear || ''}`,
+      name: ['Christmas Delivery', 'クリスマス便'],
+      preview: previewSvg,
+      settings: [
+        { option: 'speed', label: ['Speed', '速さ'], steps: SPEEDS.length },
+        { option: 'density', label: ['Density', '数'], steps: DENSITIES.length },
+      ],
+      options,
+      save() {
         try {
           localStorage.setItem('christmas-delivery', JSON.stringify(options));
         } catch (error) {}
-      });
-    });
-
-    const sleepButton = widget.querySelector('.after-dark-sleep');
-    sleepButton.addEventListener('click', () => {
-      sleepButton.blur();
-      start();
-    });
-    const syncMotion = () => {
-      sleepButton.disabled = reduceMotion.matches;
-      if (reduceMotion.matches) saver?.stop();
-    };
-    reduceMotion.addEventListener('change', syncMotion);
-    syncMotion();
-    addDeskAccessory(widget);
+      },
+      start,
+    }];
   }
 
   // Snowman Balloon Help. Seasonal entries go before index.js's own list so they win clashes.
@@ -806,10 +717,10 @@
         ['.key-caps-content', 'Elf Key Caps. Shows what you type. An elf types here too; type SANTA if you want its attention.', 'エルフのキー配列。入力した文字が表示されます。エルフも文字を打ちます。話しかけたいときは SANTA と打ってみて。'],
         ['.tree-content', 'A tiny Tokyo tree. No watering required, although the Ueno Quest balcony plant would like a word.', '小さな東京ツリー。水やりは不要ですが、「Ueno quest」のベランダの植物が何か言いたそうです。'],
         ['.tree-lights-button', 'Turns the tree lights on or off. With Reduce Motion, they stay peacefully still either way.', 'ツリーのライトを点灯・消灯します。視覚効果を減らす設定では、どちらも静かに灯ります。'],
-        ['.christmas-delivery .after-dark-module', 'Christmas Delivery. Leave this Mac alone for 45 seconds and Santa flies presents over Tokyo. It beats sitting in traffic on the Shuto Expressway.', 'クリスマス便。このMacを45秒放っておくと、サンタが東京の空にプレゼントを運びます。首都高で渋滞するより速いはずです。'],
-        ['.christmas-delivery .after-dark-setting:has([data-option="speed"])', 'How quickly Santa and the presents fly.', 'サンタとプレゼントの飛ぶ速さ。'],
-        ['.christmas-delivery .after-dark-setting:has([data-option="density"])', 'How many presents are in the air at once.', '同時に飛ぶプレゼントの数。'],
-        ['.christmas-delivery .after-dark-sleep', 'Starts Christmas Delivery now. So does moving the pointer into the bottom-left corner.', '今すぐクリスマス便を始めます。ポインタを画面の左下隅に動かしても始まります。'],
+        ['.tokyo-night[data-module="christmas-delivery"] .after-dark-module, .after-dark-module-option[data-module="christmas-delivery"]', 'Christmas Delivery. Leave this Mac alone for 45 seconds and Santa flies presents over Tokyo. It beats sitting in traffic on the Shuto Expressway.', 'クリスマス便。このMacを45秒放っておくと、サンタが東京の空にプレゼントを運びます。首都高で渋滞するより速いはずです。'],
+        ['.after-dark-setting[data-module="christmas-delivery"]:has([data-option="speed"])', 'How quickly Santa and the presents fly.', 'サンタとプレゼントの飛ぶ速さ。'],
+        ['.after-dark-setting[data-module="christmas-delivery"]:has([data-option="density"])', 'How many presents are in the air at once.', '同時に飛ぶプレゼントの数。'],
+        ['.tokyo-night[data-module="christmas-delivery"] .after-dark-sleep', 'Starts Christmas Delivery now. So does moving the pointer into the bottom-left corner.', '今すぐクリスマス便を始めます。ポインタを画面の左下隅に動かしても始まります。'],
       ],
       prisoner: [
         'Help! We’re being held prisoner in a system software workshop! The elves demand a union.\n—The Blue Meanies, seasonal contractors',

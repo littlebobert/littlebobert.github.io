@@ -1,18 +1,20 @@
-// Screensaver for the rest of the year (halloween.js and christmas.js have their own seasonal ones):
-// Tokyo's skyline in pixel art, under Tokyo's sky as it is right now. The sun follows the
+// After Hours, the screensaver, and Tokyo Sky, its module for the whole year: Tokyo's skyline in
+// pixel art, under Tokyo's sky as it is right now. The sun follows the
 // real sunrise and sunset, so it's day, dusk, or night when it is in Tokyo; the moon shows its real
 // phase and rises and sets about when it does; and the weather is the current weather from
 // Open-Meteo: clouds, overcast, fog, drizzle, rain, snow, or thunderstorms. Office windows go on
 // and off, Tokyo Tower and the Skytree are lit at night, and a star falls now and then.
 //
 // It starts after a while with no input, or from the Sleep Now corner, and any input wakes the
-// desktop. The After Hours desk accessory under Settings has a preview, a speed slider, and Sleep
-// Now. To see any sky: ?tokyo-sky=day|dawn|dusk|night|HH:MM, ?tokyo-weather=clear|clouds|
+// desktop. The After Hours desk accessory under Settings has a preview, the module's sliders, and
+// Sleep Now. Seasonal modes add their own modules to window.afterHoursModules before this runs
+// (christmas.js adds Christmas Delivery); the seasonal one is the default in its season, and the
+// accessory gets a list for switching between them. Halloween still has its own In the Dark. To see any sky: ?tokyo-sky=day|dawn|dusk|night|HH:MM, ?tokyo-weather=clear|clouds|
 // overcast|fog|drizzle|rain|snow|storm, ?tokyo-moon=0–1 (0 new, 0.5 full).
 (() => {
   const root = document.documentElement;
   const widget = document.getElementById('tokyo-night');
-  if (root.classList.contains('halloween') || root.classList.contains('christmas')) {
+  if (root.classList.contains('halloween')) {
     widget?.remove();
     return;
   }
@@ -598,13 +600,9 @@
     }
   }
 
-  // --- The screensaver.
+  // --- The Tokyo Sky module. Starting it returns a function that stops it.
 
-  let lastInputAt = Date.now();
-  let lastPointer = null;
-  let saver = null;
-
-  function start(fromCorner = false) {
+  function startTokyoSky() {
     const width = Math.ceil(window.innerWidth / PIXEL);
     const height = Math.ceil(window.innerHeight / PIXEL);
     const speed = SPEEDS[options.speed];
@@ -632,8 +630,9 @@
       });
       scene = next;
     };
+    let running = true;
     loadConditions().then(() => {
-      if (saver && conditions.live) rebuild();
+      if (running && conditions.live) rebuild();
     });
     const refresh = setInterval(() => {
       const { light, glow } = daylight(skyTime());
@@ -726,15 +725,54 @@
     };
     raf = requestAnimationFrame(tick);
 
+    return () => {
+      running = false;
+      cancelAnimationFrame(raf);
+      clearInterval(refresh);
+      screen.classList.remove('is-on');
+      setTimeout(() => screen.remove(), 300);
+    };
+  }
+
+  // --- After Hours: the chosen module, after a while with no input or from the corner.
+
+  const modules = [
+    ...(window.afterHoursModules || []),
+    {
+      id: 'tokyo-sky',
+      options,
+      save() {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(options));
+        } catch (error) {}
+      },
+      start: startTokyoSky,
+    },
+  ];
+  // A seasonal module is the default during its season. Picking another one sticks until the
+  // season is over, so next year's starts out as the default again.
+  const MODULE_KEY = 'after-hours-module';
+  const season = modules[0].season || '';
+  let current = modules[0];
+  try {
+    const saved = JSON.parse(localStorage.getItem(MODULE_KEY) || 'null');
+    if (saved?.season === season) current = modules.find((module) => module.id === saved.id) || current;
+  } catch (error) {}
+
+  const booting = () => root.classList.contains('christmas-boot');
+  let lastInputAt = Date.now();
+  let lastPointer = null;
+  let saver = null;
+
+  function start(fromCorner = false) {
+    if (saver || reduceMotion.matches) return;
+    const stop = current.start();
     saver = {
       startedAt: Date.now(),
       pointer: lastPointer,
       fromCorner,
       stop() {
-        cancelAnimationFrame(raf);
-        clearInterval(refresh);
-        screen.classList.remove('is-on');
-        setTimeout(() => screen.remove(), 300);
+        stop();
         saver = null;
         lastInputAt = Date.now();
       },
@@ -751,7 +789,7 @@
     lastInputAt = Date.now();
     if (!saver) {
       if (event.type === 'pointermove') lastPointer = [event.clientX, event.clientY];
-      if (inSleepCorner(event) && !reduceMotion.matches) start(true);
+      if (inSleepCorner(event) && !booting()) start(true);
       return;
     }
     if (event.type === 'pointerout') return;
@@ -780,7 +818,7 @@
 
   setInterval(() => {
     if (saver || document.hidden || Date.now() - lastInputAt < IDLE_MS) return;
-    if (reduceMotion.matches || !finePointer.matches) return;
+    if (booting() || reduceMotion.matches || !finePointer.matches) return;
     // Clicks inside the desktop browser or a video land in an iframe, where we can't see them.
     if (document.activeElement?.tagName === 'IFRAME') return;
     // Not in the middle of a call on the Speak phone.
@@ -791,6 +829,89 @@
   // --- After Hours desk accessory.
 
   if (!widget) return;
+
+  // Seasonal modules bring their own preview, sliders, and name. index.js has already put the
+  // page's own labels in the current language, so these keep up with it themselves.
+  const language = () => (root.lang === 'ja' ? 'ja' : 'en');
+  const localized = [];
+  function renderLabel([element, text, attribute]) {
+    const value = text[language() === 'ja' ? 1 : 0];
+    if (attribute) element.setAttribute(attribute, value);
+    else element.textContent = value;
+  }
+  function localize(element, text, attribute) {
+    localized.push([element, text, attribute]);
+    renderLabel(localized[localized.length - 1]);
+  }
+  document.addEventListener('site-language-change', () => localized.forEach(renderLabel));
+
+  const moduleRow = widget.querySelector('.after-dark-module');
+  const tokyoPreview = widget.querySelector('.tokyo-night-preview');
+  const sleepButton = widget.querySelector('.after-dark-sleep');
+  modules.filter((module) => module.preview).forEach((module) => {
+    const preview = document.createElement('div');
+    preview.className = 'after-dark-preview';
+    preview.dataset.module = module.id;
+    preview.setAttribute('aria-hidden', 'true');
+    preview.innerHTML = module.preview;
+    tokyoPreview.before(preview);
+    module.settings.forEach(({ option, label, steps }) => {
+      const row = document.createElement('label');
+      row.className = 'after-dark-setting';
+      row.dataset.module = module.id;
+      row.innerHTML = `
+        <span></span>
+        <span class="after-dark-slider">
+          <input type="range" min="0" max="${steps - 1}" step="1" data-option="${option}">
+          <span class="after-dark-ticks" aria-hidden="true">${'<i></i>'.repeat(steps)}</span>
+        </span>`;
+      localize(row.firstElementChild, label);
+      sleepButton.before(row);
+    });
+  });
+
+  // With more than one module, the name becomes a list to pick from, like After Dark's.
+  function show() {
+    widget.dataset.module = current.id;
+    widget.querySelectorAll('.after-dark-preview[data-module], .after-dark-setting[data-module]').forEach((element) => {
+      element.hidden = element.dataset.module !== current.id;
+    });
+  }
+  if (modules.length > 1) {
+    const tokyoName = moduleRow.querySelector('.after-dark-module-name');
+    const list = document.createElement('div');
+    list.className = 'after-dark-modules';
+    list.setAttribute('role', 'radiogroup');
+    localize(list, ['Screensaver', 'スクリーンセーバー'], 'aria-label');
+    modules.forEach((module) => {
+      const option = document.createElement('label');
+      option.className = 'after-dark-module-option';
+      option.dataset.module = module.id;
+      const radio = document.createElement('input');
+      radio.type = 'radio';
+      radio.name = 'after-hours-module';
+      radio.value = module.id;
+      radio.checked = module === current;
+      radio.addEventListener('change', () => {
+        if (!radio.checked) return;
+        current = module;
+        show();
+        try {
+          localStorage.setItem(MODULE_KEY, JSON.stringify({ id: module.id, season }));
+        } catch (error) {}
+      });
+      let name = tokyoName;
+      if (module.name) {
+        name = document.createElement('span');
+        name.className = 'after-dark-module-name';
+        localize(name, module.name);
+      }
+      option.append(radio, name);
+      list.append(option);
+    });
+    moduleRow.append(list);
+  }
+  show();
 
   // The preview shows Tokyo's sky right now too, once the weather is in.
   const preview = widget.querySelector('.tokyo-night-preview');
@@ -811,16 +932,14 @@
   }, 15 * 60 * 1000);
 
   widget.querySelectorAll('input[data-option]').forEach((input) => {
-    input.value = String(options[input.dataset.option]);
+    const module = modules.find(({ id }) => id === input.closest('[data-module]').dataset.module);
+    input.value = String(module.options[input.dataset.option]);
     input.addEventListener('input', () => {
-      options[input.dataset.option] = Number(input.value);
-      try {
-        localStorage.setItem(STORAGE_KEY, JSON.stringify(options));
-      } catch (error) {}
+      module.options[input.dataset.option] = Number(input.value);
+      module.save();
     });
   });
 
-  const sleepButton = widget.querySelector('.after-dark-sleep');
   sleepButton.addEventListener('click', () => {
     sleepButton.blur();
     if (!saver) start();
@@ -830,12 +949,13 @@
   reduceMotion.addEventListener('change', syncMotion);
   syncMotion();
 
-  // Placement: under Settings on wide screens, stacked with the other desk accessories.
+  // Placement: under Settings on wide screens, stacked with the other desk accessories (but not
+  // Christmas Tree, which sits on the left).
   const settings = document.getElementById('appearance-panel');
   function place() {
     if (!settings) return;
     let top = 36 + settings.offsetHeight + 12;
-    document.querySelectorAll('.desk-accessory').forEach((accessory) => {
+    document.querySelectorAll('.desk-accessory:not(.christmas-tree)').forEach((accessory) => {
       accessory.style.setProperty('--desk-accessory-top', `${top}px`);
       top += accessory.offsetHeight + 12;
     });

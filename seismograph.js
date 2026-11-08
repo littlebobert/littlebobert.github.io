@@ -478,13 +478,14 @@
     }
   }
 
-  // --- Placement: under Settings on wide screens, stacked with any other desk accessories.
+  // --- Placement: under Settings on wide screens, stacked with the other right-column desk
+  // accessories. Christmas Tree has its own placement under Speak on the left instead.
 
   const settings = document.getElementById('appearance-panel');
   function place() {
     if (!settings) return;
     let top = 36 + settings.offsetHeight + 12;
-    document.querySelectorAll('.desk-accessory').forEach((accessory) => {
+    document.querySelectorAll('.desk-accessory:not(.christmas-tree)').forEach((accessory) => {
       accessory.style.setProperty('--desk-accessory-top', `${top}px`);
       top += accessory.offsetHeight + 12;
     });

@@ -109,20 +109,25 @@
     if (language() === wanted) render();
   }
 
-  // --- Placement: on wide screens, under Speak on the left, or under the clocks without it.
+  // --- Placement: on wide screens, under Speak (and the seasonal Tree) on the left, or under
+  // the clocks without them.
 
   const clocks = document.querySelector('.clock-row');
   const speak = document.getElementById('speak');
+  const christmasTree = document.querySelector('.christmas-tree');
   function place() {
     if (!clocks) return;
     let top = 36 + clocks.offsetHeight + 12;
     if (speak?.isConnected) top += speak.offsetHeight + 12;
+    if (christmasTree?.isConnected) top += christmasTree.offsetHeight + 12;
     widget.style.setProperty('--karui-desk-top', `${top}px`);
   }
 
   const placement = new ResizeObserver(place);
   if (clocks) placement.observe(clocks);
   if (speak) placement.observe(speak);
+  if (christmasTree) placement.observe(christmasTree);
+  document.addEventListener('christmas-tree-layout', place);
 
   widget.querySelector('.close-box').addEventListener('click', () => {
     placement.disconnect();

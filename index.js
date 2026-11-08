@@ -2794,8 +2794,8 @@ if (recentUpdatesButton && recentUpdatesDialog) {
 
 // System 7 Balloon Help. On by default, with a checkbox in Settings. Mouse only, since a balloon shows
 // for whatever the pointer rests on, and only for things whose labels don't explain themselves, plus
-// a few jokes. Halloween mode (halloween.js, which runs first) swaps in ghosts: its own balloon shape
-// and things to say, which take priority over these.
+// a few jokes. Seasonal modes (halloween.js / christmas.js, which run first) swap in their own balloon
+// shape and things to say, which take priority over these.
 const BALLOON_CITIES = { Tokyo: '東京', Tampa: 'タンパ' };
 const balloonCity = (target) => target.closest('.clock-widget').querySelector('.clock-title').textContent.trim();
 // [selector, English, Japanese]. Text can be a function of the element. The innermost match wins,
@@ -2872,13 +2872,16 @@ const classicBalloonShape = {
   },
 };
 
-const halloweenBalloons = document.documentElement.classList.contains('halloween') ? window.halloweenBalloonHelp : null;
-const balloonHelp = [...(halloweenBalloons?.help || []), ...BALLOON_HELP];
-const balloonPrisoner = halloweenBalloons?.prisoner || BALLOON_PRISONER;
-const balloonShape = halloweenBalloons?.shape || classicBalloonShape;
+const rootClasses = document.documentElement.classList;
+const halloweenBalloons = rootClasses.contains('halloween') ? window.halloweenBalloonHelp : null;
+const christmasBalloons = rootClasses.contains('christmas') ? window.christmasBalloonHelp : null;
+const seasonalBalloons = halloweenBalloons || christmasBalloons;
+const balloonHelp = [...(seasonalBalloons?.help || []), ...BALLOON_HELP];
+const balloonPrisoner = seasonalBalloons?.prisoner || BALLOON_PRISONER;
+const balloonShape = seasonalBalloons?.shape || classicBalloonShape;
 const balloonHelpCheckbox = document.getElementById('balloon-help-checkbox');
 const balloon = document.createElement('div');
-balloon.className = `help-balloon${halloweenBalloons ? ' is-ghost' : ''}`;
+balloon.className = `help-balloon${halloweenBalloons ? ' is-ghost' : christmasBalloons ? ' is-christmas' : ''}`;
 balloon.setAttribute('aria-hidden', 'true');
 balloon.hidden = true;
 balloon.innerHTML = '<svg class="help-balloon-shape"></svg><span class="help-balloon-text"></span>';
@@ -2964,7 +2967,9 @@ document.addEventListener('pointermove', (event) => {
   if (event.pointerType !== 'mouse') return;
   balloonPointerX = event.clientX;
   optionKeyDown = event.altKey;
-  const showable = balloonHelpEnabled && !document.documentElement.classList.contains('sad-mac-boot');
+  const showable = balloonHelpEnabled
+    && !document.documentElement.classList.contains('sad-mac-boot')
+    && !document.documentElement.classList.contains('christmas-boot');
   const found = showable ? balloonHelpFor(event.target) : null;
   if (found?.target === hoveredForBalloon) return;
   hideBalloon();

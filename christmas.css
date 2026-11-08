@@ -1,0 +1,348 @@
+/* Christmas mode: only applies while <html> has the `christmas` class (see the inline script in <head>). */
+
+/* Santa's red pointing glove, with a white cuff */
+html.christmas body {
+  cursor: url('assets/christmas-cursor.png') 5 0, auto;
+  cursor: -webkit-image-set(url('assets/christmas-cursor.png') 1x, url('assets/christmas-cursor@2x.png') 2x) 5 0, auto;
+}
+
+html.christmas :is(a, button, label, summary, select, [role="button"]) {
+  cursor: url('assets/christmas-cursor.png') 5 0, pointer !important;
+  cursor: -webkit-image-set(url('assets/christmas-cursor.png') 1x, url('assets/christmas-cursor@2x.png') 2x) 5 0, pointer !important;
+}
+
+.christmas-only {
+  display: none;
+}
+
+html.christmas .christmas-only {
+  display: block;
+}
+
+/* Phones only have room for "Nice list:" / 「いい子」 */
+@media (max-width: 520px) {
+  .nice-list-detail {
+    display: none;
+  }
+}
+
+/* Seasonal desk accessories stack under Settings. On narrow screens, the Tree and Christmas
+   Delivery appear above the clocks; Key Caps stays desktop-only because it needs a keyboard. */
+html.christmas body.home-page .christmas-delivery,
+html.christmas body.home-page .christmas-tree {
+  display: block;
+  width: 100%;
+  max-width: 240px;
+}
+
+@media (max-width: 859px) {
+  html.christmas body.home-page .christmas-tree {
+    order: -2;
+  }
+
+  html.christmas body.home-page .christmas-delivery {
+    order: -1;
+  }
+}
+
+@media (min-width: 860px) {
+  html.christmas body.home-page .desk-accessory {
+    display: block;
+    grid-area: settings;
+    justify-self: start;
+    align-self: start;
+    width: 100%;
+    max-width: 240px;
+    position: relative;
+    top: var(--desk-accessory-top, 0);
+    margin-bottom: -10000px;
+  }
+}
+
+/* Quiet pixel snow across the desktop and windows. It sits above feature windows but below
+   Balloon Help and modal overlays, and never intercepts input. */
+html.christmas .desktop {
+  isolation: isolate;
+}
+
+.christmas-snow {
+  position: fixed;
+  inset: 0;
+  z-index: 15;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.christmas-snow i {
+  position: absolute;
+  top: -8px;
+  width: 2px;
+  height: 2px;
+  background: rgba(255, 255, 255, 0.86);
+  box-shadow: 1px 1px 0 rgba(0, 0, 0, 0.28);
+  animation: christmas-snowfall 12s steps(90) infinite;
+}
+
+.christmas-snow i.is-big {
+  width: 3px;
+  height: 3px;
+}
+
+@keyframes christmas-snowfall {
+  from { transform: translate3d(0, -8px, 0); }
+  to { transform: translate3d(var(--snow-drift), 110vh, 0); }
+}
+
+/* A pixel-light garland draped directly above the About window. Absolute positioning inside
+   #about-slot keeps it out of Safari and Chromium's wide-screen grid auto-placement entirely. */
+.christmas-garland {
+  position: absolute;
+  top: -28px;
+  right: -6px;
+  left: -6px;
+  z-index: 3;
+  height: 30px;
+  margin: 0;
+  pointer-events: none;
+}
+
+.christmas-garland svg {
+  display: block;
+  width: 100%;
+  height: 30px;
+  overflow: visible;
+}
+
+.christmas-garland-bulb {
+  animation: christmas-garland-twinkle 1.7s steps(2) infinite;
+}
+
+@keyframes christmas-garland-twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.55; }
+}
+
+/* Tiny Christmas Tree desk accessory. On wide screens it lives on the left directly below Speak;
+   addDeskAccessory() deliberately excludes it from the Settings stack's offset calculations. */
+@media (min-width: 860px) {
+  html.christmas body.home-page .desk-accessory.christmas-tree {
+    grid-area: clocks;
+    justify-self: end;
+  }
+}
+
+.tree-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 8px 8px;
+}
+
+.tree-icon {
+  flex: 0 0 64px;
+  border: 1px solid #000;
+  background: #080b17;
+}
+
+.tree-controls {
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  text-align: left;
+}
+
+.tree-lights-button {
+  flex-shrink: 0;
+}
+
+.tree-light-0 {
+  animation: tree-light-chase 2.4s steps(2) infinite;
+}
+
+.tree-light-1 {
+  animation: tree-light-chase 2.4s steps(2) -0.8s infinite;
+}
+
+.tree-light-2 {
+  animation: tree-light-chase 2.4s steps(2) -1.6s infinite;
+}
+
+.christmas-tree.is-dark .tree-light {
+  opacity: 0.16;
+  animation: none;
+}
+
+@keyframes tree-light-chase {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.3; }
+}
+
+/* Happy Mac boot: dark until the hat arrives, then a little red-and-green glow. */
+html.christmas-boot,
+html.christmas-boot body {
+  background: #080b17 !important;
+}
+
+html.christmas-boot body > :not(.happy-mac-screen) {
+  visibility: hidden;
+}
+
+.happy-mac-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  overflow: hidden;
+  background: #080b17;
+  transition: opacity 0.35s ease;
+}
+
+.happy-mac-screen.is-leaving {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.happy-mac-stage {
+  position: relative;
+  width: 88px;
+  height: 124px;
+}
+
+.happy-mac-icon {
+  display: block;
+  width: 88px;
+  height: 124px;
+  transition: filter 0.45s steps(3);
+}
+
+.happy-mac-costume,
+.happy-mac-hat,
+.happy-mac-trim {
+  opacity: 0;
+}
+
+.happy-mac-screen.is-dressed .happy-mac-costume {
+  opacity: 1;
+}
+
+.happy-mac-screen.is-dressed .happy-mac-hat,
+.happy-mac-screen.is-dressed .happy-mac-trim {
+  opacity: 1;
+  animation: happy-mac-hat-drop 0.35s steps(4) both;
+}
+
+.happy-mac-screen.is-lit .happy-mac-icon {
+  filter:
+    drop-shadow(-3px 0 6px rgba(207, 48, 56, 0.72))
+    drop-shadow(3px 0 6px rgba(80, 173, 100, 0.68));
+}
+
+.happy-mac-screen.is-rising .happy-mac-icon {
+  animation: happy-mac-bob 0.7s steps(4) both;
+}
+
+.happy-mac-snow {
+  position: absolute;
+  top: -4px;
+  width: 3px;
+  height: 3px;
+  background: #fff;
+  opacity: 0.75;
+  pointer-events: none;
+  animation: happy-mac-snowfall 4s steps(40) infinite;
+}
+
+body.home-page .happy-mac-screen .happy-mac-code {
+  color: #f7f4e8;
+  font-family: 'Monaco', 'Menlo', monospace !important;
+  font-size: 13px !important;
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  text-align: center;
+}
+
+@keyframes happy-mac-hat-drop {
+  from { transform: translateY(-16px); }
+  to { transform: translateY(0); }
+}
+
+@keyframes happy-mac-bob {
+  0% { transform: translateY(0); }
+  45% { transform: translateY(-12px); }
+  100% { transform: translateY(-8px); }
+}
+
+@keyframes happy-mac-snowfall {
+  from { transform: translateY(-4px); }
+  to { transform: translateY(105vh); }
+}
+
+/* Christmas Delivery screensaver. Geometry and sprite frames share halloween.css's primitives. */
+.christmas-screen {
+  background: #050714;
+}
+
+.christmas-star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #69728f;
+}
+
+.christmas-star.is-bright {
+  background: #e8edff;
+  box-shadow: 2px 0 0 #69728f, -2px 0 0 #69728f, 0 2px 0 #69728f, 0 -2px 0 #69728f;
+}
+
+.christmas-sleigh {
+  filter: drop-shadow(0 0 4px rgba(242, 193, 78, 0.22));
+}
+
+.christmas-delivery .after-dark-preview {
+  padding: 4px 2px;
+}
+
+/* Snowman Balloon Help. The shape is snowmanSvg() in christmas.js. */
+.help-balloon.is-christmas {
+  min-width: 64px;
+  max-width: 180px;
+  padding: 0 10px 6px;
+  text-align: center;
+}
+
+.christmas-balloon-face {
+  fill: #000;
+}
+
+.christmas-balloon-face .christmas-balloon-nose {
+  fill: #df762c;
+}
+
+.christmas-balloon-hat {
+  fill: #bd2932;
+  stroke: #000;
+  stroke-width: 1.5;
+  stroke-linejoin: round;
+}
+
+.christmas-balloon-hat .christmas-balloon-trim {
+  fill: #fff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .christmas-snow,
+  .happy-mac-snow {
+    display: none;
+  }
+
+  .christmas-garland-bulb,
+  .tree-light {
+    animation: none;
+  }
+}

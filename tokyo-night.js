@@ -1,5 +1,5 @@
-// Screensaver for the rest of the year (halloween.js has its own, with pumpkins, the last week of
-// October): Tokyo's skyline in pixel art, under Tokyo's sky as it is right now. The sun follows the
+// Screensaver for the rest of the year (halloween.js and christmas.js have their own seasonal ones):
+// Tokyo's skyline in pixel art, under Tokyo's sky as it is right now. The sun follows the
 // real sunrise and sunset, so it's day, dusk, or night when it is in Tokyo; the moon shows its real
 // phase and rises and sets about when it does; and the weather is the current weather from
 // Open-Meteo: clouds, overcast, fog, drizzle, rain, snow, or thunderstorms. Office windows go on
@@ -12,7 +12,7 @@
 (() => {
   const root = document.documentElement;
   const widget = document.getElementById('tokyo-night');
-  if (root.classList.contains('halloween')) {
+  if (root.classList.contains('halloween') || root.classList.contains('christmas')) {
     widget?.remove();
     return;
   }

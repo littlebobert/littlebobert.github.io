@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.10.9</title>
+            <pubDate>Mon, 09 Nov 2026 09:47:39 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>73</sparkle:version>
+            <sparkle:shortVersionString>0.10.9</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed a notification showing twice when your Mac got it before your iPhone did.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.9/Karui-0.10.9-mac.zip" length="3076999" type="application/octet-stream" sparkle:edSignature="dvp7JV/KyBlWsYiXB8GfAbHqNjYu5Rk4w0s+yoZWEAiaDBrPsfPpeVRZywrPNOMmDJ8YKLEgmAyYshtrZEvkDQ=="/>
+        </item>
+        <item>
             <title>0.10.8</title>
             <pubDate>Sat, 07 Nov 2026 09:08:52 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -26,18 +38,6 @@
 - Fixed look-alike notifications, such as Linear updates in Slack, sometimes sharing one row: selecting one selected both, and one of them could be lost.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.7/Karui-0.10.7-mac.zip" length="3076297" type="application/octet-stream" sparkle:edSignature="2r8uAgarbzgB6KfPmrETvQZMJfgFNQzyfAg8zIkTzeZhLiTMahFx7tOI2OfuTB6EJx4165ry5yr2040rwgO1Dw=="/>
-        </item>
-        <item>
-            <title>0.10.6</title>
-            <pubDate>Fri, 06 Nov 2026 10:23:49 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>70</sparkle:version>
-            <sparkle:shortVersionString>0.10.6</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Reading a notification in Spark, Slack, or Messages, or clearing it from Notification Center, now clears Karui’s alert on your iPhone within seconds, instead of it sometimes showing up quietly on your iPhone while you’re still at your Mac.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.6/Karui-0.10.6-mac.zip" length="3071464" type="application/octet-stream" sparkle:edSignature="ViZ7N0rm92xx4bZZOEc7OCAvy3KSg4UE2oCX+Fmw3IR8YiN/cUpdtaC6Rpf7RpCLpIeAVnirKaRNKcZi79tYCw=="/>
         </item>
     </channel>
 </rss>

@@ -1,8 +1,44 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-11-08T19:45:10.412Z",
+  "updatedAt": "2026-11-09T23:47:25.602Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2119755670081990681",
+      "text": "my parents bought us a Performa 630 CD. I made crappy little REALBasic apps and played way too much Gemstone 3 after school https://t.co/h5BXOxVRLt",
+      "createdAt": "2026-11-09T11:35:09.000Z",
+      "url": "https://x.com/_bobertdowney/status/2119755670081990681",
+      "urls": [
+        {
+          "url": "https://t.co/h5BXOxVRLt",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2119755670081990681/photo/1",
+          "displayUrl": "pic.x.com/h5BXOxVRLt",
+          "start": 124,
+          "end": 147
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2119755670081990681-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2119605882287948033",
+      "text": "Karui for Mac 0.10.9 would freeze/hang on large histories. I’ve pushed an update with a fix. if you’re stuck on 0.10.9 please delete the app and reinstall it. your history will remain intact. sorry for the inconvenience. 🙇‍♂️",
+      "createdAt": "2026-11-09T01:39:57.000Z",
+      "url": "https://x.com/_bobertdowney/status/2119605882287948033",
+      "urls": [],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2118099319530360879",
       "text": "Apple’s Foundation Models are quite good compared to Opus 5.5 and GPT-6.1 Sol at categorizing push notifications as Important/Neutral/Spam. I’ve published my benchmarks: https://t.co/2Wr0ERqLTQ https://t.co/6KHrimAUej",
@@ -220,87 +256,6 @@ window.X_POSTS_SNAPSHOT = {
           "alt": "",
           "type": "photo",
           "image": "assets/generated/x/mine-post-2117443739073626484-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2117383583962914861",
-      "text": "もうWebフォームを手入力しなくて大丈夫。Umeteは、iPhoneとMacで使える無料のSafari機能拡張です。ワンタップでフォーム全体を入力でき、個人情報をAIに送ることはありません。https://t.co/aNKnr7L2be https://t.co/hczDi4c8Ru",
-      "createdAt": "2026-11-02T22:29:20.000Z",
-      "url": "https://x.com/_bobertdowney/status/2117383583962914861",
-      "urls": [
-        {
-          "url": "https://t.co/aNKnr7L2be",
-          "expandedUrl": "https://umete.jp",
-          "displayUrl": "umete.jp",
-          "start": 95,
-          "end": 118
-        },
-        {
-          "url": "https://t.co/hczDi4c8Ru",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2117383583962914861/video/1",
-          "displayUrl": "pic.x.com/hczDi4c8Ru",
-          "start": 119,
-          "end": 142
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2117383583962914861-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2116860113671864619",
-      "text": "谷川岳に登りました https://t.co/ROidKwZKlL",
-      "createdAt": "2026-11-01T11:49:15.000Z",
-      "url": "https://x.com/_bobertdowney/status/2116860113671864619",
-      "urls": [
-        {
-          "url": "https://t.co/ROidKwZKlL",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2116860113671864619/photo/1",
-          "displayUrl": "pic.x.com/ROidKwZKlL",
-          "start": 10,
-          "end": 33
-        },
-        {
-          "url": "https://t.co/ROidKwZKlL",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2116860113671864619/photo/1",
-          "displayUrl": "pic.x.com/ROidKwZKlL",
-          "start": 10,
-          "end": 33
-        },
-        {
-          "url": "https://t.co/ROidKwZKlL",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2116860113671864619/photo/1",
-          "displayUrl": "pic.x.com/ROidKwZKlL",
-          "start": 10,
-          "end": 33
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2116860113671864619-0.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2116860113671864619-1.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2116860113671864619-2.png"
         }
       ]
     }

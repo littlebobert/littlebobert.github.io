@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.10.10</title>
+            <pubDate>Mon, 09 Nov 2026 10:29:23 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>74</sparkle:version>
+            <sparkle:shortVersionString>0.10.10</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Fixed Karui for Mac 0.10.9 freezing while it checked your iPhone’s notifications.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.10/Karui-0.10.10-mac.zip" length="3076637" type="application/octet-stream" sparkle:edSignature="vI/uDdqCltTt74qwSBPktXhlL8iU877eoLiicARQ/r+bgOlXQK6h034m/6mI8EWOAdoPfSKQyvppsxDQVCh9BA=="/>
+        </item>
+        <item>
             <title>0.10.9</title>
             <pubDate>Mon, 09 Nov 2026 09:47:39 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,19 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Notifications sorted on your iPhone by Karui Cloud, an invite-only program, now say “Sorted by Karui Cloud” in the inbox.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.8/Karui-0.10.8-mac.zip" length="3076540" type="application/octet-stream" sparkle:edSignature="IvY9FgDQONyYDXiHpUYAc3bJFa6z1wHcgFBmygnYg+jUDATYBnPTtOdVW8IvUqpGcXp5V22Sxz7uKJUwjEUlDg=="/>
-        </item>
-        <item>
-            <title>0.10.7</title>
-            <pubDate>Fri, 06 Nov 2026 18:19:33 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>71</sparkle:version>
-            <sparkle:shortVersionString>0.10.7</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Reminders for your own events now always alert, like one-time codes: a calendar app’s “Today at 15:00” or “Leave by…”, and Spark’s “📅 … Starts in 10 minutes”.
-- Fixed look-alike notifications, such as Linear updates in Slack, sometimes sharing one row: selecting one selected both, and one of them could be lost.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.7/Karui-0.10.7-mac.zip" length="3076297" type="application/octet-stream" sparkle:edSignature="2r8uAgarbzgB6KfPmrETvQZMJfgFNQzyfAg8zIkTzeZhLiTMahFx7tOI2OfuTB6EJx4165ry5yr2040rwgO1Dw=="/>
         </item>
     </channel>
 </rss>

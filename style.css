@@ -3863,6 +3863,19 @@ body.home-page .tokyo-night {
   image-rendering: pixelated;
 }
 
+/* Paper Planes (paper-planes.js), a year-round After Hours module. */
+.after-dark-preview[data-module="paper-planes"] {
+  padding: 0;
+}
+
+.after-dark-preview[data-module="paper-planes"] img,
+.paper-planes-screen canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+}
+
 /* Only the chosen module's preview and sliders show. */
 .after-dark-preview[hidden],
 .after-dark-setting[hidden] {

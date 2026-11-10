@@ -9,7 +9,8 @@
 // desktop. The After Hours desk accessory under Settings has a preview, the module's sliders, and
 // Sleep Now. Seasonal modes add their own modules to window.afterHoursModules before this runs
 // (christmas.js adds Christmas Delivery); the seasonal one is the default in its season, and the
-// accessory gets a list for switching between them. Halloween still has its own In the Dark. To see any sky: ?tokyo-sky=day|dawn|dusk|night|HH:MM, ?tokyo-weather=clear|clouds|
+// accessory gets a list for switching between them. Year-round modules (paper-planes.js adds Paper
+// Planes) go after Tokyo Sky, which stays the default. Halloween still has its own In the Dark. To see any sky: ?tokyo-sky=day|dawn|dusk|night|HH:MM, ?tokyo-weather=clear|clouds|
 // overcast|fog|drizzle|rain|snow|storm, ?tokyo-moon=0–1 (0 new, 0.5 full).
 (() => {
   const root = document.documentElement;
@@ -736,8 +737,10 @@
 
   // --- After Hours: the chosen module, after a while with no input or from the corner.
 
+  // Seasonal modules first, then Tokyo Sky, then the other year-round ones.
+  const added = window.afterHoursModules || [];
   const modules = [
-    ...(window.afterHoursModules || []),
+    ...added.filter((module) => module.season),
     {
       id: 'tokyo-sky',
       options,
@@ -748,6 +751,7 @@
       },
       start: startTokyoSky,
     },
+    ...added.filter((module) => !module.season),
   ];
   // A seasonal module is the default during its season. Picking another one sticks until the
   // season is over, so next year's starts out as the default again.

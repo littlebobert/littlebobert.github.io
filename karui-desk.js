@@ -2,7 +2,7 @@
 // notes in one bubble below it. The notes come from the Karui changelog on this site
 // (karui-changelog.html): the newest build with an App Store badge, with the notes of the builds
 // since the release before it folded in, as the changelog's App Store view shows them. The
-// subtitle and promotional text are in index.html. Click the bubble to read every note in full.
+// subtitle is in index.html. Click the bubble to read every note in full.
 (() => {
   const widget = document.getElementById('karui-desk');
   if (!widget) return;

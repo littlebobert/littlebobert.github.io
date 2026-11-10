@@ -4187,11 +4187,6 @@ body.home-page .karui-desk {
   text-decoration: underline;
 }
 
-.karui-desk-promo {
-  margin: 6px 0 0;
-  line-height: 1.15;
-}
-
 .karui-desk-release {
   display: flex;
   flex-wrap: wrap;

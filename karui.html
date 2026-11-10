@@ -5,8 +5,8 @@
   <title>Karui: Spam Filter for iPhone Notifications</title>
   <link href="sasu-common.css?v=5" rel="stylesheet">
   <link href="karui-animated-icon.css?v=2" rel="stylesheet">
-  <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
-  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=2">
+  <link rel="icon" href="assets/karui-favicon.png?v=2" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=3">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://karui.jp/">
   <meta name="description" content="An iPhone and iPad app that builds on Apple’s Focus modes, filtering every app’s notifications privately with Apple Intelligence. It silences spam and lets important notifications through." data-label-en="An iPhone and iPad app that builds on Apple’s Focus modes, filtering every app’s notifications privately with Apple Intelligence. It silences spam and lets important notifications through." data-label-ja="Appleの集中モードを拡張し、すべてのアプリの通知をApple Intelligenceでプライベートに振り分けるiPhone・iPadアプリ。スパム通知を消音し、重要な通知だけを届けます。" data-label-ko="Apple의 집중 모드를 확장해 모든 앱의 알림을 Apple Intelligence로 비공개로 분류하는 iPhone·iPad 앱입니다. 스팸 알림은 조용히 하고 중요한 알림만 전달합니다.">
@@ -15,8 +15,8 @@
   <meta property="og:url" content="https://karui.jp/">
   <meta property="og:site_name" content="Karui">
   <meta property="og:description" content="An iPhone and iPad app that builds on Apple’s Focus modes, filtering every app’s notifications privately with Apple Intelligence. It silences spam and lets important notifications through." data-label-en="An iPhone and iPad app that builds on Apple’s Focus modes, filtering every app’s notifications privately with Apple Intelligence. It silences spam and lets important notifications through." data-label-ja="Appleの集中モードを拡張し、すべてのアプリの通知をApple Intelligenceでプライベートに振り分けるiPhone・iPadアプリ。スパム通知を消音し、重要な通知だけを届けます。" data-label-ko="Apple의 집중 모드를 확장해 모든 앱의 알림을 Apple Intelligence로 비공개로 분류하는 iPhone·iPad 앱입니다. 스팸 알림은 조용히 하고 중요한 알림만 전달합니다.">
-  <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=5">
-  <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=6">
+  <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=6">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -24,21 +24,22 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Karui: Silence spam notifications. See messages people unsend." data-label-en="Karui: Silence spam notifications. See messages people unsend." data-label-ja="Karui：迷惑通知を消音。送信取り消しされたメッセージを確認。" data-label-ko="Karui: 스팸 알림은 조용히. 전송 취소된 메시지도 확인.">
   <meta name="twitter:description" content="An iPhone and iPad app that builds on Apple’s Focus modes, filtering every app’s notifications privately with Apple Intelligence. It silences spam and lets important notifications through." data-label-en="An iPhone and iPad app that builds on Apple’s Focus modes, filtering every app’s notifications privately with Apple Intelligence. It silences spam and lets important notifications through." data-label-ja="Appleの集中モードを拡張し、すべてのアプリの通知をApple Intelligenceでプライベートに振り分けるiPhone・iPadアプリ。スパム通知を消音し、重要な通知だけを届けます。" data-label-ko="Apple의 집중 모드를 확장해 모든 앱의 알림을 Apple Intelligence로 비공개로 분류하는 iPhone·iPad 앱입니다. 스팸 알림은 조용히 하고 중요한 알림만 전달합니다.">
-  <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=6">
   <meta name="twitter:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン" data-label-ko="Karui 앱 아이콘">
   <style>
     /* No double-tap zoom: two quick taps through the demo, its arrows, or its dots
        zoomed the page on iPhone. Pinch zoom still works. */
     body { touch-action: manipulation; }
     :root {
-      --karui-ink: #1a211e;
-      --karui-muted: #666b62;
-      --karui-moss: #385f49;
-      --karui-clay: #b85137;
-      --karui-amber: #bf8932;
-      --karui-paper: #f4f1e8;
-      --karui-card: #fffdf8;
-      --karui-line: rgba(26, 33, 30, 0.14);
+      /* The app's Midnight colors, light mode. */
+      --karui-ink: #0E1530;
+      --karui-muted: #5C6380;
+      --karui-accent: #1B2A5C;
+      --karui-clay: #D63A28;
+      --karui-amber: #C9951A;
+      --karui-paper: #EDEFF5;
+      --karui-card: #FFFFFF;
+      --karui-line: rgba(14, 21, 48, 0.14);
     }
 
     body.sasu-site { background: #fff; }
@@ -102,12 +103,12 @@
     /* Plain chevrons, drawn in the page's ink; the whole 36px square is the tap target. */
     .karui-demo-arrow { display: flex; align-items: center; justify-content: center; width: 36px; height: 36px; margin: 0 4px; padding: 0; border: 0; border-radius: 8px; background: none; color: var(--karui-ink); cursor: pointer; appearance: none; -webkit-appearance: none; -webkit-tap-highlight-color: transparent; }
     .karui-demo-arrow svg { width: 18px; height: 18px; display: block; }
-    .karui-demo-arrow:hover { color: var(--karui-moss); }
+    .karui-demo-arrow:hover { color: var(--karui-accent); }
     .karui-demo-arrow:active { transform: translateY(1px); }
-    .karui-demo-arrow:focus-visible { outline: 2px solid var(--karui-moss); outline-offset: 2px; }
+    .karui-demo-arrow:focus-visible { outline: 2px solid var(--karui-accent); outline-offset: 2px; }
     .karui-demo-dot { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: var(--karui-line); cursor: pointer; appearance: none; -webkit-appearance: none; }
     .karui-demo-dot.is-current { background: var(--karui-ink); }
-    .karui-demo-dot:focus-visible { outline: 2px solid var(--karui-moss); outline-offset: 2px; }
+    .karui-demo-dot:focus-visible { outline: 2px solid var(--karui-accent); outline-offset: 2px; }
     @media (prefers-reduced-motion: reduce) { .karui-demo-shot, .karui-demo-clip { transition: none; } }
 
     /* Karui beside Focus and Apple Intelligence, for someone who already uses them:
@@ -122,12 +123,12 @@
     .karui-compare-table .karui-compare-focus { width: 32%; text-align: center; }
     .karui-compare-table .karui-compare-karui { width: 18%; text-align: center; }
     .karui-compare-table thead .karui-compare-focus { color: var(--karui-muted); }
-    .karui-compare-table thead .karui-compare-karui { color: var(--karui-moss); }
-    .karui-compare-table td.karui-compare-karui { background: rgba(56, 95, 73, 0.07); }
+    .karui-compare-table thead .karui-compare-karui { color: var(--karui-accent); }
+    .karui-compare-table td.karui-compare-karui { background: rgba(27, 42, 92, 0.07); }
     /* Drawn, in the stroke of the demo's chevrons, so they're the same in every language. */
     .karui-compare-yes, .karui-compare-no { display: inline-block; width: 18px; height: 18px; vertical-align: middle; fill: none; stroke: currentColor; stroke-width: 2.6; stroke-linecap: round; stroke-linejoin: round; }
-    .karui-compare-yes { color: var(--karui-moss); }
-    .karui-compare-no { color: rgba(26, 33, 30, 0.3); }
+    .karui-compare-yes { color: var(--karui-accent); }
+    .karui-compare-no { color: rgba(14, 21, 48, 0.3); }
     /* Korean wraps between words, not mid-word. */
     html[lang="ko"] body { word-break: keep-all; }
     /* Japanese wraps between phrases where the browser can, not mid-word. */
@@ -172,7 +173,7 @@
         })();
       </script>
       <div class="sasu-hero-header">
-        <a href="karui-qr.html" class="karui-qr-trigger" aria-label="Show a QR code for karui.jp"><span class="karui-icon"><span class="karui-icon-shape"><img src="assets/karui-icon-sketch.jpg?v=12" alt="Karui app icon with a tray and red badge, sketched in pencil" data-alt-en="Karui app icon with a tray and red badge, sketched in pencil" data-alt-ja="鉛筆で描いた、トレイと赤いバッジのKaruiアプリアイコン" data-alt-ko="연필로 그린, 트레이와 빨간 배지가 있는 Karui 앱 아이콘" width="64" height="64"><video src="assets/karui-icon-sketch.mp4?v=11" muted loop playsinline preload="auto" aria-hidden="true"></video></span></span></a>
+        <a href="karui-qr.html" class="karui-qr-trigger" aria-label="Show a QR code for karui.jp"><span class="karui-icon"><span class="karui-icon-shape"><img src="assets/karui-icon-sketch.jpg?v=13" alt="Karui app icon with a tray and red badge, sketched in pencil" data-alt-en="Karui app icon with a tray and red badge, sketched in pencil" data-alt-ja="鉛筆で描いた、トレイと赤いバッジのKaruiアプリアイコン" data-alt-ko="연필로 그린, 트레이와 빨간 배지가 있는 Karui 앱 아이콘" width="64" height="64"><video src="assets/karui-icon-sketch.mp4?v=12" muted loop playsinline preload="auto" aria-hidden="true"></video></span></span></a>
         <div>
           <h1>Karui</h1>
           <div class="sasu-subtitle" data-label-en="Silence spam notifications. See messages people unsend." data-label-ja="迷惑通知を消音。送信取り消しされたメッセージを確認。" data-label-ko="스팸 알림은 조용히. 전송 취소된 메시지도 확인.">Silence spam notifications. See messages people unsend.</div>
@@ -184,11 +185,11 @@
 
     <section class="sasu-section">
       <div class="karui-demo" role="group" aria-roledescription="carousel" aria-label="Karui on iPhone Duo, four screens" data-aria-label-en="Karui on iPhone Duo, four screens" data-aria-label-ja="iPhone DuoのKarui、4画面" data-aria-label-ko="iPhone Duo의 Karui, 4개 화면" tabindex="0">
-        <img class="karui-demo-shot is-current" src="assets/karui-demo-en-1.jpg?v=7" data-src-en="assets/karui-demo-en-1.jpg?v=7" data-src-ja="assets/karui-demo-ja-1.jpg?v=7" data-src-ko="assets/karui-demo-ko-1.jpg?v=7" width="720" height="1004" alt="Karui’s History, with notifications sorted as they arrived." data-alt-en="Karui’s History, with notifications sorted as they arrived." data-alt-ja="届いた通知が仕分けされたKaruiの履歴" data-alt-ko="도착한 알림이 분류된 Karui의 기록.">
-        <img class="karui-demo-shot" src="assets/karui-demo-en-2.jpg?v=7" data-src-en="assets/karui-demo-en-2.jpg?v=7" data-src-ja="assets/karui-demo-ja-2.jpg?v=7" data-src-ko="assets/karui-demo-ko-2.jpg?v=7" width="720" height="1004" alt="A promotion classified as spam, with Open Mail and reclassify options." data-alt-en="A promotion classified as spam, with Open Mail and reclassify options." data-alt-ja="スパムと分類された宣伝通知の詳細。Mailを開く、もう一度分類するなどの選択肢付き" data-alt-ko="스팸으로 분류된 광고 알림. Mail 열기와 다시 분류 옵션이 있습니다." loading="lazy">
-        <img class="karui-demo-shot" src="assets/karui-demo-en-3.jpg?v=7" data-src-en="assets/karui-demo-en-3.jpg?v=7" data-src-ja="assets/karui-demo-ja-3.jpg?v=7" data-src-ko="assets/karui-demo-ko-3.jpg?v=7" width="720" height="1004" alt="History keeps Sam’s party message, next to silenced promotions." data-alt-en="History keeps Sam’s party message, next to silenced promotions." data-alt-ja="サムのパーティーのメッセージが残り、宣伝は静かにされた履歴" data-alt-ko="샘의 파티 메시지가 조용해진 광고 옆에 남아 있는 기록." loading="lazy">
-        <img class="karui-demo-shot" src="assets/karui-demo-en-4.jpg?v=7" data-src-en="assets/karui-demo-en-4.jpg?v=7" data-src-ja="assets/karui-demo-ja-4.jpg?v=7" data-src-ko="assets/karui-demo-ko-4.jpg?v=7" width="720" height="1004" alt="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-en="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-ja="緊急アラーム：母から「今病院にいるの」のメッセージ。母に電話ボタン付き" data-alt-ko="긴급 알람: 엄마가 병원에 있다는 메시지와 엄마에게 전화하기 버튼." loading="lazy">
-        <video class="karui-demo-clip" src="assets/karui-demo-en-sort.mp4?v=7" data-src-en="assets/karui-demo-en-sort.mp4?v=7" data-src-ja="assets/karui-demo-ja-sort.mp4?v=7" data-src-ko="assets/karui-demo-ko-sort.mp4?v=7" width="720" height="1004" muted loop playsinline disablepictureinpicture disableremoteplayback preload="none" aria-hidden="true"></video>
+        <img class="karui-demo-shot is-current" src="assets/karui-demo-en-1.jpg?v=8" data-src-en="assets/karui-demo-en-1.jpg?v=8" data-src-ja="assets/karui-demo-ja-1.jpg?v=8" data-src-ko="assets/karui-demo-ko-1.jpg?v=8" width="720" height="1004" alt="Karui’s History, with notifications sorted as they arrived." data-alt-en="Karui’s History, with notifications sorted as they arrived." data-alt-ja="届いた通知が仕分けされたKaruiの履歴" data-alt-ko="도착한 알림이 분류된 Karui의 기록.">
+        <img class="karui-demo-shot" src="assets/karui-demo-en-2.jpg?v=8" data-src-en="assets/karui-demo-en-2.jpg?v=8" data-src-ja="assets/karui-demo-ja-2.jpg?v=8" data-src-ko="assets/karui-demo-ko-2.jpg?v=8" width="720" height="1004" alt="A promotion classified as spam, with Open Mail and reclassify options." data-alt-en="A promotion classified as spam, with Open Mail and reclassify options." data-alt-ja="スパムと分類された宣伝通知の詳細。Mailを開く、もう一度分類するなどの選択肢付き" data-alt-ko="스팸으로 분류된 광고 알림. Mail 열기와 다시 분류 옵션이 있습니다." loading="lazy">
+        <img class="karui-demo-shot" src="assets/karui-demo-en-3.jpg?v=8" data-src-en="assets/karui-demo-en-3.jpg?v=8" data-src-ja="assets/karui-demo-ja-3.jpg?v=8" data-src-ko="assets/karui-demo-ko-3.jpg?v=8" width="720" height="1004" alt="History keeps Sam’s party message, next to silenced promotions." data-alt-en="History keeps Sam’s party message, next to silenced promotions." data-alt-ja="サムのパーティーのメッセージが残り、宣伝は静かにされた履歴" data-alt-ko="샘의 파티 메시지가 조용해진 광고 옆에 남아 있는 기록." loading="lazy">
+        <img class="karui-demo-shot" src="assets/karui-demo-en-4.jpg?v=8" data-src-en="assets/karui-demo-en-4.jpg?v=8" data-src-ja="assets/karui-demo-ja-4.jpg?v=8" data-src-ko="assets/karui-demo-ko-4.jpg?v=8" width="720" height="1004" alt="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-en="A Wake Me alert: Mom wrote that she is at the hospital, with a Call Mom button." data-alt-ja="緊急アラーム：母から「今病院にいるの」のメッセージ。母に電話ボタン付き" data-alt-ko="긴급 알람: 엄마가 병원에 있다는 메시지와 엄마에게 전화하기 버튼." loading="lazy">
+        <video class="karui-demo-clip" src="assets/karui-demo-en-sort.mp4?v=8" data-src-en="assets/karui-demo-en-sort.mp4?v=8" data-src-ja="assets/karui-demo-ja-sort.mp4?v=8" data-src-ko="assets/karui-demo-ko-sort.mp4?v=8" width="720" height="1004" muted loop playsinline disablepictureinpicture disableremoteplayback preload="none" aria-hidden="true"></video>
         <button class="karui-demo-zone karui-demo-zone-prev" type="button" tabindex="-1" aria-hidden="true"></button>
         <button class="karui-demo-zone karui-demo-zone-next" type="button" tabindex="-1" aria-hidden="true"></button>
       </div>

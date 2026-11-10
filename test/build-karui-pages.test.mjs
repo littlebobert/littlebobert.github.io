@@ -34,7 +34,7 @@ test('builds every Karui clean route', async () => {
   }
 
   assert.match(acknowledgementsPage, /href="\/sasu-common\.css\?v=\d+"/);
-  assert.match(acknowledgementsPage, /href="\/assets\/karui-favicon\.png\?v=1"/);
+  assert.match(acknowledgementsPage, /href="\/assets\/karui-favicon\.png\?v=2"/);
   assert.match(acknowledgementsPage, /src="\/assets\/karui-icon-sketch\.jpg\?v=\d+"/);
   assert.match(acknowledgementsPage, /href="\/"/);
   assert.match(acknowledgementsPage, /href="\/privacy"/);
@@ -107,7 +107,7 @@ test('builds the changelog page and links to it from every page', async () => {
   const qrPage = await readOutputFile('qr/index.html');
   assert.match(qrPage, /<link rel="canonical" href="https:\/\/karui\.jp\/qr">/);
   assert.match(qrPage, /<section class="karui-qr" id="qr"/);
-  assert.match(qrPage, /<img src="\/assets\/karui-qr\.png\?v=1"/);
+  assert.match(qrPage, /<img src="\/assets\/karui-qr\.png\?v=2"/);
   assert.match(qrPage, /<a class="karui-qr-close" href="\/"/);
   // It opens on the 通知をかるく seal that turns into a code, then swipes to the
   // ガルシア one, then the icon code.

@@ -29,7 +29,7 @@ const iconBorder = Buffer.from(`
     height="${iconSize - iconBorderWidth}"
     rx="${iconCornerRadius - iconBorderWidth / 2}"
     fill="none"
-    stroke="#1a211e"
+    stroke="#0E1530"
     stroke-width="${iconBorderWidth}"
   />
 </svg>

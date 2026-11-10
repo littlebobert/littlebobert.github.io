@@ -16,7 +16,7 @@ let root = URL(fileURLWithPath: #filePath).deletingLastPathComponent().deletingL
 let iconPath = root.appendingPathComponent("assets/karui-icon.png").path
 
 func renderCode(to path: String) {
-    let ink: (r: CGFloat, g: CGFloat, b: CGFloat) = (0x1a / 255, 0x21 / 255, 0x1e / 255)  // Karui's ink, #1a211e
+    let ink: (r: CGFloat, g: CGFloat, b: CGFloat) = (0x0e / 255, 0x15 / 255, 0x30 / 255)  // Karui's Midnight ink, #0E1530
     let centerSpace: CGFloat = 0.3
 
     let filter = CIFilter(name: "CIRoundedQRCodeGenerator")!

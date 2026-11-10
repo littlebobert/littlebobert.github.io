@@ -5,8 +5,8 @@
   <title>Lightning Talk: Apple Intelligence in the Background</title>
   <link href="sasu-common.css?v=5" rel="stylesheet">
   <link href="karui-animated-icon.css?v=2" rel="stylesheet">
-  <link rel="icon" href="assets/karui-favicon.png?v=1" type="image/png">
-  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=2">
+  <link rel="icon" href="assets/karui-favicon.png?v=2" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=3">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body.sasu-site { background: #fff; }
@@ -105,15 +105,15 @@
   <meta property="og:url" content="https://karui.jp/technotes/lightning-talk">
   <meta property="og:site_name" content="Karui">
   <meta property="og:description" content="Four slides for a five-minute talk: why Karui uses Apple Intelligence, what Karui is, how many background calls Apple’s on-device model takes before it refuses, and why Private Cloud Compute through a Shortcut answers when the app’s own call can’t." data-label-en="Four slides for a five-minute talk: why Karui uses Apple Intelligence, what Karui is, how many background calls Apple’s on-device model takes before it refuses, and why Private Cloud Compute through a Shortcut answers when the app’s own call can’t." data-label-ja="5分間のトークのための4枚のスライド。KaruiがApple Intelligenceを使う理由、Karuiとは何か、Appleのオンデバイスモデルがバックグラウンドで何回まで応じるか、そしてアプリ自身の呼び出しが拒否されるときにショートカット経由のPrivate Cloud Computeが応答する理由。">
-  <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=5">
-  <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=6">
+  <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=6">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Lightning Talk: Apple Intelligence in the Background" data-label-en="Lightning Talk: Apple Intelligence in the Background" data-label-ja="ライトニングトーク：バックグラウンドのApple Intelligence">
-  <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=5">
+  <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=6">
   <meta name="twitter:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
 </head>
 <body class="sasu-site">
@@ -122,7 +122,7 @@
     <nav class="karui-breadcrumbs" aria-label="Breadcrumb"><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><a href="karui-technotes.html" data-label-en="Technical Notes" data-label-ja="技術ノート">Technical Notes</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="Lightning Talk" data-label-ja="ライトニングトーク">Lightning Talk</span></nav>
     <section class="sasu-hero">
       <div class="sasu-hero-header">
-        <a href="karui.html"><span class="karui-icon"><span class="karui-icon-shape"><img src="assets/karui-icon-sketch.jpg?v=12" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン" width="64" height="64"><video src="assets/karui-icon-sketch.mp4?v=11" muted loop playsinline preload="auto" aria-hidden="true"></video></span></span></a>
+        <a href="karui.html"><span class="karui-icon"><span class="karui-icon-shape"><img src="assets/karui-icon-sketch.jpg?v=13" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン" width="64" height="64"><video src="assets/karui-icon-sketch.mp4?v=12" muted loop playsinline preload="auto" aria-hidden="true"></video></span></span></a>
         <div><h1 data-label-en="Lightning Talk: Apple Intelligence in the Background" data-label-ja="ライトニングトーク：バックグラウンドのApple Intelligence">Lightning Talk: Apple Intelligence in the Background</h1><div class="sasu-subtitle">Karui</div></div>
       </div>
     </section>
@@ -162,7 +162,7 @@
           <div class="karui-slide-kicker karui-step" data-label-en="2/4 · What is Karui" data-label-ja="2/4 · Karuiとは">2/4 · What is Karui</div>
           <h2 class="karui-slide-title karui-step" data-label-en="A spam filter for push notifications" data-label-ja="プッシュ通知のスパムフィルター">A spam filter for push notifications</h2>
           <div class="karui-about karui-step">
-            <img class="karui-about-icon" src="assets/karui-app-icon.png?v=1" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン">
+            <img class="karui-about-icon" src="assets/karui-app-icon.png?v=2" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン">
             <div class="karui-about-tagline" data-label-en="Private, free, uses Apple Intelligence" data-label-ja="プライベート、無料、Apple Intelligenceを使用">Private, free, uses Apple Intelligence</div>
           </div>
           <div class="karui-about-need karui-step"><span data-label-en="Karui needs Apple Intelligence " data-label-ja="Karuiが通知を分類するには、">Karui needs Apple Intelligence </span><strong data-label-en="in the background" data-label-ja="バックグラウンドで">in the background</strong><span data-label-en=" to categorize notifications" data-label-ja="Apple Intelligenceが必要"> to categorize notifications</span></div>

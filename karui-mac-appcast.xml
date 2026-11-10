@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.11.1</title>
+            <pubDate>Tue, 10 Nov 2026 10:36:14 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>76</sparkle:version>
+            <sparkle:shortVersionString>0.11.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Translates notifications in languages you don’t read, on this Mac, when Translate notifications is on in Karui on your iPhone. Needs macOS 26.4 or later.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.1/Karui-0.11.1-mac.zip" length="3128174" type="application/octet-stream" sparkle:edSignature="dx9ctemenAWffKtMhWoesN5vlTawkWmszSNY/tkXVFjrYwosEvU8pI6mn6E167YFo648ppLVwujZT7nj/IpPAQ=="/>
+        </item>
+        <item>
             <title>0.11.0</title>
             <pubDate>Tue, 10 Nov 2026 06:48:10 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Fixed Karui for Mac 0.10.9 freezing while it checked your iPhone’s notifications.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.10/Karui-0.10.10-mac.zip" length="3076637" type="application/octet-stream" sparkle:edSignature="vI/uDdqCltTt74qwSBPktXhlL8iU877eoLiicARQ/r+bgOlXQK6h034m/6mI8EWOAdoPfSKQyvppsxDQVCh9BA=="/>
-        </item>
-        <item>
-            <title>0.10.9</title>
-            <pubDate>Mon, 09 Nov 2026 09:47:39 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>73</sparkle:version>
-            <sparkle:shortVersionString>0.10.9</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed a notification showing twice when your Mac got it before your iPhone did.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.9/Karui-0.10.9-mac.zip" length="3076999" type="application/octet-stream" sparkle:edSignature="dvp7JV/KyBlWsYiXB8GfAbHqNjYu5Rk4w0s+yoZWEAiaDBrPsfPpeVRZywrPNOMmDJ8YKLEgmAyYshtrZEvkDQ=="/>
         </item>
     </channel>
 </rss>

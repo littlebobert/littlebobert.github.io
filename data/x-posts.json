@@ -1,8 +1,108 @@
 {
-  "updatedAt": "2026-11-09T23:47:25.602Z",
+  "updatedAt": "2026-11-10T21:20:00.463Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2120139868810694793",
+      "text": "someone told me my pitch for Karui wasn’t good because it’s a free app. I guess there’s no urgency to download it if it’s not “free for a limited time”? anyway someone at a Halloween party with a Duo downloaded it and seemed pleased so I’m happy https://t.co/uWZCBmFvr3",
+      "createdAt": "2026-11-10T13:01:49.000Z",
+      "url": "https://x.com/_bobertdowney/status/2120139868810694793",
+      "urls": [
+        {
+          "url": "https://t.co/uWZCBmFvr3",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2120139868810694793/photo/1",
+          "displayUrl": "pic.x.com/uWZCBmFvr3",
+          "start": 246,
+          "end": 269
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2120139868810694793-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2120126851222044804",
+      "text": "anyone in ~JST want to group up in WoW Forever? dwarf warrior here https://t.co/PhQEIWeAGi",
+      "createdAt": "2026-11-10T12:10:06.000Z",
+      "url": "https://x.com/_bobertdowney/status/2120126851222044804",
+      "urls": [
+        {
+          "url": "https://t.co/PhQEIWeAGi",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2120126851222044804/photo/1",
+          "displayUrl": "pic.x.com/PhQEIWeAGi",
+          "start": 67,
+          "end": 90
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2120126851222044804-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2119944616631992679",
+      "text": "I trained an iOS Personal Voice to sound like SJ and with Karui for iPhone I can use it to announce incoming important notifications https://t.co/ZIrn1MZWrA",
+      "createdAt": "2026-11-10T00:05:57.000Z",
+      "url": "https://x.com/_bobertdowney/status/2119944616631992679",
+      "urls": [
+        {
+          "url": "https://t.co/ZIrn1MZWrA",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2119944616631992679/video/1",
+          "displayUrl": "pic.x.com/ZIrn1MZWrA",
+          "start": 133,
+          "end": 156
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "video",
+          "image": "assets/generated/x/mine-post-2119944616631992679-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2119942884791341122",
+      "text": "I’m still doing things the old-fashioned way: walking 10 feet to use the office Mac mini instead of using remote desktop 🤡 https://t.co/CPLHQYPHr0",
+      "createdAt": "2026-11-09T23:59:05.000Z",
+      "url": "https://x.com/_bobertdowney/status/2119942884791341122",
+      "urls": [
+        {
+          "url": "https://t.co/CPLHQYPHr0",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2119942884791341122/photo/1",
+          "displayUrl": "pic.x.com/CPLHQYPHr0",
+          "start": 123,
+          "end": 146
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2119942884791341122-0.png"
+        }
+      ]
+    },
     {
       "id": "2119755670081990681",
       "text": "my parents bought us a Performa 630 CD. I made crappy little REALBasic apps and played way too much Gemstone 3 after school https://t.co/h5BXOxVRLt",
@@ -133,131 +233,6 @@
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2117714438820429971",
-      "text": "new in iOS 27.3: evaluate how well Siri interacts with your app by running scripted conversations and seeing how your app reacts https://t.co/8tqlLcAslv",
-      "createdAt": "2026-11-03T20:24:02.000Z",
-      "url": "https://x.com/_bobertdowney/status/2117714438820429971",
-      "urls": [
-        {
-          "url": "https://t.co/8tqlLcAslv",
-          "expandedUrl": "https://developer.apple.com/documentation/sirievaluations",
-          "displayUrl": "developer.apple.com/documentation/…",
-          "start": 129,
-          "end": 152
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2117528244065026395",
-      "text": "The Japanese artist I work with just made a beautiful stamp for my app Karui. She sent me the physical stamps by mail too. She makes some pretty unusual things. I wonder if this assignment was boring for her. https://t.co/OCii6AN6BP https://t.co/kzDN2UDsCv",
-      "createdAt": "2026-11-03T08:04:09.000Z",
-      "url": "https://x.com/_bobertdowney/status/2117528244065026395",
-      "urls": [
-        {
-          "url": "https://t.co/OCii6AN6BP",
-          "expandedUrl": "https://www.instagram.com/tae___art",
-          "displayUrl": "instagram.com/tae___art",
-          "start": 209,
-          "end": 232
-        },
-        {
-          "url": "https://t.co/kzDN2UDsCv",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2117528244065026395/photo/1",
-          "displayUrl": "pic.x.com/kzDN2UDsCv",
-          "start": 233,
-          "end": 256
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2117528244065026395-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2117513726425493576",
-      "text": "ランニングの後にとんかつ 🤤 https://t.co/DJT2AllBua",
-      "createdAt": "2026-11-03T07:06:28.000Z",
-      "url": "https://x.com/_bobertdowney/status/2117513726425493576",
-      "urls": [
-        {
-          "url": "https://t.co/DJT2AllBua",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2117513726425493576/photo/1",
-          "displayUrl": "pic.x.com/DJT2AllBua",
-          "start": 15,
-          "end": 38
-        },
-        {
-          "url": "https://t.co/DJT2AllBua",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2117513726425493576/photo/1",
-          "displayUrl": "pic.x.com/DJT2AllBua",
-          "start": 15,
-          "end": 38
-        },
-        {
-          "url": "https://t.co/DJT2AllBua",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2117513726425493576/photo/1",
-          "displayUrl": "pic.x.com/DJT2AllBua",
-          "start": 15,
-          "end": 38
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2117513726425493576-0.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2117513726425493576-1.png"
-        },
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2117513726425493576-2.png"
-        }
-      ]
-    },
-    {
-      "id": "2117443739073626484",
-      "text": "やった https://t.co/mZudFJb1I1",
-      "createdAt": "2026-11-03T02:28:22.000Z",
-      "url": "https://x.com/_bobertdowney/status/2117443739073626484",
-      "urls": [
-        {
-          "url": "https://t.co/mZudFJb1I1",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2117443739073626484/photo/1",
-          "displayUrl": "pic.x.com/mZudFJb1I1",
-          "start": 4,
-          "end": 27
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2117443739073626484-0.png"
-        }
-      ]
     }
   ]
 }

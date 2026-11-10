@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.11.2</title>
+            <pubDate>Tue, 10 Nov 2026 16:51:28 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>77</sparkle:version>
+            <sparkle:shortVersionString>0.11.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Contacts that LINE and some mail apps don't name for Shortcuts now show by their name in the Sender column, instead of "No Name".
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.2/Karui-0.11.2-mac.zip" length="3129645" type="application/octet-stream" sparkle:edSignature="PzAaDB8Hag74hi2q1aM6YLRBKx7TTLWNk0QFWr75eqM4axMpM7aAO+icndMEyntUPGIctvzhW9eV5ZFwWxM8AQ=="/>
+        </item>
+        <item>
             <title>0.11.1</title>
             <pubDate>Tue, 10 Nov 2026 10:36:14 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- While Karui Cloud Sorting is on in Karui on your iPhone, this Mac sorts with Karui Cloud too.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.0/Karui-0.11.0-mac.zip" length="3087036" type="application/octet-stream" sparkle:edSignature="53rMn5Fj+vPdGyb00Wnnj+xNEx85tSSiehL+0yk0RntZTR7kdEhwHGj9kGRl90O8PWVY29Wz6Ycq57nYjKfiCQ=="/>
-        </item>
-        <item>
-            <title>0.10.10</title>
-            <pubDate>Mon, 09 Nov 2026 10:29:23 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>74</sparkle:version>
-            <sparkle:shortVersionString>0.10.10</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Fixed Karui for Mac 0.10.9 freezing while it checked your iPhone’s notifications.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.10.10/Karui-0.10.10-mac.zip" length="3076637" type="application/octet-stream" sparkle:edSignature="vI/uDdqCltTt74qwSBPktXhlL8iU877eoLiicARQ/r+bgOlXQK6h034m/6mI8EWOAdoPfSKQyvppsxDQVCh9BA=="/>
         </item>
     </channel>
 </rss>

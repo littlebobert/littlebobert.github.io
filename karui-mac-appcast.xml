@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.11.3</title>
+            <pubDate>Wed, 11 Nov 2026 13:37:22 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>78</sparkle:version>
+            <sparkle:shortVersionString>0.11.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- After an iCloud outage, notifications that only reached your Mac go to your iPhone to be sorted again, instead of a notification counted twice holding them all back.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.3/Karui-0.11.3-mac.zip" length="3130101" type="application/octet-stream" sparkle:edSignature="wqqhFvztl2ERc92vVBqDclgRIO/VpsZAoXh6PwHzYpMmNKXrLTEbYb/jLLzlLjamVQtAl0mBsrpjzSushgrwBg=="/>
+        </item>
+        <item>
             <title>0.11.2</title>
             <pubDate>Tue, 10 Nov 2026 16:51:28 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Translates notifications in languages you don’t read, on this Mac, when Translate notifications is on in Karui on your iPhone. Needs macOS 26.4 or later.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.1/Karui-0.11.1-mac.zip" length="3128174" type="application/octet-stream" sparkle:edSignature="dx9ctemenAWffKtMhWoesN5vlTawkWmszSNY/tkXVFjrYwosEvU8pI6mn6E167YFo648ppLVwujZT7nj/IpPAQ=="/>
-        </item>
-        <item>
-            <title>0.11.0</title>
-            <pubDate>Tue, 10 Nov 2026 06:48:10 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>75</sparkle:version>
-            <sparkle:shortVersionString>0.11.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- While Karui Cloud Sorting is on in Karui on your iPhone, this Mac sorts with Karui Cloud too.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.0/Karui-0.11.0-mac.zip" length="3087036" type="application/octet-stream" sparkle:edSignature="53rMn5Fj+vPdGyb00Wnnj+xNEx85tSSiehL+0yk0RntZTR7kdEhwHGj9kGRl90O8PWVY29Wz6Ycq57nYjKfiCQ=="/>
         </item>
     </channel>
 </rss>

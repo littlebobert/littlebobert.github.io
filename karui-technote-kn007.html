@@ -1,0 +1,464 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>KN007: Measuring Phone Checks With the Screen Time API</title>
+  <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link href="karui-animated-icon.css?v=2" rel="stylesheet">
+  <link rel="icon" href="assets/karui-favicon.png?v=2" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=3">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .karui-section { padding: 6pt 0 5pt; }
+    .karui-section p { margin: 0; }
+    .karui-section p + p, .karui-section ul + p, .karui-section ol + p { margin-top: 7pt; }
+    .karui-section ul, .karui-section ol { padding-left: 20pt; }
+    .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .karui-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    /* Keep two-word links like Tech Specs whole; the row wraps at the <wbr> after each separator. */
+    .footer-links a { white-space: nowrap; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+    .karui-section h2 { margin: 6pt 0 4pt; }
+    .karui-section h3 { margin: 8pt 0 3pt; }
+    .karui-section h2 + h3 { margin-top: 0; }
+    .karui-section li + li { margin-top: 3pt; }
+    .karui-section p + ul, .karui-section p + ol { margin-top: 6pt; }
+    .karui-section h2 + ul, .karui-section h2 + ol { margin-top: 0; }
+    .karui-section > ul:last-child, .karui-section > ol:last-child { margin-bottom: 0; }
+    .karui-code { background: #f4f3ee; border-radius: 8px; padding: 8pt 10pt; overflow-x: auto; font-size: calc(0.85em + 1pt); line-height: 1.4; }
+    .karui-table { border-collapse: collapse; width: 100%; margin: 4pt 0; }
+    .karui-table th, .karui-table td { border-bottom: 1px solid #e3e1da; padding: 5pt 6pt 5pt 0; text-align: left; vertical-align: top; }
+    .karui-table th { color: #555; font-weight: 600; }
+    .karui-table td:first-child, .karui-table th:first-child { white-space: nowrap; padding-right: 14pt; }
+    .karui-table-note { color: #555; font-size: 0.85em; margin-top: 3pt !important; }
+    .karui-quote { margin: 6pt 0 6pt 0; padding: 2pt 0 2pt 10pt; border-left: 3px solid #d8d6ce; color: #333; }
+    .karui-revision-date { font-weight: 600; }
+    .swift-string { color: #c41a16; }
+    .swift-keyword { color: #9b2393; font-weight: 600; }
+    .swift-type { color: #3900a0; }
+    .swift-function { color: #326d74; }
+    .karui-note-list li + li { margin-top: 8pt; }
+    .karui-note-meta { color: #555; font-size: 0.9em; }
+    .karui-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
+    .karui-breadcrumbs a { color: #666; }
+    .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
+    /* The maker line, as the home page has it: photo, name seal, and who made Karui. */
+    .karui-maker { display: flex; flex-direction: column-reverse; align-items: center; gap: 6pt; margin-top: 10pt !important; }
+    .karui-maker-marks { display: flex; align-items: center; justify-content: center; gap: 6pt; }
+    .karui-maker-photo { width: 40px; height: 51px; border-radius: 5px; object-fit: cover; flex: none; }
+    .karui-maker-text { text-align: center; line-height: 1.65em; color: black; }
+    /* A surname seal beside the photo, as tall and with the same corners. */
+    .karui-maker-seal { width: 24px; height: 51px; flex: none; }
+    /* The photo and seal are links; the pointer covers all of each, not just the drawn lines. */
+    .karui-seal-trigger, .karui-maker-photo-link { display: flex; flex: none; cursor: pointer; }
+    .karui-seal-trigger { margin-left: -2pt; }
+    .karui-seal-trigger img, .karui-maker-photo-link img { cursor: pointer; }
+    /* KN007's chart: one crosshair across both panels, a tooltip beside it. */
+    .karui-viz { position: relative; margin: 10pt 0 8pt; }
+    .karui-viz-plot { position: relative; border-radius: 6px; touch-action: pan-y; }
+    .karui-viz-plot:focus { outline: none; }
+    .karui-viz-plot:focus-visible { outline: 2px solid #3355C4; outline-offset: 4px; }
+    .karui-viz-plot svg { display: block; overflow: visible; font-family: Verdana, 'Hiragino Sans', sans-serif; }
+    .karui-viz-tip { position: absolute; top: 0; left: 0; z-index: 1; pointer-events: none; background: #fff; border: 1px solid #e3e1da; border-radius: 8px; box-shadow: 0 2px 10px rgba(14, 21, 48, 0.12); padding: 5pt 8pt; font-size: 0.85em; line-height: 1.4; opacity: 0; transition: opacity 0.1s; }
+    .karui-viz-tip.is-shown { opacity: 1; }
+    .karui-viz-tip-date { color: #555; margin-bottom: 2pt; white-space: nowrap; }
+    .karui-viz-tip-row { display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+    .karui-viz-tip-row strong { font-variant-numeric: tabular-nums; color: #0E1530; }
+    .karui-viz-tip-row span:last-child { color: #555; }
+    .karui-viz-key { width: 12px; height: 0; border-top: 3px solid; border-radius: 2px; flex: none; }
+    .karui-viz figcaption { margin-top: 6pt; font-size: 10pt; line-height: 1.4; color: #555; text-align: center; }
+    .karui-viz-data { margin-top: 6pt; font-size: 0.9em; }
+    .karui-viz-data summary { cursor: pointer; color: #555; }
+    .karui-viz-data td, .karui-viz-data th { font-variant-numeric: tabular-nums; }
+    .karui-table code { font-size: 0.85em; }
+    @media (max-width: 560px) { .karui-table td:first-child { white-space: normal; } }
+  </style>
+  <link rel="canonical" href="https://karui.jp/technotes/kn007">
+  <meta name="description" content="Whether fewer interruptions from Karui meant picking up my iPhone less, read from a month of my own Screen Time data, and what the Screen Time API gives an app." data-label-en="Whether fewer interruptions from Karui meant picking up my iPhone less, read from a month of my own Screen Time data, and what the Screen Time API gives an app." data-label-ja="Karuiで通知に邪魔されることが減り、iPhoneを手に取る回数も減ったのかを、自分のスクリーンタイム1か月分から読み、スクリーンタイムAPIがアプリに何を渡すかをまとめます。">
+  <meta property="og:title" content="KN007: Measuring Phone Checks With the Screen Time API" data-label-en="KN007: Measuring Phone Checks With the Screen Time API" data-label-ja="KN007：スクリーンタイムAPIでスマホを手に取る回数を測る">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2026-11-11">
+  <meta property="og:url" content="https://karui.jp/technotes/kn007">
+  <meta property="og:site_name" content="Karui">
+  <meta property="og:description" content="Whether fewer interruptions from Karui meant picking up my iPhone less, read from a month of my own Screen Time data, and what the Screen Time API gives an app." data-label-en="Whether fewer interruptions from Karui meant picking up my iPhone less, read from a month of my own Screen Time data, and what the Screen Time API gives an app." data-label-ja="Karuiで通知に邪魔されることが減り、iPhoneを手に取る回数も減ったのかを、自分のスクリーンタイム1か月分から読み、スクリーンタイムAPIがアプリに何を渡すかをまとめます。">
+  <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=6">
+  <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=6">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="KN007: Measuring Phone Checks With the Screen Time API" data-label-en="KN007: Measuring Phone Checks With the Screen Time API" data-label-ja="KN007：スクリーンタイムAPIでスマホを手に取る回数を測る">
+  <meta name="twitter:description" content="Whether fewer interruptions from Karui meant picking up my iPhone less, read from a month of my own Screen Time data, and what the Screen Time API gives an app." data-label-en="Whether fewer interruptions from Karui meant picking up my iPhone less, read from a month of my own Screen Time data, and what the Screen Time API gives an app." data-label-ja="Karuiで通知に邪魔されることが減り、iPhoneを手に取る回数も減ったのかを、自分のスクリーンタイム1か月分から読み、スクリーンタイムAPIがアプリに何を渡すかをまとめます。">
+  <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=6">
+  <meta name="twitter:image:alt" content="Karui app icon" data-label-en="Karui app icon" data-label-ja="Karuiアプリアイコン">
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <nav class="karui-breadcrumbs" aria-label="Breadcrumb"><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><a href="karui-technotes.html" data-label-en="Technical Notes" data-label-ja="技術ノート">Technical Notes</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="KN007" data-label-ja="KN007">KN007</span></nav>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="karui.html"><span class="karui-icon"><span class="karui-icon-shape"><img src="assets/karui-icon-sketch.jpg?v=13" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン" width="64" height="64"><video src="assets/karui-icon-sketch.mp4?v=12" muted loop playsinline preload="auto" aria-hidden="true"></video></span></span></a>
+        <div><h1 data-label-en="KN007: Measuring Phone Checks With the Screen Time API" data-label-ja="KN007：スクリーンタイムAPIでスマホを手に取る回数を測る">KN007: Measuring Phone Checks With the Screen Time API</h1><div class="sasu-subtitle">Karui</div></div>
+      </div>
+    </section>
+    <section class="karui-section">
+      <p data-label-en="Karui is meant to interrupt me less. I wanted to know whether that also meant picking up my iPhone less, so I read a month of my own Screen Time data through Apple’s Screen Time API." data-label-ja="Karuiの目的は、通知に邪魔される回数を減らすことです。それでiPhoneを手に取る回数も減ったのかを知りたくて、AppleのスクリーンタイムAPIで自分のスクリーンタイム1か月分を読みました。">Karui is meant to interrupt me less. I wanted to know whether that also meant picking up my iPhone less, so I read a month of my own Screen Time data through Apple’s Screen Time API.</p>
+      <p class="karui-note-meta" data-label-en="One iPhone · 29 days · iOS 27.3 beta · November 11, 2026" data-label-ja="iPhone 1台 · 29日間 · iOS 27.3ベータ · 2026年11月11日">One iPhone · 29 days · iOS 27.3 beta · November 11, 2026</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Results" data-label-ja="結果">Results</h2>
+      <figure class="karui-viz" id="kn007-chart"><div class="karui-viz-plot" tabindex="0" role="group" aria-roledescription="chart"></div><noscript><img src="assets/karui-kn007-phone-checks-en.png" width="1080" height="1080" style="width: 100%; height: auto" alt="Two charts from October 13 to November 10. Notifications a day averaged 211 in the first half and 246 in the second. Pickups with no app opened averaged 34 a day in the first half and 23 in the second."></noscript><div class="karui-viz-tip" role="status" aria-live="polite"></div><figcaption data-label-en="Notifications went up; pickups with no app opened fell by about a third. Hover, tap, or use the arrow keys to read each day." data-label-ja="通知は増え、アプリを開かずに手に取った回数は約3分の1減りました。ポインタを合わせるか、タップするか、矢印キーで各日の値を読めます。">Notifications went up; pickups with no app opened fell by about a third. Hover, tap, or use the arrow keys to read each day.</figcaption><details class="karui-viz-data"><summary>Show the data</summary><table class="karui-table"></table></details></figure>
+      <p data-label-en="Notifications went up, from an average of 211 a day in the first half of the month to 246 in the second. Pickups where I opened no app, picking up my iPhone, looking, and putting it down, went down from 34 a day to 23, about a third fewer." data-label-ja="通知は増えました。1日の平均は、月の前半が211件、後半が246件です。一方、アプリを開かずに手に取った回数、つまりiPhoneを手に取って画面を見て置いた回数は、1日34回から23回へ、約3分の1減りました。">Notifications went up, from an average of 211 a day in the first half of the month to 246 in the second. Pickups where I opened no app, picking up my iPhone, looking, and putting it down, went down from 34 a day to 23, about a third fewer.</p>
+      <p data-label-en="Screen time didn’t fall: about 4.5 hours a day in both halves. I picked up my iPhone less, but stayed on it a little longer each time, about 2.1 minutes against 1.8. Most of that was X, where I watch posts about my apps: it grew from 40 minutes a day in the first week to about 68." data-label-ja="スクリーンタイムは減りませんでした。前半も後半も1日約4.5時間です。手に取る回数は減ったものの、1回あたりの時間は約1.8分から約2.1分へ少し延びました。その多くはX（自分のアプリについての投稿を見ています）で、最初の週の1日40分から約68分に増えました。">Screen time didn’t fall: about 4.5 hours a day in both halves. I picked up my iPhone less, but stayed on it a little longer each time, about 2.1 minutes against 1.8. Most of that was X, where I watch posts about my apps: it grew from 40 minutes a day in the first week to about 68.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="What the Screen Time API gives an app" data-label-ja="スクリーンタイムAPIがアプリに渡すもの">What the Screen Time API gives an app</h2>
+      <p data-label-en="An app asks for Screen Time access once, then names a date range and how to split it: by hour, day, or week. For each day it gets:" data-label-ja="アプリは一度スクリーンタイムへのアクセスを求め、期間と区切り方（1時間・1日・1週間）を指定します。1日ごとに得られるのは次の値です。">An app asks for Screen Time access once, then names a date range and how to split it: by hour, day, or week. For each day it gets:</p>
+      <table class="karui-table"><thead><tr><th data-label-en="Value" data-label-ja="値">Value</th><th data-label-en="What it counts" data-label-ja="数えるもの">What it counts</th></tr></thead><tbody><tr><td><code>total<wbr>Pickups<wbr>Without<wbr>Application<wbr>Activity</code></td><td data-label-en="Pickups with no app used afterward. Apple doesn’t say whether unlocking to the Home Screen counts." data-label-ja="手に取ったあと、どのアプリも使わなかった回数。ホーム画面までロックを解除した場合を含むかどうかは、Appleは説明していません。">Pickups with no app used afterward. Apple doesn’t say whether unlocking to the Home Screen counts.</td></tr><tr><td><code>number<wbr>Of<wbr>Pickups</code></td><td data-label-en="Per app: pickups that went into that app." data-label-ja="アプリごと：そのアプリを開いた持ち上げの回数。">Per app: pickups that went into that app.</td></tr><tr><td><code>number<wbr>Of<wbr>Notifications</code></td><td data-label-en="Per app: notifications from that app." data-label-ja="アプリごと：そのアプリからの通知の数。">Per app: notifications from that app.</td></tr><tr><td><code>total<wbr>Activity<wbr>Duration</code></td><td data-label-en="Screen time, for the whole day and per app." data-label-ja="1日全体とアプリごとのスクリーンタイム。">Screen time, for the whole day and per app.</td></tr><tr><td><code>first<wbr>Pickup, longest<wbr>Activity</code></td><td data-label-en="When I first picked up my iPhone that day, and my longest session." data-label-ja="その日最初に手に取った時刻と、最も長く使った時間帯。">When I first picked up my iPhone that day, and my longest session.</td></tr></tbody></table>
+      <p data-label-en="It goes back about 30 days. I asked for 60 and got 31, the oldest of them empty." data-label-ja="さかのぼれるのは約30日です。60日分を求めて返ってきたのは31日分で、いちばん古い日は空でした。">It goes back about 30 days. I asked for 60 and got 31, the oldest of them empty.</p>
+      <p data-label-en="The numbers stay inside a report extension. iOS runs the extension with the data and shows the view it draws inside the app, but the extension can’t send anything anywhere, not even to its own app. So an app can show these numbers but can’t keep, sync, or act on them. iOS 26.4 added DeviceActivityData.activityData(filteredBy:using:) for reading them in the app itself, but I couldn’t get that to work on my iPhone." data-label-ja="これらの値はレポート拡張機能の中にとどまります。iOSはデータを渡して拡張機能を動かし、拡張機能が描いた画面をアプリの中に表示しますが、拡張機能はどこにも、自分のアプリにさえ、何も送れません。そのため、アプリはこれらの値を表示できても、保存したり、同期したり、それをもとに動いたりはできません。iOS 26.4では、アプリ自体で読むためのDeviceActivityData.activityData(filteredBy:using:)が追加されましたが、私のiPhoneではうまく動きませんでした。">The numbers stay inside a report extension. iOS runs the extension with the data and shows the view it draws inside the app, but the extension can’t send anything anywhere, not even to its own app. So an app can show these numbers but can’t keep, sync, or act on them. iOS 26.4 added DeviceActivityData.activityData(filteredBy:using:) for reading them in the app itself, but I couldn’t get that to work on my iPhone.</p>
+      <h3 data-label-en="Building it" data-label-ja="作るときの注意">Building it</h3>
+      <ul><li data-label-en="The Family Controls entitlement works in development builds with automatic signing. Shipping it to the App Store needs special approval from Apple." data-label-ja="Family Controlsのエンタイトルメントは、自動署名の開発ビルドならそのまま使えます。App Storeで配布するにはAppleの特別な承認が必要です。">The Family Controls entitlement works in development builds with automatic signing. Shipping it to the App Store needs special approval from Apple.</li><li data-label-en="With the iOS 27.2 SDK, a DeviceActivityReportScene doesn’t compile under Swift 6’s strict concurrency checking, so the test app builds in Swift 5 mode." data-label-ja="iOS 27.2 SDKでは、DeviceActivityReportSceneはSwift 6の厳格な並行性チェックの下ではコンパイルできないため、テスト用アプリはSwift 5モードでビルドしています。">With the iOS 27.2 SDK, a DeviceActivityReportScene doesn’t compile under Swift 6’s strict concurrency checking, so the test app builds in Swift 5 mode.</li></ul>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Caveats" data-label-ja="注意点">Caveats</h2>
+      <ul><li data-label-en="One person and four weeks, with no baseline from before Karui. Every day here was with Karui, so this is a trend while using it, not a before and after." data-label-ja="1人・4週間分で、Karuiを使う前の基準がありません。どの日もKaruiを使っていたので、これは使う前と後の比較ではなく、使っている間の傾向です。">One person and four weeks, with no baseline from before Karui. Every day here was with Karui, so this is a trend while using it, not a before and after.</li><li data-label-en="I make Karui, so some of the time in it is testing." data-label-ja="私はKaruiの開発者なので、Karuiで過ごした時間の一部はテストです。">I make Karui, so some of the time in it is testing.</li><li data-label-en="Days vary a lot, from 12 to 54 pickups with no app opened." data-label-ja="日ごとのばらつきは大きく、アプリを開かずに手に取った回数は12回から54回まであります。">Days vary a lot, from 12 to 54 pickups with no app opened.</li><li data-label-en="October 24 and 25 recorded no notifications despite about 5 hours of screen time each, so they’re left out of the notification averages." data-label-ja="10月24日と25日は、それぞれ約5時間のスクリーンタイムがあるのに通知が0件と記録されていたため、通知の平均から除きました。">October 24 and 25 recorded no notifications despite about 5 hours of screen time each, so they’re left out of the notification averages.</li></ul>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Revision History" data-label-ja="改訂履歴">Revision History</h2>
+      <ul><li><span class="karui-revision-date" data-label-en="2026-11-11" data-label-ja="2026-11-11">2026-11-11</span><span data-label-en=" First published." data-label-ja=" 初版公開。"> First published.</span></li></ul>
+    </section>
+    <section class="karui-section">
+      <p><a href="karui-technotes.html" data-label-en="← All Technical Notes" data-label-ja="← 技術ノート一覧">← All Technical Notes</a></p>
+    </section>
+    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p class="karui-maker"><span class="karui-maker-marks"><a href="https://onemorething.tokyo" class="karui-maker-photo-link" aria-label="Justin Garcia’s website"><img class="karui-maker-photo" src="assets/karui-developer.jpg?v=3" alt="" width="40" height="51"></a><a href="karui-seal.html" class="karui-seal-trigger" aria-label="About the name seal"><img class="karui-maker-seal" src="assets/karui-seal.png?v=10" alt="" width="24" height="51"></a></span><span class="karui-maker-text"><span data-label-en="Designed by " data-label-ja="東京の個人開発者 ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作"> in Tokyo</span></span></p></footer>
+  </main>
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('karui-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
+  </script>
+  <script>
+    // KN007's chart: notifications a day (gray bars) over pickups with no app opened (blue
+    // dots), one crosshair across both, each half's average as a line. Drawn to the
+    // figure's width, again when the language changes. Data from Pickups Spike's report.
+    (() => {
+      const DATA = [
+        ['2026-10-13', 19, 173], ['2026-10-14', 18, 235], ['2026-10-15', 40, 204], ['2026-10-16', 54, 381],
+        ['2026-10-17', 35, 211], ['2026-10-18', 42, 202], ['2026-10-19', 29, 207], ['2026-10-20', 32, 317],
+        ['2026-10-21', 44, 259], ['2026-10-22', 31, 192], ['2026-10-23', 31, 59], ['2026-10-24', 51, null],
+        ['2026-10-25', 30, null], ['2026-10-26', 23, 93], ['2026-10-27', 38, 285], ['2026-10-28', 17, 264],
+        ['2026-10-29', 36, 270], ['2026-10-30', 21, 468], ['2026-10-31', 27, 253], ['2026-11-01', 19, 214],
+        ['2026-11-02', 24, 238], ['2026-11-03', 26, 280], ['2026-11-04', 12, 231], ['2026-11-05', 24, 220],
+        ['2026-11-06', 29, 202], ['2026-11-07', 13, 155], ['2026-11-08', 17, 169], ['2026-11-09', 13, 196],
+        ['2026-11-10', 22, 246],
+      ].map(([date, pickups, notifications]) => ({ date: new Date(`${date}T12:00:00`), pickups, notifications }));
+      const FIRST = 14; // Oct 13–26 | Oct 27 – Nov 10
+      const halves = [DATA.slice(0, FIRST), DATA.slice(FIRST)];
+      const mean = (values) => {
+        const known = values.filter((value) => value != null);
+        return known.reduce((sum, value) => sum + value, 0) / known.length;
+      };
+      const AVG = {
+        pickups: halves.map((half) => mean(half.map((day) => day.pickups))),
+        notifications: halves.map((half) => mean(half.map((day) => day.notifications))),
+      };
+      // Validated with the dataviz skill's validate_palette.js on white: the blue passes
+      // every check; the gray is the deliberately neutral context series, over 3:1.
+      const COLOR = { blue: '#3355C4', gray: '#7D839A', grayAvg: '#4A5068', ink: '#0E1530', muted: '#5C6380', grid: 'rgba(14, 21, 48, 0.10)' };
+      const TEXT = {
+        en: {
+          notifications: 'Notifications a day', pickups: 'Pickups with no app opened',
+          average: (a, b) => `average ${Math.round(a)} → ${Math.round(b)}`,
+          perDay: (value) => `${Math.round(value)} a day`,
+          notificationsRow: 'notifications', pickupsRow: 'pickups with no app opened', noData: 'no data',
+          halves: ['First half, Oct 13–26', 'Second half, Oct 27 – Nov 10'],
+          averageOf: (row) => `${row}, average a day`,
+          day: (date) => date.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' }),
+          tick: (date) => date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }),
+          label: 'Chart of notifications and pickups with no app opened, each day from October 13 to November 10, 2026. Use the left and right arrow keys to read each day.',
+          table: 'Show the data', date: 'Day',
+        },
+        ja: {
+          notifications: '1日の通知数', pickups: 'アプリを開かずに手に取った回数',
+          average: (a, b) => `平均 ${Math.round(a)}件 → ${Math.round(b)}件`,
+          perDay: (value) => `1日${Math.round(value)}回`,
+          notificationsRow: '件の通知', pickupsRow: '回、アプリを開かずに手に取った', noData: '記録なし',
+          halves: ['前半（10月13日〜26日）', '後半（10月27日〜11月10日）'],
+          averageOf: (row) => `${row}（1日平均）`,
+          day: (date) => date.toLocaleDateString('ja-JP', { month: 'long', day: 'numeric', weekday: 'short' }),
+          tick: (date) => `${date.getMonth() + 1}/${date.getDate()}`,
+          label: '2026年10月13日から11月10日までの、毎日の通知数とアプリを開かずに手に取った回数のグラフ。左右の矢印キーで1日ずつ読めます。',
+          table: 'データを表示', date: '日付',
+        },
+      };
+
+      const figure = document.getElementById('kn007-chart');
+      if (!figure) return;
+      const plot = figure.querySelector('.karui-viz-plot');
+      const tip = figure.querySelector('.karui-viz-tip');
+      const summary = figure.querySelector('.karui-viz-data summary');
+      const table = figure.querySelector('.karui-viz-data table');
+      const SVG = 'http://www.w3.org/2000/svg';
+      let marks = null;
+      let active = null; // { kind: 'day', index } or { kind: 'average', series, half }
+
+      const el = (name, attributes = {}, parent) => {
+        const node = document.createElementNS(SVG, name);
+        for (const [key, value] of Object.entries(attributes)) node.setAttribute(key, value);
+        if (parent) parent.appendChild(node);
+        return node;
+      };
+      const text = (parent, x, y, content, attributes = {}) => {
+        const node = el('text', { x, y, ...attributes }, parent);
+        node.textContent = content;
+        return node;
+      };
+      const language = () => (document.documentElement.lang === 'ja' ? 'ja' : 'en');
+
+      function render() {
+        const t = TEXT[language()];
+        const width = Math.max(300, plot.clientWidth);
+        const narrow = width < 480;
+        const left = 34, right = width - 2;
+        const step = (right - left) / DATA.length;
+        const p1 = { top: 30, height: narrow ? 110 : 130, max: 500, ticks: [0, 250, 500] };
+        const p2 = { top: p1.top + p1.height + 52, height: narrow ? 170 : 200, max: 60, ticks: [0, 20, 40, 60] };
+        const height = p2.top + p2.height + 26;
+        const y1 = (value) => p1.top + p1.height - (p1.height * value) / p1.max;
+        const y2 = (value) => p2.top + p2.height - (p2.height * value) / p2.max;
+        const cx = (index) => left + step * (index + 0.5);
+        const halfX = (half) => [left + step * (half ? FIRST : 0) + 3, left + step * (half ? DATA.length : FIRST) - 3];
+
+        plot.textContent = '';
+        plot.setAttribute('aria-label', t.label);
+        const svg = el('svg', { viewBox: `0 0 ${width} ${height}`, width, height, 'aria-hidden': 'true' }, plot);
+        const fontSize = narrow ? 12 : 13;
+
+        // Panel titles, the notifications' averages beside theirs.
+        text(svg, left, p1.top - 14, t.notifications, { 'font-size': fontSize, 'font-weight': 700, fill: COLOR.ink });
+        text(svg, right, p1.top - 14, t.average(...AVG.notifications), { 'font-size': fontSize - 1, fill: COLOR.muted, 'text-anchor': 'end' });
+        text(svg, left, p2.top - 18, t.pickups, { 'font-size': fontSize, 'font-weight': 700, fill: COLOR.ink });
+
+        for (const [panel, y] of [[p1, y1], [p2, y2]]) {
+          for (const tick of panel.ticks) {
+            el('line', { x1: left, x2: right, y1: y(tick), y2: y(tick), stroke: COLOR.grid }, svg);
+            text(svg, left - 6, y(tick) + 4, String(tick), { 'font-size': 11, fill: COLOR.muted, 'text-anchor': 'end' });
+          }
+        }
+
+        const hairline = el('line', { y1: p1.top - 4, y2: p2.top + p2.height, stroke: COLOR.ink, 'stroke-opacity': 0.22, 'stroke-width': 1, visibility: 'hidden' }, svg);
+
+        // Bars: 2px of white between them, rounded only at the top.
+        const barWidth = Math.max(2, step - 2);
+        const bars = DATA.map((day, index) => {
+          if (day.notifications == null) return null;
+          const x = cx(index) - barWidth / 2, top = y1(day.notifications), bottom = y1(0);
+          const r = Math.min(4, barWidth / 2, bottom - top);
+          return el('path', {
+            d: `M${x},${bottom}V${top + r}Q${x},${top} ${x + r},${top}H${x + barWidth - r}Q${x + barWidth},${top} ${x + barWidth},${top + r}V${bottom}Z`,
+            fill: COLOR.gray, 'fill-opacity': 0.55,
+          }, svg);
+        });
+        const gap = DATA.findIndex((day) => day.notifications == null);
+        if (gap >= 0) text(svg, cx(gap) + step / 2, y1(0) - 6, t.noData, { 'font-size': 10, fill: COLOR.muted, 'text-anchor': 'middle' });
+
+        const radius = Math.max(3, Math.min(6, step * 0.28));
+        const dots = DATA.map((day, index) => el('circle', {
+          cx: cx(index), cy: y2(day.pickups), r: radius, fill: COLOR.blue, 'fill-opacity': 0.32, stroke: '#fff', 'stroke-width': 2,
+        }, svg));
+
+        // Each half's average: a white underlay so it reads over the marks.
+        const averages = { notifications: [], pickups: [] };
+        for (const [series, y, color] of [['notifications', y1, COLOR.grayAvg], ['pickups', y2, COLOR.blue]]) {
+          AVG[series].forEach((value, half) => {
+            const [x1, x2] = halfX(half);
+            el('line', { x1, x2, y1: y(value), y2: y(value), stroke: '#fff', 'stroke-width': 7, 'stroke-linecap': 'round' }, svg);
+            averages[series][half] = el('line', { x1, x2, y1: y(value), y2: y(value), stroke: color, 'stroke-width': 3, 'stroke-linecap': 'round' }, svg);
+            if (series === 'pickups') {
+              text(svg, (x1 + x2) / 2, y(value) - 10, t.perDay(value), {
+                'font-size': narrow ? 14 : 16, 'font-weight': 700, fill: COLOR.ink, 'text-anchor': 'middle',
+                stroke: '#fff', 'stroke-width': 5, 'paint-order': 'stroke', 'stroke-linejoin': 'round',
+              });
+            }
+          });
+        }
+
+        // Dates: every week, the first and last held inside the plot.
+        for (let index = 0; index < DATA.length; index += 7) {
+          const anchor = index === 0 ? 'start' : index === DATA.length - 1 ? 'end' : 'middle';
+          const x = anchor === 'start' ? cx(index) - step / 2 : anchor === 'end' ? cx(index) + step / 2 : cx(index);
+          text(svg, x, height - 6, t.tick(DATA[index].date), { 'font-size': 11, fill: COLOR.muted, 'text-anchor': anchor });
+        }
+
+        marks = { bars, dots, averages, hairline, cx, y1, y2, p1, p2, left, right, step, radius };
+
+        // The data, for reading without hovering.
+        summary.textContent = t.table;
+        table.textContent = '';
+        const head = table.createTHead().insertRow();
+        for (const label of [t.date, t.notifications, t.pickups]) {
+          const cell = document.createElement('th');
+          cell.textContent = label;
+          head.appendChild(cell);
+        }
+        const body = table.createTBody();
+        for (const day of DATA) {
+          const row = body.insertRow();
+          for (const value of [t.day(day.date), day.notifications ?? t.noData, day.pickups]) row.insertCell().textContent = String(value);
+        }
+
+        if (active) show(active);
+      }
+
+      function reset() {
+        if (!marks) return;
+        marks.bars.forEach((bar) => bar?.setAttribute('fill-opacity', 0.55));
+        marks.dots.forEach((dot) => { dot.setAttribute('fill-opacity', 0.32); dot.setAttribute('r', marks.radius); });
+        for (const series of ['notifications', 'pickups']) marks.averages[series].forEach((line) => line.setAttribute('stroke-width', 3));
+        marks.hairline.setAttribute('visibility', 'hidden');
+      }
+
+      function row(parent, key, value, label) {
+        const line = document.createElement('div');
+        line.className = 'karui-viz-tip-row';
+        const swatch = document.createElement('span');
+        swatch.className = 'karui-viz-key';
+        swatch.style.borderTopColor = key;
+        const strong = document.createElement('strong');
+        strong.textContent = value;
+        const name = document.createElement('span');
+        name.textContent = label;
+        line.append(swatch, strong, name);
+        parent.appendChild(line);
+      }
+
+      function show(target) {
+        active = target;
+        reset();
+        const t = TEXT[language()];
+        tip.textContent = '';
+        const heading = document.createElement('div');
+        heading.className = 'karui-viz-tip-date';
+        tip.appendChild(heading);
+        let x, y;
+        if (target.kind === 'day') {
+          const day = DATA[target.index];
+          heading.textContent = t.day(day.date);
+          row(tip, COLOR.gray, day.notifications == null ? t.noData : String(day.notifications), t.notificationsRow);
+          row(tip, COLOR.blue, String(day.pickups), t.pickupsRow);
+          marks.bars[target.index]?.setAttribute('fill-opacity', 0.9);
+          marks.dots[target.index].setAttribute('fill-opacity', 1);
+          marks.dots[target.index].setAttribute('r', marks.radius + 2);
+          x = marks.cx(target.index);
+          marks.hairline.setAttribute('x1', x);
+          marks.hairline.setAttribute('x2', x);
+          marks.hairline.setAttribute('visibility', 'visible');
+          y = marks.p1.top;
+        } else {
+          const value = AVG[target.series][target.half];
+          heading.textContent = t.halves[target.half];
+          const isPickups = target.series === 'pickups';
+          row(tip, isPickups ? COLOR.blue : COLOR.grayAvg, String(Math.round(value)), t.averageOf(isPickups ? t.pickupsRow : t.notificationsRow));
+          marks.averages[target.series][target.half].setAttribute('stroke-width', 5);
+          const line = marks.averages[target.series][target.half];
+          x = (Number(line.getAttribute('x1')) + Number(line.getAttribute('x2'))) / 2;
+          y = Number(line.getAttribute('y1')) + 14;
+        }
+        tip.classList.add('is-shown');
+        // Beside the column, flipped to the left near the right edge.
+        const tipWidth = tip.offsetWidth;
+        const plotLeft = plot.offsetLeft;
+        let left = plotLeft + x + 12;
+        if (left + tipWidth > plotLeft + plot.clientWidth) left = plotLeft + x - 12 - tipWidth;
+        tip.style.left = `${Math.max(0, left)}px`;
+        tip.style.top = `${plot.offsetTop + y}px`;
+      }
+
+      function hide() {
+        active = null;
+        reset();
+        tip.classList.remove('is-shown');
+      }
+
+      // The whole column is the target, and within 8px of an average line, the line,
+      // unless the pointer is on that day's dot, which wins.
+      function targetAt(event) {
+        const box = plot.getBoundingClientRect();
+        const x = event.clientX - box.left, y = event.clientY - box.top;
+        const { left, right, step, p1, p2, y1, y2 } = marks;
+        if (x < left || x > right || y < p1.top - 8 || y > p2.top + p2.height + 4) return null;
+        const index = Math.min(DATA.length - 1, Math.max(0, Math.floor((x - left) / step)));
+        const half = index < FIRST ? 0 : 1;
+        const onDot = Math.abs(y - y2(DATA[index].pickups)) < 12;
+        if (Math.abs(y - y1(AVG.notifications[half])) < 8) return { kind: 'average', series: 'notifications', half };
+        if (!onDot && Math.abs(y - y2(AVG.pickups[half])) < 8) return { kind: 'average', series: 'pickups', half };
+        return { kind: 'day', index };
+      }
+
+      plot.addEventListener('pointermove', (event) => {
+        const target = targetAt(event);
+        if (target) show(target); else hide();
+      });
+      plot.addEventListener('pointerdown', (event) => {
+        const target = targetAt(event);
+        if (target) show(target);
+      });
+      plot.addEventListener('pointerleave', (event) => { if (event.pointerType === 'mouse') hide(); });
+      plot.addEventListener('focus', () => show(active?.kind === 'day' ? active : { kind: 'day', index: DATA.length - 1 }));
+      plot.addEventListener('blur', hide);
+      plot.addEventListener('keydown', (event) => {
+        const index = active?.kind === 'day' ? active.index : DATA.length - 1;
+        const moves = { ArrowLeft: -1, ArrowRight: 1, Home: -index, End: DATA.length - 1 - index };
+        if (event.key in moves) {
+          event.preventDefault();
+          show({ kind: 'day', index: Math.min(DATA.length - 1, Math.max(0, index + moves[event.key])) });
+        } else if (event.key === 'Escape') {
+          hide();
+        }
+      });
+
+      render();
+      // Drawing changes the plot's height, so only a new width draws again.
+      let drawnWidth = plot.clientWidth;
+      new ResizeObserver(() => {
+        if (plot.clientWidth === drawnWidth) return;
+        drawnWidth = plot.clientWidth;
+        render();
+      }).observe(plot);
+      new MutationObserver(() => render()).observe(document.documentElement, { attributes: true, attributeFilter: ['lang'] });
+    })();
+  </script>
+  <script src="karui-animated-icon.js?v=1"></script>
+</body>
+</html>

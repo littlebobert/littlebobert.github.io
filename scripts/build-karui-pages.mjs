@@ -17,6 +17,7 @@ const kn002Directory = path.join(technotesDirectory, 'kn002');
 const kn004Directory = path.join(technotesDirectory, 'kn004');
 const kn005Directory = path.join(technotesDirectory, 'kn005');
 const kn006Directory = path.join(technotesDirectory, 'kn006');
+const kn007Directory = path.join(technotesDirectory, 'kn007');
 const lightningTalkDirectory = path.join(technotesDirectory, 'lightning-talk');
 
 const siteFiles = [
@@ -49,6 +50,8 @@ const assetFiles = [
   // KN004's App Privacy Report screenshot.
   'karui-kn004-privacy-report.jpg',
   'karui-kn004-privacy-report-icloud.jpg',
+  // KN007's chart as a picture, for browsers without JavaScript.
+  'karui-kn007-phone-checks-en.png',
   // The lightning talk's recording, and its first frame until it plays.
   'karui-lightning-talk.mp4',
   'karui-lightning-talk-poster.jpg',
@@ -77,6 +80,7 @@ await Promise.all([
   mkdir(kn004Directory, { recursive: true }),
   mkdir(kn005Directory, { recursive: true }),
   mkdir(kn006Directory, { recursive: true }),
+  mkdir(kn007Directory, { recursive: true }),
   mkdir(lightningTalkDirectory, { recursive: true }),
 ]);
 
@@ -128,6 +132,7 @@ function createDeployedPage(source) {
     .replaceAll('href="karui-technote-kn004.html"', 'href="/technotes/kn004"')
     .replaceAll('href="karui-technote-kn005.html"', 'href="/technotes/kn005"')
     .replaceAll('href="karui-technote-kn006.html"', 'href="/technotes/kn006"')
+    .replaceAll('href="karui-technote-kn007.html"', 'href="/technotes/kn007"')
     .replaceAll('href="karui-lightning-talk.html"', 'href="/technotes/lightning-talk"');
 }
 
@@ -178,6 +183,7 @@ const technicalPages = [
   ['karui-technote-kn004.html', ['technotes/kn004.html', 'technotes/kn004/index.html']],
   ['karui-technote-kn005.html', ['technotes/kn005.html', 'technotes/kn005/index.html']],
   ['karui-technote-kn006.html', ['technotes/kn006.html', 'technotes/kn006/index.html']],
+  ['karui-technote-kn007.html', ['technotes/kn007.html', 'technotes/kn007/index.html']],
   ['karui-lightning-talk.html', ['technotes/lightning-talk.html', 'technotes/lightning-talk/index.html']],
 ];
 await Promise.all(

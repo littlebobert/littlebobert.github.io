@@ -1,8 +1,65 @@
 {
-  "updatedAt": "2026-11-10T21:20:00.463Z",
+  "updatedAt": "2026-11-11T22:00:53.553Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2120504615628378241",
+      "text": "with Karui I pick up my phone just to glance at it a third less often, even though I’m getting more notifications. unfortunately my screen time didn’t go down: I just spent it on X monitoring posts about my side projects 🤡\n\nhttps://t.co/kKeMWjRUk8 https://t.co/hYti1mp4mp",
+      "createdAt": "2026-11-11T13:11:12.000Z",
+      "url": "https://x.com/_bobertdowney/status/2120504615628378241",
+      "urls": [
+        {
+          "url": "https://t.co/kKeMWjRUk8",
+          "expandedUrl": "https://karui.jp/technotes/kn007",
+          "displayUrl": "karui.jp/technotes/kn007",
+          "start": 224,
+          "end": 247
+        },
+        {
+          "url": "https://t.co/hYti1mp4mp",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2120504615628378241/photo/1",
+          "displayUrl": "pic.x.com/hYti1mp4mp",
+          "start": 248,
+          "end": 271
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2120504615628378241-0.png"
+        }
+      ]
+    },
+    {
+      "id": "2120383454743609664",
+      "text": "I’ve lived in Japan for over a year and hadn’t tried natto yet 🤡 https://t.co/TFk1Ed6fGs",
+      "createdAt": "2026-11-11T05:09:45.000Z",
+      "url": "https://x.com/_bobertdowney/status/2120383454743609664",
+      "urls": [
+        {
+          "url": "https://t.co/TFk1Ed6fGs",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2120383454743609664/photo/1",
+          "displayUrl": "pic.x.com/TFk1Ed6fGs",
+          "start": 65,
+          "end": 88
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2120383454743609664-0.png"
+        }
+      ]
+    },
     {
       "id": "2120139868810694793",
       "text": "someone told me my pitch for Karui wasn’t good because it’s a free app. I guess there’s no urgency to download it if it’s not “free for a limited time”? anyway someone at a Halloween party with a Duo downloaded it and seemed pleased so I’m happy https://t.co/uWZCBmFvr3",
@@ -195,44 +252,6 @@
           "image": "assets/generated/x/mine-post-2118041110580965703-0.png"
         }
       ]
-    },
-    {
-      "id": "2117918409468031376",
-      "text": "anyone else going to the Apple Intelligence lab at 2am JST 🫨? Siri is sometimes choosing a system app over mine even when mine is on screen https://t.co/IUUdSq4VOo",
-      "createdAt": "2026-11-04T09:54:32.000Z",
-      "url": "https://x.com/_bobertdowney/status/2117918409468031376",
-      "urls": [
-        {
-          "url": "https://t.co/IUUdSq4VOo",
-          "expandedUrl": "https://twitter.com/shshnkp/status/2117715120629633139",
-          "displayUrl": "x.com/shshnkp/status…",
-          "start": 140,
-          "end": 163
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2117719216715690482",
-      "text": "Apple’s Private Cloud Compute is competitive with Opus 5.5 for categorizing push notifications to filter out the unimportant ones https://t.co/2Wr0ERqLTQ",
-      "createdAt": "2026-11-03T20:43:01.000Z",
-      "url": "https://x.com/_bobertdowney/status/2117719216715690482",
-      "urls": [
-        {
-          "url": "https://t.co/2Wr0ERqLTQ",
-          "expandedUrl": "https://karui.jp/technotes/kn006",
-          "displayUrl": "karui.jp/technotes/kn006",
-          "start": 130,
-          "end": 153
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 }

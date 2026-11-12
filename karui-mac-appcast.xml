@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.11.5</title>
+            <pubDate>Thu, 12 Nov 2026 12:52:54 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>80</sparkle:version>
+            <sparkle:shortVersionString>0.11.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- After you click one of Karui's banners, the app it opens stays in front, instead of Karui coming back over it.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.5/Karui-0.11.5-mac.zip" length="3133501" type="application/octet-stream" sparkle:edSignature="+6Xfo1pWZMFAbjihvv/2hqlTGM1fZ33cSGNqAZWb9lVb+kirWTCBh7SUfuXXbpl4NpYq10pk565pQRHABH6nDQ=="/>
+        </item>
+        <item>
             <title>0.11.4</title>
             <pubDate>Thu, 12 Nov 2026 11:39:21 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- After an iCloud outage, notifications that only reached your Mac go to your iPhone to be sorted again, instead of a notification counted twice holding them all back.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.3/Karui-0.11.3-mac.zip" length="3130101" type="application/octet-stream" sparkle:edSignature="wqqhFvztl2ERc92vVBqDclgRIO/VpsZAoXh6PwHzYpMmNKXrLTEbYb/jLLzlLjamVQtAl0mBsrpjzSushgrwBg=="/>
-        </item>
-        <item>
-            <title>0.11.2</title>
-            <pubDate>Tue, 10 Nov 2026 16:51:28 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>77</sparkle:version>
-            <sparkle:shortVersionString>0.11.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Contacts that LINE and some mail apps don't name for Shortcuts now show by their name in the Sender column, instead of "No Name".
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.2/Karui-0.11.2-mac.zip" length="3129645" type="application/octet-stream" sparkle:edSignature="PzAaDB8Hag74hi2q1aM6YLRBKx7TTLWNk0QFWr75eqM4axMpM7aAO+icndMEyntUPGIctvzhW9eV5ZFwWxM8AQ=="/>
         </item>
     </channel>
 </rss>

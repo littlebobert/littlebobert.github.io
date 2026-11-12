@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.11.7</title>
+            <pubDate>Thu, 12 Nov 2026 14:31:15 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>82</sparkle:version>
+            <sparkle:shortVersionString>0.11.7</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Karui no longer stalls for a few seconds when notifications arrive from your iPhone while you read one on your Mac.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.7/Karui-0.11.7-mac.zip" length="3138478" type="application/octet-stream" sparkle:edSignature="Lae5lhEifCyWGICJymBrheVc1iS6qeEEjVxkKNnsqbNWOQQKFfYd1qnvfYxFFhRsA9/JNjZ+X3MAYpsVhHYxBA=="/>
+        </item>
+        <item>
             <title>0.11.6</title>
             <pubDate>Thu, 12 Nov 2026 14:22:14 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- After you click one of Karui's banners, the app it opens stays in front, instead of Karui coming back over it.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.5/Karui-0.11.5-mac.zip" length="3133501" type="application/octet-stream" sparkle:edSignature="+6Xfo1pWZMFAbjihvv/2hqlTGM1fZ33cSGNqAZWb9lVb+kirWTCBh7SUfuXXbpl4NpYq10pk565pQRHABH6nDQ=="/>
-        </item>
-        <item>
-            <title>0.11.4</title>
-            <pubDate>Thu, 12 Nov 2026 11:39:21 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>79</sparkle:version>
-            <sparkle:shortVersionString>0.11.4</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Clicking one of Karui's banners now opens the notification where it goes, in its app or the Messages conversation, the way a double-click in Karui does, instead of only showing it in Karui.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.4/Karui-0.11.4-mac.zip" length="3130866" type="application/octet-stream" sparkle:edSignature="lDoFOura0BdCUw+54M8lhs8gLGkClGGtsbceVdUeMfmdMKHmB3NDic2EZNHRYcWU3l9QnxwHsCuME3E+lBSGCA=="/>
         </item>
     </channel>
 </rss>

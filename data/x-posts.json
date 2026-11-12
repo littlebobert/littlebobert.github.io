@@ -1,8 +1,27 @@
 {
-  "updatedAt": "2026-11-11T22:00:53.553Z",
+  "updatedAt": "2026-11-12T21:51:17.767Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2120989026174001623",
+      "text": "Apple paper: the second part of the on-device text-to-speech for the newer Siri voices only uses 21megs of RAM and runs at 16x real time. seems really good for on-device TTS. the new voices sound good to me (U.S. English). the on-device model that produces the audio tokens is https://t.co/vurspiDl2E",
+      "createdAt": "2026-11-12T21:16:04.000Z",
+      "url": "https://x.com/_bobertdowney/status/2120989026174001623",
+      "urls": [
+        {
+          "url": "https://t.co/vurspiDl2E",
+          "expandedUrl": "https://twitter.com/ArxivSound/status/2117592997798052349",
+          "displayUrl": "x.com/ArxivSound/sta…",
+          "start": 277,
+          "end": 300
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2120504615628378241",
       "text": "with Karui I pick up my phone just to glance at it a third less often, even though I’m getting more notifications. unfortunately my screen time didn’t go down: I just spent it on X monitoring posts about my side projects 🤡\n\nhttps://t.co/kKeMWjRUk8 https://t.co/hYti1mp4mp",
@@ -225,31 +244,6 @@
           "alt": "",
           "type": "photo",
           "image": "assets/generated/x/mine-post-2118099319530360879-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2118041110580965703",
-      "text": "Siri people fielded my question during the lab 🤓 https://t.co/1wvNP246el",
-      "createdAt": "2026-11-04T18:02:06.000Z",
-      "url": "https://x.com/_bobertdowney/status/2118041110580965703",
-      "urls": [
-        {
-          "url": "https://t.co/1wvNP246el",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2118041110580965703/photo/1",
-          "displayUrl": "pic.x.com/1wvNP246el",
-          "start": 49,
-          "end": 72
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2118041110580965703-0.png"
         }
       ]
     }

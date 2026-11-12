@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.11.8</title>
+            <pubDate>Fri, 13 Nov 2026 07:13:57 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>83</sparkle:version>
+            <sparkle:shortVersionString>0.11.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- A new notification no longer shows as selected but unread when it arrives while you have another one selected.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.8/Karui-0.11.8-mac.zip" length="3139078" type="application/octet-stream" sparkle:edSignature="Yp0/AyP3UJ6ol1NX3vz6ATf0csK7Fl3GkZAkcfRoER7cUMIDKwg8SwfOH6JBZa79k6eqrMMIBs8rRR3P0D/qCQ=="/>
+        </item>
+        <item>
             <title>0.11.7</title>
             <pubDate>Thu, 12 Nov 2026 14:31:15 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Your iPhone keeps alerting quietly while you read or watch something on your Mac: Karui now waits 2 minutes without a key press or pointer movement, not 1, before telling it you've left. Locking or sleeping your Mac still counts at once.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.6/Karui-0.11.6-mac.zip" length="3133499" type="application/octet-stream" sparkle:edSignature="sM2HTTuIOZyJ7NBHsKx7fQ7N+Bhyii/bFzTBBxuigAZ/k7UqFn4tYFcaftd1xRqEcTp0BWPPmRQja7J5UyQRAQ=="/>
-        </item>
-        <item>
-            <title>0.11.5</title>
-            <pubDate>Thu, 12 Nov 2026 12:52:54 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>80</sparkle:version>
-            <sparkle:shortVersionString>0.11.5</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- After you click one of Karui's banners, the app it opens stays in front, instead of Karui coming back over it.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.5/Karui-0.11.5-mac.zip" length="3133501" type="application/octet-stream" sparkle:edSignature="+6Xfo1pWZMFAbjihvv/2hqlTGM1fZ33cSGNqAZWb9lVb+kirWTCBh7SUfuXXbpl4NpYq10pk565pQRHABH6nDQ=="/>
         </item>
     </channel>
 </rss>

@@ -113,8 +113,8 @@
 
     /* Karui beside Focus and Apple Intelligence, for someone who already uses them:
        a check for what each does, a dash for what it doesn't, a few words where it
-       does part of it. What both do comes first, so Focus's column starts full and
-       Karui's stays full. Karui's column is tinted. */
+       does part of it. Only what sets Karui apart is in it, not what both do.
+       Karui's column is tinted. */
     .karui-compare-table { width: 100%; margin-top: 7pt; border-collapse: collapse; font-size: inherit; line-height: 1.45; }
     .karui-compare-table th, .karui-compare-table td { padding: 5pt 6pt; border-top: 1px solid var(--karui-line); vertical-align: middle; }
     .karui-compare-table thead > tr > * { padding-top: 0; padding-bottom: 4pt; border-top: 0; vertical-align: bottom; }
@@ -140,8 +140,16 @@
       .karui-compare-table tbody th { width: 46%; }
       .karui-compare-table .karui-compare-focus { width: 34%; }
       .karui-compare-table .karui-compare-karui { width: 20%; }
+      /* No room beside the button on a phone, so it goes under it. */
+      .karui-requirements { display: block; margin: 4pt 0 0; }
     }
     .language-switcher select { min-width: 92px; }
+    /* Beside each Download button, like the version number on the other apps' pages: what
+       it needs, so nobody installs it on an iPhone without Apple Intelligence expecting
+       spam filtering. The App Store itself won't install it on anything before iOS 27. */
+    .karui-requirements { display: inline-block; margin-left: 8pt; color: var(--karui-muted); font-size: 9pt; line-height: 1.3; vertical-align: middle; }
+    /* The download button again at the end, for a reader convinced by the time they get there. */
+    .karui-download-again { padding-top: 10pt; }
   </style>
 </head>
 <body class="sasu-site">
@@ -179,8 +187,8 @@
           <div class="sasu-subtitle" data-label-en="Silence spam notifications. See messages people unsend." data-label-ja="迷惑通知を消音。送信取り消しされたメッセージを確認。" data-label-ko="스팸 알림은 조용히. 전송 취소된 메시지도 확인.">Silence spam notifications. See messages people unsend.</div>
         </div>
       </div>
-      <a class="download-link" href="https://apps.apple.com/app/karui-notifications/id6814134614" data-label-en="Download for iPhone" data-label-ja="iPhone版をダウンロード" data-label-ko="iPhone용 다운로드">Download for iPhone</a>
-      <div class="small-note" data-label-en="Free, with no subscriptions." data-label-ja="無料、サブスクリプションなし。" data-label-ko="무료, 구독 없음.">Free, with no subscriptions.</div>
+      <a class="download-link" href="https://apps.apple.com/app/karui-notifications/id6814134614" data-label-en="Download for iPhone" data-label-ja="iPhone版をダウンロード" data-label-ko="iPhone용 다운로드">Download for iPhone</a><span class="karui-requirements" data-label-en="Spam filtering requires Apple Intelligence." data-label-ja="スパムの振り分けにはApple Intelligenceが必要です。" data-label-ko="스팸 분류에는 Apple Intelligence가 필요합니다.">Spam filtering requires Apple Intelligence.</span>
+      <div class="small-note"><span data-label-en="Free, with no subscriptions. " data-label-ja="無料、サブスクリプションなし。" data-label-ko="무료, 구독 없음. ">Free, with no subscriptions. </span><a href="karui-privacy.html" data-label-en="Private" data-label-ja="プライバシー保護" data-label-ko="개인정보 보호">Private</a><span data-label-en=". No account and no analytics." data-label-ja="。アカウント不要、分析データの収集なし。" data-label-ko=". 계정도 분석 데이터 수집도 없습니다.">. No account and no analytics.</span></div>
     </section>
 
     <section class="sasu-section">
@@ -194,9 +202,9 @@
         <button class="karui-demo-zone karui-demo-zone-next" type="button" tabindex="-1" aria-hidden="true"></button>
       </div>
       <div class="karui-demo-captions" aria-live="polite">
-        <p class="karui-demo-caption is-current" data-label-en="With Karui, only important notifications interrupt you." data-label-ja="Karuiなら、知らせてくるのは重要な通知だけ" data-label-ko="Karui를 쓰면 중요한 알림만 울립니다.">With Karui, only important notifications interrupt you.</p>
-        <p class="karui-demo-caption" data-label-en="Spam and low-priority notifications stay silent." data-label-ja="スパムや優先度の低い通知は、静かに届く" data-label-ko="스팸과 우선순위가 낮은 알림은 조용히 도착합니다.">Spam and low-priority notifications stay silent.</p>
-        <p class="karui-demo-caption" data-label-en="You can even read unsent messages." data-label-ja="送信取り消しされても、Karuiで読める" data-label-ko="전송 취소된 메시지도 읽을 수 있습니다.">You can even read unsent messages.</p>
+        <p class="karui-demo-caption is-current" data-label-en="With Karui, only friends and important notifications get through." data-label-ja="Karuiなら、友だちと重要な通知だけが届く" data-label-ko="Karui를 쓰면 친구와 중요한 알림만 울립니다.">With Karui, only friends and important notifications get through.</p>
+        <p class="karui-demo-caption" data-label-en="Spam and unimportant notifications stay quiet." data-label-ja="スパムや大事でない通知は、鳴らさずに届く" data-label-ko="스팸과 중요하지 않은 알림은 조용히 도착합니다.">Spam and unimportant notifications stay quiet.</p>
+        <p class="karui-demo-caption" data-label-en="Read unsent messages." data-label-ja="送信取り消しされたメッセージも読める" data-label-ko="전송 취소된 메시지도 읽을 수 있습니다.">Read unsent messages.</p>
         <p class="karui-demo-caption" data-label-en="Emergencies wake you up, even on silent." data-label-ja="緊急の連絡は、寝ていてもアラームで知らせる" data-label-ko="긴급한 연락은 무음 모드에서도 알람으로 깨워 드립니다.">Emergencies wake you up, even on silent.</p>
       </div>
       <div class="karui-demo-controls">
@@ -231,12 +239,7 @@
             <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
           </tr>
           <tr>
-            <th scope="row" data-label-en="Keeps your iPhone quiet while you’re at your Mac" data-label-ja="Macを使っている間はiPhoneを静かに" data-label-ko="Mac을 쓰는 동안 iPhone을 조용히 유지">Keeps your iPhone quiet while you’re at your Mac</th>
-            <td class="karui-compare-focus"><svg class="karui-compare-no" viewBox="0 0 24 24" role="img" aria-label="No" data-aria-label-en="No" data-aria-label-ja="なし" data-aria-label-ko="아니요"><path d="M8 12h8"/></svg></td>
-            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
-          </tr>
-          <tr>
-            <th scope="row" data-label-en="Learns when you correct it" data-label-ja="誤りを直すと学習" data-label-ko="고쳐 주면 학습">Learns when you correct it</th>
+            <th scope="row" data-label-en="Quiets busy chats" data-label-ja="にぎやかなチャットを静かに" data-label-ko="활발한 채팅을 조용히">Quiets busy chats</th>
             <td class="karui-compare-focus"><svg class="karui-compare-no" viewBox="0 0 24 24" role="img" aria-label="No" data-aria-label-en="No" data-aria-label-ja="なし" data-aria-label-ko="아니요"><path d="M8 12h8"/></svg></td>
             <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
           </tr>
@@ -246,13 +249,23 @@
             <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
           </tr>
           <tr>
-            <th scope="row" data-label-en="Quiets busy chats" data-label-ja="にぎやかなチャットを静かに" data-label-ko="활발한 채팅을 조용히">Quiets busy chats</th>
+            <th scope="row" data-label-en="Learns when you correct it" data-label-ja="誤りを直すと学習" data-label-ko="고쳐 주면 학습">Learns when you correct it</th>
             <td class="karui-compare-focus"><svg class="karui-compare-no" viewBox="0 0 24 24" role="img" aria-label="No" data-aria-label-en="No" data-aria-label-ja="なし" data-aria-label-ko="아니요"><path d="M8 12h8"/></svg></td>
             <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
           </tr>
           <tr>
             <th scope="row" data-label-en="Lets your VIPs through" data-label-ja="VIPの通知を通す" data-label-ko="VIP의 알림을 전달">Lets your VIPs through</th>
             <td class="karui-compare-focus"><span class="karui-compare-partial" data-label-en="Only in some apps" data-label-ja="一部のアプリのみ" data-label-ko="일부 앱에서만">Only in some apps</span></td>
+            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" data-label-en="Wakes you up for emergencies, even on silent" data-label-ja="緊急の連絡は、消音中でもアラームで知らせる" data-label-ko="긴급한 연락은 무음 모드에서도 알람으로 알림">Wakes you up for emergencies, even on silent</th>
+            <td class="karui-compare-focus"><span class="karui-compare-partial" data-label-en="Only calls and texts from chosen contacts" data-label-ja="選んだ連絡先からの電話とメッセージのみ" data-label-ko="선택한 연락처의 전화와 문자만">Only calls and texts from chosen contacts</span></td>
+            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+          </tr>
+          <tr>
+            <th scope="row" data-label-en="Keeps your iPhone quiet while you’re at your Mac" data-label-ja="Macを使っている間はiPhoneを静かに" data-label-ko="Mac을 쓰는 동안 iPhone을 조용히 유지">Keeps your iPhone quiet while you’re at your Mac</th>
+            <td class="karui-compare-focus"><svg class="karui-compare-no" viewBox="0 0 24 24" role="img" aria-label="No" data-aria-label-en="No" data-aria-label-ja="なし" data-aria-label-ko="아니요"><path d="M8 12h8"/></svg></td>
             <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
           </tr>
           <tr>
@@ -270,21 +283,6 @@
             <td class="karui-compare-focus"><span class="karui-compare-partial" data-label-en="Only in Messages" data-label-ja="「メッセージ」内のみ" data-label-ko="메시지 앱에서만">Only in Messages</span></td>
             <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
           </tr>
-          <tr>
-            <th scope="row" data-label-en="Judges each notification by its content" data-label-ja="通知ごとに内容で判断" data-label-ko="알림마다 내용으로 판단">Judges each notification by its content</th>
-            <td class="karui-compare-focus"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
-            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
-          </tr>
-          <tr>
-            <th scope="row" data-label-en="Summarizes less important messages" data-label-ja="重要度の低いメッセージを要約" data-label-ko="덜 중요한 메시지를 요약">Summarizes less important messages</th>
-            <td class="karui-compare-focus"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
-            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
-          </tr>
-          <tr>
-            <th scope="row" data-label-en="Lets the apps you allow through" data-label-ja="許可したアプリの通知を通す" data-label-ko="허용한 앱의 알림을 전달">Lets the apps you allow through</th>
-            <td class="karui-compare-focus"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
-            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
-          </tr>
         </tbody>
       </table>
     </section>
@@ -296,6 +294,10 @@
     <section class="karui-detail">
       <h2 data-label-en="Privacy" data-label-ja="プライバシー" data-label-ko="개인정보 보호">Privacy</h2>
       <p><span data-label-en="By default, Karui runs entirely on your device, with no server and no analytics. If you turn on Private Cloud Sorting, some notifications are checked by Apple’s Private Cloud Compute. " data-label-ja="初期設定では、Karuiは完全にデバイス上で動作し、サーバーも分析データもありません。Private Cloud分類をオンにすると、一部の通知をAppleのPrivate Cloud Computeで確認します。" data-label-ko="기본적으로 Karui는 전적으로 기기 안에서 작동하며, 서버도 분석 데이터도 없습니다. Private Cloud 분류를 켜면 일부 알림을 Apple의 Private Cloud Compute에서 확인합니다. ">By default, Karui runs entirely on your device, with no server and no analytics. If you turn on Private Cloud Sorting, some notifications are checked by Apple’s Private Cloud Compute. </span><a href="karui-privacy.html" data-label-en="Details" data-label-ja="詳しく" data-label-ko="자세히 보기">Details</a><span data-label-en="." data-label-ja="" data-label-ko="">.</span></p>
+    </section>
+    <section class="karui-detail karui-download-again">
+      <a class="download-link" href="https://apps.apple.com/app/karui-notifications/id6814134614" data-label-en="Download for iPhone" data-label-ja="iPhone版をダウンロード" data-label-ko="iPhone용 다운로드">Download for iPhone</a><span class="karui-requirements" data-label-en="Spam filtering requires Apple Intelligence." data-label-ja="スパムの振り分けにはApple Intelligenceが必要です。" data-label-ko="스팸 분류에는 Apple Intelligence가 필요합니다.">Spam filtering requires Apple Intelligence.</span>
+      <div class="small-note" data-label-en="Free, with no subscriptions." data-label-ja="無料、サブスクリプションなし。" data-label-ko="무료, 구독 없음.">Free, with no subscriptions.</div>
     </section>
     <section class="karui-detail">
       <p><a href="karui-specs.html" data-label-en="How it works and tech specs →" data-label-ja="仕組みと技術仕様 →" data-label-ko="작동 방식과 기술 사양 →">How it works and tech specs →</a></p>

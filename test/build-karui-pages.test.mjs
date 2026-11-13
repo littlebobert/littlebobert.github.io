@@ -87,8 +87,13 @@ test('builds the changelog page and links to it from every page', async () => {
   // The demo: four screens from the iPhone Duo recording, each with its caption below, the
   // first with a clip over its still; no label above it and no App Store screenshots.
   assert.doesNotMatch(pages[0], /karui-demo-label/);
-  // Beside Download, only what matters before trying it; the requirements are in Tech Specs.
-  assert.match(pages[0], /<div class="small-note" data-label-en="Free, with no subscriptions\." data-label-ja="無料、サブスクリプションなし。">/);
+  // Beside each Download button, Apple Intelligence, so nobody installs it on an iPhone without
+  // it expecting spam filtering; iOS 27 isn't mentioned, since the App Store won't install it on
+  // anything older. Under the top one, the price and privacy. The full list is in Tech Specs.
+  assert.match(pages[0], /<div class="small-note"><span data-label-en="Free, with no subscriptions\. "[^>]*>Free, with no subscriptions\. <\/span><a href="\/privacy" data-label-en="Private"/);
+  assert.strictEqual(pages[0].match(/Download for iPhone<\/a><span class="karui-requirements" data-label-en="Spam filtering requires Apple Intelligence\."/g).length, 2);
+  // Download again at the end, after Privacy.
+  assert.strictEqual(pages[0].match(/<a class="download-link"/g).length, 2);
   assert.match(pages[0], /<div class="karui-demo" role="group" aria-roledescription="carousel"/);
   assert.match(pages[0], /<img class="karui-demo-shot is-current" src="\/assets\/karui-demo-en-1\.jpg\?v=\d+" data-src-en="\/assets\/karui-demo-en-1\.jpg\?v=\d+" data-src-ja="\/assets\/karui-demo-ja-1\.jpg\?v=\d+"/);
   assert.strictEqual(pages[0].match(/class="karui-demo-shot/g).length, 4);

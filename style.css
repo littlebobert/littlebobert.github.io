@@ -2497,6 +2497,11 @@ span.location::before {
   margin-right: 0.3em;
 }
 
+html[lang="ja"] span.location::before {
+  content: "、";
+  margin-right: 0;
+}
+
 ul.accomplishments {
   padding-top: 2pt;
   padding-bottom: 0pt;

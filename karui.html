@@ -140,14 +140,15 @@
       .karui-compare-table tbody th { width: 46%; }
       .karui-compare-table .karui-compare-focus { width: 34%; }
       .karui-compare-table .karui-compare-karui { width: 20%; }
-      /* No room beside the button on a phone, so it goes under it. */
-      .karui-requirements { display: block; margin: 4pt 0 0; }
     }
     .language-switcher select { min-width: 92px; }
     /* Beside each Download button, like the version number on the other apps' pages: what
        it needs, so nobody installs it on an iPhone without Apple Intelligence expecting
        spam filtering. The App Store itself won't install it on anything before iOS 27. */
     .karui-requirements { display: inline-block; margin-left: 8pt; color: var(--karui-muted); font-size: 9pt; line-height: 1.3; vertical-align: middle; }
+    /* No room beside the button on a phone, so it goes on its own line under it, flush left.
+       After the rule above, so it wins. */
+    @media (max-width: 560px) { .karui-requirements { display: block; margin: 5pt 0 0; } }
     /* The download button again at the end, for a reader convinced by the time they get there. */
     .karui-download-again { padding-top: 10pt; }
     /* Price and privacy under Download, in body text: they sell it, not fine print. */

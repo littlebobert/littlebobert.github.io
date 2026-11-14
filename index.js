@@ -1207,7 +1207,18 @@ function showStackCard(index) {
   updateStackCard(direction);
 }
 
+// index.html#apps (or any card's data-stack-card-name) opens straight to that card.
+function getStackCardIndexFromHash() {
+  const name = window.location.hash.slice(1);
+  return name ? stackCards.findIndex((card) => card.dataset.stackCardName === name) : -1;
+}
+
 function getSavedStackCardIndex() {
+  const hashIndex = getStackCardIndexFromHash();
+  if (hashIndex >= 0) {
+    return hashIndex;
+  }
+
   try {
     const savedIndex = Number(localStorage.getItem(STACK_CARD_STORAGE_KEY));
     if (Number.isInteger(savedIndex) && savedIndex >= 0 && savedIndex < stackCards.length) {
@@ -2326,6 +2337,10 @@ featureWindowSlots.forEach((featureWindowSlot) => {
     event.stopPropagation();
     closeFeatureWindow(featureWindow);
   });
+});
+
+window.addEventListener('hashchange', () => {
+  showStackCard(getStackCardIndexFromHash());
 });
 
 document.querySelectorAll('[data-stack-jump]').forEach((button) => {

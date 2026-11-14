@@ -23,14 +23,19 @@
     html[data-pdf-mode="true"] body.resume-page .language-switcher {
       display: none;
     }
+
+    html[data-pdf-mode="true"] body.resume-page a:link,
+    html[data-pdf-mode="true"] body.resume-page a:visited {
+      color: #0000ee;
+    }
   </style>
-  <title>Justin Garcia: Product engineer at Kotoba</title>
+  <title>Justin Garcia, product engineer at Kotoba</title>
   <link rel="icon" href="assets/karui-favicon.png?v=2" type="image/png">
-  <link href='style.css?v=162' rel='stylesheet'>
+  <link href='style.css?v=168' rel='stylesheet'>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="canonical" href="https://onemorething.tokyo/resume.html">
   <meta name="description" content="Resume of Justin Garcia, a Tokyo-based software engineer building iOS and real-time speech AI products at Kotoba, previously at Apple, Procore, and iHeartMedia.">
-  <meta property="og:title" content="Justin Garcia: Product engineer at Kotoba">
+  <meta property="og:title" content="Justin Garcia, product engineer at Kotoba">
   <meta property="og:description" content="Tokyo-based software engineer building iOS and real-time speech AI products at Kotoba, previously at Apple.">
   <meta property="og:type" content="profile">
   <meta property="og:url" content="https://onemorething.tokyo/resume.html">
@@ -41,7 +46,7 @@
   <meta property="og:image:height" content="960">
   <meta property="og:image:alt" content="Justin Garcia, product engineer at Kotoba, in Tokyo">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Justin Garcia: Product engineer at Kotoba">
+  <meta name="twitter:title" content="Justin Garcia, product engineer at Kotoba">
   <meta name="twitter:description" content="Tokyo-based software engineer building iOS and real-time speech AI products at Kotoba, previously at Apple.">
   <meta name="twitter:image" content="https://onemorething.tokyo/assets/resume-social.png?v=12">
   <meta name="twitter:image:alt" content="Justin Garcia, product engineer at Kotoba, in Tokyo">
@@ -119,7 +124,7 @@
       >Experience</h2>
       <article class="job">
         <div class="job-metadata">
-          <span class="company">Kotoba</span>
+          <span class="company">Kotoba</span><span class="role-title" data-label-ja=" シニアソフトウェアエンジニア">, Senior Software Engineer</span>
           <span
             class="time-period"
             data-label-ja="（2025年8月〜現在）"
@@ -127,29 +132,22 @@
         </div>
         <div class="role">
           <div
-            class="role-title"
-            data-label-ja="シニアソフトウェアエンジニア"
-          >Senior Software Engineer</div>
-          <div
             class="overview"
             data-label-ja="<a href='https://site.kotoba.tech'>Kotoba</a>の音声翻訳モデルを顧客に届けるアプリと連携機能を開発しています。"
           >I build the apps and integrations that put <a href="https://site.kotoba.tech">Kotoba</a>’s speech translation models in front of customers.</div>
           <ul class="accomplishments">
             <li
-              data-label-ja="5名のチームの一員として、MetaのRay-Banグラス向けにKotobaのオンデバイス日本語テキスト読み上げ（TTS）をリリース。Metaへの初回iOSソース引き渡しを担当し、音声合成のスループットを60%向上、初回音声までの時間を45%短縮。iPhone 11でメモリ使用量は126MBのまま安定して推移しました。"
-            >Shipped Kotoba’s on-device Japanese text-to-speech for Meta’s Ray-Ban glasses as part of a 5-person team. Owned the initial iOS source handoff to Meta and helped raise synthesis throughput 60% and cut time-to-first-audio 45% on iPhone 11, with memory flat at 126 MB.</li>
+              data-label-ja="5名のチームの一員として、MetaのRay-Banグラス向けにKotobaのオンデバイス日本語テキスト読み上げ（TTS）をリリース。Metaへの初回iOSソース引き渡しを担当し、iPhone&nbsp;11で音声合成のスループットを60%向上、初回音声までの時間を45%短縮。"
+            >Shipped Kotoba’s on-device Japanese text-to-speech for Meta’s Ray-Ban glasses as part of a 5-person team. Owned the initial iOS source handoff to Meta and helped raise synthesis throughput 60% and cut time-to-first-audio 45% on iPhone&nbsp;11.</li>
             <li
-              data-label-ja="RevenueCatの初期導入と、React Nativeによる独自ペイウォールを構築し、Kotobaのリアルタイム音声翻訳アプリ（iOS・Android）に実装。ペイウォールを自社で管理することで、RevenueCatのホスト型ペイウォールよりはるかに速く改善を重ねることができました。アプリは5か月で40万米ドルのARRに到達。"
-            >Built the initial RevenueCat integration and a custom React Native paywall for Kotoba’s real-time speech translation app on iOS and Android. Owning the paywall let us iterate on it faster than RevenueCat’s hosted version. The app reached $400K ARR in 5 months.</li>
+              data-label-ja="RevenueCatの初期導入と、React Nativeによる独自ペイウォールを構築し、Kotobaのリアルタイム音声翻訳アプリ（iOS・Android）に実装。アプリは5か月で40万米ドルのARRに到達。"
+            >Built the initial RevenueCat integration and a custom React Native paywall for Kotoba’s real-time speech translation app on iOS and Android. The app reached $400K ARR in 5 months.</li>
             <li
-              data-label-ja="Zoom、Google Meet向けリアルタイム翻訳ボットの初版を実装。現在約15社のエンタープライズ顧客が利用するプロダクトの一部です。"
-            >Implemented v1 of the live-translation bots for Zoom and Google Meet. They are part of the product now used by ~15 enterprise customers.</li>
+              data-label-ja="Zoom、Google Meet向けリアルタイム翻訳ボットの初版を構築。現在約15社のエンタープライズ顧客が利用しています。"
+            >Built the first Zoom and Google Meet live-translation bots, now used by about 15 enterprise customers.</li>
             <li
-              data-label-ja="研究チームのスコアリング手法を用いて、Kotoba初となる音声対音声翻訳モデルの自動評価パイプラインを構築。翻訳品質と音声品質の指標をレポートし、現在は研究チームがモデル開発中に1日複数回実行しています。"
-            >Built Kotoba’s first automated evaluation pipeline for speech-to-speech translation models, using the research team’s scoring. It reports translation and audio-quality metrics, and researchers now run it several times a day during model development.</li>
-            <li
-              data-label-ja="チームからの英語または日本語のリリース依頼をApp Store Connectの操作に変換し、iOSリリースを管理するSlackエージェント<a href='https://github.com/littlebobert/sendai'>Sendai</a>を作成。"
-            >Created <a href="https://github.com/littlebobert/sendai">Sendai</a>, a Slack agent that turns English or Japanese release requests from my team into App Store Connect actions to manage iOS releases.</li>
+              data-label-ja="研究チームのスコアリング手法を用いて、Kotoba初となる音声対音声翻訳モデルの自動評価パイプラインを構築。現在は研究チームがモデル開発中に1日複数回実行しています。"
+            >Built Kotoba’s first automated evaluation pipeline for speech-to-speech translation models, using the research team’s scoring. Researchers now run it several times a day during model development.</li>
           </ul>
         </div>
       </article>
@@ -173,17 +171,13 @@
       </article>
       <article class="job">
         <div class="job-metadata">
-          <span class="company">Procore</span>
+          <span class="company">Procore</span><span class="role-title" data-label-ja=" シニアiOSソフトウェアエンジニア">, Senior iOS Software Engineer</span>
           <span
             class="time-period"
             data-label-ja="（2018年7月〜2024年3月）"
           >(Jul 2018 – Mar 2024)</span><span class="location" data-label-ja="、カリフォルニア">, California</span>
         </div>
         <div class="role">
-          <div
-            class="role-title"
-            data-label-ja="シニアiOSソフトウェアエンジニア"
-          >Senior iOS Software Engineer</div>
           <div
             class="overview"
             data-label-ja="世界有数の建設管理プラットフォームのモバイルアプリ、<a href='https://apps.apple.com/us/app/procore/id374930542'>Procore for iOS</a>を約6年間Swiftで開発しました。"
@@ -203,17 +197,13 @@
       </article>
       <article class="job">
         <div class="job-metadata">
-          <span class="company">iHeartMedia</span>
+          <span class="company">iHeartMedia</span><span class="role-title" data-label-ja=" iOSソフトウェアエンジニア">, iOS Software Engineer</span>
           <span
             class="time-period"
             data-label-ja="（2016年12月〜2017年10月）"
           >(Dec 2016 – Oct 2017)</span><span class="location" data-label-ja="、ニューヨーク">, New York City</span>
         </div>
         <div class="role">
-          <div
-            class="role-title"
-            data-label-ja="iOSソフトウェアエンジニア"
-          >iOS Software Engineer</div>
           <div
             class="overview"
             data-label-ja="音楽・ポッドキャスト・ライブラジオを提供するiHeartMediaのアプリ、<a href='https://apps.apple.com/us/app/iheart-radio-podcasts-music/id290638154'>iHeartRadio for iOS</a>（登録ユーザー1億人以上）の開発に携わり、ポッドキャストの閲覧・再生UIの刷新をリリースしました。"
@@ -240,17 +230,13 @@
       </article>
       <article class="job">
         <div class="job-metadata">
-          <span class="company">Apple</span>
+          <span class="company">Apple</span><span class="role-title" data-label-ja=" ソフトウェアエンジニア">, Software Engineer</span>
           <span
             class="time-period"
             data-label-ja="（2005年6月〜2014年6月）"
           >(Jun 2005 – Jun 2014)</span><span class="location" data-label-ja="、クパチーノ">, Cupertino</span>
         </div>
         <div class="role">
-          <div
-            class="role-title"
-            data-label-ja="ソフトウェアエンジニア"
-          >Software Engineer</div>
           <div
             class="overview"
             data-label-ja="まずSafari/WebKitを担当し、2009年にiOSのテキスト入力とキーボードへ移りました。"
@@ -263,8 +249,8 @@
               data-label-ja="初代iPhoneでもiPhone OS&nbsp;3でリリースできるよう、Cut / Copy / Pasteを高速化。"
             >Made Cut / Copy / Paste fast enough on the original iPhone to ship in iPhone OS&nbsp;3.</li>
             <li
-              data-label-ja="<a href='https://github.com/WebKit/WebKit/commits?author=justin.garcia@apple.com'>WebKit</a>のリッチテキスト編集エンジンのオーナーを3年間担当。リンクとリストの編集を実装し、SafariでGmailとGoogle Docsのリッチテキスト編集が利用できるようにする取り組みに参加。5,000行のドキュメントの貼り付けを約3倍高速化。"
-            >Owned <a href="https://github.com/WebKit/WebKit/commits?author=justin.garcia@apple.com">WebKit</a>’s rich-text editing engine for 3 years. Implemented link and list editing, and helped bring rich-text editing to Gmail and Google Docs in Safari. Made pasting 5,000-line documents about 3x faster.</li>
+              data-label-ja="<a href='https://github.com/WebKit/WebKit/commits?author=justin.garcia@apple.com'>WebKit</a>のリッチテキスト編集エンジンのオーナーを3年間担当。リンクとリストの編集を実装し、SafariでGmailとGoogle Docsのリッチテキスト編集が利用できるようにする取り組みに参加。大きなドキュメントの貼り付けを約3倍高速化。"
+            >Owned <a href="https://github.com/WebKit/WebKit/commits?author=justin.garcia@apple.com">WebKit</a>’s rich-text editing engine for 3 years. Implemented link and list editing, and helped bring rich-text editing to Gmail and Google Docs in Safari. Made pasting large documents about 3x faster.</li>
             <li
               data-label-ja="iOSテキスト入力システムについて、2011年および<a href='https://archive.org/details/wwdc-2012-sessions/%5B2012%5D+%5BSession+220%5D+Keyboard+Input+in+iOS.mov'>2012年</a>のWWDCで発表。"
             >Presented at WWDC in 2011 and <a href="https://archive.org/details/wwdc-2012-sessions/%5B2012%5D+%5BSession+220%5D+Keyboard+Input+in+iOS.mov">2012</a> on the iOS text input system.</li>
@@ -346,7 +332,7 @@
       document.documentElement.lang = currentLanguage;
       languageToggle.textContent = currentLanguage === 'ja' ? 'English' : '日本語';
       languageToggle.setAttribute('aria-label', currentLanguage === 'ja' ? 'Switch to English' : '日本語に切り替える');
-      document.title = currentLanguage === 'ja' ? 'ジャスティン・ガルシアの履歴書' : 'Justin Garcia: Product engineer at Kotoba';
+      document.title = currentLanguage === 'ja' ? 'ジャスティン・ガルシアの履歴書' : 'Justin Garcia, product engineer at Kotoba';
       localStorage.setItem('site-language', currentLanguage);
     }
 

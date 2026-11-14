@@ -2368,6 +2368,11 @@ body.resume-page {
   color: black;
 }
 
+/* Keep a date range on one line when the company line wraps. */
+.resume .time-period {
+  white-space: nowrap;
+}
+
 /* A gap between bullets, so a wrapped bullet reads as one item. */
 .resume ul.accomplishments li + li {
   margin-top: 3pt;
@@ -2425,19 +2430,29 @@ html[lang="ja"] body.resume-page .language-switcher > button {
     width: 100%;
     max-width: none;
     margin: 0;
+    /* Sized so the whole resume prints on one A4 page from Safari at 100% scale.
+       Safari prints about 7% larger than Chrome at the same setting. */
+    font-size: 7.85pt;
+    line-height: 1.45;
+  }
+
+  /* Tighter spacing on paper, so the resume fits on one page. */
+  body.resume-page .section-title {
+    margin-top: 3pt;
+  }
+
+  body.resume-page ul.accomplishments li + li {
+    margin-top: 1.5pt;
   }
 
   body.resume-page .language-switcher {
     display: none;
   }
 
-  /* Keep each job whole, and a section title with what follows it. */
-  body.resume-page .job {
-    break-inside: avoid;
-  }
-
-  body.resume-page .section-title {
-    break-after: avoid;
+  /* One link color on paper; visited links would otherwise print purple. */
+  body.resume-page a:link,
+  body.resume-page a:visited {
+    color: #0000ee;
   }
 }
 
@@ -2452,7 +2467,7 @@ html[lang="ja"] body.resume-page .language-switcher > button {
 }
 
 .resume .section-title {
-  margin: 10pt 0 0;
+  margin: 6pt 0 0;
   font-size: inherit;
   line-height: inherit;
 }

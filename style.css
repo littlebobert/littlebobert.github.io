@@ -2364,8 +2364,13 @@ body.resume-page {
   margin: 0 auto;
   font-family: 'Verdana', 'Geneva', sans-serif;
   font-size: 10pt;
-  line-height: 1.5em;
+  line-height: 1.6;
   color: black;
+}
+
+/* A gap between bullets, so a wrapped bullet reads as one item. */
+.resume ul.accomplishments li + li {
+  margin-top: 3pt;
 }
 
 body.resume-page .language-switcher {
@@ -2425,6 +2430,15 @@ html[lang="ja"] body.resume-page .language-switcher > button {
   body.resume-page .language-switcher {
     display: none;
   }
+
+  /* Keep each job whole, and a section title with what follows it. */
+  body.resume-page .job {
+    break-inside: avoid;
+  }
+
+  body.resume-page .section-title {
+    break-after: avoid;
+  }
 }
 
 .contact-info {
@@ -2438,7 +2452,7 @@ html[lang="ja"] body.resume-page .language-switcher > button {
 }
 
 .resume .section-title {
-  margin: 0;
+  margin: 10pt 0 0;
   font-size: inherit;
   line-height: inherit;
 }

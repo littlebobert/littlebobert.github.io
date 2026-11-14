@@ -1,40 +1,8 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-11-13T21:27:14.305Z",
+  "updatedAt": "2026-11-14T19:57:35.049Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
-    {
-      "id": "2120504615628378241",
-      "text": "with Karui I pick up my phone just to glance at it a third less often, even though I’m getting more notifications. unfortunately my screen time didn’t go down: I just spent it on X monitoring posts about my side projects 🤡\n\nhttps://t.co/kKeMWjRUk8 https://t.co/hYti1mp4mp",
-      "createdAt": "2026-11-11T13:11:12.000Z",
-      "url": "https://x.com/_bobertdowney/status/2120504615628378241",
-      "urls": [
-        {
-          "url": "https://t.co/kKeMWjRUk8",
-          "expandedUrl": "https://karui.jp/technotes/kn007",
-          "displayUrl": "karui.jp/technotes/kn007",
-          "start": 224,
-          "end": 247
-        },
-        {
-          "url": "https://t.co/hYti1mp4mp",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2120504615628378241/photo/1",
-          "displayUrl": "pic.x.com/hYti1mp4mp",
-          "start": 248,
-          "end": 271
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2120504615628378241-0.png"
-        }
-      ]
-    },
     {
       "id": "2120383454743609664",
       "text": "I’ve lived in Japan for over a year and hadn’t tried natto yet 🤡 https://t.co/TFk1Ed6fGs",
@@ -82,56 +50,6 @@ window.X_POSTS_SNAPSHOT = {
           "alt": "",
           "type": "photo",
           "image": "assets/generated/x/mine-post-2120139868810694793-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2120126851222044804",
-      "text": "anyone in ~JST want to group up in WoW Forever? dwarf warrior here https://t.co/PhQEIWeAGi",
-      "createdAt": "2026-11-10T12:10:06.000Z",
-      "url": "https://x.com/_bobertdowney/status/2120126851222044804",
-      "urls": [
-        {
-          "url": "https://t.co/PhQEIWeAGi",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2120126851222044804/photo/1",
-          "displayUrl": "pic.x.com/PhQEIWeAGi",
-          "start": 67,
-          "end": 90
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2120126851222044804-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2119944616631992679",
-      "text": "I trained an iOS Personal Voice to sound like SJ and with Karui for iPhone I can use it to announce incoming important notifications https://t.co/ZIrn1MZWrA",
-      "createdAt": "2026-11-10T00:05:57.000Z",
-      "url": "https://x.com/_bobertdowney/status/2119944616631992679",
-      "urls": [
-        {
-          "url": "https://t.co/ZIrn1MZWrA",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2119944616631992679/video/1",
-          "displayUrl": "pic.x.com/ZIrn1MZWrA",
-          "start": 133,
-          "end": 156
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "video",
-          "image": "assets/generated/x/mine-post-2119944616631992679-0.png"
         }
       ]
     },
@@ -252,6 +170,63 @@ window.X_POSTS_SNAPSHOT = {
           "image": "assets/generated/x/mine-post-2118041110580965703-0.png"
         }
       ]
+    },
+    {
+      "id": "2117918409468031376",
+      "text": "anyone else going to the Apple Intelligence lab at 2am JST 🫨? Siri is sometimes choosing a system app over mine even when mine is on screen https://t.co/IUUdSq4VOo",
+      "createdAt": "2026-11-04T09:54:32.000Z",
+      "url": "https://x.com/_bobertdowney/status/2117918409468031376",
+      "urls": [
+        {
+          "url": "https://t.co/IUUdSq4VOo",
+          "expandedUrl": "https://twitter.com/shshnkp/status/2117715120629633139",
+          "displayUrl": "x.com/shshnkp/status…",
+          "start": 140,
+          "end": 163
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2117719216715690482",
+      "text": "Apple’s Private Cloud Compute is competitive with Opus 5.5 for categorizing push notifications to filter out the unimportant ones https://t.co/2Wr0ERqLTQ",
+      "createdAt": "2026-11-03T20:43:01.000Z",
+      "url": "https://x.com/_bobertdowney/status/2117719216715690482",
+      "urls": [
+        {
+          "url": "https://t.co/2Wr0ERqLTQ",
+          "expandedUrl": "https://karui.jp/technotes/kn006",
+          "displayUrl": "karui.jp/technotes/kn006",
+          "start": 130,
+          "end": 153
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
+    {
+      "id": "2117714438820429971",
+      "text": "new in iOS 27.3: evaluate how well Siri interacts with your app by running scripted conversations and seeing how your app reacts https://t.co/8tqlLcAslv",
+      "createdAt": "2026-11-03T20:24:02.000Z",
+      "url": "https://x.com/_bobertdowney/status/2117714438820429971",
+      "urls": [
+        {
+          "url": "https://t.co/8tqlLcAslv",
+          "expandedUrl": "https://developer.apple.com/documentation/sirievaluations",
+          "displayUrl": "developer.apple.com/documentation/…",
+          "start": 129,
+          "end": 152
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
     }
   ]
 };

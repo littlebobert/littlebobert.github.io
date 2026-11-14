@@ -294,7 +294,8 @@
     frame.className = 'christmas-lights';
     frame.setAttribute('aria-hidden', 'true');
     // A strand hangs straight down, so its picture is one stretch of wire with four bulbs, repeated.
-    const strand = pictures(20, 120, 'M10 0Q13 15 10 30T10 60T10 90T10 120', [[11, 8], [9, 38], [11, 68], [9, 98]]);
+    // The red one goes last, so a strand doesn't start on the color a swag does right beside it.
+    const strand = pictures(20, 120, 'M10 0Q13 15 10 30T10 60T10 90T10 120', [[9, 105], [11, 15], [9, 45], [11, 75]]);
     ['is-left', 'is-right'].forEach((side) => {
       const element = string(`christmas-strand ${side}`);
       hang(element, strand);

@@ -141,6 +141,15 @@ html.christmas-lights-off .christmas-string i {
   height: 44px;
 }
 
+/* The swag hangs from 26px above About. With a column either side, its ends run off the top of
+   the screen and into the side swags. On its own it should all be in view, so narrower pages
+   get that much room above About. */
+@media (max-width: 859px) {
+  html.christmas body.home-page {
+    padding-top: 28px;
+  }
+}
+
 /* The rest hang in a frame over the whole desktop that reaches out to the page's own top and
    side edges and clips there, so a glow never widens the page. */
 .christmas-lights {

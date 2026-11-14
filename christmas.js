@@ -457,134 +457,295 @@
   }
 
   // Christmas Delivery: Santa’s sleigh and winged presents, a module for the After Hours screensaver.
+  // Like the flying things of old screensavers, they are drawn in three-quarter view, heading down
+  // and to the left.
   function setUpScreensaver() {
-    const PIXEL = 3;
+    const PIXEL = 2;
+    // The way everything flies: along the sprites' own long axis, one pixel down for every two across.
+    const SLOPE = 0.5;
     const COLORS = {
-      W: '#fff', e: '#d4d4d4', k: '#6e6e6e', K: '#161616',
-      R: '#cf3038', r: '#8e1f28', G: '#39754b', g: '#244c35',
-      Y: '#f2c14e', B: '#80552f', b: '#b88955', P: '#efb38c', S: '#e8e5d9',
+      W: '#fff', c: '#c3c8d6', e: '#d4d4d4', k: '#8a8f9c', K: '#161616',
+      L: '#e8595e', R: '#cf3038', r: '#8e1f28', m: '#5c121a',
+      H: '#5a9c6a', G: '#39754b', g: '#244c35', n: '#14301f',
+      Z: '#ffe08a', Y: '#f2c14e', y: '#b98628', o: '#7a5516',
+      t: '#d0a676', b: '#b88955', B: '#80552f', d: '#553518',
+      P: '#efb38c', p: '#c98763',
+      S: '#e8e5d9', s: '#bcb7a4', z: '#8c8776',
+    };
+    // Each color's next shade down, for the edges where one solid passes in front of another.
+    const SHADE = {
+      W: 'e', e: 'k', L: 'R', R: 'r', r: 'm', H: 'G', G: 'g', g: 'n', Z: 'Y', Y: 'y', y: 'o',
+      t: 'b', b: 'B', B: 'd', P: 'p', S: 's', s: 'z',
     };
 
     function makeGrid(width, height) {
       return Array.from({ length: height }, () => Array(width).fill('.'));
-    }
-    function rect(grid, x, y, width, height, color) {
-      for (let row = Math.max(0, y); row < Math.min(grid.length, y + height); row += 1) {
-        for (let col = Math.max(0, x); col < Math.min(grid[0].length, x + width); col += 1) {
-          grid[row][col] = color;
-        }
-      }
     }
     function pixels(grid, color, cells) {
       cells.forEach(([x, y]) => {
         if (grid[y]?.[x] !== undefined) grid[y][x] = color;
       });
     }
-    function line(grid, x0, y0, x1, y1, color) {
-      const steps = Math.max(Math.abs(x1 - x0), Math.abs(y1 - y0));
-      for (let i = 0; i <= steps; i += 1) {
-        pixels(grid, color, [[Math.round(x0 + ((x1 - x0) * i) / steps), Math.round(y0 + ((y1 - y0) * i) / steps)]]);
-      }
-    }
 
-    function sleigh() {
-      const grid = makeGrid(62, 34);
-      // One reindeer, nose pointed into the journey.
-      rect(grid, 4, 17, 11, 8, 'B');
-      rect(grid, 3, 14, 5, 8, 'B');
-      rect(grid, 0, 11, 6, 6, 'B');
-      rect(grid, 0, 16, 4, 3, 'b');
-      pixels(grid, 'K', [[1, 12], [0, 18]]);
-      pixels(grid, 'b', [[5, 12], [6, 11], [4, 10], [2, 10]]);
-      line(grid, 3, 11, 2, 7, 'b');
-      line(grid, 2, 8, 0, 6, 'b');
-      line(grid, 2, 8, 5, 6, 'b');
-      line(grid, 5, 11, 7, 7, 'b');
-      line(grid, 7, 8, 9, 7, 'b');
-      rect(grid, 6, 25, 2, 5, 'B');
-      rect(grid, 12, 25, 2, 4, 'B');
-      rect(grid, 6, 29, 2, 1, 'K');
-      rect(grid, 12, 28, 2, 1, 'K');
-      rect(grid, 5, 18, 1, 6, 'R');
-      line(grid, 15, 20, 23, 22, 'Y');
-
-      // The sleigh, Santa, and a suspiciously large bag of presents.
-      rect(grid, 20, 20, 27, 7, 'R');
-      rect(grid, 42, 15, 6, 12, 'R');
-      rect(grid, 18, 17, 4, 9, 'R');
-      rect(grid, 20, 25, 27, 2, 'r');
-      rect(grid, 18, 17, 2, 7, 'r');
-      rect(grid, 22, 27, 2, 3, 'Y');
-      rect(grid, 42, 27, 2, 3, 'Y');
-      rect(grid, 17, 30, 33, 1, 'Y');
-      pixels(grid, 'Y', [[16, 29], [15, 28], [16, 27], [17, 27], [48, 30], [49, 30], [50, 29]]);
-      rect(grid, 31, 13, 10, 10, 'R');
-      rect(grid, 27, 16, 7, 3, 'R');
-      rect(grid, 29, 9, 8, 5, 'P');
-      rect(grid, 28, 12, 10, 5, 'W');
-      pixels(grid, 'K', [[31, 10], [35, 10]]);
-      rect(grid, 29, 5, 8, 4, 'R');
-      rect(grid, 35, 6, 5, 2, 'R');
-      rect(grid, 28, 8, 10, 2, 'W');
-      rect(grid, 39, 5, 3, 3, 'W');
-      rect(grid, 43, 9, 12, 13, 'S');
-      rect(grid, 47, 7, 6, 3, 'S');
-      rect(grid, 45, 8, 8, 2, 'G');
-      pixels(grid, 'G', [[49, 11], [50, 12], [51, 11], [52, 12], [53, 11]]);
-      return grid.map((row) => row.join(''));
-    }
-
-    // A feathered wing, shared with the visual language of Halloween's flying pumpkins.
-    function drawWing(grid, rootX, rootY, spine, long, short, fill, lineColor) {
-      const span = 72;
+    // A small isometric renderer. Solids live in a space where +Y is the way everything flies (down
+    // and to the left on screen), +X is the near side (down and to the right) and +Z is up. Each
+    // pixel looks down the (1, 1, 1) diagonal and keeps the nearest solid it meets. Light comes from
+    // above and ahead: tops are brightest, the near side darkest. `unit` is sprite pixels per unit.
+    function isoRender(grid, originX, originY, unit, solids) {
+      const depth = grid.map((row) => row.map(() => -Infinity));
       grid.forEach((row, y) => {
         row.forEach((cell, x) => {
-          const distance = Math.hypot(x + 0.5 - rootX, y + 0.5 - rootY);
-          const angle = ((Math.atan2(y + 0.5 - rootY, x + 0.5 - rootX) * 180) / Math.PI - spine + 540) % 360 - 180;
-          if (angle < -5 || angle > span) return;
-          const t = Math.max(0, angle) / span;
-          const reach = long - t * (long - short);
-          const feather = (angle + 5) % 12;
-          if (distance > reach - (feather > 8 ? 2.5 * (1 - t / 2) : 0)) return;
-          row[x] = feather < 1.4 && angle > 4 && distance > reach / 2 ? lineColor : fill;
+          const sx = (x + 0.5 - originX) / unit;
+          const sy = (y + 0.5 - originY) / unit;
+          // Where this pixel's line of sight crosses the ground.
+          const px = sy + sx / 2;
+          const py = sy - sx / 2;
+          solids.forEach((solid) => {
+            const hit = solid(px, py, unit);
+            if (hit && hit[0] > depth[y][x]) [depth[y][x], row[x]] = hit;
+          });
+        });
+      });
+      // A pixel just behind something much nearer drops a shade, which outlines overlapping parts.
+      const shaded = [];
+      grid.forEach((row, y) => {
+        row.forEach((cell, x) => {
+          if (!SHADE[cell]) return;
+          const behind = [[1, 0], [-1, 0], [0, 1], [0, -1]].some(([dx, dy]) => depth[y + dy]?.[x + dx] > depth[y][x] + 2.5);
+          if (behind) shaded.push([x, y]);
+        });
+      });
+      shaded.forEach(([x, y]) => { grid[y][x] = SHADE[grid[y][x]]; });
+    }
+
+    // `paint` is three colors (top, front, near side) or a function of (face, x, y, z).
+    function box(x0, y0, z0, x1, y1, z1, paint) {
+      return (px, py) => {
+        const t = Math.min(x1 - px, y1 - py, z1);
+        if (t <= Math.max(x0 - px, y0 - py, z0)) return null;
+        const face = t === z1 ? 0 : t === y1 - py ? 1 : 2;
+        const color = typeof paint === 'function' ? paint(face, px + t, py + t, t) : paint[face];
+        return color ? [t, color] : null;
+      };
+    }
+
+    // An ellipsoid in three tones (lit, turning away, in shadow), or a function of (tone, x, y, z).
+    function ball(cx, cy, cz, rx, ry, rz, paint) {
+      return (px, py) => {
+        const ox = (px - cx) / rx;
+        const oy = (py - cy) / ry;
+        const oz = -cz / rz;
+        const a = 1 / rx ** 2 + 1 / ry ** 2 + 1 / rz ** 2;
+        const b = ox / rx + oy / ry + oz / rz;
+        const inside = b * b - a * (ox * ox + oy * oy + oz * oz - 1);
+        if (inside < 0) return null;
+        const t = (-b + Math.sqrt(inside)) / a;
+        const nx = (ox + t / rx) / rx;
+        const ny = (oy + t / ry) / ry;
+        const nz = (oz + t / rz) / rz;
+        const lit = (-0.1 * nx + 0.45 * ny + 0.9 * nz) / Math.hypot(nx, ny, nz);
+        const tone = lit > 0.62 ? 0 : lit > 0.12 ? 1 : 2;
+        const color = typeof paint === 'function' ? paint(tone, px + t, py + t, t) : paint[tone];
+        return color ? [t, color] : null;
+      };
+    }
+
+    // A rounded limb from one point to another, as a string of balls.
+    function limb([ax, ay, az], [bx, by, bz], radius, paint) {
+      const count = Math.max(1, Math.ceil(Math.hypot(bx - ax, by - ay, bz - az) / (radius * 0.7)));
+      return Array.from({ length: count + 1 }, (_, i) => {
+        const t = i / count;
+        return ball(ax + (bx - ax) * t, ay + (by - ay) * t, az + (bz - az) * t, radius, radius, radius, paint);
+      });
+    }
+
+    // A cord from one point to another, a single sprite pixel thick.
+    function cord(from, to, color) {
+      const flat = ([x, y, z]) => [x - y, (x + y) / 2 - z];
+      const [ax, ay] = flat(from);
+      const [bx, by] = flat(to);
+      const steep = Math.abs(by - ay) > Math.abs(bx - ax);
+      return (px, py, unit) => {
+        const sx = px - py;
+        const sy = (px + py) / 2;
+        const along = steep ? (sy - ay) / (by - ay) : (sx - ax) / (bx - ax);
+        if (along < 0 || along > 1) return null;
+        const off = steep ? ax + (bx - ax) * along - sx : ay + (by - ay) * along - sy;
+        return Math.abs(off) * unit <= 0.5 ? [from[2] + (to[2] - from[2]) * along, color] : null;
+      };
+    }
+
+    // A feathered wing. Its leading edge runs out from the root along `spine` (degrees on screen),
+    // and five feathers rake back and outward from it, with rounded tips and a row of coverts.
+    // `sweep` is 1 for a wing whose feathers trail clockwise of the spine, -1 for its mirror image.
+    function drawWing(grid, rootX, rootY, spine, sweep, long, chord, fill, lineColor) {
+      const turn = (spine * Math.PI) / 180;
+      const feather = long / 5;
+      grid.forEach((row, y) => {
+        row.forEach((cell, x) => {
+          const dx = x + 0.5 - rootX;
+          const dy = y + 0.5 - rootY;
+          const back = sweep * (dy * Math.cos(turn) - dx * Math.sin(turn));
+          const along = dx * Math.cos(turn) + dy * Math.sin(turn) - back * 0.55;
+          const s = along / long;
+          if (s < -0.06 || s > 1) return;
+          const across = along / feather - Math.floor(along / feather);
+          const depth = chord * Math.min(1, 0.6 + 2 * s) * (1 - 0.55 * s * s) - 9 * (across - 0.5) ** 2;
+          if (back < -1 - 1.2 * Math.sin(Math.PI * Math.max(0, s)) || back > depth) return;
+          const gap = across * feather < 1 && back > depth * 0.45;
+          const covert = Math.abs(back - depth * 0.42) < 0.5 && s > 0.1;
+          row[x] = gap || covert ? lineColor : fill;
         });
       });
     }
 
-    function flyingGift(spine) {
-      const grid = makeGrid(32, 28);
-      drawWing(grid, 14, 17, spine - 10, 11, 6, 'e', 'k');
-      drawWing(grid, 17, 18, spine, 13, 7, 'W', 'e');
-      rect(grid, 10, 16, 13, 10, 'G');
-      rect(grid, 10, 16, 13, 2, 'g');
-      rect(grid, 15, 16, 3, 10, 'Y');
-      rect(grid, 10, 19, 13, 2, 'Y');
-      pixels(grid, 'Y', [[14, 14], [13, 13], [12, 14], [18, 14], [19, 13], [20, 14], [15, 15], [17, 15]]);
+    // A wrapped present with a lid and a bow, on a pair of wings. The far wing goes in first, so the
+    // present hides its root, and the near wing goes on top.
+    function flyingGift(flap, wrap, ribbon) {
+      const grid = makeGrid(54, 46);
+      const [originX, originY] = [27, 31];
+      const wrapped = (face, x, y, z) => {
+        const band = Math.abs(x - 6) < 1.25 || Math.abs(y - 6) < 1.25;
+        const color = (band ? ribbon : wrap)[face];
+        // The lid's shadow.
+        return face && z > 7.9 && z < 9 ? SHADE[color] : color;
+      };
+      drawWing(grid, originX - 7, originY - 8, [-108, -150, 172][flap], -1, 16, 10, 'e', 'k');
+      isoRender(grid, originX, originY, 1, [
+        box(0, 0, 0, 12, 12, 9, wrapped),
+        box(-1, -1, 9, 13, 13, 12, wrapped),
+        ball(8.4, 3.6, 13.4, 2.1, 2.1, 1.8, ribbon),
+        ball(3.6, 8.4, 13.4, 2.1, 2.1, 1.8, ribbon),
+        ball(6, 6, 13, 1.2, 1.2, 1.3, ribbon),
+      ]);
+      drawWing(grid, originX + 8, originY - 1, [-72, -30, 12][flap], 1, 18, 11, 'W', 'c');
       return grid.map((row) => row.join(''));
     }
 
+    // Santa at the reins, a sack of presents behind him and one reindeer out in front. `stride` is
+    // the reindeer's legs, gathered (0) or stretched out (1).
+    function sleigh(stride, unit = 1.2) {
+      const grid = makeGrid(Math.round(81.6 * unit), Math.round(53.4 * unit));
+      const [originX, originY] = [63.4 * unit, 20 * unit];
+      const red = 'LRr';
+      const gold = 'ZYy';
+      const brown = 'tbB';
+      const solids = [];
+      // Runners, curling up at the front.
+      [1, 11.5].forEach((x) => {
+        solids.push(
+          box(x, -2, 0, x + 1.5, 30, 1, gold),
+          box(x, 30, 0.5, x + 1.5, 32, 2.5, gold),
+          box(x, 31.5, 2, x + 1.5, 33, 6, gold),
+          box(x, 29.5, 5.5, x + 1.5, 32, 7, gold),
+          box(x, 4, 1, x + 1.5, 5.5, 4, gold),
+          box(x, 20, 1, x + 1.5, 21.5, 4, gold),
+        );
+      });
+      // The tub: a floor, two swooping sides (the near one pinstriped), a tall back and a
+      // dashboard, trimmed in gold.
+      const pinstriped = (face, x, y, z) => (face === 2 && z > 6.2 && z < 7.1 ? 'y' : red[face]);
+      solids.push(
+        box(0, 0, 4, 14, 26, 5.5, 'rrm'),
+        box(0, 0, 4, 1.5, 9, 13, red), box(12.5, 0, 4, 14, 9, 13, pinstriped),
+        box(0, 9, 4, 1.5, 19, 9, red), box(12.5, 9, 4, 14, 19, 9, pinstriped),
+        box(0, 19, 4, 1.5, 26, 11, red), box(12.5, 19, 4, 14, 26, 11, pinstriped),
+        box(0, 0, 4, 14, 1.5, 15, red),
+        box(0, 24.5, 4, 14, 26, 12, red),
+        box(0, 26, 10, 14, 27.5, 13, red),
+        box(0, 26, 13, 14, 27.5, 13.8, gold),
+        box(0, 0, 15, 14, 1.5, 15.8, gold),
+      );
+      // The sack, tied with a green cord.
+      solids.push(
+        ball(7, 6, 12.5, 4.8, 4.4, 6.5, (tone, x, y, z) => (z > 17 && z < 18.2 ? 'GGg' : 'Ssz')[tone]),
+        ball(7, 6, 19.6, 2.2, 2.2, 1.6, 'Ssz'),
+      );
+      // Santa: coat and belt, arms out to the reins, beard, face and hat.
+      solids.push(
+        ball(7, 14.5, 11.5, 4, 3.6, 5, (tone, x, y, z) => (z > 9.6 && z < 10.8 ? 'KKK' : red)[tone]),
+        ...limb([3.6, 15, 13.5], [4.2, 19.5, 14], 1.4, red),
+        ...limb([10.4, 15, 13.5], [9.8, 19.5, 14], 1.4, red),
+        ball(4.3, 20.4, 14, 1.2, 1.2, 1.2, 'GGg'),
+        ball(9.7, 20.4, 14, 1.2, 1.2, 1.2, 'GGg'),
+        ball(7, 15.6, 16.2, 3, 2.6, 2.8, 'Wee'),
+        ball(7, 15, 18.6, 2.6, 2.6, 3, 'PPp'),
+        ball(7, 15, 20.6, 3.1, 3.1, 1.3, 'Wee'),
+        ball(7, 14.8, 22, 2.5, 2.5, 1.8, red),
+        ball(7, 14.2, 23.5, 1.9, 1.9, 1.6, red),
+        ball(7, 13.4, 24.8, 1.3, 1.3, 1.3, red),
+        ball(7, 12.8, 26.2, 1.5, 1.5, 1.6, 'Wee'),
+      );
+      // The reindeer: legs, then body and harness, tail, neck, head, muzzle, red nose and ears.
+      const legs = stride
+        ? [[41, 37], [41.5, 43], [50, 48.5], [50.5, 54.5]]
+        : [[41, 43], [41.5, 39.5], [50, 53], [50.5, 48.5]];
+      legs.forEach(([hip, hoof], i) => {
+        const x = i % 2 ? 9.2 : 4.8;
+        solids.push(
+          ...limb([x, hip, 8], [x, hoof, 1.6], 1.1, brown),
+          ball(x, hoof, 0.9, 1.2, 1.2, 0.9, 'KKK'),
+        );
+      });
+      solids.push(
+        ball(7, 46, 10.5, 3.6, 7.4, 4, (tone, x, y) => (Math.abs(y - 49) < 0.9 ? red : brown)[tone]),
+        ball(7, 38.4, 12.6, 1.2, 1.2, 1.5, 'Sss'),
+        ...limb([7, 51.5, 12], [7, 54.5, 17], 2.3, brown),
+        ball(7, 55.6, 18.6, 2.4, 3, 2.7, brown),
+        ball(7, 58.2, 17.6, 1.7, 2, 1.7, 'ttb'),
+        ball(7, 60.2, 17.8, 1.2, 1.2, 1.3, red),
+        ball(4.7, 54.4, 20.6, 1.3, 0.9, 1.4, brown),
+        ball(9.3, 54.4, 20.6, 1.3, 0.9, 1.4, brown),
+      );
+      // Antlers, and the reins back to Santa's mittens.
+      [-1, 1].forEach((side) => {
+        solids.push(
+          ...limb([7 + side * 1.4, 55, 21], [7 + side * 3, 53.6, 26.5], 0.6, 'SSs'),
+          ...limb([7 + side * 2.2, 54.3, 23.6], [7 + side * 4.6, 55.8, 25], 0.6, 'SSs'),
+          ...limb([7 + side * 2.7, 53.9, 25.2], [7 + side * 4.4, 52.4, 27.6], 0.6, 'SSs'),
+          cord([7 + side * 2.7, 20.4, 14.4], [7 + side * 2.4, 49, 14], 'o'),
+        );
+      });
+      isoRender(grid, originX, originY, unit, solids);
+      const at = (x, y, z) => [Math.floor(originX + (x - y) * unit), Math.floor(originY + ((x + y) / 2 - z) * unit)];
+      // Eyes, turned a little toward us.
+      pixels(grid, 'K', [at(6.5, 17.3, 19.1), at(8.6, 16.9, 19.1), at(9.2, 56.8, 19.4)]);
+      return grid.map((row) => row.join(''));
+    }
+
+    // One path per color, a run of pixels at a time.
     const frameSvg = (rows, frame) => {
       const fills = {};
       rows.forEach((row, y) => {
-        [...row].forEach((cell, x) => {
-          if (cell !== '.') fills[cell] = `${fills[cell] || ''}<rect x="${x}" y="${y}" width="1" height="1"/>`;
-        });
+        for (const run of row.matchAll(/([^.])\1*/g)) {
+          fills[run[1]] = `${fills[run[1]] || ''}M${run.index} ${y}h${run[0].length}v1h-${run[0].length}z`;
+        }
       });
-      const shapes = Object.entries(fills).map(([cell, rects]) => `<g fill="${COLORS[cell]}">${rects}</g>`);
+      const shapes = Object.entries(fills).map(([cell, d]) => `<path fill="${COLORS[cell]}" d="${d}"/>`);
       return `<g data-frame="${frame}">${shapes.join('')}</g>`;
     };
 
-    const KINDS = {
-      sleigh: { frames: [sleigh()], flap: [0], frameMs: 200, speed: [75, 90], slope: 0.18, bob: 8 },
-      gift: { frames: [-95, -45, 5].map(flyingGift), flap: [0, 1, 2, 1], frameMs: 150, speed: [45, 80], slope: 0.42, bob: 10 },
-    };
-    Object.values(KINDS).forEach((kind) => {
-      const columns = kind.frames[0][0].length;
-      const rowCount = Math.max(...kind.frames.map((rows) => rows.length));
-      kind.width = columns * PIXEL;
-      kind.height = rowCount * PIXEL;
-      kind.svg = `<svg viewBox="0 0 ${columns} ${rowCount}" width="${kind.width}" height="${kind.height}" shape-rendering="crispEdges">${kind.frames.map(frameSvg).join('')}</svg>`;
-    });
+    // Wrapping paper and ribbon, each as top, front and near-side colors.
+    const WRAPS = [['HGg', 'ZYy'], ['LRr', 'Wee'], ['ZYy', 'LRr']];
+    // Drawn the first time the screensaver starts, to keep it off the page load.
+    let kinds = null;
+    function drawKinds() {
+      const drawn = {
+        sleigh: [{ frames: [0, 1].map((stride) => sleigh(stride)), flap: [0, 1], frameMs: 220, speed: [75, 90], bob: 8 }],
+        gift: WRAPS.map(([wrap, ribbon]) => ({
+          frames: [0, 1, 2].map((flap) => flyingGift(flap, wrap, ribbon)),
+          flap: [0, 1, 2, 1], frameMs: 150, speed: [45, 80], bob: 10,
+        })),
+      };
+      Object.values(drawn).flat().forEach((kind) => {
+        const columns = kind.frames[0][0].length;
+        const rowCount = kind.frames[0].length;
+        kind.width = columns * PIXEL;
+        kind.height = rowCount * PIXEL;
+        kind.svg = `<svg viewBox="0 0 ${columns} ${rowCount}" width="${kind.width}" height="${kind.height}" shape-rendering="crispEdges">${kind.frames.map(frameSvg).join('')}</svg>`;
+      });
+      return drawn;
+    }
 
     const SPEEDS = [0.5, 0.75, 1, 1.5, 2];
     const DENSITIES = [0.5, 0.75, 1, 1.5, 2];
@@ -603,6 +764,7 @@
       const height = window.innerHeight;
       const density = DENSITIES[options.density];
       const speed = SPEEDS[options.speed];
+      kinds ??= drawKinds();
       const counts = {
         sleigh: 1,
         gift: Math.max(1, Math.round(Math.min(9, Math.max(3, (width * height) / 170000)) * density)),
@@ -634,7 +796,7 @@
       const sprites = [];
       Object.entries(counts).forEach(([name, count]) => {
         for (let i = 0; i < count; i += 1) {
-          const kind = KINDS[name];
+          const kind = kinds[name][i % kinds[name].length];
           const el = document.createElement('div');
           el.className = `screensaver-sprite christmas-${name}`;
           el.innerHTML = kind.svg;
@@ -659,7 +821,7 @@
         sprites.forEach((sprite) => {
           const { kind } = sprite;
           sprite.x -= sprite.speed * dt;
-          sprite.y += sprite.speed * kind.slope * dt;
+          sprite.y += sprite.speed * SLOPE * dt;
           if (sprite.x < -kind.width || sprite.y > height) respawn(sprite);
           const bob = Math.sin((now + sprite.phase) / 350) * kind.bob;
           sprite.el.style.transform = `translate3d(${sprite.x.toFixed(2)}px, ${(sprite.y + bob).toFixed(2)}px, 0)`;
@@ -683,7 +845,9 @@
 
     // After Hours (tokyo-night.js) runs the idle timer, the Sleep Now corner and the desk accessory.
     // Seasonal modules go first in its list and are the default screensaver while they're around.
-    const previewSvg = `<svg viewBox="0 0 62 34" shape-rendering="crispEdges">${frameSvg(KINDS.sleigh.frames[0], 0)}</svg>`;
+    // The preview is the sleigh drawn small, at one sprite pixel per pixel of its little screen.
+    const preview = sleigh(0, 0.71);
+    const previewSvg = `<svg viewBox="0 0 ${preview[0].length} ${preview.length}" shape-rendering="crispEdges">${frameSvg(preview, 0)}</svg>`;
     window.afterHoursModules = [...(window.afterHoursModules || []), {
       id: 'christmas-delivery',
       season: `christmas-${root.dataset.christmasYear || ''}`,

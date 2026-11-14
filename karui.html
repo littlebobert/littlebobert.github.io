@@ -173,7 +173,7 @@
         // see it again). This runs before the first paint so it never flashes in place.
         (() => {
           // TEMPORARY, for testing: stamps on every load. Set to false before committing.
-          const stampEveryLoad = true;
+          const stampEveryLoad = false;
           let stamped = false;
           try { stamped = localStorage.getItem('karui-hero-stamped') === '1'; } catch {}
           if (stampEveryLoad || new URLSearchParams(location.search).has('stamp')) stamped = false;
@@ -267,6 +267,11 @@
             <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
           </tr>
           <tr>
+            <th scope="row" data-label-en="Reminds you the day before a message’s deadline" data-label-ja="メッセージの期限の前日にリマインド" data-label-ko="메시지에 적힌 기한 전날 알려 줌">Reminds you the day before a message’s deadline</th>
+            <td class="karui-compare-focus"><svg class="karui-compare-no" viewBox="0 0 24 24" role="img" aria-label="No" data-aria-label-en="No" data-aria-label-ja="なし" data-aria-label-ko="아니요"><path d="M8 12h8"/></svg></td>
+            <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
+          </tr>
+          <tr>
             <th scope="row" data-label-en="Keeps your iPhone quiet while you’re at your Mac" data-label-ja="Macを使っている間はiPhoneを静かに" data-label-ko="Mac을 쓰는 동안 iPhone을 조용히 유지">Keeps your iPhone quiet while you’re at your Mac</th>
             <td class="karui-compare-focus"><svg class="karui-compare-no" viewBox="0 0 24 24" role="img" aria-label="No" data-aria-label-en="No" data-aria-label-ja="なし" data-aria-label-ko="아니요"><path d="M8 12h8"/></svg></td>
             <td class="karui-compare-karui"><svg class="karui-compare-yes" viewBox="0 0 24 24" role="img" aria-label="Yes" data-aria-label-en="Yes" data-aria-label-ja="あり" data-aria-label-ko="예"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></td>
@@ -292,7 +297,7 @@
 
     <section class="karui-detail">
       <h2 data-label-en="On your Mac too" data-label-ja="Macでも" data-label-ko="Mac에서도">On your Mac too</h2>
-      <p><span data-label-en="The Karui Mac companion app improves filtering and keeps your iPhone quiet while you’re at your Mac. " data-label-ja="Mac用のコンパニオンアプリKaruiはフィルタリングを改善し、Macを使っている間はiPhoneを静かにします。" data-label-ko="Mac용 Karui 컴패니언 앱은 분류를 개선하고, Mac을 사용하는 동안 iPhone을 조용하게 유지합니다. ">The Karui Mac companion app improves filtering and keeps your iPhone quiet while you’re at your Mac. </span><a href="karui-mac.html" data-label-en="Karui for Mac →" data-label-ja="Mac版Karui →" data-label-ko="Mac용 Karui →">Karui for Mac →</a></p>
+      <p><span data-label-en="The Karui Mac companion app improves filtering and keeps your iPhone quiet while you’re at your Mac. What you read on one is marked read on the other. " data-label-ja="Mac用のコンパニオンアプリKaruiはフィルタリングを改善し、Macを使っている間はiPhoneを静かにします。片方で読んだ通知は、もう片方でも既読になります。" data-label-ko="Mac용 Karui 컴패니언 앱은 분류를 개선하고, Mac을 사용하는 동안 iPhone을 조용하게 유지합니다. 한쪽에서 읽은 알림은 다른 쪽에서도 읽음으로 표시됩니다. ">The Karui Mac companion app improves filtering and keeps your iPhone quiet while you’re at your Mac. What you read on one is marked read on the other. </span><a href="karui-mac.html" data-label-en="Karui for Mac →" data-label-ja="Mac版Karui →" data-label-ko="Mac용 Karui →">Karui for Mac →</a></p>
     </section>
     <section class="karui-detail">
       <h2 data-label-en="Privacy" data-label-ja="プライバシー" data-label-ko="개인정보 보호">Privacy</h2>

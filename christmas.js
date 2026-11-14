@@ -7,6 +7,47 @@
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 
+  // Pixel art is drawn into grids of one-letter colors, shared by the Tree and the screensaver.
+  const COLORS = {
+    W: '#fff', c: '#c3c8d6', e: '#d4d4d4', k: '#8a8f9c', K: '#161616',
+    L: '#e8595e', R: '#cf3038', r: '#8e1f28', m: '#5c121a',
+    H: '#5a9c6a', G: '#39754b', g: '#244c35', n: '#14301f',
+    Z: '#ffe08a', Y: '#f2c14e', y: '#b98628', o: '#7a5516',
+    t: '#d0a676', b: '#b88955', B: '#80552f', d: '#553518',
+    P: '#efb38c', p: '#c98763',
+    S: '#e8e5d9', s: '#bcb7a4', z: '#8c8776',
+  };
+  // Each color's next shade down, for the edges where one solid passes in front of another.
+  const SHADE = {
+    W: 'e', e: 'k', L: 'R', R: 'r', r: 'm', H: 'G', G: 'g', g: 'n', Z: 'Y', Y: 'y', y: 'o',
+    t: 'b', b: 'B', B: 'd', P: 'p', S: 's', s: 'z',
+  };
+  function makeGrid(width, height) {
+    return Array.from({ length: height }, () => Array(width).fill('.'));
+  }
+  function rect(grid, x, y, width, height, color) {
+    for (let row = Math.max(0, y); row < Math.min(grid.length, y + height); row += 1) {
+      for (let col = Math.max(0, x); col < Math.min(grid[0].length, x + width); col += 1) {
+        grid[row][col] = color;
+      }
+    }
+  }
+  function pixels(grid, color, cells) {
+    cells.forEach(([x, y]) => {
+      if (grid[y]?.[x] !== undefined) grid[y][x] = color;
+    });
+  }
+  // A finished grid as SVG: one path per color, a run of pixels at a time.
+  function gridSvg(rows) {
+    const fills = {};
+    rows.forEach((row, y) => {
+      for (const run of row.matchAll(/([^.])\1*/g)) {
+        fills[run[1]] = `${fills[run[1]] || ''}M${run.index} ${y}h${run[0].length}v1h-${run[0].length}z`;
+      }
+    });
+    return Object.entries(fills).map(([cell, d]) => `<path fill="${COLORS[cell]}" d="${d}"/>`).join('');
+  }
+
   const visitorLabel = document.querySelector('.stack-visitor-counter [data-label-en]');
   if (visitorLabel) {
     visitorLabel.dataset.labelEn = 'Nice list<span class="nice-list-detail"> (number of visitors)</span>:';
@@ -174,89 +215,209 @@
     desktop.prepend(field);
   }
 
-  // A strand of colored lights draped across the top of the desktop. The bulbs are placed on
-  // the same quadratic curve as the wire, so the strand survives narrow screens without drifting.
+  // Strings of colored lights around the desktop: a swag draped over the About window, one more
+  // over each side column on wide screens, and a strand hanging down either side. Each string is
+  // a picture of its wire and unlit bulbs, under one layer of glowing bulbs per color, so each
+  // color twinkles as one. The Tree's Lights button switches them all (see setUpTree).
   function setUpLights() {
-    // Anchor to About rather than prepending to .desktop: on wide screens .desktop is a grid,
-    // and Safari gives an unassigned grid item a different home from Chromium.
-    const host = document.getElementById('about-slot');
-    if (!host) return;
-    const colors = ['#cf3038', '#5ea768', '#f2c14e', '#e8edff'];
-    const bulbs = [];
-    for (let i = 0; i <= 16; i += 1) {
-      const t = i / 16;
-      const x = 480 * t;
-      const y = 2 * (1 - t) ** 2 + 84 * t * (1 - t) + 2 * t ** 2;
-      bulbs.push(`
-        <g class="christmas-garland-bulb" style="animation-delay:${-(i % 5) * 0.34}s">
-          <rect x="${(x - 0.75).toFixed(2)}" y="${(y - 0.5).toFixed(2)}" width="1.5" height="3" fill="#000"/>
-          <rect x="${(x - 2).toFixed(2)}" y="${(y + 2).toFixed(2)}" width="4" height="5" fill="${colors[i % colors.length]}"/>
+    const desktop = document.querySelector('.desktop');
+    const about = document.getElementById('about-slot');
+    if (!desktop || !about) return;
+    // Blue rather than the Tree's white bulbs, which vanish against the pale desktop.
+    const LIT = ['#cf3038', '#5ea768', '#f2c14e', '#5b9be8'];
+    const UNLIT = ['#6e2b30', '#3a5c40', '#7d6a35', '#3b5578'];
+    const image = (width, height, body) => {
+      const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">${body}</svg>`;
+      return `url("data:image/svg+xml,${encodeURIComponent(svg)}")`;
+    };
+    // A bulb hangs from (x, y) on its wire: a black socket, then the glass with a glint on it.
+    const socket = ([x, y]) => `M${x - 1} ${y - 1}h2v3h-2z`;
+    const glass = ([x, y]) => `M${x - 2} ${y + 2}h4v4h-1v1h-2v-1h-1z`;
+    const glint = ([x, y]) => `M${x - 1} ${y + 3}h1v2h-1z`;
+    // The wire with every bulb unlit, then each color's bulbs lit.
+    function pictures(width, height, wire, bulbs) {
+      const colored = (color) => bulbs.filter((bulb, i) => i % LIT.length === color);
+      const unlit = UNLIT.map((fill, color) => `<path fill="${fill}" d="${colored(color).map(glass).join('')}"/>`);
+      const lit = LIT.map((fill, color) => `
+        <radialGradient id="glow">
+          <stop offset="0" stop-color="${fill}" stop-opacity=".6"/>
+          <stop offset="1" stop-color="${fill}" stop-opacity="0"/>
+        </radialGradient>
+        ${colored(color).map(([x, y]) => `<circle cx="${x}" cy="${y + 4}" r="8" fill="url(#glow)"/>`).join('')}
+        <g shape-rendering="crispEdges">
+          <path fill="${fill}" d="${colored(color).map(glass).join('')}"/>
+          <path fill="#fff" fill-opacity=".7" d="${colored(color).map(glint).join('')}"/>
         </g>`);
+      return [
+        `<path d="${wire}" fill="none" stroke="#000"/>
+        <g shape-rendering="crispEdges"><path d="${bulbs.map(socket).join('')}"/>${unlit.join('')}</g>`,
+        ...lit,
+      ].map((body) => image(width, height, body));
     }
-    const garland = document.createElement('div');
-    garland.className = 'christmas-garland';
-    garland.setAttribute('aria-hidden', 'true');
-    garland.innerHTML = `
-      <svg viewBox="0 0 480 34" preserveAspectRatio="none">
-        <path d="M0 2Q240 42 480 2" fill="none" stroke="#000" stroke-width="1"/>
-        ${bulbs.join('')}
-      </svg>`;
-    host.prepend(garland);
+    function string(className) {
+      const element = document.createElement('div');
+      element.className = `christmas-string ${className}`;
+      element.setAttribute('aria-hidden', 'true');
+      element.innerHTML = '<i></i>'.repeat(LIT.length);
+      return element;
+    }
+    function hang(element, [unlit, ...lit]) {
+      element.style.backgroundImage = unlit;
+      [...element.children].forEach((layer, color) => {
+        layer.style.backgroundImage = lit[color];
+      });
+    }
+    // A swag hangs from the top corners of its element, a bulb every 30px or so, and is redrawn
+    // to fit whenever the element changes width.
+    function swag(element) {
+      let drawn = 0;
+      new ResizeObserver(() => {
+        const width = element.offsetWidth;
+        if (width === drawn || width < 40) return;
+        drawn = width;
+        const count = Math.round(width / 30);
+        const bulbs = Array.from({ length: count }, (_, i) => {
+          const t = (i + 0.5) / count;
+          return [Math.round(width * t), Math.round(2 + 80 * t * (1 - t))];
+        });
+        hang(element, pictures(width, 44, `M0 2Q${width / 2} 42 ${width} 2`, bulbs));
+      }).observe(element);
+      return element;
+    }
+
+    // Draped over About. It lives in #about-slot rather than loose in .desktop, which is a grid on
+    // wide screens, where Safari gives an unassigned grid item a different home from Chromium.
+    about.prepend(swag(string('christmas-garland')));
+
+    // The rest are absolutely positioned over the whole desktop, out to the page's own edges.
+    const frame = document.createElement('div');
+    frame.className = 'christmas-lights';
+    frame.setAttribute('aria-hidden', 'true');
+    // A strand hangs straight down, so its picture is one stretch of wire with four bulbs, repeated.
+    const strand = pictures(20, 120, 'M10 0Q13 15 10 30T10 60T10 90T10 120', [[11, 8], [9, 38], [11, 68], [9, 98]]);
+    ['is-left', 'is-right'].forEach((side) => {
+      const element = string(`christmas-strand ${side}`);
+      hang(element, strand);
+      frame.append(element, swag(string(`christmas-swag ${side}`)));
+    });
+    desktop.append(frame);
+    // The strands hang in the page's margin (or, where the desktop is narrower than the page, just
+    // outside it), and the side swags run from them to the ends of About's.
+    const place = () => {
+      frame.style.setProperty('--lights-top', `${desktop.offsetTop}px`);
+      frame.style.setProperty('--lights-gutter', `${Math.min(20, desktop.offsetLeft)}px`);
+      frame.style.setProperty('--lights-left', `${about.offsetLeft}px`);
+      frame.style.setProperty('--lights-right', `${desktop.offsetWidth - about.offsetLeft - about.offsetWidth}px`);
+    };
+    place();
+    new ResizeObserver(place).observe(desktop);
+    window.addEventListener('resize', place);
   }
 
-  // A tiny Tokyo tree for the desktop. Lights gently chase by default, and the button turns
-  // them off for visitors who would rather enjoy a quiet, traditional tree.
-  function setUpTree() {
-    const settings = document.getElementById('appearance-panel');
-    if (!settings) return;
-    const groups = { G: '', g: '', W: '', Y: '', B: '', R: '' };
-    const cells = Array.from({ length: 38 }, () => Array(32).fill('.'));
-    function rect(x, y, width, height, color) {
-      for (let row = Math.max(0, y); row < Math.min(38, y + height); row += 1) {
-        for (let col = Math.max(0, x); col < Math.min(32, x + width); col += 1) {
-          cells[row][col] = color;
-        }
-      }
-    }
-
-    // Three irregular, overlapping boughs, a trunk, snowy edges, and two tiny presents.
-    rect(14, 31, 5, 5, 'B');
-    [
-      [7, 15, 7],
-      [12, 23, 11],
-      [18, 32, 15],
-    ].forEach(([top, bottom, widest]) => {
-      for (let y = top; y <= bottom; y += 1) {
-        const half = 1 + Math.floor(((y - top) / (bottom - top)) * widest);
-        for (let x = 16 - half; x <= 16 + half; x += 1) {
-          const snowyTip = y >= bottom - 1 && Math.abs(x - 16) >= half - 1 && (x + y) % 2 === 0;
-          cells[y][x] = snowyTip ? 'W' : ((x + y) % 5 === 0 ? 'g' : 'G');
-        }
-      }
-    });
-    rect(3, 35, 26, 2, 'W');
-    rect(6, 34, 5, 1, 'W');
-    rect(22, 34, 4, 1, 'W');
-    rect(7, 31, 5, 4, 'R');
-    rect(9, 31, 1, 4, 'Y');
-    rect(21, 32, 5, 3, 'Y');
-    rect(23, 32, 1, 3, 'R');
-    [[16, 1], [16, 2], [16, 3], [14, 3], [15, 3], [17, 3], [18, 3], [15, 2], [17, 2], [15, 4], [17, 4]].forEach(([x, y]) => {
-      cells[y][x] = 'Y';
-    });
-    cells.forEach((row, y) => {
+  // The tree: four tiers of boughs lit from the upper left, each shading the one below, with snow on
+  // alternate bough tips, a string of lights zigzagging down, a star, a trunk, two presents and a
+  // snowy floor. Returns the picture and where its lights hang.
+  function drawTree() {
+    const grid = makeGrid(64, 76);
+    const center = 32;
+    // Snow behind everything, then the trunk.
+    grid.forEach((row, y) => {
       row.forEach((cell, x) => {
-        if (cell !== '.') groups[cell] += `<rect x="${x}" y="${y}" width="1" height="1"/>`;
+        const rise = 1 - ((x + 0.5 - center) / 31) ** 2;
+        if (rise > 0 && y >= 76 - 6.5 * rise ** 0.6) row[x] = y >= 74 && (x + y) % 2 ? 'e' : 'W';
+      });
+    });
+    rect(grid, 29, 64, 6, 8, 'B');
+    rect(grid, 33, 64, 2, 8, 'd');
+
+    // Each tier is [top, bottom, half its width]; the lowest goes in first.
+    const tiers = [[44, 64, 25], [32, 51, 20], [21, 38, 15], [12, 26, 10]];
+    const strings = [];
+    tiers.forEach(([top, bottom, half], tier) => {
+      const tips = Math.round(half / 3);
+      const across = (dx) => ((dx + half) / (2 * half)) * tips;
+      // How far down the boughs reach in this column, and how far out in this row.
+      const reach = (dx) => (Math.abs(dx) > half ? -1 : bottom + 3.4 * (1 - Math.abs(2 * (across(dx) % 1) - 1)));
+      const edge = (y) => 1 + (half - 1) * Math.min(1, (y - top) / (bottom - top)) ** 1.15;
+      // Its shadow on the tiers already drawn.
+      grid.forEach((row, y) => {
+        row.forEach((cell, x) => {
+          const dx = x + 0.5 - center;
+          if ('HGg'.includes(cell) && y - 3 >= top && y - 3 <= reach(dx) && Math.abs(dx) <= edge(y - 3)) row[x] = 'n';
+        });
+      });
+      grid.forEach((row, y) => {
+        row.forEach((cell, x) => {
+          const dx = x + 0.5 - center;
+          const hem = reach(dx);
+          const side = edge(y);
+          if (y < top || y > hem || Math.abs(dx) > side) return;
+          const snowy = Math.floor(across(dx)) % 2 === tier % 2 && y > hem - 2.2 && y > bottom - 1;
+          const needle = (x * 7 + y * 13) % 11;
+          let color = dx < -side + 2.6 ? 'H' : dx > side * 0.4 ? 'g' : 'G';
+          if (needle === 0) color = color === 'g' ? 'G' : 'H';
+          if (needle === 5 && color === 'G') color = 'g';
+          row[x] = snowy ? (y > hem - 1 ? 'e' : 'W') : color;
+        });
+      });
+      // The string of lights crosses each tier on a slant, the other way from the tier below.
+      strings.push({ top, bottom, edge, slant: tier % 2 ? -1 : 1, count: Math.round(half / 4) });
+    });
+    const lights = [];
+    strings.forEach(({ top, bottom, edge, slant, count }) => {
+      const point = (along) => {
+        const y = top + (bottom - top) * (0.48 + 0.4 * along) + 1.5 * Math.sin(Math.PI * along);
+        return [Math.round(center + slant * (2 * along - 1) * (edge(y) - 1.5) - 0.5), Math.round(y)];
+      };
+      for (let i = 0; i <= 40; i += 1) pixels(grid, 'n', [point(i / 40)]);
+      for (let i = 0; i < count; i += 1) lights.push(point((i + 0.5) / count));
+    });
+
+    // The star.
+    [
+      '......YY......', '......YY......', '.....YYYY.....', '.....YYYY.....', 'YYYYYYYYYYYYYY', '.YYYYYYYYYYYY.', '..YYYYYYYYYY..',
+      '...YYYYYYYY...', '...YYYYYYYY...', '..YYYYYYYYYY..', '..YYYY..YYYY..', '.YYY......YYY.', '.YY........YY.',
+    ].forEach((row, y) => {
+      [...row].forEach((cell, x) => {
+        if (cell === 'Y') grid[y][x + 25] = x + y < 9 ? 'Z' : x + y > 17 ? 'y' : 'Y';
       });
     });
 
-    const lights = [
-      [16, 9], [13, 13], [19, 14], [11, 18], [16, 18], [21, 20],
-      [9, 24], [14, 25], [19, 25], [23, 27], [7, 29], [17, 30], [25, 30],
-    ].map(([x, y], i) => {
-      const color = ['#cf3038', '#f2c14e', '#e8edff'][i % 3];
-      return `<rect class="tree-light tree-light-${i % 3}" x="${x}" y="${y}" width="2" height="2" fill="${color}"/>`;
-    }).join('');
+    // Presents: red with gold ribbon, and gold with red.
+    [[8, 60, 13, 'R', 'r', 'L', 'Y'], [43, 62, 12, 'Y', 'y', 'Z', 'R']].forEach(([x, y, width, paper, shade, lid, ribbon]) => {
+      rect(grid, x + 1, y + 2, width - 2, 71 - y, paper);
+      rect(grid, x + width - 3, y + 2, 2, 71 - y, shade);
+      rect(grid, x, y, width, 3, paper);
+      rect(grid, x, y, width, 1, lid);
+      rect(grid, x + 1, y + 3, width - 2, 1, shade);
+      const middle = x + Math.floor(width / 2) - 1;
+      rect(grid, middle, y, 2, 73 - y, ribbon);
+      pixels(grid, ribbon, [[middle - 1, y - 1], [middle - 2, y - 2], [middle - 1, y - 2], [middle + 2, y - 1], [middle + 3, y - 2], [middle + 2, y - 2]]);
+    });
+    // Snow drifted against them.
+    grid[73].forEach((cell, x) => {
+      if (cell !== '.' && (x * 5) % 7 < 4) grid[73][x] = 'W';
+    });
+    return {
+      rows: grid.map((row) => row.join('')),
+      // Only the lights that are still on the boughs, not behind a present.
+      lights: lights.filter(([x, y]) => 'HGgn'.includes(grid[y][x]) && 'HGgn'.includes(grid[y + 1][x + 1])),
+    };
+  }
+
+  // A tiny Tokyo tree for the desktop. Its lights gently chase by default, and its button turns
+  // them off, along with every string of lights around the desktop, for visitors who would rather
+  // enjoy a quiet, traditional tree.
+  function setUpTree() {
+    const settings = document.getElementById('appearance-panel');
+    if (!settings) return;
+    const tree = drawTree();
+    // Each light is a 2x2 bulb in a faint halo.
+    const lights = tree.lights.map(([x, y], i) => `
+      <g class="tree-light tree-light-${i % 3}" fill="${['#cf3038', '#f2c14e', '#e8edff'][i % 3]}">
+        <path fill-opacity=".3" d="M${x} ${y - 1}h2v1h1v2h-1v1h-2v-1h-1v-2h1z"/>
+        <rect x="${x}" y="${y}" width="2" height="2"/>
+      </g>`).join('');
 
     const widget = document.createElement('div');
     widget.className = 'clock-widget desk-accessory christmas-tree';
@@ -266,13 +427,8 @@
         <span class="clock-title" data-label-en="Tree" data-label-ja="ツリー">Tree</span>
       </div>
       <div class="clock-content tree-content">
-        <svg class="tree-icon" viewBox="0 0 32 38" width="64" height="76" shape-rendering="crispEdges" aria-hidden="true">
-          <g fill="#39754b">${groups.G}</g>
-          <g fill="#244c35">${groups.g}</g>
-          <g fill="#fff">${groups.W}</g>
-          <g fill="#f2c14e">${groups.Y}</g>
-          <g fill="#80552f">${groups.B}</g>
-          <g fill="#cf3038">${groups.R}</g>
+        <svg class="tree-icon" viewBox="0 0 64 76" width="64" height="76" shape-rendering="crispEdges" aria-hidden="true">
+          ${gridSvg(tree.rows)}
           ${lights}
         </svg>
         <div class="tree-controls">
@@ -284,7 +440,7 @@
     button.addEventListener('click', () => {
       const lit = button.getAttribute('aria-pressed') !== 'true';
       button.setAttribute('aria-pressed', String(lit));
-      widget.classList.toggle('is-dark', !lit);
+      root.classList.toggle('christmas-lights-off', !lit);
       button.blur();
     });
     // Wide screens: Tree sits on the left directly below Speak. Featured App accounts for its
@@ -463,30 +619,6 @@
     const PIXEL = 2;
     // The way everything flies: along the sprites' own long axis, one pixel down for every two across.
     const SLOPE = 0.5;
-    const COLORS = {
-      W: '#fff', c: '#c3c8d6', e: '#d4d4d4', k: '#8a8f9c', K: '#161616',
-      L: '#e8595e', R: '#cf3038', r: '#8e1f28', m: '#5c121a',
-      H: '#5a9c6a', G: '#39754b', g: '#244c35', n: '#14301f',
-      Z: '#ffe08a', Y: '#f2c14e', y: '#b98628', o: '#7a5516',
-      t: '#d0a676', b: '#b88955', B: '#80552f', d: '#553518',
-      P: '#efb38c', p: '#c98763',
-      S: '#e8e5d9', s: '#bcb7a4', z: '#8c8776',
-    };
-    // Each color's next shade down, for the edges where one solid passes in front of another.
-    const SHADE = {
-      W: 'e', e: 'k', L: 'R', R: 'r', r: 'm', H: 'G', G: 'g', g: 'n', Z: 'Y', Y: 'y', y: 'o',
-      t: 'b', b: 'B', B: 'd', P: 'p', S: 's', s: 'z',
-    };
-
-    function makeGrid(width, height) {
-      return Array.from({ length: height }, () => Array(width).fill('.'));
-    }
-    function pixels(grid, color, cells) {
-      cells.forEach(([x, y]) => {
-        if (grid[y]?.[x] !== undefined) grid[y][x] = color;
-      });
-    }
-
     // A small isometric renderer. Solids live in a space where +Y is the way everything flies (down
     // and to the left on screen), +X is the near side (down and to the right) and +Z is up. Each
     // pixel looks down the (1, 1, 1) diagonal and keeps the nearest solid it meets. Light comes from
@@ -713,17 +845,7 @@
       return grid.map((row) => row.join(''));
     }
 
-    // One path per color, a run of pixels at a time.
-    const frameSvg = (rows, frame) => {
-      const fills = {};
-      rows.forEach((row, y) => {
-        for (const run of row.matchAll(/([^.])\1*/g)) {
-          fills[run[1]] = `${fills[run[1]] || ''}M${run.index} ${y}h${run[0].length}v1h-${run[0].length}z`;
-        }
-      });
-      const shapes = Object.entries(fills).map(([cell, d]) => `<path fill="${COLORS[cell]}" d="${d}"/>`);
-      return `<g data-frame="${frame}">${shapes.join('')}</g>`;
-    };
+    const frameSvg = (rows, frame) => `<g data-frame="${frame}">${gridSvg(rows)}</g>`;
 
     // Wrapping paper and ribbon, each as top, front and near-side colors.
     const WRAPS = [['HGg', 'ZYy'], ['LRr', 'Wee'], ['ZYy', 'LRr']];
@@ -880,7 +1002,7 @@
         ['.balloon-help-toggle', 'Balloon Help, North Pole edition. While this is checked, a snowman explains whatever you point at.', 'バルーンヘルプ、北極版。チェックしている間、指したものを雪だるまが説明します。'],
         ['.key-caps-content', 'Elf Key Caps. Shows what you type. An elf types here too; type SANTA if you want its attention.', 'エルフのキー配列。入力した文字が表示されます。エルフも文字を打ちます。話しかけたいときは SANTA と打ってみて。'],
         ['.tree-content', 'A tiny Tokyo tree. No watering required, although the Ueno Quest balcony plant would like a word.', '小さな東京ツリー。水やりは不要ですが、「Ueno quest」のベランダの植物が何か言いたそうです。'],
-        ['.tree-lights-button', 'Turns the tree lights on or off. With Reduce Motion, they stay peacefully still either way.', 'ツリーのライトを点灯・消灯します。視覚効果を減らす設定では、どちらも静かに灯ります。'],
+        ['.tree-lights-button', 'Turns the lights on or off, on the tree and all around the desktop. With Reduce Motion, they stay peacefully still either way.', 'ツリーとデスクトップのまわりのライトを点灯・消灯します。視覚効果を減らす設定では、どちらも静かに灯ります。'],
         ['.tokyo-night[data-module="christmas-delivery"] .after-dark-module, .after-dark-module-option[data-module="christmas-delivery"]', 'Christmas Delivery. Leave this Mac alone for 45 seconds and Santa flies presents over Tokyo. It beats sitting in traffic on the Shuto Expressway.', 'クリスマス便。このMacを45秒放っておくと、サンタが東京の空にプレゼントを運びます。首都高で渋滞するより速いはずです。'],
         ['.after-dark-setting[data-module="christmas-delivery"]:has([data-option="speed"])', 'How quickly Santa and the presents fly.', 'サンタとプレゼントの飛ぶ速さ。'],
         ['.after-dark-setting[data-module="christmas-delivery"]:has([data-option="density"])', 'How many presents are in the air at once.', '同時に飛ぶプレゼントの数。'],

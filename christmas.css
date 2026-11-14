@@ -93,33 +93,104 @@ html.christmas .desktop {
   to { transform: translate3d(var(--snow-drift), 110vh, 0); }
 }
 
-/* A pixel-light garland draped directly above the About window. Absolute positioning inside
-   #about-slot keeps it out of Safari and Chromium's wide-screen grid auto-placement entirely. */
-.christmas-garland {
+/* Strings of lights (setUpLights() in christmas.js). Each string's own background is its wire and
+   unlit bulbs; its four <i> layers are the glowing bulbs, one color apiece, twinkling in turn.
+   The Tree's Lights button puts `christmas-lights-off` on <html>, which takes the glow away. */
+.christmas-string {
   position: absolute;
+  background-repeat: no-repeat;
+  pointer-events: none;
+}
+
+.christmas-string i {
+  position: absolute;
+  inset: 0;
+  background-repeat: inherit;
+  animation: christmas-twinkle 1.7s steps(2) infinite;
+}
+
+.christmas-string i:nth-child(2) {
+  animation-delay: -0.425s;
+}
+
+.christmas-string i:nth-child(3) {
+  animation-delay: -0.85s;
+}
+
+.christmas-string i:nth-child(4) {
+  animation-delay: -1.275s;
+}
+
+html.christmas-lights-off .christmas-string i {
+  opacity: 0;
+  animation: none;
+}
+
+@keyframes christmas-twinkle {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.45; }
+}
+
+/* A swag draped directly above the About window. Absolute positioning inside #about-slot keeps
+   it out of Safari and Chromium's wide-screen grid auto-placement entirely. */
+.christmas-garland {
   top: -28px;
   right: -6px;
   left: -6px;
   z-index: 3;
-  height: 30px;
-  margin: 0;
+  height: 44px;
+}
+
+/* The rest hang in a frame over the whole desktop that reaches out to the page's own top and
+   side edges and clips there, so a glow never widens the page. */
+.christmas-lights {
+  position: absolute;
+  top: calc(-1 * var(--lights-top, 0px));
+  right: calc(-1 * var(--lights-gutter, 0px));
+  bottom: 0;
+  left: calc(-1 * var(--lights-gutter, 0px));
+  z-index: 3;
+  overflow: hidden;
   pointer-events: none;
 }
 
-.christmas-garland svg {
-  display: block;
-  width: 100%;
-  height: 30px;
-  overflow: visible;
+/* A strand down the middle of each side margin. */
+.christmas-strand {
+  top: 0;
+  bottom: 0;
+  width: 20px;
+  background-repeat: repeat-y;
 }
 
-.christmas-garland-bulb {
-  animation: christmas-garland-twinkle 1.7s steps(2) infinite;
+.christmas-strand.is-left {
+  left: calc(var(--lights-gutter, 0px) / 2 - 10px);
 }
 
-@keyframes christmas-garland-twinkle {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.55; }
+.christmas-strand.is-right {
+  right: calc(var(--lights-gutter, 0px) / 2 - 10px);
+}
+
+/* A swag over each side column, from the top of its strand to the end of About's. */
+.christmas-swag {
+  display: none;
+  top: calc(var(--lights-top, 0px) - 28px);
+  height: 44px;
+}
+
+@media (min-width: 860px) {
+  .christmas-swag {
+    display: block;
+  }
+}
+
+.christmas-swag.is-left {
+  left: calc(var(--lights-gutter, 0px) / 2);
+  width: calc(var(--lights-gutter, 0px) / 2 + var(--lights-left, 0px) - 6px);
+}
+
+.christmas-swag.is-right {
+  right: calc(var(--lights-gutter, 0px) / 2);
+  width: calc(var(--lights-gutter, 0px) / 2 + var(--lights-right, 0px) - 6px);
 }
 
 /* Tiny Christmas Tree desk accessory. On wide screens it lives on the left directly below Speak;
@@ -191,7 +262,7 @@ html[data-theme="classic"] .tree-lights-button[aria-pressed="true"]:hover {
   animation: tree-light-chase 2.4s steps(2) -1.6s infinite;
 }
 
-.christmas-tree.is-dark .tree-light {
+html.christmas-lights-off .tree-light {
   opacity: 0.16;
   animation: none;
 }
@@ -363,7 +434,7 @@ body.home-page .happy-mac-screen .happy-mac-code {
     display: none;
   }
 
-  .christmas-garland-bulb,
+  .christmas-string i,
   .tree-light {
     animation: none;
   }

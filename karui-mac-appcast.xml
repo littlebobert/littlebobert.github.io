@@ -3,6 +3,19 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>0.11.10</title>
+            <pubDate>Sun, 15 Nov 2026 15:55:38 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>85</sparkle:version>
+            <sparkle:shortVersionString>0.11.10</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- A notification that repeats with the same text, like a calendar alert on several days, is now marked read on your other Macs when you read it on one.
+- The Unread filter no longer shows notifications your Mac sorted as Neutral or Spam.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.10/Karui-0.11.10-mac.zip" length="3152023" type="application/octet-stream" sparkle:edSignature="bdM66j1tc8uqm1p+4arTOAB6e8AHiA4aZlWPOFOXBcI4/bIQSqjJboUtBG67Zr1uoUkSWpa0QJePQB8zXIazDw=="/>
+        </item>
+        <item>
             <title>0.11.9</title>
             <pubDate>Sun, 15 Nov 2026 14:16:47 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +38,6 @@
             <description sparkle:format="markdown"><![CDATA[- A new notification no longer shows as selected but unread when it arrives while you have another one selected.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.8/Karui-0.11.8-mac.zip" length="3139078" type="application/octet-stream" sparkle:edSignature="Yp0/AyP3UJ6ol1NX3vz6ATf0csK7Fl3GkZAkcfRoER7cUMIDKwg8SwfOH6JBZa79k6eqrMMIBs8rRR3P0D/qCQ=="/>
-        </item>
-        <item>
-            <title>0.11.7</title>
-            <pubDate>Thu, 12 Nov 2026 14:31:15 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>82</sparkle:version>
-            <sparkle:shortVersionString>0.11.7</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Karui no longer stalls for a few seconds when notifications arrive from your iPhone while you read one on your Mac.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.7/Karui-0.11.7-mac.zip" length="3138478" type="application/octet-stream" sparkle:edSignature="Lae5lhEifCyWGICJymBrheVc1iS6qeEEjVxkKNnsqbNWOQQKFfYd1qnvfYxFFhRsA9/JNjZ+X3MAYpsVhHYxBA=="/>
         </item>
     </channel>
 </rss>

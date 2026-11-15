@@ -3412,7 +3412,8 @@ html[data-theme="classic"] body.resume-page {
 .feature-window-slot[data-feature-window-slot="recommendations-window"],
 .feature-window-slot[data-feature-window-slot="guestbook-window"],
 .feature-window-slot[data-feature-window-slot="mud-window"],
-.feature-window-slot[data-feature-window-slot="puzzle-window"] {
+.feature-window-slot[data-feature-window-slot="puzzle-window"],
+.feature-window-slot.app-window-slot {
   position: absolute;
   top: 24px;
   left: 50%;
@@ -3452,6 +3453,100 @@ html[data-theme="classic"] body.resume-page {
 
 .recent-updates-slot.is-closed {
   display: none;
+}
+
+/* Self-published apps as desktop icons, in one row under the About window at every width.
+   Each opens a small pitch window (.app-window-slot) over the About window. */
+.app-shelf {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 2px;
+  width: 100%;
+  margin-top: 12px;
+}
+
+.desktop-icon.app-icon {
+  align-self: start;
+  gap: 4px;
+  min-width: 0;
+  min-height: 0;
+  padding: 4px 0;
+}
+
+.app-icon .desktop-icon-image {
+  width: 44px;
+  height: 44px;
+}
+
+.app-icon .desktop-icon-label {
+  max-width: 100%;
+  padding: 1px 4px;
+}
+
+/* App names stay in Latin script in Japanese, so they don't take the bold the Japanese label gets. */
+html[lang="ja"] .app-icon .desktop-icon-label {
+  font-weight: normal;
+}
+
+.app-icon:active .desktop-icon-image {
+  filter: invert(1);
+}
+
+.feature-window-slot.app-window-slot {
+  width: min(340px, 100%);
+}
+
+.app-window-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* The app's pencil-sketch icon, drawn each time the window opens (product-sketches.js). The
+   still shows until the video is playing, and stays with Reduce Motion. */
+.app-window-sketch {
+  position: relative;
+  flex: none;
+  display: block;
+  box-sizing: border-box;
+  width: 60px;
+  height: 60px;
+  overflow: hidden;
+  border: 2px solid #000;
+  background: #fff;
+}
+
+.app-window-sketch img,
+.app-window-sketch picture,
+.app-window-sketch video {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.app-window-sketch video {
+  opacity: 0;
+}
+
+.app-window-sketch video.is-playing {
+  opacity: 1;
+}
+
+.app-window-header h2,
+.app-window-header p {
+  margin: 0;
+}
+
+.app-window-header p {
+  margin-top: 4px;
+}
+
+.app-window-card .app-window-pitch {
+  margin: 12px 0;
+  line-height: 1.45;
 }
 
 .recent-updates-dialog {
@@ -3507,6 +3602,7 @@ html[data-theme="classic"] body.resume-page {
     grid-template-columns: minmax(150px, 1fr) minmax(420px, 480px) minmax(162px, 1fr);
     grid-template-areas:
       "clocks about settings"
+      ". apps ."
       ". recent ."
       ". browser ."
       ". gallery-viewer ."
@@ -3547,6 +3643,10 @@ html[data-theme="classic"] body.resume-page {
 
   body.home-page .recent-updates-slot {
     grid-area: recent;
+  }
+
+  body.home-page .app-shelf {
+    grid-area: apps;
   }
 
   body.home-page .web-browser-slot,

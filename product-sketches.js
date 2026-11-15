@@ -1,6 +1,7 @@
-// Plays each app's pencil-sketch icon on the Self-published card while the card is on screen,
-// except with Reduce Motion or while the page is hidden. Videos load only once the card is
-// first shown; the still underneath shows until a video is playing.
+// Plays each app's pencil-sketch icon on the Self-published card and in the app's pitch window
+// while it is on screen, except with Reduce Motion or while the page is hidden. Videos load only
+// once first shown; the still underneath shows until a video is playing. A pitch window's sketch
+// rewinds when the window closes, so it draws from the start each time the window opens.
 (() => {
   const clips = [...document.querySelectorAll('.stack-product-sketch video')];
   if (!clips.length) return;
@@ -14,6 +15,7 @@
     } else {
       clip.pause();
       clip.classList.remove('is-playing');
+      if (!visible.has(clip) && clip.closest('.app-window-sketch')) clip.currentTime = 0;
     }
   }
   const syncAll = () => clips.forEach(sync);

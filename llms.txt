@@ -11,12 +11,11 @@
 
 - [Sasu](https://sasu.jp/): On-screen guidance for foreigners living abroad.
 - [Kehai](https://kehai.jp/): Window organization and faster app switching.
-- [Kotai](https://kotai.jp/): Separate work and personal coding configurations in Cursor.
+- [Shadan](https://shadan.jp/): A Safari extension for Mac that hides the memes you're tired of seeing, look-alikes too.
 - [Karui](https://karui.jp/): Silence spam notifications and reveal unsent messages on iPhone, privately with Apple Intelligence.
 - [Kaketa](https://kaketa.jp/): Practice handwritten Japanese words with kanji on iPhone and iPad, with an on-device stroke check.
 - [Umete](https://umete.jp/): Private autofill for forms.
 - [Yubi](https://onemorething.tokyo/yubi.html): Translate on-screen content and Japanese text input.
-- [Tsugu](https://onemorething.tokyo/tsugu.html): Translate and forward Slack notifications to a phone.
 
 ## Identity
 

@@ -1220,7 +1220,9 @@ function getSavedStackCardIndex() {
   }
 
   try {
-    const savedIndex = Number(localStorage.getItem(STACK_CARD_STORAGE_KEY));
+    // Nothing saved is null, and Number(null) is 0, which would land a first visit on the Index card.
+    const savedValue = localStorage.getItem(STACK_CARD_STORAGE_KEY);
+    const savedIndex = savedValue === null ? NaN : Number(savedValue);
     if (Number.isInteger(savedIndex) && savedIndex >= 0 && savedIndex < stackCards.length) {
       return savedIndex;
     }

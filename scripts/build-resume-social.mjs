@@ -5,42 +5,57 @@ import sharp from 'sharp';
 
 const rootDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const headshotPath = path.join(rootDirectory, 'assets', 'img-color.jpg');
-const outputPath = process.argv[2]
-  ? path.resolve(process.argv[2])
-  : path.join(rootDirectory, 'assets', 'resume-social.png');
+// The card is 1200×630 landscape by default: text on the left, headshot on the
+// right. Messages fits a preview to the bubble's width, so a wide card takes
+// about half the height of the square one, which `--square` still draws.
+const wide = !process.argv.includes('--square');
+const outputArgument = process.argv.slice(2).find((argument) => !argument.startsWith('--'));
+const outputPath = outputArgument
+  ? path.resolve(outputArgument)
+  : path.join(rootDirectory, 'assets', wide ? 'resume-social.png' : 'resume-social-square.png');
 
-const size = 960;
+const size = 960; // the square card's side
 // Everything on the card is drawn at this fraction of its full size and
 // centered, so the content reads smaller in link previews with more margin.
 const contentScale = 0.96;
 const contentInset = (size * (1 - contentScale)) / 2;
 // Padding, type and spacing are laid out for a 1200px square and scaled to `size`
 // and `contentScale`; the headshot's 400px is scaled by `contentScale` alone.
-const scale = (size / 1200) * contentScale;
-const padding = Math.round(contentInset + 90 * scale); // left
+// The wide card is laid out at its own pixel size, so its scale is 1.
+const scale = wide ? 1 : (size / 1200) * contentScale;
+const width = wide ? 1200 : size;
+const height = wide ? 630 : size;
+const padding = wide ? 96 : Math.round(contentInset + 90 * scale); // left
 // The right and bottom edges are tighter so the headshot and text sit closer to them.
-const edgePadding = Math.round(contentInset + 120 * scale); // top, right and bottom
+const edgePadding = wide ? 80 : Math.round(contentInset + 120 * scale); // top, right and bottom
 const accentBarWidth = Math.round(8 * scale);
-const headshotSize = Math.round(400 * contentScale);
-const headshotGap = Math.round(48 * scale);
+const headshotSize = wide ? height - 2 * edgePadding : Math.round(400 * contentScale);
+const headshotGap = Math.round((wide ? 64 : 48) * scale);
 const headshotCornerRadius = Math.round(headshotSize * 0.16);
-const headshotBorderWidth = Math.round(8 * contentScale);
+const headshotBorderWidth = wide ? 8 : Math.round(8 * contentScale);
 // The source photo is cropped tight around the face, so zoom out by mirroring
 // its left and right edges outward before cropping to a square.
 const headshotZoomOut = 1.15;
-const contentRight = size - edgePadding;
-// The headshot sits in the bottom-right corner, inset by the padding.
+const contentTop = edgePadding;
+const contentRight = width - edgePadding;
+const contentBottom = height - edgePadding;
+// The headshot sits in the bottom-right corner, inset by the padding; on the
+// wide card it fills the content height, so every line wraps beside it.
 const headshotLeft = contentRight - headshotSize;
-const headshotTop = contentRight - headshotSize;
+const headshotTop = contentBottom - headshotSize;
 // Verdana, the same face as the resume page itself.
 const fontFamily = 'Verdana';
 const svgFontFamily = "Verdana, Geneva, sans-serif";
 
-const textBlocks = [
+const textBlocks = (wide ? [
+  { text: 'Justin Garcia', size: 64, weight: 'bold', pangoWeight: 'Bold', color: '#1a1f26', lineHeight: 1.1, spaceAfter: 28 },
+  { text: 'Apple platforms and real-time speech AI product engineer. Previously at Apple', size: 42, weight: 'normal', pangoWeight: '', color: '#1a1f26', lineHeight: 1.3, spaceAfter: 24 },
+  { text: 'Tokyo, Japan', size: 36, weight: 'normal', pangoWeight: '', color: '#6b7480', lineHeight: 1.25, spaceAfter: 0, pinBottom: true },
+] : [
   { text: 'Justin Garcia', size: 100, weight: 'bold', pangoWeight: 'Bold', color: '#1a1f26', lineHeight: 1.1, spaceAfter: 36 },
   { text: 'Apple platforms and real-time speech AI product engineer. Previously at Apple', size: 80, weight: 'normal', pangoWeight: '', color: '#1a1f26', lineHeight: 1.25, spaceAfter: 30 },
   { text: 'Tokyo, Japan', size: 68, weight: 'normal', pangoWeight: '', color: '#6b7480', lineHeight: 1.25, spaceAfter: 0, pinBottom: true },
-].map((block) => ({ ...block, size: Math.round(block.size * scale), spaceAfter: Math.round(block.spaceAfter * scale) }));
+]).map((block) => ({ ...block, size: Math.round(block.size * scale), spaceAfter: Math.round(block.spaceAfter * scale) }));
 
 // Both Pango markup and SVG treat text as XML, so `&` and friends need escaping.
 const escapeMarkup = (text) => text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -99,7 +114,7 @@ async function wrapBlock(block, top) {
 }
 
 const lines = [];
-let cursorY = edgePadding;
+let cursorY = contentTop;
 for (const block of textBlocks) {
   const lineHeight = Math.round(block.size * block.lineHeight);
   let top = cursorY;
@@ -108,7 +123,7 @@ for (const block of textBlocks) {
     // line's descenders resting on the same bottom edge as the headshot.
     const wrapped = await wrapBlock(block, headshotTop);
     const descent = Math.round(block.size * 0.22);
-    top = contentRight - descent - Math.round(block.size * 0.9) - (wrapped.length - 1) * lineHeight;
+    top = contentBottom - descent - Math.round(block.size * 0.9) - (wrapped.length - 1) * lineHeight;
     if (top < cursorY) {
       throw new Error(`Pinned block "${block.text}" collides with the text above it`);
     }
@@ -168,15 +183,15 @@ const textElements = lines
   .join('\n  ');
 
 const background = Buffer.from(`
-<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" xmlns="http://www.w3.org/2000/svg">
+<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
       <stop offset="0" stop-color="#ffffff"/>
       <stop offset="1" stop-color="#f3f5f7"/>
     </linearGradient>
   </defs>
-  <rect width="${size}" height="${size}" fill="url(#bg)"/>
-  <rect x="${padding - Math.round(50 * scale)}" y="${edgePadding}" width="${accentBarWidth}" height="${contentRight - edgePadding}" rx="${accentBarWidth / 2}" fill="#3b82f6"/>
+  <rect width="${width}" height="${height}" fill="url(#bg)"/>
+  <rect x="${padding - Math.round(50 * scale)}" y="${contentTop}" width="${accentBarWidth}" height="${contentBottom - contentTop}" rx="${accentBarWidth / 2}" fill="#3b82f6"/>
   ${textElements}
 </svg>
 `);

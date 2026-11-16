@@ -10,17 +10,21 @@ const outputPath = process.argv[2]
   : path.join(rootDirectory, 'assets', 'resume-social.png');
 
 const size = 960;
-// Padding, type and spacing are laid out for a 1200px square and scaled to `size`;
-// the headshot keeps its absolute size.
-const scale = size / 1200;
-const padding = Math.round(90 * scale); // left
+// Everything on the card is drawn at this fraction of its full size and
+// centered, so the content reads smaller in link previews with more margin.
+const contentScale = 0.75;
+const contentInset = (size * (1 - contentScale)) / 2;
+// Padding, type and spacing are laid out for a 1200px square and scaled to `size`
+// and `contentScale`; the headshot's 400px is scaled by `contentScale` alone.
+const scale = (size / 1200) * contentScale;
+const padding = Math.round(contentInset + 90 * scale); // left
 // The right and bottom edges are tighter so the headshot and text sit closer to them.
-const edgePadding = Math.round(120 * scale); // top, right and bottom
+const edgePadding = Math.round(contentInset + 120 * scale); // top, right and bottom
 const accentBarWidth = Math.round(8 * scale);
-const headshotSize = 400;
+const headshotSize = Math.round(400 * contentScale);
 const headshotGap = Math.round(48 * scale);
 const headshotCornerRadius = Math.round(headshotSize * 0.16);
-const headshotBorderWidth = 8;
+const headshotBorderWidth = Math.round(8 * contentScale);
 // The source photo is cropped tight around the face, so zoom out by mirroring
 // its left and right edges outward before cropping to a square.
 const headshotZoomOut = 1.15;

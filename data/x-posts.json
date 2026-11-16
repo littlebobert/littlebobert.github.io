@@ -1,8 +1,27 @@
 {
-  "updatedAt": "2026-11-15T20:25:47.694Z",
+  "updatedAt": "2026-11-16T23:45:31.665Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2122444816277700858",
+      "text": "We’re joining ElevenLabs! https://t.co/xIHeNuXHsP",
+      "createdAt": "2026-11-16T21:40:51.000Z",
+      "url": "https://x.com/_bobertdowney/status/2122444816277700858",
+      "urls": [
+        {
+          "url": "https://t.co/xIHeNuXHsP",
+          "expandedUrl": "https://twitter.com/noriyuki_kojima/status/2122419489111461962",
+          "displayUrl": "x.com/noriyuki_kojim…",
+          "start": 26,
+          "end": 49
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2120383454743609664",
       "text": "I’ve lived in Japan for over a year and hadn’t tried natto yet 🤡 https://t.co/TFk1Ed6fGs",
@@ -183,44 +202,6 @@
           "displayUrl": "x.com/shshnkp/status…",
           "start": 140,
           "end": 163
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2117719216715690482",
-      "text": "Apple’s Private Cloud Compute is competitive with Opus 5.5 for categorizing push notifications to filter out the unimportant ones https://t.co/2Wr0ERqLTQ",
-      "createdAt": "2026-11-03T20:43:01.000Z",
-      "url": "https://x.com/_bobertdowney/status/2117719216715690482",
-      "urls": [
-        {
-          "url": "https://t.co/2Wr0ERqLTQ",
-          "expandedUrl": "https://karui.jp/technotes/kn006",
-          "displayUrl": "karui.jp/technotes/kn006",
-          "start": 130,
-          "end": 153
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
-    },
-    {
-      "id": "2117714438820429971",
-      "text": "new in iOS 27.3: evaluate how well Siri interacts with your app by running scripted conversations and seeing how your app reacts https://t.co/8tqlLcAslv",
-      "createdAt": "2026-11-03T20:24:02.000Z",
-      "url": "https://x.com/_bobertdowney/status/2117714438820429971",
-      "urls": [
-        {
-          "url": "https://t.co/8tqlLcAslv",
-          "expandedUrl": "https://developer.apple.com/documentation/sirievaluations",
-          "displayUrl": "developer.apple.com/documentation/…",
-          "start": 129,
-          "end": 152
         }
       ],
       "avatar": "assets/generated/x/mine-avatar.png",

@@ -12,7 +12,7 @@ const outputPath = process.argv[2]
 const size = 960;
 // Everything on the card is drawn at this fraction of its full size and
 // centered, so the content reads smaller in link previews with more margin.
-const contentScale = 0.75;
+const contentScale = 0.96;
 const contentInset = (size * (1 - contentScale)) / 2;
 // Padding, type and spacing are laid out for a 1200px square and scaled to `size`
 // and `contentScale`; the headshot's 400px is scaled by `contentScale` alone.

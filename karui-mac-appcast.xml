@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>1.0</title>
+            <pubDate>Wed, 18 Nov 2026 07:58:28 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>86</sparkle:version>
+            <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Karui for Mac is now 1.0. Thanks to everyone who tried it early.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.0/Karui-1.0-mac.zip" length="3152015" type="application/octet-stream" sparkle:edSignature="sqMEu6zWez+E7GenmN9PwiKMM/CsIya3rGVEftfJ5+j5yyOoA2rPLZcGlgPwwbY1tqaK1RAbIqbsnew3dtBVDQ=="/>
+        </item>
+        <item>
             <title>0.11.10</title>
             <pubDate>Sun, 15 Nov 2026 15:55:38 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -26,18 +38,6 @@
             <description sparkle:format="markdown"><![CDATA[- A notification that Private Cloud Sorting makes Important just after it arrives now shows as unread on your Mac, so marking it read there clears the alert on your iPhone.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.9/Karui-0.11.9-mac.zip" length="3139262" type="application/octet-stream" sparkle:edSignature="+jKfFL5G8N85nt3R6fg6BjJB0fjgZnVCj+38jnkXwdFEi8TlZwxtdgH7GZGbp9rkq6yWZxo0YVRg8EdbNkFjBw=="/>
-        </item>
-        <item>
-            <title>0.11.8</title>
-            <pubDate>Fri, 13 Nov 2026 07:13:57 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>83</sparkle:version>
-            <sparkle:shortVersionString>0.11.8</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- A new notification no longer shows as selected but unread when it arrives while you have another one selected.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.8/Karui-0.11.8-mac.zip" length="3139078" type="application/octet-stream" sparkle:edSignature="Yp0/AyP3UJ6ol1NX3vz6ATf0csK7Fl3GkZAkcfRoER7cUMIDKwg8SwfOH6JBZa79k6eqrMMIBs8rRR3P0D/qCQ=="/>
         </item>
     </channel>
 </rss>

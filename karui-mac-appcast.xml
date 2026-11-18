@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>1.0.1</title>
+            <pubDate>Wed, 18 Nov 2026 15:41:37 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>87</sparkle:version>
+            <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- If Notification Center’s database goes missing, as macOS can do when the disk runs out of space, Karui now offers a button to restart Notification Center so it makes a new one.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.0.1/Karui-1.0.1-mac.zip" length="3159570" type="application/octet-stream" sparkle:edSignature="jE9jH+JMaIZBP00XwOgzq+aQAR/1DSaGWVHI8q8wTsNLM3Jmakwswh8CBdnPWVnRS1G/w7iKpzp6ItTE5+6RAA=="/>
+        </item>
+        <item>
             <title>1.0</title>
             <pubDate>Wed, 18 Nov 2026 07:58:28 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -26,18 +38,6 @@
 - The Unread filter no longer shows notifications your Mac sorted as Neutral or Spam.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.10/Karui-0.11.10-mac.zip" length="3152023" type="application/octet-stream" sparkle:edSignature="bdM66j1tc8uqm1p+4arTOAB6e8AHiA4aZlWPOFOXBcI4/bIQSqjJboUtBG67Zr1uoUkSWpa0QJePQB8zXIazDw=="/>
-        </item>
-        <item>
-            <title>0.11.9</title>
-            <pubDate>Sun, 15 Nov 2026 14:16:47 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>84</sparkle:version>
-            <sparkle:shortVersionString>0.11.9</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- A notification that Private Cloud Sorting makes Important just after it arrives now shows as unread on your Mac, so marking it read there clears the alert on your iPhone.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.9/Karui-0.11.9-mac.zip" length="3139262" type="application/octet-stream" sparkle:edSignature="+jKfFL5G8N85nt3R6fg6BjJB0fjgZnVCj+38jnkXwdFEi8TlZwxtdgH7GZGbp9rkq6yWZxo0YVRg8EdbNkFjBw=="/>
         </item>
     </channel>
 </rss>

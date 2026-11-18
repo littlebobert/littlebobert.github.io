@@ -1,8 +1,40 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-11-17T22:57:55.505Z",
+  "updatedAt": "2026-11-18T22:37:19.586Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2122950203103957000",
+      "text": "Karui 1.0 is out. it hides unwanted notifications privately with Apple Intelligence and lets you see messages people unsend. big thank you to everyone who’s tried it so far. https://t.co/XvhuIJPcHX https://t.co/syc7fnCDQx",
+      "createdAt": "2026-11-18T07:09:05.000Z",
+      "url": "https://x.com/_bobertdowney/status/2122950203103957000",
+      "urls": [
+        {
+          "url": "https://t.co/XvhuIJPcHX",
+          "expandedUrl": "https://karui.jp",
+          "displayUrl": "karui.jp",
+          "start": 174,
+          "end": 197
+        },
+        {
+          "url": "https://t.co/syc7fnCDQx",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2122950203103957000/photo/1",
+          "displayUrl": "pic.x.com/syc7fnCDQx",
+          "start": 198,
+          "end": 221
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2122950203103957000-0.png"
+        }
+      ]
+    },
     {
       "id": "2122444816277700858",
       "text": "We’re joining ElevenLabs! https://t.co/xIHeNuXHsP",
@@ -189,25 +221,6 @@ window.X_POSTS_SNAPSHOT = {
           "image": "assets/generated/x/mine-post-2118041110580965703-0.png"
         }
       ]
-    },
-    {
-      "id": "2117918409468031376",
-      "text": "anyone else going to the Apple Intelligence lab at 2am JST 🫨? Siri is sometimes choosing a system app over mine even when mine is on screen https://t.co/IUUdSq4VOo",
-      "createdAt": "2026-11-04T09:54:32.000Z",
-      "url": "https://x.com/_bobertdowney/status/2117918409468031376",
-      "urls": [
-        {
-          "url": "https://t.co/IUUdSq4VOo",
-          "expandedUrl": "https://twitter.com/shshnkp/status/2117715120629633139",
-          "displayUrl": "x.com/shshnkp/status…",
-          "start": 140,
-          "end": 163
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 };

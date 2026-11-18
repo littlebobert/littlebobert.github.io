@@ -3,12 +3,19 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
+// The 1.0 card: icon, name, pitch and the History screen, since X no longer
+// shows a link's title under the image.
 const rootDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const iconPath = path.join(rootDirectory, 'assets', 'karui-icon.png');
+const screenPath = path.join(rootDirectory, 'assets', 'karui-demo-en-1.jpg');
 const outputPath = path.join(rootDirectory, 'assets', 'karui-social.png');
-const iconSize = 340;
-const iconCornerRadius = 76;
-const iconBorderWidth = 8;
+const width = 1200;
+const height = 630;
+const iconSize = 112;
+const iconCornerRadius = 26;
+const screenWidth = 500;
+const screenTop = 70;
+
 const roundedCornerMask = Buffer.from(`
 <svg width="${iconSize}" height="${iconSize}" viewBox="0 0 ${iconSize} ${iconSize}" xmlns="http://www.w3.org/2000/svg">
   <rect width="${iconSize}" height="${iconSize}" rx="${iconCornerRadius}" fill="#ffffff"/>
@@ -20,31 +27,27 @@ const icon = await sharp(await readFile(iconPath))
   .png()
   .toBuffer();
 
-const iconBorder = Buffer.from(`
-<svg width="${iconSize}" height="${iconSize}" viewBox="0 0 ${iconSize} ${iconSize}" xmlns="http://www.w3.org/2000/svg">
-  <rect
-    x="${iconBorderWidth / 2}"
-    y="${iconBorderWidth / 2}"
-    width="${iconSize - iconBorderWidth}"
-    height="${iconSize - iconBorderWidth}"
-    rx="${iconCornerRadius - iconBorderWidth / 2}"
-    fill="none"
-    stroke="#0E1530"
-    stroke-width="${iconBorderWidth}"
-  />
-</svg>
-`);
+// The screen runs off the bottom edge.
+const screen = await sharp(await readFile(screenPath)).resize({ width: screenWidth }).toBuffer();
+const { height: screenHeight } = await sharp(screen).metadata();
+const croppedScreen = await sharp(screen)
+  .extract({ left: 0, top: 0, width: screenWidth, height: Math.min(screenHeight, height - screenTop) })
+  .toBuffer();
 
 const background = Buffer.from(`
-<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
-  <rect width="1200" height="630" fill="#ffffff"/>
+<svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
+  <rect width="${width}" height="${height}" fill="#ffffff"/>
+  <text x="80" y="318" font-family="Verdana" font-weight="bold" font-size="92" fill="#0E1530">Karui 1.0</text>
+  <text x="82" y="388" font-family="Verdana" font-size="34" fill="#1B2A5C">Spam filter for iPhone</text>
+  <text x="82" y="433" font-family="Verdana" font-size="34" fill="#1B2A5C">notifications.</text>
+  <text x="82" y="526" font-family="Verdana" font-size="24" fill="#5A6380">Privately with Apple Intelligence.</text>
 </svg>
 `);
 
 await sharp(background)
   .composite([
-    { input: icon, left: 430, top: 145 },
-    { input: iconBorder, left: 430, top: 145 },
+    { input: icon, left: 80, top: 96 },
+    { input: croppedScreen, left: width - screenWidth - 60, top: screenTop },
   ])
   .png({ compressionLevel: 9 })
   .toFile(outputPath);

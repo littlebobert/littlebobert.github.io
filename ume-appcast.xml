@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.4.11</title>
+            <pubDate>Thu, 19 Nov 2026 07:29:23 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>39.1</sparkle:version>
+            <sparkle:shortVersionString>0.4.11</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.11
+
+Umete is now in Japanese and Korean. Dropdowns built from buttons, like Delta's date of birth, gender, and phone country code, are now filled.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="C5SoFwtfjQp0Al5jGckLeQl46uAIpjOAX907DcG+x0eLvXF9erNMyiuXaMSWdS5L0lTAqMJCAo8V6N9FHvpoBQ==" sparkle:length="394">https://umete.jp/Umete-0.4.11-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="71d4fyQGpxxEDlt6Erm8szptYHYOaEmnczQyOG7B1saWlA6ZaFZ3tlFiyJuVu8tPLqu+zCEZWpwQNuIr/W2ADw==" sparkle:length="460">https://umete.jp/Umete-0.4.11-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.11/Umete-0.4.11-macOS.dmg" length="7010743" type="application/octet-stream" sparkle:edSignature="8i/K0SHPZ86/LorVabCRPmz6O1JvFjKrYKHdxjqgvEgB0BVvwtjz5ExVVC+BZZ16JDGayVqATtJ2zQMJ3LxsAA=="/>
+        </item>
+        <item>
             <title>0.4.10</title>
             <pubDate>Thu, 19 Nov 2026 01:06:22 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -149,25 +165,9 @@ Umete no longer fills the same phone number into a second phone field, or a phon
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="OzQWg9amyK6kO9mUMFyFDcFoX7XViT6etlvywz5KYpbV1AUXuyABcOTsShfwet4c39CVMpLz9pYtDlAgHCU6Dw==" sparkle:length="423">https://umete.jp/Umete-0.4.2-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.2/Umete-0.4.2-macOS.dmg" length="5906871" type="application/octet-stream" sparkle:edSignature="nUckEMlcPCVIJNInbCTtUi//jRciiqQ6OfpurLqquasmXcnDWDT0q7/RNSorHZsW2oWY53az9MFwVIeqWtnnBg=="/>
         </item>
-        <item>
-            <title>0.4.1</title>
-            <pubDate>Mon, 12 Oct 2026 16:43:04 +0000</pubDate>
-            <link>https://umete.jp/</link>
-            <sparkle:fullReleaseNotesLink>https://umete.jp/#changelog</sparkle:fullReleaseNotesLink>
-            <sparkle:version>25.1</sparkle:version>
-            <sparkle:shortVersionString>0.4.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.1
-
-Fixed filling hidden fields, such as alternate phone numbers behind tabs, and the extension failing to start on pages open during an update.
-]]></description>
-            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="VK3zeGJ7dlly9zXJ6YhGDWskzq8tXOu/vigtPT0X3GTwrbJhbFeYYmVEshM11k04zTj0mvfK/FSthFDIbB1ABg==" sparkle:length="391">https://umete.jp/Umete-0.4.1-macOS.en.md</sparkle:releaseNotesLink>
-            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="rQOupHwVuDqAocgJGL6dGZy6e+qnBTGWIIEWNKNr0PXUvy5FiBQjZVvaCYPG4Qw42izwVPg1FAhPN/++/w8fDA==" sparkle:length="458">https://umete.jp/Umete-0.4.1-macOS.ja.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.1/Umete-0.4.1-macOS.dmg" length="5916087" type="application/octet-stream" sparkle:edSignature="kBAjW9YG5Ct2dHhScW+E3xnOFD9Vh7UZGdvAPnZo/rQB7q39ssAOx3ajMQ6kLyM2cd/hP56jH7aYHKW+53m5Dg=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: nWB8XaXDF5MHriLpiWVPCsdJ9dI5Zjh9NPtbDcwP7Q28H9MHjp7ynUagMgOTrwgp5eZ6rW/gcWYLbnShs2JEBA==
-length: 15541
+edSignature: JhsbLPviAroSE3mjyjL0/rZPKcnq/4oK11mDfEHtyO/uFtLtQPNkuzjMTXHlrrdUWXQBadM/rdCC33J1VLhJDw==
+length: 15549
 -->

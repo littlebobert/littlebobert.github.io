@@ -42,6 +42,8 @@ const pages = [
   ['ume-changelog.html', ['changelog.html', 'changelog/index.html']],
   ['ume-specs.html', ['specs.html', 'specs/index.html']],
   ['ume-acknowledgements.html', ['acknowledgements.html', 'acknowledgements/index.html']],
+  ['ume-technotes.html', ['technotes.html', 'technotes/index.html']],
+  ['ume-technote-un001.html', ['technotes/un001.html', 'technotes/un001/index.html']],
 ];
 
 export function createDeployedPage(source) {
@@ -57,7 +59,9 @@ export function createDeployedPage(source) {
     .replaceAll('href="ume-support.html"', 'href="/support"')
     .replaceAll('href="ume-changelog.html"', 'href="/changelog"')
     .replaceAll('href="ume-specs.html"', 'href="/specs"')
-    .replaceAll('href="ume-acknowledgements.html"', 'href="/acknowledgements"');
+    .replaceAll('href="ume-acknowledgements.html"', 'href="/acknowledgements"')
+    .replaceAll('href="ume-technotes.html"', 'href="/technotes"')
+    .replaceAll('href="ume-technote-un001.html"', 'href="/technotes/un001"');
 }
 
 // Sparkle release notes referenced from the appcast.

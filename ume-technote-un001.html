@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>UN001: Testing Form Matching on 184 Forms I’ll Never Fill Out</title>
+  <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link href="umete-animated-icon.css?v=1" rel="stylesheet">
+  <link rel="icon" href="assets/ume-icon.png?v=1">
+  <link rel="apple-touch-icon" href="assets/ume-icon.png?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .umete-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
+    .umete-breadcrumbs a { color: #666; }
+    .umete-breadcrumb-separator { margin: 0 5pt; color: #999; }
+    .umete-section { padding: 6pt 0 5pt; }
+    .umete-section p { margin: 0; }
+    .umete-section p + p, .umete-section ul + p, .umete-section ol + p, .umete-section table + p { margin-top: 7pt; }
+    .umete-section p + ul, .umete-section p + ol { margin-top: 6pt; }
+    .umete-section ul, .umete-section ol { margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 2pt; padding-left: 20pt; }
+    .umete-section li + li { margin-top: 3pt; }
+    .umete-section h2 { margin: 6pt 0 4pt; }
+    .umete-section h3 { margin: 8pt 0 3pt; }
+    .umete-section h2 + h3 { margin-top: 0; }
+    .umete-section h2 + ul, .umete-section h2 + ol { margin-top: 0; }
+    .umete-table { border-collapse: collapse; width: 100%; margin: 4pt 0; }
+    .umete-table th, .umete-table td { border-bottom: 1px solid #e3e1da; padding: 5pt 6pt 5pt 0; text-align: left; vertical-align: top; }
+    .umete-table th { color: #555; font-weight: 600; }
+    .umete-table td:first-child, .umete-table th:first-child { padding-right: 14pt; }
+    .umete-table td + td, .umete-table th + th { white-space: nowrap; }
+    .umete-table-note { color: #555; font-size: 0.85em; margin-top: 3pt !important; }
+    .umete-note-meta { color: #555; font-size: 0.9em; }
+    .umete-revision-date { font-weight: 600; }
+    .umete-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .umete-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    /* Keep two-word links like Tech Specs whole; the row wraps at the <wbr> after each separator. */
+    .footer-links a { white-space: nowrap; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+  </style>
+  <link rel="canonical" href="https://umete.jp/technotes/un001">
+  <meta name="description" content="How I test Umete’s form matching on Chromium’s saved autofill test forms, the bugs it caught, and how much AI matching adds." data-label-en="How I test Umete’s form matching on Chromium’s saved autofill test forms, the bugs it caught, and how much AI matching adds." data-label-ja="Chromiumの自動入力テスト用に保存されたフォームでUmeteのフォーム照合をテストする方法、見つかったバグ、そしてAIマッチングでどれだけ改善するか。">
+  <meta property="og:title" content="UN001: Testing Form Matching on 184 Forms I’ll Never Fill Out" data-label-en="UN001: Testing Form Matching on 184 Forms I’ll Never Fill Out" data-label-ja="UN001：自分では記入しない184のフォームでフォーム照合をテストする">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2026-11-19">
+  <meta property="og:url" content="https://umete.jp/technotes/un001">
+  <meta property="og:site_name" content="Umete">
+  <meta property="og:description" content="How I test Umete’s form matching on Chromium’s saved autofill test forms, the bugs it caught, and how much AI matching adds." data-label-en="How I test Umete’s form matching on Chromium’s saved autofill test forms, the bugs it caught, and how much AI matching adds." data-label-ja="Chromiumの自動入力テスト用に保存されたフォームでUmeteのフォーム照合をテストする方法、見つかったバグ、そしてAIマッチングでどれだけ改善するか。">
+  <meta property="og:image" content="https://umete.jp/assets/umete-social.png?v=1">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <nav class="umete-breadcrumbs" aria-label="Breadcrumb"><a href="ume.html">Umete</a><span class="umete-breadcrumb-separator" aria-hidden="true">›</span><a href="ume-technotes.html" data-label-en="Technical Notes" data-label-ja="技術ノート">Technical Notes</a><span class="umete-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page">UN001</span></nav>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="ume.html"><span class="ume-icon"><span class="ume-icon-shape"><img src="assets/umete-icon-sketch.jpg?v=3" alt="Umete app icon, a plum sketched in pencil" data-alt-en="Umete app icon, a plum sketched in pencil" data-alt-ja="鉛筆で描いた梅の実のUmeteアプリアイコン" width="64" height="64"><video src="assets/umete-icon-sketch.mp4?v=3" muted loop playsinline disablepictureinpicture disableremoteplayback preload="auto" aria-hidden="true"></video></span></span></a>
+        <div><h1 data-label-en="UN001: Testing Form Matching on 184 Forms I’ll Never Fill Out" data-label-ja="UN001：自分では記入しない184のフォームでフォーム照合をテストする">UN001: Testing Form Matching on 184 Forms I’ll Never Fill Out</h1><div class="sasu-subtitle">Umete</div></div>
+      </div>
+    </section>
+    <section class="umete-section">
+      <p data-label-en="How I test Umete’s form matching without filling out forms myself, the bugs the test caught, and how much AI matching adds." data-label-ja="自分でフォームに記入せずにUmeteのフォーム照合をテストする方法、そのテストで見つかったバグ、そしてAIマッチングでどれだけ改善するか。">How I test Umete’s form matching without filling out forms myself, the bugs the test caught, and how much AI matching adds.</p>
+      <p class="umete-note-meta" data-label-en="November 19, 2026 · Umete 0.4.9 · 184 forms from Chromium’s autofill tests" data-label-ja="2026年11月19日 · Umete 0.4.9 · Chromiumの自動入力テストの184フォーム">November 19, 2026 · Umete 0.4.9 · 184 forms from Chromium’s autofill tests</p>
+    </section>
+    <section class="umete-section">
+      <h2 data-label-en="Overview" data-label-ja="概要">Overview</h2>
+      <p><a href="ume.html">Umete</a><span data-label-en=" fills a form with answers you remembered from a different form. Matching happens on your device first, from each field’s label, name, placeholder, and autocomplete hint. Fields it can’t place can go to an AI, which sees only descriptions of the fields, never your answers." data-label-ja="は、別のフォームで記憶した回答を使ってフォームに入力します。照合はまずデバイス上で、各項目のラベル、名前、プレースホルダ、autocompleteのヒントから行います。判断できなかった項目はAIに尋ねることができますが、AIが見るのは項目の説明だけで、あなたの回答は見ません。"> fills a form with answers you remembered from a different form. Matching happens on your device first, from each field’s label, name, placeholder, and autocomplete hint. Fields it can’t place can go to an AI, which sees only descriptions of the fields, never your answers.</span></p>
+      <p data-label-en="I don’t fill out many forms, so I don’t get to try Umete as often as my other apps. This note covers a test that replays real forms instead, what it found, and what AI matching adds on top of local matching." data-label-ja="私はあまりフォームに記入しないので、ほかのアプリほどUmeteを自分で試す機会がありません。本ノートでは、代わりに実際のフォームを再生するテストと、それで分かったこと、そしてローカルの照合に加えてAIマッチングで何が変わるかを説明します。">I don’t fill out many forms, so I don’t get to try Umete as often as my other apps. This note covers a test that replays real forms instead, what it found, and what AI matching adds on top of local matching.</p>
+    </section>
+    <section class="umete-section">
+      <h2 data-label-en="The test" data-label-ja="テストの方法">The test</h2>
+      <p><span data-label-en="Chromium keeps " data-label-ja="Chromiumには、">Chromium keeps </span><a href="https://github.com/chromium/chromium/tree/main/components/test/data/autofill/heuristics" data-label-en="a set of saved forms" data-label-ja="保存されたフォーム群">a set of saved forms</a><span data-label-en=" for testing its own autofill: checkout and sign-up pages from sites like Lowe’s, Macy’s, and Walmart, plus forms in 13 other languages, each with the type Chromium expects for every field. The test runs Umete’s real extension scripts on all 184 of them:" data-label-ja="があり、自身の自動入力のテストに使われています。Lowe’s、Macy’s、Walmartなどのサイトの購入・登録ページや、ほかの13言語のフォームが含まれ、それぞれの項目にChromiumが期待する種類が付いています。テストでは、そのすべて184フォームでUmeteの実際の拡張機能のスクリプトを実行します。"> for testing its own autofill: checkout and sign-up pages from sites like Lowe’s, Macy’s, and Walmart, plus forms in 13 other languages, each with the type Chromium expects for every field. The test runs Umete’s real extension scripts on all 184 of them:</span></p>
+      <ol>
+        <li data-label-en="A fictional person in San Francisco fills one sign-up form and chooses Remember my answers." data-label-ja="サンフランシスコに住む架空の人物が、登録フォームを1つ記入して「回答を保存」を選びます。">A fictional person in San Francisco fills one sign-up form and chooses Remember my answers.</li>
+        <li data-label-en="Each saved form opens in WebKit, the engine behind Safari, with the page’s own scripts and all network access off, and Umete runs Fill this form." data-label-ja="保存された各フォームを、SafariのエンジンでもあるWebKitで、ページ自体のスクリプトとネットワーク接続をすべて止めた状態で開き、Umeteが「このフォームに入力」を実行します。">Each saved form opens in WebKit, the engine behind Safari, with the page’s own scripts and all network access off, and Umete runs Fill this form.</li>
+        <li data-label-en="Every field Chromium labeled is checked: filled correctly, filled wrongly, or missed. A field the person has no answer for, like a middle name, should stay empty. Card numbers and passwords must never be filled, and none were." data-label-ja="Chromiumが種類を付けた項目をすべて確認し、正しく入力された、誤って入力された、入力されなかった、のいずれかに分けます。ミドルネームのように回答のない項目は空のままが正解です。カード番号とパスワードは決して入力してはならず、実際に1件も入力されませんでした。">Every field Chromium labeled is checked: filled correctly, filled wrongly, or missed. A field the person has no answer for, like a middle name, should stay empty. Card numbers and passwords must never be filled, and none were.</li>
+      </ol>
+      <p data-label-en="A wrong value is worse than an empty field, since you might not notice it. So I look at two numbers: precision, how many of Umete’s fills were right, and recall, how many of the fields the person had an answer for got one." data-label-ja="空欄よりも間違った値のほうが困ります。気づかないかもしれないからです。そこで2つの数字を見ています。適合率は、Umeteが入力したうち正しかった割合。再現率は、回答のある項目のうち実際に入力された割合です。">A wrong value is worse than an empty field, since you might not notice it. So I look at two numbers: precision, how many of Umete’s fills were right, and recall, how many of the fields the person had an answer for got one.</p>
+    </section>
+    <section class="umete-section">
+      <h2 data-label-en="Results" data-label-ja="結果">Results</h2>
+      <table class="umete-table"><thead><tr><th></th><th data-label-en="Correct" data-label-ja="正しい">Correct</th><th data-label-en="Wrong" data-label-ja="誤り">Wrong</th><th data-label-en="Precision" data-label-ja="適合率">Precision</th><th data-label-en="Recall" data-label-ja="再現率">Recall</th></tr></thead><tbody>
+        <tr><td data-label-en="Umete 0.4.8, local matching" data-label-ja="Umete 0.4.8、ローカル照合">Umete 0.4.8, local matching</td><td>506</td><td>37</td><td>93.2%</td><td>34.1%</td></tr>
+        <tr><td data-label-en="Umete 0.4.9, local matching" data-label-ja="Umete 0.4.9、ローカル照合">Umete 0.4.9, local matching</td><td>726</td><td>11</td><td>98.5%</td><td>49.0%</td></tr>
+        <tr><td data-label-en="Umete 0.4.9, local and AI matching" data-label-ja="Umete 0.4.9、ローカル照合とAIマッチング">Umete 0.4.9, local and AI matching</td><td>1,193</td><td>25</td><td>97.9%</td><td>80.1%</td></tr>
+      </tbody></table>
+      <p class="umete-table-note" data-label-en="Fields hidden on the saved page, and fields that already held the right value, aren’t counted. The person’s address was remembered from the same sign-up form as everything else." data-label-ja="保存されたページで非表示の項目と、最初から正しい値が入っていた項目は数えていません。住所も、ほかの回答と同じ登録フォームから記憶したものです。">Fields hidden on the saved page, and fields that already held the right value, aren’t counted. The person’s address was remembered from the same sign-up form as everything else.</p>
+    </section>
+    <section class="umete-section">
+      <h2 data-label-en="What the test caught" data-label-ja="テストで見つかったこと">What the test caught</h2>
+      <p data-label-en="The first run found bugs I hadn’t run into myself, all fixed in Umete 0.4.9:" data-label-ja="最初の実行で、自分では遭遇していなかったバグが見つかりました。すべてUmete 0.4.9で修正しています。">The first run found bugs I hadn’t run into myself, all fixed in Umete 0.4.9:</p>
+      <ul>
+        <li data-label-en="A field labeled just “Address” got your email address, since both labels contain the word address. With an address saved in the app, this was the biggest source of wrong fills." data-label-ja="「Address」とだけ書かれた項目にメールアドレスが入っていました。どちらのラベルにもaddressという語が含まれるためです。アプリで住所を保存している場合、これが誤入力の最大の原因でした。">A field labeled just “Address” got your email address, since both labels contain the word address. With an address saved in the app, this was the biggest source of wrong fills.</li>
+        <li data-label-en="Address line 2 got your street, when the form you remembered had no second line to match it." data-label-ja="記憶したフォームに2行目がなかった場合、住所の2行目に番地が入っていました。">Address line 2 got your street, when the form you remembered had no second line to match it.</li>
+        <li data-label-en="A phone number split into boxes for area code, prefix, and line number went whole into the first box. Umete now fills each box with its part, and leaves alone a box too short for the number." data-label-ja="市外局番・局番・加入者番号の欄に分かれた電話番号が、最初の欄にまとめて入っていました。現在はそれぞれの欄に該当する部分を入力し、番号が収まらない短い欄には何も入力しません。">A phone number split into boxes for area code, prefix, and line number went whole into the first box. Umete now fills each box with its part, and leaves alone a box too short for the number.</li>
+        <li data-label-en="When a dropdown sat inside its label, Umete remembered the label with every option in it, like “State Select a state Arizona California…”, which made the answer hard to match later." data-label-ja="ドロップダウンがラベルの中にある場合、「State Select a state Arizona California…」のように、すべての選択肢を含んだラベルで記憶していたため、あとで照合しにくくなっていました。">When a dropdown sat inside its label, Umete remembered the label with every option in it, like “State Select a state Arizona California…”, which made the answer hard to match later.</li>
+        <li data-label-en="A lone “Area code” box got the ZIP code, since both labels contain the word code. ZIP+4 and phone extension boxes got answers too; they now stay empty." data-label-ja="単独の「Area code」欄に郵便番号が入っていました。どちらのラベルにもcodeという語が含まれるためです。ZIP+4や内線番号の欄にも回答が入っていましたが、現在は空のままにします。">A lone “Area code” box got the ZIP code, since both labels contain the word code. ZIP+4 and phone extension boxes got answers too; they now stay empty.</li>
+      </ul>
+      <p data-label-en="Each fix was checked against the whole set, not just the form that showed the bug. No field that 0.4.8 filled correctly is missed by 0.4.9. Five fields that 0.4.8 left empty now get a wrong value, mostly on pages where the label Umete reads doesn’t say what the field is." data-label-ja="各修正は、バグが見つかったフォームだけでなく、すべてのフォームで確認しました。0.4.8が正しく入力した項目で、0.4.9が入力しなくなったものはありません。0.4.8で空のままだった項目のうち5つは、0.4.9で誤った値が入るようになりました。ほとんどは、Umeteが読むラベルが項目の内容を表していないページです。">Each fix was checked against the whole set, not just the form that showed the bug. No field that 0.4.8 filled correctly is missed by 0.4.9. Five fields that 0.4.8 left empty now get a wrong value, mostly on pages where the label Umete reads doesn’t say what the field is.</p>
+    </section>
+    <section class="umete-section">
+      <h2 data-label-en="What AI matching adds" data-label-ja="AIマッチングで変わること">What AI matching adds</h2>
+      <p data-label-en="After local matching, Umete asks the AI about the fields it left unhandled, one multiple-choice question per field: which saved answer belongs here, or none. It fills a field only when the AI is at least 60% sure. The test used OpenAI’s Decisions API with gpt-6-luna, the setup Umete (free) uses." data-label-ja="ローカル照合のあと、Umeteは処理できなかった項目についてAIに尋ねます。項目ごとに1つの選択式の質問で、どの保存済みの回答が入るか、あるいは何も入らないかを選んでもらいます。AIの確信度が60%以上のときだけ入力します。テストでは、Umete（無料）と同じく、OpenAIのDecisions APIとgpt-6-lunaを使いました。">After local matching, Umete asks the AI about the fields it left unhandled, one multiple-choice question per field: which saved answer belongs here, or none. It fills a field only when the AI is at least 60% sure. The test used OpenAI’s Decisions API with gpt-6-luna, the setup Umete (free) uses.</p>
+      <ul>
+        <li data-label-en="Of the 746 fields local matching missed, Umete asked the AI about 652. Most of the rest it leaves empty on purpose, like a second phone number on the same page." data-label-ja="ローカル照合が入力しなかった746項目のうち、652項目についてAIに尋ねました。残りの多くは、同じページの2つ目の電話番号のように、意図的に空のままにしている項目です。">Of the 746 fields local matching missed, Umete asked the AI about 652. Most of the rest it leaves empty on purpose, like a second phone number on the same page.</li>
+        <li data-label-en="465 of those now got the right answer, and 14 a wrong one. The AI’s biggest help was with labels local matching can’t read: table layouts with the label in another cell, and forms in German, Korean, Russian, and other languages." data-label-ja="そのうち465項目に正しい回答が入り、14項目に誤った回答が入りました。AIが最も役立ったのは、ローカル照合では読み取れないラベルです。ラベルが別のセルにある表形式のレイアウトや、ドイツ語・韓国語・ロシア語などのフォームです。">465 of those now got the right answer, and 14 a wrong one. The AI’s biggest help was with labels local matching can’t read: table layouts with the label in another cell, and forms in German, Korean, Russian, and other languages.</li>
+        <li data-label-en="Some of the 14 are arguable. A Spanish form’s “Primer apellido”, the first of two surnames, got the person’s only surname, and street name fields got the whole street line." data-label-ja="14項目の中には、判断の分かれるものもあります。スペイン語のフォームの「Primer apellido」（2つある姓の1つ目）には唯一の姓が入り、通り名の欄には番地を含む住所の1行目全体が入りました。">Some of the 14 are arguable. A Spanish form’s “Primer apellido”, the first of two surnames, got the person’s only surname, and street name fields got the whole street line.</li>
+      </ul>
+      <p data-label-en="AI matching added less when the person’s address was saved in the app as a structured address instead: recall went from 48.3% to 66.6%. Umete fills structured addresses only locally and never sends address fields to the AI, so their misses stay. That’s the next thing to work on." data-label-ja="住所をアプリで構造化された住所として保存した場合、AIマッチングによる改善は小さくなり、再現率は48.3%から66.6%でした。Umeteは構造化された住所をローカルでのみ入力し、住所の項目はAIに送らないため、それらの入力漏れは残ります。次に取り組むのはここです。">AI matching added less when the person’s address was saved in the app as a structured address instead: recall went from 48.3% to 66.6%. Umete fills structured addresses only locally and never sends address fields to the AI, so their misses stay. That’s the next thing to work on.</p>
+    </section>
+    <section class="umete-section">
+      <h2 data-label-en="Limits" data-label-ja="限界">Limits</h2>
+      <ul>
+        <li data-label-en="Chromium’s labels are its own predictions, kept to catch changes in its autofill, not answers someone checked by hand. A few are debatable, such as a gift recipient’s email labeled as the person’s." data-label-ja="Chromiumの種類は、自動入力の変化を検出するために保存されたChromium自身の予測であり、人が確認した正解ではありません。ギフトの受取人のメールアドレスが本人のものとされているなど、議論の余地があるものもあります。">Chromium’s labels are its own predictions, kept to catch changes in its autofill, not answers someone checked by hand. A few are debatable, such as a gift recipient’s email labeled as the person’s.</li>
+        <li data-label-en="The pages are old saved copies that run no scripts, so the test doesn’t cover custom dropdowns, fields inside web components, or forms built as you go. I check those on live sites." data-label-ja="ページはスクリプトを実行しない古い保存コピーなので、独自のドロップダウン、Webコンポーネント内の項目、入力に応じて組み立てられるフォームはテストに含まれません。これらは実際のサイトで確認しています。">The pages are old saved copies that run no scripts, so the test doesn’t cover custom dropdowns, fields inside web components, or forms built as you go. I check those on live sites.</li>
+        <li data-label-en="It’s one fictional person with a US address, and the AI results are from a single run. AI answers can differ a little from run to run." data-label-ja="架空の人物は1人で、住所はアメリカのものです。AIの結果は1回の実行によるもので、AIの回答は実行ごとに多少変わることがあります。">It’s one fictional person with a US address, and the AI results are from a single run. AI answers can differ a little from run to run.</li>
+      </ul>
+      <p><span data-label-en="The test is open source with the rest of Umete, in " data-label-ja="テストはUmeteのほかの部分と同様にオープンソースで、">The test is open source with the rest of Umete, in </span><a href="https://github.com/littlebobert/umete/tree/main/eval">github.com/littlebobert/umete/eval</a><span data-label-en="." data-label-ja="にあります。">.</span></p>
+    </section>
+    <section class="umete-section">
+      <h2 data-label-en="Revision History" data-label-ja="改訂履歴">Revision History</h2>
+      <ul><li><span class="umete-revision-date">2026-11-19</span><span data-label-en=" First published." data-label-ja=" 初版公開。"> First published.</span></li></ul>
+    </section>
+    <section class="umete-section">
+      <p><a href="ume-technotes.html" data-label-en="← All Technical Notes" data-label-ja="← 技術ノート一覧">← All Technical Notes</a></p>
+    </section>
+    <footer class="umete-footer"><p class="footer-links"><a href="ume.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Designed by " data-label-ja="東京の個人開発者 ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作"> in Tokyo</span></p></footer>
+  </main>
+  <script src="umete-animated-icon.js?v=1"></script>
+  <script src="umete-language.js?v=1"></script>
+</body>
+</html>

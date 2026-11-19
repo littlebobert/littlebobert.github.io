@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Umete Technical Notes</title>
+  <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link href="umete-animated-icon.css?v=1" rel="stylesheet">
+  <link rel="icon" href="assets/ume-icon.png?v=1">
+  <link rel="apple-touch-icon" href="assets/ume-icon.png?v=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .umete-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
+    .umete-breadcrumbs a { color: #666; }
+    .umete-breadcrumb-separator { margin: 0 5pt; color: #999; }
+    .umete-section { padding: 6pt 0 5pt; }
+    .umete-section p { margin: 0; }
+    .umete-section p + p, .umete-section ul + p, .umete-section ol + p, .umete-section table + p { margin-top: 7pt; }
+    .umete-section p + ul, .umete-section p + ol { margin-top: 6pt; }
+    .umete-section ul, .umete-section ol { margin-top: 0; margin-bottom: 0; padding-top: 0; padding-bottom: 2pt; padding-left: 20pt; }
+    .umete-section li + li { margin-top: 3pt; }
+    .umete-section h2 { margin: 6pt 0 4pt; }
+    .umete-section h3 { margin: 8pt 0 3pt; }
+    .umete-section h2 + h3 { margin-top: 0; }
+    .umete-section h2 + ul, .umete-section h2 + ol { margin-top: 0; }
+    .umete-table { border-collapse: collapse; width: 100%; margin: 4pt 0; }
+    .umete-table th, .umete-table td { border-bottom: 1px solid #e3e1da; padding: 5pt 6pt 5pt 0; text-align: left; vertical-align: top; }
+    .umete-table th { color: #555; font-weight: 600; }
+    .umete-table td:first-child, .umete-table th:first-child { padding-right: 14pt; }
+    .umete-table td + td, .umete-table th + th { white-space: nowrap; }
+    .umete-table-note { color: #555; font-size: 0.85em; margin-top: 3pt !important; }
+    .umete-note-meta { color: #555; font-size: 0.9em; }
+    .umete-revision-date { font-weight: 600; }
+    .umete-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .umete-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    /* Keep two-word links like Tech Specs whole; the row wraps at the <wbr> after each separator. */
+    .footer-links a { white-space: nowrap; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+    .umete-note-list li + li { margin-top: 8pt; }
+  </style>
+  <link rel="canonical" href="https://umete.jp/technotes">
+  <meta name="description" content="Notes on how Umete works and what I’ve learned while working on it." data-label-en="Notes on how Umete works and what I’ve learned while working on it." data-label-ja="Umeteの仕組みと、開発中に学んだことをまとめたノートです。">
+  <meta property="og:title" content="Umete Technical Notes" data-label-en="Umete Technical Notes" data-label-ja="Umete 技術ノート">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://umete.jp/technotes">
+  <meta property="og:site_name" content="Umete">
+  <meta property="og:description" content="Notes on how Umete works and what I’ve learned while working on it." data-label-en="Notes on how Umete works and what I’ve learned while working on it." data-label-ja="Umeteの仕組みと、開発中に学んだことをまとめたノートです。">
+  <meta property="og:image" content="https://umete.jp/assets/umete-social.png?v=1">
+  <meta name="twitter:card" content="summary_large_image">
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <nav class="umete-breadcrumbs" aria-label="Breadcrumb"><a href="ume.html">Umete</a><span class="umete-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="Technical Notes" data-label-ja="技術ノート">Technical Notes</span></nav>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="ume.html"><span class="ume-icon"><span class="ume-icon-shape"><img src="assets/umete-icon-sketch.jpg?v=3" alt="Umete app icon, a plum sketched in pencil" data-alt-en="Umete app icon, a plum sketched in pencil" data-alt-ja="鉛筆で描いた梅の実のUmeteアプリアイコン" width="64" height="64"><video src="assets/umete-icon-sketch.mp4?v=3" muted loop playsinline disablepictureinpicture disableremoteplayback preload="auto" aria-hidden="true"></video></span></span></a>
+        <div><h1 data-label-en="Technical Notes" data-label-ja="技術ノート">Technical Notes</h1><div class="sasu-subtitle">Umete</div></div>
+      </div>
+    </section>
+    <section class="umete-section">
+      <p data-label-en="Notes on how Umete works and what I’ve learned while working on it." data-label-ja="Umeteの仕組みと、開発中に学んだことをまとめたノートです。">Notes on how Umete works and what I’ve learned while working on it.</p>
+    </section>
+    <section class="umete-section">
+      <ul class="umete-note-list">
+        <li><a href="ume-technote-un001.html" data-label-en="UN001: Testing Form Matching on 184 Forms I’ll Never Fill Out" data-label-ja="UN001：自分では記入しない184のフォームでフォーム照合をテストする">UN001: Testing Form Matching on 184 Forms I’ll Never Fill Out</a><br><span class="umete-note-meta" data-label-en="November 19, 2026" data-label-ja="2026年11月19日">November 19, 2026</span><br><span data-label-en="How I test Umete on Chromium’s saved autofill test forms, the bugs it caught, and how much AI matching adds." data-label-ja="Chromiumの自動入力テスト用に保存されたフォームでUmeteをテストする方法、見つかったバグ、そしてAIマッチングでどれだけ改善するか。">How I test Umete on Chromium’s saved autofill test forms, the bugs it caught, and how much AI matching adds.</span></li>
+      </ul>
+    </section>
+    <footer class="umete-footer"><p class="footer-links"><a href="ume.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="ume-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p><span data-label-en="Designed by " data-label-ja="東京の個人開発者 ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作"> in Tokyo</span></p></footer>
+  </main>
+  <script src="umete-animated-icon.js?v=1"></script>
+  <script src="umete-language.js?v=1"></script>
+</body>
+</html>

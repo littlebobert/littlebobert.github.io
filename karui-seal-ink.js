@@ -1,6 +1,6 @@
 // Inks in a seal: its border and lettering start with no thickness and swell to full
 // weight while the seal stays the same size, like a hanko pressed onto paper. Used by
-// the hero seal on the home page and the large one on /hanko.
+// the hero seal on the home page and the large ones on /hanko and /seal.
 //
 // A filter thins the ink: widening the white paper around each stroke makes the border
 // and lettering thinner, and the animation shrinks that to nothing. The image needs

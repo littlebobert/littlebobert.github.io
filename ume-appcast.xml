@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.4.10</title>
+            <pubDate>Thu, 19 Nov 2026 01:06:22 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>36.1</sparkle:version>
+            <sparkle:shortVersionString>0.4.10</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.10
+
+Bug reports sent with Email Logs now include Umete's real version and build, your iOS, iPadOS, or macOS version, and your device model.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="d7zl4ucLsH/7N13BDn3NlqM4ETeoYN03AyxBBjj/tKDb6pGcfBCAhbu2feL6+H8fpxAMevGG2oVLrVUksQpFCw==" sparkle:length="387">https://umete.jp/Umete-0.4.10-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="1NePltUFrfZQ6y2bvSsoUtb6dIBaY1EMGFMmoGbgwEBP+iae5G5gegSGjjB/n2LOkL1YUzW40Ggcry7hoos4BA==" sparkle:length="490">https://umete.jp/Umete-0.4.10-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.10/Umete-0.4.10-macOS.dmg" length="6931383" type="application/octet-stream" sparkle:edSignature="gy7cIaq7GkfNVIeEnVtLcKXonKjIGhtgfdG0tx1Bbu46HNKm8//ubrdcW+OglhReo3QMrnRO1PrN+Hiw8j3SAg=="/>
+        </item>
+        <item>
             <title>0.4.9</title>
             <pubDate>Thu, 19 Nov 2026 00:29:47 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -149,25 +165,9 @@ Fixed filling hidden fields, such as alternate phone numbers behind tabs, and th
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="rQOupHwVuDqAocgJGL6dGZy6e+qnBTGWIIEWNKNr0PXUvy5FiBQjZVvaCYPG4Qw42izwVPg1FAhPN/++/w8fDA==" sparkle:length="458">https://umete.jp/Umete-0.4.1-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.1/Umete-0.4.1-macOS.dmg" length="5916087" type="application/octet-stream" sparkle:edSignature="kBAjW9YG5Ct2dHhScW+E3xnOFD9Vh7UZGdvAPnZo/rQB7q39ssAOx3ajMQ6kLyM2cd/hP56jH7aYHKW+53m5Dg=="/>
         </item>
-        <item>
-            <title>0.4.0</title>
-            <pubDate>Mon, 12 Oct 2026 16:10:41 +0000</pubDate>
-            <link>https://umete.jp/</link>
-            <sparkle:fullReleaseNotesLink>https://umete.jp/#changelog</sparkle:fullReleaseNotesLink>
-            <sparkle:version>24.1</sparkle:version>
-            <sparkle:shortVersionString>0.4.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.0
-
-AI matching is now free by default, with no API key needed. Faster, cheaper matching with OpenAI's Decisions API.
-]]></description>
-            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="YU5BqipQanmikVO77zMpR4T0HtOMhBmmrPSH74uOq07kCTumq547Py8TBvrugVThIBrdCzeao6+sClPzruAzCg==" sparkle:length="364">https://umete.jp/Umete-0.4.0-macOS.en.md</sparkle:releaseNotesLink>
-            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="SloP8+CdFIqzh44KOxow9GvRKDUh39CBVGZ5MO6PDSvRq2avo11vlABPYO0QBZdagt6mjWruqkqKyKNnLZymBg==" sparkle:length="452">https://umete.jp/Umete-0.4.0-macOS.ja.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.0/Umete-0.4.0-macOS.dmg" length="5907383" type="application/octet-stream" sparkle:edSignature="b+r3kfA9wmP+bS+siz/rKUZ0LVzhF9hc61/EW2rrCv+l/zP7OuIp4Y648UfIHIm6L/+UeyuczZ7w6DML26PqBg=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: /zUmD+s8K9hWDitOQWneSGLwpveFj50qhR7QkGgrNGaIzSVUAKo6/KBuRzVbrqfEJY8ylDz2OaVDSIPhFZm0DA==
-length: 15513
+edSignature: nWB8XaXDF5MHriLpiWVPCsdJ9dI5Zjh9NPtbDcwP7Q28H9MHjp7ynUagMgOTrwgp5eZ6rW/gcWYLbnShs2JEBA==
+length: 15541
 -->

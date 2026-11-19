@@ -1,8 +1,27 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-11-18T22:37:19.586Z",
+  "updatedAt": "2026-11-19T22:41:01.150Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2123321154211594558",
+      "text": "name a better crossover, I’ll wait https://t.co/OMUDpuSJ7Z",
+      "createdAt": "2026-11-19T07:43:07.000Z",
+      "url": "https://x.com/_bobertdowney/status/2123321154211594558",
+      "urls": [
+        {
+          "url": "https://t.co/OMUDpuSJ7Z",
+          "expandedUrl": "https://twitter.com/salesforce/status/2122798862641291665",
+          "displayUrl": "x.com/salesforce/sta…",
+          "start": 35,
+          "end": 58
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.png",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": []
+    },
     {
       "id": "2122950203103957000",
       "text": "Karui 1.0 is out. it hides unwanted notifications privately with Apple Intelligence and lets you see messages people unsend. big thank you to everyone who’s tried it so far. https://t.co/XvhuIJPcHX https://t.co/syc7fnCDQx",
@@ -164,63 +183,6 @@ window.X_POSTS_SNAPSHOT = {
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
-    },
-    {
-      "id": "2118099319530360879",
-      "text": "Apple’s Foundation Models are quite good compared to Opus 5.5 and GPT-6.1 Sol at categorizing push notifications as Important/Neutral/Spam. I’ve published my benchmarks: https://t.co/2Wr0ERqLTQ https://t.co/6KHrimAUej",
-      "createdAt": "2026-11-04T21:53:24.000Z",
-      "url": "https://x.com/_bobertdowney/status/2118099319530360879",
-      "urls": [
-        {
-          "url": "https://t.co/2Wr0ERqLTQ",
-          "expandedUrl": "https://karui.jp/technotes/kn006",
-          "displayUrl": "karui.jp/technotes/kn006",
-          "start": 170,
-          "end": 193
-        },
-        {
-          "url": "https://t.co/6KHrimAUej",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2118099319530360879/photo/1",
-          "displayUrl": "pic.x.com/6KHrimAUej",
-          "start": 194,
-          "end": 217
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2118099319530360879-0.png"
-        }
-      ]
-    },
-    {
-      "id": "2118041110580965703",
-      "text": "Siri people fielded my question during the lab 🤓 https://t.co/1wvNP246el",
-      "createdAt": "2026-11-04T18:02:06.000Z",
-      "url": "https://x.com/_bobertdowney/status/2118041110580965703",
-      "urls": [
-        {
-          "url": "https://t.co/1wvNP246el",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2118041110580965703/photo/1",
-          "displayUrl": "pic.x.com/1wvNP246el",
-          "start": 49,
-          "end": 72
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.png",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2118041110580965703-0.png"
-        }
-      ]
     }
   ]
 };

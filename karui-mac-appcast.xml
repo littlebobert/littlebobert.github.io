@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>1.0.2</title>
+            <pubDate>Thu, 19 Nov 2026 10:20:00 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>88</sparkle:version>
+            <sparkle:shortVersionString>1.0.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Karui for Mac now downloads as a disk image: open it and drag Karui to Applications. Updates still arrive on their own.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.0.2/Karui-1.0.2-mac.zip" length="3159552" type="application/octet-stream" sparkle:edSignature="aA7DTk/Xcx0s7isabSOHb/2eytV86ngpK90qMe2VTpN+8Y9vMPSvggnc5YFJpSUwYgRMV2IjZEUfu3GRQ7oJAA=="/>
+        </item>
+        <item>
             <title>1.0.1</title>
             <pubDate>Wed, 18 Nov 2026 15:41:37 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,19 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Karui for Mac is now 1.0. Thanks to everyone who tried it early.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.0/Karui-1.0-mac.zip" length="3152015" type="application/octet-stream" sparkle:edSignature="sqMEu6zWez+E7GenmN9PwiKMM/CsIya3rGVEftfJ5+j5yyOoA2rPLZcGlgPwwbY1tqaK1RAbIqbsnew3dtBVDQ=="/>
-        </item>
-        <item>
-            <title>0.11.10</title>
-            <pubDate>Sun, 15 Nov 2026 15:55:38 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>85</sparkle:version>
-            <sparkle:shortVersionString>0.11.10</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- A notification that repeats with the same text, like a calendar alert on several days, is now marked read on your other Macs when you read it on one.
-- The Unread filter no longer shows notifications your Mac sorted as Neutral or Spam.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/0.11.10/Karui-0.11.10-mac.zip" length="3152023" type="application/octet-stream" sparkle:edSignature="bdM66j1tc8uqm1p+4arTOAB6e8AHiA4aZlWPOFOXBcI4/bIQSqjJboUtBG67Zr1uoUkSWpa0QJePQB8zXIazDw=="/>
         </item>
     </channel>
 </rss>

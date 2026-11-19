@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>1.0.3</title>
+            <pubDate>Fri, 20 Nov 2026 07:34:02 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>89</sparkle:version>
+            <sparkle:shortVersionString>1.0.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Alerts on your iPhone open the exact Spark email more often: when Spark on this Mac doesn't have an email yet, for example while the Mac sleeps, Karui for Mac looks for it again a few minutes later.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.0.3/Karui-1.0.3-mac.zip" length="3161826" type="application/octet-stream" sparkle:edSignature="aSE5JYq/oIlNCfcI6m/X92FSnKotCGl7fke9k28pMb6oZomh3f+dXY+LaLxUt2xCJBGxj2v7bRK8eM0f+Z3zBg=="/>
+        </item>
+        <item>
             <title>1.0.2</title>
             <pubDate>Thu, 19 Nov 2026 10:20:00 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- If Notification Center’s database goes missing, as macOS can do when the disk runs out of space, Karui now offers a button to restart Notification Center so it makes a new one.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.0.1/Karui-1.0.1-mac.zip" length="3159570" type="application/octet-stream" sparkle:edSignature="jE9jH+JMaIZBP00XwOgzq+aQAR/1DSaGWVHI8q8wTsNLM3Jmakwswh8CBdnPWVnRS1G/w7iKpzp6ItTE5+6RAA=="/>
-        </item>
-        <item>
-            <title>1.0</title>
-            <pubDate>Wed, 18 Nov 2026 07:58:28 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>86</sparkle:version>
-            <sparkle:shortVersionString>1.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Karui for Mac is now 1.0. Thanks to everyone who tried it early.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.0/Karui-1.0-mac.zip" length="3152015" type="application/octet-stream" sparkle:edSignature="sqMEu6zWez+E7GenmN9PwiKMM/CsIya3rGVEftfJ5+j5yyOoA2rPLZcGlgPwwbY1tqaK1RAbIqbsnew3dtBVDQ=="/>
         </item>
     </channel>
 </rss>

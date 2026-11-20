@@ -152,6 +152,8 @@
             );
             group.style.transformBox = 'fill-box';
             group.style.transformOrigin = 'center';
+            // Hidden unless an animation shows it; see circle below.
+            group.style.opacity = '0';
             svg.append(group);
             return group;
           });
@@ -159,6 +161,9 @@
             const dot = make('circle', { cx: x, cy: y, r: p * 0.45, fill: ink });
             dot.style.transformBox = 'fill-box';
             dot.style.transformOrigin = 'center';
+            // Hidden unless an animation shows it, so a frame painted before the
+            // animations apply (iPhones did) can't show the dots in the finished code.
+            dot.style.opacity = '0';
             svg.append(dot);
             return dot;
           };
@@ -173,8 +178,8 @@
           )));
         }
 
-        // Cancelling returns everything to the finished code: the image on top of the
-        // dots and markers in their final places.
+        // Cancelling returns everything to the finished code: the image, over the
+        // hidden dots and markers.
         function skip() {
           running.forEach((animation) => animation.cancel());
           running = [];
@@ -233,8 +238,16 @@
           .then(build)
           .then(() => true, () => false);
         stage.addEventListener('click', skip);
-        // Hold at the start, the blank page, until it's in view.
-        const ready = () => { play(); running.forEach((animation) => animation.pause()); };
+        // Hold at the start, the blank page, until it's in view. Resolves once the paused
+        // animations have applied and two frames have passed: iPhones painted a frame
+        // of the finished code and dots before the animations hid them, so the stage
+        // isn't shown until then.
+        const ready = async () => {
+          play();
+          running.forEach((animation) => animation.pause());
+          await Promise.all(running.map((animation) => animation.ready)).catch(() => {});
+          await new Promise((resolve) => requestAnimationFrame(() => requestAnimationFrame(resolve)));
+        };
         const resume = () => running.forEach((animation) => animation.play());
         return { stage, loaded, ready, resume, skip, prepared: null, played: false };
       }
@@ -265,8 +278,8 @@
         }
         // Each seal waits on a blank page until it's swiped into view.
         morphs.forEach((item) => {
-          item.prepared = item.loaded.then((ok) => {
-            if (ok && open) item.ready();
+          item.prepared = item.loaded.then(async (ok) => {
+            if (ok && open) await item.ready();
             // Ready at its blank start, or, if the dots didn't load, the finished code.
             item.stage.classList.add('is-prepared');
             return ok && open;

@@ -1,18 +1,16 @@
-// Generates the animated seals at karui.jp/#qr, where a seal's lettering, in a
-// narrow frame, turns into a QR code for karui.jp. There are two: 通知をかるく, the
+// Generates the animated seals at karui.jp/#qr, where a seal, border and lettering,
+// dissolves into dots that turn into a QR code for karui.jp. There are two: 通知をかるく, the
 // App Store name's tagline, and ガルシア, the footer seal, both from the scans of
 // hand-carved stamps in scripts/karui-seal-scans.
 //   assets/karui-qr-seal.png       the plain red QR code on white, with no frame
 //                                  around it, where both end
 //   assets/karui-qr-seal-tagline-name.png, assets/karui-qr-seal-name.png
 //                                  each stamp, border and all, in the code's red on
-//                                  transparent; the page fades its own frame in over
-//                                  the stamp's border so it can widen, then fades it
-//                                  out, so the code ends with a plain white margin
+//                                  transparent
 //   assets/karui-qr-seal-tagline.json, assets/karui-qr-seal.json
-//                                  each data dot's start (on the lettering) and end
-//                                  (its QR module), extra dots that fill out the
-//                                  lettering, the markers, and both frames
+//                                  each data dot's start (on the stamp's ink, border
+//                                  included) and end (its QR module), extra dots that
+//                                  fill out the stamp, and the markers
 //
 //   swift scripts/generate-karui-seal-qr.swift
 //
@@ -51,7 +49,8 @@ let code = CIContext().createCGImage(rounded.outputImage!, from: rounded.outputI
 
 let size = CGFloat(code.width)
 let margin = size * 0.10, canvas = size + margin * 2
-let frameInset = margin * 0.45, frameWidth = size * 0.022, frameRadius = size * 0.06
+// Where the stamps sit: a box as tall as this square, with a border this wide.
+let frameInset = margin * 0.45, frameWidth = size * 0.022
 // Both generators pad the grid with the same quiet zone, so module (col, row) of the
 // plain grid is centered at margin + (col + 0.5) * pitch in the rounded one.
 let pitch = size / CGFloat(gridPixels)
@@ -162,11 +161,10 @@ func minimumDistancePairing(_ a: [CGPoint], _ b: [CGPoint]) -> [Int] {
 let rounding = { (value: CGFloat) in (Double(value) * 10).rounded() / 10 }
 let squareSide = canvas - frameInset * 2
 
-// A stamp from its scan, cropped to its border, as two masks in the scan's pixels,
-// top row first: all its ink, and its lettering alone, with the border erased.
+// A stamp from its scan, cropped to its border, as a mask of its ink in the scan's
+// pixels, top row first.
 struct Stamp {
     let ink: CGImage
-    let lettering: CGImage
     var aspect: CGFloat { CGFloat(ink.width) / CGFloat(ink.height) }
 }
 
@@ -193,56 +191,30 @@ func loadStamp(_ path: String) -> Stamp {
     let rows = (0..<height).filter { y in (0..<width).filter { coverage($0, y) > 128 }.count > width / 10 }
     let columns = (0..<width).filter { x in (0..<height).filter { coverage(x, $0) > 128 }.count > height / 10 }
     let (left, top, right, bottom) = (columns.first!, rows.first!, columns.last!, rows.last!)
-    // How thick the border is: the median run of ink in from each edge, over the middle
-    // of that edge, where the lettering doesn't reach it.
-    func median(_ runs: [Int]) -> Int { runs.sorted()[runs.count / 2] }
-    func run(from start: Int, step: Int, at: (Int) -> UInt8) -> Int {
-        var length = 0
-        while length < 200, at(start + length * step) > 128 { length += 1 }
-        return length
-    }
-    let middleRows = Array(stride(from: top + (bottom - top) / 5, to: bottom - (bottom - top) / 5, by: 2))
-    let middleColumns = Array(stride(from: left + (right - left) / 5, to: right - (right - left) / 5, by: 2))
-    // Erase a little past the median, since the carved border's inner edge wanders.
-    let band = { (runs: [Int]) in Int(Double(median(runs)) * 1.5) + 2 }
-    let leftBand = band(middleRows.map { y in run(from: left, step: 1) { coverage($0, y) } })
-    let rightBand = band(middleRows.map { y in run(from: right, step: -1) { coverage($0, y) } })
-    let topBand = band(middleColumns.map { x in run(from: top, step: 1) { coverage(x, $0) } })
-    let bottomBand = band(middleColumns.map { x in run(from: bottom, step: -1) { coverage(x, $0) } })
-
-    func mask(_ keep: (Int, Int) -> Bool) -> CGImage {
-        let maskWidth = right - left + 1, maskHeight = bottom - top + 1
-        var values = [UInt8](repeating: 0, count: maskWidth * maskHeight)
-        for y in 0..<maskHeight {
-            for x in 0..<maskWidth where keep(x, y) { values[y * maskWidth + x] = coverage(left + x, top + y) }
-        }
-        let context = CGContext(
-            data: &values, width: maskWidth, height: maskHeight, bitsPerComponent: 8, bytesPerRow: maskWidth,
-            space: CGColorSpaceCreateDeviceGray(), bitmapInfo: CGImageAlphaInfo.none.rawValue
-        )!
-        return context.makeImage()!
-    }
     let maskWidth = right - left + 1, maskHeight = bottom - top + 1
-    return Stamp(
-        ink: mask { _, _ in true },
-        lettering: mask { x, y in x >= leftBand && x < maskWidth - rightBand && y >= topBand && y < maskHeight - bottomBand }
-    )
+    var values = [UInt8](repeating: 0, count: maskWidth * maskHeight)
+    for y in 0..<maskHeight {
+        for x in 0..<maskWidth { values[y * maskWidth + x] = coverage(left + x, top + y) }
+    }
+    let mask = CGContext(
+        data: &values, width: maskWidth, height: maskHeight, bitsPerComponent: 8, bytesPerRow: maskWidth,
+        space: CGColorSpaceCreateDeviceGray(), bitmapInfo: CGImageAlphaInfo.none.rawValue
+    )!
+    return Stamp(ink: mask.makeImage()!)
 }
 
-// One seal: its stamp in a frame as tall as the code's square one, and as wide as the
-// stamp's proportions make it, centered. The page widens that frame into the square.
+// One seal: its stamp as tall as the code's square, and as wide as the stamp's
+// proportions make it, centered.
 //   stamp          the scan, in scripts/karui-seal-scans
-//   name           the stamp image, on transparent: the page draws the frame
-//   json           the dots, markers and frames for the page
-//   sampleStep     how finely to sample the lettering for dot positions, in pixels
+//   name           the stamp image, on transparent
+//   json           the dots and markers for the page
+//   sampleStep     how finely to sample the stamp for dot positions, in pixels
 //   extraSpacing   how far apart extra dots are, in modules; smaller traces more detail
 //   startScale     how big the dots start, relative to a module, so they trace thin
 //                  strokes and grow on the way
 func seal(stamp path: String, name: String, json: String, sampleStep: Int, extraSpacing: CGFloat, startScale: Double) {
     let stamp = loadStamp(path)
     let nameFrame = CGRect(x: (canvas - squareSide * stamp.aspect) / 2, y: frameInset, width: squareSide * stamp.aspect, height: squareSide)
-    // The page's frame is centered on nameFrame, so the stamp's border fills the same
-    // band when the page fades from one to the other.
     let stampRect = nameFrame.insetBy(dx: -frameWidth / 2, dy: -frameWidth / 2)
     func draw(_ mask: CGImage, in context: CGContext, color: NSColor) {
         context.saveGState()
@@ -254,15 +226,15 @@ func seal(stamp path: String, name: String, json: String, sampleStep: Int, extra
     }
     write(render(onWhite: false) { draw(stamp.ink, in: $0, color: ink) }, to: name)
 
-    // Sample the lettering, without the border, which becomes the frame: rasterize it,
-    // then keep evenly spread points on the ink.
+    // Sample the whole stamp, border included, so all of it breaks into dots:
+    // rasterize it, then keep evenly spread points on the ink.
     let maskSize = Int(canvas)
     var mask = [UInt8](repeating: 0, count: maskSize * maskSize)
     let maskContext = CGContext(
         data: &mask, width: maskSize, height: maskSize, bitsPerComponent: 8, bytesPerRow: maskSize,
         space: CGColorSpaceCreateDeviceGray(), bitmapInfo: CGImageAlphaInfo.none.rawValue
     )!
-    draw(stamp.lettering, in: maskContext, color: .white)
+    draw(stamp.ink, in: maskContext, color: .white)
     var inkPoints: [CGPoint] = []
     for y in stride(from: 0, to: maskSize, by: sampleStep) {
         for x in stride(from: 0, to: maskSize, by: sampleStep) where mask[y * maskSize + x] > 128 {
@@ -291,7 +263,7 @@ func seal(stamp path: String, name: String, json: String, sampleStep: Int, extra
     starts.sort { hilbert($0) < hilbert($1) }
     let match = minimumDistancePairing(starts, ends)
 
-    // Extra dots so the dotted lettering reads like the lettering. Each follows its
+    // Extra dots so the dotted stamp reads like the stamp. Each follows its
     // nearest real dot and fades out as it arrives, so the finished code still has
     // exactly its own dots.
     var placed = starts
@@ -308,8 +280,6 @@ func seal(stamp path: String, name: String, json: String, sampleStep: Int, extra
     let data: [String: Any] = [
         "canvas": rounding(canvas),
         "pitch": rounding(pitch),
-        "frame": [rounding(frameInset), rounding(frameWidth), rounding(frameRadius)],
-        "nameFrame": [nameFrame.minX, nameFrame.minY, nameFrame.width, nameFrame.height].map(rounding),  // x, y, width, height
         "startScale": startScale,
         "markers": markers.map { $0.map(rounding) },
         "dots": dots,  // [startX, startY, endX, endY], in canvas pixels, y down

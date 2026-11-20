@@ -119,8 +119,8 @@ test('builds the changelog page and links to it from every page', async () => {
   assert.equal(qrPage.match(/<div class="karui-qr-morph">/g).length, 2);
   assert.ok(qrPage.indexOf('karui-qr-seal-tagline-name.png') < qrPage.indexOf('karui-qr-seal-name.png'));
   assert.ok(qrPage.indexOf('karui-qr-seal-name.png') < qrPage.indexOf('karui-qr.png'));
-  assert.match(qrPage, /src="\/assets\/karui-qr-seal-tagline-name\.png\?v=5"/);
-  assert.match(qrPage, /src="\/assets\/karui-qr-seal-name\.png\?v=5"/);
+  assert.match(qrPage, /src="\/assets\/karui-qr-seal-tagline-name\.png\?v=6"/);
+  assert.match(qrPage, /src="\/assets\/karui-qr-seal-name\.png\?v=6"/);
   assert.match(qrPage, /src="\/assets\/karui-qr-seal\.png\?v=4"/);
   assert.doesNotMatch(qrPage, /karui-qr-hanko/);
   assert.match(pages[0], /class="karui-maker-seal" src="\/assets\/karui-seal\.png/);

@@ -130,13 +130,12 @@
         return element;
       };
 
-      function morph(stage, index) {
+      function morph(stage) {
         const name = stage.querySelector('.karui-qr-morph-name');
         const final = stage.querySelector('.karui-qr-morph-final');
         const svg = stage.querySelector('svg');
         let dots = [];
         let markers = [];
-        let erode = null;
         let running = [];
         let data = null;
 
@@ -144,10 +143,6 @@
           data = json;
           const p = data.pitch;
           svg.setAttribute('viewBox', `0 0 ${data.canvas} ${data.canvas}`);
-          const filter = make('filter', { id: `karui-qr-stamp-${index}` });
-          erode = make('feMorphology', { operator: 'erode', radius: 0 });
-          filter.append(erode);
-          svg.append(filter);
           markers = data.markers.map(([x, y, w]) => {
             const group = make('g', {});
             const core = w === 5 * p ? p : 3 * p;
@@ -189,25 +184,10 @@
           skip();
           const stamped = stamp.delay + stamp.duration;
           const timing = (delay, duration, extra = {}) => ({ delay: stamped + delay, duration, fill: 'both', easing: 'linear', ...extra });
-          // The stamp inks in: its border and lettering come up thin and faint and grow
-          // to their full weight, like a seal pressed onto paper. It's an image, so an
-          // erode filter thins it, and the filter's radius follows the stamp's animation,
-          // so skipping stops both.
+          // The stamp fades in at full weight, then holds. (Thinning it as it inked in
+          // broke the carved strokes into specks that, on phones, read as dots.)
           const inkIn = { easing: 'cubic-bezier(0.2, 0.6, 0.3, 1)' };
-          const inking = name.animate([{ opacity: 0 }, { opacity: 1, offset: 0.25 }, { opacity: 1 }], { ...stamp, ...inkIn, fill: 'both' });
-          running.push(inking);
-          name.style.filter = `url(#${erode.parentNode.id})`;
-          const thinnest = stage.clientWidth * 0.009;
-          const thin = () => {
-            const progress = inking.effect.getComputedTiming().progress;
-            if (inking.playState === 'idle' || progress === null || progress >= 1) {
-              name.style.filter = '';
-              return;
-            }
-            erode.setAttribute('radius', thinnest * (1 - progress));
-            requestAnimationFrame(thin);
-          };
-          thin();
+          running.push(name.animate([{ opacity: 0 }, { opacity: 1, offset: 0.25 }, { opacity: 1 }], { ...stamp, ...inkIn, fill: 'both' }));
           // The dots come up over the still-visible stamp, then the stamp fades out from
           // under them, so it breaks into dots instead of being swapped.
           const lead = 220, appear = 265;

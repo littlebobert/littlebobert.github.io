@@ -189,18 +189,23 @@
           skip();
           const stamped = stamp.delay + stamp.duration;
           const timing = (delay, duration, extra = {}) => ({ delay: stamped + delay, duration, fill: 'both', easing: 'linear', ...extra });
-          // The stamp fades in at full weight, then holds. (Thinning it as it inked in
-          // broke the carved strokes into specks that, on phones, read as dots.)
-          const inkIn = { easing: 'cubic-bezier(0.2, 0.6, 0.3, 1)' };
-          running.push(name.animate([{ opacity: 0 }, { opacity: 1, offset: 0.25 }, { opacity: 1 }], { ...stamp, ...inkIn, fill: 'both' }));
+          // The stamp fades in at full weight, holds, then fades out from under the dots,
+          // all in one animation: as two (in, then a later out), iPhones held it hidden
+          // until the second began, so the stamp only flashed up as it was leaving.
+          const inked = stamp.delay + 120, fading = stamped + T.hold + 90, gone = fading + T.dissolve;
+          const span = gone - stamp.delay;
+          running.push(name.animate([
+            { opacity: 0, offset: 0, easing: 'cubic-bezier(0.2, 0.6, 0.3, 1)' },
+            { opacity: 1, offset: (inked - stamp.delay) / span },
+            { opacity: 1, offset: (fading - stamp.delay) / span },
+            { opacity: 0, offset: 1 },
+          ], { delay: stamp.delay, duration: span, fill: 'both' }));
           // The dots come up over the still-visible stamp, then the stamp fades out from
           // under them, so it breaks into dots instead of being swapped.
           const lead = 220, appear = 265;
           // Dots start small, so together they trace even the thin strokes, and grow to
           // module size on the way. How small depends on the lettering's detail.
           const small = data.startScale;
-          // Filled forwards only, so until it starts the stamp decides the opacity.
-          running.push(name.animate([{ opacity: 1 }, { opacity: 0 }], timing(T.hold + 90, T.dissolve, { fill: 'forwards' })));
           const count = data.dots.length;
           dots.forEach(({ dot, dx, dy, order, fades }) => {
             // A quadratic curve bending off to the same side every time, so the dots

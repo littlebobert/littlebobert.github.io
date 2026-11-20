@@ -34,7 +34,7 @@
        into place, then the real code image takes over. Without JavaScript, or with
        Reduce Motion, the finished code shows straight away. */
     .karui-qr-morph { position: relative; flex: 0 0 100%; aspect-ratio: 1; scroll-snap-align: center; container-type: inline-size; }
-    .karui-qr-morph-frame { position: absolute; box-sizing: border-box; border: 0 solid #cc2119; overflow: hidden; }
+    .karui-qr-morph-frame { position: absolute; box-sizing: border-box; border: 0 solid transparent; overflow: hidden; }
     .karui-qr-morph > img, .karui-qr-morph > svg { position: absolute; inset: 0; width: 100%; height: 100%; }
     .karui-qr-morph-frame > svg { position: absolute; width: 100cqw; height: 100cqw; overflow: visible; }
     .karui-qr-morph-name { opacity: 0; }
@@ -50,12 +50,12 @@
         <div class="karui-qr-morph">
           <img class="karui-qr-morph-name" src="assets/karui-qr-seal-tagline-name.png?v=5" alt="" width="648" height="648">
           <svg class="karui-qr-morph-dots" aria-hidden="true"></svg>
-          <img class="karui-qr-morph-final" src="assets/karui-qr-seal.png?v=3" alt="QR code that opens https://karui.jp/, in seal red" width="648" height="648">
+          <img class="karui-qr-morph-final" src="assets/karui-qr-seal.png?v=4" alt="QR code that opens https://karui.jp/, in seal red" width="648" height="648">
         </div>
         <div class="karui-qr-morph">
           <img class="karui-qr-morph-name" src="assets/karui-qr-seal-name.png?v=5" alt="" width="648" height="648">
           <svg class="karui-qr-morph-dots" aria-hidden="true"></svg>
-          <img class="karui-qr-morph-final" src="assets/karui-qr-seal.png?v=3" alt="QR code that opens https://karui.jp/, in seal red" width="648" height="648">
+          <img class="karui-qr-morph-final" src="assets/karui-qr-seal.png?v=4" alt="QR code that opens https://karui.jp/, in seal red" width="648" height="648">
         </div>
         <img src="assets/karui-qr.png?v=2" alt="QR code that opens https://karui.jp/" width="719" height="719">
       </div>
@@ -108,7 +108,7 @@
     // The seals: 通知をかるく first, then ガルシア a swipe away. Each hand-carved stamp
     // is inked onto the page, then its lettering dissolves into dots while a drawn
     // frame takes over from the stamp's border, and the dots curve into their places
-    // in the QR code while the frame widens into a square. The real code image takes
+    // in the QR code while the frame widens and fades away. The real code image takes
     // over, so what people scan is the tested image. Each plays once per visit, when it's swiped into view. Tap to
     // skip. Reduce Motion shows the finished codes at once.
     (() => {
@@ -123,8 +123,8 @@
       // into dots, hold the dotted name still, curve the dots into place, settle the
       // markers, then hand over to the code image. Everything after the stamp is
       // timed from when it's done.
-      const stamp = { delay: 90, duration: 525 };
-      const T = { hold: 300, dissolve: 305, dotted: 250, travel: 1000, stagger: 350, markers: 1600, markersFor: 440, final: 2125, finalFor: 265 };
+      const stamp = { delay: 30, duration: 525 };
+      const T = { hold: 700, dissolve: 305, dotted: 250, travel: 1000, stagger: 350, markers: 2000, markersFor: 440, final: 2525, finalFor: 265 };
       const easeInOut = (t) => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
       const make = (tag, attributes) => {
@@ -271,6 +271,11 @@
           });
           const widening = timing(T.hold + T.dissolve + T.dotted, T.travel * 0.8, { easing: 'cubic-bezier(0.65, 0, 0.35, 1)' });
           running.push(frame.element.animate([frame.from, frame.to], widening));
+          // The code has no frame of its own, so the drawn one fades away over the second
+          // half of its widening, leaving the code a plain white margin. Its resting colour
+          // is transparent, so skipping leaves no frame either.
+          running.push(frame.element.animate([{ borderColor: ink }, { borderColor: 'transparent' }],
+            timing(T.hold + T.dissolve + T.dotted + T.travel * 0.4, T.travel * 0.6, { easing: 'ease-in' })));
           running.push(svg.animate([frame.dotsFrom, frame.dotsTo], widening));
           markers.forEach((marker) => running.push(marker.animate(
             [{ transform: 'scale(0.6)', opacity: 0 }, { transform: 'scale(1)', opacity: 1 }],

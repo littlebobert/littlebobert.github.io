@@ -2,12 +2,13 @@
 // narrow frame, turns into a QR code for karui.jp. There are two: 通知をかるく, the
 // App Store name's tagline, and ガルシア, the footer seal, both from the scans of
 // hand-carved stamps in scripts/karui-seal-scans.
-//   assets/karui-qr-seal.png       the plain red QR code in a square frame, where
-//                                  both end
+//   assets/karui-qr-seal.png       the plain red QR code on white, with no frame
+//                                  around it, where both end
 //   assets/karui-qr-seal-tagline-name.png, assets/karui-qr-seal-name.png
 //                                  each stamp, border and all, in the code's red on
 //                                  transparent; the page fades its own frame in over
-//                                  the stamp's border so it can widen
+//                                  the stamp's border so it can widen, then fades it
+//                                  out, so the code ends with a plain white margin
 //   assets/karui-qr-seal-tagline.json, assets/karui-qr-seal.json
 //                                  each data dot's start (on the lettering) and end
 //                                  (its QR module), extra dots that fill out the
@@ -55,7 +56,8 @@ let frameInset = margin * 0.45, frameWidth = size * 0.022, frameRadius = size * 
 // plain grid is centered at margin + (col + 0.5) * pitch in the rounded one.
 let pitch = size / CGFloat(gridPixels)
 
-func render(framed: Bool = true, _ body: (CGContext) -> Void) -> NSBitmapImageRep {
+// On white for the code, so its quiet zone is light; on transparent for the stamps.
+func render(onWhite: Bool = true, _ body: (CGContext) -> Void) -> NSBitmapImageRep {
     let bitmap = NSBitmapImageRep(
         bitmapDataPlanes: nil, pixelsWide: Int(canvas), pixelsHigh: Int(canvas),
         bitsPerSample: 8, samplesPerPixel: 4, hasAlpha: true, isPlanar: false,
@@ -64,22 +66,11 @@ func render(framed: Bool = true, _ body: (CGContext) -> Void) -> NSBitmapImageRe
     NSGraphicsContext.saveGraphicsState()
     NSGraphicsContext.current = NSGraphicsContext(bitmapImageRep: bitmap)
     let context = NSGraphicsContext.current!.cgContext
-    guard framed else {
-        body(context)
-        NSGraphicsContext.restoreGraphicsState()
-        return bitmap
+    if onWhite {
+        NSColor.white.setFill()
+        NSRect(x: 0, y: 0, width: canvas, height: canvas).fill()
     }
-    NSColor.white.setFill()
-    NSRect(x: 0, y: 0, width: canvas, height: canvas).fill()
     body(context)
-    let frame = NSBezierPath(
-        roundedRect: NSRect(x: 0, y: 0, width: canvas, height: canvas).insetBy(dx: frameInset, dy: frameInset),
-        xRadius: frameRadius,
-        yRadius: frameRadius
-    )
-    frame.lineWidth = frameWidth
-    ink.setStroke()
-    frame.stroke()
     NSGraphicsContext.restoreGraphicsState()
     return bitmap
 }
@@ -261,7 +252,7 @@ func seal(stamp path: String, name: String, json: String, sampleStep: Int, extra
         context.fill(stampRect)
         context.restoreGState()
     }
-    write(render(framed: false) { draw(stamp.ink, in: $0, color: ink) }, to: name)
+    write(render(onWhite: false) { draw(stamp.ink, in: $0, color: ink) }, to: name)
 
     // Sample the lettering, without the border, which becomes the frame: rasterize it,
     // then keep evenly spread points on the ink.

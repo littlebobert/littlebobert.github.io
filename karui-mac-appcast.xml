@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>1.0.4</title>
+            <pubDate>Sat, 21 Nov 2026 23:01:13 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>90</sparkle:version>
+            <sparkle:shortVersionString>1.0.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Report a Bug now sends your report to the right address.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.0.4/Karui-1.0.4-mac.zip" length="3161810" type="application/octet-stream" sparkle:edSignature="DJoXQZJBo+wpmN4akSJdAhrNLKylgaFh+IhfQz1gJWP+u6VwK1793K0PO9PaIgs9DzceDvl3hssikrFaoRHTBQ=="/>
+        </item>
+        <item>
             <title>1.0.3</title>
             <pubDate>Fri, 20 Nov 2026 07:34:02 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Karui for Mac now downloads as a disk image: open it and drag Karui to Applications. Updates still arrive on their own.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.0.2/Karui-1.0.2-mac.zip" length="3159552" type="application/octet-stream" sparkle:edSignature="aA7DTk/Xcx0s7isabSOHb/2eytV86ngpK90qMe2VTpN+8Y9vMPSvggnc5YFJpSUwYgRMV2IjZEUfu3GRQ7oJAA=="/>
-        </item>
-        <item>
-            <title>1.0.1</title>
-            <pubDate>Wed, 18 Nov 2026 15:41:37 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>87</sparkle:version>
-            <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- If Notification Center’s database goes missing, as macOS can do when the disk runs out of space, Karui now offers a button to restart Notification Center so it makes a new one.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.0.1/Karui-1.0.1-mac.zip" length="3159570" type="application/octet-stream" sparkle:edSignature="jE9jH+JMaIZBP00XwOgzq+aQAR/1DSaGWVHI8q8wTsNLM3Jmakwswh8CBdnPWVnRS1G/w7iKpzp6ItTE5+6RAA=="/>
         </item>
     </channel>
 </rss>

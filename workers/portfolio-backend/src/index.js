@@ -318,10 +318,41 @@ async function visitorKey(request, env, site, path) {
   return [...new Uint8Array(digest)].map((byte) => byte.toString(16).padStart(2, '0')).join('');
 }
 
+// Crawlers and scripted clients that run JavaScript would otherwise inflate the counter. No
+// captcha: look for what a real browser sends and a scraper usually does not.
+const BOT_USER_AGENT = /bot\/|bot;|\bbot\b|crawl|spider|slurp|facebookexternalhit|headless|phantom|selenium|puppeteer|playwright|scrapy|curl\/|wget|python|go-http|node-fetch|axios|libwww|httpclient|okhttp|java\//i;
+const CHROMIUM_USER_AGENT = /Chrome\/|Chromium\/|Edg\//;
+
+function looksLikeBot(request) {
+  const userAgent = request.headers.get('User-Agent') || '';
+  if (!userAgent) return true;
+
+  // Cloudflare Bot Management, when the zone has it.
+  const botManagement = request.cf?.botManagement;
+  if (botManagement?.verifiedBot) return true;
+  if (typeof botManagement?.score === 'number' && botManagement.score < 30) return true;
+
+  if (BOT_USER_AGENT.test(userAgent)) return true;
+
+  // Chromium always sends Sec-Fetch-* on fetch(), so a Chrome user agent without them is a
+  // scripted client. Other engines are left alone, since older WebKit does not send these.
+  if (CHROMIUM_USER_AGENT.test(userAgent)) {
+    if (request.headers.get('Sec-Fetch-Mode') !== 'cors') return true;
+    if (request.headers.get('Sec-Fetch-Dest') !== 'empty') return true;
+  }
+
+  return false;
+}
+
 async function trackVisitor(request, env) {
   requireAllowedOrigin(request, env);
   const url = new URL(request.url);
   const { site, path } = validateCounterKey(url.searchParams.get('site'), url.searchParams.get('path'));
+  // Answer 200 so bots learn nothing, but leave the counter alone. `counted` tells the page
+  // whether to add this visit to the number it already shows.
+  if (looksLikeBot(request)) {
+    return json(request, env, { success: true, counted: false });
+  }
   const ip = request.headers.get('CF-Connecting-IP') || 'unknown';
   await enforceRateLimit(env.COUNTER_RATE_LIMITER, `${ip}:${site}:${path}`);
   const key = await visitorKey(request, env, site, path);
@@ -340,7 +371,7 @@ async function trackVisitor(request, env) {
         updated_at = excluded.updated_at
     `).bind(site, path, now).run();
   }
-  return json(request, env, { success: true });
+  return json(request, env, { success: true, counted: Boolean(seen.meta?.changes) });
 }
 
 async function readVisitorCount(request, env) {

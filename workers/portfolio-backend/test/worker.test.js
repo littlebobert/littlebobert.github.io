@@ -28,13 +28,17 @@ const successfulTurnstile = async () => Response.json({
   hostname: 'justin-garcia.pages.dev',
 });
 
+const BROWSER_USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
+
 function request(path, options = {}) {
   return new Request(`https://portfolio-backend.example${path}`, {
     ...options,
     headers: {
       Origin: ORIGIN,
       'CF-Connecting-IP': '203.0.113.10',
-      'User-Agent': 'portfolio-test',
+      'User-Agent': BROWSER_USER_AGENT,
+      'Sec-Fetch-Mode': 'cors',
+      'Sec-Fetch-Dest': 'empty',
       ...(options.headers || {}),
     },
   });
@@ -137,20 +141,56 @@ test('contact messages stay private and can be marked read', async () => {
 test('visitor counting is atomic and deduplicated by daily visitor hash', async () => {
   const { env } = createEnvironment();
   const path = '/api/v1/track?site=justin-garcia.pages.dev&path=%2F';
-  assert.equal((await handleRequest(request(path), env)).status, 200);
-  assert.equal((await handleRequest(request(path), env)).status, 200);
+  const first = await handleRequest(request(path), env);
+  assert.equal(first.status, 200);
+  assert.equal((await first.json()).counted, true);
+  const repeat = await handleRequest(request(path), env);
+  assert.equal(repeat.status, 200);
+  assert.equal((await repeat.json()).counted, false);
 
   const secondVisitor = request(path, {
-    headers: {
-      Origin: ORIGIN,
-      'CF-Connecting-IP': '203.0.113.11',
-      'User-Agent': 'portfolio-test',
-    },
+    headers: { 'CF-Connecting-IP': '203.0.113.11' },
   });
-  assert.equal((await handleRequest(secondVisitor, env)).status, 200);
+  const second = await handleRequest(secondVisitor, env);
+  assert.equal(second.status, 200);
+  assert.equal((await second.json()).counted, true);
 
   const count = await handleRequest(request('/api/v1/views?site=justin-garcia.pages.dev&path=%2F'), env);
   assert.equal((await count.json()).views, 2);
+});
+
+test('bot traffic is answered but never counted', async () => {
+  const { env } = createEnvironment();
+  const path = '/api/v1/track?site=justin-garcia.pages.dev&path=%2F';
+  const bots = [
+    { 'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' },
+    { 'User-Agent': 'facebookexternalhit/1.1' },
+    { 'User-Agent': 'curl/8.7.1' },
+    { 'User-Agent': '' },
+    // A Chrome user agent without the headers Chrome always sends on fetch().
+    { 'Sec-Fetch-Mode': '', 'Sec-Fetch-Dest': '' },
+  ];
+  for (const [index, headers] of bots.entries()) {
+    const response = await handleRequest(request(path, {
+      headers: { 'CF-Connecting-IP': `203.0.113.${20 + index}`, ...headers },
+    }), env);
+    assert.equal(response.status, 200);
+    assert.equal((await response.json()).counted, false);
+  }
+
+  // Safari and Firefox user agents are counted without Sec-Fetch headers.
+  const safari = await handleRequest(request(path, {
+    headers: {
+      'CF-Connecting-IP': '203.0.113.40',
+      'User-Agent': 'Mozilla/5.0 (iPhone; CPU iPhone OS 16_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.0 Mobile/15E148 Safari/604.1',
+      'Sec-Fetch-Mode': '',
+      'Sec-Fetch-Dest': '',
+    },
+  }), env);
+  assert.equal((await safari.json()).counted, true);
+
+  const count = await handleRequest(request('/api/v1/views?site=justin-garcia.pages.dev&path=%2F'), env);
+  assert.equal((await count.json()).views, 1);
 });
 
 test('product download clicks increment aggregate totals and appear in admin analytics', async () => {

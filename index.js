@@ -306,16 +306,13 @@ async function fetchVisitorCount() {
     visitorCountElement.textContent = cached;
   }
 
-  // A failed increment must not hide the count: the read below is independent.
-  if (!hasCountedVisitorThisSession()) {
-    try {
-      const trackResponse = await fetchVisitorCounter('track');
-      if (trackResponse.ok) {
-        markVisitorCountedThisSession();
-      }
-    } catch {}
-  }
+  const countRead = readVisitorCount(cached);
+  trackVisitorAfterEngagement(countRead);
+  await countRead;
+}
 
+// Resolves true once the server's count is on screen, false if the read failed.
+async function readVisitorCount(cached) {
   try {
     const response = await fetchVisitorCounter('views');
     if (!response.ok) {
@@ -326,10 +323,89 @@ async function fetchVisitorCount() {
     visitorCountElement.textContent = formatted;
     if (formatted !== '-') {
       cacheVisitorCount(formatted);
+      return true;
     }
-  } catch (error) {
+  } catch {
     visitorCountElement.textContent = cached || '-';
   }
+  return false;
+}
+
+// The count on screen was read before this visit was recorded, so add one if the server says
+// this visit was the one that moved it.
+function bumpDisplayedVisitorCount() {
+  const current = Number(visitorCountElement.textContent);
+  if (!Number.isFinite(current)) {
+    return;
+  }
+  const next = formatVisitorCount(current + 1);
+  visitorCountElement.textContent = next;
+  cacheVisitorCount(next);
+}
+
+// A visit only counts once the page has been looked at: five visible seconds, or the first
+// click, key press or scroll. Prerenders, link unfurlers and drive-by crawlers never get that
+// far, and automated browsers are skipped outright.
+function trackVisitorAfterEngagement(countRead) {
+  if (hasCountedVisitorThisSession() || navigator.webdriver) {
+    return;
+  }
+
+  let timer = 0;
+  let started = false;
+
+  function stop() {
+    window.clearTimeout(timer);
+    timer = 0;
+    window.removeEventListener('pointerdown', track, true);
+    window.removeEventListener('keydown', track, true);
+    // Scroll does not bubble, and the windows here scroll on their own, so listen in capture.
+    document.removeEventListener('scroll', track, true);
+    document.removeEventListener('visibilitychange', onVisibilityChange);
+  }
+
+  async function track() {
+    if (started) {
+      return;
+    }
+    started = true;
+    stop();
+    // Wait for the read, so the bump lands on the server's number and is never counted twice.
+    const countShown = await countRead;
+    try {
+      const response = await fetchVisitorCounter('track');
+      if (!response.ok) {
+        return;
+      }
+      markVisitorCountedThisSession();
+      const data = await response.json();
+      if (data.counted === true && countShown) {
+        bumpDisplayedVisitorCount();
+      }
+    } catch {}
+  }
+
+  function startTimer() {
+    if (timer || document.visibilityState !== 'visible') {
+      return;
+    }
+    timer = window.setTimeout(track, 5000);
+  }
+
+  function onVisibilityChange() {
+    if (document.visibilityState === 'visible') {
+      startTimer();
+    } else {
+      window.clearTimeout(timer);
+      timer = 0;
+    }
+  }
+
+  window.addEventListener('pointerdown', track, { capture: true, passive: true });
+  window.addEventListener('keydown', track, true);
+  document.addEventListener('scroll', track, { capture: true, passive: true });
+  document.addEventListener('visibilitychange', onVisibilityChange);
+  startTimer();
 }
 
 function localizedText(en, ja) {

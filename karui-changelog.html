@@ -89,7 +89,7 @@
 <h2 data-karui-build="133">1.0.3 (133) <span class="store-badge pending" data-label-en="Pending Release" data-label-ja="リリース待ち">Pending Release</span></h2>
 <span class="release-date" data-label-en="November 21, 2026" data-label-ja="2026年11月21日">November 21, 2026</span>
 <ul>
-  <li data-label-en="No changes since the previous build." data-label-ja="前のビルドからの変更はありません。">No changes since the previous build.</li>
+  <li class="no-changes" data-label-en="No changes since the previous build." data-label-ja="前のビルドからの変更はありません。">No changes since the previous build.</li>
 </ul>
 
 <h2 data-karui-build="132">1.0.3 (132)</h2>
@@ -103,7 +103,7 @@
 <h2 data-karui-build="131">1.0.2 (131) <span class="store-badge" data-label-en="App Store" data-label-ja="App Store">App Store</span></h2>
 <span class="release-date" data-label-en="November 20, 2026" data-label-ja="2026年11月20日">November 20, 2026</span>
 <ul>
-  <li data-label-en="No changes since the previous build." data-label-ja="前のビルドからの変更はありません。">No changes since the previous build.</li>
+  <li class="no-changes" data-label-en="No changes since the previous build." data-label-ja="前のビルドからの変更はありません。">No changes since the previous build.</li>
 </ul>
 
 <h2 data-karui-build="130">1.0.2 (130)</h2>
@@ -152,7 +152,7 @@
 <h2 data-karui-build="123">0.3.3 (123)</h2>
 <span class="release-date" data-label-en="November 11, 2026" data-label-ja="2026年11月11日">November 11, 2026</span>
 <ul>
-  <li data-label-en="No changes since the previous build." data-label-ja="前のビルドからの変更はありません。">No changes since the previous build.</li>
+  <li class="no-changes" data-label-en="No changes since the previous build." data-label-ja="前のビルドからの変更はありません。">No changes since the previous build.</li>
 </ul>
 
 <h2 data-karui-build="122">0.3.3 (122)</h2>
@@ -237,7 +237,7 @@
 <h2 data-karui-build="108">0.2.8 (108) <span class="store-badge" data-label-en="App Store" data-label-ja="App Store">App Store</span></h2>
 <span class="release-date" data-label-en="October 30, 2026" data-label-ja="2026年10月30日">October 30, 2026</span>
 <ul>
-  <li data-label-en="No changes since the previous build." data-label-ja="前のビルドからの変更はありません。">No changes since the previous build.</li>
+  <li class="no-changes" data-label-en="No changes since the previous build." data-label-ja="前のビルドからの変更はありません。">No changes since the previous build.</li>
 </ul>
 
 <h2 data-karui-build="107">0.2.8 (107)</h2>
@@ -964,9 +964,10 @@
           notes = document.createElement('ul');
           store.append(title, heading.nextElementSibling.cloneNode(true), notes);
         }
-        // Builds newer than any release with a badge aren't in a release yet.
+        // Builds newer than any release with a badge aren't in a release yet. A build's
+        // "No changes since the previous build." says nothing once its version is one list.
         if (notes && list?.tagName === 'UL') {
-          notes.append(...[...list.children].map((item) => item.cloneNode(true)));
+          notes.append(...[...list.children].filter((item) => !item.classList.contains('no-changes')).map((item) => item.cloneNode(true)));
         }
       }
     }

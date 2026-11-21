@@ -200,6 +200,9 @@
     /* No room beside the button on a phone, so it goes on its own line under it, flush left.
        After the rule above, so it wins. */
     @media (max-width: 560px) { .karui-requirements { display: block; margin: 5pt 0 0; } }
+    /* Beside the top badge, the same top margin as the badge, so the two are centered on
+       each other: an inline block is centered with its margin included. */
+    @media (min-width: 561px) { .sasu-hero .karui-requirements { margin-top: 9pt; } }
     /* The download button again at the end, for a reader convinced by the time they get there. */
     .karui-download-again { padding-top: 10pt; }
     /* Price and privacy under Download, in body text: they sell it, not fine print. */

@@ -17,7 +17,7 @@ window.X_POSTS_SNAPSHOT = {
           "end": 58
         }
       ],
-      "avatar": "assets/generated/x/mine-avatar.webp",
+      "avatar": "assets/generated/x/mine-avatar.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
@@ -43,14 +43,14 @@ window.X_POSTS_SNAPSHOT = {
           "end": 221
         }
       ],
-      "avatar": "assets/generated/x/mine-avatar.webp",
+      "avatar": "assets/generated/x/mine-avatar.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/mine-post-2122950203103957000-0.webp"
+          "image": "assets/generated/x/mine-post-2122950203103957000-0.png"
         }
       ]
     },
@@ -68,7 +68,7 @@ window.X_POSTS_SNAPSHOT = {
           "end": 49
         }
       ],
-      "avatar": "assets/generated/x/mine-avatar.webp",
+      "avatar": "assets/generated/x/mine-avatar.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []
@@ -87,14 +87,14 @@ window.X_POSTS_SNAPSHOT = {
           "end": 88
         }
       ],
-      "avatar": "assets/generated/x/mine-avatar.webp",
+      "avatar": "assets/generated/x/mine-avatar.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/mine-post-2120383454743609664-0.webp"
+          "image": "assets/generated/x/mine-post-2120383454743609664-0.png"
         }
       ]
     },
@@ -112,14 +112,14 @@ window.X_POSTS_SNAPSHOT = {
           "end": 269
         }
       ],
-      "avatar": "assets/generated/x/mine-avatar.webp",
+      "avatar": "assets/generated/x/mine-avatar.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/mine-post-2120139868810694793-0.webp"
+          "image": "assets/generated/x/mine-post-2120139868810694793-0.png"
         }
       ]
     },
@@ -137,14 +137,14 @@ window.X_POSTS_SNAPSHOT = {
           "end": 146
         }
       ],
-      "avatar": "assets/generated/x/mine-avatar.webp",
+      "avatar": "assets/generated/x/mine-avatar.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/mine-post-2119942884791341122-0.webp"
+          "image": "assets/generated/x/mine-post-2119942884791341122-0.png"
         }
       ]
     },
@@ -162,14 +162,14 @@ window.X_POSTS_SNAPSHOT = {
           "end": 147
         }
       ],
-      "avatar": "assets/generated/x/mine-avatar.webp",
+      "avatar": "assets/generated/x/mine-avatar.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": [
         {
           "alt": "",
           "type": "photo",
-          "image": "assets/generated/x/mine-post-2119755670081990681-0.webp"
+          "image": "assets/generated/x/mine-post-2119755670081990681-0.png"
         }
       ]
     },
@@ -179,7 +179,7 @@ window.X_POSTS_SNAPSHOT = {
       "createdAt": "2026-11-09T01:39:57.000Z",
       "url": "https://x.com/_bobertdowney/status/2119605882287948033",
       "urls": [],
-      "avatar": "assets/generated/x/mine-avatar.webp",
+      "avatar": "assets/generated/x/mine-avatar.png",
       "authorName": "Justin Garcia",
       "username": "_bobertdowney",
       "media": []

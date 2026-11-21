@@ -1,4 +1,5 @@
 /* Classic Macintosh (System 1-6) Black & White Styles */
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=block');
 
 * {
   box-sizing: border-box;
@@ -4437,81 +4438,4 @@ html[data-theme="classic"] .guestbook-signatures {
 .guestbook-signature:focus-visible {
   outline: 2px dotted #000;
   outline-offset: 1px;
-}
-
-/* ---------------------------------------------------------------------------
-   Home page type: Verdana, not VT323.
-
-   The window chrome reads better at a small size than the pixel face, and 11px
-   Verdana is the size the About window title is designed around. Card body text
-   is one step up at 13px. These stay !important because they have to beat the
-   per-language and per-component font rules above.
-   --------------------------------------------------------------------------- */
-body.home-page,
-body.home-page * {
-  font-family: 'Verdana', 'Geneva', sans-serif !important;
-  font-size: 11px !important;
-}
-body.home-page .stack-index-shortcut,
-body.home-page .qr-code-button {
-  font-size: 11px !important;
-  min-height: 24px;
-  padding: 4px 9px;
-}
-body.home-page .made-in-japan-badge {
-  display: inline-flex;
-  align-items: center;
-  color: inherit;
-}
-body.home-page .stack-card-kicker {
-  font-size: 11px !important;
-  font-weight: inherit !important;
-  color: inherit !important;
-  line-height: 1.45 !important;
-}
-body.home-page .stack-card h2,
-body.home-page .stack-card p,
-body.home-page .stack-topic-list {
-  font-weight: inherit !important;
-}
-body.home-page .language-segment,
-body.home-page .clock-mode-segment,
-body.home-page .weather-unit-segment {
-  font-weight: inherit !important;
-}
-body.home-page .stack-app-entry .stack-actions a {
-  font-weight: normal !important;
-  justify-content: flex-start;
-  text-align: left;
-  line-height: 1.35 !important;
-  white-space: normal;
-  height: auto;
-}
-body.home-page .x-post-identity {
-  gap: 6px;
-  line-height: 1.45 !important;
-}
-body.home-page .x-post-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-body.home-page .stack-topic-list li + li {
-  margin-top: 14px;
-}
-body.home-page .tokyo-recommendations-entries li {
-  margin-bottom: 8px;
-}
-body.home-page .recent-updates-content .x-post,
-body.home-page .recent-updates-content .x-post * {
-  font-size: 13px !important;
-}
-body.home-page .stack-card .x-post-text,
-body.home-page .recent-updates-content .x-post-text {
-  font-size: 13px !important;
-  line-height: 1.45 !important;
-}
-body.home-page .stack-card,
-body.home-page .stack-card * {
-  font-size: 13px !important;
 }

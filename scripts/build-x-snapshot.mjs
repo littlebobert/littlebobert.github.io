@@ -75,9 +75,7 @@ function publicAssetPath(fileName) {
   return `assets/generated/x/${fileName}`;
 }
 
-// X media is resized once and stored as WebP: these are photos shown in a 480px window, and
-// lossless PNG made a single tweet photo larger than the rest of the page combined.
-async function saveImage(sourceBuffer, outputPath, options = {}) {
+async function savePng(sourceBuffer, outputPath, options = {}) {
   const maxWidth = options.maxWidth || 640;
   const maxHeight = options.maxHeight || 420;
   await sharp(sourceBuffer)
@@ -88,7 +86,7 @@ async function saveImage(sourceBuffer, outputPath, options = {}) {
       fit: 'inside',
       withoutEnlargement: true,
     })
-    .webp({ quality: 80, effort: 4, smartSubsample: true })
+    .png({ compressionLevel: 9 })
     .toFile(outputPath);
 }
 
@@ -100,7 +98,7 @@ async function processRemoteImage(url, fileName, options, reuseIfExists = false)
   }
 
   const sourceBuffer = await fetchBuffer(url);
-  await saveImage(sourceBuffer, outputPath, options);
+  await savePng(sourceBuffer, outputPath, options);
 
   return publicAssetPath(fileName);
 }
@@ -181,7 +179,7 @@ function previousPostHasSameMedia(previousPost, mediaKeys) {
 async function buildPostsForUser(xUser, options, previousPostsById = new Map()) {
   const tweets = await fetchTweetsForUser(xUser, options.count);
   const mediaByKey = new Map((tweets.includes?.media || []).map((media) => [media.media_key, media]));
-  const avatar = await processAvatar(xUser, `${safeFilePart(options.mediaPrefix)}-avatar.webp`, false);
+  const avatar = await processAvatar(xUser, `${safeFilePart(options.mediaPrefix)}-avatar.png`, false);
 
   const posts = [];
 
@@ -198,7 +196,7 @@ async function buildPostsForUser(xUser, options, previousPostsById = new Map()) 
       }
 
       try {
-        const fileName = `${safeFilePart(options.mediaPrefix)}-post-${tweet.id}-${index}.webp`;
+        const fileName = `${safeFilePart(options.mediaPrefix)}-post-${tweet.id}-${index}.png`;
         const reuseIfExists = previousPostHasSameMedia(previousPostsById.get(tweet.id), mediaKeys);
         const image = await processRemoteImage(sourceUrl, fileName, {
           maxWidth: 640,

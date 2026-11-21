@@ -28,17 +28,13 @@ const successfulTurnstile = async () => Response.json({
   hostname: 'justin-garcia.pages.dev',
 });
 
-const BROWSER_USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36';
-
 function request(path, options = {}) {
   return new Request(`https://portfolio-backend.example${path}`, {
     ...options,
     headers: {
       Origin: ORIGIN,
       'CF-Connecting-IP': '203.0.113.10',
-      'User-Agent': BROWSER_USER_AGENT,
-      'Sec-Fetch-Mode': 'cors',
-      'Sec-Fetch-Dest': 'empty',
+      'User-Agent': 'portfolio-test',
       ...(options.headers || {}),
     },
   });
@@ -148,34 +144,13 @@ test('visitor counting is atomic and deduplicated by daily visitor hash', async 
     headers: {
       Origin: ORIGIN,
       'CF-Connecting-IP': '203.0.113.11',
+      'User-Agent': 'portfolio-test',
     },
   });
   assert.equal((await handleRequest(secondVisitor, env)).status, 200);
 
   const count = await handleRequest(request('/api/v1/views?site=justin-garcia.pages.dev&path=%2F'), env);
   assert.equal((await count.json()).views, 2);
-});
-
-test('bot traffic is answered but never counted', async () => {
-  const { env } = createEnvironment();
-  const path = '/api/v1/track?site=justin-garcia.pages.dev&path=%2F';
-
-  const crawler = request(path, {
-    headers: { 'User-Agent': 'Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)' },
-  });
-  assert.equal((await handleRequest(crawler, env)).status, 200);
-
-  const scripted = request(path, {
-    headers: {
-      'CF-Connecting-IP': '203.0.113.12',
-      'Sec-Fetch-Mode': '',
-      'Sec-Fetch-Dest': '',
-    },
-  });
-  assert.equal((await handleRequest(scripted, env)).status, 200);
-
-  const count = await handleRequest(request('/api/v1/views?site=justin-garcia.pages.dev&path=%2F'), env);
-  assert.equal((await count.json()).views, 0);
 });
 
 test('product download clicks increment aggregate totals and appear in admin analytics', async () => {

@@ -87,11 +87,11 @@ test('builds the changelog page and links to it from every page', async () => {
   // The demo: four screens from the iPhone Duo recording, each with its caption below, the
   // first with a clip over its still; no label above it and no App Store screenshots.
   assert.doesNotMatch(pages[0], /karui-demo-label/);
-  // Beside each Download button, Apple Intelligence, so nobody installs it on an iPhone without
-  // it expecting spam filtering; iOS 27 isn't mentioned, since the App Store won't install it on
-  // anything older. Under the top one, the price and privacy. The full list is in Tech Specs.
+  // Beside each Download button, the iPhones spam filtering needs, so nobody installs it on an
+  // iPhone without Apple Intelligence expecting spam filtering; iOS 27 isn't mentioned, since the
+  // App Store won't install it on anything older. Under the top one, the price and privacy. The full list is in Tech Specs.
   assert.match(pages[0], /<div class="small-note karui-price-note"><span data-label-en="Free, with no subscriptions\. "[^>]*>Free, with no subscriptions\. <\/span><a href="\/privacy" data-label-en="Private"/);
-  assert.strictEqual(pages[0].match(/Download for iPhone<\/a><span class="karui-requirements" data-label-en="Spam filtering requires Apple Intelligence\."/g).length, 2);
+  assert.strictEqual(pages[0].match(/Download for iPhone<\/a><span class="karui-requirements" data-label-en="Spam filtering needs iPhone 15 Pro or later\."/g).length, 2);
   // Download again at the end, after Privacy.
   assert.strictEqual(pages[0].match(/<a class="download-link"/g).length, 2);
   assert.match(pages[0], /<div class="karui-demo" role="group" aria-roledescription="carousel"/);
@@ -294,7 +294,7 @@ test('builds a page per language with every label translated ahead of time', asy
     assert.doesNotMatch(page, /setLanguage\(localStorage\.getItem\('karui-language'\)/, file);
   }
   const japaneseHome = await readOutputFile('ja/index.html');
-  assert.match(japaneseHome, /<title>Karui：迷惑通知を消音。/);
+  assert.match(japaneseHome, /<title>Karui：送信取り消しされたメッセージも読める。迷惑通知は消音。<\/title>/);
   assert.match(japaneseHome, /<option value="ja" selected>/);
   assert.match(await readOutputFile('ja/specs/index.html'), /aria-label="Switch to English">English<\/button>/);
 });

@@ -147,8 +147,8 @@ test('builds the changelog page and links to it from every page', async () => {
 test('publishes llms.txt with links to pages that exist', async () => {
   const llms = await readOutputFile('llms.txt');
   assert.match(llms, /^# Karui\n\n> /);
-  const routes = [...llms.matchAll(/\]\(https:\/\/karui\.jp\/([a-z0-9/]*)\)/g)].map((match) => match[1]);
-  assert.deepEqual(routes, ['specs', 'technotes/kn001', 'technotes/kn002', 'technotes/kn004', 'technotes/kn005', 'technotes/kn006', 'technotes/kn007', '', 'changelog', 'support', 'privacy', 'technotes', 'acknowledgements']);
+  const routes = [...llms.matchAll(/\]\(https:\/\/karui\.jp\/([a-z0-9/-]*)\)/g)].map((match) => match[1]);
+  assert.deepEqual(routes, ['guides/unwanted-notifications', 'guides/unsent-messages', 'specs', 'technotes/kn001', 'technotes/kn002', 'technotes/kn004', 'technotes/kn005', 'technotes/kn006', 'technotes/kn007', '', 'changelog', 'support', 'privacy', 'technotes', 'guides', 'acknowledgements']);
   for (const route of routes) {
     await readOutputFile(route ? `${route}/index.html` : 'index.html');
   }
@@ -325,4 +325,26 @@ test('links every language version with hreflang, its own canonical URL, and the
   for (const loc of ['https://karui.jp/ja', 'https://karui.jp/ko', 'https://karui.jp/de', 'https://karui.jp/ja/technotes/kn007']) {
     assert.match(sitemap, new RegExp(`<loc>${loc.replaceAll('.', '\\.')}</loc>`));
   }
+});
+
+test('builds the guides in English and Japanese, linked from every page footer', async () => {
+  for (const [route, title, japaneseTitle] of [
+    ['guides/unwanted-notifications', 'How to Stop Unwanted Notifications on iPhone', 'iPhoneの迷惑通知を止める方法'],
+    ['guides/unsent-messages', 'How to See Unsent Messages on iPhone', 'iPhoneで送信取り消しされたメッセージを見る方法'],
+  ]) {
+    const english = await readOutputFile(`${route}/index.html`);
+    const japanese = await readOutputFile(`ja/${route}/index.html`);
+    assert.match(english, new RegExp(`<h1[^>]*>${title}</h1>`));
+    assert.match(japanese, new RegExp(`<title>${japaneseTitle}</title>`));
+    assert.match(japanese, new RegExp(`<h1[^>]*>${japaneseTitle}</h1>`));
+    assert.match(english, /href="https:\/\/apps\.apple\.com\/app\/karui-notifications\/id6814134614"/);
+    assert.match(english, /href="\/guides"/);
+    assert.match(japanese, /href="\/ja\/guides"/);
+  }
+  assert.match(await readOutputFile('guides/index.html'), /href="\/guides\/unsent-messages"/);
+  for (const file of ['index.html', 'specs/index.html', 'support/index.html', 'technotes/kn007/index.html']) {
+    assert.match(await readOutputFile(file), /<p class="footer-links">.*href="\/guides"/, file);
+  }
+  assert.match(await readOutputFile('ja/index.html'), /href="\/ja\/guides"/);
+  assert.match(await readOutputFile('ko/index.html'), />가이드</);
 });

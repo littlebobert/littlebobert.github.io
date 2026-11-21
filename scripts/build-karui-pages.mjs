@@ -82,6 +82,8 @@ await Promise.all([
   mkdir(kn006Directory, { recursive: true }),
   mkdir(kn007Directory, { recursive: true }),
   mkdir(lightningTalkDirectory, { recursive: true }),
+  mkdir(path.join(outputDirectory, 'guides', 'unwanted-notifications'), { recursive: true }),
+  mkdir(path.join(outputDirectory, 'guides', 'unsent-messages'), { recursive: true }),
 ]);
 
 await Promise.all(
@@ -133,7 +135,10 @@ function createDeployedPage(source) {
     .replaceAll('href="karui-technote-kn005.html"', 'href="/technotes/kn005"')
     .replaceAll('href="karui-technote-kn006.html"', 'href="/technotes/kn006"')
     .replaceAll('href="karui-technote-kn007.html"', 'href="/technotes/kn007"')
-    .replaceAll('href="karui-lightning-talk.html"', 'href="/technotes/lightning-talk"');
+    .replaceAll('href="karui-lightning-talk.html"', 'href="/technotes/lightning-talk"')
+    .replaceAll('href="karui-guides.html"', 'href="/guides"')
+    .replaceAll('href="karui-guide-unwanted-notifications.html"', 'href="/guides/unwanted-notifications"')
+    .replaceAll('href="karui-guide-unsent-messages.html"', 'href="/guides/unsent-messages"');
 }
 
 const [homeSource, privacySource, supportSource, acknowledgementsSource, changelogSource] =
@@ -185,6 +190,10 @@ const technicalPages = [
   ['karui-technote-kn006.html', ['technotes/kn006.html', 'technotes/kn006/index.html']],
   ['karui-technote-kn007.html', ['technotes/kn007.html', 'technotes/kn007/index.html']],
   ['karui-lightning-talk.html', ['technotes/lightning-talk.html', 'technotes/lightning-talk/index.html']],
+  // Guides: answers to questions people ask about iPhone notifications.
+  ['karui-guides.html', ['guides.html', 'guides/index.html']],
+  ['karui-guide-unwanted-notifications.html', ['guides/unwanted-notifications.html', 'guides/unwanted-notifications/index.html']],
+  ['karui-guide-unsent-messages.html', ['guides/unsent-messages.html', 'guides/unsent-messages/index.html']],
 ];
 await Promise.all(
   technicalPages.map(async ([source, outputs]) => {
@@ -346,6 +355,9 @@ const sitemapRoutes = [
   'technotes/kn006',
   'technotes/kn007',
   'technotes/lightning-talk',
+  'guides',
+  'guides/unwanted-notifications',
+  'guides/unsent-messages',
   'acknowledgements',
   'hanko',
   'seal',

@@ -22,6 +22,11 @@ Karui works alongside Apple's Focus modes. A Shortcuts automation passes each no
 
 Classification runs on the iPhone with Apple's on-device model. Notifications, contacts, and calendar events never leave the device, unless you turn on the optional Private Cloud Sorting feature, which has your Shortcut ask Apple's Private Cloud Compute about notifications. Contact details and calendar events are never sent. Karui has no server, requires no account, and sends no analytics.
 
+## Guides
+
+- [How to Stop Unwanted Notifications on iPhone](https://karui.jp/guides/unwanted-notifications): every way iOS lets you cut down unwanted and spam notifications (app settings, Scheduled Summary, Focus, Apple Intelligence, unknown senders), where each falls short, and how Karui decides notification by notification.
+- [How to See Unsent Messages on iPhone](https://karui.jp/guides/unsent-messages): what unsending does in Messages, LINE, Instagram, Messenger, and WhatsApp, why the message can't be recovered afterward, and how Karui keeps a copy from its notification.
+
 ## Technical details
 
 - [Tech Specs](https://karui.jp/specs): how Karui works, classification, speed, privacy, and requirements.
@@ -49,6 +54,7 @@ Classification runs on the iPhone with Apple's on-device model. Notifications, c
 - [Support](https://karui.jp/support): Setup, troubleshooting, and known limitations.
 - [Privacy](https://karui.jp/privacy): Privacy policy.
 - [Tech Notes](https://karui.jp/technotes): Technical notes on how Karui works.
+- [Guides](https://karui.jp/guides): Answers to common questions about iPhone notifications.
 - [Acknowledgements](https://karui.jp/acknowledgements): Thanks to the people who helped.
 
-Karui is made by [Justin Garcia](https://onemorething.tokyo/) in Japan. Pages contain complete English content in static HTML, with Japanese available through each page's language control.
+Karui is made by [Justin Garcia](https://onemorething.tokyo/) in Japan. Pages contain complete English content in static HTML. Every page also has a Japanese version under /ja/ (for example https://karui.jp/ja/specs), and the home page is also in Korean at /ko and German at /de.

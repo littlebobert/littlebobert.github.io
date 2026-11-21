@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>How to Stop Unwanted Notifications on iPhone</title>
+  <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link href="karui-animated-icon.css?v=2" rel="stylesheet">
+  <link rel="icon" href="assets/karui-favicon.png?v=2" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=3">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .karui-section { padding: 6pt 0 5pt; }
+    .karui-section p { margin: 0; }
+    .karui-section p + p, .karui-section ul + p, .karui-section ol + p { margin-top: 7pt; }
+    .karui-section ul, .karui-section ol { padding-left: 20pt; }
+    .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .karui-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    /* Keep two-word links like Tech Specs whole; the row wraps at the <wbr> after each separator. */
+    .footer-links a { white-space: nowrap; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+    .karui-section h2 { margin: 6pt 0 4pt; }
+    .karui-section h3 { margin: 8pt 0 3pt; }
+    .karui-section h2 + h3 { margin-top: 0; }
+    .karui-section li + li { margin-top: 3pt; }
+    .karui-section p + ul, .karui-section p + ol { margin-top: 6pt; }
+    .karui-section h2 + ul, .karui-section h2 + ol { margin-top: 0; }
+    .karui-section > ul:last-child, .karui-section > ol:last-child { margin-bottom: 0; }
+    .karui-code { background: #f4f3ee; border-radius: 8px; padding: 8pt 10pt; overflow-x: auto; font-size: calc(0.85em + 1pt); line-height: 1.4; }
+    .karui-table { border-collapse: collapse; width: 100%; margin: 4pt 0; }
+    .karui-table th, .karui-table td { border-bottom: 1px solid #e3e1da; padding: 5pt 6pt 5pt 0; text-align: left; vertical-align: top; }
+    .karui-table th { color: #555; font-weight: 600; }
+    .karui-table td:first-child, .karui-table th:first-child { white-space: nowrap; padding-right: 14pt; }
+    .karui-table-note { color: #555; font-size: 0.85em; margin-top: 3pt !important; }
+    .karui-quote { margin: 6pt 0 6pt 0; padding: 2pt 0 2pt 10pt; border-left: 3px solid #d8d6ce; color: #333; }
+    .karui-revision-date { font-weight: 600; }
+    .swift-string { color: #c41a16; }
+    .swift-keyword { color: #9b2393; font-weight: 600; }
+    .swift-type { color: #3900a0; }
+    .swift-function { color: #326d74; }
+    .karui-note-list li + li { margin-top: 8pt; }
+    .karui-note-meta { color: #555; font-size: 0.9em; }
+    .karui-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
+    .karui-breadcrumbs a { color: #666; }
+    .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
+    /* The maker line, as the home page has it: photo, name seal, and who made Karui. */
+    .karui-maker { display: flex; flex-direction: column-reverse; align-items: center; gap: 6pt; margin-top: 10pt !important; }
+    .karui-maker-marks { display: flex; align-items: center; justify-content: center; gap: 6pt; }
+    .karui-maker-photo { width: 40px; height: 51px; border-radius: 5px; object-fit: cover; flex: none; }
+    .karui-maker-text { text-align: center; line-height: 1.65em; color: black; }
+    /* A surname seal beside the photo, as tall and with the same corners. */
+    .karui-maker-seal { width: 24px; height: 51px; flex: none; }
+    /* The photo and seal are links; the pointer covers all of each, not just the drawn lines. */
+    .karui-seal-trigger, .karui-maker-photo-link { display: flex; flex: none; cursor: pointer; }
+    .karui-seal-trigger { margin-left: -2pt; }
+    .karui-seal-trigger img, .karui-maker-photo-link img { cursor: pointer; }
+  </style>
+  <link rel="canonical" href="https://karui.jp/guides/unwanted-notifications">
+  <meta name="description" content="Every way iOS lets you cut down unwanted and spam notifications, where each one falls short, and how to keep the important ones when the same app sends both." data-label-en="Every way iOS lets you cut down unwanted and spam notifications, where each one falls short, and how to keep the important ones when the same app sends both." data-label-ja="iOSで迷惑な通知やスパム通知を減らす方法、それぞれの限界、そして同じアプリが大事な通知と宣伝の両方を送ってくるときに大事な通知だけを残す方法。">
+  <meta property="og:title" content="How to Stop Unwanted Notifications on iPhone" data-label-en="How to Stop Unwanted Notifications on iPhone" data-label-ja="iPhoneの迷惑通知を止める方法">
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2026-11-21">
+  <meta property="og:url" content="https://karui.jp/guides/unwanted-notifications">
+  <meta property="og:site_name" content="Karui">
+  <meta property="og:description" content="Every way iOS lets you cut down unwanted and spam notifications, where each one falls short, and how to keep the important ones when the same app sends both." data-label-en="Every way iOS lets you cut down unwanted and spam notifications, where each one falls short, and how to keep the important ones when the same app sends both." data-label-ja="iOSで迷惑な通知やスパム通知を減らす方法、それぞれの限界、そして同じアプリが大事な通知と宣伝の両方を送ってくるときに大事な通知だけを残す方法。">
+  <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=8">
+  <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=8">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Karui 1.0: Spam filter for iPhone notifications. Privately with Apple Intelligence. With a 通知をかるく (lighten your notifications) seal." data-label-en="Karui 1.0: Spam filter for iPhone notifications. Privately with Apple Intelligence. With a 通知をかるく (lighten your notifications) seal." data-label-ja="Karui 1.0：iPhoneの迷惑通知フィルター。Apple Intelligenceでプライベートに。「通知をかるく」の印。">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="How to Stop Unwanted Notifications on iPhone" data-label-en="How to Stop Unwanted Notifications on iPhone" data-label-ja="iPhoneの迷惑通知を止める方法">
+  <meta name="twitter:description" content="Every way iOS lets you cut down unwanted and spam notifications, where each one falls short, and how to keep the important ones when the same app sends both." data-label-en="Every way iOS lets you cut down unwanted and spam notifications, where each one falls short, and how to keep the important ones when the same app sends both." data-label-ja="iOSで迷惑な通知やスパム通知を減らす方法、それぞれの限界、そして同じアプリが大事な通知と宣伝の両方を送ってくるときに大事な通知だけを残す方法。">
+  <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=8">
+  <meta name="twitter:image:alt" content="Karui 1.0: Spam filter for iPhone notifications. Privately with Apple Intelligence. With a 通知をかるく (lighten your notifications) seal." data-label-en="Karui 1.0: Spam filter for iPhone notifications. Privately with Apple Intelligence. With a 通知をかるく (lighten your notifications) seal." data-label-ja="Karui 1.0：iPhoneの迷惑通知フィルター。Apple Intelligenceでプライベートに。「通知をかるく」の印。">
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <nav class="karui-breadcrumbs" aria-label="Breadcrumb"><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><a href="karui-guides.html" data-label-en="Guides" data-label-ja="ガイド">Guides</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="Unwanted Notifications" data-label-ja="迷惑通知">Unwanted Notifications</span></nav>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="karui.html"><span class="karui-icon"><span class="karui-icon-shape"><img src="assets/karui-icon-sketch.jpg?v=13" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン" width="64" height="64"><video src="assets/karui-icon-sketch.mp4?v=12" muted loop playsinline preload="auto" aria-hidden="true"></video></span></span></a>
+        <div><h1 data-label-en="How to Stop Unwanted Notifications on iPhone" data-label-ja="iPhoneの迷惑通知を止める方法">How to Stop Unwanted Notifications on iPhone</h1><div class="sasu-subtitle">Karui</div></div>
+      </div>
+    </section>
+    <section class="karui-section">
+      <p data-label-en="Every way iOS lets you cut down unwanted and spam notifications, where each one falls short, and how to keep the important ones when the same app sends both." data-label-ja="iOSで迷惑な通知やスパム通知を減らす方法、それぞれの限界、そして同じアプリが大事な通知と宣伝の両方を送ってくるときに大事な通知だけを残す方法。">Every way iOS lets you cut down unwanted and spam notifications, where each one falls short, and how to keep the important ones when the same app sends both.</p>
+      <p class="karui-note-meta" data-label-en="Updated November 21, 2026 · iOS 27" data-label-ja="2026年11月21日更新 · iOS 27">Updated November 21, 2026 · iOS 27</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="The short answer" data-label-ja="結論">The short answer</h2>
+      <p data-label-en="Turn off notifications from apps you never need, move the rest into a Scheduled Summary, and use a Focus so only the people and apps you choose can interrupt you. The hard case is an app that sends both notifications you need and ones you don’t, like a delivery app that also sends promotions: iOS can only let the whole app through or silence all of it. An app like Karui can decide notification by notification." data-label-ja="必要のないアプリの通知はオフにし、残りは「時刻指定要約」にまとめ、集中モードで選んだ人とアプリだけが届くようにします。難しいのは、配達アプリが宣伝も送ってくるように、必要な通知とそうでない通知を同じアプリが送ってくる場合です。iOSではアプリごとに通すか消音するかしか選べません。Karuiのようなアプリなら、通知ごとに判断できます。">Turn off notifications from apps you never need, move the rest into a Scheduled Summary, and use a Focus so only the people and apps you choose can interrupt you. The hard case is an app that sends both notifications you need and ones you don’t, like a delivery app that also sends promotions: iOS can only let the whole app through or silence all of it. An app like Karui can decide notification by notification.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="1. Turn off notifications from an app" data-label-ja="1. アプリの通知をオフにする">1. Turn off notifications from an app</h2>
+      <ol>
+        <li data-label-en="Open Settings, tap Notifications, then tap the app." data-label-ja="「設定」を開き、「通知」をタップしてから、アプリをタップします。">Open Settings, tap Notifications, then tap the app.</li>
+        <li data-label-en="Turn off Allow Notifications to stop them completely. Or leave them on and turn off Sounds and Banners, so they only collect in Notification Center." data-label-ja="「通知を許可」をオフにすると、通知は完全に止まります。オンのまま「サウンド」とバナーをオフにすれば、通知は通知センターにたまるだけになります。">Turn off Allow Notifications to stop them completely. Or leave them on and turn off Sounds and Banners, so they only collect in Notification Center.</li>
+      </ol>
+      <p data-label-en="From the Lock Screen or Notification Center, you can also swipe left on a notification and tap Options to mute that app for an hour or for the day, or to turn its notifications off." data-label-ja="ロック画面や通知センターで通知を左にスワイプして「オプション」をタップすると、そのアプリを1時間または今日だけ消音したり、通知をオフにしたりすることもできます。">From the Lock Screen or Notification Center, you can also swipe left on a notification and tap Options to mute that app for an hour or for the day, or to turn its notifications off.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="2. Turn off promotions in the app itself" data-label-ja="2. アプリ内で宣伝の通知をオフにする">2. Turn off promotions in the app itself</h2>
+      <p data-label-en="Many apps let you choose which kinds of notifications they send. Look in the app’s own settings for options like promotions, recommendations, or news. Where an app offers the choice, this keeps its useful notifications, like order updates, and stops its ads." data-label-ja="多くのアプリでは、送られてくる通知の種類を選べます。アプリ内の設定で「お得な情報」「おすすめ」「お知らせ」といった項目を探してください。選べるアプリなら、注文状況のような役に立つ通知を残したまま、広告だけを止められます。">Many apps let you choose which kinds of notifications they send. Look in the app’s own settings for options like promotions, recommendations, or news. Where an app offers the choice, this keeps its useful notifications, like order updates, and stops its ads.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="3. Batch the rest with a Scheduled Summary" data-label-ja="3. 残りは「時刻指定要約」にまとめる">3. Batch the rest with a Scheduled Summary</h2>
+      <p data-label-en="In Settings &gt; Notifications &gt; Scheduled Summary, choose apps whose notifications can wait. They arrive together at the times you set, instead of one by one. Time-sensitive notifications can still arrive right away." data-label-ja="「設定」&gt;「通知」&gt;「時刻指定要約」で、後回しにできるアプリを選びます。通知は1件ずつではなく、設定した時刻にまとめて届きます。即時通知は、これまでどおりすぐに届くことがあります。">In Settings &gt; Notifications &gt; Scheduled Summary, choose apps whose notifications can wait. They arrive together at the times you set, instead of one by one. Time-sensitive notifications can still arrive right away.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="4. Use a Focus to choose who can interrupt you" data-label-ja="4. 集中モードで、知らせてよい相手を選ぶ">4. Use a Focus to choose who can interrupt you</h2>
+      <p data-label-en="A Focus, in Settings &gt; Focus or Control Center, silences everything except the people and apps you allow. Silenced notifications still go to Notification Center, so nothing is lost." data-label-ja="集中モード（「設定」&gt;「集中モード」またはコントロールセンター）は、許可した人とアプリ以外の通知をすべて消音します。消音された通知も通知センターには残るので、なくなることはありません。">A Focus, in Settings &gt; Focus or Control Center, silences everything except the people and apps you allow. Silenced notifications still go to Notification Center, so nothing is lost.</p>
+      <ul>
+        <li data-label-en="Under People, choose who can reach you. Under Apps, choose which apps can." data-label-ja="「人」で知らせてよい人を、「App」で知らせてよいアプリを選びます。">Under People, choose who can reach you. Under Apps, choose which apps can.</li>
+        <li data-label-en="If apps you didn’t allow keep getting through, turn off Time Sensitive Notifications under Apps. Apps can mark notifications as time sensitive to break through a Focus." data-label-ja="許可していないアプリの通知が届いてしまう場合は、「App」で「即時通知」をオフにします。アプリは通知を「即時通知」にすることで、集中モードを通り抜けられるためです。">If apps you didn’t allow keep getting through, turn off Time Sensitive Notifications under Apps. Apps can mark notifications as time sensitive to break through a Focus.</li>
+      </ul>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="5. Let Apple Intelligence help" data-label-ja="5. Apple Intelligenceに手伝ってもらう">5. Let Apple Intelligence help</h2>
+      <p data-label-en="On iPhones that support Apple Intelligence, iOS can summarize notifications, and the Reduce Interruptions Focus shows only the notifications that seem to need your attention. It’s a good place to start. It decides by itself which notifications matter, so check Notification Center now and then for anything it held back." data-label-ja="Apple Intelligenceに対応したiPhoneでは、iOSが通知を要約でき、集中モードの「さまたげを低減」は対応が必要そうな通知だけを表示します。最初の一歩にはちょうどいい機能です。どの通知が大事かはiOSが自分で判断するので、ときどき通知センターで止められた通知を確認してください。">On iPhones that support Apple Intelligence, iOS can summarize notifications, and the Reduce Interruptions Focus shows only the notifications that seem to need your attention. It’s a good place to start. It decides by itself which notifications matter, so check Notification Center now and then for anything it held back.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="6. Filter spam texts and calls" data-label-ja="6. 迷惑なメッセージや電話をふるい分ける">6. Filter spam texts and calls</h2>
+      <ul>
+        <li data-label-en="In Settings &gt; Apps &gt; Messages, turn on the option to filter or screen messages from unknown senders." data-label-ja="「設定」&gt;「アプリ」&gt;「メッセージ」で、不明な差出人からのメッセージをふるい分ける設定をオンにします。">In Settings &gt; Apps &gt; Messages, turn on the option to filter or screen messages from unknown senders.</li>
+        <li data-label-en="In Settings &gt; Apps &gt; Phone, turn on Silence Unknown Callers or call screening to stop calls from numbers you don’t know." data-label-ja="「設定」&gt;「アプリ」&gt;「電話」で、「不明な発信者を消音」や着信スクリーニングをオンにすると、知らない番号からの電話が鳴らなくなります。">In Settings &gt; Apps &gt; Phone, turn on Silence Unknown Callers or call screening to stop calls from numbers you don’t know.</li>
+      </ul>
+      <p data-label-en="These cover texts and calls. Notifications from other apps need the steps above." data-label-ja="これらはメッセージと電話のための設定です。ほかのアプリの通知には、ここまでの方法を使います。">These cover texts and calls. Notifications from other apps need the steps above.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Where iOS falls short" data-label-ja="iOSの限界">Where iOS falls short</h2>
+      <p data-label-en="iOS decides by app and by person, not by notification. A delivery app’s “Your driver is here” and its “20% off this weekend” get the same treatment, so you either hear both or miss both. People who turn notifications off to escape the promotions end up missing the deliveries, and the friend who changed plans at the last minute." data-label-ja="iOSが判断するのはアプリ単位と人単位で、通知ごとではありません。配達アプリの「配達員が到着しました」も「今週末20%オフ」も同じ扱いなので、両方鳴るか、両方見逃すかのどちらかです。宣伝から逃れようと通知をオフにした人は、配達のお知らせや、直前に予定を変えた友だちのメッセージまで見逃してしまいます。">iOS decides by app and by person, not by notification. A delivery app’s “Your driver is here” and its “20% off this weekend” get the same treatment, so you either hear both or miss both. People who turn notifications off to escape the promotions end up missing the deliveries, and the friend who changed plans at the last minute.</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Deciding notification by notification with Karui" data-label-ja="Karuiで通知ごとに判断する">Deciding notification by notification with Karui</h2>
+      <p data-label-en="Karui is a free iPhone and iPad app that works alongside a Focus. Your Focus silences the apps, and a Shortcuts automation passes each of their notifications to Karui, which decides with Apple Intelligence whether it’s Important, Neutral, or Spam." data-label-ja="Karuiは、集中モードと組み合わせて使う無料のiPhone・iPadアプリです。集中モードがアプリを消音し、ショートカットのオートメーションが各通知をKaruiに渡します。KaruiはApple Intelligenceで、その通知が「重要」「ニュートラル」「スパム」のどれかを判断します。">Karui is a free iPhone and iPad app that works alongside a Focus. Your Focus silences the apps, and a Shortcuts automation passes each of their notifications to Karui, which decides with Apple Intelligence whether it’s Important, Neutral, or Spam.</p>
+      <ul>
+        <li data-label-en="Important notifications, like messages from friends, deliveries, and one-time codes, get through your Focus." data-label-ja="友だちからのメッセージ、配達のお知らせ、ワンタイムコードのような重要な通知は、集中モード中でも届きます。">Important notifications, like messages from friends, deliveries, and one-time codes, get through your Focus.</li>
+        <li data-label-en="Neutral ones wait in Karui’s History and an optional daily summary." data-label-ja="ニュートラルな通知は、Karuiの履歴と、オプションの1日のまとめで確認できます。">Neutral ones wait in Karui’s History and an optional daily summary.</li>
+        <li data-label-en="Spam and promotions stay silent." data-label-ja="スパムや宣伝は鳴りません。">Spam and promotions stay silent.</li>
+        <li data-label-en="VIP contacts you choose always get through, and you can add your own urgent, neutral, and spam terms." data-label-ja="選んだVIPの連絡先はいつでも届き、緊急・ニュートラル・スパムの判断に使う言葉も自分で追加できます。">VIP contacts you choose always get through, and you can add your own urgent, neutral, and spam terms.</li>
+      </ul>
+      <p data-label-en="By default, it all happens on your iPhone: Karui has no server, needs no account, and sends no analytics. Spam filtering needs iOS 27 or later and an iPhone with Apple Intelligence." data-label-ja="初期設定では、すべてがiPhone上で行われます。Karuiにはサーバーがなく、アカウントも不要で、分析データも送りません。スパムの振り分けには、iOS 27以降とApple Intelligence対応のiPhoneが必要です。">By default, it all happens on your iPhone: Karui has no server, needs no account, and sends no analytics. Spam filtering needs iOS 27 or later and an iPhone with Apple Intelligence.</p>
+      <p><a href="https://apps.apple.com/app/karui-notifications/id6814134614" data-label-en="Download Karui on the App Store" data-label-ja="App StoreでKaruiをダウンロード">Download Karui on the App Store</a></p>
+      <p><a href="karui.html" data-label-en="Learn more about Karui" data-label-ja="Karuiについて詳しく見る">Learn more about Karui</a></p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Questions" data-label-ja="よくある質問">Questions</h2>
+      <h3 data-label-en="Why do I still get notifications during a Focus?" data-label-ja="集中モード中なのに通知が届くのはなぜ？">Why do I still get notifications during a Focus?</h3>
+      <p data-label-en="People and apps you allowed can still reach you, and so can apps that mark notifications as time sensitive. Check the Focus’s People and Apps settings, and turn off Time Sensitive Notifications there." data-label-ja="許可した人やアプリに加え、通知を「即時通知」にしたアプリも集中モードを通り抜けます。集中モードの「人」と「App」の設定を確認し、そこで「即時通知」をオフにしてください。">People and apps you allowed can still reach you, and so can apps that mark notifications as time sensitive. Check the Focus’s People and Apps settings, and turn off Time Sensitive Notifications there.</p>
+      <h3 data-label-en="Will I miss the notifications I silence?" data-label-ja="消音した通知は見られなくなる？">Will I miss the notifications I silence?</h3>
+      <p data-label-en="No. Silenced and summarized notifications still go to Notification Center. Karui also keeps the ones it sorts in its History." data-label-ja="いいえ。消音された通知や要約された通知も、通知センターに残ります。Karuiが振り分けた通知は、Karuiの履歴にも残ります。">No. Silenced and summarized notifications still go to Notification Center. Karui also keeps the ones it sorts in its History.</p>
+      <h3 data-label-en="Does Karui work on older iPhones?" data-label-ja="Karuiは古いiPhoneでも使える？">Does Karui work on older iPhones?</h3>
+      <p data-label-en="Karui needs iOS 27 or later. Spam filtering also needs Apple Intelligence, which starts with iPhone 15 Pro. Keeping a history of your notifications, including messages people unsend, works without it." data-label-ja="KaruiにはiOS 27以降が必要です。スパムの振り分けには、iPhone 15 Pro以降が対応するApple Intelligenceも必要です。送信取り消しされたメッセージを含む通知の履歴は、Apple Intelligenceがなくても使えます。">Karui needs iOS 27 or later. Spam filtering also needs Apple Intelligence, which starts with iPhone 15 Pro. Keeping a history of your notifications, including messages people unsend, works without it.</p>
+      <p><a href="karui-guide-unsent-messages.html" data-label-en="How to see messages people unsend" data-label-ja="送信取り消しされたメッセージを見る方法">How to see messages people unsend</a></p>
+      <p><a href="karui-guides.html" data-label-en="← All Guides" data-label-ja="← ガイド一覧">← All Guides</a></p>
+    </section>
+    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-guides.html" data-label-en="Guides" data-label-ja="ガイド">Guides</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p class="karui-maker"><span class="karui-maker-marks"><a href="https://onemorething.tokyo" class="karui-maker-photo-link" aria-label="Justin Garcia’s website"><img class="karui-maker-photo" src="assets/karui-developer.jpg?v=3" alt="" width="40" height="51"></a><a href="karui-seal.html" class="karui-seal-trigger" aria-label="About the name seal"><img class="karui-maker-seal" src="assets/karui-seal.png?v=10" alt="" width="24" height="51"></a></span><span class="karui-maker-text"><span data-label-en="Designed by " data-label-ja="東京の個人開発者 ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作"> in Tokyo</span></span></p></footer>
+  </main>
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('karui-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
+  </script>
+  <script src="karui-animated-icon.js?v=1"></script>
+</body>
+</html>

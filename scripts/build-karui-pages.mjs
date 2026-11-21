@@ -193,6 +193,139 @@ await Promise.all(
   }),
 );
 
+// A page per language, for search engines and AI assistants: each page's translations
+// live in data-label-*/data-alt-*/data-src-*/data-aria-label-* attributes, which its
+// script swaps in after load, so crawlers only ever saw English. The build does the same
+// swap ahead of time: Japanese for every page at /ja/…, and Korean and German for the
+// home page, the only one translated into them, at /ko and /de. Every version names the
+// others with hreflang and its own canonical URL, and the language switch goes to the
+// other version instead of swapping in place. The English pages keep their addresses
+// and still switch in place for visitors whose browser or last choice is another language.
+const localizedPages = [
+  { source: 'karui.html', route: '', languages: ['ja', 'ko', 'de'], outputs: ['index.html', 'karui.html'] },
+  { source: 'karui-privacy.html', route: 'privacy', languages: ['ja'] },
+  { source: 'karui-support.html', route: 'support', languages: ['ja'] },
+  { source: 'karui-acknowledgements.html', route: 'acknowledgements', languages: ['ja'] },
+  { source: 'karui-changelog.html', route: 'changelog', languages: ['ja'] },
+  ...technicalPages.map(([source, outputs]) => ({ source, route: outputs[0].replace(/\.html$/, ''), languages: ['ja'] })),
+];
+
+const englishPath = (route) => `/${route}`;
+const languagePath = (language, route) => (route ? `/${language}/${route}` : `/${language}`);
+const absolute = (pagePath) => `https://karui.jp${pagePath}`;
+const pagePaths = (page) => Object.fromEntries([
+  ['en', englishPath(page.route)],
+  ...page.languages.map((language) => [language, languagePath(language, page.route)]),
+]);
+
+// The value of a double-quoted attribute in an opening tag, or undefined.
+function attribute(tag, name) {
+  return tag.match(new RegExp(`\\s${name}="([^"]*)"`))?.[1];
+}
+
+// The opening tag with the attribute set, replacing it or adding it before the >.
+function withAttribute(tag, name, value) {
+  const pattern = new RegExp(`(\\s${name}=")[^"]*(")`);
+  if (pattern.test(tag)) return tag.replace(pattern, (_, start, end) => `${start}${value}${end}`);
+  return tag.replace(/\s*\/?>$/, (end) => ` ${name}="${value}"${end}`);
+}
+
+// What each page's setLanguage does in the browser, done to the HTML: an element's text,
+// or a meta element's content, becomes its data-label-<language>, and so on for alt, src
+// and aria-label. Labeled elements hold only text, so the text runs to the closing tag.
+function translate(html, language) {
+  const suffix = `-${language}`;
+  let output = html.replace(/<([a-zA-Z][a-zA-Z0-9-]*)\b[^>]*\bdata-(?:label|alt|src|aria-label)-en="[^"]*"[^>]*>/g, (tag, name) => {
+    let result = tag;
+    for (const [data, target] of [['alt', 'alt'], ['src', 'src'], ['aria-label', 'aria-label']]) {
+      const value = attribute(tag, `data-${data}${suffix}`);
+      if (attribute(tag, `data-${data}-en`) !== undefined && value !== undefined) result = withAttribute(result, target, value);
+    }
+    const label = attribute(tag, `data-label${suffix}`);
+    if (label !== undefined && name.toLowerCase() === 'meta') result = withAttribute(result, 'content', label);
+    return label !== undefined && name.toLowerCase() !== 'meta' ? `${result}\u0000${label}\u0000` : result;
+  });
+  // Swap the text up to each closing tag for the label marked above.
+  output = output.replace(/\u0000([^\u0000]*)\u0000[^<]*/g, (_, label) => label.replaceAll('<', '&lt;').replaceAll('>', '&gt;'));
+  // The <title> isn't labeled, so it takes the og:title's translation, where there is one.
+  const ogTitle = html.match(/<meta property="og:title"[^>]*>/)?.[0];
+  const title = ogTitle && attribute(ogTitle, `data-label${suffix}`);
+  if (title !== undefined) output = output.replace(/<title>[^<]*<\/title>/, `<title>${title.replaceAll('<', '&lt;').replaceAll('>', '&gt;')}</title>`);
+  return output.replace(/<html lang="[a-z]+">/, `<html lang="${language}">`);
+}
+
+// hreflang for every version, after the canonical link; the canonical and og:url name
+// this version.
+function withAlternates(html, page, language) {
+  const paths = pagePaths(page);
+  const own = absolute(paths[language] === '/' ? '/' : paths[language]);
+  const alternates = [
+    ...Object.entries(paths).map(([code, pagePath]) => `  <link rel="alternate" hreflang="${code}" href="${absolute(pagePath)}">`),
+    `  <link rel="alternate" hreflang="x-default" href="${absolute(paths.en)}">`,
+  ].join('\n');
+  return html
+    .replace(/<link rel="canonical" href="[^"]*">/, `<link rel="canonical" href="${own}">\n${alternates}`)
+    .replace(/(<meta property="og:url" content=")[^"]*(")/, `$1${own}$2`);
+}
+
+// Links to another page go to its version in this language when it has one.
+function withLanguageLinks(html, language) {
+  const routes = new Set(localizedPages.filter((page) => page.languages.includes(language)).map((page) => page.route));
+  return html.replace(/href="\/([a-z0-9/-]*)(#[^"]*)?"/g, (link, route, hash = '') =>
+    (routes.has(route) ? `href="${languagePath(language, route)}${hash}"` : link));
+}
+
+// The language switch goes to the page in the chosen language, remembering the choice;
+// it still swaps in place where there's no such page, or it's the page already showing.
+function withLanguageSwitching(html, page, language) {
+  const paths = JSON.stringify(pagePaths(page));
+  const switching = [
+    `    const languagePages = ${paths};`,
+    '    function switchLanguage(language) {',
+    "      const normalized = (pagePath) => pagePath.replace(/(\\/index)?\\.html$|\\/$/, '') || '/';",
+    '      const target = languagePages[language];',
+    '      if (!target || normalized(target) === normalized(location.pathname)) { setLanguage(language); return; }',
+    "      localStorage.setItem('karui-language', language);",
+    '      location.href = target + location.hash;',
+    '    }',
+    '',
+  ].join('\n');
+  let output = html
+    .replace("    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));", (line) => `${switching}${line.replace('() => setLanguage(', '() => switchLanguage(')}`)
+    .replace("    languageSelect.addEventListener('change', () => setLanguage(languageSelect.value));", (line) => `${switching}${line.replace('() => setLanguage(', '() => switchLanguage(')}`);
+  if (!output.includes('switchLanguage(')) throw new Error(`No language switch found in ${page.source}`);
+  if (language !== 'en') {
+    const start = "    setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);";
+    if (!output.includes(start)) throw new Error(`No language setup found in ${page.source}`);
+    output = output
+      .replace(start, `    setLanguage('${language}', false);`)
+      .replace('<button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button>', '<button class="language-switch" type="button" aria-label="Switch to English">English</button>')
+      .replace(`<option value="${language}">`, `<option value="${language}" selected>`);
+  }
+  return output;
+}
+
+await Promise.all(
+  localizedPages.map(async (page) => {
+    const deployed = createDeployedPage(await readFile(path.join(rootDirectory, page.source), 'utf8'));
+    const englishOutputs = page.outputs ?? [`${page.route}.html`, `${page.route}/index.html`];
+    const english = withLanguageSwitching(withAlternates(deployed, page, 'en'), page, 'en');
+    await Promise.all(englishOutputs.map((output) => writeFile(path.join(outputDirectory, output), english)));
+    await Promise.all(
+      page.languages.map(async (language) => {
+        const localized = withLanguageSwitching(withAlternates(withLanguageLinks(translate(deployed, language), language), page, language), page, language);
+        const outputs = page.route
+          ? [`${language}/${page.route}.html`, `${language}/${page.route}/index.html`]
+          : [`${language}.html`, `${language}/index.html`];
+        await Promise.all(outputs.map(async (output) => {
+          await mkdir(path.dirname(path.join(outputDirectory, output)), { recursive: true });
+          await writeFile(path.join(outputDirectory, output), localized);
+        }));
+      }),
+    );
+  }),
+);
+
 // For search engines and AI assistants. robots.txt lets every crawler in and points them
 // at the sitemap, which lists each page at its clean route; the build fails if a listed
 // route wasn't built. The 404 page also matters: without a top-level 404.html,
@@ -220,10 +353,18 @@ const sitemapRoutes = [
 await Promise.all(
   sitemapRoutes.map((route) => readFile(path.join(outputDirectory, route, 'index.html'))),
 );
+// Each page's other-language versions follow it in the sitemap.
+const sitemapPaths = sitemapRoutes.flatMap((route) => {
+  const page = localizedPages.find((candidate) => candidate.route === route);
+  return [englishPath(route), ...(page?.languages ?? []).map((language) => languagePath(language, route))];
+});
+await Promise.all(
+  sitemapPaths.map((pagePath) => readFile(path.join(outputDirectory, pagePath === '/' ? 'index.html' : `${pagePath}/index.html`))),
+);
 const sitemap = [
   '<?xml version="1.0" encoding="UTF-8"?>',
   '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
-  ...sitemapRoutes.map((route) => `  <url><loc>https://karui.jp/${route}</loc></url>`),
+  ...sitemapPaths.map((pagePath) => `  <url><loc>${absolute(pagePath)}</loc></url>`),
   '</urlset>',
   '',
 ].join('\n');

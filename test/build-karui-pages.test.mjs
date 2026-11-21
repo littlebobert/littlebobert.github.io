@@ -263,3 +263,66 @@ test('describes Karui in schema.org structured data on the home page', async () 
   assert.equal(data.offers.price, '0');
   assert.match(data.downloadUrl, /^https:\/\/apps\.apple\.com\/app\/karui-notifications\/id6814134614$/);
 });
+
+// The labeled elements of a built page, as [opening tag, text or content].
+function labeledElements(page) {
+  return [...page.matchAll(/<([a-zA-Z][a-zA-Z0-9-]*)\b[^>]*\bdata-label-en="[^"]*"[^>]*>/g)].map((match) => {
+    const [tag, name] = match;
+    if (name.toLowerCase() === 'meta') return [tag, tag.match(/\scontent="([^"]*)"/)[1]];
+    const rest = page.slice(match.index + tag.length);
+    return [tag, rest.slice(0, rest.indexOf(`</${name}>`))];
+  });
+}
+
+test('builds a page per language with every label translated ahead of time', async () => {
+  const pages = [
+    ['ja/index.html', 'ja'], ['ko/index.html', 'ko'], ['de/index.html', 'de'],
+    ['ja/specs/index.html', 'ja'], ['ja/privacy/index.html', 'ja'], ['ja/changelog/index.html', 'ja'],
+    ['ja/technotes/kn006/index.html', 'ja'], ['ja/mac/index.html', 'ja'],
+  ];
+  for (const [file, language] of pages) {
+    const page = await readOutputFile(file);
+    assert.match(page, new RegExp(`<html lang="${language}">`), file);
+    const elements = labeledElements(page);
+    assert.ok(elements.length > 0, file);
+    for (const [tag, text] of elements) {
+      const label = tag.match(new RegExp(`\\sdata-label-${language}="([^"]*)"`))?.[1];
+      if (label === undefined) continue;
+      assert.equal(text, tag.startsWith('<meta') ? label : label.replaceAll('<', '&lt;').replaceAll('>', '&gt;'), `${file}: ${tag.slice(0, 80)}`);
+    }
+    assert.match(page, new RegExp(`setLanguage\\('${language}', false\\);`), file);
+    assert.doesNotMatch(page, /setLanguage\(localStorage\.getItem\('karui-language'\)/, file);
+  }
+  const japaneseHome = await readOutputFile('ja/index.html');
+  assert.match(japaneseHome, /<title>Karui：迷惑通知を消音。/);
+  assert.match(japaneseHome, /<option value="ja" selected>/);
+  assert.match(await readOutputFile('ja/specs/index.html'), /aria-label="Switch to English">English<\/button>/);
+});
+
+test('links every language version with hreflang, its own canonical URL, and the switch', async () => {
+  const englishHome = await readOutputFile('index.html');
+  for (const [code, href] of [['en', '/'], ['ja', '/ja'], ['ko', '/ko'], ['de', '/de'], ['x-default', '/']]) {
+    assert.match(englishHome, new RegExp(`<link rel="alternate" hreflang="${code}" href="https://karui\\.jp${href}">`));
+  }
+  assert.match(englishHome, /<link rel="canonical" href="https:\/\/karui\.jp\/">/);
+  assert.match(englishHome, /setLanguage\(localStorage\.getItem\('karui-language'\) \|\| preferredLanguage\(\), false\);/);
+  assert.match(englishHome, /languageSelect\.addEventListener\('change', \(\) => switchLanguage\(languageSelect\.value\)\);/);
+
+  const japaneseSpecs = await readOutputFile('ja/specs/index.html');
+  assert.match(japaneseSpecs, /<link rel="canonical" href="https:\/\/karui\.jp\/ja\/specs">/);
+  assert.match(japaneseSpecs, /<meta property="og:url" content="https:\/\/karui\.jp\/ja\/specs"/);
+  assert.match(japaneseSpecs, /<link rel="alternate" hreflang="en" href="https:\/\/karui\.jp\/specs">/);
+  assert.match(japaneseSpecs, /const languagePages = \{"en":"\/specs","ja":"\/ja\/specs"\};/);
+  assert.match(japaneseSpecs, /href="\/ja\/privacy"/);
+  assert.doesNotMatch(japaneseSpecs, /href="\/privacy"/);
+
+  // Korean and German exist only for the home page, so its links go to the English pages.
+  const koreanHome = await readOutputFile('ko/index.html');
+  assert.match(koreanHome, /href="\/privacy"/);
+  assert.doesNotMatch(koreanHome, /href="\/ko\/privacy"/);
+
+  const sitemap = await readOutputFile('sitemap.xml');
+  for (const loc of ['https://karui.jp/ja', 'https://karui.jp/ko', 'https://karui.jp/de', 'https://karui.jp/ja/technotes/kn007']) {
+    assert.match(sitemap, new RegExp(`<loc>${loc.replaceAll('.', '\\.')}</loc>`));
+  }
+});

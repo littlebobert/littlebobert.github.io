@@ -915,7 +915,10 @@ function setLanguage(language) {
   languageButtons.forEach((button) => {
     button.setAttribute('aria-pressed', button.dataset.languageValue === currentLanguage ? 'true' : 'false');
   });
-  document.title = currentLanguage === 'ja' ? 'Justin Garcia について' : 'About Justin Garcia';
+  // Matches the static <title> for English, so the rendered title and the indexed one agree.
+  document.title = currentLanguage === 'ja'
+    ? 'Justin Garcia、東京のプロダクトエンジニア'
+    : 'Justin Garcia, product engineer in Tokyo';
   localStorage.setItem('site-language', currentLanguage);
   if (selectedMapCountryCode) {
     selectedMapPlace = getRegionName(selectedMapCountryCode);

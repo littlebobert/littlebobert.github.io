@@ -267,6 +267,20 @@ function cacheVisitorCount(value) {
   } catch {}
 }
 
+// The count is read before the visit is recorded, so add this visitor once it lands.
+function bumpDisplayedVisitorCount() {
+  if (!visitorCountElement) {
+    return;
+  }
+  const current = Number(visitorCountElement.textContent);
+  if (!Number.isFinite(current)) {
+    return;
+  }
+  const next = formatVisitorCount(current + 1);
+  visitorCountElement.textContent = next;
+  cacheVisitorCount(next);
+}
+
 function formatVisitorCount(value) {
   const count = Number(value);
   if (!Number.isFinite(count)) {
@@ -296,6 +310,64 @@ async function fetchVisitorCounter(endpoint) {
   }
 }
 
+// A visit only counts once the page has actually been looked at: five visible seconds, or the
+// first real interaction. Prerenders, unfurlers and drive-by crawlers never get that far, and
+// automated browsers are skipped outright.
+function trackVisitorAfterEngagement() {
+  if (hasCountedVisitorThisSession() || navigator.webdriver) {
+    return;
+  }
+
+  let timer = 0;
+  let tracked = false;
+
+  const stop = () => {
+    window.clearTimeout(timer);
+    timer = 0;
+    window.removeEventListener('pointerdown', track);
+    window.removeEventListener('keydown', track);
+    window.removeEventListener('scroll', track);
+    document.removeEventListener('visibilitychange', onVisibilityChange);
+  };
+
+  async function track() {
+    if (tracked) {
+      return;
+    }
+    tracked = true;
+    stop();
+    try {
+      const response = await fetchVisitorCounter('track');
+      if (response.ok) {
+        markVisitorCountedThisSession();
+        bumpDisplayedVisitorCount();
+      }
+    } catch {}
+  }
+
+  function startTimer() {
+    if (timer || document.visibilityState !== 'visible') {
+      return;
+    }
+    timer = window.setTimeout(track, 5000);
+  }
+
+  function onVisibilityChange() {
+    if (document.visibilityState === 'visible') {
+      startTimer();
+    } else {
+      window.clearTimeout(timer);
+      timer = 0;
+    }
+  }
+
+  window.addEventListener('pointerdown', track, { once: true, passive: true });
+  window.addEventListener('keydown', track, { once: true });
+  window.addEventListener('scroll', track, { once: true, passive: true });
+  document.addEventListener('visibilitychange', onVisibilityChange);
+  startTimer();
+}
+
 async function fetchVisitorCount() {
   if (!visitorCountElement) {
     return;
@@ -306,15 +378,7 @@ async function fetchVisitorCount() {
     visitorCountElement.textContent = cached;
   }
 
-  // A failed increment must not hide the count: the read below is independent.
-  if (!hasCountedVisitorThisSession()) {
-    try {
-      const trackResponse = await fetchVisitorCounter('track');
-      if (trackResponse.ok) {
-        markVisitorCountedThisSession();
-      }
-    } catch {}
-  }
+  trackVisitorAfterEngagement();
 
   try {
     const response = await fetchVisitorCounter('views');
@@ -915,7 +979,10 @@ function setLanguage(language) {
   languageButtons.forEach((button) => {
     button.setAttribute('aria-pressed', button.dataset.languageValue === currentLanguage ? 'true' : 'false');
   });
-  document.title = currentLanguage === 'ja' ? 'Justin Garcia について' : 'About Justin Garcia';
+  // Matches the static <title> for English, so the rendered title and the indexed one agree.
+  document.title = currentLanguage === 'ja'
+    ? 'Justin Garcia、東京のプロダクトエンジニア'
+    : 'Justin Garcia, product engineer in Tokyo';
   localStorage.setItem('site-language', currentLanguage);
   if (selectedMapCountryCode) {
     selectedMapPlace = getRegionName(selectedMapCountryCode);

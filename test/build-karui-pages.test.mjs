@@ -91,9 +91,14 @@ test('builds the changelog page and links to it from every page', async () => {
   // iPhone without Apple Intelligence expecting spam filtering; iOS 27 isn't mentioned, since the
   // App Store won't install it on anything older. Under the top one, the price and privacy. The full list is in Tech Specs.
   assert.match(pages[0], /<div class="small-note karui-price-note"><span data-label-en="Free, with no subscriptions\. "[^>]*>Free, with no subscriptions\. <\/span><a href="\/privacy" data-label-en="Private"/);
-  assert.strictEqual(pages[0].match(/Download for iPhone<\/a><span class="karui-requirements" data-label-en="Spam filtering needs iPhone 15 Pro or later\."/g).length, 2);
+  assert.strictEqual(pages[0].match(/height="40"><\/a><span class="karui-requirements" data-label-en="Spam filtering needs iPhone 15 Pro or later\."/g).length, 2);
   // Download again at the end, after Privacy.
-  assert.strictEqual(pages[0].match(/<a class="download-link"/g).length, 2);
+  // As Apple's App Store badge, in the page's language.
+  assert.strictEqual(pages[0].match(/<a class="karui-app-store-badge" href="https:\/\/apps\.apple\.com\/app\/karui-notifications\/id6814134614"><img src="\/assets\/karui-app-store-badge-en\.svg\?v=\d+"[^>]*data-src-de="\/assets\/karui-app-store-badge-de\.svg\?v=\d+"[^>]*alt="Download on the App Store"/g).length, 2);
+  assert.doesNotMatch(pages[0], /<a class="download-link"/);
+  for (const [file, language] of [['ja/index.html', 'ja'], ['ko/index.html', 'ko'], ['de/index.html', 'de']]) {
+    assert.strictEqual((await readOutputFile(file)).match(new RegExp(`<img src="/assets/karui-app-store-badge-${language}\\.svg\\?v=\\d+"`, 'g')).length, 2, file);
+  }
   assert.match(pages[0], /<div class="karui-demo" role="group" aria-roledescription="carousel"/);
   assert.match(pages[0], /<img class="karui-demo-shot is-current" src="\/assets\/karui-demo-en-1\.jpg\?v=\d+" data-src-en="\/assets\/karui-demo-en-1\.jpg\?v=\d+" data-src-ja="\/assets\/karui-demo-ja-1\.jpg\?v=\d+"/);
   assert.strictEqual(pages[0].match(/class="karui-demo-shot/g).length, 4);

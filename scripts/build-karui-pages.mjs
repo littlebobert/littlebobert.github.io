@@ -47,6 +47,8 @@ const assetFiles = [
   'karui-seal-tagline.png',
   'karui-seal-tagline-large.png',
   'karui-social.png',
+  // Apple's Download on the App Store badge, black, in each language the home page has.
+  ...['en', 'ja', 'ko', 'de'].map((language) => `karui-app-store-badge-${language}.svg`),
   // KN004's App Privacy Report screenshot.
   'karui-kn004-privacy-report.jpg',
   'karui-kn004-privacy-report-icloud.jpg',
@@ -112,6 +114,7 @@ function createDeployedPage(source) {
     .replaceAll('data-src-en="assets/', 'data-src-en="/assets/')
     .replaceAll('data-src-ja="assets/', 'data-src-ja="/assets/')
     .replaceAll('data-src-ko="assets/', 'data-src-ko="/assets/')
+    .replaceAll('data-src-de="assets/', 'data-src-de="/assets/')
     .replaceAll('poster="assets/', 'poster="/assets/')
     .replaceAll('data-poster-en="assets/', 'data-poster-en="/assets/')
     .replaceAll('data-poster-ja="assets/', 'data-poster-ja="/assets/')

@@ -230,3 +230,36 @@ test('copies every asset a built page refers to', async () => {
     await access(path.join(outputDirectory, 'assets', asset));
   }
 });
+
+test('publishes robots.txt, a sitemap of built pages, and a real 404 page', async () => {
+  const robots = await readOutputFile('robots.txt');
+  assert.match(robots, /^User-agent: \*\nAllow: \/$/m);
+  assert.match(robots, /^Sitemap: https:\/\/karui\.jp\/sitemap\.xml$/m);
+  assert.doesNotMatch(robots, /Disallow/);
+
+  const sitemap = await readOutputFile('sitemap.xml');
+  assert.match(sitemap, /^<\?xml version="1\.0" encoding="UTF-8"\?>\n<urlset xmlns="http:\/\/www\.sitemaps\.org\/schemas\/sitemap\/0\.9">/);
+  const routes = [...sitemap.matchAll(/<loc>https:\/\/karui\.jp\/([a-z0-9/-]*)<\/loc>/g)].map((match) => match[1]);
+  assert.ok(routes.includes('') && routes.includes('specs') && routes.includes('technotes/kn007'));
+  assert.ok(!routes.includes('qr'));
+  for (const route of routes) {
+    await readOutputFile(route ? `${route}/index.html` : 'index.html');
+  }
+
+  const notFound = await readOutputFile('404.html');
+  assert.match(notFound, /<meta name="robots" content="noindex">/);
+  assert.match(notFound, /href="\/"/);
+  assert.match(notFound, /href="\/sasu-common\.css\?v=\d+"/);
+});
+
+test('describes Karui in schema.org structured data on the home page', async () => {
+  const homePage = await readOutputFile('index.html');
+  const blocks = [...homePage.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];
+  assert.equal(blocks.length, 1);
+  const data = JSON.parse(blocks[0][1]);
+  assert.equal(data['@type'], 'SoftwareApplication');
+  assert.equal(data.name, 'Karui');
+  assert.equal(data.url, 'https://karui.jp/');
+  assert.equal(data.offers.price, '0');
+  assert.match(data.downloadUrl, /^https:\/\/apps\.apple\.com\/app\/karui-notifications\/id6814134614$/);
+});

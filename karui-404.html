@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Page Not Found · Karui</title>
+  <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link rel="icon" href="assets/karui-favicon.png?v=2" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=3">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex">
+  <style>
+    /* karui.jp's 404 page. Cloudflare Pages serves it, with a 404 status, for any
+       address that isn't a page, instead of the home page with a 200. */
+    body.sasu-site { background: #fff; }
+    .karui-not-found { min-height: 70svh; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10pt; text-align: center; }
+    .karui-not-found img { width: 64px; height: 64px; border-radius: 14px; }
+    .karui-not-found h1 { margin: 4pt 0 0; font-size: 18pt; }
+    .karui-not-found p { margin: 0; color: #555; }
+  </style>
+</head>
+<body class="sasu-site">
+  <main class="sasu-page karui-not-found">
+    <img src="assets/karui-icon.png?v=3" alt="Karui app icon" width="64" height="64">
+    <h1>Page not found</h1>
+    <p lang="ja">ページが見つかりません</p>
+    <p><a href="karui.html">Go to karui.jp</a></p>
+  </main>
+</body>
+</html>

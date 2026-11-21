@@ -193,4 +193,55 @@ await Promise.all(
   }),
 );
 
+// For search engines and AI assistants. robots.txt lets every crawler in and points them
+// at the sitemap, which lists each page at its clean route; the build fails if a listed
+// route wasn't built. The 404 page also matters: without a top-level 404.html,
+// Cloudflare Pages treats the site as a single-page app and answers every address,
+// robots.txt and sitemap.xml included, with the home page and a 200.
+const sitemapRoutes = [
+  '',
+  'specs',
+  'mac',
+  'support',
+  'privacy',
+  'changelog',
+  'technotes',
+  'technotes/kn001',
+  'technotes/kn002',
+  'technotes/kn004',
+  'technotes/kn005',
+  'technotes/kn006',
+  'technotes/kn007',
+  'technotes/lightning-talk',
+  'acknowledgements',
+  'hanko',
+  'seal',
+];
+await Promise.all(
+  sitemapRoutes.map((route) => readFile(path.join(outputDirectory, route, 'index.html'))),
+);
+const sitemap = [
+  '<?xml version="1.0" encoding="UTF-8"?>',
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+  ...sitemapRoutes.map((route) => `  <url><loc>https://karui.jp/${route}</loc></url>`),
+  '</urlset>',
+  '',
+].join('\n');
+const robots = [
+  '# karui.jp is public: search engines and AI assistants are welcome.',
+  'User-agent: *',
+  'Allow: /',
+  '',
+  'Sitemap: https://karui.jp/sitemap.xml',
+  '',
+].join('\n');
+await Promise.all([
+  writeFile(path.join(outputDirectory, 'sitemap.xml'), sitemap),
+  writeFile(path.join(outputDirectory, 'robots.txt'), robots),
+  writeFile(
+    path.join(outputDirectory, '404.html'),
+    createDeployedPage(await readFile(path.join(rootDirectory, 'karui-404.html'), 'utf8')),
+  ),
+]);
+
 console.log(`Built Karui Pages site in ${outputDirectory}`);

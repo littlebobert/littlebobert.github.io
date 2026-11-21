@@ -3,7 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
-// The 1.0 card: icon, name, pitch, the 通知をかるく seal and the History
+// The card: icon, name, pitch, the 通知をかるく seal and the History
 // screen, since X no longer shows a link's title under the image.
 const rootDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const iconPath = path.join(rootDirectory, 'assets', 'karui-icon.png');
@@ -42,7 +42,7 @@ const seal = await sharp(await readFile(sealPath)).resize({ height: sealHeight }
 const background = Buffer.from(`
 <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
   <rect width="${width}" height="${height}" fill="#ffffff"/>
-  <text x="80" y="318" font-family="Verdana" font-weight="bold" font-size="92" fill="#0E1530">Karui 1.0</text>
+  <text x="80" y="318" font-family="Verdana" font-weight="bold" font-size="92" fill="#0E1530">Karui</text>
   <text x="82" y="388" font-family="Verdana" font-size="34" fill="#1B2A5C">Spam filter for iPhone</text>
   <text x="82" y="433" font-family="Verdana" font-size="34" fill="#1B2A5C">notifications.</text>
   <text x="82" y="526" font-family="Verdana" font-size="24" fill="#5A6380">Privately with Apple Intelligence.</text>

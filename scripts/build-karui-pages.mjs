@@ -391,9 +391,83 @@ const robots = [
   'Sitemap: https://karui.jp/sitemap.xml',
   '',
 ].join('\n');
+// What the portfolio's Featured App desk accessory (karui-desk.js) shows: the newest
+// App Store release (never Pending Release), with any builds since the previous App Store
+// release folded in and "No changes since the previous build." items omitted. Written both
+// to karui.jp/latest-release.json (rebuilt on every push) and data/karui-latest.json.
+function decodeHtml(text) {
+  return text
+    .replace(/&#x([0-9a-f]+);/gi, (_, hex) => String.fromCodePoint(parseInt(hex, 16)))
+    .replace(/&#(\d+);/g, (_, dec) => String.fromCodePoint(Number(dec)))
+    .replaceAll('&quot;', '"')
+    .replaceAll('&apos;', "'")
+    .replaceAll('&lt;', '<')
+    .replaceAll('&gt;', '>')
+    .replaceAll('&amp;', '&');
+}
+
+function extractLatestRelease(changelogHtml) {
+  const startMarker = '<!-- karui-changelog:start -->';
+  const endMarker = '<!-- karui-changelog:end -->';
+  const start = changelogHtml.indexOf(startMarker);
+  const end = changelogHtml.indexOf(endMarker, start);
+  if (start < 0 || end < 0) throw new Error('Missing karui-changelog markers');
+
+  const section = changelogHtml.slice(start + startMarker.length, end);
+  const builds = section
+    .split(/(?=<h2 data-karui-build=")/)
+    .map((chunk) => chunk.trim())
+    .filter((chunk) => chunk.startsWith('<h2 data-karui-build="'))
+    .map((chunk) => {
+      const heading = chunk.match(/<h2 data-karui-build="[^"]*">([\s\S]*?)<\/h2>/)?.[1] ?? '';
+      const badge = heading.match(/<span class="store-badge(?:\s+([^"]*))?"/);
+      const version = decodeHtml(heading.replace(/<span[\s\S]*$/, '')).trim().replace(/\s*\(\d+\)$/, '');
+      const dateTag = chunk.match(/<span class="release-date"[^>]*>/)?.[0] ?? '';
+      const dateText = chunk.match(/<span class="release-date"[^>]*>([^<]*)<\/span>/)?.[1] ?? '';
+      const date = decodeHtml(attribute(dateTag, 'data-label-en') ?? dateText).trim();
+      const notes = { en: [], ja: [] };
+      for (const [, attrs, inner] of chunk.matchAll(/<li\b([^>]*)>([\s\S]*?)<\/li>/g)) {
+        const openTag = `<li${attrs}>`;
+        if (/\bno-changes\b/.test(attribute(openTag, 'class') ?? '')) continue;
+        const en = attribute(openTag, 'data-label-en') !== undefined
+          ? decodeHtml(attribute(openTag, 'data-label-en')).trim()
+          : decodeHtml(inner.replace(/<[^>]+>/g, '')).trim();
+        const ja = attribute(openTag, 'data-label-ja') !== undefined
+          ? decodeHtml(attribute(openTag, 'data-label-ja')).trim()
+          : decodeHtml(translate(`${openTag}${inner}</li>`, 'ja').replace(/<[^>]+>/g, '')).trim();
+        if (en) notes.en.push(en);
+        if (ja) notes.ja.push(ja);
+      }
+      return {
+        version,
+        date,
+        hasBadge: Boolean(badge),
+        isPending: Boolean(badge?.[1]?.split(/\s+/).includes('pending')),
+        notes,
+      };
+    });
+
+  const liveIndex = builds.findIndex((build) => build.hasBadge && !build.isPending);
+  if (liveIndex < 0 || !builds[liveIndex].version) {
+    throw new Error('No live App Store release found in karui-changelog.html');
+  }
+  const live = builds[liveIndex];
+  const notes = { en: [], ja: [] };
+  for (const build of builds.slice(liveIndex)) {
+    if (build !== live && build.hasBadge) break;
+    notes.en.push(...build.notes.en);
+    notes.ja.push(...build.notes.ja);
+  }
+  return { version: live.version, date: live.date, notes };
+}
+
+const latestReleaseJson = `${JSON.stringify(extractLatestRelease(changelogSource), null, 2)}\n`;
+
 await Promise.all([
   writeFile(path.join(outputDirectory, 'sitemap.xml'), sitemap),
   writeFile(path.join(outputDirectory, 'robots.txt'), robots),
+  writeFile(path.join(outputDirectory, 'latest-release.json'), latestReleaseJson),
+  writeFile(path.join(rootDirectory, 'data', 'karui-latest.json'), latestReleaseJson),
   writeFile(
     path.join(outputDirectory, '404.html'),
     createDeployedPage(await readFile(path.join(rootDirectory, 'karui-404.html'), 'utf8')),

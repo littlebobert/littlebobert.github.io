@@ -179,6 +179,13 @@ html.christmas-lights-off .christmas-string i {
   right: calc(var(--lights-gutter, 0px) / 2 - 10px);
 }
 
+/* Narrow viewports don't have a 20px side gutter for vertical strands without overlapping windows. */
+@media (max-width: 519px) {
+  .christmas-strand {
+    display: none;
+  }
+}
+
 /* A swag over each side column, from the top of its strand to the end of About's. */
 .christmas-swag {
   display: none;

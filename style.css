@@ -1,5 +1,4 @@
 /* Classic Macintosh (System 1-6) Black & White Styles */
-@import url('https://fonts.googleapis.com/css2?family=VT323&display=block');
 
 * {
   box-sizing: border-box;
@@ -3610,6 +3609,8 @@ html[lang="ja"] .app-icon .desktop-icon-label {
     column-gap: clamp(10px, 1.5vw, 24px);
     row-gap: 0;
     align-items: start;
+    align-content: start;
+    min-height: var(--desktop-side-height, 0px);
     width: 100%;
     max-width: 1180px;
     margin: 0 auto;

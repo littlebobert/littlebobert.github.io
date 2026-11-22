@@ -353,3 +353,22 @@ test('builds the guides in English and Japanese, linked from every page footer',
   assert.match(await readOutputFile('ja/index.html'), /href="\/ja\/guides"/);
   assert.match(await readOutputFile('ko/index.html'), />가이드</);
 });
+
+test('publishes latest-release.json for the portfolio desk accessory without pending builds or no-changes lines', async () => {
+  const [distRaw, rootRaw, headers] = await Promise.all([
+    readOutputFile('latest-release.json'),
+    readFile(path.join(rootDirectory, 'data', 'karui-latest.json'), 'utf8'),
+    readOutputFile('_headers'),
+  ]);
+  assert.equal(distRaw, rootRaw);
+  const release = JSON.parse(distRaw);
+  assert.match(release.version, /^\d+\.\d+(?:\.\d+)?$/);
+  assert.ok(release.date.length > 0);
+  assert.ok(release.notes.en.length > 0);
+  assert.equal(release.notes.en.length, release.notes.ja.length);
+  for (const note of [...release.notes.en, ...release.notes.ja]) {
+    assert.doesNotMatch(note, /No changes since the previous build|前のビルドからの変更はありません/);
+    assert.doesNotMatch(note, /&(?:quot|apos|amp|lt|gt|#x?[0-9a-f]+);/i);
+  }
+  assert.match(headers, /\/latest-release\.json[\s\S]*Access-Control-Allow-Origin: \*/);
+});

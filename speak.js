@@ -732,7 +732,7 @@
     widget.remove();
     placement.disconnect();
     visibility.disconnect();
-    place();
+    document.dispatchEvent(new Event('desk-layout'));
   });
 
   document.addEventListener('site-language-change', render);

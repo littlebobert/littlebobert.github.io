@@ -50,7 +50,7 @@
 
   const visitorLabel = document.querySelector('.stack-visitor-counter [data-label-en]');
   if (visitorLabel) {
-    visitorLabel.dataset.labelEn = 'Nice list<span class="nice-list-detail"> (number of visitors)</span>:';
+    visitorLabel.dataset.labelEn = 'Nice list<span class="nice-list-detail"> (# of visitors)</span>:';
     visitorLabel.dataset.labelJa = 'いい子<span class="nice-list-detail">（訪問者数）</span>:';
     visitorLabel.innerHTML = visitorLabel.dataset.labelEn;
   }
@@ -179,6 +179,7 @@
     const place = () => {
       let top = 36 + settings.offsetHeight + 12;
       document.querySelectorAll('.desk-accessory:not(.christmas-tree)').forEach((accessory) => {
+        if (!accessory.offsetHeight) return;
         accessory.style.setProperty('--desk-accessory-top', `${top}px`);
         top += accessory.offsetHeight + 12;
       });
@@ -187,10 +188,13 @@
     const observer = new ResizeObserver(place);
     observer.observe(settings);
     observer.observe(widget);
+    document.addEventListener('desk-layout', place);
     widget.querySelector('.close-box').addEventListener('click', () => {
       widget.remove();
       observer.disconnect();
+      document.removeEventListener('desk-layout', place);
       place();
+      document.dispatchEvent(new Event('desk-layout'));
     });
   }
 
@@ -455,21 +459,26 @@
     speak.after(widget);
     function place() {
       let top = 36 + clocks.offsetHeight + 12;
-      // Anchor to Speak's published offset. When the clocks roll up, its placement script moves
-      // it first, and this mutation observer below moves Tree with it.
-      const published = Number.parseFloat(speak.style.getPropertyValue('--speak-top'));
-      top = (Number.isFinite(published) ? published : top) + speak.offsetHeight + 12;
+      if (speak.isConnected) {
+        // Anchor to Speak's published offset. When the clocks roll up, its placement script moves
+        // it first, and the mutation observer below moves Tree with it.
+        const published = Number.parseFloat(speak.style.getPropertyValue('--speak-top'));
+        top = (Number.isFinite(published) ? published : top) + speak.offsetHeight + 12;
+      }
       widget.style.setProperty('--desk-accessory-top', `${top}px`);
     }
     const placement = new ResizeObserver(place);
     [clocks, speak, widget].forEach((element) => placement.observe(element));
     const publishedPlacement = new MutationObserver(place);
     publishedPlacement.observe(speak, { attributes: true, attributeFilter: ['style'] });
+    document.addEventListener('desk-layout', place);
     widget.querySelector('.close-box').addEventListener('click', () => {
       placement.disconnect();
       publishedPlacement.disconnect();
+      document.removeEventListener('desk-layout', place);
       widget.remove();
       document.dispatchEvent(new Event('christmas-tree-layout'));
+      document.dispatchEvent(new Event('desk-layout'));
     });
     place();
   }

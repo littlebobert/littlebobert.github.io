@@ -672,8 +672,21 @@ const RETRO_EMOJI_LABELS = new Map([
   ['\u{1F440}', '[eyes]'],
   ['\u{1F4A9}', '[poop]'],
   ['\u{1FAE1}', '[salute]'],
+  ['\u{1F921}', '[clown]'],
+  ['\u{1F647}', 'm(_ _)m'],
+  ['\u{1F937}', '¯\\_(ツ)_/¯'],
+  ['\u{1F926}', '[facepalm]'],
+  ['\u{1F389}', '[tada]'],
+  ['\u{1F64C}', '\\o/'],
+  ['\u{1F91D}', '[handshake]'],
+  ['\u{1F4AA}', '[flex]'],
+  ['\u{1FAE0}', '[melting]'],
+  ['\u{1F979}', ';_;'],
+  ['\u{1FAF6}', '<3'],
+  ['\u2764\u200D\u{1F525}', '<3'],
 ]);
-const EMOJI_PATTERN = /(?:[\u{1F1E6}-\u{1F1FF}]{2}|[\u{1F300}-\u{1FAFF}][\uFE0E\uFE0F\u{1F3FB}-\u{1F3FF}]*(?:\u200D[\u{1F300}-\u{1FAFF}][\uFE0E\uFE0F\u{1F3FB}-\u{1F3FF}]*)*|[\u2600-\u27BF]\uFE0F?)/gu;
+const EMOJI_ATOM = '(?:[\\u{1F300}-\\u{1FAFF}][\\uFE0E\\uFE0F\\u{1F3FB}-\\u{1F3FF}]*|[\\u2600-\\u27BF]\\uFE0F?)';
+const EMOJI_PATTERN = new RegExp(`(?:[\\u{1F1E6}-\\u{1F1FF}]{2}|${EMOJI_ATOM}(?:\\u200D${EMOJI_ATOM})*)`, 'gu');
 const URL_PATTERN = /https?:\/\/[^\s]+/g;
 
 function normalizeEmojiToken(token) {
@@ -685,9 +698,13 @@ function normalizeEmojiToken(token) {
 function retroEmojiLabel(token) {
   const normalized = normalizeEmojiToken(token);
   if (/^[\u{1F1E6}-\u{1F1FF}]{2}$/u.test(normalized)) {
-    return '[flag]';
+    const code = Array.from(normalized, (ch) => String.fromCodePoint(ch.codePointAt(0) - 0x1F1E6 + 65)).join('');
+    return `[${code}]`;
   }
-  return RETRO_EMOJI_LABELS.get(normalized) || '[emoji]';
+  const withoutGender = normalized.replace(/\u200D[\u2640\u2642]$/u, '');
+  return RETRO_EMOJI_LABELS.get(normalized)
+    || RETRO_EMOJI_LABELS.get(withoutGender)
+    || token;
 }
 
 function appendRetroText(parent, value) {
@@ -731,9 +748,18 @@ function addLinkRange(ranges, range) {
   ranges.push(range);
 }
 
+function isEmbeddedMediaSelfUrl(url, href, label, hasRenderedMedia) {
+  if (!hasRenderedMedia) {
+    return false;
+  }
+  return /^pic\.(?:x|twitter)\.com\//i.test(label || '')
+    || /^https?:\/\/(?:x|twitter)\.com\/[^/]+\/status\/\d+\/(?:photo|video)\/\d+\/?$/i.test(href || '');
+}
+
 function buildXPostLinkRanges(text, post) {
   const ranges = [];
   const urls = Array.isArray(post.urls) ? post.urls : [];
+  const hasRenderedMedia = Array.isArray(post.media) && post.media.some((item) => item.image);
 
   urls.forEach((url) => {
     const href = url.expandedUrl || url.expanded_url || url.url;
@@ -746,7 +772,8 @@ function buildXPostLinkRanges(text, post) {
       end = codePointOffsetToStringOffset(text, url.end);
     }
 
-    addLinkRange(ranges, { start, end, href, label });
+    const omit = isEmbeddedMediaSelfUrl(url, href, label, hasRenderedMedia);
+    addLinkRange(ranges, { start, end, href, label, omit });
   });
 
   text.replace(URL_PATTERN, (match, offset) => {
@@ -767,7 +794,14 @@ function appendLinkedRetroText(parent, text, post) {
   let cursor = 0;
 
   ranges.forEach((range) => {
-    appendRetroText(parent, text.slice(cursor, range.start));
+    const before = text.slice(cursor, range.start);
+    if (range.omit) {
+      appendRetroText(parent, before.replace(/[ \t]+$/, ''));
+      cursor = range.end;
+      return;
+    }
+
+    appendRetroText(parent, before);
 
     const link = document.createElement('a');
     link.href = range.href;
@@ -1217,7 +1251,7 @@ function openFeatureWindow(featureWindowId, launcher) {
     featureWindow.scrollIntoView({ block: 'nearest', behavior: 'auto' });
     refreshFeedScrollFades();
     if (featureWindow.contains(worldMapFrame)) {
-      updateMapTransform();
+      setMapTransform();
     }
   });
 }
@@ -2406,7 +2440,12 @@ stackNextButton?.addEventListener('click', () => {
 
 featureWindowLaunchers.forEach((button) => {
   button.addEventListener('click', () => {
-    openFeatureWindow(button.dataset.featureWindow, button);
+    const featureWindow = document.getElementById(button.dataset.featureWindow);
+    if (featureWindow && !featureWindow.classList.contains('is-closed')) {
+      closeFeatureWindow(featureWindow);
+    } else {
+      openFeatureWindow(button.dataset.featureWindow, button);
+    }
     button.blur();
   });
 });
@@ -2811,13 +2850,19 @@ qrCodeCloseButton?.addEventListener('click', (event) => {
 });
 
 qrCodeButton?.addEventListener('click', () => {
-  openQrCodeWindow(qrCodeButton);
+  if (qrCodeDialog && !qrCodeDialog.classList.contains('is-closed')) {
+    closeQrCodeWindow();
+  } else {
+    openQrCodeWindow(qrCodeButton);
+  }
   qrCodeButton.blur();
 });
 
 recentUpdatesButton?.addEventListener('click', () => {
   if (recentUpdatesDialog?.classList.contains('is-closed')) {
     openRecentUpdatesWindow();
+  } else {
+    closeRecentUpdatesWindow();
   }
   recentUpdatesButton.blur();
 });
@@ -3095,6 +3140,42 @@ window.addEventListener('blur', hideBalloon);
   });
 });
 
+// Keeps .desktop at least as tall as the left and right desk-accessory stacks on wide screens,
+// where those widgets use negative bottom margins so they don't push the center column down.
+function setupDesktopSideHeight() {
+  const desktop = document.querySelector('.desktop');
+  if (!desktop || !bottomRow) return;
+
+  const clocks = bottomRow.querySelector('.clock-row');
+  const settings = document.getElementById('appearance-panel');
+
+  function sync() {
+    let leftBottom = clocks ? 36 + clocks.offsetHeight : 0;
+    ['#speak', '.christmas-tree', '#karui-desk'].forEach((selector) => {
+      const el = bottomRow.querySelector(selector);
+      if (el && el.offsetHeight > 0) leftBottom += 12 + el.offsetHeight;
+    });
+
+    let rightBottom = settings ? 36 + settings.offsetHeight : 0;
+    bottomRow.querySelectorAll('.desk-accessory:not(.christmas-tree)').forEach((el) => {
+      if (el.offsetHeight > 0) rightBottom += 12 + el.offsetHeight;
+    });
+
+    const tallest = Math.max(leftBottom, rightBottom);
+    desktop.style.setProperty('--desktop-side-height', tallest > 0 ? `${tallest}px` : '0px');
+  }
+
+  const observer = new ResizeObserver(sync);
+  const observeChildren = () => {
+    [...bottomRow.children].forEach((child) => observer.observe(child));
+    sync();
+  };
+  observeChildren();
+  new MutationObserver(observeChildren).observe(bottomRow, { childList: true });
+  document.addEventListener('desk-layout', sync);
+  document.addEventListener('christmas-tree-layout', sync);
+}
+
 const savedLanguage = localStorage.getItem('site-language');
 const preferredLanguage = navigator.languages?.[0] || navigator.language || 'en';
 const initialLanguage = savedLanguage || (preferredLanguage.toLowerCase().startsWith('ja') ? 'ja' : 'en');
@@ -3106,6 +3187,7 @@ setWeatherUnit(getSavedWeatherUnit());
 window.addEventListener('resize', setMapTransform);
 setMapTransform();
 prepareMapSvg();
+setupDesktopSideHeight();
 bootAboutWindow();
 updateClocks();
 fetchWeather();

@@ -16,3 +16,12 @@
 
 /llms.txt
   Content-Type: text/plain; charset=utf-8
+
+/latest-release.json
+  Access-Control-Allow-Origin: *
+  Cache-Control: no-cache
+  Content-Type: application/json; charset=utf-8
+
+/data/karui-latest.json
+  Cache-Control: no-cache
+  Content-Type: application/json; charset=utf-8

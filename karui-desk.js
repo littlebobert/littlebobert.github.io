@@ -1,15 +1,18 @@
 // Karui desk accessory: Karui's App Store listing on the desk, with the current version's release
-// notes in one bubble below it. The notes come from the Karui changelog on this site
-// (karui-changelog.html): the newest build with an App Store badge, with the notes of the builds
-// since the release before it folded in, as the changelog's App Store view shows them. The
-// subtitle is in index.html. Click the bubble to read every note in full.
+// notes in one bubble below it. Built ahead of time into a tiny JSON summary by
+// scripts/build-karui-pages.mjs (served at karui.jp/latest-release.json and data/karui-latest.json),
+// with karui-changelog.html kept as a local/fallback source. Click the bubble to read every note.
 (() => {
   const widget = document.getElementById('karui-desk');
   if (!widget) return;
 
-  // This site's copy, then the deployed one: a page opened from disk (file://) can't fetch files
-  // beside it, and the deployed site allows any origin.
-  const CHANGELOGS = ['karui-changelog.html', 'https://onemorething.tokyo/karui-changelog'];
+  // Locally over HTTP, read karui-changelog.html first so unbuilt changelog edits show right away;
+  // everywhere else, fetch the tiny JSON summary first (karui.jp rebuilds it on every push, and
+  // allows any origin for file:// too), then fall back to the checked-in JSON and HTML.
+  const localHttp = ['localhost', '127.0.0.1'].includes(location.hostname);
+  const SOURCES = localHttp
+    ? ['karui-changelog.html', 'data/karui-latest.json', 'https://karui.jp/latest-release.json']
+    : ['https://karui.jp/latest-release.json', 'data/karui-latest.json', 'karui-changelog.html', 'https://onemorething.tokyo/karui-changelog'];
 
   const release = widget.querySelector('.karui-desk-release');
   const notes = widget.querySelector('.karui-desk-notes');
@@ -70,11 +73,20 @@
     return new Date(Date.UTC(parsed.getFullYear(), parsed.getMonth(), parsed.getDate(), 3));
   }
 
-  const noteText = (item, lang) => (lang === 'ja' ? item.dataset.labelJa : item.dataset.labelEn)
-    ?? item.textContent.trim();
+  const noteText = (item, lang) => {
+    const direct = lang === 'ja' ? item.dataset.labelJa : item.dataset.labelEn;
+    if (direct !== undefined) return direct;
+    if (!item.querySelector('[data-label-en]')) return item.textContent.trim();
+    const clone = item.cloneNode(true);
+    clone.querySelectorAll('[data-label-en]').forEach((child) => {
+      const label = lang === 'ja' ? child.dataset.labelJa : child.dataset.labelEn;
+      if (label !== undefined) child.textContent = label;
+    });
+    return clone.textContent.trim();
+  };
 
   // The live release: the newest build whose badge isn't pending, plus the builds after the
-  // release before it. Builds newer than it (and a pending release) aren't on the App Store yet.
+  // release before it, leaving out "No changes since the previous build." lines.
   function liveRelease(page) {
     const headings = [...page.querySelectorAll('h2[data-karui-build]')];
     const live = headings.findIndex((heading) => {
@@ -88,7 +100,7 @@
     for (const build of headings.slice(live)) {
       if (build !== heading && build.querySelector('.store-badge')) break;
       const list = build.nextElementSibling?.nextElementSibling;
-      if (list?.tagName === 'UL') items.push(...list.querySelectorAll(':scope > li'));
+      if (list?.tagName === 'UL') items.push(...list.querySelectorAll(':scope > li:not(.no-changes)'));
     }
     const version = heading.firstChild?.textContent.trim().replace(/\s*\(\d+\)$/, '');
     if (!version) return null;
@@ -99,6 +111,18 @@
       notes: {
         en: items.map((item) => noteText(item, 'en')).filter(Boolean),
         ja: items.map((item) => noteText(item, 'ja')).filter(Boolean),
+      },
+    };
+  }
+
+  function releaseFromJson(data) {
+    if (!data?.version || !Array.isArray(data.notes?.en) || !Array.isArray(data.notes?.ja)) return null;
+    return {
+      version: data.version,
+      releasedAt: buildDate(data.date),
+      notes: {
+        en: data.notes.en.filter(Boolean),
+        ja: data.notes.ja.filter(Boolean),
       },
     };
   }
@@ -132,12 +156,13 @@
     current = 'loading';
     render();
     current = 'failed';
-    for (const url of CHANGELOGS) {
+    for (const url of SOURCES) {
       try {
         const response = await fetch(url, { cache: 'no-cache' });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
-        const page = new DOMParser().parseFromString(await response.text(), 'text/html');
-        const found = liveRelease(page);
+        const found = url.endsWith('.json')
+          ? releaseFromJson(await response.json())
+          : liveRelease(new DOMParser().parseFromString(await response.text(), 'text/html'));
         if (found) {
           current = found;
           break;
@@ -168,10 +193,12 @@
   if (speak) placement.observe(speak);
   if (christmasTree) placement.observe(christmasTree);
   document.addEventListener('christmas-tree-layout', place);
+  document.addEventListener('desk-layout', place);
 
   widget.querySelector('.close-box').addEventListener('click', () => {
     placement.disconnect();
     widget.remove();
+    document.dispatchEvent(new Event('desk-layout'));
   });
 
   // Both languages are already loaded; a failed load tries again.

@@ -486,6 +486,7 @@
     if (!settings) return;
     let top = 36 + settings.offsetHeight + 12;
     document.querySelectorAll('.desk-accessory:not(.christmas-tree)').forEach((accessory) => {
+      if (!accessory.offsetHeight) return;
       accessory.style.setProperty('--desk-accessory-top', `${top}px`);
       top += accessory.offsetHeight + 12;
     });
@@ -494,6 +495,7 @@
   const placement = new ResizeObserver(place);
   if (settings) placement.observe(settings);
   placement.observe(widget);
+  document.addEventListener('desk-layout', place);
   new ResizeObserver(resize).observe(paper);
   new IntersectionObserver((entries) => {
     onScreen = entries[entries.length - 1].isIntersecting;
@@ -503,7 +505,9 @@
   widget.querySelector('.close-box').addEventListener('click', () => {
     widget.remove();
     placement.disconnect();
+    document.removeEventListener('desk-layout', place);
     place();
+    document.dispatchEvent(new Event('desk-layout'));
     updateRunning();
   });
 

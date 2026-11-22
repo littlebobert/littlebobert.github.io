@@ -1,16 +1,16 @@
 {
-  "version": "1.0.2",
-  "date": "November 20, 2026",
+  "version": "1.0.3",
+  "date": "November 21, 2026",
   "notes": {
     "en": [
-      "The setup guides that play in a small window now show each step's screen, with what to tap circled, in English, German, Japanese and Korean. German has its own spoken guides.",
-      "Spoken Alerts is marked Beta.",
-      "Opening a Spark email or Slack message from Karui's alert or History now waits a little longer for the link from Karui for Mac, with \"Getting the link from your Mac…\" and a button to open the app right away."
+      "History now shows your next deadlines at the top when Deadline Reminders is on.",
+      "A new video shows how to set up clearing Karui’s alerts when you open an app. Find it in Settings › Help & Troubleshooting.",
+      "Setup wizards are now clearer."
     ],
     "ja": [
-      "小さなウインドウで再生されるセットアップガイドに、各手順の画面とタップする場所を示す丸印が表示されるようになりました。英語、ドイツ語、日本語、韓国語に対応し、ドイツ語には専用の音声ガイドもあります。",
-      "音声アラートに「ベータ版」の表記を追加しました。",
-      "Karuiのアラートや履歴からSparkのメールまたはSlackメッセージを開く際、Karui for Macからのリンクをこれまでより少し長く待つようになりました。「Macからリンクを取得中…」と表示され、すぐにアプリを開くボタンも利用できます。"
+      "「期限リマインダー」がオンの場合、履歴の上部に次の期限が表示されるようになりました。",
+      "アプリを開いたときにKaruiの通知を消す設定方法を紹介する動画を追加しました。［設定］›［ヘルプとトラブルシューティング］から確認できます。",
+      "セットアップウィザードがより分かりやすくなりました。"
     ]
   }
 }

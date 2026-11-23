@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Karui Known Issues</title>
+  <link href="sasu-common.css?v=5" rel="stylesheet">
+  <link href="karui-animated-icon.css?v=2" rel="stylesheet">
+  <link rel="icon" href="assets/karui-favicon.png?v=2" type="image/png">
+  <link rel="apple-touch-icon" href="assets/karui-icon.png?v=3">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body.sasu-site { background: #fff; }
+    .sasu-page { padding-top: 8pt; padding-bottom: 24pt; }
+    .karui-section { padding: 6pt 0 5pt; }
+    .karui-section p { margin: 0; }
+    .karui-section p + p, .karui-section ul + p, .karui-section ol + p { margin-top: 7pt; }
+    .karui-section ul, .karui-section ol { padding-left: 20pt; }
+    .karui-footer { padding: 10pt 0 8pt; color: #555; text-align: center; }
+    .karui-footer p { margin: 4pt 0; }
+    .footer-links .footer-separator { margin: 0 6pt; color: #777; }
+    /* Keep two-word links like Tech Specs whole; the row wraps at the <wbr> after each separator. */
+    .footer-links a { white-space: nowrap; }
+    @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
+    .karui-section h2 { margin: 6pt 0 4pt; }
+    .karui-section h3 { margin: 8pt 0 3pt; }
+    .karui-section h2 + h3 { margin-top: 0; }
+    .karui-section li + li { margin-top: 3pt; }
+    .karui-section p + ul, .karui-section p + ol { margin-top: 6pt; }
+    .karui-section h2 + ul, .karui-section h2 + ol { margin-top: 0; }
+    .karui-section > ul:last-child, .karui-section > ol:last-child { margin-bottom: 0; }
+    .karui-code { background: #f4f3ee; border-radius: 8px; padding: 8pt 10pt; overflow-x: auto; font-size: calc(0.85em + 1pt); line-height: 1.4; }
+    .karui-table { border-collapse: collapse; width: 100%; margin: 4pt 0; }
+    .karui-table th, .karui-table td { border-bottom: 1px solid #e3e1da; padding: 5pt 6pt 5pt 0; text-align: left; vertical-align: top; }
+    .karui-table th { color: #555; font-weight: 600; }
+    .karui-table td:first-child, .karui-table th:first-child { white-space: nowrap; padding-right: 14pt; }
+    .karui-table-note { color: #555; font-size: 0.85em; margin-top: 3pt !important; }
+    .karui-quote { margin: 6pt 0 6pt 0; padding: 2pt 0 2pt 10pt; border-left: 3px solid #d8d6ce; color: #333; }
+    .karui-revision-date { font-weight: 600; }
+    .swift-string { color: #c41a16; }
+    .swift-keyword { color: #9b2393; font-weight: 600; }
+    .swift-type { color: #3900a0; }
+    .swift-function { color: #326d74; }
+    .karui-note-list li + li { margin-top: 8pt; }
+    .karui-note-meta { color: #555; font-size: 0.9em; }
+    .karui-breadcrumbs { color: #666; margin: 2pt 0 12pt; }
+    .karui-breadcrumbs a { color: #666; }
+    .karui-breadcrumb-separator { margin: 0 5pt; color: #999; }
+    /* The maker line, as the home page has it: photo, name seal, and who made Karui. */
+    .karui-maker { display: flex; flex-direction: column-reverse; align-items: center; gap: 6pt; margin-top: 10pt !important; }
+    .karui-maker-marks { display: flex; align-items: center; justify-content: center; gap: 6pt; }
+    .karui-maker-photo { width: 40px; height: 51px; border-radius: 5px; object-fit: cover; flex: none; }
+    .karui-maker-text { text-align: center; line-height: 1.65em; color: black; }
+    /* A surname seal beside the photo, as tall and with the same corners. */
+    .karui-maker-seal { width: 24px; height: 51px; flex: none; }
+    /* The photo and seal are links; the pointer covers all of each, not just the drawn lines. */
+    .karui-seal-trigger, .karui-maker-photo-link { display: flex; flex: none; cursor: pointer; }
+    .karui-seal-trigger { margin-left: -2pt; }
+    .karui-seal-trigger img, .karui-maker-photo-link img { cursor: pointer; }
+  </style>
+  <link rel="canonical" href="https://karui.jp/known-issues">
+  <meta name="description" content="Problems we know about in Karui, and what you can do about them." data-label-en="Problems we know about in Karui, and what you can do about them." data-label-ja="Karuiで把握している問題と、その対処法。">
+  <meta property="og:title" content="Karui Known Issues" data-label-en="Karui Known Issues" data-label-ja="Karuiの既知の問題">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://karui.jp/known-issues">
+  <meta property="og:site_name" content="Karui">
+  <meta property="og:description" content="Problems we know about in Karui, and what you can do about them." data-label-en="Problems we know about in Karui, and what you can do about them." data-label-ja="Karuiで把握している問題と、その対処法。">
+  <meta property="og:image" content="https://karui.jp/assets/karui-social.png?v=9">
+  <meta property="og:image:secure_url" content="https://karui.jp/assets/karui-social.png?v=9">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="Karui: Spam filter for iPhone notifications. Privately with Apple Intelligence. With a 通知をかるく (lighten your notifications) seal." data-label-en="Karui: Spam filter for iPhone notifications. Privately with Apple Intelligence. With a 通知をかるく (lighten your notifications) seal." data-label-ja="Karui：iPhoneの迷惑通知フィルター。Apple Intelligenceでプライベートに。「通知をかるく」の印。">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Karui Known Issues" data-label-en="Karui Known Issues" data-label-ja="Karuiの既知の問題">
+  <meta name="twitter:description" content="Problems we know about in Karui, and what you can do about them." data-label-en="Problems we know about in Karui, and what you can do about them." data-label-ja="Karuiで把握している問題と、その対処法。">
+  <meta name="twitter:image" content="https://karui.jp/assets/karui-social.png?v=9">
+  <meta name="twitter:image:alt" content="Karui: Spam filter for iPhone notifications. Privately with Apple Intelligence. With a 通知をかるく (lighten your notifications) seal." data-label-en="Karui: Spam filter for iPhone notifications. Privately with Apple Intelligence. With a 通知をかるく (lighten your notifications) seal." data-label-ja="Karui：iPhoneの迷惑通知フィルター。Apple Intelligenceでプライベートに。「通知をかるく」の印。">
+</head>
+<body class="sasu-site">
+  <main class="sasu-page">
+    <div class="language-switcher"><button class="language-switch" type="button" aria-label="日本語に切り替える">日本語</button></div>
+    <nav class="karui-breadcrumbs" aria-label="Breadcrumb"><a href="karui.html" data-label-en="Karui" data-label-ja="Karui">Karui</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="karui-breadcrumb-separator" aria-hidden="true">›</span><span aria-current="page" data-label-en="Known Issues" data-label-ja="既知の問題">Known Issues</span></nav>
+    <section class="sasu-hero">
+      <div class="sasu-hero-header">
+        <a href="karui.html"><span class="karui-icon"><span class="karui-icon-shape"><img src="assets/karui-icon-sketch.jpg?v=13" alt="Karui app icon" data-alt-en="Karui app icon" data-alt-ja="Karuiアプリアイコン" width="64" height="64"><video src="assets/karui-icon-sketch.mp4?v=12" muted loop playsinline preload="auto" aria-hidden="true"></video></span></span></a>
+        <div><h1 data-label-en="Known Issues" data-label-ja="既知の問題">Known Issues</h1><div class="sasu-subtitle">Karui</div></div>
+      </div>
+    </section>
+    <section class="karui-section">
+      <p data-label-en="Problems we know about in Karui, and what you can do about them." data-label-ja="Karuiで把握している問題と、その対処法。">Problems we know about in Karui, and what you can do about them.</p>
+      <p class="karui-note-meta" data-label-en="Updated November 23, 2026 · Karui 1.1.0" data-label-ja="2026年11月23日更新 · Karui 1.1.0">Updated November 23, 2026 · Karui 1.1.0</p>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Calls in LINE and some other apps don’t ring during a Focus" data-label-ja="LINEなど一部のアプリの着信が集中モード中に鳴らない">Calls in LINE and some other apps don’t ring during a Focus</h2>
+      <p data-label-en="Karui works by having your Focus silence apps, then letting their important notifications through as its own. Calls are different: when a Focus silences a messaging app that also makes calls, like LINE, its incoming calls don’t ring either, and Karui can’t make them ring. It only hears about a call from the app’s notification, often once it has already been missed." data-label-ja="Karuiは、集中モードでアプリを消音し、その中の大事な通知を自分の通知として届けるしくみです。着信は別で、LINEのように通話もできるメッセージアプリを集中モードで消音すると、その着信も鳴らず、Karuiから鳴らすこともできません。Karuiが着信を知るのはアプリの通知からで、多くの場合は不在着信になったあとです。">Karui works by having your Focus silence apps, then letting their important notifications through as its own. Calls are different: when a Focus silences a messaging app that also makes calls, like LINE, its incoming calls don’t ring either, and Karui can’t make them ring. It only hears about a call from the app’s notification, often once it has already been missed.</p>
+      <ul>
+        <li data-label-en="If you need calls in an app like this to ring, allow the app in your Focus, in iOS Settings &gt; Focus &gt; the Focus you use &gt; Apps. Its other notifications then come through as the app sends them, too." data-label-ja="このようなアプリの着信を鳴らしたい場合は、iOSの「設定」&gt;「集中モード」&gt; 使用中の集中モード &gt;「App」で、そのアプリを許可してください。その場合、ほかの通知もアプリから直接届くようになります。">If you need calls in an app like this to ring, allow the app in your Focus, in iOS Settings &gt; Focus &gt; the Focus you use &gt; Apps. Its other notifications then come through as the app sends them, too.</li>
+        <li><span data-label-en="Phone calls can ring through a Focus from people you choose: see " data-label-ja="電話の着信は、選んだ人からなら集中モード中でも鳴らせます。">Phone calls can ring through a Focus from people you choose: see </span><a href="karui-support.html" data-label-en="Calls from VIPs don’t ring" data-label-ja="VIPからの着信が鳴らない">Calls from VIPs don’t ring</a><span data-label-en=" in Support." data-label-ja="（サポート）をご覧ください。"> in Support.</span></li>
+      </ul>
+    </section>
+    <section class="karui-section">
+      <h2 data-label-en="Tapping a Karui notification usually opens the app, not the exact message" data-label-ja="Karuiの通知をタップしても、たいていはアプリが開くだけ">Tapping a Karui notification usually opens the app, not the exact message</h2>
+      <p data-label-en="A Karui notification is a new one, not the app’s own, and iOS doesn’t give Karui the original’s link. So tapping it usually opens the app the notification came from, and you find the message there. It goes further in a few cases:" data-label-ja="Karuiの通知はアプリ自身の通知ではなく新しく作ったもので、iOSは元の通知のリンクをKaruiに渡しません。そのため、タップしてもたいていは通知元のアプリが開くだけで、メッセージはそこで探すことになります。次の場合はもう少し先まで開きます。">A Karui notification is a new one, not the app’s own, and iOS doesn’t give Karui the original’s link. So tapping it usually opens the app the notification came from, and you find the message there. It goes further in a few cases:</p>
+      <ul>
+        <li><span data-label-en="Spark, Slack, and Messages, with " data-label-ja="Spark、Slack、「メッセージ」：">Spark, Slack, and Messages, with </span><a href="karui-mac.html" data-label-en="Karui for Mac" data-label-ja="Mac版Karui">Karui for Mac</a><span data-label-en=": the Mac sees the same notification and sends your iPhone a link to the exact email, message, or conversation. That only works if the Mac is on, awake, and running Karui for Mac when the notification arrives, so a Mac that’s always on, like a Mac mini, works best. If it was asleep or off, the tap opens the app." data-label-ja="がMacで同じ通知を受け取り、該当するメール、メッセージ、会話へのリンクをiPhoneに送ります。通知が届いた時点でMacの電源が入っていて、スリープしておらず、Mac版Karuiが動いている必要があるので、Mac miniのように常に起動しているMacが最適です。Macがスリープ中や電源オフだった場合は、タップするとアプリが開きます。">: the Mac sees the same notification and sends your iPhone a link to the exact email, message, or conversation. That only works if the Mac is on, awake, and running Karui for Mac when the notification arrives, so a Mac that’s always on, like a Mac mini, works best. If it was asleep or off, the tap opens the app.</span></li>
+        <li data-label-en="Messages and WhatsApp, without a Mac: Karui opens the conversation when it knows the sender’s phone number or email address, from the notification or a VIP’s contact card. WhatsApp group chats open the app." data-label-ja="Macがない場合の「メッセージ」とWhatsApp：通知やVIPの連絡先から送信者の電話番号やメールアドレスがわかれば、その会話が開きます。WhatsAppのグループチャットはアプリが開きます。">Messages and WhatsApp, without a Mac: Karui opens the conversation when it knows the sender’s phone number or email address, from the notification or a VIP’s contact card. WhatsApp group chats open the app.</li>
+        <li data-label-en="Every other app: tapping opens the app. To go straight to the message, tap the app’s original notification in Notification Center instead. Your Focus silences it, but it’s still there." data-label-ja="それ以外のアプリ：タップするとアプリが開きます。メッセージに直接移動するには、通知センターにあるアプリ自身の元の通知をタップしてください。集中モードで消音されていても、通知センターには残っています。">Every other app: tapping opens the app. To go straight to the message, tap the app’s original notification in Notification Center instead. Your Focus silences it, but it’s still there.</li>
+      </ul>
+    </section>
+    <section class="karui-section">
+      <p><span data-label-en="Found something else? " data-label-ja="ほかに問題がありましたか？">Found something else? </span><a href="mailto:justin@onemorething.tokyo" data-label-en="Email Karui Support" data-label-ja="Karuiサポートにメール">Email Karui Support</a><span data-label-en="." data-label-ja="">.</span></p>
+      <p><a href="karui-support.html" data-label-en="← Support" data-label-ja="← サポート">← Support</a></p>
+    </section>
+    <footer class="karui-footer"><p class="footer-links"><a href="karui.html" data-label-en="Home" data-label-ja="ホーム">Home</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-changelog.html" data-label-en="Changelog" data-label-ja="変更履歴">Changelog</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-privacy.html" data-label-en="Privacy" data-label-ja="プライバシー">Privacy</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-support.html" data-label-en="Support" data-label-ja="サポート">Support</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-guides.html" data-label-en="Guides" data-label-ja="ガイド">Guides</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-specs.html" data-label-en="Tech Specs" data-label-ja="技術仕様">Tech Specs</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-technotes.html" data-label-en="Tech Notes" data-label-ja="技術ノート">Tech Notes</a><span class="footer-separator" aria-hidden="true">|</span><wbr><a href="karui-acknowledgements.html" data-label-en="Acknowledgements" data-label-ja="謝辞">Acknowledgements</a></p><p class="karui-maker"><span class="karui-maker-marks"><a href="https://onemorething.tokyo" class="karui-maker-photo-link" aria-label="Justin Garcia’s website"><img class="karui-maker-photo" src="assets/karui-developer.jpg?v=3" alt="" width="40" height="51"></a><a href="karui-seal.html" class="karui-seal-trigger" aria-label="About the name seal"><img class="karui-maker-seal" src="assets/karui-seal.png?v=10" alt="" width="24" height="51"></a></span><span class="karui-maker-text"><span data-label-en="Designed by " data-label-ja="東京の個人開発者 ">Designed by </span><a href="https://onemorething.tokyo">Justin Garcia</a><span data-label-en=" in Tokyo" data-label-ja=" 作"> in Tokyo</span></span></p></footer>
+  </main>
+  <script>
+    const supportedLanguages = ['en', 'ja'];
+    const languageSwitch = document.querySelector('.language-switch');
+    let currentLanguage = 'en';
+
+    function preferredLanguage() {
+      const language = (navigator.languages?.[0] || navigator.language || 'en').toLowerCase();
+      return language.startsWith('ja') ? 'ja' : 'en';
+    }
+
+    function setLanguage(language, persist = true) {
+      const selected = supportedLanguages.includes(language) ? language : 'en';
+      document.querySelectorAll('[data-label-en][data-label-ja]').forEach((element) => {
+        const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
+        if (element instanceof HTMLMetaElement) element.content = label;
+        else element.textContent = label;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
+      });
+      document.documentElement.lang = selected;
+      currentLanguage = selected;
+      languageSwitch.textContent = selected === 'ja' ? 'English' : '日本語';
+      languageSwitch.setAttribute('aria-label', selected === 'ja' ? 'Switch to English' : '日本語に切り替える');
+      if (persist) localStorage.setItem('karui-language', selected);
+    }
+
+    languageSwitch.addEventListener('click', () => setLanguage(currentLanguage === 'ja' ? 'en' : 'ja'));
+    setLanguage(localStorage.getItem('karui-language') || preferredLanguage(), false);
+  </script>
+  <script src="karui-animated-icon.js?v=1"></script>
+</body>
+</html>

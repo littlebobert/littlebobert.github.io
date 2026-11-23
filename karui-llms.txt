@@ -24,7 +24,7 @@ Classification runs on the iPhone with Apple's on-device model. Notifications, c
 
 ## Guides
 
-- [How to Stop Unwanted Notifications on iPhone](https://karui.jp/guides/unwanted-notifications): every way iOS lets you cut down unwanted and spam notifications (app settings, Scheduled Summary, Focus, Apple Intelligence, unknown senders), where each falls short, and how Karui decides notification by notification.
+- [How to Stop Unwanted Notifications on iPhone](https://karui.jp/guides/unwanted-notifications): every way iOS lets you cut down unwanted and spam notifications (app settings, Scheduled Summary, Focus, Apple Intelligence and Intelligent Breakthrough & Silencing, unknown senders), when each one helps, and what Karui adds.
 - [How to See Unsent Messages on iPhone](https://karui.jp/guides/unsent-messages): what unsending does in Messages, LINE, Instagram, Messenger, and WhatsApp, why the message can't be recovered afterward, and how Karui keeps a copy from its notification.
 
 ## Technical details
@@ -52,6 +52,7 @@ Classification runs on the iPhone with Apple's on-device model. Notifications, c
 - [Karui](https://karui.jp/): Overview and screenshots.
 - [Changelog](https://karui.jp/changelog): Release notes for each build.
 - [Support](https://karui.jp/support): Setup, troubleshooting, and known limitations.
+- [Known Issues](https://karui.jp/known-issues): Problems we know about, such as calls in LINE not ringing during a Focus and notification taps that open the app instead of the exact message, and what to do about them.
 - [Privacy](https://karui.jp/privacy): Privacy policy.
 - [Tech Notes](https://karui.jp/technotes): Technical notes on how Karui works.
 - [Guides](https://karui.jp/guides): Answers to common questions about iPhone notifications.

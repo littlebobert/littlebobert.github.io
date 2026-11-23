@@ -86,6 +86,7 @@ await Promise.all([
   mkdir(lightningTalkDirectory, { recursive: true }),
   mkdir(path.join(outputDirectory, 'guides', 'unwanted-notifications'), { recursive: true }),
   mkdir(path.join(outputDirectory, 'guides', 'unsent-messages'), { recursive: true }),
+  mkdir(path.join(outputDirectory, 'known-issues'), { recursive: true }),
 ]);
 
 await Promise.all(
@@ -121,6 +122,7 @@ function createDeployedPage(source) {
     .replaceAll('href="karui.html"', 'href="/"')
     .replaceAll('href="karui-privacy.html"', 'href="/privacy"')
     .replaceAll('href="karui-support.html"', 'href="/support"')
+    .replaceAll('href="karui-known-issues.html"', 'href="/known-issues"')
     .replaceAll(
       'href="karui-acknowledgements.html"',
       'href="/acknowledgements"',
@@ -184,6 +186,7 @@ const technicalPages = [
   ['karui-hanko.html', ['hanko.html', 'hanko/index.html']],
   ['karui-seal.html', ['seal.html', 'seal/index.html']],
   ['karui-qr.html', ['qr.html', 'qr/index.html']],
+  ['karui-known-issues.html', ['known-issues.html', 'known-issues/index.html']],
   ['karui-specs.html', ['specs.html', 'specs/index.html']],
   ['karui-technotes.html', ['technotes.html', 'technotes/index.html']],
   ['karui-technote-kn001.html', ['technotes/kn001.html', 'technotes/kn001/index.html']],
@@ -348,6 +351,7 @@ const sitemapRoutes = [
   'specs',
   'mac',
   'support',
+  'known-issues',
   'privacy',
   'changelog',
   'technotes',

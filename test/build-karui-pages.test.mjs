@@ -153,7 +153,7 @@ test('publishes llms.txt with links to pages that exist', async () => {
   const llms = await readOutputFile('llms.txt');
   assert.match(llms, /^# Karui\n\n> /);
   const routes = [...llms.matchAll(/\]\(https:\/\/karui\.jp\/([a-z0-9/-]*)\)/g)].map((match) => match[1]);
-  assert.deepEqual(routes, ['guides/unwanted-notifications', 'guides/unsent-messages', 'specs', 'technotes/kn001', 'technotes/kn002', 'technotes/kn004', 'technotes/kn005', 'technotes/kn006', 'technotes/kn007', '', 'changelog', 'support', 'privacy', 'technotes', 'guides', 'acknowledgements']);
+  assert.deepEqual(routes, ['guides/unwanted-notifications', 'guides/unsent-messages', 'specs', 'technotes/kn001', 'technotes/kn002', 'technotes/kn004', 'technotes/kn005', 'technotes/kn006', 'technotes/kn007', '', 'changelog', 'support', 'known-issues', 'privacy', 'technotes', 'guides', 'acknowledgements']);
   for (const route of routes) {
     await readOutputFile(route ? `${route}/index.html` : 'index.html');
   }

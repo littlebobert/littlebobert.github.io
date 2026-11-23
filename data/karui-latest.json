@@ -1,16 +1,16 @@
 {
-  "version": "1.0.3",
-  "date": "November 21, 2026",
+  "version": "1.1.0",
+  "date": "November 22, 2026",
   "notes": {
     "en": [
-      "History now shows your next deadlines at the top when Deadline Reminders is on.",
-      "A new video shows how to set up clearing Karui’s alerts when you open an app. Find it in Settings › Help & Troubleshooting.",
-      "Setup wizards are now clearer."
+      "When a deadline reminder is about answering a message or email and you’ve replied in Messages or Spark, Karui for Mac 1.1 tells your iPhone and the reminder clears itself. You can turn this off in Settings › Karui for Mac.",
+      "Settings look and work more like iOS Settings, Help & Troubleshooting most of all.",
+      "Tapping a morning’s deadline reminder notification shows those reminders in Deadline Reminders."
     ],
     "ja": [
-      "「期限リマインダー」がオンの場合、履歴の上部に次の期限が表示されるようになりました。",
-      "アプリを開いたときにKaruiの通知を消す設定方法を紹介する動画を追加しました。［設定］›［ヘルプとトラブルシューティング］から確認できます。",
-      "セットアップウィザードがより分かりやすくなりました。"
+      "メッセージやメールへの返信を促す締切リマインダーは、「メッセージ」またはSparkで返信すると、Karui for Mac 1.1がiPhoneに通知し、自動的に消去されます。この機能は「設定」›「Karui for Mac」でオフにできます。",
+      "「設定」の見た目と操作性をiOSの「設定」に近づけました。特に「ヘルプとトラブルシューティング」を改善しています。",
+      "朝の締切リマインダー通知をタップすると、該当するリマインダーが「締切リマインダー」に表示されます。"
     ]
   }
 }

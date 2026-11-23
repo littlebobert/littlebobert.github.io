@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>1.1.1</title>
+            <pubDate>Tue, 24 Nov 2026 05:53:17 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>92</sparkle:version>
+            <sparkle:shortVersionString>1.1.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Opening an email or Slack message in Karui for Mac now goes straight to it even when only your iPhone or another Mac got the notification: Karui uses the link your other Mac found.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.1.1/Karui-1.1.1-mac.zip" length="3191707" type="application/octet-stream" sparkle:edSignature="FPdmEmnDl3I+X1U05cuokB3kNGr+NfPf9YSjtUNdeV07z2L2omg+31+SLP4mA/CEAguEbwUjjkp1hoy6m6vLAg=="/>
+        </item>
+        <item>
             <title>1.1.0</title>
             <pubDate>Sun, 22 Nov 2026 10:14:55 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Report a Bug now sends your report to the right address.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.0.4/Karui-1.0.4-mac.zip" length="3161810" type="application/octet-stream" sparkle:edSignature="DJoXQZJBo+wpmN4akSJdAhrNLKylgaFh+IhfQz1gJWP+u6VwK1793K0PO9PaIgs9DzceDvl3hssikrFaoRHTBQ=="/>
-        </item>
-        <item>
-            <title>1.0.3</title>
-            <pubDate>Fri, 20 Nov 2026 07:34:02 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>89</sparkle:version>
-            <sparkle:shortVersionString>1.0.3</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Alerts on your iPhone open the exact Spark email more often: when Spark on this Mac doesn't have an email yet, for example while the Mac sleeps, Karui for Mac looks for it again a few minutes later.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.0.3/Karui-1.0.3-mac.zip" length="3161826" type="application/octet-stream" sparkle:edSignature="aSE5JYq/oIlNCfcI6m/X92FSnKotCGl7fke9k28pMb6oZomh3f+dXY+LaLxUt2xCJBGxj2v7bRK8eM0f+Z3zBg=="/>
         </item>
     </channel>
 </rss>

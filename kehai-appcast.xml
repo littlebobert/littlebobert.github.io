@@ -3,6 +3,19 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.6.10</title>
+            <pubDate>Wed, 25 Nov 2026 08:53:35 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>121</sparkle:version>
+            <sparkle:shortVersionString>0.6.10</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Kehai has a new icon: the same brush strokes, now as pieces of black glass.
+- Right-clicking a folder in Files and Folders now offers just Open, since Reveal in Finder did the same thing. Files and apps still offer both.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.10/Kehai-0.6.10-mac.zip" length="6164197" type="application/octet-stream" sparkle:edSignature="n1ur24UVSpTSqYt/pkeHELB+yoa2wa/R3ABLknN2WDRJlCLWaABFdY9Z/nOrAGsEFlkjz3x5IFdCtK/Z1jgRBA=="/>
+        </item>
+        <item>
             <title>0.6.9</title>
             <pubDate>Wed, 04 Nov 2026 19:32:22 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -25,19 +38,6 @@
             <description sparkle:format="markdown"><![CDATA[- Typing the start of an app's name now puts that app first, even when it isn't running: "cale" offers Calendar ahead of a running Tailscale.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.8/Kehai-0.6.8-mac.zip" length="3172123" type="application/octet-stream" sparkle:edSignature="pWq//8vt4MKizwdo53UIehTtgSu6T88/C2Rwm78WRE8KWPuoMnesZNcX967QvY35kR7NIEqj/gF5b45ONBKoBA=="/>
-        </item>
-        <item>
-            <title>0.6.7</title>
-            <pubDate>Sat, 31 Oct 2026 15:10:30 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>118</sparkle:version>
-            <sparkle:shortVersionString>0.6.7</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- File search no longer sets off macOS's folder-access prompts on your first search. Desktop, Documents and Downloads are now opt-in: Kehai asks with one line in the Files section, and you can change your choice in Settings.
-- Fixed apps in the app strip that wouldn't open, such as Safari failing with "target process unavailable".
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.7/Kehai-0.6.7-mac.zip" length="3172071" type="application/octet-stream" sparkle:edSignature="MlozHSs5Dduoqfft6dQ9msNqbsooNfC398tG1cHjIuAxQzN+aheMnWpovDZHjioC0saD3zCTKkmN1dmO6K8sDQ=="/>
         </item>
     </channel>
 </rss>

@@ -1,8 +1,33 @@
 window.X_POSTS_SNAPSHOT = {
-  "updatedAt": "2026-11-22T21:05:28.172Z",
+  "updatedAt": "2026-11-24T02:18:07.659Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2124783571122655433",
+      "text": "私のオフィスの建物の中でクリスマスの木 https://t.co/8QvzDFh05O",
+      "createdAt": "2026-11-23T08:34:14.000Z",
+      "url": "https://x.com/_bobertdowney/status/2124783571122655433",
+      "urls": [
+        {
+          "url": "https://t.co/8QvzDFh05O",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2124783571122655433/photo/1",
+          "displayUrl": "pic.x.com/8QvzDFh05O",
+          "start": 20,
+          "end": 43
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.webp",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2124783571122655433-0.webp"
+        }
+      ]
+    },
     {
       "id": "2123321154211594558",
       "text": "name a better crossover, I’ll wait https://t.co/OMUDpuSJ7Z",

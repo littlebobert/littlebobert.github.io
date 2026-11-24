@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>1.2.0</title>
+            <pubDate>Wed, 25 Nov 2026 08:13:41 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>93</sparkle:version>
+            <sparkle:shortVersionString>1.2.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- When Hide Emoji is on in Karui on your iPhone, Karui for Mac's inbox shows notifications without emoji the same way. Needs the next Karui update on your iPhone.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.0/Karui-1.2.0-mac.zip" length="3197574" type="application/octet-stream" sparkle:edSignature="OGs65eDLGaDabotm5ms1NwWgv2moWc0Q/WKQgQXv8pIuREnEODoyTDHI+OJWNSvL62xg/fdsDtXCAherxJYGAg=="/>
+        </item>
+        <item>
             <title>1.1.1</title>
             <pubDate>Tue, 24 Nov 2026 05:53:17 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- When a deadline reminder on your iPhone is about answering a message or email, Karui for Mac now finds your reply in Messages or Spark, so the reminder can clear itself. Needs Karui 1.1 on your iPhone.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.1.0/Karui-1.1.0-mac.zip" length="3186926" type="application/octet-stream" sparkle:edSignature="D+HBPcSqEak9lyaPxMfGX2iKgpDZkc5Sy1XwXK50s6j3Dclqo8hFZD9LYRAxNW+3qUmWnsKGn9EUh5GRM/AuDg=="/>
-        </item>
-        <item>
-            <title>1.0.4</title>
-            <pubDate>Sat, 21 Nov 2026 23:01:13 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>90</sparkle:version>
-            <sparkle:shortVersionString>1.0.4</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Report a Bug now sends your report to the right address.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.0.4/Karui-1.0.4-mac.zip" length="3161810" type="application/octet-stream" sparkle:edSignature="DJoXQZJBo+wpmN4akSJdAhrNLKylgaFh+IhfQz1gJWP+u6VwK1793K0PO9PaIgs9DzceDvl3hssikrFaoRHTBQ=="/>
         </item>
     </channel>
 </rss>

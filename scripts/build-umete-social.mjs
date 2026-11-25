@@ -4,8 +4,8 @@ import { fileURLToPath } from 'node:url';
 import sharp from 'sharp';
 
 // Umete's link preview, laid out like Karui's: the glass icon, the name, the pitch, and
-// the iPhone screen of a form Umete filled, since X no longer shows a link's title under
-// the image. The screen is the landing page's first carousel shot.
+// the closed iPhone Duo's screen of a form Umete filled, since X no longer shows a link's
+// title under the image. The screen is the landing page's first carousel shot.
 //
 //     node scripts/build-umete-social.mjs [--linkedin DIR]
 //
@@ -20,8 +20,6 @@ const width = 1200;
 const height = 630;
 const iconSize = 112;
 const iconCornerRadius = 26;
-const screenWidth = 400;
-const screenTop = 56;
 // The app's colors: its ink and the plum's leaf green.
 const ink = '#28251f';
 const green = '#3f4d28';
@@ -38,25 +36,11 @@ const icon = await sharp(await readFile(iconPath))
   .png()
   .toBuffer();
 
-// The shot predates the glass icon: Umete's sheet in it still shows the old one, an
-// 84-pixel tile at (102, 1038) of the 900-pixel-wide shot, so the glass icon goes on top.
-const sheetIconSize = 84;
-const sheetIcon = await sharp(await readFile(iconPath))
-  .resize(sheetIconSize, sheetIconSize)
-  .composite([{ input: Buffer.from(`<svg width="${sheetIconSize}" height="${sheetIconSize}"><rect width="${sheetIconSize}" height="${sheetIconSize}" rx="19" fill="#fff"/></svg>`), blend: 'dest-in' }])
-  .png()
-  .toBuffer();
-const shot = await sharp(await readFile(screenPath))
-  .composite([{ input: sheetIcon, left: 102, top: 1038 }])
-  .png()
-  .toBuffer();
-
-// The phone runs off the bottom edge.
-const screen = await sharp(shot).resize({ width: screenWidth }).png().toBuffer();
-const { height: screenHeight } = await sharp(screen).metadata();
-const croppedScreen = await sharp(screen)
-  .extract({ left: 0, top: 0, width: screenWidth, height: Math.min(screenHeight, height - screenTop) })
-  .toBuffer();
+// The landing page's first carousel shot: the whole closed iPhone Duo.
+const screenHeight = 560;
+const screen = await sharp(await readFile(screenPath)).resize({ height: screenHeight }).png().toBuffer();
+const { width: screenWidth } = await sharp(screen).metadata();
+const screenTop = Math.round((height - screenHeight) / 2);
 
 const background = Buffer.from(`
 <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
@@ -71,7 +55,7 @@ const background = Buffer.from(`
 await sharp(background)
   .composite([
     { input: icon, left: 80, top: 96 },
-    { input: croppedScreen, left: width - screenWidth - 70, top: screenTop },
+    { input: screen, left: width - screenWidth - 70, top: screenTop },
   ])
   .png({ compressionLevel: 9 })
   .toFile(outputPath);

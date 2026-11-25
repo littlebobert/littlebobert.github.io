@@ -5,7 +5,7 @@ import sharp from 'sharp';
 
 // An image for sharing Umete's form test on X (16:9, 1600 x 900): the icon, one sentence
 // with the test's numbers with AI matching on (Umete 0.5.4), where the forms came from,
-// and the iPhone screen of a form Umete filled. The numbers come from the Umete
+// and the closed iPhone Duo's screen of a form Umete filled. The numbers come from the Umete
 // repository's eval (eval/run.js --ai openai), all 220 forms, learned answers; UN001 has
 // the method.
 //
@@ -32,25 +32,12 @@ const icon = await sharp(await readFile(iconPath))
   .png()
   .toBuffer();
 
-// The landing page's first carousel shot predates the glass icon: Umete's sheet in it
-// still shows the old one, an 84-pixel tile at (102, 1038) of the 900-pixel-wide shot,
-// so the glass icon goes on top, as in build-umete-social.mjs.
-const sheetIcon = await sharp(await readFile(iconPath))
-  .resize(84, 84)
-  .composite([{ input: roundedMask(84, 19), blend: 'dest-in' }])
-  .png()
-  .toBuffer();
-const shot = await sharp(await readFile(screenPath))
-  .composite([{ input: sheetIcon, left: 102, top: 1038 }])
-  .png()
-  .toBuffer();
-
-// The whole phone, as tall as the card allows.
-const screenHeight = height - 90;
-const screen = await sharp(shot).resize({ height: screenHeight }).png().toBuffer();
+// The landing page's first carousel shot: the whole closed iPhone Duo, vertically centred.
+const screenHeight = 720;
+const screen = await sharp(await readFile(screenPath)).resize({ height: screenHeight }).png().toBuffer();
 const { width: screenWidth } = await sharp(screen).metadata();
 const screenTop = Math.round((height - screenHeight) / 2);
-const screenLeft = width - screenWidth - 110;
+const screenLeft = width - screenWidth - 100;
 
 const background = Buffer.from(`
 <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">

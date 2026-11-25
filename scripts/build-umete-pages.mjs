@@ -97,4 +97,33 @@ await Promise.all(
   }),
 );
 
+// For search engines and AI assistants, as on karui.jp. Without a top-level 404.html,
+// Cloudflare Pages treats the site as a single-page app and answers every address,
+// robots.txt and sitemap.xml included, with the home page and a 200. robots.txt lets
+// every crawler in and points them at the sitemap, which lists each page at its clean
+// route; the build fails if a listed route wasn't built.
+await writeFile(
+  path.join(outputDirectory, '404.html'),
+  createDeployedPage(await readFile(path.join(rootDirectory, 'umete-404.html'), 'utf8')),
+);
+const sitemapRoutes = ['', 'specs', 'privacy', 'support', 'changelog', 'technotes', 'technotes/un001', 'acknowledgements'];
+await Promise.all(
+  sitemapRoutes.map((route) => readFile(path.join(outputDirectory, route, 'index.html'))),
+);
+await writeFile(path.join(outputDirectory, 'sitemap.xml'), [
+  '<?xml version="1.0" encoding="UTF-8"?>',
+  '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
+  ...sitemapRoutes.map((route) => `  <url><loc>https://umete.jp/${route}</loc></url>`),
+  '</urlset>',
+  '',
+].join('\n'));
+await writeFile(path.join(outputDirectory, 'robots.txt'), [
+  '# umete.jp is public: search engines and AI assistants are welcome.',
+  'User-agent: *',
+  'Allow: /',
+  '',
+  'Sitemap: https://umete.jp/sitemap.xml',
+  '',
+].join('\n'));
+
 console.log(`Built Umete Pages site in ${outputDirectory}`);

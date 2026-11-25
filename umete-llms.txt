@@ -12,6 +12,10 @@
 - Optional toolbar badge on pages it can fill, checked on the device.
 - Never reads or fills passwords, card numbers, security codes, secrets, tokens, or Social Security numbers.
 
+## How well it fills forms
+
+Tested on 220 saved checkout and sign-up forms from Chromium's and Firefox's autofill tests (sites like Walmart, Costco, and Best Buy, plus forms in 13 other languages), with one fictional person's answers. In Umete 0.5.2, matching on the device alone got 99.9% of its fills right (1,123 of 1,124) and filled 66.5% of the fields the person had answers for. With AI matching as well, it filled 85% of them, with 99.0% of fills right. No run filled a password or card number. Method, per-set results, and limits: [UN001](https://umete.jp/technotes/un001).
+
 ## Privacy
 
 No account, no ads, no analytics. Saved answers are encrypted with AES-GCM; the key is in the Apple Keychain (iCloud Keychain when sync is on). AI matching receives only field descriptions and the labels of saved answers, never saved values, values in the form, addresses, or the page's address or title.
@@ -23,6 +27,7 @@ No account, no ads, no analytics. Saved answers are encrypted with AES-GCM; the 
 - [Privacy Policy](https://umete.jp/privacy)
 - [Support](https://umete.jp/support)
 - [Changelog](https://umete.jp/changelog)
+- [Technical Notes](https://umete.jp/technotes): including UN001, how Umete's form matching is tested and how it does.
 - [Acknowledgements](https://umete.jp/acknowledgements)
 - [Source code](https://github.com/littlebobert/umete)
 

@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.5.0</title>
+            <pubDate>Wed, 25 Nov 2026 02:41:48 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>40.1</sparkle:version>
+            <sparkle:shortVersionString>0.5.0</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.5.0
+
+New app icon.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="CrlSiJAtGNhdG10/Q9VrEe+dhwljr3wIXlpPLQE3eVjRuM84hCQxFDMGfwOer4WkbR5hQ8M3FFzKKV2IdY3aAw==" sparkle:length="264">https://umete.jp/Umete-0.5.0-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="iTFW4d08kgxmBq31tefVvsi2BmPszlcem23Epe242FLXHdYKJESBmndfMSv0xzsruHyKqh/Lk0XHFPmBnqHdDQ==" sparkle:length="284">https://umete.jp/Umete-0.5.0-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.5.0/Umete-0.5.0-macOS.dmg" length="4591031" type="application/octet-stream" sparkle:edSignature="MFRZ51550Z64VRKS5gJNr+mRx+pAQO6gFvi5/10Lpw3a4fKs0qgHZTRZwlBZaDh/AyPuSlxdcccoeJCNZy5fAQ=="/>
+        </item>
+        <item>
             <title>0.4.11</title>
             <pubDate>Thu, 19 Nov 2026 07:29:23 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -149,25 +165,9 @@ Umete now fills custom dropdowns like Delta's date of birth and gender, no longe
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="+qhrHnwFo0XVN7ezFOTu8+izOBzwQknzOAmeLDYo0KMNlG5gnaHXdd/cwRB35K7+nKFu1nYYvFeyCESHh/0tAg==" sparkle:length="502">https://umete.jp/Umete-0.4.3-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.3/Umete-0.4.3-macOS.dmg" length="5925303" type="application/octet-stream" sparkle:edSignature="xkl0RpvDWy4bt2sJWvzwCTCq74A5kz+TOdQ9E0BjyiZQT/G5KUZW+pfhVeftAOr3yUCi6y0fZ6Wh5MRxmKcRBQ=="/>
         </item>
-        <item>
-            <title>0.4.2</title>
-            <pubDate>Mon, 12 Oct 2026 16:59:12 +0000</pubDate>
-            <link>https://umete.jp/</link>
-            <sparkle:fullReleaseNotesLink>https://umete.jp/#changelog</sparkle:fullReleaseNotesLink>
-            <sparkle:version>26.1</sparkle:version>
-            <sparkle:shortVersionString>0.4.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.2
-
-Umete no longer fills the same phone number into a second phone field, or a phone number into fields asking for the phone's owner.
-]]></description>
-            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="yJlT2c3aPAOMgXAyGOt4a1safdPe86uPU9WkpE1p0Y+MeA86e21o0v7c5SR36yg7UC3IEGt2227UU6xm/Ub6AA==" sparkle:length="381">https://umete.jp/Umete-0.4.2-macOS.en.md</sparkle:releaseNotesLink>
-            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="OzQWg9amyK6kO9mUMFyFDcFoX7XViT6etlvywz5KYpbV1AUXuyABcOTsShfwet4c39CVMpLz9pYtDlAgHCU6Dw==" sparkle:length="423">https://umete.jp/Umete-0.4.2-macOS.ja.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.2/Umete-0.4.2-macOS.dmg" length="5906871" type="application/octet-stream" sparkle:edSignature="nUckEMlcPCVIJNInbCTtUi//jRciiqQ6OfpurLqquasmXcnDWDT0q7/RNSorHZsW2oWY53az9MFwVIeqWtnnBg=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: JhsbLPviAroSE3mjyjL0/rZPKcnq/4oK11mDfEHtyO/uFtLtQPNkuzjMTXHlrrdUWXQBadM/rdCC33J1VLhJDw==
-length: 15549
+edSignature: 82G7Qq1kU8TpsRYtPXkLVxRLkL3oHJHUPeB82rJjkY+4g62W82Wokr6LSRCWSyx9F5m2hHohdJAtglxGKUFuCQ==
+length: 15431
 -->

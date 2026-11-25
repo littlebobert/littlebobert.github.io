@@ -58,7 +58,7 @@ const background = Buffer.from(`
 <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
   <rect width="${width}" height="${height}" fill="#ffffff"/>
   <text x="80" y="318" font-family="Verdana" font-weight="bold" font-size="92" fill="${ink}">Umete</text>
-  <text x="82" y="388" font-family="Verdana" font-size="34" fill="${green}">Fills in web forms in Safari</text>
+  <text x="82" y="388" font-family="Verdana" font-size="34" fill="${green}">Autofills complete forms in Safari</text>
   <text x="82" y="433" font-family="Verdana" font-size="34" fill="${green}">on iPhone, iPad, and Mac.</text>
   <text x="82" y="526" font-family="Verdana" font-size="24" fill="${muted}">Private, free, and no sign-up.</text>
 </svg>

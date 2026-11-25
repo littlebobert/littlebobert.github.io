@@ -6,8 +6,8 @@
   <title>Umete</title>
   <link href="sasu-common.css?v=5" rel="stylesheet">
   <link href="umete-animated-icon.css?v=2" rel="stylesheet">
-  <link rel="icon" href="assets/ume-icon.png?v=1">
-  <link rel="apple-touch-icon" href="assets/ume-icon.png?v=1">
+  <link rel="icon" href="assets/ume-icon.png?v=2">
+  <link rel="apple-touch-icon" href="assets/ume-icon.png?v=2">
   <link rel="canonical" href="https://umete.jp/">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Autofill everything, privately." data-label-en="Autofill everything, privately." data-label-ja="あらゆるフォームに、プライバシーを守って自動入力。">
@@ -16,8 +16,8 @@
   <meta property="og:url" content="https://umete.jp/">
   <meta property="og:site_name" content="Umete">
   <meta property="og:description" content="Autofill everything, privately." data-label-en="Autofill everything, privately." data-label-ja="あらゆるフォームに、プライバシーを守って自動入力。">
-  <meta property="og:image" content="https://umete.jp/assets/umete-social.png?v=1">
-  <meta property="og:image:secure_url" content="https://umete.jp/assets/umete-social.png?v=1">
+  <meta property="og:image" content="https://umete.jp/assets/umete-social.png?v=2">
+  <meta property="og:image:secure_url" content="https://umete.jp/assets/umete-social.png?v=2">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -25,7 +25,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Umete: Autofill everything, privately" data-label-en="Umete: Autofill everything, privately" data-label-ja="Umete：あらゆるフォームに、プライバシーを守って自動入力">
   <meta name="twitter:description" content="Autofill everything, privately." data-label-en="Autofill everything, privately." data-label-ja="あらゆるフォームに、プライバシーを守って自動入力。">
-  <meta name="twitter:image" content="https://umete.jp/assets/umete-social.png?v=1">
+  <meta name="twitter:image" content="https://umete.jp/assets/umete-social.png?v=2">
   <meta name="twitter:image:alt" content="Umete app icon">
   <style>
     :root {
@@ -69,6 +69,11 @@
     /* The second line of the pitch, below the icon and name, in plain body text. */
     .hero-proposition { margin: 8pt 0 0; }
     .ume-detail { padding: 6pt 0 5pt; }
+    /* Three numbers from the form test under the downloads; the section below says where they come from. */
+    .ume-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12pt; max-width: 420px; margin: 11pt 0 0; padding: 0; list-style: none; }
+    .ume-stats li { display: flex; flex-direction: column; }
+    .ume-stats strong { font-size: 17pt; line-height: 1.15; color: var(--ume-green-dark); }
+    .ume-stats span { font-size: 10pt; line-height: 1.35; color: #555; }
     .ume-detail p { margin: 0; }
     .ume-detail p + p { margin-top: 7pt; }
     .feature-list { margin: 3pt 0 0; padding-left: 20pt; }
@@ -114,6 +119,11 @@
         <a class="download-link" data-ume-download href="https://github.com/littlebobert/umete/releases/download/v0.5.1/Umete-0.5.1-macOS.dmg" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
       </div>
       <div class="small-note" data-label-en="Free, with no subscriptions and no sign-up." data-label-ja="無料で、サブスクリプションも登録もありません。">Free, with no subscriptions and no sign-up.</div>
+      <ul class="ume-stats" aria-label="Form test results" data-aria-label-en="Form test results" data-aria-label-ja="フォームのテスト結果">
+        <li><strong>99.9%</strong><span data-label-en="of fills correct" data-label-ja="の入力が正確">of fills correct</span></li>
+        <li><strong>0</strong><span data-label-en="passwords or card numbers filled" data-label-ja="件のパスワード・カード番号の入力">passwords or card numbers filled</span></li>
+        <li><strong>220</strong><span data-label-en="real checkout and sign-up forms tested" data-label-ja="件の実際の購入・登録フォームでテスト">real checkout and sign-up forms tested</span></li>
+      </ul>
     </section>
 
     <section class="sasu-section">
@@ -157,6 +167,11 @@
     <section class="ume-detail">
       <h2 data-label-en="Privacy:" data-label-ja="プライバシー：">Privacy:</h2>
       <p><span data-label-en="Umete has no account and no analytics. Saved answers are encrypted on your device and in your own iCloud, and are never sent to an AI. For fields Umete can’t match itself, Umete sends only descriptions of the fields, like their labels, to OpenAI. " data-label-ja="Umeteにはアカウントも分析もありません。保存した回答はデバイス上とご自身のiCloudで暗号化され、AIに送信されることはありません。Umete自身で照合できない項目については、ラベルなど項目の説明だけをOpenAIに送信します。">Umete has no account and no analytics. Saved answers are encrypted on your device and in your own iCloud, and are never sent to an AI. For fields Umete can’t match itself, Umete sends only descriptions of the fields, like their labels, to OpenAI. </span><a href="ume-privacy.html" data-label-en="Details" data-label-ja="詳しく">Details</a><span data-label-en="." data-label-ja="">.</span></p>
+    </section>
+
+    <section class="ume-detail">
+      <h2 data-label-en="How well does Umete fill forms?" data-label-ja="Umeteの入力はどれくらい正確？">How well does Umete fill forms?</h2>
+      <p><span data-label-en="I test Umete on 220 saved checkout and sign-up forms from Chromium’s and Firefox’s autofill tests, from sites like Walmart, Costco, and Best Buy. In Umete 0.5.2, 99.9% of its fills were right (1,123 of 1,124), and it filled two thirds of the fields the test person had answers for, all on device. It filled no passwords or card numbers. " data-label-ja="Umeteは、ChromiumとFirefoxの自動入力テストに使われている、Walmart、Costco、Best Buyなどの購入・登録フォーム220件の保存コピーでテストしています。Umete 0.5.2では、入力の99.9%（1,124件中1,123件）が正しく、テスト用の人物が回答を持っている項目の約3分の2を、すべてデバイス上で入力しました。パスワードやカード番号は一つも入力していません。">I test Umete on 220 saved checkout and sign-up forms from Chromium’s and Firefox’s autofill tests, from sites like Walmart, Costco, and Best Buy. In Umete 0.5.2, 99.9% of its fills were right (1,123 of 1,124), and it filled two thirds of the fields the test person had answers for, all on device. It filled no passwords or card numbers. </span><a href="ume-technote-un001.html" data-label-en="More details here" data-label-ja="詳しくはこちら">More details here</a><span data-label-en="." data-label-ja="。">.</span></p>
     </section>
 
     <section class="ume-detail">

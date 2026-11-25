@@ -5,8 +5,8 @@
   <title>UN001: Testing Form Matching on 184 Forms I’ll Never Fill Out</title>
   <link href="sasu-common.css?v=5" rel="stylesheet">
   <link href="umete-animated-icon.css?v=2" rel="stylesheet">
-  <link rel="icon" href="assets/ume-icon.png?v=1">
-  <link rel="apple-touch-icon" href="assets/ume-icon.png?v=1">
+  <link rel="icon" href="assets/ume-icon.png?v=2">
+  <link rel="apple-touch-icon" href="assets/ume-icon.png?v=2">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body.sasu-site { background: #fff; }
@@ -47,7 +47,7 @@
   <meta property="og:url" content="https://umete.jp/technotes/un001">
   <meta property="og:site_name" content="Umete">
   <meta property="og:description" content="How I test Umete’s form matching on Chromium’s saved autofill test forms, the bugs it caught, and how much AI matching adds." data-label-en="How I test Umete’s form matching on Chromium’s saved autofill test forms, the bugs it caught, and how much AI matching adds." data-label-ja="Chromiumの自動入力テスト用に保存されたフォームでUmeteのフォーム照合をテストする方法、見つかったバグ、そしてAIマッチングでどれだけ改善するか。">
-  <meta property="og:image" content="https://umete.jp/assets/umete-social.png?v=1">
+  <meta property="og:image" content="https://umete.jp/assets/umete-social.png?v=2">
   <meta name="twitter:card" content="summary_large_image">
 </head>
 <body class="sasu-site">
@@ -85,8 +85,14 @@
         <tr><td data-label-en="Umete 0.4.8, local matching" data-label-ja="Umete 0.4.8、ローカル照合">Umete 0.4.8, local matching</td><td>506</td><td>37</td><td>93.2%</td><td>34.1%</td></tr>
         <tr><td data-label-en="Umete 0.4.9, local matching" data-label-ja="Umete 0.4.9、ローカル照合">Umete 0.4.9, local matching</td><td>726</td><td>11</td><td>98.5%</td><td>49.0%</td></tr>
         <tr><td data-label-en="Umete 0.4.9, local and AI matching" data-label-ja="Umete 0.4.9、ローカル照合とAIマッチング">Umete 0.4.9, local and AI matching</td><td>1,193</td><td>25</td><td>97.9%</td><td>80.1%</td></tr>
+        <tr><td data-label-en="Umete 0.5.2, local matching" data-label-ja="Umete 0.5.2、ローカル照合">Umete 0.5.2, local matching</td><td>936</td><td>1</td><td>99.9%</td><td>63.3%</td></tr>
       </tbody></table>
       <p class="umete-table-note" data-label-en="Fields hidden on the saved page, and fields that already held the right value, aren’t counted. The person’s address was remembered from the same sign-up form as everything else." data-label-ja="保存されたページで非表示の項目と、最初から正しい値が入っていた項目は数えていません。住所も、ほかの回答と同じ登録フォームから記憶したものです。">Fields hidden on the saved page, and fields that already held the right value, aren’t counted. The person’s address was remembered from the same sign-up form as everything else.</p>
+    </section>
+    <section class="umete-section">
+      <h2 data-label-en="Update: Umete 0.5.2 and Firefox’s forms" data-label-ja="更新：Umete 0.5.2とFirefoxのフォーム">Update: Umete 0.5.2 and Firefox’s forms</h2>
+      <p data-label-en="November 25, 2026. The test now also runs 36 forms from Firefox’s autofill tests, checkout and sign-in pages from Best Buy, Costco, Home Depot, Walmart, and others. Firefox’s tests list the fields Firefox finds without saying which element each is, so I lined them up with each page and checked every one by hand, correcting the fields Firefox gets wrong, like an address nickname it calls a street line." data-label-ja="2026年11月25日。テストでは、Firefoxの自動入力テストにある36フォームも実行するようになりました。Best Buy、Costco、Home Depot、Walmartなどの購入・ログインページです。Firefoxのテストは、見つけた項目がどの要素かを示さないため、各ページの項目と対応させ、すべて手で確認しました。住所のニックネームを番地とするような、Firefoxの誤りも直しています。">November 25, 2026. The test now also runs 36 forms from Firefox’s autofill tests, checkout and sign-in pages from Best Buy, Costco, Home Depot, Walmart, and others. Firefox’s tests list the fields Firefox finds without saying which element each is, so I lined them up with each page and checked every one by hand, correcting the fields Firefox gets wrong, like an address nickname it calls a street line.</p>
+      <p data-label-en="The two sets found more wrong fills, all fixed in Umete 0.5.2: a ZIP code in coupon, captcha, and ZIP+4 boxes, the whole phone number in an Area Code box, the apartment in two fields, and a City field read as ZIP because of the error message inside its label. The biggest change was reading labels on older pages that put a field’s name in the cell beside it instead of in a label, which most of the recall gain in the table above comes from. On both sets together, 1,123 of Umete 0.5.2’s 1,124 local fills were right (99.9%), with 66.5% recall and no password or card number filled. The one wrong fill is a phone field Chromium expects only the area code in. The AI numbers below are still from 0.4.9." data-label-ja="2つのフォーム群で新たな誤入力が見つかり、すべてUmete 0.5.2で修正しました。クーポン、画像認証、ZIP+4の欄に入る郵便番号、「Area Code」欄に入る電話番号全体、2つの欄に入る部屋番号、そしてラベル内のエラーメッセージのせいで郵便番号欄と判断された市区町村の欄です。最大の変更は、項目名をラベルではなく隣のセルに書く古いページのラベルを読めるようにしたことで、上の表の再現率の向上はほとんどこれによるものです。2つのフォーム群を合わせると、Umete 0.5.2のローカル照合による入力1,124件のうち1,123件が正しく（99.9%）、再現率は66.5%で、パスワードやカード番号は一つも入力していません。残る1件の誤りは、Chromiumが市外局番だけを期待している電話番号の欄です。以下のAIの数字は0.4.9のままです。">The two sets found more wrong fills, all fixed in Umete 0.5.2: a ZIP code in coupon, captcha, and ZIP+4 boxes, the whole phone number in an Area Code box, the apartment in two fields, and a City field read as ZIP because of the error message inside its label. The biggest change was reading labels on older pages that put a field’s name in the cell beside it instead of in a label, which most of the recall gain in the table above comes from. On both sets together, 1,123 of Umete 0.5.2’s 1,124 local fills were right (99.9%), with 66.5% recall and no password or card number filled. The one wrong fill is a phone field Chromium expects only the area code in. The AI numbers below are still from 0.4.9.</p>
     </section>
     <section class="umete-section">
       <h2 data-label-en="What the test caught" data-label-ja="テストで見つかったこと">What the test caught</h2>

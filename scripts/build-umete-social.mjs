@@ -7,7 +7,11 @@ import sharp from 'sharp';
 // the iPhone screen of a form Umete filled, since X no longer shows a link's title under
 // the image. The screen is the landing page's first carousel shot.
 //
-//     node scripts/build-umete-social.mjs
+//     node scripts/build-umete-social.mjs [--linkedin DIR]
+//
+// With --linkedin, also writes LinkedIn's Featured thumbnail into DIR, matching Karui's
+// there: the glass icon small and centered on white, since LinkedIn crops the square to
+// a wide box and a larger icon loses its top and bottom.
 const rootDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const iconPath = path.join(rootDirectory, 'assets', 'umete-glass-icon.png');
 const screenPath = path.join(rootDirectory, 'assets', 'umete-landing-fill.webp');
@@ -73,3 +77,22 @@ await sharp(background)
   .toFile(outputPath);
 
 console.log(`Created ${outputPath}`);
+
+const linkedinIndex = process.argv.indexOf('--linkedin');
+if (linkedinIndex !== -1) {
+  const directory = path.resolve(process.argv[linkedinIndex + 1] ?? '.');
+  const featuredPath = path.join(directory, 'umete-linkedin-featured.png');
+  const featuredSize = 1200;
+  const featuredIconSize = 420;
+  const featuredIcon = await sharp(await readFile(iconPath))
+    .resize(featuredIconSize, featuredIconSize)
+    .composite([{ input: Buffer.from(`<svg width="${featuredIconSize}" height="${featuredIconSize}"><rect width="${featuredIconSize}" height="${featuredIconSize}" rx="${Math.round(featuredIconSize * 0.225)}" fill="#fff"/></svg>`), blend: 'dest-in' }])
+    .png()
+    .toBuffer();
+  const offset = (featuredSize - featuredIconSize) / 2;
+  await sharp({ create: { width: featuredSize, height: featuredSize, channels: 3, background: '#ffffff' } })
+    .composite([{ input: featuredIcon, left: offset, top: offset }])
+    .png({ compressionLevel: 9 })
+    .toFile(featuredPath);
+  console.log(`Created ${featuredPath}`);
+}

@@ -6,7 +6,8 @@ import sharp from 'sharp';
 // The card: icon, name, pitch, the 通知をかるく seal and the History
 // screen, since X no longer shows a link's title under the image.
 const rootDirectory = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const iconPath = path.join(rootDirectory, 'assets', 'karui-icon.png');
+// The app's glass icon; the pages' own karui-icon.png stays the flat one.
+const iconPath = path.join(rootDirectory, 'assets', 'karui-glass-icon.png');
 const screenPath = path.join(rootDirectory, 'assets', 'karui-demo-en-1.jpg');
 const sealPath = path.join(rootDirectory, 'assets', 'karui-seal-tagline-large.png');
 const outputPath = path.join(rootDirectory, 'assets', 'karui-social.png');

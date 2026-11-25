@@ -1,8 +1,40 @@
 {
-  "updatedAt": "2026-11-24T23:56:19.785Z",
+  "updatedAt": "2026-11-25T23:40:42.167Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2125567970823049367",
+      "text": "Umete autofills web forms. In my benchmark of real web forms from Walmart, Home Depot and more about 86% of all fields get filled and 99.2% are filled correctly in Umete 0.5.5. It’s free, private, with no sign-up. https://t.co/aNKnr7L2be https://t.co/OE2K73VILQ",
+      "createdAt": "2026-11-25T12:31:10.000Z",
+      "url": "https://x.com/_bobertdowney/status/2125567970823049367",
+      "urls": [
+        {
+          "url": "https://t.co/aNKnr7L2be",
+          "expandedUrl": "https://umete.jp",
+          "displayUrl": "umete.jp",
+          "start": 214,
+          "end": 237
+        },
+        {
+          "url": "https://t.co/OE2K73VILQ",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2125567970823049367/photo/1",
+          "displayUrl": "pic.x.com/OE2K73VILQ",
+          "start": 238,
+          "end": 261
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.webp",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2125567970823049367-0.webp"
+        }
+      ]
+    },
     {
       "id": "2124783571122655433",
       "text": "私のオフィスの建物の中でクリスマスの木 https://t.co/8QvzDFh05O",

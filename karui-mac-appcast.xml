@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>1.2.5</title>
+            <pubDate>Wed, 25 Nov 2026 18:15:00 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>98</sparkle:version>
+            <sparkle:shortVersionString>1.2.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- During a Focus, Karui's banner for an Important notification from this Mac's apps waits a moment while that app is in front, and doesn't show if you've already opened it.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.5/Karui-1.2.5-mac.zip" length="3691210" type="application/octet-stream" sparkle:edSignature="BwFHqvtO5bnt7aHdmCDXaEskuFhj5skLsJnjK3If+B3dG4PqU0FyVxjAHrkwSFEw9i5Otw/cZSVoulcW2gkEAg=="/>
+        </item>
+        <item>
             <title>1.2.4</title>
             <pubDate>Wed, 25 Nov 2026 12:03:18 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- The About window's icon animation is now in the icon's glass.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.3/Karui-1.2.3-mac.zip" length="3692113" type="application/octet-stream" sparkle:edSignature="xwODJSUBLxfJwATsKzF3esspbPwmrSDwr1JMAdTwEekYRN4Dv44Ku6H9z86sr9z+aOiWfQkt/w2qvA1dScHGBQ=="/>
-        </item>
-        <item>
-            <title>1.2.2</title>
-            <pubDate>Wed, 25 Nov 2026 09:16:06 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>95</sparkle:version>
-            <sparkle:shortVersionString>1.2.2</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- The icon is now a glass tray.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.2/Karui-1.2.2-mac.zip" length="3810850" type="application/octet-stream" sparkle:edSignature="HVg4DG+PTEFov2dLN0uAz+m1hSnAGtYFdFE5cyBhyP15SG3D+VbhTbXJZ14ZBgU/jRubE2wgciGAcBmipjABCA=="/>
         </item>
     </channel>
 </rss>

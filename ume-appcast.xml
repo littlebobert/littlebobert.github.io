@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.5.3</title>
+            <pubDate>Wed, 25 Nov 2026 10:22:49 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>43.1</sparkle:version>
+            <sparkle:shortVersionString>0.5.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.5.3
+
+Umete reads more field names on older forms, like labels in the row above a field and names shown inside an empty box, and no longer asks the AI about ZIP+4 boxes or fields it just filled.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="81G5K96mgyXuftzEG5IusOdhU6zj15GlXObraoi6mKhHD/tefIQCvrBPsIbuthMn1L+Bk2WIyHVxzzQ1F0gOAw==" sparkle:length="439">https://umete.jp/Umete-0.5.3-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="nRF4wx3bWX5FvaEl4BwhMm7ciCS3+iynw6cJGy+98wr/eVV6nLcnp4h2oN5IWOzTs8r2uBet4Y5wyQlLHqf9DA==" sparkle:length="558">https://umete.jp/Umete-0.5.3-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.5.3/Umete-0.5.3-macOS.dmg" length="4518839" type="application/octet-stream" sparkle:edSignature="addTsNUuymzaS9j5+iFRULd0gzHCdQiRzMkj/NWI07KVPnQwmBSCePZVIV2LSm69afx8XGDqlr0raLPYnsWEAw=="/>
+        </item>
+        <item>
             <title>0.5.2</title>
             <pubDate>Wed, 25 Nov 2026 09:40:00 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -149,25 +165,9 @@ Add and edit answers in the iPhone and iPad app, edit multi-line answers like a 
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="QaOJxhl3c7d2gAjrNPhWZ2JFHwJMS/Md6QzzFpuoTMlrAl76P+mclNUMZg/w3bwgin3NhfXQJpoQ1NhBJbq/DQ==" sparkle:length="546">https://umete.jp/Umete-0.4.6-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.6/Umete-0.4.6-macOS.dmg" length="6810551" type="application/octet-stream" sparkle:edSignature="SKEEkDTntnxhzz0aIAfaGiFhhOpmNDA5T8VDIH/s+GSb5CvsvA8zzowPGVzqG0lprDOAq3QsDbH06kxb3nwADA=="/>
         </item>
-        <item>
-            <title>0.4.5</title>
-            <pubDate>Tue, 13 Oct 2026 01:42:44 +0000</pubDate>
-            <link>https://umete.jp/</link>
-            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
-            <sparkle:version>29.1</sparkle:version>
-            <sparkle:shortVersionString>0.4.5</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.5
-
-A redesigned iPhone and iPad app with standard controls, a tab bar, and support for larger text sizes, plus a new launch screen and a clearer, easier-to-tap Safari extension.
-]]></description>
-            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="DETU6gYrDhYXUdpLC/J4XV+er+Ne8d3sHqzhkYq0PYznmC0Xb4plCIcGC7LroOiDwY4REVYSz95GEN9I7FVECA==" sparkle:length="425">https://umete.jp/Umete-0.4.5-macOS.en.md</sparkle:releaseNotesLink>
-            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="UKk3soQG9YFElRwDnHLyhTRX/Q1ErzjmJHH6fKUpEI0wLuPMfTOe6K1KR8ytsZMoB/hExs5HM27gSrtz7kbEBQ==" sparkle:length="498">https://umete.jp/Umete-0.4.5-macOS.ja.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.5/Umete-0.4.5-macOS.dmg" length="6783927" type="application/octet-stream" sparkle:edSignature="cuWa06PyDkQaG3CellOuAzY5vh0zIw6PGA7kop6k2/XjyzC6v2HZ4IDiEVis8pmUC2B5kgYpKRCKB/HLGlCTAw=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: UgJyrTp906W+8wye9ynEcuM1Dhani+QYwKxp5yFWDgC/qJM7xxmFgS8pRSq2NPVsswWnClEcLcybgXHy86JvBw==
-length: 15418
+edSignature: HbmU0GcAQdluv54coeDJgTwAVhmg9KBKu/iOWl3JIoXnfUq1jOR65D5Q0bQlz1fQduNh+jvEOarjmN3rizYZCA==
+length: 15432
 -->

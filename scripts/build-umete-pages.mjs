@@ -20,6 +20,9 @@ const siteFiles = [
 
 const assetFiles = [
   'ume-icon.png',
+  // The glass icon, small for the favicon and full-bleed for the home screen.
+  'umete-glass-favicon.png',
+  'umete-glass-icon.png',
   'umete-social.png',
   // The landing page's header icon: the glass animation, its still, and its first frame.
   'umete-icon-sketch.mp4',

@@ -1,4 +1,4 @@
-// Plays the header's pencil sketch for Shadan, except with Reduce Motion or while the page
+// Plays the header's glass animation for Shadan, except with Reduce Motion or while the page
 // is hidden. The still underneath shows until the video is playing.
 (() => {
   const clip = document.querySelector('.shadan-sketch-icon video');

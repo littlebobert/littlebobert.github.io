@@ -1,16 +1,20 @@
 {
-  "version": "1.1.0",
-  "date": "November 22, 2026",
+  "version": "1.2.0",
+  "date": "November 25, 2026",
   "notes": {
     "en": [
-      "When a deadline reminder is about answering a message or email and you’ve replied in Messages or Spark, Karui for Mac 1.1 tells your iPhone and the reminder clears itself. You can turn this off in Settings › Karui for Mac.",
-      "Settings look and work more like iOS Settings, Help & Troubleshooting most of all.",
-      "Tapping a morning’s deadline reminder notification shows those reminders in Deadline Reminders."
+      "The app icon is now a frosted glass tray.",
+      "A new app icon.",
+      "Tapping History while a notification is open goes back to where you were in the list; tap it again to scroll to the top.",
+      "Karui for Mac 1.2 now hides emoji in its inbox when Hide Emoji is on here.",
+      "Cooldown for Busy Conversations and Combine Rapid Messages now also apply to notifications only your Mac received."
     ],
     "ja": [
-      "メッセージやメールへの返信を促す締切リマインダーは、「メッセージ」またはSparkで返信すると、Karui for Mac 1.1がiPhoneに通知し、自動的に消去されます。この機能は「設定」›「Karui for Mac」でオフにできます。",
-      "「設定」の見た目と操作性をiOSの「設定」に近づけました。特に「ヘルプとトラブルシューティング」を改善しています。",
-      "朝の締切リマインダー通知をタップすると、該当するリマインダーが「締切リマインダー」に表示されます。"
+      "アプリアイコンが、すりガラス風のトレイになりました。",
+      "新しいアプリアイコン。",
+      "通知を開いているときに「履歴」をタップすると、リストの元いた位置に戻ります。もう一度タップすると、一番上までスクロールします。",
+      "ここで「絵文字を非表示」をオンにすると、Karui for Mac 1.2の受信トレイでも絵文字が非表示になります。",
+      "「活発な会話」と「連続メッセージをまとめる」のクールダウンが、Macだけで受信した通知にも適用されるようになりました。"
     ]
   }
 }

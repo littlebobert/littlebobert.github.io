@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.5.2</title>
+            <pubDate>Wed, 25 Nov 2026 09:40:00 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>42.1</sparkle:version>
+            <sparkle:shortVersionString>0.5.2</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.5.2
+
+Umete fills more forms correctly. It reads field names on older checkout pages, puts only the area code in an Area Code box, and no longer puts your ZIP code in coupon or ZIP+4 boxes or your apartment in two fields.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="n6UGLsZzx923m4Vysil5C5Fe5Xs14GNmoSXrlgekqoxrGdGxkXrUOOGQPYzqa86FynLZVuuZRhh6YxariiUSAQ==" sparkle:length="466">https://umete.jp/Umete-0.5.2-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="axvxg03dnR9cRzfdfubjTF8iHcyBaHDhRCOVbDBZoWG8sybod5o+yn0FBOT1vdyMbacphGEhRgslaiDScSxhDw==" sparkle:length="598">https://umete.jp/Umete-0.5.2-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.5.2/Umete-0.5.2-macOS.dmg" length="4532151" type="application/octet-stream" sparkle:edSignature="OW+mjZ3G8bl+HbFHlDAAbdL20RSVcootXnNOWyItR4Z3HiQt65ic6FBt/udDPjDniglI8a4MV4MO/VA6BSTyAg=="/>
+        </item>
+        <item>
             <title>0.5.1</title>
             <pubDate>Wed, 25 Nov 2026 03:10:53 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -149,25 +165,9 @@ A redesigned iPhone and iPad app with standard controls, a tab bar, and support 
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="UKk3soQG9YFElRwDnHLyhTRX/Q1ErzjmJHH6fKUpEI0wLuPMfTOe6K1KR8ytsZMoB/hExs5HM27gSrtz7kbEBQ==" sparkle:length="498">https://umete.jp/Umete-0.4.5-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.5/Umete-0.4.5-macOS.dmg" length="6783927" type="application/octet-stream" sparkle:edSignature="cuWa06PyDkQaG3CellOuAzY5vh0zIw6PGA7kop6k2/XjyzC6v2HZ4IDiEVis8pmUC2B5kgYpKRCKB/HLGlCTAw=="/>
         </item>
-        <item>
-            <title>0.4.4</title>
-            <pubDate>Mon, 12 Oct 2026 17:54:47 +0000</pubDate>
-            <link>https://umete.jp/</link>
-            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
-            <sparkle:version>28.1</sparkle:version>
-            <sparkle:shortVersionString>0.4.4</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.4
-
-Umete no longer sends your contacts' names to AI matching, and its privacy screens now describe iCloud sync.
-]]></description>
-            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="CgDRo//EKkkK3JPluofV1G/s2xIR+d93BAUnm4hMTG7FbvtywK5EDMox0DLe2ydO1cz8M5xQfnt+4Iin9NfbAw==" sparkle:length="359">https://umete.jp/Umete-0.4.4-macOS.en.md</sparkle:releaseNotesLink>
-            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="psp7c1u0t9KDxE4zuybQgQunF8wTulwvB8OvaJlQq8GTyEHZAGpKgkUuzGc1fiYwl9gSWH7vaaQA59NmtqK0Ag==" sparkle:length="417">https://umete.jp/Umete-0.4.4-macOS.ja.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.4/Umete-0.4.4-macOS.dmg" length="5911479" type="application/octet-stream" sparkle:edSignature="driV6LWanShS9Lj2LfiLeRU4cWTOJUsK7Uup8NXqNXFbIXkX6UKVorOk23HFskLtRo9cpZs1nqWIb4G/t+nGDg=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: cFqHtYDdBxQEsNpsssculO4irdzmeFDMO6gIpWskWGB+6RpXKixxTgbK7T7DVLETKzzf5tlHA9h36HjV+MIuAA==
-length: 15311
+edSignature: UgJyrTp906W+8wye9ynEcuM1Dhani+QYwKxp5yFWDgC/qJM7xxmFgS8pRSq2NPVsswWnClEcLcybgXHy86JvBw==
+length: 15418
 -->

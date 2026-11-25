@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.5.1</title>
+            <pubDate>Wed, 25 Nov 2026 03:10:53 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>41.1</sparkle:version>
+            <sparkle:shortVersionString>0.5.1</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.5.1
+
+The About window's icon is now animated in glass, as on umete.jp.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="Y1/0e1DRjVc7DjcXm0UVz/ZEWD6Nodq5+LbiBswUL49arCBsC0vjBPZM8zY0e4FzZP9Vq73BUr4cqb74vXTBCw==" sparkle:length="316">https://umete.jp/Umete-0.5.1-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="4Q6326rKLGONlgrGeuq/PvFPZaysr23tR4KFhwEWrCq+K/MybqVn0IhMpW8HO7RAo1nkh8iFqfotnl0pj5XCAg==" sparkle:length="410">https://umete.jp/Umete-0.5.1-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.5.1/Umete-0.5.1-macOS.dmg" length="4528055" type="application/octet-stream" sparkle:edSignature="V0yHFmJ/paxQOaSHY0KiTT0S7Qd0tCZtF4bRGfDqT0CLfnaiQkc0vlNUXqZJnFh9m2JtsI1/JHeJVvf8Li9JBQ=="/>
+        </item>
+        <item>
             <title>0.5.0</title>
             <pubDate>Wed, 25 Nov 2026 02:41:48 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -149,25 +165,9 @@ Umete no longer sends your contacts' names to AI matching, and its privacy scree
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="psp7c1u0t9KDxE4zuybQgQunF8wTulwvB8OvaJlQq8GTyEHZAGpKgkUuzGc1fiYwl9gSWH7vaaQA59NmtqK0Ag==" sparkle:length="417">https://umete.jp/Umete-0.4.4-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.4/Umete-0.4.4-macOS.dmg" length="5911479" type="application/octet-stream" sparkle:edSignature="driV6LWanShS9Lj2LfiLeRU4cWTOJUsK7Uup8NXqNXFbIXkX6UKVorOk23HFskLtRo9cpZs1nqWIb4G/t+nGDg=="/>
         </item>
-        <item>
-            <title>0.4.3</title>
-            <pubDate>Mon, 12 Oct 2026 17:19:58 +0000</pubDate>
-            <link>https://umete.jp/</link>
-            <sparkle:fullReleaseNotesLink>https://umete.jp/#changelog</sparkle:fullReleaseNotesLink>
-            <sparkle:version>27.1</sparkle:version>
-            <sparkle:shortVersionString>0.4.3</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.3
-
-Umete now fills custom dropdowns like Delta's date of birth and gender, no longer repeats your phone number in a second phone field, and leaves fields asking for a phone's owner alone.
-]]></description>
-            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="yU/QxEE8BCdnEfA/eCvHPGI/fYsc0JpM1e8gbgsM89YtmROgTjJLPggTchkYemFGOf2W9v/9jqL773rsMPTLAw==" sparkle:length="435">https://umete.jp/Umete-0.4.3-macOS.en.md</sparkle:releaseNotesLink>
-            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="+qhrHnwFo0XVN7ezFOTu8+izOBzwQknzOAmeLDYo0KMNlG5gnaHXdd/cwRB35K7+nKFu1nYYvFeyCESHh/0tAg==" sparkle:length="502">https://umete.jp/Umete-0.4.3-macOS.ja.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.3/Umete-0.4.3-macOS.dmg" length="5925303" type="application/octet-stream" sparkle:edSignature="xkl0RpvDWy4bt2sJWvzwCTCq74A5kz+TOdQ9E0BjyiZQT/G5KUZW+pfhVeftAOr3yUCi6y0fZ6Wh5MRxmKcRBQ=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: 82G7Qq1kU8TpsRYtPXkLVxRLkL3oHJHUPeB82rJjkY+4g62W82Wokr6LSRCWSyx9F5m2hHohdJAtglxGKUFuCQ==
-length: 15431
+edSignature: cFqHtYDdBxQEsNpsssculO4irdzmeFDMO6gIpWskWGB+6RpXKixxTgbK7T7DVLETKzzf5tlHA9h36HjV+MIuAA==
+length: 15311
 -->

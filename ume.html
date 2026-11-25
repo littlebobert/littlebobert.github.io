@@ -69,11 +69,6 @@
     /* The second line of the pitch, below the icon and name, in plain body text. */
     .hero-proposition { margin: 8pt 0 0; }
     .ume-detail { padding: 6pt 0 5pt; }
-    /* Three numbers from the form test under the downloads; the section below says where they come from. */
-    .ume-stats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12pt; max-width: 420px; margin: 11pt 0 0; padding: 0; list-style: none; }
-    .ume-stats li { display: flex; flex-direction: column; }
-    .ume-stats strong { font-size: 17pt; line-height: 1.15; color: var(--ume-green-dark); }
-    .ume-stats span { font-size: 10pt; line-height: 1.35; color: #555; }
     .ume-detail p { margin: 0; }
     .ume-detail p + p { margin-top: 7pt; }
     .feature-list { margin: 3pt 0 0; padding-left: 20pt; }
@@ -119,11 +114,6 @@
         <a class="download-link" data-ume-download href="https://github.com/littlebobert/umete/releases/download/v0.5.2/Umete-0.5.2-macOS.dmg" data-label-en="Download for macOS" data-label-ja="macOS版をダウンロード">Download for macOS</a>
       </div>
       <div class="small-note" data-label-en="Free, with no subscriptions and no sign-up." data-label-ja="無料で、サブスクリプションも登録もありません。">Free, with no subscriptions and no sign-up.</div>
-      <ul class="ume-stats" aria-label="Form test results" data-aria-label-en="Form test results" data-aria-label-ja="フォームのテスト結果">
-        <li><strong>99.9%</strong><span data-label-en="of fills correct" data-label-ja="の入力が正確">of fills correct</span></li>
-        <li><strong>0</strong><span data-label-en="passwords or card numbers filled" data-label-ja="件のパスワード・カード番号の入力">passwords or card numbers filled</span></li>
-        <li><strong>220</strong><span data-label-en="real checkout and sign-up forms tested" data-label-ja="件の実際の購入・登録フォームでテスト">real checkout and sign-up forms tested</span></li>
-      </ul>
     </section>
 
     <section class="sasu-section">
@@ -171,7 +161,8 @@
 
     <section class="ume-detail">
       <h2 data-label-en="How well does Umete fill forms?" data-label-ja="Umeteの入力はどれくらい正確？">How well does Umete fill forms?</h2>
-      <p><span data-label-en="I test Umete on 220 saved checkout and sign-up forms from Chromium’s and Firefox’s autofill tests, from sites like Walmart, Costco, and Best Buy. In Umete 0.5.2, 99.9% of its fills were right (1,123 of 1,124), and it filled two thirds of the fields the test person had answers for, all on device. It filled no passwords or card numbers. " data-label-ja="Umeteは、ChromiumとFirefoxの自動入力テストに使われている、Walmart、Costco、Best Buyなどの購入・登録フォーム220件の保存コピーでテストしています。Umete 0.5.2では、入力の99.9%（1,124件中1,123件）が正しく、テスト用の人物が回答を持っている項目の約3分の2を、すべてデバイス上で入力しました。パスワードやカード番号は一つも入力していません。">I test Umete on 220 saved checkout and sign-up forms from Chromium’s and Firefox’s autofill tests, from sites like Walmart, Costco, and Best Buy. In Umete 0.5.2, 99.9% of its fills were right (1,123 of 1,124), and it filled two thirds of the fields the test person had answers for, all on device. It filled no passwords or card numbers. </span><a href="ume-technote-un001.html" data-label-en="More details here" data-label-ja="詳しくはこちら">More details here</a><span data-label-en="." data-label-ja="。">.</span></p>
+      <p data-label-en="In Umete 0.5.2, 99.9% of its fills were right (1,123 of 1,124), and its on-device matching filled two thirds of the fields the test person had answers for." data-label-ja="Umete 0.5.2では、入力の99.9%（1,124件中1,123件）が正しく、デバイス上の照合だけで、テスト用の人物が回答を持っている項目の約3分の2を入力しました。">In Umete 0.5.2, 99.9% of its fills were right (1,123 of 1,124), and its on-device matching filled two thirds of the fields the test person had answers for.</p>
+      <p><span data-label-en="I tested Umete on 220 saved checkout and sign-up forms from Chromium’s and Firefox’s autofill tests, from sites like Walmart, Costco, and Best Buy. It did not attempt to fill passwords or card numbers. " data-label-ja="テストには、ChromiumとFirefoxの自動入力テストに使われている、Walmart、Costco、Best Buyなどの購入・登録フォーム220件の保存コピーを使いました。パスワードやカード番号は入力しようとしませんでした。">I tested Umete on 220 saved checkout and sign-up forms from Chromium’s and Firefox’s autofill tests, from sites like Walmart, Costco, and Best Buy. It did not attempt to fill passwords or card numbers. </span><a href="ume-technote-un001.html" data-label-en="More details here" data-label-ja="詳しくはこちら">More details here</a><span data-label-en="." data-label-ja="。">.</span></p>
     </section>
 
     <section class="ume-detail">

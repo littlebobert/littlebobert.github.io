@@ -34,7 +34,7 @@ test('builds every Karui clean route', async () => {
   }
 
   assert.match(acknowledgementsPage, /href="\/sasu-common\.css\?v=\d+"/);
-  assert.match(acknowledgementsPage, /href="\/assets\/karui-favicon\.png\?v=2"/);
+  assert.match(acknowledgementsPage, /href="\/assets\/karui-glass-favicon\.png\?v=\d+"/);
   assert.match(acknowledgementsPage, /src="\/assets\/karui-icon-sketch\.jpg\?v=\d+"/);
   assert.match(acknowledgementsPage, /href="\/"/);
   assert.match(acknowledgementsPage, /href="\/privacy"/);

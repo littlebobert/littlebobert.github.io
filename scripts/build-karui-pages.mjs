@@ -30,6 +30,9 @@ const siteFiles = [
 
 const assetFiles = [
   'karui-favicon.png',
+  // The glass icon: the pages' favicon, home screen icon, and the social card's source.
+  'karui-glass-favicon.png',
+  'karui-glass-icon.png',
   'karui-developer.jpg',
   'karui-icon.png',
   'karui-icon-sketch.jpg',

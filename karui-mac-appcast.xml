@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>1.2.4</title>
+            <pubDate>Wed, 25 Nov 2026 12:03:18 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>97</sparkle:version>
+            <sparkle:shortVersionString>1.2.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- In the About window's animation, the Important notification now stays out, then files itself like the others.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.4/Karui-1.2.4-mac.zip" length="3684289" type="application/octet-stream" sparkle:edSignature="5SV7yFQvxr0/aLlvwYtZs9VH8No+mHgeO2ZxAENuKa9Le9+/hsVJPp28KU+J8FajCP1jQ2oJ2inVZLz6g0kADg=="/>
+        </item>
+        <item>
             <title>1.2.3</title>
             <pubDate>Wed, 25 Nov 2026 09:44:07 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- The icon is now a glass tray.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.2/Karui-1.2.2-mac.zip" length="3810850" type="application/octet-stream" sparkle:edSignature="HVg4DG+PTEFov2dLN0uAz+m1hSnAGtYFdFE5cyBhyP15SG3D+VbhTbXJZ14ZBgU/jRubE2wgciGAcBmipjABCA=="/>
-        </item>
-        <item>
-            <title>1.2.1</title>
-            <pubDate>Wed, 25 Nov 2026 08:36:55 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>94</sparkle:version>
-            <sparkle:shortVersionString>1.2.1</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- A new icon.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.1/Karui-1.2.1-mac.zip" length="3611054" type="application/octet-stream" sparkle:edSignature="ht+0VnWfJNnF0coLNUEGqvwzZMxwIWbo0uH/b4cnfcMNZVlQrEWHwzyjsWSn/AjiSLjIJ6qDy+yD5ClqTg2WBQ=="/>
         </item>
     </channel>
 </rss>

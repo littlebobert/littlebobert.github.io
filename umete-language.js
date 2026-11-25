@@ -2,6 +2,9 @@
 // data-label-en and data-label-ja (and data-alt-* for images, data-aria-label-* for
 // controls). The button at the top switches them, and the choice is remembered.
 // Pages that change text on their own listen for the umete-language event.
+// On umete.jp each page also has a Japanese version at /ja/…; the build names both in
+// <html data-language-pages>, and the button goes to the other version instead of
+// swapping in place. A Japanese page (data-page-language="ja") always shows Japanese.
 (() => {
   const languageSwitch = document.querySelector('.language-switch');
   let current = 'en';
@@ -36,8 +39,22 @@
     document.dispatchEvent(new CustomEvent('umete-language', { detail: selected }));
   }
 
-  if (languageSwitch) languageSwitch.addEventListener('click', () => setLanguage(current === 'ja' ? 'en' : 'ja'));
+  let languagePages = null;
+  try { languagePages = JSON.parse(document.documentElement.dataset.languagePages || 'null'); } catch {}
+  const normalized = (pagePath) => pagePath.replace(/(\/index)?\.html$|\/$/, '') || '/';
+
+  function switchLanguage(language) {
+    const target = languagePages?.[language];
+    if (!target || normalized(target) === normalized(location.pathname)) {
+      setLanguage(language);
+      return;
+    }
+    try { localStorage.setItem('ume-language', language); } catch {}
+    location.href = target + location.hash;
+  }
+
+  if (languageSwitch) languageSwitch.addEventListener('click', () => switchLanguage(current === 'ja' ? 'en' : 'ja'));
   let saved = null;
   try { saved = localStorage.getItem('ume-language'); } catch {}
-  setLanguage(saved || preferredLanguage(), false);
+  setLanguage(document.documentElement.dataset.pageLanguage || saved || preferredLanguage(), false);
 })();

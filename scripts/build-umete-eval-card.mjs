@@ -56,10 +56,10 @@ const background = Buffer.from(`
 <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
   <rect width="${width}" height="${height}" fill="#ffffff"/>
   <g font-family="Verdana" font-weight="bold" font-size="52" fill="${ink}">
-    <text x="${left}" y="385">Umete fills <tspan fill="${green}">86%</tspan> of web</text>
-    <text x="${left}" y="455">form fields automatically,</text>
-    <text x="${left}" y="525">and <tspan fill="${green}">99.2%</tspan> of what it fills</text>
-    <text x="${left}" y="595">is correct.</text>
+    <text x="${left}" y="385">Umete automatically</text>
+    <text x="${left}" y="455">fills <tspan fill="${green}">86%</tspan> of web form</text>
+    <text x="${left}" y="525">fields, and <tspan fill="${green}">99.2%</tspan> of</text>
+    <text x="${left}" y="595">what it fills is correct.</text>
   </g>
   <rect x="${left}" y="645" width="${screenLeft - left - 90}" height="2" fill="#e3e1da"/>
   <g font-family="Verdana" font-size="27" fill="${muted}">

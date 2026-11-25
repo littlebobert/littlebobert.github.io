@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>1.2.3</title>
+            <pubDate>Wed, 25 Nov 2026 09:44:07 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>96</sparkle:version>
+            <sparkle:shortVersionString>1.2.3</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- The About window's icon animation is now in the icon's glass.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.3/Karui-1.2.3-mac.zip" length="3692113" type="application/octet-stream" sparkle:edSignature="xwODJSUBLxfJwATsKzF3esspbPwmrSDwr1JMAdTwEekYRN4Dv44Ku6H9z86sr9z+aOiWfQkt/w2qvA1dScHGBQ=="/>
+        </item>
+        <item>
             <title>1.2.2</title>
             <pubDate>Wed, 25 Nov 2026 09:16:06 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- A new icon.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.1/Karui-1.2.1-mac.zip" length="3611054" type="application/octet-stream" sparkle:edSignature="ht+0VnWfJNnF0coLNUEGqvwzZMxwIWbo0uH/b4cnfcMNZVlQrEWHwzyjsWSn/AjiSLjIJ6qDy+yD5ClqTg2WBQ=="/>
-        </item>
-        <item>
-            <title>1.2.0</title>
-            <pubDate>Wed, 25 Nov 2026 08:13:41 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>93</sparkle:version>
-            <sparkle:shortVersionString>1.2.0</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- When Hide Emoji is on in Karui on your iPhone, Karui for Mac's inbox shows notifications without emoji the same way. Needs the next Karui update on your iPhone.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.0/Karui-1.2.0-mac.zip" length="3197574" type="application/octet-stream" sparkle:edSignature="OGs65eDLGaDabotm5ms1NwWgv2moWc0Q/WKQgQXv8pIuREnEODoyTDHI+OJWNSvL62xg/fdsDtXCAherxJYGAg=="/>
         </item>
     </channel>
 </rss>

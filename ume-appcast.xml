@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.5.4</title>
+            <pubDate>Wed, 25 Nov 2026 11:32:53 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>44.1</sparkle:version>
+            <sparkle:shortVersionString>0.5.4</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.5.4
+
+Umete fills more state, country, email, and company fields: a state chosen from a menu now fills a State text box, labels next to hidden fields are read, and Company Name gets your company.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="KKf4YYBSSZlySrW/9HwxGe+3eDwjac5oM5hvKbGHUAMg00+91eeHJOs4Zi7u4LkmwKeuycPmjNC+bX4Pm8wxDA==" sparkle:length="440">https://umete.jp/Umete-0.5.4-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="q9/k/Hj2osuqqDiRKqPz2Ao7BSANpZcZJtXGQ66PSh7l95Jxfk17v0kxEi6XStoecFaQkmmi97yUy74kdaywDQ==" sparkle:length="564">https://umete.jp/Umete-0.5.4-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.5.4/Umete-0.5.4-macOS.dmg" length="4540855" type="application/octet-stream" sparkle:edSignature="1qXjxEX5oZfNymtmMNmiPE8KuyOpKf166WK+tad8viP3027sv8VQ/F9MwyLFbYFV/zI11vEsU00YK71pCTBcCw=="/>
+        </item>
+        <item>
             <title>0.5.3</title>
             <pubDate>Wed, 25 Nov 2026 10:22:49 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -149,25 +165,9 @@ Search for autofill in Spotlight to find Umete. Settings tabs now stay the same 
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="cjpNjeC7PYfDMkVw+wB/SYrhSHYAPq/uOCJPz5RnMMJ8kmQBn0DTNyqWxgNrOAwOwDgJlZzR/B4b5v4YKdkPAw==" sparkle:length="533">https://umete.jp/Umete-0.4.7-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.7/Umete-0.4.7-macOS.dmg" length="6800823" type="application/octet-stream" sparkle:edSignature="ND90nLe+Iqh4RxBmXcCXuwIGEcieVleRNRZutaL6nAKGLKKSpTwBqP56ZlFMCzH3FM/pwAgxHw5HJZ75pM5GDQ=="/>
         </item>
-        <item>
-            <title>0.4.6</title>
-            <pubDate>Fri, 16 Oct 2026 21:50:19 +0000</pubDate>
-            <link>https://umete.jp/</link>
-            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
-            <sparkle:version>30.1</sparkle:version>
-            <sparkle:shortVersionString>0.4.6</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.6
-
-Add and edit answers in the iPhone and iPad app, edit multi-line answers like a medication list in a larger editor on the Mac, and record successful iCloud syncs in bug reports.
-]]></description>
-            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="GMN6SDIH0J+RM1QEBoADZpLo35l0JFzejTyp+gXNuAZYa87hEyEm0J6BCGz1wfe7cmShssmLrCM3FWXiA+94Dg==" sparkle:length="428">https://umete.jp/Umete-0.4.6-macOS.en.md</sparkle:releaseNotesLink>
-            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="QaOJxhl3c7d2gAjrNPhWZ2JFHwJMS/Md6QzzFpuoTMlrAl76P+mclNUMZg/w3bwgin3NhfXQJpoQ1NhBJbq/DQ==" sparkle:length="546">https://umete.jp/Umete-0.4.6-macOS.ja.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.6/Umete-0.4.6-macOS.dmg" length="6810551" type="application/octet-stream" sparkle:edSignature="SKEEkDTntnxhzz0aIAfaGiFhhOpmNDA5T8VDIH/s+GSb5CvsvA8zzowPGVzqG0lprDOAq3QsDbH06kxb3nwADA=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: HbmU0GcAQdluv54coeDJgTwAVhmg9KBKu/iOWl3JIoXnfUq1jOR65D5Q0bQlz1fQduNh+jvEOarjmN3rizYZCA==
-length: 15432
+edSignature: io36k2VkXr184VsKlD5Fso3OQNOO3cbRpGyvvQHS9WGOKNC7itPy7b9d4+4vF1RUrDrSMjRIubVyKDfbRg4JBA==
+length: 15444
 -->

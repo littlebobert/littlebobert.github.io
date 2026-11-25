@@ -133,7 +133,7 @@
     </div>
     <section class="sasu-hero">
       <div class="sasu-hero-header">
-        <span class="kehai-sketch-icon"><span class="kehai-sketch-icon-shape"><img src="assets/kehai-icon-sketch.jpg?v=2" alt="Kehai app icon, the brushstrokes of 回 sketched in pencil" width="56" height="56"><video src="assets/kehai-icon-sketch.mp4?v=2" muted loop playsinline disablepictureinpicture disableremoteplayback preload="auto" aria-hidden="true"></video></span></span>
+        <span class="kehai-sketch-icon"><span class="kehai-sketch-icon-shape"><img src="assets/kehai-icon-sketch.jpg?v=3" alt="Kehai app icon, the eight strokes of 回 in black glass" data-alt-en="Kehai app icon, the eight strokes of 回 in black glass" data-alt-ja="黒いガラスでできた「回」の八画のKehaiアプリアイコン" width="56" height="56"><video src="assets/kehai-icon-sketch.mp4?v=3" muted loop playsinline disablepictureinpicture disableremoteplayback preload="auto" aria-hidden="true"></video></span></span>
         <div>
           <h1>Kehai</h1>
           <div class="sasu-subtitle" data-label-en="Tame your windows and switch apps faster." data-label-ja="ウインドウをすっきり整理し、アプリ切り替えをもっと速く。">Tame your windows and switch apps faster.</div>
@@ -891,6 +891,9 @@
       });
       document.querySelectorAll('[data-placeholder-en][data-placeholder-ja]').forEach((element) => {
         element.placeholder = selected === 'ja' ? element.dataset.placeholderJa : element.dataset.placeholderEn;
+      });
+      document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
+        element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;
       });
       document.querySelectorAll('[data-aria-label-en][data-aria-label-ja]').forEach((element) => {
         element.setAttribute('aria-label', selected === 'ja' ? element.dataset.ariaLabelJa : element.dataset.ariaLabelEn);

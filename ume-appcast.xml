@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.5.5</title>
+            <pubDate>Wed, 25 Nov 2026 12:07:35 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>45.1</sparkle:version>
+            <sparkle:shortVersionString>0.5.5</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.5.5
+
+The launch screen on iPhone and iPad, and Settings, now show the new glass icon.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="/WuhYvLXwRx+oMMhd7RPGd/4fAdIl6wqMhINgVT4t48Huu29WWyvF0cwhsgttdTeuEUG3wLJMd7BvYJkHVs9AA==" sparkle:length="331">https://umete.jp/Umete-0.5.5-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="yUqtLDdIWoEOQjUkoG7Sf5KjyzYSby5rRHct5gaIYoi8oo+e8nPn2djsJZmegOkEIof48KU8O7wrFizizUyKDw==" sparkle:length="381">https://umete.jp/Umete-0.5.5-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.5.5/Umete-0.5.5-macOS.dmg" length="4038583" type="application/octet-stream" sparkle:edSignature="agR1QrZ8CNqa8cjlLlWpLyYdqUqJ6BkgZfEygDF5N69il+od5u/FuyH+vq9HqTj5A9fR2tKzoAAM2u8RcIIjBg=="/>
+        </item>
+        <item>
             <title>0.5.4</title>
             <pubDate>Wed, 25 Nov 2026 11:32:53 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -149,25 +165,9 @@ About Umete now shows the pencil sketch of the icon from umete.jp, drawing itsel
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="HCKxdJCpTLPek4hS3LCBsLpz6hNGs0hRX+2fuFwBSk72tjpa+iF3z298DZQ8RNe6HXSCUxrN38kaO1CyZVkbDw==" sparkle:length="472">https://umete.jp/Umete-0.4.8-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.8/Umete-0.4.8-macOS.dmg" length="6928311" type="application/octet-stream" sparkle:edSignature="pRZMyux45cSw37LcwFNf97/Sv9XXTJMKyt4iYl8vv2DWJBy4EpJhw8T5cfZj055lxZQLWfJcenD7AB4Ktq+TCw=="/>
         </item>
-        <item>
-            <title>0.4.7</title>
-            <pubDate>Sun, 01 Nov 2026 23:25:51 +0000</pubDate>
-            <link>https://umete.jp/</link>
-            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
-            <sparkle:version>32.1</sparkle:version>
-            <sparkle:shortVersionString>0.4.7</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.7
-
-Search for autofill in Spotlight to find Umete. Settings tabs now stay the same width, the AI tab hides the model and key fields when Umete (free) is selected, and Add now offers Date, Gender, and Phone.
-]]></description>
-            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="miLtuTLTxilZ2KmRnja2HZ4LcZhqgOPTc14IY41LzYJsbJyZQ3z2haC5c21FnQooj0K/0qXTuxDwWARP5FfcDg==" sparkle:length="454">https://umete.jp/Umete-0.4.7-macOS.en.md</sparkle:releaseNotesLink>
-            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="cjpNjeC7PYfDMkVw+wB/SYrhSHYAPq/uOCJPz5RnMMJ8kmQBn0DTNyqWxgNrOAwOwDgJlZzR/B4b5v4YKdkPAw==" sparkle:length="533">https://umete.jp/Umete-0.4.7-macOS.ja.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.7/Umete-0.4.7-macOS.dmg" length="6800823" type="application/octet-stream" sparkle:edSignature="ND90nLe+Iqh4RxBmXcCXuwIGEcieVleRNRZutaL6nAKGLKKSpTwBqP56ZlFMCzH3FM/pwAgxHw5HJZ75pM5GDQ=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: io36k2VkXr184VsKlD5Fso3OQNOO3cbRpGyvvQHS9WGOKNC7itPy7b9d4+4vF1RUrDrSMjRIubVyKDfbRg4JBA==
-length: 15444
+edSignature: YnFi8E/QbaAYyxQCPhirLo6Fk5F7DUnHMA0VNvKejGPEwixtvgrXfFVKcj75oSiowliA02AhVIHUZzfDXPJjDA==
+length: 15321
 -->

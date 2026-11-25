@@ -25,10 +25,10 @@ function roundedMask(size, radius) {
   return Buffer.from(`<svg width="${size}" height="${size}"><rect width="${size}" height="${size}" rx="${radius}" fill="#fff"/></svg>`);
 }
 
-const iconSize = 150;
+const iconSize = 200;
 const icon = await sharp(await readFile(iconPath))
   .resize(iconSize, iconSize)
-  .composite([{ input: roundedMask(iconSize, 34), blend: 'dest-in' }])
+  .composite([{ input: roundedMask(iconSize, 45), blend: 'dest-in' }])
   .png()
   .toBuffer();
 
@@ -45,39 +45,36 @@ const shot = await sharp(await readFile(screenPath))
   .png()
   .toBuffer();
 
-// The phone runs off the bottom edge.
-const screenWidth = 430;
-const screenTop = 70;
-const screen = await sharp(shot).resize({ width: screenWidth }).png().toBuffer();
-const { height: screenHeight } = await sharp(screen).metadata();
-const croppedScreen = await sharp(screen)
-  .extract({ left: 0, top: 0, width: screenWidth, height: Math.min(screenHeight, height - screenTop) })
-  .toBuffer();
-const screenLeft = width - screenWidth - 90;
+// The whole phone, as tall as the card allows.
+const screenHeight = height - 90;
+const screen = await sharp(shot).resize({ height: screenHeight }).png().toBuffer();
+const { width: screenWidth } = await sharp(screen).metadata();
+const screenTop = Math.round((height - screenHeight) / 2);
+const screenLeft = width - screenWidth - 110;
 
 const background = Buffer.from(`
 <svg width="${width}" height="${height}" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg">
   <rect width="${width}" height="${height}" fill="#ffffff"/>
   <g font-family="Verdana" font-weight="bold" font-size="52" fill="${ink}">
-    <text x="${left}" y="355">Umete fills <tspan fill="${green}">86%</tspan> of web</text>
-    <text x="${left}" y="425">form fields automatically,</text>
-    <text x="${left}" y="495">and <tspan fill="${green}">99.2%</tspan> of what it fills</text>
-    <text x="${left}" y="565">is correct.</text>
+    <text x="${left}" y="385">Umete fills <tspan fill="${green}">86%</tspan> of web</text>
+    <text x="${left}" y="455">form fields automatically,</text>
+    <text x="${left}" y="525">and <tspan fill="${green}">99.2%</tspan> of what it fills</text>
+    <text x="${left}" y="595">is correct.</text>
   </g>
-  <rect x="${left}" y="615" width="${screenLeft - left - 80}" height="2" fill="#e3e1da"/>
-  <text x="${left}" y="675" font-family="Verdana" font-size="32" fill="${ink}">Tested on 220 real checkout and sign-up forms.</text>
-  <g font-family="Verdana" font-size="23" fill="${muted}">
-    <text x="${left}" y="768">Saved pages from Chromium’s and Firefox’s own autofill tests:</text>
-    <text x="${left}" y="802">Walmart, Costco, Best Buy, and forms in 13 other languages.</text>
-    <text x="${left}" y="836">Umete 0.5.4 with AI matching. Method: umete.jp/technotes/un001</text>
+  <rect x="${left}" y="645" width="${screenLeft - left - 90}" height="2" fill="#e3e1da"/>
+  <g font-family="Verdana" font-size="27" fill="${muted}">
+    <text x="${left}" y="705">Tested on 220 real checkout and sign-up forms from</text>
+    <text x="${left}" y="743">Chromium’s and Firefox’s own autofill tests: Walmart,</text>
+    <text x="${left}" y="781">Costco, Best Buy, and forms in 13 other languages.</text>
+    <text x="${left}" y="819">Umete 0.5.4, AI matching on. umete.jp/technotes/un001</text>
   </g>
 </svg>
 `);
 
 await sharp(background)
   .composite([
-    { input: icon, left, top: 90 },
-    { input: croppedScreen, left: screenLeft, top: screenTop },
+    { input: icon, left, top: 85 },
+    { input: screen, left: screenLeft, top: screenTop },
   ])
   .png({ compressionLevel: 9 })
   .toFile(outputPath);

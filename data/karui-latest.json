@@ -4,14 +4,12 @@
   "notes": {
     "en": [
       "The app icon is now a frosted glass tray.",
-      "A new app icon.",
       "Tapping History while a notification is open goes back to where you were in the list; tap it again to scroll to the top.",
       "Karui for Mac 1.2 now hides emoji in its inbox when Hide Emoji is on here.",
       "Cooldown for Busy Conversations and Combine Rapid Messages now also apply to notifications only your Mac received."
     ],
     "ja": [
       "アプリアイコンが、すりガラス風のトレイになりました。",
-      "新しいアプリアイコン。",
       "通知を開いているときに「履歴」をタップすると、リストの元いた位置に戻ります。もう一度タップすると、一番上までスクロールします。",
       "ここで「絵文字を非表示」をオンにすると、Karui for Mac 1.2の受信トレイでも絵文字が非表示になります。",
       "「活発な会話」と「連続メッセージをまとめる」のクールダウンが、Macだけで受信した通知にも適用されるようになりました。"

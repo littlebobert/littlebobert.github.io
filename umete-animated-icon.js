@@ -1,4 +1,4 @@
-// Plays the header's pencil sketch of the Umete icon, except with Reduce Motion or
+// Plays the header's glass animation of the Umete icon, except with Reduce Motion or
 // while the page is hidden. The still underneath shows until the video is playing.
 (() => {
   const clip = document.querySelector('.ume-icon video');

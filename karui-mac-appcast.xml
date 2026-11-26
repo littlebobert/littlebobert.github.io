@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>1.2.8</title>
+            <pubDate>Thu, 26 Nov 2026 14:53:07 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>101</sparkle:version>
+            <sparkle:shortVersionString>1.2.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Slack notifications open at their message and thread on the iPhone again: Karui for Mac reads the new form of notification that Slack 4.53.292 gives.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.8/Karui-1.2.8-mac.zip" length="3756602" type="application/octet-stream" sparkle:edSignature="aBN067IjsHdjizFiwnqHHz62o7WuwV5XA+0UzxOt+1u9rKGv4E7p6f7NLJVwQO3elsHdNda4PtD7obc9bc93CA=="/>
+        </item>
+        <item>
             <title>1.2.7</title>
             <pubDate>Thu, 26 Nov 2026 10:02:52 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- The About window has a new icon animation, the same as on karui.jp.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.6/Karui-1.2.6-mac.zip" length="3749874" type="application/octet-stream" sparkle:edSignature="8bQOESSRD/dxmYzCXPbnCBGEbswv8SxeJof116sn4cVkr96dstqrdS5OHLQyBSp8ZBkF4qMzk5bqjfZ+gm7oCw=="/>
-        </item>
-        <item>
-            <title>1.2.5</title>
-            <pubDate>Wed, 25 Nov 2026 18:15:00 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>98</sparkle:version>
-            <sparkle:shortVersionString>1.2.5</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- During a Focus, Karui's banner for an Important notification from this Mac's apps waits a moment while that app is in front, and doesn't show if you've already opened it.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.5/Karui-1.2.5-mac.zip" length="3691210" type="application/octet-stream" sparkle:edSignature="BwFHqvtO5bnt7aHdmCDXaEskuFhj5skLsJnjK3If+B3dG4PqU0FyVxjAHrkwSFEw9i5Otw/cZSVoulcW2gkEAg=="/>
         </item>
     </channel>
 </rss>

@@ -56,6 +56,11 @@
     .karui-seal-trigger, .karui-maker-photo-link { display: flex; flex: none; cursor: pointer; }
     .karui-seal-trigger { margin-left: -2pt; }
     .karui-seal-trigger img, .karui-maker-photo-link img { cursor: pointer; }
+    /* The App Store badge and requirement note, as on the Karui page. */
+    .karui-app-store-badge { display: inline-block; vertical-align: middle; line-height: 0; }
+    .karui-app-store-badge img { display: block; height: 40px; width: auto; }
+    .karui-requirements { display: inline-block; margin-left: 8pt; color: #5C6380; font-size: 9pt; line-height: 1.3; vertical-align: middle; }
+    @media (max-width: 560px) { .karui-requirements { display: block; margin: 5pt 0 0; } }
   </style>
   <link rel="canonical" href="https://karui.jp/guides/unwanted-notifications">
   <meta name="description" content="Every way iOS lets you cut down unwanted and spam notifications, and when each one helps." data-label-en="Every way iOS lets you cut down unwanted and spam notifications, and when each one helps." data-label-ja="iOSで迷惑な通知やスパム通知を減らす方法と、それぞれが役立つ場面。">
@@ -144,7 +149,7 @@
         <li data-label-en="Its History keeps every notification it sorts, searchable, including messages people unsend." data-label-ja="履歴には仕分けたすべての通知が残り、検索できます。送信取り消しされたメッセージも残ります。">Its History keeps every notification it sorts, searchable, including messages people unsend.</li>
       </ul>
       <p data-label-en="By default, it all happens on your iPhone: Karui has no server, needs no account, and sends no analytics. Spam filtering needs iOS 27 or later and an iPhone with Apple Intelligence." data-label-ja="初期設定では、すべてがiPhone上で行われます。Karuiにはサーバーがなく、アカウントも不要で、分析データも送りません。スパムの振り分けには、iOS 27以降とApple Intelligence対応のiPhoneが必要です。">By default, it all happens on your iPhone: Karui has no server, needs no account, and sends no analytics. Spam filtering needs iOS 27 or later and an iPhone with Apple Intelligence.</p>
-      <p><a href="https://apps.apple.com/app/karui-notifications/id6814134614" data-label-en="Download Karui on the App Store" data-label-ja="App StoreでKaruiをダウンロード">Download Karui on the App Store</a></p>
+      <p><a class="karui-app-store-badge" href="https://apps.apple.com/app/karui-notifications/id6814134614"><img src="assets/karui-app-store-badge-en.svg?v=1" data-src-en="assets/karui-app-store-badge-en.svg?v=1" data-src-ja="assets/karui-app-store-badge-ja.svg?v=1" alt="Download on the App Store" data-alt-en="Download on the App Store" data-alt-ja="App Storeからダウンロード" height="40"></a><span class="karui-requirements" data-label-en="Spam filtering needs iPhone 15 Pro or later." data-label-ja="スパムの振り分けにはiPhone 15 Pro以降が必要です。">Spam filtering needs iPhone 15 Pro or later.</span></p>
       <p><a href="karui.html" data-label-en="Learn more about Karui" data-label-ja="Karuiについて詳しく見る">Learn more about Karui</a></p>
     </section>
     <section class="karui-section">
@@ -176,6 +181,9 @@
         const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
         if (element instanceof HTMLMetaElement) element.content = label;
         else element.textContent = label;
+      });
+      document.querySelectorAll('[data-src-en][data-src-ja]').forEach((element) => {
+        element.src = selected === 'ja' ? element.dataset.srcJa : element.dataset.srcEn;
       });
       document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
         element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;

@@ -56,6 +56,11 @@
     .karui-seal-trigger, .karui-maker-photo-link { display: flex; flex: none; cursor: pointer; }
     .karui-seal-trigger { margin-left: -2pt; }
     .karui-seal-trigger img, .karui-maker-photo-link img { cursor: pointer; }
+    /* The App Store badge and requirement note, as on the Karui page. */
+    .karui-app-store-badge { display: inline-block; vertical-align: middle; line-height: 0; }
+    .karui-app-store-badge img { display: block; height: 40px; width: auto; }
+    .karui-requirements { display: inline-block; margin-left: 8pt; color: #5C6380; font-size: 9pt; line-height: 1.3; vertical-align: middle; }
+    @media (max-width: 560px) { .karui-requirements { display: block; margin: 5pt 0 0; } }
   </style>
   <link rel="canonical" href="https://karui.jp/guides/unsent-messages">
   <meta name="description" content="What happens when someone unsends a message in Messages, LINE, Instagram, or WhatsApp, why you can’t get it back afterward, and how to keep a copy of messages as they arrive." data-label-en="What happens when someone unsends a message in Messages, LINE, Instagram, or WhatsApp, why you can’t get it back afterward, and how to keep a copy of messages as they arrive." data-label-ja="メッセージ、LINE、Instagram、WhatsAppで送信取り消しされたときに何が起きるのか、あとから取り戻せない理由、そして届いたメッセージを残しておく方法。">
@@ -114,7 +119,7 @@
         <li data-label-en="When an app says someone unsent a message, open Karui’s History to read it." data-label-ja="アプリで「送信を取り消しました」と表示されたら、Karuiの履歴を開いて読みます。">When an app says someone unsent a message, open Karui’s History to read it.</li>
       </ol>
       <p data-label-en="Keeping unsent messages works without Apple Intelligence. You need iOS or iPadOS 27 or later." data-label-ja="送信取り消しされたメッセージを残す機能は、Apple Intelligenceがなくても使えます。iOSまたはiPadOS 27以降が必要です。">Keeping unsent messages works without Apple Intelligence. You need iOS or iPadOS 27 or later.</p>
-      <p><a href="https://apps.apple.com/app/karui-notifications/id6814134614" data-label-en="Download Karui on the App Store" data-label-ja="App StoreでKaruiをダウンロード">Download Karui on the App Store</a></p>
+      <p><a class="karui-app-store-badge" href="https://apps.apple.com/app/karui-notifications/id6814134614"><img src="assets/karui-app-store-badge-en.svg?v=1" data-src-en="assets/karui-app-store-badge-en.svg?v=1" data-src-ja="assets/karui-app-store-badge-ja.svg?v=1" alt="Download on the App Store" data-alt-en="Download on the App Store" data-alt-ja="App Storeからダウンロード" height="40"></a></p>
     </section>
     <section class="karui-section">
       <h2 data-label-en="When it can’t help" data-label-ja="できないこと">When it can’t help</h2>
@@ -159,6 +164,9 @@
         const label = selected === 'ja' ? element.dataset.labelJa : element.dataset.labelEn;
         if (element instanceof HTMLMetaElement) element.content = label;
         else element.textContent = label;
+      });
+      document.querySelectorAll('[data-src-en][data-src-ja]').forEach((element) => {
+        element.src = selected === 'ja' ? element.dataset.srcJa : element.dataset.srcEn;
       });
       document.querySelectorAll('[data-alt-en][data-alt-ja]').forEach((element) => {
         element.alt = selected === 'ja' ? element.dataset.altJa : element.dataset.altEn;

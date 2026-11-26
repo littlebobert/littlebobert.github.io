@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.5.6</title>
+            <pubDate>Thu, 26 Nov 2026 10:20:40 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>46.1</sparkle:version>
+            <sparkle:shortVersionString>0.5.6</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.5.6
+
+Passports: save one in Settings and Umete fills its number, dates, and nationality. Japanese and Korean forms, including names and kana readings. Remember my answers keeps your address and passport together and no longer loses your first name.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="glXmtm5PWfolKMYrr9KfRwNtseFaObob89/CH16YKO9kvbuQXfrM8zkPqWsK6Fjbwhih4PSSBMfSHcktA8NTAA==" sparkle:length="494">https://umete.jp/Umete-0.5.6-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="96L3yn2F5H8xgRUkAVccGOwgeg8K1ndnihkq77p9ssAJ0iwczYYBw93jls03bS/FLNH7IazYVFK4EJ8OHzSWBA==" sparkle:length="554">https://umete.jp/Umete-0.5.6-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.5.6/Umete-0.5.6-macOS.dmg" length="4093879" type="application/octet-stream" sparkle:edSignature="8dzsKQNn9V3oKd/NOJY9aafRo+ACURby/b67XyLNXgMcxC44k+xQiBQ1gzgq6KfE4CbI5U0gtVxma+bE4Z0VAg=="/>
+        </item>
+        <item>
             <title>0.5.5</title>
             <pubDate>Wed, 25 Nov 2026 12:07:35 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -149,25 +165,9 @@ Umete fills more forms correctly. It no longer puts your email in an address fie
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="XURC33Yaa8L1gxsxUTTd+uEBgCC3kPhnHyYPK4Gy/ZEerocbpJVLKu3CfsK0i+IzKORJEbnsw7aIe3LOK54cBg==" sparkle:length="530">https://umete.jp/Umete-0.4.9-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.9/Umete-0.4.9-macOS.dmg" length="6926775" type="application/octet-stream" sparkle:edSignature="CAeZbPvpT9Ps5fWryEIT2IjCNM3QkLRV9gWYNYgxZZuO1+WpwGoQPxLemSpA+bo05geO/zfbW5XnK4KgOmMKBw=="/>
         </item>
-        <item>
-            <title>0.4.8</title>
-            <pubDate>Wed, 04 Nov 2026 11:48:45 +0000</pubDate>
-            <link>https://umete.jp/</link>
-            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
-            <sparkle:version>33.3</sparkle:version>
-            <sparkle:shortVersionString>0.4.8</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.8
-
-About Umete now shows the pencil sketch of the icon from umete.jp, drawing itself as you watch. With Reduce Motion on, it shows the finished drawing.
-]]></description>
-            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="IQAwZVlDq+WrLmDpsruZJ1abTAT3ux1zupqaJ1kZuNxVy/HmAOJBWBXr/Qi/pXDzuIZyVvj6i2hMuOWQdCCmCg==" sparkle:length="400">https://umete.jp/Umete-0.4.8-macOS.en.md</sparkle:releaseNotesLink>
-            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="HCKxdJCpTLPek4hS3LCBsLpz6hNGs0hRX+2fuFwBSk72tjpa+iF3z298DZQ8RNe6HXSCUxrN38kaO1CyZVkbDw==" sparkle:length="472">https://umete.jp/Umete-0.4.8-macOS.ja.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.8/Umete-0.4.8-macOS.dmg" length="6928311" type="application/octet-stream" sparkle:edSignature="pRZMyux45cSw37LcwFNf97/Sv9XXTJMKyt4iYl8vv2DWJBy4EpJhw8T5cfZj055lxZQLWfJcenD7AB4Ktq+TCw=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: YnFi8E/QbaAYyxQCPhirLo6Fk5F7DUnHMA0VNvKejGPEwixtvgrXfFVKcj75oSiowliA02AhVIHUZzfDXPJjDA==
-length: 15321
+edSignature: ePe+7w8TyiepvMRfEKwDd6RY82Lg/S10+U9fsqua7wb7IbIi1f6RPvM26uoaJUDtP+Y8WKcvMOFLXvUE9nzdBQ==
+length: 15415
 -->

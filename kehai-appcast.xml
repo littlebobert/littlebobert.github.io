@@ -3,6 +3,18 @@
     <channel>
         <title>Kehai</title>
         <item>
+            <title>0.6.13</title>
+            <pubDate>Thu, 26 Nov 2026 09:54:36 +0900</pubDate>
+            <link>https://kehai.jp/</link>
+            <sparkle:version>124</sparkle:version>
+            <sparkle:shortVersionString>0.6.13</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- In the mini browser, Delete only edits your search once you start typing. Pressing it again after the search is empty no longer offers to exclude an app; press Escape or close the mini browser to end the search.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.13/Kehai-0.6.13-mac.zip" length="5931863" type="application/octet-stream" sparkle:edSignature="MSYtC/bCZXF41UUd6miWFLyppDJBGsaaNT+sYi7NjwvWERFUrI0yxzk7l2puWf9sFmX9nJsipCcMUUkAivn/Dw=="/>
+        </item>
+        <item>
             <title>0.6.12</title>
             <pubDate>Wed, 25 Nov 2026 12:28:31 +0900</pubDate>
             <link>https://kehai.jp/</link>
@@ -26,19 +38,6 @@
             <description sparkle:format="markdown"><![CDATA[- Quitting Kehai just as a window's live preview was starting could leave macOS showing Kehai as recording the screen after it had quit. Kehai now stops the preview properly first.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.11/Kehai-0.6.11-mac.zip" length="6165609" type="application/octet-stream" sparkle:edSignature="sBXPO61HzSEaBMQYNlb/o5SGuTVOveNJjXDOn6AGVaRsSAuo2dNR71JGkzC33i1XEnSzkBWQna2OZs6RdpG2Aw=="/>
-        </item>
-        <item>
-            <title>0.6.10</title>
-            <pubDate>Wed, 25 Nov 2026 08:53:35 +0900</pubDate>
-            <link>https://kehai.jp/</link>
-            <sparkle:version>121</sparkle:version>
-            <sparkle:shortVersionString>0.6.10</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>14.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Kehai has a new icon: the same brush strokes, now as pieces of black glass.
-- Right-clicking a folder in Files and Folders now offers just Open, since Reveal in Finder did the same thing. Files and apps still offer both.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/kehai/releases/download/0.6.10/Kehai-0.6.10-mac.zip" length="6164197" type="application/octet-stream" sparkle:edSignature="n1ur24UVSpTSqYt/pkeHELB+yoa2wa/R3ABLknN2WDRJlCLWaABFdY9Z/nOrAGsEFlkjz3x5IFdCtK/Z1jgRBA=="/>
         </item>
     </channel>
 </rss>

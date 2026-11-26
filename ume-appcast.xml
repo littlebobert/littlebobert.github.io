@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.5.7</title>
+            <pubDate>Thu, 26 Nov 2026 10:50:19 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>47.1</sparkle:version>
+            <sparkle:shortVersionString>0.5.7</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.5.7
+
+Fills dropdowns whose choices appear only once they're opened, such as Gender on American Airlines' booking form.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="eHnW2OEAawiG7sCv/b4WcbOsBADVZ/P9Qzsl1S4a/5VbMF+1RYHrFs61QDewY3PCWyeGljZYZNE5Bi3mItQNCg==" sparkle:length="364">https://umete.jp/Umete-0.5.7-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="KmdVac1j14R8uSRn/EtYSMZ3fHbtFjHJhVbFrDx2VXXHbpFWOsWOW8aqE9aEewyvDNlfa+T1Zm4TYaR23pFEBw==" sparkle:length="442">https://umete.jp/Umete-0.5.7-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.5.7/Umete-0.5.7-macOS.dmg" length="4093367" type="application/octet-stream" sparkle:edSignature="aXRP5OP9BVMaHN1GMvDiWhNRrcUCmgOPH+BYDWc1q0jOa0F7PfbGuxVjpKLYcKcNeE8ieZfT0SYtwIkab7NjDQ=="/>
+        </item>
+        <item>
             <title>0.5.6</title>
             <pubDate>Thu, 26 Nov 2026 10:20:40 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -149,25 +165,9 @@ Bug reports sent with Email Logs now include Umete's real version and build, you
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="1NePltUFrfZQ6y2bvSsoUtb6dIBaY1EMGFMmoGbgwEBP+iae5G5gegSGjjB/n2LOkL1YUzW40Ggcry7hoos4BA==" sparkle:length="490">https://umete.jp/Umete-0.4.10-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.10/Umete-0.4.10-macOS.dmg" length="6931383" type="application/octet-stream" sparkle:edSignature="gy7cIaq7GkfNVIeEnVtLcKXonKjIGhtgfdG0tx1Bbu46HNKm8//ubrdcW+OglhReo3QMrnRO1PrN+Hiw8j3SAg=="/>
         </item>
-        <item>
-            <title>0.4.9</title>
-            <pubDate>Thu, 19 Nov 2026 00:29:47 +0000</pubDate>
-            <link>https://umete.jp/</link>
-            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
-            <sparkle:version>34.1</sparkle:version>
-            <sparkle:shortVersionString>0.4.9</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.9
-
-Umete fills more forms correctly. It no longer puts your email in an address field or your street in Address line 2, fills phone numbers split across several boxes, and leaves ZIP+4 and phone extension boxes empty.
-]]></description>
-            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="+wojgHdy0vduOq9hgjMgR4NLEOr3xtZJhcJRicS10N/eAoJsof+8UG71Ql+veJY/fsyPh8dHFgmpo8o/a1jTCA==" sparkle:length="465">https://umete.jp/Umete-0.4.9-macOS.en.md</sparkle:releaseNotesLink>
-            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="XURC33Yaa8L1gxsxUTTd+uEBgCC3kPhnHyYPK4Gy/ZEerocbpJVLKu3CfsK0i+IzKORJEbnsw7aIe3LOK54cBg==" sparkle:length="530">https://umete.jp/Umete-0.4.9-macOS.ja.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.9/Umete-0.4.9-macOS.dmg" length="6926775" type="application/octet-stream" sparkle:edSignature="CAeZbPvpT9Ps5fWryEIT2IjCNM3QkLRV9gWYNYgxZZuO1+WpwGoQPxLemSpA+bo05geO/zfbW5XnK4KgOmMKBw=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: ePe+7w8TyiepvMRfEKwDd6RY82Lg/S10+U9fsqua7wb7IbIi1f6RPvM26uoaJUDtP+Y8WKcvMOFLXvUE9nzdBQ==
-length: 15415
+edSignature: DCrvIXfvRuzPLHV0T/nk59tMFbgG+oBaGjjv9qnjfvU/5PN3xoW0oIUtfu9guuosL+PnH/MUFwZ9mU5LoSf0Dg==
+length: 15314
 -->

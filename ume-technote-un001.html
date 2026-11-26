@@ -40,13 +40,13 @@
     @media (max-width: 560px) { .sasu-page { padding-top: 4pt; padding-bottom: 36pt; } }
   </style>
   <link rel="canonical" href="https://umete.jp/technotes/un001">
-  <meta name="description" content="How I test Umete’s form matching on 220 saved forms from Chromium’s and Firefox’s autofill tests, what the test caught, and how much AI matching adds." data-label-en="How I test Umete’s form matching on 220 saved forms from Chromium’s and Firefox’s autofill tests, what the test caught, and how much AI matching adds." data-label-ja="ChromiumとFirefoxの自動入力テストに使われている220の保存済みフォームでUmeteのフォーム照合をテストする方法、そのテストで見つかったこと、そしてAIマッチングでどれだけ改善するか。">
+  <meta name="description" content="How I test Umete’s form matching on 220 saved forms from Chromium’s and Firefox’s autofill tests, what the test caught, and how much AI matching improves things." data-label-en="How I test Umete’s form matching on 220 saved forms from Chromium’s and Firefox’s autofill tests, what the test caught, and how much AI matching improves things." data-label-ja="ChromiumとFirefoxの自動入力テストに使われている220の保存済みフォームでUmeteのフォーム照合をテストする方法、そのテストで見つかったこと、そしてAIマッチングでどれだけ改善するか。">
   <meta property="og:title" content="UN001: Testing Form Matching on 220 Forms I’ll Never Fill Out" data-label-en="UN001: Testing Form Matching on 220 Forms I’ll Never Fill Out" data-label-ja="UN001：自分では記入しない220のフォームでフォーム照合をテストする">
   <meta property="og:type" content="article">
   <meta property="article:published_time" content="2026-11-19">
   <meta property="og:url" content="https://umete.jp/technotes/un001">
   <meta property="og:site_name" content="Umete">
-  <meta property="og:description" content="How I test Umete’s form matching on 220 saved forms from Chromium’s and Firefox’s autofill tests, what the test caught, and how much AI matching adds." data-label-en="How I test Umete’s form matching on 220 saved forms from Chromium’s and Firefox’s autofill tests, what the test caught, and how much AI matching adds." data-label-ja="ChromiumとFirefoxの自動入力テストに使われている220の保存済みフォームでUmeteのフォーム照合をテストする方法、そのテストで見つかったこと、そしてAIマッチングでどれだけ改善するか。">
+  <meta property="og:description" content="How I test Umete’s form matching on 220 saved forms from Chromium’s and Firefox’s autofill tests, what the test caught, and how much AI matching improves things." data-label-en="How I test Umete’s form matching on 220 saved forms from Chromium’s and Firefox’s autofill tests, what the test caught, and how much AI matching improves things." data-label-ja="ChromiumとFirefoxの自動入力テストに使われている220の保存済みフォームでUmeteのフォーム照合をテストする方法、そのテストで見つかったこと、そしてAIマッチングでどれだけ改善するか。">
   <meta property="og:image" content="https://umete.jp/assets/umete-social.png?v=6">
   <meta name="twitter:card" content="summary_large_image">
 </head>
@@ -61,7 +61,7 @@
       </div>
     </section>
     <section class="umete-section">
-      <p data-label-en="How I test Umete’s form matching without filling out forms myself, what the test caught, and how much AI matching adds." data-label-ja="自分でフォームに記入せずにUmeteのフォーム照合をテストする方法、そのテストで見つかったこと、そしてAIマッチングでどれだけ改善するか。">How I test Umete’s form matching without filling out forms myself, what the test caught, and how much AI matching adds.</p>
+      <p data-label-en="How I test Umete’s form matching without filling out forms myself, what the test caught, and how much AI matching improves things." data-label-ja="自分でフォームに記入せずにUmeteのフォーム照合をテストする方法、そのテストで見つかったこと、そしてAIマッチングでどれだけ改善するか。">How I test Umete’s form matching without filling out forms myself, what the test caught, and how much AI matching improves things.</p>
       <p class="umete-note-meta" data-label-en="November 25, 2026 · Umete 0.5.4 · 220 forms from Chromium’s and Firefox’s autofill tests" data-label-ja="2026年11月25日 · Umete 0.5.4 · ChromiumとFirefoxの自動入力テストの220フォーム">November 25, 2026 · Umete 0.5.4 · 220 forms from Chromium’s and Firefox’s autofill tests</p>
     </section>
     <section class="umete-section">
@@ -71,7 +71,7 @@
     </section>
     <section class="umete-section">
       <h2 data-label-en="The test" data-label-ja="テストの方法">The test</h2>
-      <p><span data-label-en="Browsers keep saved copies of real forms to test their own autofill. The test uses two sets: " data-label-ja="ブラウザは、自身の自動入力をテストするために実際のフォームの保存コピーを持っています。テストでは2つを使います。">Browsers keep saved copies of real forms to test their own autofill. The test uses two sets: </span></p>
+      <p><span data-label-en="Browser vendors keep saved copies of real forms to test their own autofill. The test uses two sets: " data-label-ja="ブラウザの開発元は、自社の自動入力をテストするために実際のフォームの保存コピーを持っています。テストでは2つを使います。">Browser vendors keep saved copies of real forms to test their own autofill. The test uses two sets: </span></p>
       <ul>
         <li><a href="https://github.com/chromium/chromium/tree/main/components/test/data/autofill/heuristics" data-label-en="Chromium’s 184 forms" data-label-ja="Chromiumの184フォーム">Chromium’s 184 forms</a><span data-label-en=": checkout and sign-up pages from sites like Lowe’s, Macy’s, and Walmart, plus forms in 13 other languages, each with the type Chromium expects for every field." data-label-ja="：Lowe’s、Macy’s、Walmartなどのサイトの購入・登録ページと、ほかの13言語のフォーム。それぞれの項目にChromiumが期待する種類が付いています。">: checkout and sign-up pages from sites like Lowe’s, Macy’s, and Walmart, plus forms in 13 other languages, each with the type Chromium expects for every field.</span></li>
         <li><a href="https://github.com/mozilla-firefox/firefox/tree/main/browser/extensions/formautofill/test/fixtures/third_party" data-label-en="Firefox’s 36 forms" data-label-ja="Firefoxの36フォーム">Firefox’s 36 forms</a><span data-label-en=": checkout, shipping, and sign-in pages from Best Buy, Costco, Home Depot, Walmart, and others. Firefox’s tests list the fields Firefox finds without saying which element each is, so I lined them up with each page and checked every one by hand, correcting the ones Firefox gets wrong, like an address nickname it calls a street line." data-label-ja="：Best Buy、Costco、Home Depot、Walmartなどの購入・配送・ログインページ。Firefoxのテストは、見つけた項目がどの要素かを示さないため、各ページの項目と対応させてすべて手で確認し、住所のニックネームを番地とするようなFirefoxの誤りも直しました。">: checkout, shipping, and sign-in pages from Best Buy, Costco, Home Depot, Walmart, and others. Firefox’s tests list the fields Firefox finds without saying which element each is, so I lined them up with each page and checked every one by hand, correcting the ones Firefox gets wrong, like an address nickname it calls a street line.</span></li>

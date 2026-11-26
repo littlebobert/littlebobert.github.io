@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>1.2.10</title>
+            <pubDate>Fri, 27 Nov 2026 03:33:20 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>103</sparkle:version>
+            <sparkle:shortVersionString>1.2.10</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Nothing changes on the Mac. This update carries Auto Reply changes for Karui for iPhone: a new icon for the custom message, and the meeting reply now ends “will reply after.”
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.10/Karui-1.2.10-mac.zip" length="4165441" type="application/octet-stream" sparkle:edSignature="OQ9DPi+nizBslnmc1jkFRGb5ZUKSm0YM0+Pt1CzDyaEEoSiKS2WjJl4PQGPftjezkMSuGGRt/+nIYqBYt+8WDw=="/>
+        </item>
+        <item>
             <title>1.2.9</title>
             <pubDate>Thu, 26 Nov 2026 19:51:51 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Slack notifications open at their message and thread on the iPhone again: Karui for Mac reads the new form of notification that Slack 4.53.292 gives.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.8/Karui-1.2.8-mac.zip" length="3756602" type="application/octet-stream" sparkle:edSignature="aBN067IjsHdjizFiwnqHHz62o7WuwV5XA+0UzxOt+1u9rKGv4E7p6f7NLJVwQO3elsHdNda4PtD7obc9bc93CA=="/>
-        </item>
-        <item>
-            <title>1.2.7</title>
-            <pubDate>Thu, 26 Nov 2026 10:02:52 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>100</sparkle:version>
-            <sparkle:shortVersionString>1.2.7</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Private Cloud Sorting now also rates how interesting each notification is, so the Neutral Summary on your iPhone can pick out what’s worth a look.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.7/Karui-1.2.7-mac.zip" length="3753518" type="application/octet-stream" sparkle:edSignature="7GAzszhhSaujTxp7IgldKZq+h9cHC3F5NoSVR4wYnbvofBlo6uja0Z2kVAtR7hzj6hcOqvt/P/Wn5bkrzVQQCQ=="/>
         </item>
     </channel>
 </rss>

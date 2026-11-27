@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>1.2.12</title>
+            <pubDate>Fri, 27 Nov 2026 17:55:29 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>105</sparkle:version>
+            <sparkle:shortVersionString>1.2.12</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- Ready for Expecting, coming in the next Karui for iPhone update: tell Karui what you’re waiting for, such as a delivery or a call, and this Mac sorts the matching notification as Important too. Nothing changes on the Mac until then.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.12/Karui-1.2.12-mac.zip" length="4246143" type="application/octet-stream" sparkle:edSignature="HACyFKoz+792EdxS48TGmXIBEBv6YcriZRmxS+SR6DyQrGLV9rDZr0HcMN0hbBj403Z+lg2OXZX7anfF4SPXCA=="/>
+        </item>
+        <item>
             <title>1.2.11</title>
             <pubDate>Fri, 27 Nov 2026 17:49:38 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- Nothing changes on the Mac. This update carries Auto Reply changes for Karui for iPhone: a new icon for the custom message, and the meeting reply now ends “will reply after.”
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.10/Karui-1.2.10-mac.zip" length="4165441" type="application/octet-stream" sparkle:edSignature="OQ9DPi+nizBslnmc1jkFRGb5ZUKSm0YM0+Pt1CzDyaEEoSiKS2WjJl4PQGPftjezkMSuGGRt/+nIYqBYt+8WDw=="/>
-        </item>
-        <item>
-            <title>1.2.9</title>
-            <pubDate>Thu, 26 Nov 2026 19:51:51 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>102</sparkle:version>
-            <sparkle:shortVersionString>1.2.9</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- A new icon: the same frosted glass tray on navy as Karui for iPhone.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.9/Karui-1.2.9-mac.zip" length="4165442" type="application/octet-stream" sparkle:edSignature="59A1gm31XFsk9xmsKvlK9TmHwwVvMeDq06ZKzCNV4V5Fd27DM5+3u5/LaIHQ+8627jYuSAlUa153bmyvw/icCw=="/>
         </item>
     </channel>
 </rss>

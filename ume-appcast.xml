@@ -6,6 +6,22 @@ IMPORTANT: This file was signed by Sparkle. Any modifications to this file requi
     <channel>
         <title>Ume</title>
         <item>
+            <title>0.5.8</title>
+            <pubDate>Fri, 27 Nov 2026 07:33:55 +0000</pubDate>
+            <link>https://umete.jp/</link>
+            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
+            <sparkle:version>48.1</sparkle:version>
+            <sparkle:shortVersionString>0.5.8</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
+            <description sparkle:format="markdown"><![CDATA[# Umete 0.5.8
+
+A darker app icon that's easier to spot.
+]]></description>
+            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="U8vU1R8+APgooS//Yxa56lGGoRLEx0uotmZQHuaOicOcfGYuNTVM2Ejg+6Kl1iACs/z2VIyrD2MpIydDuZKrBg==" sparkle:length="291">https://umete.jp/Umete-0.5.8-macOS.en.md</sparkle:releaseNotesLink>
+            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="IA64aZ2cph91ne7iyAS+yXE1HOyfTRpY1Vcpn46bfpfyAmOxPGkixULBAIhTGiyadwneEERqlhRfKB5X21DLDA==" sparkle:length="329">https://umete.jp/Umete-0.5.8-macOS.ja.md</sparkle:releaseNotesLink>
+            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.5.8/Umete-0.5.8-macOS.dmg" length="3702711" type="application/octet-stream" sparkle:edSignature="1ijgbapssowHnz9CIVOtQXb7zVZHEIR+2zhMInTtR5S/u0qktFRCgrFnmpjsk/9+Q6ArvYliQRCJqgzzSNXjCA=="/>
+        </item>
+        <item>
             <title>0.5.7</title>
             <pubDate>Thu, 26 Nov 2026 10:50:19 +0000</pubDate>
             <link>https://umete.jp/</link>
@@ -149,25 +165,9 @@ Umete is now in Japanese and Korean. Dropdowns built from buttons, like Delta's 
             <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="71d4fyQGpxxEDlt6Erm8szptYHYOaEmnczQyOG7B1saWlA6ZaFZ3tlFiyJuVu8tPLqu+zCEZWpwQNuIr/W2ADw==" sparkle:length="460">https://umete.jp/Umete-0.4.11-macOS.ja.md</sparkle:releaseNotesLink>
             <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.11/Umete-0.4.11-macOS.dmg" length="7010743" type="application/octet-stream" sparkle:edSignature="8i/K0SHPZ86/LorVabCRPmz6O1JvFjKrYKHdxjqgvEgB0BVvwtjz5ExVVC+BZZ16JDGayVqATtJ2zQMJ3LxsAA=="/>
         </item>
-        <item>
-            <title>0.4.10</title>
-            <pubDate>Thu, 19 Nov 2026 01:06:22 +0000</pubDate>
-            <link>https://umete.jp/</link>
-            <sparkle:fullReleaseNotesLink>https://umete.jp/changelog</sparkle:fullReleaseNotesLink>
-            <sparkle:version>36.1</sparkle:version>
-            <sparkle:shortVersionString>0.4.10</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>12.0</sparkle:minimumSystemVersion>
-            <description sparkle:format="markdown"><![CDATA[# Umete 0.4.10
-
-Bug reports sent with Email Logs now include Umete's real version and build, your iOS, iPadOS, or macOS version, and your device model.
-]]></description>
-            <sparkle:releaseNotesLink xml:lang="en" sparkle:edSignature="d7zl4ucLsH/7N13BDn3NlqM4ETeoYN03AyxBBjj/tKDb6pGcfBCAhbu2feL6+H8fpxAMevGG2oVLrVUksQpFCw==" sparkle:length="387">https://umete.jp/Umete-0.4.10-macOS.en.md</sparkle:releaseNotesLink>
-            <sparkle:releaseNotesLink xml:lang="ja" sparkle:edSignature="1NePltUFrfZQ6y2bvSsoUtb6dIBaY1EMGFMmoGbgwEBP+iae5G5gegSGjjB/n2LOkL1YUzW40Ggcry7hoos4BA==" sparkle:length="490">https://umete.jp/Umete-0.4.10-macOS.ja.md</sparkle:releaseNotesLink>
-            <enclosure url="https://github.com/littlebobert/umete/releases/download/v0.4.10/Umete-0.4.10-macOS.dmg" length="6931383" type="application/octet-stream" sparkle:edSignature="gy7cIaq7GkfNVIeEnVtLcKXonKjIGhtgfdG0tx1Bbu46HNKm8//ubrdcW+OglhReo3QMrnRO1PrN+Hiw8j3SAg=="/>
-        </item>
     </channel>
 </rss>
 <!-- sparkle-signatures:
-edSignature: DCrvIXfvRuzPLHV0T/nk59tMFbgG+oBaGjjv9qnjfvU/5PN3xoW0oIUtfu9guuosL+PnH/MUFwZ9mU5LoSf0Dg==
-length: 15314
+edSignature: qLnpeYymTldcLlvB+wF54uJ+2heEElCV+rYeDhpmJWCUjHGeJTUR0xYXIrS0rvg29IjkCHCOMLvhNqYt6KYkBQ==
+length: 15212
 -->

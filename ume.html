@@ -113,6 +113,15 @@
     .download-row { display: flex; flex-wrap: wrap; gap: 6pt 8pt; margin-top: 9pt; }
     /* The second line of the pitch, below the icon and name, in plain body text. */
     .hero-proposition { margin: 8pt 0 0; }
+    /* The 空欄を埋めて seal floats at the top right, under the language switcher, so the
+       tagline in either language wraps before it rather than running under it. The first
+       time the page loads it inks in from a thin line to full weight; after that it's
+       just there. Tapping it opens it large at /hanko. Karui's treatment. */
+    .sasu-hero { display: flow-root; }
+    .ume-hero-seal { float: right; position: relative; display: block; width: 47px; height: 112px; margin: 2pt 0 4pt 14px; cursor: pointer; }
+    /* Laid out 4× larger and scaled back down, so the ink-in's thinning filter works in
+       quarter-pixel steps; a white margin gives it paper on every side of the border. */
+    .ume-hero-seal img { position: absolute; top: -3px; left: -3px; box-sizing: content-box; width: 400%; height: 400%; padding: 12px; background: #fff; transform: scale(0.25); transform-origin: 0 0; }
     .ume-detail { padding: 6pt 0 5pt; }
     .ume-detail p { margin: 0; }
     .ume-detail p + p { margin-top: 7pt; }
@@ -134,6 +143,7 @@
 
     @media (max-width: 560px) {
       .sasu-page { padding-top: 4pt; padding-bottom: 36pt; }
+      .ume-hero-seal { width: 34px; height: 82px; margin-left: 10px; }
     }
 
   </style>
@@ -146,6 +156,21 @@
     </div>
 
     <section class="sasu-hero">
+      <a href="ume-hanko.html" class="ume-hero-seal" aria-label="About the 空欄を埋めて seal" data-aria-label-en="About the 空欄を埋めて seal" data-aria-label-ja="「空欄を埋めて」の判子について"><img src="assets/umete-seal-tagline.png?v=1" alt="" width="47" height="112"></a>
+      <script src="karui-seal-ink.js?v=1"></script>
+      <script>
+        // The seal inks in the first time the page loads (add ?stamp to the address to
+        // see it again). This runs before the first paint so it never flashes in place.
+        (() => {
+          let stamped = false;
+          try { stamped = localStorage.getItem('umete-hero-stamped') === '1'; } catch {}
+          if (new URLSearchParams(location.search).has('stamp')) stamped = false;
+          if (stamped) return;
+          try { localStorage.setItem('umete-hero-stamped', '1'); } catch {}
+          const seal = document.currentScript.previousElementSibling.previousElementSibling;
+          karuiInkIn(seal.querySelector('img'), 100);
+        })();
+      </script>
       <div class="sasu-hero-header">
         <span class="ume-icon"><span class="ume-icon-shape"><picture><source srcset="assets/umete-icon-sketch-first.jpg?v=6" media="(prefers-reduced-motion: no-preference)"><img src="assets/umete-icon-sketch.jpg?v=6" alt="Umete app icon, a glass plum" data-alt-en="Umete app icon, a glass plum" data-alt-ja="ガラスの梅の実のUmeteアプリアイコン" width="64" height="64"></picture><video src="assets/umete-icon-sketch.mp4?v=6" muted loop playsinline disablepictureinpicture disableremoteplayback preload="auto" aria-hidden="true"></video></span></span>
         <div>

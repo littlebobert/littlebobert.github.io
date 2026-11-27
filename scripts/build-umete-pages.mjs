@@ -15,6 +15,8 @@ const siteFiles = [
   'umete-language.js',
   'umete-animated-icon.css',
   'umete-animated-icon.js',
+  // Inks the seals in; it's Karui's, shared.
+  'karui-seal-ink.js',
   'ume-appcast.xml',
 ];
 
@@ -32,6 +34,9 @@ const assetFiles = [
   'umete-landing-fill.webp',
   'umete-landing-remembers.webp',
   'umete-landing-private.webp',
+  // The 空欄を埋めて seal beside the hero, and large on /hanko, from generate-umete-seal.swift.
+  'umete-seal-tagline.png',
+  'umete-seal-tagline-large.png',
   // The maker's photo and name seal, shared with Karui's page.
   'karui-developer.jpg',
   'karui-seal.png',
@@ -48,6 +53,7 @@ const pages = [
   ['ume-acknowledgements.html', ['acknowledgements.html', 'acknowledgements/index.html']],
   ['ume-technotes.html', ['technotes.html', 'technotes/index.html']],
   ['ume-technote-un001.html', ['technotes/un001.html', 'technotes/un001/index.html']],
+  ['ume-hanko.html', ['hanko.html', 'hanko/index.html']],
 ];
 
 export function createDeployedPage(source) {
@@ -56,6 +62,7 @@ export function createDeployedPage(source) {
     .replaceAll('src="umete-language.js', 'src="/umete-language.js')
     .replaceAll('href="umete-animated-icon.css', 'href="/umete-animated-icon.css')
     .replaceAll('src="umete-animated-icon.js', 'src="/umete-animated-icon.js')
+    .replaceAll('src="karui-seal-ink.js', 'src="/karui-seal-ink.js')
     .replaceAll('href="assets/', 'href="/assets/')
     .replaceAll('src="assets/', 'src="/assets/')
     .replaceAll('srcset="assets/', 'srcset="/assets/')
@@ -66,7 +73,8 @@ export function createDeployedPage(source) {
     .replaceAll('href="ume-specs.html"', 'href="/specs"')
     .replaceAll('href="ume-acknowledgements.html"', 'href="/acknowledgements"')
     .replaceAll('href="ume-technotes.html"', 'href="/technotes"')
-    .replaceAll('href="ume-technote-un001.html"', 'href="/technotes/un001"');
+    .replaceAll('href="ume-technote-un001.html"', 'href="/technotes/un001"')
+    .replaceAll('href="ume-hanko.html"', 'href="/hanko"');
 }
 
 // Sparkle release notes referenced from the appcast.
@@ -188,7 +196,7 @@ await writeFile(
   path.join(outputDirectory, '404.html'),
   createDeployedPage(await readFile(path.join(rootDirectory, 'umete-404.html'), 'utf8')),
 );
-const sitemapRoutes = ['', 'specs', 'privacy', 'support', 'changelog', 'technotes', 'technotes/un001', 'acknowledgements'];
+const sitemapRoutes = ['', 'specs', 'privacy', 'support', 'changelog', 'technotes', 'technotes/un001', 'acknowledgements', 'hanko'];
 const sitemapPaths = sitemapRoutes.flatMap((route) => [englishPath(route), japanesePath(route)]);
 await Promise.all(
   sitemapPaths.map((pagePath) => readFile(path.join(outputDirectory, pagePath, 'index.html'))),

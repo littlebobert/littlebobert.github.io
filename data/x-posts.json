@@ -1,8 +1,40 @@
 {
-  "updatedAt": "2026-11-26T23:54:06.942Z",
+  "updatedAt": "2026-11-27T23:31:04.000Z",
   "username": "_bobertdowney",
   "profileUrl": "https://x.com/_bobertdowney",
   "posts": [
+    {
+      "id": "2126146377159971234",
+      "text": "spending about 130 yen (80 cents USD) per install here in Japan via Apple App Store ads for Karui. seems like a good CPI. retention is very low though since I think most people are just using the app to view unsent messages.\n\nany suggestions? https://t.co/XvhuIJPcHX https://t.co/zrmUu01WJF",
+      "createdAt": "2026-11-27T02:49:32.000Z",
+      "url": "https://x.com/_bobertdowney/status/2126146377159971234",
+      "urls": [
+        {
+          "url": "https://t.co/XvhuIJPcHX",
+          "expandedUrl": "https://karui.jp",
+          "displayUrl": "karui.jp",
+          "start": 243,
+          "end": 266
+        },
+        {
+          "url": "https://t.co/zrmUu01WJF",
+          "expandedUrl": "https://x.com/_bobertdowney/status/2126146377159971234/photo/1",
+          "displayUrl": "pic.x.com/zrmUu01WJF",
+          "start": 267,
+          "end": 290
+        }
+      ],
+      "avatar": "assets/generated/x/mine-avatar.webp",
+      "authorName": "Justin Garcia",
+      "username": "_bobertdowney",
+      "media": [
+        {
+          "alt": "",
+          "type": "photo",
+          "image": "assets/generated/x/mine-post-2126146377159971234-0.webp"
+        }
+      ]
+    },
     {
       "id": "2125567970823049367",
       "text": "Umete autofills web forms. In my benchmark of real web forms from Walmart, Home Depot and more about 86% of all fields get filled and 99.2% are filled correctly in Umete 0.5.5. It’s free, private, with no sign-up. https://t.co/aNKnr7L2be https://t.co/OE2K73VILQ",
@@ -204,42 +236,6 @@
           "image": "assets/generated/x/mine-post-2119942884791341122-0.webp"
         }
       ]
-    },
-    {
-      "id": "2119755670081990681",
-      "text": "my parents bought us a Performa 630 CD. I made crappy little REALBasic apps and played way too much Gemstone 3 after school https://t.co/h5BXOxVRLt",
-      "createdAt": "2026-11-09T11:35:09.000Z",
-      "url": "https://x.com/_bobertdowney/status/2119755670081990681",
-      "urls": [
-        {
-          "url": "https://t.co/h5BXOxVRLt",
-          "expandedUrl": "https://x.com/_bobertdowney/status/2119755670081990681/photo/1",
-          "displayUrl": "pic.x.com/h5BXOxVRLt",
-          "start": 124,
-          "end": 147
-        }
-      ],
-      "avatar": "assets/generated/x/mine-avatar.webp",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": [
-        {
-          "alt": "",
-          "type": "photo",
-          "image": "assets/generated/x/mine-post-2119755670081990681-0.webp"
-        }
-      ]
-    },
-    {
-      "id": "2119605882287948033",
-      "text": "Karui for Mac 0.10.9 would freeze/hang on large histories. I’ve pushed an update with a fix. if you’re stuck on 0.10.9 please delete the app and reinstall it. your history will remain intact. sorry for the inconvenience. 🙇‍♂️",
-      "createdAt": "2026-11-09T01:39:57.000Z",
-      "url": "https://x.com/_bobertdowney/status/2119605882287948033",
-      "urls": [],
-      "avatar": "assets/generated/x/mine-avatar.webp",
-      "authorName": "Justin Garcia",
-      "username": "_bobertdowney",
-      "media": []
     }
   ]
 }

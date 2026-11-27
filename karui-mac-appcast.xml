@@ -3,6 +3,18 @@
     <channel>
         <title>Karui</title>
         <item>
+            <title>1.2.11</title>
+            <pubDate>Fri, 27 Nov 2026 17:49:38 +0900</pubDate>
+            <link>https://karui.jp/mac</link>
+            <sparkle:version>104</sparkle:version>
+            <sparkle:shortVersionString>1.2.11</sparkle:shortVersionString>
+            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
+            <description sparkle:format="markdown"><![CDATA[- When an app sends a notification identical to an earlier one, such as a second “Verify your email”, Karui for Mac no longer treats the new one as already read. Reading it on the Mac now clears the alert on your iPhone, and the link opens the new email.
+]]></description>
+            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.11/Karui-1.2.11-mac.zip" length="4167383" type="application/octet-stream" sparkle:edSignature="L9utrpQ6LE6bLAlb5ZiXp8/TmwleWuDXzyrMAdd40iqB+IfrlVqyXW2ugleMniiH3brcTpkLxsHskrzNxltxBA=="/>
+        </item>
+        <item>
             <title>1.2.10</title>
             <pubDate>Fri, 27 Nov 2026 03:33:20 +0900</pubDate>
             <link>https://karui.jp/mac</link>
@@ -25,18 +37,6 @@
             <description sparkle:format="markdown"><![CDATA[- A new icon: the same frosted glass tray on navy as Karui for iPhone.
 ]]></description>
             <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.9/Karui-1.2.9-mac.zip" length="4165442" type="application/octet-stream" sparkle:edSignature="59A1gm31XFsk9xmsKvlK9TmHwwVvMeDq06ZKzCNV4V5Fd27DM5+3u5/LaIHQ+8627jYuSAlUa153bmyvw/icCw=="/>
-        </item>
-        <item>
-            <title>1.2.8</title>
-            <pubDate>Thu, 26 Nov 2026 14:53:07 +0900</pubDate>
-            <link>https://karui.jp/mac</link>
-            <sparkle:version>101</sparkle:version>
-            <sparkle:shortVersionString>1.2.8</sparkle:shortVersionString>
-            <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-            <sparkle:hardwareRequirements>arm64</sparkle:hardwareRequirements>
-            <description sparkle:format="markdown"><![CDATA[- Slack notifications open at their message and thread on the iPhone again: Karui for Mac reads the new form of notification that Slack 4.53.292 gives.
-]]></description>
-            <enclosure url="https://github.com/littlebobert/karui-mac/releases/download/1.2.8/Karui-1.2.8-mac.zip" length="3756602" type="application/octet-stream" sparkle:edSignature="aBN067IjsHdjizFiwnqHHz62o7WuwV5XA+0UzxOt+1u9rKGv4E7p6f7NLJVwQO3elsHdNda4PtD7obc9bc93CA=="/>
         </item>
     </channel>
 </rss>
